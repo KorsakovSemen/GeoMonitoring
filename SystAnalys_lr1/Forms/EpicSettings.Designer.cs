@@ -56,7 +56,7 @@
             this.groupBox2.Controls.Add(this.radioEpicBig);
             this.groupBox2.Controls.Add(this.radioEpicMedium);
             this.groupBox2.Controls.Add(this.radioEpicSmall);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Location = new System.Drawing.Point(70, 78);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(265, 138);
             this.groupBox2.TabIndex = 93;
@@ -169,7 +169,7 @@
             this.groupBox1.Controls.Add(this.right);
             this.groupBox1.Controls.Add(this.down);
             this.groupBox1.Controls.Add(this.up);
-            this.groupBox1.Location = new System.Drawing.Point(12, 156);
+            this.groupBox1.Location = new System.Drawing.Point(70, 222);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(265, 128);
             this.groupBox1.TabIndex = 94;
@@ -220,14 +220,14 @@
             this.up.AutoSize = true;
             this.up.Location = new System.Drawing.Point(16, 36);
             this.up.Name = "up";
-            this.up.Size = new System.Drawing.Size(54, 15);
+            this.up.Size = new System.Drawing.Size(55, 15);
             this.up.TabIndex = 0;
             this.up.Text = "Вверх";
             this.up.UseSelectable = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(100, 291);
+            this.button1.Location = new System.Drawing.Point(173, 356);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 95;
@@ -239,11 +239,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(296, 337);
+            this.ClientSize = new System.Drawing.Size(402, 423);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Name = "EpicSettings";
+            this.Text = "Epic settings";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);

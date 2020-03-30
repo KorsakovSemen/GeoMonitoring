@@ -154,7 +154,7 @@
             this.Controls.Add(this.panel1);
             this.MaximumSize = new System.Drawing.Size(1500, 1500);
             this.Name = "DisplayEpicenters";
-            this.Text = "DisplayEpicenters ";
+            this.Text = "Display epicenters ";
             this.Load += new System.EventHandler(this.DisplayEpicenters_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

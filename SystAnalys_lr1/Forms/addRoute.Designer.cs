@@ -35,28 +35,51 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(228, 78);
+            // 
+            // 
+            // 
+            this.textBox1.CustomButton.Image = null;
+            this.textBox1.CustomButton.Location = new System.Drawing.Point(47, 2);
+            this.textBox1.CustomButton.Name = "";
+            this.textBox1.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.textBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textBox1.CustomButton.TabIndex = 1;
+            this.textBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textBox1.CustomButton.UseSelectable = true;
+            this.textBox1.CustomButton.Visible = false;
+            this.textBox1.Lines = new string[0];
+            this.textBox1.Location = new System.Drawing.Point(271, 79);
+            this.textBox1.MaxLength = 32767;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.PasswordChar = '\0';
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textBox1.SelectedText = "";
+            this.textBox1.SelectionLength = 0;
+            this.textBox1.SelectionStart = 0;
+            this.textBox1.ShortcutsEnabled = true;
+            this.textBox1.Size = new System.Drawing.Size(65, 20);
             this.textBox1.TabIndex = 0;
+            this.textBox1.UseSelectable = true;
+            this.textBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 81);
+            this.label1.Location = new System.Drawing.Point(23, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(182, 13);
+            this.label1.Size = new System.Drawing.Size(219, 19);
             this.label1.TabIndex = 1;
             this.label1.Text = "Название машрута(только цифры)";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(140, 160);
+            this.button1.Location = new System.Drawing.Point(143, 162);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
             this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseSelectable = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // AddRoute
@@ -68,7 +91,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Name = "AddRoute";
-            this.Text = "addRoute";
+            this.Text = "Add route";
             this.ResumeLayout(false);
             this.PerformLayout();
 

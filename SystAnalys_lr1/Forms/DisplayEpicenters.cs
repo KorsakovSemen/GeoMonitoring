@@ -20,7 +20,7 @@ namespace SystAnalys_lr1
         public int hsheet { get; set; }
         private static int Ezoom { get; set; } = 1;
         public static Image EsheetPicture { get; set; }
-        private DrawGraph EG;
+        public DrawGraph EG;
         private Main MainForm;
         public DisplayEpicenters(Main Main)
         {

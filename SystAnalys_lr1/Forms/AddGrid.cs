@@ -25,8 +25,14 @@ namespace SystAnalys_lr1.Forms
             Main.g.up = int.Parse(left.Text);
             Main.g.right = int.Parse(down.Text);
             Main.g.down = int.Parse(right.Text);
-            Main.g.gridWidth = int.Parse(w.Text);
-            Main.g.gridHeight = int.Parse(h.Text);
+            if (w.Text != "")
+                Main.g.gridWidth = int.Parse(w.Text);
+            else
+                Main.g.gridWidth = 80;
+            if (h.Text != "")
+                Main.g.gridHeight = int.Parse(h.Text);
+            else
+                Main.g.gridHeight = 40;
             //GridPart.height = int.Parse(textBox1.Text) / 40;
             //GridPart.width = int.Parse(textBox2.Text) / 80;
             //  Main.buses.Add(new Bus(Main.routes[int.Parse(this.textBox1.Text)], new PictureBox(), 0, false, new List<Vertex>(),int.Parse(this.textBox1.Text), true));

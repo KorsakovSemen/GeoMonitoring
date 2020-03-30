@@ -41,10 +41,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(356, 372);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(267, 302);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
+            this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 98;
             this.button1.Text = "Закончить";
             this.button1.UseSelectable = true;
@@ -58,11 +57,9 @@
             this.traficLightsOptions.Controls.Add(this.twoTrafficLights);
             this.traficLightsOptions.Controls.Add(this.fourTrafficLights);
             this.traficLightsOptions.Controls.Add(this.threeTrafficLights);
-            this.traficLightsOptions.Location = new System.Drawing.Point(245, 103);
-            this.traficLightsOptions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.traficLightsOptions.Location = new System.Drawing.Point(184, 84);
             this.traficLightsOptions.Name = "traficLightsOptions";
-            this.traficLightsOptions.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.traficLightsOptions.Size = new System.Drawing.Size(341, 186);
+            this.traficLightsOptions.Size = new System.Drawing.Size(283, 161);
             this.traficLightsOptions.TabIndex = 99;
             this.traficLightsOptions.TabStop = false;
             this.traficLightsOptions.Text = "Опции светофоров";
@@ -70,10 +67,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(160, 148);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(120, 120);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 20);
+            this.label1.Size = new System.Drawing.Size(156, 19);
             this.label1.TabIndex = 5;
             this.label1.Text = "Количество светофоров";
             // 
@@ -83,10 +79,9 @@
             // 
             // 
             this.textBox1.CustomButton.Image = null;
-            this.textBox1.CustomButton.Location = new System.Drawing.Point(145, 1);
-            this.textBox1.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.CustomButton.Location = new System.Drawing.Point(62, 2);
             this.textBox1.CustomButton.Name = "";
-            this.textBox1.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.textBox1.CustomButton.Size = new System.Drawing.Size(11, 12);
             this.textBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textBox1.CustomButton.TabIndex = 1;
             this.textBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -94,8 +89,7 @@
             this.textBox1.CustomButton.Visible = false;
             this.textBox1.Enabled = false;
             this.textBox1.Lines = new string[0];
-            this.textBox1.Location = new System.Drawing.Point(20, 144);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Location = new System.Drawing.Point(15, 117);
             this.textBox1.MaxLength = 32767;
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '\0';
@@ -104,7 +98,7 @@
             this.textBox1.SelectionLength = 0;
             this.textBox1.SelectionStart = 0;
             this.textBox1.ShortcutsEnabled = true;
-            this.textBox1.Size = new System.Drawing.Size(133, 25);
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 4;
             this.textBox1.UseSelectable = true;
             this.textBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -113,10 +107,9 @@
             // customTrafficLights
             // 
             this.customTrafficLights.AutoSize = true;
-            this.customTrafficLights.Location = new System.Drawing.Point(20, 114);
-            this.customTrafficLights.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.customTrafficLights.Location = new System.Drawing.Point(15, 93);
             this.customTrafficLights.Name = "customTrafficLights";
-            this.customTrafficLights.Size = new System.Drawing.Size(113, 17);
+            this.customTrafficLights.Size = new System.Drawing.Size(104, 15);
             this.customTrafficLights.TabIndex = 3;
             this.customTrafficLights.TabStop = true;
             this.customTrafficLights.Text = "Свое значение";
@@ -126,10 +119,9 @@
             // twoTrafficLights
             // 
             this.twoTrafficLights.AutoSize = true;
-            this.twoTrafficLights.Location = new System.Drawing.Point(20, 28);
-            this.twoTrafficLights.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.twoTrafficLights.Location = new System.Drawing.Point(15, 23);
             this.twoTrafficLights.Name = "twoTrafficLights";
-            this.twoTrafficLights.Size = new System.Drawing.Size(100, 17);
+            this.twoTrafficLights.Size = new System.Drawing.Size(91, 15);
             this.twoTrafficLights.TabIndex = 2;
             this.twoTrafficLights.TabStop = true;
             this.twoTrafficLights.Text = "2 светофора";
@@ -139,10 +131,9 @@
             // fourTrafficLights
             // 
             this.fourTrafficLights.AutoSize = true;
-            this.fourTrafficLights.Location = new System.Drawing.Point(20, 85);
-            this.fourTrafficLights.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fourTrafficLights.Location = new System.Drawing.Point(15, 69);
             this.fourTrafficLights.Name = "fourTrafficLights";
-            this.fourTrafficLights.Size = new System.Drawing.Size(244, 17);
+            this.fourTrafficLights.Size = new System.Drawing.Size(226, 15);
             this.fourTrafficLights.TabIndex = 1;
             this.fourTrafficLights.TabStop = true;
             this.fourTrafficLights.Text = "Обычный перекресток(4 светофора)";
@@ -152,10 +143,9 @@
             // threeTrafficLights
             // 
             this.threeTrafficLights.AutoSize = true;
-            this.threeTrafficLights.Location = new System.Drawing.Point(20, 57);
-            this.threeTrafficLights.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.threeTrafficLights.Location = new System.Drawing.Point(15, 46);
             this.threeTrafficLights.Name = "threeTrafficLights";
-            this.threeTrafficLights.Size = new System.Drawing.Size(263, 17);
+            this.threeTrafficLights.Size = new System.Drawing.Size(240, 15);
             this.threeTrafficLights.TabIndex = 0;
             this.threeTrafficLights.TabStop = true;
             this.threeTrafficLights.Text = "Т-образный перекресток (3 светофора)";
@@ -164,14 +154,12 @@
             // 
             // TrafficLightSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 464);
+            this.ClientSize = new System.Drawing.Size(633, 377);
             this.Controls.Add(this.traficLightsOptions);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TrafficLightSettings";
-            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "TrafficLightSettings";
             this.traficLightsOptions.ResumeLayout(false);
             this.traficLightsOptions.PerformLayout();

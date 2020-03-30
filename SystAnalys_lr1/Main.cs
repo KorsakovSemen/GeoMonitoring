@@ -3683,6 +3683,7 @@ namespace SystAnalys_lr1
                 f.StyleManager = msmMain;
                 f.ShowDialog();
                 G.clearSheet();
+                Ep.EG.clearSheet2();
                 G.drawALLGraph(V, E);
                 sheet.Image = G.GetBitmap();
                 CreateGrid();
