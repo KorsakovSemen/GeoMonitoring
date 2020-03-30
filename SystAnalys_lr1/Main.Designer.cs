@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.about = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -148,7 +142,7 @@
             // about
             // 
             this.about.Name = "about";
-            this.about.Size = new System.Drawing.Size(12, 20);
+            this.about.Size = new System.Drawing.Size(14, 20);
             // 
             // button1
             // 
@@ -163,23 +157,7 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.Location = new System.Drawing.Point(42, 54);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView1.Name = "dataGridView1";
@@ -199,23 +177,7 @@
             // 
             // dataGridView3
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView3.Location = new System.Drawing.Point(78, 685);
             this.dataGridView3.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView3.Name = "dataGridView3";
@@ -273,7 +235,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(181, 97);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 19);
+            this.label9.Size = new System.Drawing.Size(70, 20);
             this.label9.TabIndex = 92;
             this.label9.Text = "закрытие";
             this.label9.Visible = false;
@@ -293,7 +255,7 @@
             this.label13.Location = new System.Drawing.Point(103, 39);
             this.label13.Margin = new System.Windows.Forms.Padding(0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(41, 19);
+            this.label13.Size = new System.Drawing.Size(44, 20);
             this.label13.TabIndex = 90;
             this.label13.Text = "V bus";
             // 
@@ -315,7 +277,7 @@
             this.mean.Location = new System.Drawing.Point(12, 97);
             this.mean.Margin = new System.Windows.Forms.Padding(0);
             this.mean.Name = "mean";
-            this.mean.Size = new System.Drawing.Size(65, 19);
+            this.mean.Size = new System.Drawing.Size(69, 20);
             this.mean.TabIndex = 82;
             this.mean.Text = "Среднее:";
             // 
@@ -423,7 +385,7 @@
             this.label6.Location = new System.Drawing.Point(0, 33);
             this.label6.Margin = new System.Windows.Forms.Padding(0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(193, 19);
+            this.label6.Size = new System.Drawing.Size(207, 20);
             this.label6.TabIndex = 3;
             this.label6.Text = "Количество пустых секторов : ";
             // 
@@ -433,7 +395,7 @@
             this.label5.Location = new System.Drawing.Point(0, 52);
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(291, 19);
+            this.label5.Size = new System.Drawing.Size(304, 20);
             this.label5.TabIndex = 52;
             this.label5.Text = "Время, за которое обнаружили загрязнение: ";
             // 
@@ -465,7 +427,7 @@
             this.label7.Location = new System.Drawing.Point(0, 13);
             this.label7.Margin = new System.Windows.Forms.Padding(0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(116, 19);
+            this.label7.Size = new System.Drawing.Size(123, 20);
             this.label7.TabIndex = 51;
             this.label7.Text = "Время в секундах";
             this.label7.Visible = false;
@@ -516,23 +478,7 @@
             // 
             // dataGridView2
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridView2.Location = new System.Drawing.Point(732, 117);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView2.Name = "dataGridView2";
@@ -551,7 +497,7 @@
             this.checkedListBox1.Location = new System.Drawing.Point(137, 49);
             this.checkedListBox1.Margin = new System.Windows.Forms.Padding(0);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(132, 34);
+            this.checkedListBox1.Size = new System.Drawing.Size(132, 22);
             this.checkedListBox1.TabIndex = 69;
             // 
             // loadLabel
@@ -564,7 +510,7 @@
             this.loadLabel.Margin = new System.Windows.Forms.Padding(0);
             this.loadLabel.MaximumSize = new System.Drawing.Size(750, 767);
             this.loadLabel.Name = "loadLabel";
-            this.loadLabel.Size = new System.Drawing.Size(62, 19);
+            this.loadLabel.Size = new System.Drawing.Size(65, 20);
             this.loadLabel.TabIndex = 74;
             this.loadLabel.Text = "Загрузка";
             this.loadLabel.Visible = false;
@@ -599,7 +545,7 @@
             this.trackBar1.Margin = new System.Windows.Forms.Padding(0);
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(291, 45);
+            this.trackBar1.Size = new System.Drawing.Size(291, 56);
             this.trackBar1.TabIndex = 65;
             this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBar1.Value = 1;
@@ -629,7 +575,7 @@
             this.label8.Location = new System.Drawing.Point(93, 22);
             this.label8.Margin = new System.Windows.Forms.Padding(0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(166, 19);
+            this.label8.Size = new System.Drawing.Size(175, 20);
             this.label8.TabIndex = 66;
             this.label8.Text = "С датчиками: Без:  Всего: ";
             // 
@@ -659,14 +605,14 @@
             this.theme.AutoSize = true;
             this.theme.Location = new System.Drawing.Point(160, 19);
             this.theme.Name = "theme";
-            this.theme.Size = new System.Drawing.Size(41, 19);
+            this.theme.Size = new System.Drawing.Size(45, 20);
             this.theme.TabIndex = 99;
             this.theme.Text = "Темы";
             // 
             // changeTheme
             // 
             this.changeTheme.FormattingEnabled = true;
-            this.changeTheme.ItemHeight = 23;
+            this.changeTheme.ItemHeight = 24;
             this.changeTheme.Items.AddRange(new object[] {
             "1",
             "2",
@@ -684,7 +630,7 @@
             "14"});
             this.changeTheme.Location = new System.Drawing.Point(13, 19);
             this.changeTheme.Name = "changeTheme";
-            this.changeTheme.Size = new System.Drawing.Size(121, 29);
+            this.changeTheme.Size = new System.Drawing.Size(121, 30);
             this.changeTheme.TabIndex = 98;
             this.changeTheme.UseSelectable = true;
             this.changeTheme.SelectedIndexChanged += new System.EventHandler(this.changeTheme_SelectedIndexChanged);
@@ -704,11 +650,11 @@
             // 
             this.changeRoute.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.busParkBindingSource, "Date", true));
             this.changeRoute.FormattingEnabled = true;
-            this.changeRoute.ItemHeight = 23;
+            this.changeRoute.ItemHeight = 24;
             this.changeRoute.Location = new System.Drawing.Point(13, 54);
             this.changeRoute.Margin = new System.Windows.Forms.Padding(0);
             this.changeRoute.Name = "changeRoute";
-            this.changeRoute.Size = new System.Drawing.Size(94, 29);
+            this.changeRoute.Size = new System.Drawing.Size(94, 30);
             this.changeRoute.TabIndex = 77;
             this.changeRoute.UseSelectable = true;
             this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChangedAsync);
@@ -723,7 +669,7 @@
             this.label12.Location = new System.Drawing.Point(13, 95);
             this.label12.Margin = new System.Windows.Forms.Padding(0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(79, 19);
+            this.label12.Size = new System.Drawing.Size(83, 20);
             this.label12.TabIndex = 96;
             this.label12.Text = "Светофоры";
             this.label12.Visible = false;
@@ -839,41 +785,41 @@
             this.runTrafficLightsToolStripMenuItem});
             this.saveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(38, 24);
+            this.saveButton.Size = new System.Drawing.Size(46, 24);
             this.saveButton.Text = "File";
             // 
             // createModelToolStripMenuItem
             // 
             this.createModelToolStripMenuItem.Name = "createModelToolStripMenuItem";
-            this.createModelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createModelToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.createModelToolStripMenuItem.Text = "Create model";
             this.createModelToolStripMenuItem.Click += new System.EventHandler(this.newModelToolStripMenuItem_Click);
             // 
             // openEpicFormToolStripMenuItem
             // 
             this.openEpicFormToolStripMenuItem.Name = "openEpicFormToolStripMenuItem";
-            this.openEpicFormToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openEpicFormToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.openEpicFormToolStripMenuItem.Text = "Open epic form";
             this.openEpicFormToolStripMenuItem.Click += new System.EventHandler(this.openEpicFormToolStripMenuItem_Click);
             // 
             // addRouteToolStripMenuItem
             // 
             this.addRouteToolStripMenuItem.Name = "addRouteToolStripMenuItem";
-            this.addRouteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addRouteToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.addRouteToolStripMenuItem.Text = "Add route";
             this.addRouteToolStripMenuItem.Click += new System.EventHandler(this.addRouteToolStripMenuItem_Click);
             // 
             // createGridToolStripMenuItem
             // 
             this.createGridToolStripMenuItem.Name = "createGridToolStripMenuItem";
-            this.createGridToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createGridToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.createGridToolStripMenuItem.Text = "Grid settings";
             this.createGridToolStripMenuItem.Click += new System.EventHandler(this.createGridToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -883,28 +829,28 @@
             this.jSONToolStripMenuItem,
             this.xMLToolStripMenuItem});
             this.saveInToolStripMenuItem.Name = "saveInToolStripMenuItem";
-            this.saveInToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveInToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.saveInToolStripMenuItem.Text = "Save in...";
             this.saveInToolStripMenuItem.Click += new System.EventHandler(this.saveInToolStripMenuItem_Click);
             // 
             // jSONToolStripMenuItem
             // 
             this.jSONToolStripMenuItem.Name = "jSONToolStripMenuItem";
-            this.jSONToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.jSONToolStripMenuItem.Size = new System.Drawing.Size(127, 26);
             this.jSONToolStripMenuItem.Text = "JSON";
             this.jSONToolStripMenuItem.Click += new System.EventHandler(this.jSONToolStripMenuItem_Click);
             // 
             // xMLToolStripMenuItem
             // 
             this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
-            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(127, 26);
             this.xMLToolStripMenuItem.Text = "XML";
             this.xMLToolStripMenuItem.Click += new System.EventHandler(this.xMLToolStripMenuItem_Click);
             // 
             // runTrafficLightsToolStripMenuItem
             // 
             this.runTrafficLightsToolStripMenuItem.Name = "runTrafficLightsToolStripMenuItem";
-            this.runTrafficLightsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.runTrafficLightsToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.runTrafficLightsToolStripMenuItem.Text = "Run traffic lights";
             this.runTrafficLightsToolStripMenuItem.Click += new System.EventHandler(this.runTrafficLightsToolStripMenuItem_Click);
             // 
@@ -916,20 +862,20 @@
             this.loadFromToolStripMenuItem});
             this.loadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.loadButton.Name = "loadButton";
-            this.loadButton.Size = new System.Drawing.Size(46, 24);
+            this.loadButton.Size = new System.Drawing.Size(56, 24);
             this.loadButton.Text = "Load";
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // loadFromToolStripMenuItem
             // 
             this.loadFromToolStripMenuItem.Name = "loadFromToolStripMenuItem";
-            this.loadFromToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadFromToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.loadFromToolStripMenuItem.Text = "Load from...";
             this.loadFromToolStripMenuItem.Click += new System.EventHandler(this.loadFromToolStripMenuItem_Click);
             // 
@@ -939,7 +885,7 @@
             this.selectButton.Image = global::SystAnalys_lr1.Properties.Resources.cursor;
             this.selectButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.selectButton.Name = "selectButton";
-            this.selectButton.Size = new System.Drawing.Size(24, 24);
+            this.selectButton.Size = new System.Drawing.Size(29, 24);
             this.selectButton.Text = "toolStripButton2";
             this.selectButton.ToolTipText = "selectButton";
             this.selectButton.Click += new System.EventHandler(this.selectButton_Click);
@@ -950,7 +896,7 @@
             this.drawVertexButton.Image = global::SystAnalys_lr1.Properties.Resources.vertex;
             this.drawVertexButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.drawVertexButton.Name = "drawVertexButton";
-            this.drawVertexButton.Size = new System.Drawing.Size(24, 24);
+            this.drawVertexButton.Size = new System.Drawing.Size(29, 24);
             this.drawVertexButton.Text = "toolStripButton2";
             this.drawVertexButton.ToolTipText = "Draw vertex";
             this.drawVertexButton.Click += new System.EventHandler(this.drawVertexButton_Click);
@@ -961,7 +907,7 @@
             this.drawEdgeButton.Image = global::SystAnalys_lr1.Properties.Resources.edge;
             this.drawEdgeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.drawEdgeButton.Name = "drawEdgeButton";
-            this.drawEdgeButton.Size = new System.Drawing.Size(24, 24);
+            this.drawEdgeButton.Size = new System.Drawing.Size(29, 24);
             this.drawEdgeButton.Text = "toolStripButton3";
             this.drawEdgeButton.ToolTipText = "drawEdge";
             this.drawEdgeButton.Click += new System.EventHandler(this.drawEdgeButton_Click);
@@ -972,7 +918,7 @@
             this.deleteButton.Image = global::SystAnalys_lr1.Properties.Resources.delete;
             this.deleteButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(24, 24);
+            this.deleteButton.Size = new System.Drawing.Size(29, 24);
             this.deleteButton.Text = "toolStripButton4";
             this.deleteButton.ToolTipText = "deleteButton";
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
@@ -983,7 +929,7 @@
             this.deleteALLButton.Image = global::SystAnalys_lr1.Properties.Resources.deleteAll;
             this.deleteALLButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.deleteALLButton.Name = "deleteALLButton";
-            this.deleteALLButton.Size = new System.Drawing.Size(24, 24);
+            this.deleteALLButton.Size = new System.Drawing.Size(29, 24);
             this.deleteALLButton.Text = "toolStripButton5";
             this.deleteALLButton.ToolTipText = "deleteALLButton";
             this.deleteALLButton.Click += new System.EventHandler(this.deleteALLButton_Click);
@@ -994,7 +940,7 @@
             this.deleteRoute.Image = global::SystAnalys_lr1.Properties.Resources.w450h4001385925290Delete;
             this.deleteRoute.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.deleteRoute.Name = "deleteRoute";
-            this.deleteRoute.Size = new System.Drawing.Size(24, 24);
+            this.deleteRoute.Size = new System.Drawing.Size(29, 24);
             this.deleteRoute.Text = "toolStripButton6";
             this.deleteRoute.ToolTipText = "deleteRoute";
             this.deleteRoute.Click += new System.EventHandler(this.deleteRoute_Click);
@@ -1005,7 +951,7 @@
             this.addBus.Image = global::SystAnalys_lr1.Properties.Resources.shkolnyy_avtobus;
             this.addBus.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addBus.Name = "addBus";
-            this.addBus.Size = new System.Drawing.Size(24, 24);
+            this.addBus.Size = new System.Drawing.Size(29, 24);
             this.addBus.Text = "toolStripButton7";
             this.addBus.ToolTipText = "addBus";
             this.addBus.Click += new System.EventHandler(this.addBus_Click);
@@ -1016,7 +962,7 @@
             this.deleteBus.Image = global::SystAnalys_lr1.Properties.Resources.del;
             this.deleteBus.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.deleteBus.Name = "deleteBus";
-            this.deleteBus.Size = new System.Drawing.Size(24, 24);
+            this.deleteBus.Size = new System.Drawing.Size(29, 24);
             this.deleteBus.Text = "toolStripButton8";
             this.deleteBus.ToolTipText = "Delete bus";
             this.deleteBus.Click += new System.EventHandler(this.deleteBus_Click);
@@ -1027,7 +973,7 @@
             this.delAllBusesOnRoute.Image = global::SystAnalys_lr1.Properties.Resources._99e4d3f57fb77729bbc061fbf3490f69;
             this.delAllBusesOnRoute.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.delAllBusesOnRoute.Name = "delAllBusesOnRoute";
-            this.delAllBusesOnRoute.Size = new System.Drawing.Size(24, 24);
+            this.delAllBusesOnRoute.Size = new System.Drawing.Size(29, 24);
             this.delAllBusesOnRoute.Text = "toolStripButton2";
             this.delAllBusesOnRoute.ToolTipText = "Delete all buses on route/all route";
             this.delAllBusesOnRoute.Click += new System.EventHandler(this.delAllBusesOnRoute_Click);
@@ -1038,7 +984,7 @@
             this.stopPointButton.Image = global::SystAnalys_lr1.Properties.Resources._0032_h_stop_logo_14;
             this.stopPointButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.stopPointButton.Name = "stopPointButton";
-            this.stopPointButton.Size = new System.Drawing.Size(24, 24);
+            this.stopPointButton.Size = new System.Drawing.Size(29, 24);
             this.stopPointButton.Text = "toolStripButton2";
             this.stopPointButton.ToolTipText = "Stop point";
             this.stopPointButton.Click += new System.EventHandler(this.gridButton_Click);
@@ -1049,7 +995,7 @@
             this.addTraficLight.Image = global::SystAnalys_lr1.Properties.Resources.be8183118c5eb3a97558d6ea6e648d8d;
             this.addTraficLight.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addTraficLight.Name = "addTraficLight";
-            this.addTraficLight.Size = new System.Drawing.Size(24, 24);
+            this.addTraficLight.Size = new System.Drawing.Size(29, 24);
             this.addTraficLight.Text = "toolStripButton2";
             this.addTraficLight.Click += new System.EventHandler(this.addTraficLight_Click);
             // 
@@ -1059,7 +1005,7 @@
             this.selectRoute.Image = global::SystAnalys_lr1.Properties.Resources.oAexz;
             this.selectRoute.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.selectRoute.Name = "selectRoute";
-            this.selectRoute.Size = new System.Drawing.Size(24, 24);
+            this.selectRoute.Size = new System.Drawing.Size(29, 24);
             this.selectRoute.Text = "toolStripButton2";
             this.selectRoute.Click += new System.EventHandler(this.selectRoute_Click);
             // 
@@ -1104,7 +1050,7 @@
             this.themes.AutoSize = true;
             this.themes.Location = new System.Drawing.Point(679, 63);
             this.themes.Name = "themes";
-            this.themes.Size = new System.Drawing.Size(80, 17);
+            this.themes.Size = new System.Drawing.Size(80, 21);
             this.themes.TabIndex = 74;
             this.themes.Text = "Off";
             this.themes.UseSelectable = true;
@@ -1112,7 +1058,7 @@
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1455, 878);
             this.Controls.Add(this.themes);

@@ -930,7 +930,7 @@ namespace SystAnalys_lr1
             //sheet.Height = sheet.Height * zoom;
         }
 
- 
+
 
         //старый таймер
         private void timer1_Tick_1(object sender, EventArgs e)
@@ -1080,7 +1080,7 @@ namespace SystAnalys_lr1
 
         private void comboBox1_SelectedIndexChangedAsync(object sender, EventArgs e)
         {
-       //     buttonOff();
+            //     buttonOff();
             if (changeRoute.Text == "None")
             {
                 AsyncCreateAllCoordinates();
@@ -1102,7 +1102,7 @@ namespace SystAnalys_lr1
                 stopPointButton.Enabled = true;
                 addTraficLight.Enabled = true;
                 DrawGrid();
-        //        buttonOn();
+                //        buttonOn();
                 selected = new List<int>();
                 return;
             };
@@ -1128,7 +1128,7 @@ namespace SystAnalys_lr1
                 G.drawALLGraph(V, E);
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
-    ///            buttonOn();
+                ///            buttonOn();
                 selected = new List<int>();
                 return;
             };
@@ -1162,7 +1162,7 @@ namespace SystAnalys_lr1
                 };
             }
 
-          //  buttonOn();
+            //  buttonOn();
         }
         private void buttonOn()
         {
@@ -1179,7 +1179,7 @@ namespace SystAnalys_lr1
         }
         private void buttonOff()
         {
-         //   label5.Invoke(new Del((s) => label5.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
+            //   label5.Invoke(new Del((s) => label5.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
             changeRoute.Invoke(new DelBool((s) => changeRoute.Enabled = s), false);
             button8.Invoke(new DelBool((s) => button8.Enabled = s), false);
             optimize.Invoke(new DelBool((s) => optimize.Enabled = s), false);
@@ -1189,14 +1189,14 @@ namespace SystAnalys_lr1
             //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
             //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
             //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
-         //   saveButton.Invoke(new DelBool((s) => saveButton.Enabled = s), false);
-        //    loadButton.Invoke(new DelBool((s) => loadButton.Enabled = s), false);
+            //   saveButton.Invoke(new DelBool((s) => saveButton.Enabled = s), false);
+            //    loadButton.Invoke(new DelBool((s) => loadButton.Enabled = s), false);
             //button8.Enabled = false;
             //optimize.Enabled = false;
             //button2.Enabled = false;
             //button8.Enabled = false;
-          //  saveButton.Enabled = false;
-          //  loadButton.Enabled = false;
+            //  saveButton.Enabled = false;
+            //  loadButton.Enabled = false;
             //selectButton.Enabled = false;
             //drawVertexButton.Enabled = false;
             //drawEdgeButton.Enabled = false;
@@ -2077,8 +2077,10 @@ namespace SystAnalys_lr1
                         if (!string.IsNullOrWhiteSpace(savepath))
                         {
                             string path = dialog.SelectedPath;
-
-                            sheet.Image = Image.FromFile(path + "/Map.png");
+                            if (File.Exists(path + "/Map.png"))
+                                sheet.Image = Image.FromFile(path + "/Map.png");
+                            else                                
+                                MetroMessageBox.Show(this, "Шайтан картинки нет", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             DisplayEpicenters.path = path;
                             wsheet = sheet.Width;
                             hsheet = sheet.Height;
@@ -2119,18 +2121,27 @@ namespace SystAnalys_lr1
                 }
                 catch
                 {
-                    MessageBox.Show("Загрузите через путь");
+                    MetroMessageBox.Show(this, "Через путь", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     string path = "";
                     using (var dialog = new FolderBrowserDialog())
                     {
-                        dialog.SelectedPath = savepath;
+                        if (!Directory.Exists(savepath))
+                        {
+                            dialog.SelectedPath = System.Windows.Forms.Application.StartupPath;
+                        }
+                        else
+                        {
+                            dialog.SelectedPath = Path.GetFullPath(savepath);
+                        }
                         if (dialog.ShowDialog() == DialogResult.OK)
                         {
                             if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
                             {
                                 path = dialog.SelectedPath;
-
-                                sheet.Image = Image.FromFile(path + "/Map.png");
+                                if(File.Exists(path + "/Map.png"))
+                                  sheet.Image = Image.FromFile(path + "/Map.png");
+                                else
+                                  MetroMessageBox.Show(this, "Шайтан картинки нет", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                                 DisplayEpicenters.path = path;
                                 wsheet = sheet.Width;
                                 hsheet = sheet.Height;
@@ -2145,7 +2156,11 @@ namespace SystAnalys_lr1
 
                             }
 
-                            MessageBox.Show("Done");
+                            MetroMessageBox.Show(this, "Done", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MetroMessageBox.Show(this, "No done", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     }
                 }
@@ -2157,15 +2172,17 @@ namespace SystAnalys_lr1
                 using (var dialog = new FolderBrowserDialog())
                 {
 
-                    dialog.SelectedPath = savepath;
+                    dialog.SelectedPath = Path.GetFullPath(savepath);
                     //    dialog.RootFolder = Environment.SpecialFolder.
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
                         if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
                         {
                             path = dialog.SelectedPath;
-
-                            sheet.Image = Image.FromFile(path + "/Map.png");
+                            if (File.Exists(path + "/Map.png"))
+                                sheet.Image = Image.FromFile(path + "/Map.png");
+                            else
+                                MetroMessageBox.Show(this, "Шайтан картинки нет", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             DisplayEpicenters.path = path;
                             wsheet = sheet.Width;
                             hsheet = sheet.Height;
@@ -3716,7 +3733,7 @@ namespace SystAnalys_lr1
         private void button2_Click_1(object sender, EventArgs e)
         {
             //buttonOff();
-         
+
             //AutoClosingMessageBox.Show("Load", "", 1000);
             AsyncCreateAllCoordinates();
             //AsyncCreateAllCoordinates();
