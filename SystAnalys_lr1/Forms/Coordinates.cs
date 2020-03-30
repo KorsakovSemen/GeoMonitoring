@@ -25,31 +25,31 @@ namespace SystAnalys_lr1
 
                 bus.Size = new System.Drawing.Size(25, 25);
 
-                buses.Add(new Bus(routes[i], bus, 0, false, i, false));
+               Bus onebus = new Bus(routes[i], bus, 0, false, i, false);
 
 
-                while (buses.Last().TurnBack == false)
+                while (onebus.TurnBack == false)
                 {
-                    buses.Last().MoveForCoordinates();
-                    buses.Last().DetectRectangle();
-                    if (buses.Last().grids != null)
+                    onebus.MoveForCoordinates();
+                    onebus.DetectRectangle();
+                    if (onebus.grids != null)
                     {
                         for (int k = 0; k < TheGrid.Count; k++)
                         {
-                            if (buses.Last().getLocate() == k)
+                            if (onebus.getLocate() == k)
                             {
-                                if (buses.Last().lastLocate != buses.Last().Locate)
+                                if (onebus.lastLocate != onebus.Locate)
                                 {
 
                                     AllGridsInRoutes[i].Add(k);
-                                    buses.Last().lastLocate = buses.Last().Locate;
+                                    onebus.lastLocate = onebus.Locate;
                                 }
                             }
                         }
                     }
-                    AllCoordinates[i].Add(new Point((int)buses.Last().x, (int)buses.Last().y));
+                    AllCoordinates[i].Add(new Point((int)onebus.x, (int)onebus.y));
                 }
-                buses.Remove(buses.Last());
+                onebus = new Bus();
             }
             Bus.SetScrollX(mainPanel.AutoScrollPosition.X);
             Bus.SetScrollY(mainPanel.AutoScrollPosition.Y);
@@ -58,24 +58,35 @@ namespace SystAnalys_lr1
         }
         private async void AsyncCreateAllCoordinates()
         {
-            label9.Visible = true;
-            label9.Text = "ТИШЕ ТИШЕ ТИШЕ";
+            //label9.Visible = true;
+            //label9.Text = "ТИШЕ ТИШЕ ТИШЕ";
+
+
+            ////?/
+             buttonOff();
+        
             await Task.Run(() =>
             {
-                buttonOff();
                 CreateAllCoordinates();
-                buttonOn();
             });
-            label9.Text = "Закрывай";
-            label9.Visible = false;
+        
+
+            buttonOn();
+            Bus.AllCoordinates = AllCoordinates;
+            //label9.Text = "Закрывай";
+            //label9.Visible = false;
+            MessageBox.Show("Готово");
+
         }
-        Mutex mutex = new Mutex();
+        //Mutex mutex = new Mutex();
         //функция, которая создает все координаты для каждого маршрута
         private void CreateAllCoordinates()
         {
-        //    label9.Text = "ТИШЕ ТИШЕ ТИШЕ";
+            //    label9.Text = "ТИШЕ ТИШЕ ТИШЕ";
             //  progressBar1.Visible = true;
             //try { 
+            
+         
             AllCoordinates = new SerializableDictionary<int, List<Point>>();
             AllGridsInRoutes = new SerializableDictionary<int, List<int>>();
             for (int i = 0; i < routes.Count; i++)
@@ -88,51 +99,66 @@ namespace SystAnalys_lr1
                     bus.Location = new System.Drawing.Point(routes.ElementAt(i).Value[0].x, routes.ElementAt(i).Value[0].y);
 
                     bus.Size = new System.Drawing.Size(1, 1);
-                    buses.Add(new Bus(routes[routes.ElementAt(i).Key], bus, 0, false, routes.ElementAt(i).Key, false));
+                    Bus onebus = new Bus(routes[routes.ElementAt(i).Key], bus, 0, false, routes.ElementAt(i).Key, false);
 
 
-                    while (buses.Last().TurnBack == false)
+                    while (onebus.TurnBack == false)
                     {
-                        buses.Last().MoveForCoordinates();
-                        buses.Last().DetectRectangle();
-                        if (buses.Last().grids != null)
+                        onebus.MoveForCoordinates();
+                        onebus.DetectRectangle();
+                        if (onebus.grids != null)
                         {
-                            Parallel.For(0, TheGrid.Count, (k) =>
-                            {
-                                if (buses.Last().getLocate() == k)
+                            //Parallel.For(0, TheGrid.Count, (k) =>
+                            //{
+                            for (int k = 0; k < TheGrid.Count; k++)
+                            {                           
+                                if (onebus.getLocate() == k)
                                 {
-                                    if (buses.Last().lastLocate != buses.Last().Locate)
+                                    if (onebus.lastLocate != onebus.Locate)
                                     {
-                                        AllGridsInRoutes[AllCoordinates.ElementAt(i).Key].Add(k);
-                                        buses.Last().lastLocate = buses.Last().Locate;
+                                        AllGridsInRoutes[routes.ElementAt(i).Key].Add(k);
+                                        onebus.lastLocate = onebus.Locate;
                                     }
                                 }
-                            });
+                            }
+                            //});
                         }
                         //lock (AllCoordinates)
                         //{
                         //  buses.Last().mutex.WaitOne();
                         //await Task.Delay(10);
-                        AllCoordinates[AllCoordinates.ElementAt(i).Key].Add(new Point((int)buses.Last().x, (int)buses.Last().y));//ошипка                   
+                        AllCoordinates[AllCoordinates.ElementAt(i).Key].Add(new Point((int)onebus.x, (int)onebus.y));//ошипка                   
 
                      //   buses.Last().mutex.ReleaseMutex();
                         //}
 
 
                     }
-                    buses.Remove(buses.Last());
+                    //onebus.Stop();
+                    onebus = new Bus();
 
                 }
                 Bus.SetScrollX(mainPanel.AutoScrollPosition.X);
                 Bus.SetScrollY(mainPanel.AutoScrollPosition.Y);
-                CreatePollutionInRoutes();
+                //CreatePollutionInRoutes();
             }
             //}
             //    catch
             //    {
             //       // MessageBox.Show("быстрый быстрый");
             //    }.
-          //  label9.Text = "Закрывай";
+            //  label9.Text = "Закрывай";
+            //foreach (var traflight in traficLights)
+            //{
+            //    traflight.Start();
+            //}
+            //foreach (var bus in buses)
+            //{
+            //    bus.Start();
+            //}
+            
+            //buttonOn();
+            //Bus.AllCoordinates = AllCoordinates;
         }
 
     }

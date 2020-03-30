@@ -710,7 +710,7 @@ namespace SystAnalys_lr1
                 bus.Epicenters2 = epList;
                 bus.TickCount_ = test;
                 // вот эту
-                //bus.PositionAt = 0;
+                bus.PositionAt = 0;
                 //
                 if (bus.tracker == true)
                 {
@@ -930,13 +930,7 @@ namespace SystAnalys_lr1
             //sheet.Height = sheet.Height * zoom;
         }
 
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-            foreach (var bus in buses)
-            {
-                bus.Start();
-            }
-        }
+ 
 
         //старый таймер
         private void timer1_Tick_1(object sender, EventArgs e)
@@ -1035,14 +1029,14 @@ namespace SystAnalys_lr1
             return this.mainPanel;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            AutoClosingMessageBox.Show("Load", "", 1000);
-            AsyncCreateAllCoordinates();
-            //AsyncCreateAllCoordinates();
-            Bus.AllCoordinates = AllCoordinates;
-            MessageBox.Show("Готово");
-        }
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+        //    AutoClosingMessageBox.Show("Load", "", 1000);
+        //    AsyncCreateAllCoordinates();
+        //    //AsyncCreateAllCoordinates();
+        //    Bus.AllCoordinates = AllCoordinates;
+        //    MessageBox.Show("Готово");
+        //}
 
         private void button8_Click_1(object sender, EventArgs e)
         {
@@ -2738,7 +2732,7 @@ namespace SystAnalys_lr1
                     x.bus.SizeMode = PictureBoxSizeMode.StretchImage;
                     mainPanel.Controls.Add(x.bus);
                     x.bus.BringToFront();
-                    x.Start();
+                    x.Set();
 
                 }
 
@@ -3129,7 +3123,7 @@ namespace SystAnalys_lr1
                         };
                         //  
                         //  Bus.AllCoordinates = AllCoordinates;
-                        buses.Last().Start();
+                        buses.Last().Set();
                     }
                 }
                 if (deleteBus.Enabled == false)
@@ -3721,11 +3715,15 @@ namespace SystAnalys_lr1
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            AutoClosingMessageBox.Show("Load", "", 1000);
+            //buttonOff();
+         
+            //AutoClosingMessageBox.Show("Load", "", 1000);
             AsyncCreateAllCoordinates();
             //AsyncCreateAllCoordinates();
-            Bus.AllCoordinates = AllCoordinates;
-            MessageBox.Show("Готово");
+            //Bus.AllCoordinates = AllCoordinates;
+            //CreateAllCoordinates();
+
+
         }
 
         private void changeTheme_SelectedIndexChanged(object sender, EventArgs e)
@@ -3736,12 +3734,20 @@ namespace SystAnalys_lr1
 
         private void launchBuses_Click(object sender, EventArgs e)
         {
-            Parallel.ForEach(buses, bus => bus.Start());
+            //Parallel.ForEach(buses, bus => bus.Start());
+            foreach (var bus in buses)
+            {
+                bus.Start();
+            }
         }
 
         private void stopBuses_Click(object sender, EventArgs e)
         {
-            Parallel.ForEach(buses, bus => bus.Stop());
+            //Parallel.ForEach(buses, bus => bus.Stop());
+            foreach (var bus in buses)
+            {
+                bus.Stop();
+            }
         }
 
         private void createGridToolStripMenuItem_Click(object sender, EventArgs e)

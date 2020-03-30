@@ -1,4 +1,5 @@
-﻿using MetroFramework.Forms;
+﻿using MetroFramework.Controls;
+using MetroFramework.Forms;
 using SystAnalys_lr1.Forms;
 using System;
 using System.Collections.Generic;
@@ -32,14 +33,14 @@ namespace SystAnalys_lr1
         private TrackBar EZoomBar = new TrackBar();
         private PictureBox Esheet = new PictureBox();
         private Panel MapPanel = new Panel();
-        private ComboBox ERouts = new ComboBox();
+ 
 
         private void DisplayEpicenters_Load(object sender, EventArgs e)
         {
             panel1.Size = MainForm.GetMainPanel().Size;
             panel1.Left = MainForm.GetMainPanel().Left;
             panel1.Top = MainForm.GetMainPanel().Top;
-            this.ERouts.Location = new Point(label2.Left, label2.Top + 15);
+
             ERefreshRouts();
             this.ERouts.SelectedIndexChanged += ERouts_SelectedIndexChanged;
             // Esheet.Dock = DockStyle.Right;

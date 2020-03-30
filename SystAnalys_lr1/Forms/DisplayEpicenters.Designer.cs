@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new MetroFramework.Controls.MetroPanel();
+            this.ERouts = new MetroFramework.Controls.MetroComboBox();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.button11 = new MetroFramework.Controls.MetroButton();
             this.label1 = new MetroFramework.Controls.MetroLabel();
@@ -50,6 +51,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.ERouts);
             this.panel1.Controls.Add(this.metroButton1);
             this.panel1.Controls.Add(this.button11);
             this.panel1.Controls.Add(this.label1);
@@ -64,15 +66,25 @@
             this.panel1.HorizontalScrollbarSize = 10;
             this.panel1.Location = new System.Drawing.Point(20, 60);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(242, 442);
+            this.panel1.Size = new System.Drawing.Size(303, 487);
             this.panel1.TabIndex = 1;
             this.panel1.VerticalScrollbarBarColor = true;
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
             this.panel1.VerticalScrollbarSize = 10;
             // 
+            // ERouts
+            // 
+            this.ERouts.FormattingEnabled = true;
+            this.ERouts.ItemHeight = 23;
+            this.ERouts.Location = new System.Drawing.Point(81, 202);
+            this.ERouts.Name = "ERouts";
+            this.ERouts.Size = new System.Drawing.Size(121, 29);
+            this.ERouts.TabIndex = 96;
+            this.ERouts.UseSelectable = true;
+            // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(40, 228);
+            this.metroButton1.Location = new System.Drawing.Point(68, 251);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(166, 58);
             this.metroButton1.TabIndex = 95;
@@ -82,7 +94,7 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(57, 21);
+            this.button11.Location = new System.Drawing.Point(81, 18);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(117, 43);
             this.button11.TabIndex = 94;
@@ -93,7 +105,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(49, 82);
+            this.label1.Location = new System.Drawing.Point(71, 84);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(147, 19);
             this.label1.TabIndex = 1;
@@ -101,7 +113,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(143, 334);
+            this.button3.Location = new System.Drawing.Point(159, 407);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 5;
@@ -111,7 +123,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(81, 104);
+            this.button1.Location = new System.Drawing.Point(81, 117);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -121,7 +133,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 312);
+            this.label3.Location = new System.Drawing.Point(56, 385);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 19);
             this.label3.TabIndex = 4;
@@ -129,7 +141,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(40, 334);
+            this.button2.Location = new System.Drawing.Point(56, 407);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 3;
@@ -140,7 +152,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 130);
+            this.label2.Location = new System.Drawing.Point(56, 180);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(191, 19);
             this.label2.TabIndex = 2;
@@ -150,7 +162,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1500, 522);
+            this.ClientSize = new System.Drawing.Size(1500, 567);
             this.Controls.Add(this.panel1);
             this.MaximumSize = new System.Drawing.Size(1500, 1500);
             this.Name = "DisplayEpicenters";
@@ -173,5 +185,6 @@
         private MetroFramework.Controls.MetroLabel label3;
         private MetroFramework.Controls.MetroButton button2;
         private MetroFramework.Controls.MetroLabel label2;
+        private MetroFramework.Controls.MetroComboBox ERouts;
     }
 }
