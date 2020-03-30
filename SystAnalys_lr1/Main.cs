@@ -3459,6 +3459,7 @@ namespace SystAnalys_lr1
             if (changeRoute.Text == "All")
             {
                 CrossroadsSettings f = new CrossroadsSettings();
+                f.StyleManager = msmMain;
                 f.ShowDialog();
                 selectRoute.Enabled = false;
                 deleteBus.Enabled = false;
@@ -3625,15 +3626,14 @@ namespace SystAnalys_lr1
         private void openEpicFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Ep = new DisplayEpicenters(this);
+            Ep.StyleManager = msmMain;
             Ep.Show();
         }
 
         private void addRouteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddRoute f = new AddRoute
-            {
-                Owner = this
-            };
+            AddRoute f = new AddRoute();
+            f.StyleManager = msmMain;
             f.ShowDialog();
             Ep.ERefreshRouts();
             if (f.textBox1.Text != "" && int.TryParse(f.textBox1.Text, out int t))
@@ -3679,10 +3679,8 @@ namespace SystAnalys_lr1
         {
             if (G.bitmap != null)
             {
-                AddGrid f = new AddGrid
-                {
-                    Owner = this
-                };
+                AddGrid f = new AddGrid();
+                f.StyleManager = msmMain;
                 f.ShowDialog();
                 G.clearSheet();
                 G.drawALLGraph(V, E);

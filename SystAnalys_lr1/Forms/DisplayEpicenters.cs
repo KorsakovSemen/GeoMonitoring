@@ -367,10 +367,8 @@ namespace SystAnalys_lr1
         private void button11_Click(object sender, EventArgs e)
         {
 
-            EpicSettings f = new EpicSettings
-            {
-                Owner = MainForm
-            };
+            EpicSettings f = new EpicSettings();
+            f.StyleManager = this.StyleManager;
             f.ShowDialog();
             //G.clearSheet();
             //sheet.Image = G.GetBitmap();
