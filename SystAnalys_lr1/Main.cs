@@ -2534,6 +2534,12 @@ namespace SystAnalys_lr1
                     {
                         XmlSerializer deserializerV = new XmlSerializer(typeof(SerializableDictionary<int, List<Vertex>>));
                         stopPoints = (SerializableDictionary<int, List<Vertex>>)deserializerV.Deserialize(reader);
+                        foreach(var sp in stopPoints.Values)
+                        {
+                            foreach (var s in sp)
+                                if (!allstopPoints.Contains(s))
+                                    allstopPoints.Add(s);
+                        }                            
                         stopPointsInGrids = new SerializableDictionary<int, List<int>>();
                         foreach (var StopList in stopPoints)
                         {
@@ -3673,6 +3679,16 @@ namespace SystAnalys_lr1
         {
             msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Text);
 
+        }
+
+        private void launchBuses_Click(object sender, EventArgs e)
+        {
+            Parallel.ForEach(buses, bus => bus.Start());
+        }
+
+        private void stopBuses_Click(object sender, EventArgs e)
+        {
+            Parallel.ForEach(buses, bus => bus.Stop());
         }
 
         private void createGridToolStripMenuItem_Click(object sender, EventArgs e)
