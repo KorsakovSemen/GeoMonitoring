@@ -62,7 +62,9 @@ namespace SystAnalys_lr1
             label9.Text = "ТИШЕ ТИШЕ ТИШЕ";
             await Task.Run(() =>
             {
+                buttonOff();
                 CreateAllCoordinates();
+                buttonOn();
             });
             label9.Text = "Закрывай";
             label9.Visible = false;

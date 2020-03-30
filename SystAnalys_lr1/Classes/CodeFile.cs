@@ -168,6 +168,11 @@ namespace SystAnalys_lr1
             gr.FillEllipse(Brushes.Yellow, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
             gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
+        public void drawGreenVertex(int x, int y)
+        {
+            gr.FillEllipse(Brushes.ForestGreen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+        }
         public void drawStopVertex(int x, int y)
         {
             gr.FillEllipse(Brushes.Orange, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
@@ -282,7 +287,7 @@ namespace SystAnalys_lr1
             {
                 if (tl.status == Status.GREEN)
                 {
-                    Main.G.drawVertex(tl.x, tl.y, "");
+                    Main.G.drawGreenVertex(tl.x, tl.y); 
                 }
                 else if (tl.status == Status.YELLOW)
                 {
@@ -2298,7 +2303,7 @@ asMoveWithoutGraphics()
             if (tick == 0)
             {
                 bal = greenTime;
-                Main.G.drawVertex(x, y, "");
+                Main.G.drawGreenVertex(x, y);
                 status = Status.GREEN;
             }
             else if (tick == greenTime)

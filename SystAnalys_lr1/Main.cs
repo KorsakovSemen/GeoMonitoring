@@ -227,6 +227,7 @@ namespace SystAnalys_lr1
         List<int> s = new List<int>();
         delegate void Del(string text);
         delegate void DelInt(int text);
+        delegate void DelBool(bool text);
         //функция, которая моделирует движение
         int small = 10000;
         //функция, которая моделирует движение
@@ -1037,8 +1038,8 @@ namespace SystAnalys_lr1
         private void button2_Click(object sender, EventArgs e)
         {
             AutoClosingMessageBox.Show("Load", "", 1000);
-            CreateAllCoordinates();
-            //CreateAllCoordinates();
+            AsyncCreateAllCoordinates();
+            //AsyncCreateAllCoordinates();
             Bus.AllCoordinates = AllCoordinates;
             MessageBox.Show("Готово");
         }
@@ -1068,6 +1069,7 @@ namespace SystAnalys_lr1
 
         private void addBus_Click(object sender, EventArgs e)
         {
+            AsyncCreateAllCoordinates();
             addBus.Enabled = false;
             deleteBus.Enabled = true;
             selectButton.Enabled = true;
@@ -1079,14 +1081,15 @@ namespace SystAnalys_lr1
             selected1 = -1;
             selected = new List<int>();
             addTraficLight.Enabled = false;
-            CreateAllCoordinates();
             DrawGrid();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChangedAsync(object sender, EventArgs e)
         {
+       //     buttonOff();
             if (changeRoute.Text == "None")
             {
+                AsyncCreateAllCoordinates();
                 selectedRoute = null;
                 deleteBus.Enabled = false;
                 checkedListBox1.Enabled = false;
@@ -1105,12 +1108,13 @@ namespace SystAnalys_lr1
                 stopPointButton.Enabled = true;
                 addTraficLight.Enabled = true;
                 DrawGrid();
-                CreateAllCoordinates();
+        //        buttonOn();
                 selected = new List<int>();
                 return;
             };
             if (changeRoute.Text == "All")
             {
+                AsyncCreateAllCoordinates();
                 selectedRoute = null;
                 selectRoute.Enabled = true;
                 deleteBus.Enabled = true;
@@ -1130,7 +1134,7 @@ namespace SystAnalys_lr1
                 G.drawALLGraph(V, E);
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
-                AsyncCreateAllCoordinates();
+    ///            buttonOn();
                 selected = new List<int>();
                 return;
             };
@@ -1139,6 +1143,7 @@ namespace SystAnalys_lr1
                 //Console.WriteLine();
                 if (routes.ElementAt(i).Key == int.Parse(changeRoute.Text))
                 {
+                    AsyncCreateAllCoordinates();
                     selectedRoute = int.Parse(changeRoute.Text);
                     selectRoute.Enabled = true;
                     selectButton.Enabled = true;
@@ -1159,9 +1164,57 @@ namespace SystAnalys_lr1
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
                     selected = new List<int>();
+                    return;
                 };
             }
-            CreateAllCoordinates();
+
+          //  buttonOn();
+        }
+        private void buttonOn()
+        {
+            changeRoute.Invoke(new DelBool((s) => changeRoute.Enabled = s), true);
+            button8.Invoke(new DelBool((s) => button8.Enabled = s), true);
+            optimize.Invoke(new DelBool((s) => optimize.Enabled = s), true);
+            button2.Invoke(new DelBool((s) => button2.Enabled = s), true);
+            //    changeRoute.Enabled = true;
+            //optimize.Enabled = true;
+            //button2.Enabled = true;
+            //button8.Enabled = true;
+            //saveButton.Enabled = true;
+            //loadButton.Enabled = true;
+        }
+        private void buttonOff()
+        {
+         //   label5.Invoke(new Del((s) => label5.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
+            changeRoute.Invoke(new DelBool((s) => changeRoute.Enabled = s), false);
+            button8.Invoke(new DelBool((s) => button8.Enabled = s), false);
+            optimize.Invoke(new DelBool((s) => optimize.Enabled = s), false);
+            button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
+            //selectButton.Invoke(new DelBool((s) => selectButton.Enabled = s), false);
+            //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
+            //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
+            //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
+            //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
+         //   saveButton.Invoke(new DelBool((s) => saveButton.Enabled = s), false);
+        //    loadButton.Invoke(new DelBool((s) => loadButton.Enabled = s), false);
+            //button8.Enabled = false;
+            //optimize.Enabled = false;
+            //button2.Enabled = false;
+            //button8.Enabled = false;
+          //  saveButton.Enabled = false;
+          //  loadButton.Enabled = false;
+            //selectButton.Enabled = false;
+            //drawVertexButton.Enabled = false;
+            //drawEdgeButton.Enabled = false;
+            //deleteButton.Enabled = false;
+            //deleteALLButton.Enabled = false;
+            //deleteRoute.Enabled = false;
+            //addBus.Enabled = false;
+            //deleteBus.Enabled = false;
+            //delAllBusesOnRoute.Enabled = false;
+            //stopPointButton.Enabled = false;
+            //addTraficLight.Enabled = false;
+            //selectRoute.Enabled = false;
 
         }
 
@@ -1185,7 +1238,7 @@ namespace SystAnalys_lr1
             selected = new List<int>();
             DrawGrid();
             checkBusesOnRoute();
-            CreateAllCoordinates();
+            AsyncCreateAllCoordinates();
         }
 
         public static Image ResizeBitmap(Image sourceBMP, int width, int height)
@@ -1259,7 +1312,7 @@ namespace SystAnalys_lr1
 
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
-                CreateAllCoordinates();
+                AsyncCreateAllCoordinates();
             }
         }
 
@@ -1396,7 +1449,7 @@ namespace SystAnalys_lr1
             selected = new List<int>();
             stopPointButton.Enabled = true;
             sheet.Image = G.GetBitmap();
-            CreateAllCoordinates();
+            AsyncCreateAllCoordinates();
             DrawGrid();
         }
 
@@ -1416,7 +1469,7 @@ namespace SystAnalys_lr1
             stopPointButton.Enabled = true;
             addTraficLight.Enabled = true;
             DrawGrid();
-            CreateAllCoordinates();
+            AsyncCreateAllCoordinates();
             selected = new List<int>();
         }
 
@@ -1460,7 +1513,7 @@ namespace SystAnalys_lr1
                     G.clearSheet();
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
-               //     checkBusesOnRoute();
+                    //     checkBusesOnRoute();
 
                 }
                 if (MBSave == DialogResult.Yes && changeRoute.Text == "All")
@@ -1503,7 +1556,7 @@ namespace SystAnalys_lr1
             traficLights.Clear();
             stopPoints.Clear();
             Ep.ERefreshRouts();
-            CreateAllCoordinates();
+            AsyncCreateAllCoordinates();
         }
 
         private void newModelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1631,7 +1684,7 @@ namespace SystAnalys_lr1
             stopPointButton.Enabled = true;
             //  traficLights.Clear();
             Ep.ERefreshRouts();
-            CreateAllCoordinates();
+            AsyncCreateAllCoordinates();
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -1669,7 +1722,7 @@ namespace SystAnalys_lr1
             sheet.Image = G.GetBitmap();
             selected1 = -1;
             selected = new List<int>();
-            CreateAllCoordinates();
+            AsyncCreateAllCoordinates();
             DrawGrid();
         }
         private List<Bus> SplitBuses()
@@ -1997,7 +2050,7 @@ namespace SystAnalys_lr1
         public static List<string> ExpandEpicParamet;
         private void optimize_Click(object sender, EventArgs e)
         {
-            // CreateAllCoordinates();          
+            // AsyncCreateAllCoordinates();          
             if (optText.Text != "" && int.TryParse(optText.Text, out int sp))
             {
                 LoadBox("Loading...", "", int.Parse(optText.Text) * 1000);
@@ -2176,7 +2229,7 @@ namespace SystAnalys_lr1
             selected1 = -1;
             selected2 = -1;
             selected = new List<int>();
-            CreateAllCoordinates();
+            AsyncCreateAllCoordinates();
             DrawGrid();
         }
 
@@ -2280,7 +2333,7 @@ namespace SystAnalys_lr1
                 }
                 loading.Value = 30;
 
-                CreateAllCoordinates();
+                AsyncCreateAllCoordinates();
                 File.Delete(save + "AllCoordinates.xml");
                 XmlSerializer serializerAllCoor = new XmlSerializer(typeof(SerializableDictionary<int, List<Point>>));
                 using (FileStream fileA = new FileStream(save + "AllCoordinates.xml", FileMode.OpenOrCreate))
@@ -2363,7 +2416,7 @@ namespace SystAnalys_lr1
                 json = JsonConvert.SerializeObject(buses);
                 File.WriteAllText(save + "Buses.json", json);
                 loading.Value = 50;
-                CreateAllCoordinates();
+                AsyncCreateAllCoordinates();
                 json = JsonConvert.SerializeObject(AllCoordinates);
                 File.WriteAllText(save + "AllCoordinates.json", json);
                 loading.Value = 60;
@@ -2534,12 +2587,12 @@ namespace SystAnalys_lr1
                     {
                         XmlSerializer deserializerV = new XmlSerializer(typeof(SerializableDictionary<int, List<Vertex>>));
                         stopPoints = (SerializableDictionary<int, List<Vertex>>)deserializerV.Deserialize(reader);
-                        foreach(var sp in stopPoints.Values)
+                        foreach (var sp in stopPoints.Values)
                         {
                             foreach (var s in sp)
                                 if (!allstopPoints.Contains(s))
                                     allstopPoints.Add(s);
-                        }                            
+                        }
                         stopPointsInGrids = new SerializableDictionary<int, List<int>>();
                         foreach (var StopList in stopPoints)
                         {
@@ -3343,7 +3396,7 @@ namespace SystAnalys_lr1
             selected = new List<int>();
             delAllBusesOnRoute.Enabled = true;
             stopPointButton.Enabled = false;
-            CreateAllCoordinates();
+            AsyncCreateAllCoordinates();
         }
 
         private void delAllBusesOnRoute_Click(object sender, EventArgs e)
@@ -3394,7 +3447,7 @@ namespace SystAnalys_lr1
                 delAllBusesOnRoute.Enabled = true;
             }
             selected = new List<int>();
-            CreateAllCoordinates();
+            AsyncCreateAllCoordinates();
         }
         private void checkBuses()
         {
@@ -3432,7 +3485,7 @@ namespace SystAnalys_lr1
                     {
                         dialog.SelectedPath = Path.GetFullPath(savepath);
                     }
-                   // dialog.SelectedPath = Path.GetFullPath(savepath); //System.Windows.Forms.Application.StartupPath;
+                    // dialog.SelectedPath = Path.GetFullPath(savepath); //System.Windows.Forms.Application.StartupPath;
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
                         path = dialog.SelectedPath;
@@ -3597,7 +3650,7 @@ namespace SystAnalys_lr1
             stopPointButton.Enabled = true;
             sheet.Image = G.GetBitmap();
             selected1 = -1;
-            CreateAllCoordinates();
+            AsyncCreateAllCoordinates();
             DrawGrid();
         }
 
@@ -3669,8 +3722,8 @@ namespace SystAnalys_lr1
         private void button2_Click_1(object sender, EventArgs e)
         {
             AutoClosingMessageBox.Show("Load", "", 1000);
-            CreateAllCoordinates();
-            //CreateAllCoordinates();
+            AsyncCreateAllCoordinates();
+            //AsyncCreateAllCoordinates();
             Bus.AllCoordinates = AllCoordinates;
             MessageBox.Show("Готово");
         }

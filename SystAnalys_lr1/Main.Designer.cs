@@ -44,6 +44,8 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.panel1 = new MetroFramework.Controls.MetroPanel();
+            this.stopBuses = new MetroFramework.Controls.MetroButton();
+            this.launchBuses = new MetroFramework.Controls.MetroButton();
             this.label9 = new MetroFramework.Controls.MetroLabel();
             this.label14 = new MetroFramework.Controls.MetroLabel();
             this.label13 = new MetroFramework.Controls.MetroLabel();
@@ -73,6 +75,7 @@
             this.changeTheme = new MetroFramework.Controls.MetroComboBox();
             this.button2 = new MetroFramework.Controls.MetroButton();
             this.changeRoute = new MetroFramework.Controls.MetroComboBox();
+            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label12 = new MetroFramework.Controls.MetroLabel();
             this.changeProcent = new MetroFramework.Controls.MetroTextBox();
             this.mainPanel = new System.Windows.Forms.Panel();
@@ -80,7 +83,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.saveButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.createModelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openEpicFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addRouteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,7 +93,7 @@
             this.jSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runTrafficLightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoadImageButton = new System.Windows.Forms.ToolStripDropDownButton();
+            this.loadButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectButton = new System.Windows.Forms.ToolStripButton();
@@ -110,9 +113,6 @@
             this.pictureBus404_1 = new System.Windows.Forms.PictureBox();
             this.msmMain = new MetroFramework.Components.MetroStyleManager(this.components);
             this.themes = new MetroFramework.Controls.MetroToggle();
-            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.launchBuses = new MetroFramework.Controls.MetroButton();
-            this.stopBuses = new MetroFramework.Controls.MetroButton();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -123,13 +123,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).BeginInit();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBus404_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -247,6 +247,26 @@
             this.panel1.VerticalScrollbarBarColor = true;
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
             this.panel1.VerticalScrollbarSize = 6;
+            // 
+            // stopBuses
+            // 
+            this.stopBuses.Location = new System.Drawing.Point(171, 70);
+            this.stopBuses.Name = "stopBuses";
+            this.stopBuses.Size = new System.Drawing.Size(98, 23);
+            this.stopBuses.TabIndex = 94;
+            this.stopBuses.Text = "Остановить автобусы";
+            this.stopBuses.UseSelectable = true;
+            this.stopBuses.Click += new System.EventHandler(this.stopBuses_Click);
+            // 
+            // launchBuses
+            // 
+            this.launchBuses.Location = new System.Drawing.Point(171, 41);
+            this.launchBuses.Name = "launchBuses";
+            this.launchBuses.Size = new System.Drawing.Size(98, 23);
+            this.launchBuses.TabIndex = 93;
+            this.launchBuses.Text = "Запустить автобусы";
+            this.launchBuses.UseSelectable = true;
+            this.launchBuses.Click += new System.EventHandler(this.launchBuses_Click);
             // 
             // label9
             // 
@@ -691,7 +711,11 @@
             this.changeRoute.Size = new System.Drawing.Size(94, 29);
             this.changeRoute.TabIndex = 77;
             this.changeRoute.UseSelectable = true;
-            this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChangedAsync);
+            // 
+            // busParkBindingSource
+            // 
+            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
             // 
             // label12
             // 
@@ -778,8 +802,8 @@
             this.toolStrip1.BackColor = System.Drawing.Color.White;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.LoadImageButton,
+            this.saveButton,
+            this.loadButton,
             this.toolStripSeparator1,
             this.selectButton,
             this.drawVertexButton,
@@ -802,10 +826,10 @@
             this.toolStrip1.TabIndex = 70;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // saveButton
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.saveButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createModelToolStripMenuItem,
             this.openEpicFormToolStripMenuItem,
             this.addRouteToolStripMenuItem,
@@ -813,43 +837,43 @@
             this.saveToolStripMenuItem,
             this.saveInToolStripMenuItem,
             this.runTrafficLightsToolStripMenuItem});
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(38, 24);
-            this.toolStripButton1.Text = "File";
+            this.saveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(38, 24);
+            this.saveButton.Text = "File";
             // 
             // createModelToolStripMenuItem
             // 
             this.createModelToolStripMenuItem.Name = "createModelToolStripMenuItem";
-            this.createModelToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.createModelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.createModelToolStripMenuItem.Text = "Create model";
             this.createModelToolStripMenuItem.Click += new System.EventHandler(this.newModelToolStripMenuItem_Click);
             // 
             // openEpicFormToolStripMenuItem
             // 
             this.openEpicFormToolStripMenuItem.Name = "openEpicFormToolStripMenuItem";
-            this.openEpicFormToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.openEpicFormToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openEpicFormToolStripMenuItem.Text = "Open epic form";
             this.openEpicFormToolStripMenuItem.Click += new System.EventHandler(this.openEpicFormToolStripMenuItem_Click);
             // 
             // addRouteToolStripMenuItem
             // 
             this.addRouteToolStripMenuItem.Name = "addRouteToolStripMenuItem";
-            this.addRouteToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.addRouteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addRouteToolStripMenuItem.Text = "Add route";
             this.addRouteToolStripMenuItem.Click += new System.EventHandler(this.addRouteToolStripMenuItem_Click);
             // 
             // createGridToolStripMenuItem
             // 
             this.createGridToolStripMenuItem.Name = "createGridToolStripMenuItem";
-            this.createGridToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.createGridToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.createGridToolStripMenuItem.Text = "Grid settings";
             this.createGridToolStripMenuItem.Click += new System.EventHandler(this.createGridToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -859,7 +883,7 @@
             this.jSONToolStripMenuItem,
             this.xMLToolStripMenuItem});
             this.saveInToolStripMenuItem.Name = "saveInToolStripMenuItem";
-            this.saveInToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.saveInToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveInToolStripMenuItem.Text = "Save in...";
             this.saveInToolStripMenuItem.Click += new System.EventHandler(this.saveInToolStripMenuItem_Click);
             // 
@@ -880,32 +904,32 @@
             // runTrafficLightsToolStripMenuItem
             // 
             this.runTrafficLightsToolStripMenuItem.Name = "runTrafficLightsToolStripMenuItem";
-            this.runTrafficLightsToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.runTrafficLightsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.runTrafficLightsToolStripMenuItem.Text = "Run traffic lights";
             this.runTrafficLightsToolStripMenuItem.Click += new System.EventHandler(this.runTrafficLightsToolStripMenuItem_Click);
             // 
-            // LoadImageButton
+            // loadButton
             // 
-            this.LoadImageButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.LoadImageButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.loadButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadToolStripMenuItem,
             this.loadFromToolStripMenuItem});
-            this.LoadImageButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.LoadImageButton.Name = "LoadImageButton";
-            this.LoadImageButton.Size = new System.Drawing.Size(46, 24);
-            this.LoadImageButton.Text = "Load";
+            this.loadButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(46, 24);
+            this.loadButton.Text = "Load";
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // loadFromToolStripMenuItem
             // 
             this.loadFromToolStripMenuItem.Name = "loadFromToolStripMenuItem";
-            this.loadFromToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.loadFromToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.loadFromToolStripMenuItem.Text = "Load from...";
             this.loadFromToolStripMenuItem.Click += new System.EventHandler(this.loadFromToolStripMenuItem_Click);
             // 
@@ -1086,30 +1110,6 @@
             this.themes.UseSelectable = true;
             this.themes.CheckedChanged += new System.EventHandler(this.themes_CheckedChanged);
             // 
-            // busParkBindingSource
-            // 
-            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
-            // 
-            // launchBuses
-            // 
-            this.launchBuses.Location = new System.Drawing.Point(171, 41);
-            this.launchBuses.Name = "launchBuses";
-            this.launchBuses.Size = new System.Drawing.Size(98, 23);
-            this.launchBuses.TabIndex = 93;
-            this.launchBuses.Text = "Запустить автобусы";
-            this.launchBuses.UseSelectable = true;
-            this.launchBuses.Click += new System.EventHandler(this.launchBuses_Click);
-            // 
-            // stopBuses
-            // 
-            this.stopBuses.Location = new System.Drawing.Point(171, 70);
-            this.stopBuses.Name = "stopBuses";
-            this.stopBuses.Size = new System.Drawing.Size(98, 23);
-            this.stopBuses.TabIndex = 94;
-            this.stopBuses.Text = "Остановить автобусы";
-            this.stopBuses.UseSelectable = true;
-            this.stopBuses.Click += new System.EventHandler(this.stopBuses_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1152,6 +1152,7 @@
             this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
@@ -1160,7 +1161,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBus404_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1198,12 +1198,12 @@
         private System.Windows.Forms.ToolStripButton addBus;
         private System.Windows.Forms.ToolStripButton deleteBus;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripButton1;
+        private System.Windows.Forms.ToolStripDropDownButton saveButton;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveInToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createModelToolStripMenuItem;
         private MetroFramework.Controls.MetroButton button3;
-        private System.Windows.Forms.ToolStripDropDownButton LoadImageButton;
+        private System.Windows.Forms.ToolStripDropDownButton loadButton;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadFromToolStripMenuItem;
         private MetroFramework.Controls.MetroLabel label8;
