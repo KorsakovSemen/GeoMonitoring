@@ -709,7 +709,7 @@ namespace SystAnalys_lr1
                 bus.Epicenters2 = epList;
                 bus.TickCount_ = test;
                 // вот эту
-                bus.PositionAt = 0;
+                //bus.PositionAt = 0;
                 //
                 if (bus.tracker == true)
                 {

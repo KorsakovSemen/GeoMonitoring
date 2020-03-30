@@ -1,0 +1,22 @@
+Снижение кол-ва датчиков в процентах
+0
+Кол-во итераций 15
+При скорости 5
+Найдено: 4
+Среднее: 0
+Цикл: 0
+0 : Nothing
+1 : Nothing
+2 : 1
+3 : Nothing
+4 : Nothing
+5 : Nothing
+6 : Nothing
+7 : Nothing
+8 : Nothing
+9 : 1
+10 : 1
+11 : Nothing
+12 : Nothing
+13 : 1
+14 : Nothing
