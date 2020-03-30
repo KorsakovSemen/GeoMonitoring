@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<ArrayOfBus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Bus>
+    <angle>0</angle>
+    <x>551</x>
+    <y>361</y>
+    <PositionAt>881</PositionAt>
+    <TurnBack>true</TurnBack>
+    <route>1</route>
+    <grids />
+    <Locate>1872</Locate>
+    <lastLocate xsi:nil="true" />
+    <R>7</R>
+    <Epicenters2 />
+    <TickCount_>0</TickCount_>
+    <EpicFounded>false</EpicFounded>
+    <Date>0</Date>
+    <tracker>true</tracker>
+  </Bus>
+  <Bus>
+    <angle>0</angle>
+    <x>775</x>
+    <y>325</y>
+    <PositionAt>637</PositionAt>
+    <TurnBack>true</TurnBack>
+    <route>1</route>
+    <grids />
+    <Locate>2203</Locate>
+    <lastLocate xsi:nil="true" />
+    <R>7</R>
+    <Epicenters2 />
+    <TickCount_>0</TickCount_>
+    <EpicFounded>false</EpicFounded>
+    <Date>0</Date>
+    <tracker>true</tracker>
+  </Bus>
+  <Bus>
+    <angle>0</angle>
+    <x>529</x>
+    <y>135</y>
+    <PositionAt>679</PositionAt>
+    <TurnBack>true</TurnBack>
+    <route>2</route>
+    <grids />
+    <Locate>1632</Locate>
+    <lastLocate xsi:nil="true" />
+    <R>7</R>
+    <Epicenters2 />
+    <TickCount_>0</TickCount_>
+    <EpicFounded>false</EpicFounded>
+    <Date>0</Date>
+    <tracker>true</tracker>
+  </Bus>
+  <Bus>
+    <angle>0</angle>
+    <x>590</x>
+    <y>323</y>
+    <PositionAt>4</PositionAt>
+    <TurnBack>true</TurnBack>
+    <route>2</route>
+    <grids />
+    <Locate>517</Locate>
+    <lastLocate xsi:nil="true" />
+    <R>7</R>
+    <Epicenters2 />
+    <TickCount_>0</TickCount_>
+    <EpicFounded>false</EpicFounded>
+    <Date>0</Date>
+    <tracker>true</tracker>
+  </Bus>
+  <Bus>
+    <angle>0</angle>
+    <x>380</x>
+    <y>407</y>
+    <PositionAt>970</PositionAt>
+    <TurnBack>false</TurnBack>
+    <route>2</route>
+    <grids />
+    <Locate>761</Locate>
+    <lastLocate xsi:nil="true" />
+    <R>7</R>
+    <Epicenters2 />
+    <TickCount_>0</TickCount_>
+    <EpicFounded>false</EpicFounded>
+    <Date>0</Date>
+    <tracker>true</tracker>
+  </Bus>
+  <Bus>
+    <angle>0</angle>
+    <x>597</x>
+    <y>90</y>
+    <PositionAt>188</PositionAt>
+    <TurnBack>false</TurnBack>
+    <route>2</route>
+    <grids />
+    <Locate>908</Locate>
+    <lastLocate xsi:nil="true" />
+    <R>7</R>
+    <Epicenters2 />
+    <TickCount_>0</TickCount_>
+    <EpicFounded>false</EpicFounded>
+    <Date>0</Date>
+    <tracker>true</tracker>
+  </Bus>
+  <Bus>
+    <angle>0</angle>
+    <x>678</x>
+    <y>506</y>
+    <PositionAt>291</PositionAt>
+    <TurnBack>false</TurnBack>
+    <route>3</route>
+    <grids />
+    <Locate>2587</Locate>
+    <lastLocate xsi:nil="true" />
+    <R>7</R>
+    <Epicenters2 />
+    <TickCount_>0</TickCount_>
+    <EpicFounded>false</EpicFounded>
+    <Date>0</Date>
+    <tracker>true</tracker>
+  </Bus>
+  <Bus>
+    <angle>0</angle>
+    <x>696</x>
+    <y>199</y>
+    <PositionAt>270</PositionAt>
+    <TurnBack>true</TurnBack>
+    <route>3</route>
+    <grids />
+    <Locate>2586</Locate>
+    <lastLocate xsi:nil="true" />
+    <R>7</R>
+    <Epicenters2 />
+    <TickCount_>0</TickCount_>
+    <EpicFounded>false</EpicFounded>
+    <Date>0</Date>
+    <tracker>true</tracker>
+  </Bus>
+  <Bus>
+    <angle>0</angle>
+    <x>370</x>
+    <y>562</y>
+    <PositionAt>494</PositionAt>
+    <TurnBack>false</TurnBack>
+    <route>3</route>
+    <grids />
+    <Locate>2276</Locate>
+    <lastLocate xsi:nil="true" />
+    <R>7</R>
+    <Epicenters2 />
+    <TickCount_>0</TickCount_>
+    <EpicFounded>false</EpicFounded>
+    <Date>0</Date>
+    <tracker>true</tracker>
+  </Bus>
+  <Bus>
+    <angle>0</angle>
+    <x>726</x>
+    <y>499</y>
+    <PositionAt>892</PositionAt>
+    <TurnBack>false</TurnBack>
+    <route>3</route>
+    <grids />
+    <Locate>1409</Locate>
+    <lastLocate xsi:nil="true" />
+    <R>7</R>
+    <Epicenters2 />
+    <TickCount_>0</TickCount_>
+    <EpicFounded>false</EpicFounded>
+    <Date>0</Date>
+    <tracker>true</tracker>
+  </Bus>
+  <Bus>
+    <angle>0</angle>
+    <x>284</x>
+    <y>373</y>
+    <PositionAt>199</PositionAt>
+    <TurnBack>true</TurnBack>
+    <route>4</route>
+    <grids />
+    <Locate>1699</Locate>
+    <lastLocate xsi:nil="true" />
+    <R>7</R>
+    <Epicenters2 />
+    <TickCount_>0</TickCount_>
+    <EpicFounded>false</EpicFounded>
+    <Date>0</Date>
+    <tracker>true</tracker>
+  </Bus>
+  <Bus>
+    <angle>0</angle>
+    <x>358</x>
+    <y>616</y>
+    <PositionAt>159</PositionAt>
+    <TurnBack>false</TurnBack>
+    <route>4</route>
+    <grids />
+    <Locate>1697</Locate>
+    <lastLocate xsi:nil="true" />
+    <R>7</R>
+    <Epicenters2 />
+    <TickCount_>0</TickCount_>
+    <EpicFounded>false</EpicFounded>
+    <Date>0</Date>
+    <tracker>true</tracker>
+  </Bus>
+  <Bus>
+    <angle>0</angle>
+    <x>398</x>
+    <y>451</y>
+    <PositionAt>356</PositionAt>
+    <TurnBack>false</TurnBack>
+    <route>4</route>
+    <grids />
+    <Locate>2025</Locate>
+    <lastLocate xsi:nil="true" />
+    <R>7</R>
+    <Epicenters2 />
+    <TickCount_>0</TickCount_>
+    <EpicFounded>false</EpicFounded>
+    <Date>0</Date>
+    <tracker>true</tracker>
+  </Bus>
+</ArrayOfBus>

@@ -1,0 +1,15 @@
+Снижение кол-ва датчиков в процентах
+10
+Кол-во итераций 10
+При скорости 1000
+Среднее: 5
+43
+Nothing
+Nothing
+Nothing
+Nothing
+10
+Nothing
+Nothing
+Nothing
+Nothing
