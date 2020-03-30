@@ -178,7 +178,6 @@ namespace SystAnalys_lr1
                     wsheet = sheet.Width;
                     hsheet = sheet.Height;
                     saveImage = sheet.Image;
-
                     LoadRoutes(savepath + "/");
 
                 }
@@ -808,6 +807,7 @@ namespace SystAnalys_lr1
             }
 
         }
+        delegate void DelBmp(Bitmap bmp);
         //отрисовать всю сетку
         static public void DrawGrid()
         {
@@ -817,7 +817,8 @@ namespace SystAnalys_lr1
                 //  TheGrid[i].DrawNum(g);
                 TheGrid[i].DrawPart(G, Main.zoom);
             }
-            _instance.sheet.Image = G.GetBitmap();
+            _instance.Invoke(new DelBmp((s) => _instance.sheet.Image = s), G.GetBitmap());
+          //  _instance.sheet.Image = G.GetBitmap();
         }
         //функция создает 1 случайный эпицентр в пределах сетки
         //public List<Epicenter> CreateOneEpicenter(List<Epicenter> ep)
@@ -1513,6 +1514,7 @@ namespace SystAnalys_lr1
                     G.clearSheet();
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
+                    SaveRoutes(saveF, savepath + "/");
                     //     checkBusesOnRoute();
 
                 }
@@ -1579,6 +1581,9 @@ namespace SystAnalys_lr1
                 routesEdge.Clear();
                 changeRoute.Items.Clear();
                 AllCoordinates.Clear();
+                allstopPoints.Clear();
+                stopPoints.Clear();
+                traficLights.Clear();
                 sheet.Image = Image.FromFile(fb.FileName);
                 wsheet = sheet.Width;
                 hsheet = sheet.Height;
@@ -1634,7 +1639,7 @@ namespace SystAnalys_lr1
             if (routes != null || routesEdge != null || E != null || V != null || buses != null)
             {
                 if (MBSave == DialogResult.Yes && changeRoute.Text != "All")
-                {
+                {                    
                     routes[int.Parse(changeRoute.Text)].Clear();
                     routesEdge[int.Parse(changeRoute.Text)].Clear();
                     List<Bus> test = new List<Bus>();
@@ -1653,12 +1658,11 @@ namespace SystAnalys_lr1
                     }
 
                     AllCoordinates[int.Parse(changeRoute.Text)].Clear();
+                    SaveRoutes();
                     G.clearSheet();
                     G.drawALLGraph(V, E);
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
-                    addInComboBox();
-                    checkBuses();
                 }
                 if (MBSave == DialogResult.Yes && changeRoute.Text == "All")
                 {
@@ -1677,7 +1681,6 @@ namespace SystAnalys_lr1
                     G.clearSheet();
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
-                    checkBusesOnRoute();
                 };
             }
             selected = new List<int>();
@@ -2526,7 +2529,7 @@ namespace SystAnalys_lr1
                 globalMap = sheet.Image;
                 G.setBitmap();
                 // var extensions = extensionsFiles(load);
-
+                config.Text = "Config: " + load;
                 if (File.Exists(load + "Vertexes.xml"))
                 {
                     using (StreamReader reader = new StreamReader(load + "Vertexes.xml"))
@@ -2961,7 +2964,7 @@ namespace SystAnalys_lr1
                 }
                 if (selectButton.Enabled == false)
                 {
-                    c.Select(e, V, E, G, sheet, 0);
+                    c.asSelect(e, V, E, G, sheet, 0);
                 }
                 //нажата кнопка "рисовать вершину"
                 if (drawVertexButton.Enabled == false)
@@ -2971,19 +2974,13 @@ namespace SystAnalys_lr1
                 //нажата кнопка "рисовать ребро"
                 if (drawEdgeButton.Enabled == false)
                 {
-                    c.drawEdge(e, V, E, G, sheet, 0);
+                    c.asDrawEdge(e, V, E, G, sheet, 0);
                 }
                 //нажата кнопка "удалить элемент"
                 if (deleteButton.Enabled == false)
                 {
-                    c.del(e, V, E, sheet, G, routesEdge);
-                    if (flag)
-                    {
-                        G.clearSheet();
-                        G.drawALLGraph(V, E);
-                        sheet.Image = G.GetBitmap();
-                        DrawGrid();
-                    }
+                    c.asDelete(e, V, E, sheet, G, routesEdge);
+                    
 
                 }
                 return;
@@ -3030,7 +3027,7 @@ namespace SystAnalys_lr1
                 //нажата кнопка "выбрать вершину", ищем степень вершины
                 if (selectButton.Enabled == false)
                 {
-                    c.Select(e, routeV, routesEdge[int.Parse(changeRoute.Text)], G, sheet, 1);
+                    c.asSelect(e, routeV, routesEdge[int.Parse(changeRoute.Text)], G, sheet, 1);
                 }
                 if (selectRoute.Enabled == false)
                 {
