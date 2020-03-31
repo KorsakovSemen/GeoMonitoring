@@ -331,21 +331,28 @@ namespace SystAnalys_lr1.Classes
                             break;
                         }
                     }
-                    //else //не петля
-                    //{
-                    //    if (((e.X - V[E[i].v1].x) * (V[E[i].v2].y - V[E[i].v1].y) / (V[E[i].v2].x - V[E[i].v1].x) + V[E[i].v1].y) <= (e.Y + 4) &&
-                    //        ((e.X - V[E[i].v1].x) * (V[E[i].v2].y - V[E[i].v1].y) / (V[E[i].v2].x - V[E[i].v1].x) + V[E[i].v1].y) >= (e.Y - 4))
-                    //    {
-                    //        if ((V[E[i].v1].x <= V[E[i].v2].x && V[E[i].v1].x <= e.X && e.X <= V[E[i].v2].x) ||
-                    //            (V[E[i].v1].x >= V[E[i].v2].x && V[E[i].v1].x >= e.X && e.X >= V[E[i].v2].x))
-                    //        {
-                    //            E.RemoveAt(i);
-                    //            Main.flag = true;
-                    //            Main.DrawGrid();
-                    //            break;
-                    //        }
-                    //    }
-                    //}
+                    else //не петля
+                    {
+                        try
+                        {
+                            if (((e.X - V[E[i].v1].x) * (V[E[i].v2].y - V[E[i].v1].y) / (V[E[i].v2].x - V[E[i].v1].x) + V[E[i].v1].y) <= (e.Y + 4) &&
+                                ((e.X - V[E[i].v1].x) * (V[E[i].v2].y - V[E[i].v1].y) / (V[E[i].v2].x - V[E[i].v1].x) + V[E[i].v1].y) >= (e.Y - 4))
+                            {
+                                if ((V[E[i].v1].x <= V[E[i].v2].x && V[E[i].v1].x <= e.X && e.X <= V[E[i].v2].x) ||
+                                    (V[E[i].v1].x >= V[E[i].v2].x && V[E[i].v1].x >= e.X && e.X >= V[E[i].v2].x))
+                                {
+                                    E.RemoveAt(i);
+                                    Main.flag = true;
+                                    Main.DrawGrid();
+                                    break;
+                                }
+                            }
+                        }
+                        catch
+                        {
+
+                        }
+                    }
                 }
             }
             //если что-то было удалено, то обновляем граф на экране
@@ -404,21 +411,28 @@ namespace SystAnalys_lr1.Classes
                             break;
                         }
                     }
-                    //else //не петля
-                    //{
-                    //    if (((e.X - routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].x) * (routeV[routesEdge[int.Parse(comboBox1.Text)][i].v2].y - routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].y) / (routeV[routesEdge[int.Parse(comboBox1.Text)][i].v2].x - routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].x) + routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].y) <= (e.Y + 4) &&
-                    //        ((e.X - routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].x) * (routeV[routesEdge[int.Parse(comboBox1.Text)][i].v2].y - routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].y) / (routeV[routesEdge[int.Parse(comboBox1.Text)][i].v2].x - routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].x) + routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].y) >= (e.Y - 4))
-                    //    {
-                    //        if ((routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].x <= routeV[routesEdge[int.Parse(comboBox1.Text)][i].v2].x && routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].x <= e.X && e.X <= routeV[routesEdge[int.Parse(comboBox1.Text)][i].v2].x) ||
-                    //            (routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].x >= routeV[routesEdge[int.Parse(comboBox1.Text)][i].v2].x && routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].x >= e.X && e.X >= routeV[routesEdge[int.Parse(comboBox1.Text)][i].v2].x))
-                    //        {
-                    //            routesEdge[int.Parse(comboBox1.Text)].RemoveAt(i);
-                    //            flag = true;
-                    //            DrawGrid();
-                    //            break;
-                    //        }
-                    //    }
-                    //}
+                    else //не петля
+                    {
+                        try
+                        {
+                            if (((e.X - routeV[routesEdge[i].v1].x) * (routeV[routesEdge[i].v2].y - routeV[routesEdge[i].v1].y) / (routeV[routesEdge[i].v2].x - routeV[routesEdge[i].v1].x) + routeV[routesEdge[i].v1].y) <= (e.Y + 4) &&
+                                ((e.X - routeV[routesEdge[i].v1].x) * (routeV[routesEdge[i].v2].y - routeV[routesEdge[i].v1].y) / (routeV[routesEdge[i].v2].x - routeV[routesEdge[i].v1].x) + routeV[routesEdge[i].v1].y) >= (e.Y - 4))
+                            {
+                                if ((routeV[routesEdge[i].v1].x <= routeV[routesEdge[i].v2].x && routeV[routesEdge[i].v1].x <= e.X && e.X <= routeV[routesEdge[i].v2].x) ||
+                                    (routeV[routesEdge[i].v1].x >= routeV[routesEdge[i].v2].x && routeV[routesEdge[i].v1].x >= e.X && e.X >= routeV[routesEdge[i].v2].x))
+                                {
+                                    routesEdge.RemoveAt(i);
+                                    Main.flag = true;
+                                    Main.DrawGrid();
+                                    break;
+                                }
+                            }
+                        }
+                        catch
+                        {
+
+                        }
+                    }
                 }
             }
             //если что-то было удалено, то обновляем граф на экране
