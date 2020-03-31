@@ -2964,6 +2964,21 @@ namespace SystAnalys_lr1
                             tl.Start();
                         });
                         loading.Enabled = false;
+                        AsyncCreateAllCoordinates();
+                        selectedRoute = null;
+                        selectRoute.Enabled = true;
+                        deleteBus.Enabled = true;
+                        checkedListBox1.Enabled = false;
+                        drawEdgeButton.Enabled = true;
+                        selectButton.Enabled = true;
+                        drawVertexButton.Enabled = true;
+                        deleteButton.Enabled = true;
+                        deleteALLButton.Enabled = true;
+                        deleteRoute.Enabled = true;
+                        addBus.Enabled = false;
+                        deleteBus.Enabled = false;
+                        stopPointButton.Enabled = true;
+                        addTraficLight.Enabled = true;
                     }
                 }
                 if (stopPointButton.Enabled == false)
@@ -3560,6 +3575,7 @@ namespace SystAnalys_lr1
                 sheet.Image = G.GetBitmap();
                 selected1 = -1;
                 DrawGrid();
+
             }
 
         }
