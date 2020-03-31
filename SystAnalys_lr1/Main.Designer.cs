@@ -71,12 +71,13 @@
             this.panel8 = new MetroFramework.Controls.MetroPanel();
             this.label8 = new MetroFramework.Controls.MetroLabel();
             this.panel7 = new MetroFramework.Controls.MetroPanel();
-            this.theme = new MetroFramework.Controls.MetroLabel();
-            this.changeTheme = new MetroFramework.Controls.MetroComboBox();
             this.button2 = new MetroFramework.Controls.MetroButton();
             this.changeRoute = new MetroFramework.Controls.MetroComboBox();
+            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label12 = new MetroFramework.Controls.MetroLabel();
             this.changeProcent = new MetroFramework.Controls.MetroTextBox();
+            this.theme = new MetroFramework.Controls.MetroLabel();
+            this.changeTheme = new MetroFramework.Controls.MetroComboBox();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.sheet = new System.Windows.Forms.PictureBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -113,7 +114,6 @@
             this.msmMain = new MetroFramework.Components.MetroStyleManager(this.components);
             this.themes = new MetroFramework.Controls.MetroToggle();
             this.config = new MetroFramework.Controls.MetroLabel();
-            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -124,13 +124,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).BeginInit();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBus404_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -653,45 +653,9 @@
             this.panel7.VerticalScrollbarHighlightOnWheel = false;
             this.panel7.VerticalScrollbarSize = 6;
             // 
-            // theme
-            // 
-            this.theme.AutoSize = true;
-            this.theme.Location = new System.Drawing.Point(1254, 31);
-            this.theme.Name = "theme";
-            this.theme.Size = new System.Drawing.Size(41, 19);
-            this.theme.TabIndex = 99;
-            this.theme.Text = "Темы";
-            // 
-            // changeTheme
-            // 
-            this.changeTheme.FormattingEnabled = true;
-            this.changeTheme.ItemHeight = 23;
-            this.changeTheme.Items.AddRange(new object[] {
-            "Default",
-            "Black",
-            "White",
-            "Silver",
-            "Blue",
-            "Green",
-            "Lime",
-            "Teal",
-            "Orange",
-            "Brown",
-            "Pink",
-            "Magenta",
-            "Purple",
-            "Red",
-            "Yellow"});
-            this.changeTheme.Location = new System.Drawing.Point(1319, 28);
-            this.changeTheme.Name = "changeTheme";
-            this.changeTheme.Size = new System.Drawing.Size(121, 29);
-            this.changeTheme.TabIndex = 98;
-            this.changeTheme.UseSelectable = true;
-            this.changeTheme.SelectedIndexChanged += new System.EventHandler(this.changeTheme_SelectedIndexChanged);
-            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 124);
+            this.button2.Location = new System.Drawing.Point(20, 123);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(181, 20);
@@ -712,6 +676,10 @@
             this.changeRoute.TabIndex = 77;
             this.changeRoute.UseSelectable = true;
             this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChangedAsync);
+            // 
+            // busParkBindingSource
+            // 
+            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
             // 
             // label12
             // 
@@ -756,6 +724,42 @@
             this.changeProcent.Visible = false;
             this.changeProcent.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.changeProcent.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // theme
+            // 
+            this.theme.AutoSize = true;
+            this.theme.Location = new System.Drawing.Point(1254, 31);
+            this.theme.Name = "theme";
+            this.theme.Size = new System.Drawing.Size(41, 19);
+            this.theme.TabIndex = 99;
+            this.theme.Text = "Темы";
+            // 
+            // changeTheme
+            // 
+            this.changeTheme.FormattingEnabled = true;
+            this.changeTheme.ItemHeight = 23;
+            this.changeTheme.Items.AddRange(new object[] {
+            "Default",
+            "Black",
+            "White",
+            "Silver",
+            "Blue",
+            "Green",
+            "Lime",
+            "Teal",
+            "Orange",
+            "Brown",
+            "Pink",
+            "Magenta",
+            "Purple",
+            "Red",
+            "Yellow"});
+            this.changeTheme.Location = new System.Drawing.Point(1319, 28);
+            this.changeTheme.Name = "changeTheme";
+            this.changeTheme.Size = new System.Drawing.Size(121, 29);
+            this.changeTheme.TabIndex = 98;
+            this.changeTheme.UseSelectable = true;
+            this.changeTheme.SelectedIndexChanged += new System.EventHandler(this.changeTheme_SelectedIndexChanged);
             // 
             // mainPanel
             // 
@@ -1115,10 +1119,6 @@
             this.config.TabIndex = 79;
             this.config.Text = "Config: ";
             // 
-            // busParkBindingSource
-            // 
-            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1164,6 +1164,7 @@
             this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
@@ -1172,7 +1173,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBus404_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
