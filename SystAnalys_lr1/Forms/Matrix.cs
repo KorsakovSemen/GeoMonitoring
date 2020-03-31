@@ -71,12 +71,12 @@ namespace SystAnalys_lr1
 
             dataGridView1.Columns[parkSize].HeaderText = "Total";
 
-            for (int i = 0; i < routesSorted.Count; ++i)
+            for (int i = 0; i < busesPark.Count; ++i)
             {
-                //if (routesSorted.ElementAt(i).Value.Count != 0)
-                //{
-                    dataGridView1.Rows[i].HeaderCell.Value = routesSorted.ElementAt(i).Key.ToString();
-             //   }
+                if (busesPark[i].Count != 0 )
+                {
+                    dataGridView1.Rows[i].HeaderCell.Value = busesPark[i].First().route.ToString();
+                }
             }
 
             int total, res;

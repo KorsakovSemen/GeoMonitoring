@@ -3474,15 +3474,30 @@ namespace SystAnalys_lr1
                 selectRoute.Enabled = true;
                 checkedListBox1.Enabled = true;
                 stopPointButton.Enabled = true;
+                List<Bus> b = new List<Bus>();
                 foreach (var bus in buses)
                 {
                     if (bus.route == Int32.Parse(changeRoute.Text))
                     {
                         bus.Stop();
                         mainPanel.Controls.Remove(bus.bus);
+                        b.Add(bus);                       
                     }
                 }
+                Parallel.ForEach(b, (bus) =>
+                {
+                    foreach(var B in buses)
+                    {
+                        if (B == bus)
+                        {
+                            buses.Remove(bus);
+                            break;
+                        }                         
+                    }
+                });
+                b.Clear();
                 delAllBusesOnRoute.Enabled = true;
+                
             }
             selected = new List<int>();
             AsyncCreateAllCoordinates();
