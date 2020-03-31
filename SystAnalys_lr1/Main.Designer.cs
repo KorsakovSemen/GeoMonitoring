@@ -68,7 +68,6 @@
             this.panel7 = new MetroFramework.Controls.MetroPanel();
             this.button2 = new MetroFramework.Controls.MetroButton();
             this.changeRoute = new MetroFramework.Controls.MetroComboBox();
-            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label12 = new MetroFramework.Controls.MetroLabel();
             this.changeProcent = new MetroFramework.Controls.MetroTextBox();
             this.theme = new MetroFramework.Controls.MetroLabel();
@@ -111,6 +110,7 @@
             this.config = new MetroFramework.Controls.MetroLabel();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -121,13 +121,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).BeginInit();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBus404_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -492,10 +492,6 @@
             this.changeRoute.UseSelectable = true;
             this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChangedAsync);
             // 
-            // busParkBindingSource
-            // 
-            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
-            // 
             // label12
             // 
             resources.ApplyResources(this.label12, "label12");
@@ -855,6 +851,10 @@
             resources.ApplyResources(this.metroLabel1, "metroLabel1");
             this.metroLabel1.Name = "metroLabel1";
             // 
+            // busParkBindingSource
+            // 
+            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
+            // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
@@ -897,7 +897,6 @@
             this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
@@ -906,6 +905,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBus404_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

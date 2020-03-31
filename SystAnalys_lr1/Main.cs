@@ -715,7 +715,7 @@ namespace SystAnalys_lr1
                 bus.Epicenters2 = epList;
                 bus.TickCount_ = test;
                 // вот эту
-                bus.PositionAt = 0;
+                //bus.PositionAt = 0;
                 //
                 if (bus.tracker == true)
                 {
@@ -1924,6 +1924,13 @@ namespace SystAnalys_lr1
             percentMean = new SerializableDictionary<int, int?>();
             string path = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute);
             Directory.CreateDirectory(path);
+            //zamazka
+            Directory.CreateDirectory(path + "/Generated_Epics");
+            Directory.CreateDirectory(path + "/Recreated_Epics");
+            //zamazka
+            List<Image> NaturalEpics = new List<Image>();
+            List<Image> ReCreatedEpics = new List<Image>();
+            //zamazka
             int? sum = null;
             List<Bus> optimizeBuses = new List<Bus>();
             buses.ForEach((b) => optimizeBuses.Add(
@@ -1975,7 +1982,16 @@ namespace SystAnalys_lr1
                         //asModelingTest();
                         //  mutex.WaitOne();\
                         CreateOneRandomEpicenter(EpicSizeParam, null);
+
                         Modeling();
+
+
+                        Ep.EDrawEpics();
+                        NaturalEpics.Add(Ep.Esheet.Image);
+
+                        Ep.RecReateFunction();
+
+                   
                         //await Task.Delay(50);
                         //   Thread.Sleep(250);
                         //if (small < old)
@@ -1984,7 +2000,8 @@ namespace SystAnalys_lr1
                         //    mas.Add(null);
                         small = 10000;
 
-                        Ep.EDrawEpics();
+
+                        ReCreatedEpics.Add(Ep.Esheet.Image);
                         if (loading.GetCurrentParent().InvokeRequired)
                         {
                             loading.GetCurrentParent().Invoke(new DelInt((s) => loading.Value = s), loading.Value + 1);
@@ -2043,7 +2060,34 @@ namespace SystAnalys_lr1
                 }
 
                 //busesPark = busesparkreturn;
+                //////замазка
+                try
+                {
 
+                    foreach (var image in NaturalEpics)
+                    {
+                        using (System.Drawing.Image img = new Bitmap(image))
+                        {
+                            img.Save(path + "/Generated_Epics" + "/GeneredEpic_" + (NaturalEpics.IndexOf(image) + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                        }
+
+                    }
+
+                    foreach (var image in ReCreatedEpics)
+                    {
+                        using (System.Drawing.Image img = new Bitmap(image))
+                        {
+                            img.Save(path + "/Recreated_Epics" + "/Recreated_Epic_" + (ReCreatedEpics.IndexOf(image) + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                        }
+
+                    }
+
+                }
+                /////замазка
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             });
 
             var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();//sum != null ? percentMean.Min(s => s.Value).ToString() + " " + (percentMean.ElementAt((int)percentMean.Min(s => s.Value)).Key).ToString() : "None";
@@ -3839,7 +3883,7 @@ namespace SystAnalys_lr1
             }
         }
 
-      
+
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -3870,6 +3914,11 @@ namespace SystAnalys_lr1
         private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //this.Close();
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void createGridToolStripMenuItem_Click(object sender, EventArgs e)

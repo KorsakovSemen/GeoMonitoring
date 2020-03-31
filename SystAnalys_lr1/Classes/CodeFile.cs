@@ -665,7 +665,10 @@ asMoveWithoutGraphics()
                                             MovingTimer.Stop();
                                             await Task.Delay(rnd.Next(0, 10000));
                                             skipStops = 50;
-                                            MovingTimer.Start();
+                                            if (InstaStop == false)
+                                            {
+                                                MovingTimer.Start();
+                                            }
                                             break;
                                         }
                                     }
@@ -691,7 +694,10 @@ asMoveWithoutGraphics()
                                             await Task.Delay(sp.bal / 2 * 1000);
                                             Console.WriteLine("After:");
                                             Console.WriteLine(sp.bal);
-                                            MovingTimer.Start();
+                                            if (InstaStop == false)
+                                            {
+                                                MovingTimer.Start();
+                                            }
                                             break;
 
                                         }
@@ -705,7 +711,10 @@ asMoveWithoutGraphics()
                         {
                             MovingTimer.Stop();
                             await Task.Delay(rnd.Next(0, 10000));
-                            MovingTimer.Start();
+                            if (InstaStop == false)
+                            {
+                                MovingTimer.Start();
+                            }
                             TurnBack = true;
                             PositionAt--;
                         }
@@ -727,7 +736,10 @@ asMoveWithoutGraphics()
                                                 MovingTimer.Stop();
                                                 await Task.Delay(rnd.Next(0, 10000));
                                                 skipStops = 50;
-                                                MovingTimer.Start();
+                                                if (InstaStop == false)
+                                                {
+                                                    MovingTimer.Start();
+                                                }
                                                 break;
                                             }
                                         }
@@ -753,7 +765,10 @@ asMoveWithoutGraphics()
                                                 await Task.Delay(sp.bal / 2 * 1000);
                                                 Console.WriteLine("After:");
                                                 Console.WriteLine(sp.bal);
-                                                MovingTimer.Start();
+                                                if (InstaStop == false)
+                                                {
+                                                    MovingTimer.Start();
+                                                }
                                                 break;
                                             }
                                         }
@@ -767,7 +782,10 @@ asMoveWithoutGraphics()
                         {
                             MovingTimer.Stop();
                             await Task.Delay(rnd.Next(0, 10000));
-                            MovingTimer.Start();
+                            if (InstaStop == false)
+                            {
+                                MovingTimer.Start();
+                            }
                             TurnBack = false;
                             PositionAt++;
                         }

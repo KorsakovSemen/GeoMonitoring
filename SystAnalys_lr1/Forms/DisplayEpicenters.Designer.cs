@@ -40,6 +40,7 @@
             this.label3 = new MetroFramework.Controls.MetroLabel();
             this.button2 = new MetroFramework.Controls.MetroButton();
             this.label2 = new MetroFramework.Controls.MetroLabel();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +52,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.metroButton2);
             this.panel1.Controls.Add(this.ERouts);
             this.panel1.Controls.Add(this.metroButton1);
             this.panel1.Controls.Add(this.button11);
@@ -158,6 +160,16 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Отрисовать путь загрязнений";
             // 
+            // metroButton2
+            // 
+            this.metroButton2.Location = new System.Drawing.Point(242, 134);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(75, 23);
+            this.metroButton2.TabIndex = 97;
+            this.metroButton2.Text = "metroButton2";
+            this.metroButton2.UseSelectable = true;
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
+            // 
             // DisplayEpicenters
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,5 +198,6 @@
         private MetroFramework.Controls.MetroButton button2;
         private MetroFramework.Controls.MetroLabel label2;
         private MetroFramework.Controls.MetroComboBox ERouts;
+        private MetroFramework.Controls.MetroButton metroButton2;
     }
 }

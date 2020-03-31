@@ -31,7 +31,7 @@ namespace SystAnalys_lr1
         }
 
         private TrackBar EZoomBar = new TrackBar();
-        private PictureBox Esheet = new PictureBox();
+        public PictureBox Esheet = new PictureBox();
         private Panel MapPanel = new Panel();
  
 
@@ -377,8 +377,7 @@ namespace SystAnalys_lr1
             //Ep.EDrawGrid();
 
         }
-
-        private void metroButton1_Click(object sender, EventArgs e)
+        public void RecReateFunction()
         {
             restoredEpic = new Epicenter(MainForm.GetTheGrid());
 
@@ -392,11 +391,24 @@ namespace SystAnalys_lr1
             {
                 MainForm.GetTheGrid()[i].FillGreen(EG, Ezoom);
             }
-            Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap());
+            //Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap());
             restoredEpic.DrawEpicenter(EG, Ezoom);
 
             EDrawGrid();
+        }
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            RecReateFunction();
 
+        }
+        public Image EsheetPic()
+        {
+            return Esheet.Image;
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            EDrawEpics();
         }
     }
 }
