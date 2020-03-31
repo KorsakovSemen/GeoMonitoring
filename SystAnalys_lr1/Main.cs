@@ -68,10 +68,9 @@ namespace SystAnalys_lr1
 
 
         // лист номеров квадратов, в которм есть светофор
-        List<int> TraficLightsInGrids;
+        static public List<int> TraficLightsInGrids;
         // словарь номеров квадратов, в которм есть остановка для каждого маршрута
         public static List<Vertex> allstopPoints;
-        public static List<int> allstopPointsInGrids;
         public static SerializableDictionary<int, List<int>> stopPointsInGrids;
         //  public static List<Vertex> stopPoints;
         //Остановки маршрутов
@@ -126,7 +125,6 @@ namespace SystAnalys_lr1
             AllGridsInRoutes = new SerializableDictionary<int, List<int>>();
             TraficLightsInGrids = new List<int>();
             allstopPoints = new List<Vertex>();
-            allstopPointsInGrids = new List<int>();
             stopPoints = new SerializableDictionary<int, List<Vertex>>();
             this.StyleManager = msmMain;
             addTraficLight.Enabled = false;
@@ -1064,7 +1062,7 @@ namespace SystAnalys_lr1
 
         private void addBus_Click(object sender, EventArgs e)
         {
-            AsyncCreateAllCoordinates();
+            //AsyncCreateAllCoordinates()();
             addBus.Enabled = false;
             deleteBus.Enabled = true;
             selectButton.Enabled = true;
@@ -1081,10 +1079,10 @@ namespace SystAnalys_lr1
 
         private void comboBox1_SelectedIndexChangedAsync(object sender, EventArgs e)
         {
-            AsyncCreateAllCoordinates();
+            //AsyncCreateAllCoordinates()();
             if (changeRoute.Text == "None")
             {
-                //    AsyncCreateAllCoordinates();
+                //    //AsyncCreateAllCoordinates()();
                 selectedRoute = null;
                 deleteBus.Enabled = false;
                 checkedListBox1.Enabled = false;
@@ -1224,7 +1222,7 @@ namespace SystAnalys_lr1
 
         private void deleteBus_Click(object sender, EventArgs e)
         {
-            AsyncCreateAllCoordinates();
+            //AsyncCreateAllCoordinates()();
             deleteBus.Enabled = false;
             addBus.Enabled = true;
             selectButton.Enabled = true;
@@ -1318,7 +1316,7 @@ namespace SystAnalys_lr1
 
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
-                    // AsyncCreateAllCoordinates();
+                    // //AsyncCreateAllCoordinates()();
                 }
             }
             catch
@@ -1430,7 +1428,7 @@ namespace SystAnalys_lr1
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            AsyncCreateAllCoordinates();
+            //AsyncCreateAllCoordinates()();
             G.clearSheet();
             G.drawALLGraph(V, E);
             if (changeRoute.Text == "All")
@@ -1467,7 +1465,7 @@ namespace SystAnalys_lr1
 
         private void drawVertexButton_Click(object sender, EventArgs e)
         {
-            AsyncCreateAllCoordinates();
+            //AsyncCreateAllCoordinates()();
             deleteBus.Enabled = false;
             addBus.Enabled = false;
             checkedListBox1.Enabled = false;
@@ -1487,7 +1485,7 @@ namespace SystAnalys_lr1
 
         private void deleteRoute_Click(object sender, EventArgs e)
         {
-            AsyncCreateAllCoordinates();
+            //AsyncCreateAllCoordinates()();
             checkedListBox1.Enabled = false;
             addBus.Enabled = true;
             selectButton.Enabled = true;
@@ -1632,7 +1630,7 @@ namespace SystAnalys_lr1
 
         private void deleteALLButton_Click(object sender, EventArgs e)
         {
-            AsyncCreateAllCoordinates();
+            //AsyncCreateAllCoordinates()();
             addBus.Enabled = true;
             drawVertexButton.Enabled = false;
             if (changeRoute.Text == "All")
@@ -1711,7 +1709,7 @@ namespace SystAnalys_lr1
 
         private void selectButton_Click(object sender, EventArgs e)
         {
-            AsyncCreateAllCoordinates();
+            //AsyncCreateAllCoordinates()();
             if (changeRoute.Text == "All")
             {
                 addBus.Enabled = false;
@@ -2064,7 +2062,7 @@ namespace SystAnalys_lr1
         public static List<string> ExpandEpicParamet;
         private void optimize_Click(object sender, EventArgs e)
         {
-            // AsyncCreateAllCoordinates();          
+            // //AsyncCreateAllCoordinates()();          
             if (optText.Text != "" && int.TryParse(optText.Text, out int sp))
             {
                 LoadBox("Loading...", "", int.Parse(optText.Text) * 1000);
@@ -2227,7 +2225,7 @@ namespace SystAnalys_lr1
 
         private void drawEdgeButton_Click(object sender, EventArgs e)
         {
-            AsyncCreateAllCoordinates();
+            //AsyncCreateAllCoordinates()();
             G.clearSheet();
             G.drawALLGraph(V, E);
             if (changeRoute.Text == "All")
@@ -2977,7 +2975,7 @@ namespace SystAnalys_lr1
                                 tl.Set();
                                 tl.Start();
                             });
-                            AsyncCreateAllCoordinates();
+                            //AsyncCreateAllCoordinates()();
                             loading.Enabled = false;
                             selectedRoute = null;
                             selectRoute.Enabled = true;
@@ -3026,10 +3024,7 @@ namespace SystAnalys_lr1
                     //нажата кнопка "удалить элемент"
                     if (deleteButton.Enabled == false)
                     {
-
-                  
                         c.asDelete(e, V, E, sheet, G, routesEdge);
-
                     }
                     return;
                 }
@@ -3293,23 +3288,33 @@ namespace SystAnalys_lr1
 
                         bool flag = false; //удалили ли что-нибудь по ЭТОМУ клику
                                            //ищем, возможно была нажата вершина
+                                           //foreach (var sp in Main.allstopPoints)
+                                           //{
+                                           //    if (Math.Pow((sp.x - e.X / Main.zoom), 2) + Math.Pow((sp.y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                                           //    {
+                                           //        Main.allstopPoints.Remove(sp);
 
-                        foreach (var stopRoute in stopPoints.Values)
+                        //        Main.flag = true;
+                        //        break;
+                        //    }
+                        //}
+
+                        foreach (var stopRoute in stopPoints[int.Parse(changeRoute.Text)])
                         {
-                            for (int i = 0; i < stopRoute.Count; i++)
+                            if (Math.Pow((stopRoute.x - e.X), 2) + Math.Pow((stopRoute.y - e.Y), 2) <= G.R * G.R)
                             {
-                                if (Math.Pow((stopRoute[i].x - e.X), 2) + Math.Pow((stopRoute[i].y - e.Y), 2) <= G.R * G.R)
-                                {
-                                    stopRoute.RemoveAt(i);
-                                    flag = true;
-                                    break;
-                                }
+                                stopPointsInGrids[int.Parse(changeRoute.Text)].Remove(stopRoute.gridNum);
+                                stopPoints[int.Parse(changeRoute.Text)].Remove(stopRoute);
+                                flag = true;
+                                break;
                             }
+
                         }
                         for (var i = 0; i < traficLights.Count; i++)
                         {
                             if (Math.Pow((traficLights[i].x - e.X), 2) + Math.Pow((traficLights[i].y - e.Y), 2) <= G.R * G.R)
                             {
+                                TraficLightsInGrids.RemoveAt(i);
                                 traficLights.RemoveAt(i);
                                 flag = true;
                                 break;
@@ -3420,7 +3425,7 @@ namespace SystAnalys_lr1
 
         private void gridButton_Click(object sender, EventArgs e)
         {
-            AsyncCreateAllCoordinates();
+            //AsyncCreateAllCoordinates()();
             if (changeRoute.Text == "All")
             {
                 selectRoute.Enabled = false;
@@ -3456,7 +3461,7 @@ namespace SystAnalys_lr1
 
         private void delAllBusesOnRoute_Click(object sender, EventArgs e)
         {
-            AsyncCreateAllCoordinates();
+            //AsyncCreateAllCoordinates()();
             checkBuses();
             if (changeRoute.Text == "All")
             {
@@ -3687,7 +3692,7 @@ namespace SystAnalys_lr1
 
         private void selectRoute_Click(object sender, EventArgs e)
         {
-            AsyncCreateAllCoordinates();
+            //AsyncCreateAllCoordinates()();
             if (changeRoute.Text == "All")
             {
                 selectRoute.Enabled = false;

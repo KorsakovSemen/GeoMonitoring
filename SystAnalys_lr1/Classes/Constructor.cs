@@ -188,7 +188,7 @@ namespace SystAnalys_lr1.Classes
                 if (Math.Pow((tl.x - e.X / Main.zoom), 2) + Math.Pow((tl.y - e.Y / Main.zoom), 2) <= G.R * G.R)
                 {
                     tl.Stop();
-                    //        sheet.Controls.Remove(tl.)
+                    Main.TraficLightsInGrids.Remove(tl.gridNum);
                     Main.traficLights.Remove(tl);
                     Main.flag = true;
                     break;
@@ -205,6 +205,22 @@ namespace SystAnalys_lr1.Classes
                     break;
                 }
             }
+
+            foreach (var stop in Main.stopPoints)
+            {
+                foreach(var sp in stop.Value)
+                {
+                    if (Math.Pow((sp.x - e.X / Main.zoom), 2) + Math.Pow((sp.y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                    {
+                        Main.stopPointsInGrids[stop.Key].Remove(sp.gridNum);
+                        stop.Value.Remove(sp);
+                        Main.flag = true;
+                        break;
+                    }
+                }
+            }
+
+         
 
             foreach (var routeV in Main.routes)
             {
