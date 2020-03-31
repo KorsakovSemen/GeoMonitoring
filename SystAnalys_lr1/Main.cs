@@ -114,6 +114,14 @@ namespace SystAnalys_lr1
 
         public Main()
         {
+            // Если в настройках есть язык, устанавлияем его для текущего потока, в котором выполняется приложение.
+            if (!String.IsNullOrEmpty(Properties.Settings.Default.Language))
+            {
+                // ВАЖНО: Устанавливать язык нужно до создания элементов формы!
+                // Это можно сделать глобально, в рамках приложения в классе Program (см. файл Program.cs).
+                System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
+                System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
+            }
             InitializeComponent();
             tracbarX = trackBar1.Location.X;
             tracbarY = trackBar1.Location.Y;
@@ -3829,6 +3837,39 @@ namespace SystAnalys_lr1
             {
                 bus.Stop();
             }
+        }
+
+      
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Language = metroComboBox1.SelectedValue.ToString();
+            Properties.Settings.Default.Save();
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            // Заносим список поддерживаемых языков.
+            metroComboBox1.DataSource = new System.Globalization.CultureInfo[]{
+                 System.Globalization.CultureInfo.GetCultureInfo("ru-RU"),
+                 System.Globalization.CultureInfo.GetCultureInfo("en-US")
+            };
+
+            // Каждый элемент списка comboBox1 будет являться экземпляром класса CultureInfo.
+
+            metroComboBox1.DisplayMember = "NativeName"; // <= System.Globalization.CultureInfo.GetCultureInfo("ru-RU").NativeName
+            metroComboBox1.ValueMember = "Name"; // <= System.Globalization.CultureInfo.GetCultureInfo("ru-RU").Name
+
+            // Если в настройках есть язык, выбираем его в списке.
+            if (!String.IsNullOrEmpty(Properties.Settings.Default.Language))
+            {
+                metroComboBox1.SelectedValue = Properties.Settings.Default.Language;
+            }
+        }
+
+        private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //this.Close();
         }
 
         private void createGridToolStripMenuItem_Click(object sender, EventArgs e)
