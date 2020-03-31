@@ -3788,8 +3788,7 @@ namespace SystAnalys_lr1
 
         private void changeTheme_SelectedIndexChanged(object sender, EventArgs e)
         {
-            msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Text);
-
+            msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf(changeTheme.Text));
         }
 
         private void launchBuses_Click(object sender, EventArgs e)

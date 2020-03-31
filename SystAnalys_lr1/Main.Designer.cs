@@ -637,8 +637,6 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel7.Controls.Add(this.theme);
-            this.panel7.Controls.Add(this.changeTheme);
             this.panel7.Controls.Add(this.button2);
             this.panel7.Controls.Add(this.changeRoute);
             this.panel7.Controls.Add(this.label12);
@@ -658,7 +656,7 @@
             // theme
             // 
             this.theme.AutoSize = true;
-            this.theme.Location = new System.Drawing.Point(160, 19);
+            this.theme.Location = new System.Drawing.Point(1252, 25);
             this.theme.Name = "theme";
             this.theme.Size = new System.Drawing.Size(41, 19);
             this.theme.TabIndex = 99;
@@ -669,21 +667,22 @@
             this.changeTheme.FormattingEnabled = true;
             this.changeTheme.ItemHeight = 23;
             this.changeTheme.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14"});
-            this.changeTheme.Location = new System.Drawing.Point(13, 19);
+            "Default",
+            "Black",
+            "White",
+            "Silver",
+            "Blue",
+            "Green",
+            "Lime",
+            "Teal",
+            "Orange",
+            "Brown",
+            "Pink",
+            "Magenta",
+            "Purple",
+            "Red",
+            "Yellow"});
+            this.changeTheme.Location = new System.Drawing.Point(1319, 21);
             this.changeTheme.Name = "changeTheme";
             this.changeTheme.Size = new System.Drawing.Size(121, 29);
             this.changeTheme.TabIndex = 98;
@@ -1099,7 +1098,7 @@
             // themes
             // 
             this.themes.AutoSize = true;
-            this.themes.Location = new System.Drawing.Point(679, 63);
+            this.themes.Location = new System.Drawing.Point(1138, 27);
             this.themes.Name = "themes";
             this.themes.Size = new System.Drawing.Size(80, 17);
             this.themes.TabIndex = 74;
@@ -1127,7 +1126,9 @@
             this.ClientSize = new System.Drawing.Size(1455, 878);
             this.Controls.Add(this.config);
             this.Controls.Add(this.themes);
+            this.Controls.Add(this.theme);
             this.Controls.Add(this.mainPanel);
+            this.Controls.Add(this.changeTheme);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.loadLabel);
             this.Controls.Add(this.toolStrip1);
