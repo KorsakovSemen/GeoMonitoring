@@ -62,18 +62,22 @@ namespace SystAnalys_lr1
             //label9.Text = "ТИШЕ ТИШЕ ТИШЕ";
 
 
+    
             ////?/
             //     buttonOff();
             await Task.Run(async () =>
             {
                 await buttonOff();
+                Console.WriteLine("Buttonoff finish");
                 CreateAllCoordinates();
+                Bus.AllCoordinates = AllCoordinates;
                 await buttonOn();
+                Console.WriteLine("Buttonon finish");
+
             });
 
-
+       
             //  buttonOn();
-            Bus.AllCoordinates = AllCoordinates;
             //label9.Text = "Закрывай";
             //label9.Visible = false;
           //  MessageBox.Show("Готово");

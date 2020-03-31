@@ -2313,6 +2313,10 @@ asMoveWithoutGraphics()
         }
         public void Start()
         {
+            TimerLight.Start();
+        }
+        public void Set()
+        {
             TimerLight = new Timer
             {
                 Interval = 1000
