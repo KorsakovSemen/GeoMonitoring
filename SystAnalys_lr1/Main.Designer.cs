@@ -549,7 +549,7 @@
             this.checkedListBox1.Items.AddRange(new object[] {
             "Трекер",
             "В обратную сторону"});
-            this.checkedListBox1.Location = new System.Drawing.Point(137, 49);
+            this.checkedListBox1.Location = new System.Drawing.Point(137, 19);
             this.checkedListBox1.Margin = new System.Windows.Forms.Padding(0);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(132, 34);
@@ -656,7 +656,7 @@
             // theme
             // 
             this.theme.AutoSize = true;
-            this.theme.Location = new System.Drawing.Point(1252, 25);
+            this.theme.Location = new System.Drawing.Point(1254, 31);
             this.theme.Name = "theme";
             this.theme.Size = new System.Drawing.Size(41, 19);
             this.theme.TabIndex = 99;
@@ -682,7 +682,7 @@
             "Purple",
             "Red",
             "Yellow"});
-            this.changeTheme.Location = new System.Drawing.Point(1319, 21);
+            this.changeTheme.Location = new System.Drawing.Point(1319, 28);
             this.changeTheme.Name = "changeTheme";
             this.changeTheme.Size = new System.Drawing.Size(121, 29);
             this.changeTheme.TabIndex = 98;
@@ -705,10 +705,10 @@
             this.changeRoute.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.busParkBindingSource, "Date", true));
             this.changeRoute.FormattingEnabled = true;
             this.changeRoute.ItemHeight = 23;
-            this.changeRoute.Location = new System.Drawing.Point(13, 54);
+            this.changeRoute.Location = new System.Drawing.Point(14, 19);
             this.changeRoute.Margin = new System.Windows.Forms.Padding(0);
             this.changeRoute.Name = "changeRoute";
-            this.changeRoute.Size = new System.Drawing.Size(94, 29);
+            this.changeRoute.Size = new System.Drawing.Size(96, 29);
             this.changeRoute.TabIndex = 77;
             this.changeRoute.UseSelectable = true;
             this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChangedAsync);
@@ -1098,7 +1098,7 @@
             // themes
             // 
             this.themes.AutoSize = true;
-            this.themes.Location = new System.Drawing.Point(1138, 27);
+            this.themes.Location = new System.Drawing.Point(1138, 33);
             this.themes.Name = "themes";
             this.themes.Size = new System.Drawing.Size(80, 17);
             this.themes.TabIndex = 74;

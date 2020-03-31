@@ -1081,10 +1081,12 @@ namespace SystAnalys_lr1
 
         private void comboBox1_SelectedIndexChangedAsync(object sender, EventArgs e)
         {
+           
+            AsyncCreateAllCoordinates();
             //     buttonOff();
             if (changeRoute.Text == "None")
             {
-                AsyncCreateAllCoordinates();
+            //    AsyncCreateAllCoordinates();
                 selectedRoute = null;
                 deleteBus.Enabled = false;
                 checkedListBox1.Enabled = false;
@@ -1109,7 +1111,6 @@ namespace SystAnalys_lr1
             };
             if (changeRoute.Text == "All")
             {
-                AsyncCreateAllCoordinates();
                 selectedRoute = null;
                 selectRoute.Enabled = true;
                 deleteBus.Enabled = true;
@@ -1129,6 +1130,7 @@ namespace SystAnalys_lr1
                 G.drawALLGraph(V, E);
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
+                addBus.Enabled = true;
                 ///            buttonOn();
                 selected = new List<int>();
                 return;
@@ -1138,7 +1140,7 @@ namespace SystAnalys_lr1
                 //Console.WriteLine();
                 if (routes.ElementAt(i).Key == int.Parse(changeRoute.Text))
                 {
-                    AsyncCreateAllCoordinates();
+                //    AsyncCreateAllCoordinates();
                     selectedRoute = int.Parse(changeRoute.Text);
                     selectRoute.Enabled = true;
                     selectButton.Enabled = true;
@@ -1162,59 +1164,83 @@ namespace SystAnalys_lr1
                     return;
                 };
             }
-
             //  buttonOn();
         }
-        private void buttonOn()
+        private async Task buttonOn()
         {
             changeRoute.Invoke(new DelBool((s) => changeRoute.Enabled = s), true);
             button8.Invoke(new DelBool((s) => button8.Enabled = s), true);
             optimize.Invoke(new DelBool((s) => optimize.Enabled = s), true);
             button2.Invoke(new DelBool((s) => button2.Enabled = s), true);
-            //    changeRoute.Enabled = true;
+            toolStrip1.Invoke((System.Action)(() =>
+            {
+                saveButton.Enabled = true;
+                loadButton.Enabled = true;
+                selectButton.Enabled = true;
+                drawVertexButton.Enabled = true;
+                drawEdgeButton.Enabled = true;
+                deleteButton.Enabled = true;
+                deleteALLButton.Enabled = true;
+                deleteRoute.Enabled = true;
+                addBus.Enabled = true;
+                deleteBus.Enabled = true;
+                delAllBusesOnRoute.Enabled = true;
+                stopPointButton.Enabled = true;
+                addTraficLight.Enabled = true;
+                selectRoute.Enabled = true;
+            }));
+            //    saveButton.Invoke(new DelBool((s) => saveButton.Enabled = s), true);
+            //    loadButton.Invoke(new DelBool((s) => loadButton.Enabled = s), true);
+
+            //changeRoute.Enabled = true;
             //optimize.Enabled = true;
             //button2.Enabled = true;
             //button8.Enabled = true;
             //saveButton.Enabled = true;
             //loadButton.Enabled = true;
         }
-        private void buttonOff()
+        private async Task buttonOff()
         {
             //   label5.Invoke(new Del((s) => label5.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
             changeRoute.Invoke(new DelBool((s) => changeRoute.Enabled = s), false);
             button8.Invoke(new DelBool((s) => button8.Enabled = s), false);
             optimize.Invoke(new DelBool((s) => optimize.Enabled = s), false);
-            button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
+            //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
             //selectButton.Invoke(new DelBool((s) => selectButton.Enabled = s), false);
             //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
-            //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
+            button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
             //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
             //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
             //   saveButton.Invoke(new DelBool((s) => saveButton.Enabled = s), false);
             //    loadButton.Invoke(new DelBool((s) => loadButton.Enabled = s), false);
+            //changeRoute.Enabled = false;
             //button8.Enabled = false;
             //optimize.Enabled = false;
             //button2.Enabled = false;
             //button8.Enabled = false;
-            //  saveButton.Enabled = false;
-            //  loadButton.Enabled = false;
-            //selectButton.Enabled = false;
-            //drawVertexButton.Enabled = false;
-            //drawEdgeButton.Enabled = false;
-            //deleteButton.Enabled = false;
-            //deleteALLButton.Enabled = false;
-            //deleteRoute.Enabled = false;
-            //addBus.Enabled = false;
-            //deleteBus.Enabled = false;
-            //delAllBusesOnRoute.Enabled = false;
-            //stopPointButton.Enabled = false;
-            //addTraficLight.Enabled = false;
-            //selectRoute.Enabled = false;
+            toolStrip1.Invoke((System.Action)(() =>
+            {
+                saveButton.Enabled = false;
+                loadButton.Enabled = false;
+                selectButton.Enabled = false;
+                drawVertexButton.Enabled = false;
+                drawEdgeButton.Enabled = false;
+                deleteButton.Enabled = false;
+                deleteALLButton.Enabled = false;
+                deleteRoute.Enabled = false;
+                addBus.Enabled = false;
+                deleteBus.Enabled = false;
+                delAllBusesOnRoute.Enabled = false;
+                stopPointButton.Enabled = false;
+                addTraficLight.Enabled = false;
+                selectRoute.Enabled = false;
+            }));
 
         }
 
         private void deleteBus_Click(object sender, EventArgs e)
         {
+            AsyncCreateAllCoordinates();
             deleteBus.Enabled = false;
             addBus.Enabled = true;
             selectButton.Enabled = true;
@@ -1233,7 +1259,6 @@ namespace SystAnalys_lr1
             selected = new List<int>();
             DrawGrid();
             checkBusesOnRoute();
-            AsyncCreateAllCoordinates();
         }
 
         public static Image ResizeBitmap(Image sourceBMP, int width, int height)
@@ -1309,7 +1334,7 @@ namespace SystAnalys_lr1
 
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
-                    AsyncCreateAllCoordinates();
+                   // AsyncCreateAllCoordinates();
                 }
             }
             catch
@@ -1425,6 +1450,7 @@ namespace SystAnalys_lr1
             G.drawALLGraph(V, E);
             if (changeRoute.Text == "All")
             {
+                AsyncCreateAllCoordinates();
                 checkedListBox1.Enabled = false;
                 addBus.Enabled = false;
                 deleteBus.Enabled = false;
@@ -1437,6 +1463,7 @@ namespace SystAnalys_lr1
             };
             if (Int32.TryParse(changeRoute.Text, out number) != false)
             {
+                AsyncCreateAllCoordinates();
                 checkedListBox1.Enabled = false;
                 addBus.Enabled = true;
                 deleteBus.Enabled = true;
@@ -1451,13 +1478,13 @@ namespace SystAnalys_lr1
             selected = new List<int>();
             stopPointButton.Enabled = true;
             sheet.Image = G.GetBitmap();
-            AsyncCreateAllCoordinates();
             DrawGrid();
         }
 
 
         private void drawVertexButton_Click(object sender, EventArgs e)
         {
+            AsyncCreateAllCoordinates();
             deleteBus.Enabled = false;
             addBus.Enabled = false;
             checkedListBox1.Enabled = false;
@@ -1471,12 +1498,12 @@ namespace SystAnalys_lr1
             stopPointButton.Enabled = true;
             addTraficLight.Enabled = true;
             DrawGrid();
-            AsyncCreateAllCoordinates();
             selected = new List<int>();
         }
 
         private void deleteRoute_Click(object sender, EventArgs e)
         {
+            AsyncCreateAllCoordinates();
             checkedListBox1.Enabled = false;
             addBus.Enabled = true;
             selectButton.Enabled = true;
@@ -1559,7 +1586,6 @@ namespace SystAnalys_lr1
             traficLights.Clear();
             stopPoints.Clear();
             Ep.ERefreshRouts();
-            AsyncCreateAllCoordinates();
         }
 
         private void newModelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1622,6 +1648,7 @@ namespace SystAnalys_lr1
 
         private void deleteALLButton_Click(object sender, EventArgs e)
         {
+            AsyncCreateAllCoordinates();
             addBus.Enabled = true;
             drawVertexButton.Enabled = false;
             if (changeRoute.Text == "All")
@@ -1688,7 +1715,6 @@ namespace SystAnalys_lr1
             stopPointButton.Enabled = true;
             //  traficLights.Clear();
             Ep.ERefreshRouts();
-            AsyncCreateAllCoordinates();
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -1701,6 +1727,7 @@ namespace SystAnalys_lr1
 
         private void selectButton_Click(object sender, EventArgs e)
         {
+            AsyncCreateAllCoordinates();
             if (changeRoute.Text == "All")
             {
                 addBus.Enabled = false;
@@ -1726,7 +1753,6 @@ namespace SystAnalys_lr1
             sheet.Image = G.GetBitmap();
             selected1 = -1;
             selected = new List<int>();
-            AsyncCreateAllCoordinates();
             DrawGrid();
         }
         private List<Bus> SplitBuses()
@@ -2217,6 +2243,7 @@ namespace SystAnalys_lr1
 
         private void drawEdgeButton_Click(object sender, EventArgs e)
         {
+            AsyncCreateAllCoordinates();
             G.clearSheet();
             G.drawALLGraph(V, E);
             if (changeRoute.Text == "All")
@@ -2250,7 +2277,6 @@ namespace SystAnalys_lr1
             selected1 = -1;
             selected2 = -1;
             selected = new List<int>();
-            AsyncCreateAllCoordinates();
             DrawGrid();
         }
 
@@ -2865,519 +2891,522 @@ namespace SystAnalys_lr1
             //    }
 
             //}
-            if (changeRoute.Text == "All")
+            if (saveButton.Enabled == true)
             {
-                if (selectRoute.Enabled == false)
+                if (changeRoute.Text == "All")
                 {
-                    for (int i = 0; i < V.Count; i++)
+                    if (selectRoute.Enabled == false)
                     {
-                        if (Math.Pow((V[i].x - e.X / zoom), 2) + Math.Pow((V[i].y - e.Y / zoom), 2) <= G.R * G.R)
+                        for (int i = 0; i < V.Count; i++)
                         {
-                            if (selected.Count == 0)
+                            if (Math.Pow((V[i].x - e.X / zoom), 2) + Math.Pow((V[i].y - e.Y / zoom), 2) <= G.R * G.R)
                             {
-                                selected.Add(i);
-                                if (!V.Contains(new Vertex(V[i].x, V[i].y)))
+                                if (selected.Count == 0)
+                                {
+                                    selected.Add(i);
+                                    if (!V.Contains(new Vertex(V[i].x, V[i].y)))
+                                        V.Add(new Vertex(V[i].x * zoom, V[i].y * zoom));
+                                    G.drawSelectedVertex(V[i].x, V[i].y);
+                                    break;
+                                }
+                                else
+                                {
+                                    selected.Add(i);
+                                    E.Add(new Edge(selected[0], selected[1]));
                                     V.Add(new Vertex(V[i].x * zoom, V[i].y * zoom));
-                                G.drawSelectedVertex(V[i].x, V[i].y);
-                                break;
+                                    G.drawEdge(V[selected[0]], V[selected[1]], E[E.Count - 1], 1);
+                                    selected[0] = selected[1];
+                                    selected.Remove(selected[1]);
+                                    G.clearSheet();
+                                    G.drawALLGraph(V, E);
+                                    sheet.Image = G.GetBitmap();
+                                    DrawGrid();
+                                    G.drawSelectedVertex(V[i].x, V[i].y);
+                                    break;
+                                }
+
                             }
-                            else
+                        }
+                    }
+                    if (addTraficLight.Enabled == false)
+                    {
+                        if (firstCrossRoads > 0 || secondCrossRoads > 0)
+                        {
+                            if (firstCrossRoads > 0)
                             {
-                                selected.Add(i);
-                                E.Add(new Edge(selected[0], selected[1]));
-                                V.Add(new Vertex(V[i].x * zoom, V[i].y * zoom));
-                                G.drawEdge(V[selected[0]], V[selected[1]], E[E.Count - 1], 1);
-                                selected[0] = selected[1];
-                                selected.Remove(selected[1]);
-                                G.clearSheet();
-                                G.drawALLGraph(V, E);
+                                label12.Visible = true;
+                                label12.Text = "(1)Осталось поставить светофоров " + firstCrossRoads.ToString();
+                                foreach (var gridPart in GetTheGrid())
+                                {
+                                    if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.width * zoom) && (e.Y < gridPart.y * zoom + GridPart.height * zoom)))
+                                    {
+                                        traficLights.Add(new TraficLight(e.X / zoom, e.Y / zoom, GetTheGrid().IndexOf(gridPart), firstCrossRoadsGreenLight, firstCrossRoadsRedLight));
+                                        TraficLightsInGrids.Add(GetTheGrid().IndexOf(gridPart));
+                                        G.drawVertex(e.X / zoom, e.Y / zoom, "");
+                                        //  traficLights.Last().status = Status.GREEN;
+                                        //  traficLights.Last().Start();
+                                        firstCrossRoads -= 1;
+                                        if (firstCrossRoads == 0)
+                                            label12.Text = "(2)Осталось поставить светофоров " + secondCrossRoads.ToString();
+                                        sheet.Image = G.GetBitmap();
+                                        DrawGrid();
+                                        break;
+                                    }
+                                }
+                                return;
+                            }
+                            if (firstCrossRoads <= 0 && secondCrossRoads > 0)
+                            {
+                                label12.Text = "(2)Осталось поставить светофоров " + secondCrossRoads.ToString();
+
+                                foreach (var gridPart in GetTheGrid())
+                                {
+                                    if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.width * zoom) && (e.Y < gridPart.y * zoom + GridPart.height * zoom)))
+                                    {
+                                        traficLights.Add(new TraficLight(e.X / zoom, e.Y / zoom, GetTheGrid().IndexOf(gridPart), firstCrossRoadsRedLight, firstCrossRoadsGreenLight));
+                                        TraficLightsInGrids.Add(GetTheGrid().IndexOf(gridPart));
+                                        traficLights.Last().tick = firstCrossRoadsRedLight + 2;
+                                        traficLights.Last().status = Status.RED;
+                                        label12.Text = "(2)Осталось поставить светофоров " + (secondCrossRoads - 1).ToString();
+                                        G.drawSelectedVertex(e.X / zoom, e.Y / zoom);
+                                        //  traficLights.Last().Start();
+                                        sheet.Image = G.GetBitmap();
+                                        DrawGrid();
+                                        secondCrossRoads -= 1;
+                                        break;
+                                    }
+
+                                }
+                            }
+                            //break;
+                        }
+                        if (firstCrossRoads <= 0 && secondCrossRoads <= 0)
+                        {
+                            label12.Visible = false;
+                            loading.Enabled = true;
+                            loading.Value = 0;
+                            loading.Maximum = traficLights.Count;
+                            traficLights.ForEach((tl) =>
+                            {
+                                loading.Value += 1;
+                                tl.Start();
+                            });
+                            AsyncCreateAllCoordinates();
+                            loading.Enabled = false;
+                            selectedRoute = null;
+                            selectRoute.Enabled = true;
+                            deleteBus.Enabled = true;
+                            checkedListBox1.Enabled = false;
+                            drawEdgeButton.Enabled = true;
+                            selectButton.Enabled = true;
+                            drawVertexButton.Enabled = true;
+                            deleteButton.Enabled = true;
+                            deleteALLButton.Enabled = true;
+                            deleteRoute.Enabled = true;
+                            addBus.Enabled = false;
+                            deleteBus.Enabled = false;
+                            stopPointButton.Enabled = true;
+                            addTraficLight.Enabled = true;
+                        }
+                    }
+                    if (stopPointButton.Enabled == false)
+                    {
+                        foreach (var gridPart in GetTheGrid())
+                        {
+                            if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.width * zoom) && (e.Y < gridPart.y * zoom + GridPart.height * zoom)))
+                            {
+                                allstopPoints.Add(new Vertex(e.X / zoom, e.Y / zoom));
+                                //             allstopPointsInGrids.Add(GetTheGrid().IndexOf(gridPart));
+                                G.drawStopVertex(e.X / zoom, e.Y / zoom);
                                 sheet.Image = G.GetBitmap();
                                 DrawGrid();
-                                G.drawSelectedVertex(V[i].x, V[i].y);
-                                break;
-                            }
-
-                        }
-                    }
-                }
-                if (addTraficLight.Enabled == false)
-                {
-                    if (firstCrossRoads > 0 || secondCrossRoads > 0)
-                    {
-                        if (firstCrossRoads > 0)
-                        {
-                            label12.Visible = true;
-                            label12.Text = "(1)Осталось поставить светофоров " + firstCrossRoads.ToString();
-                            foreach (var gridPart in GetTheGrid())
-                            {
-                                if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.width * zoom) && (e.Y < gridPart.y * zoom + GridPart.height * zoom)))
-                                {
-                                    traficLights.Add(new TraficLight(e.X / zoom, e.Y / zoom, GetTheGrid().IndexOf(gridPart), firstCrossRoadsGreenLight, firstCrossRoadsRedLight));
-                                    TraficLightsInGrids.Add(GetTheGrid().IndexOf(gridPart));
-                                    G.drawVertex(e.X / zoom, e.Y / zoom, "");
-                                    //  traficLights.Last().status = Status.GREEN;
-                                    //  traficLights.Last().Start();
-                                    firstCrossRoads -= 1;
-                                    if (firstCrossRoads == 0)
-                                        label12.Text = "(2)Осталось поставить светофоров " + secondCrossRoads.ToString();
-                                    sheet.Image = G.GetBitmap();
-                                    DrawGrid();
-                                    break;
-                                }
-                            }
-                            return;
-                        }
-                        if (firstCrossRoads <= 0 && secondCrossRoads > 0)
-                        {
-                            label12.Text = "(2)Осталось поставить светофоров " + secondCrossRoads.ToString();
-
-                            foreach (var gridPart in GetTheGrid())
-                            {
-                                if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.width * zoom) && (e.Y < gridPart.y * zoom + GridPart.height * zoom)))
-                                {
-                                    traficLights.Add(new TraficLight(e.X / zoom, e.Y / zoom, GetTheGrid().IndexOf(gridPart), firstCrossRoadsRedLight, firstCrossRoadsGreenLight));
-                                    TraficLightsInGrids.Add(GetTheGrid().IndexOf(gridPart));
-                                    traficLights.Last().tick = firstCrossRoadsRedLight + 2;
-                                    traficLights.Last().status = Status.RED;
-                                    label12.Text = "(2)Осталось поставить светофоров " + (secondCrossRoads - 1).ToString();
-                                    G.drawSelectedVertex(e.X / zoom, e.Y / zoom);
-                                    //  traficLights.Last().Start();
-                                    sheet.Image = G.GetBitmap();
-                                    DrawGrid();
-                                    secondCrossRoads -= 1;
-                                    break;
-                                }
-
                             }
                         }
-                        //break;
                     }
-                    if (firstCrossRoads <= 0 && secondCrossRoads <= 0)
+                    if (selectButton.Enabled == false)
                     {
-                        label12.Visible = false;
-                        loading.Enabled = true;
-                        loading.Value = 0;
-                        loading.Maximum = traficLights.Count;
-                        traficLights.ForEach((tl) =>
-                        {
-                            loading.Value += 1;
-                            tl.Start();
-                        });
-                        loading.Enabled = false;
-                        AsyncCreateAllCoordinates();
-                        selectedRoute = null;
-                        selectRoute.Enabled = true;
-                        deleteBus.Enabled = true;
-                        checkedListBox1.Enabled = false;
-                        drawEdgeButton.Enabled = true;
-                        selectButton.Enabled = true;
-                        drawVertexButton.Enabled = true;
-                        deleteButton.Enabled = true;
-                        deleteALLButton.Enabled = true;
-                        deleteRoute.Enabled = true;
-                        addBus.Enabled = false;
-                        deleteBus.Enabled = false;
-                        stopPointButton.Enabled = true;
-                        addTraficLight.Enabled = true;
+                        c.asSelect(e, V, E, G, sheet, 0);
                     }
-                }
-                if (stopPointButton.Enabled == false)
-                {
-                    foreach (var gridPart in GetTheGrid())
+                    //нажата кнопка "рисовать вершину"
+                    if (drawVertexButton.Enabled == false)
                     {
-                        if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.width * zoom) && (e.Y < gridPart.y * zoom + GridPart.height * zoom)))
-                        {
-                            allstopPoints.Add(new Vertex(e.X / zoom, e.Y / zoom));
-                            //             allstopPointsInGrids.Add(GetTheGrid().IndexOf(gridPart));
-                            G.drawStopVertex(e.X / zoom, e.Y / zoom);
-                            sheet.Image = G.GetBitmap();
-                            DrawGrid();
-                        }
+                        c.drawVertex(e, V, G, sheet);
                     }
-                }
-                if (selectButton.Enabled == false)
-                {
-                    c.asSelect(e, V, E, G, sheet, 0);
-                }
-                //нажата кнопка "рисовать вершину"
-                if (drawVertexButton.Enabled == false)
-                {
-                    c.drawVertex(e, V, G, sheet);
-                }
-                //нажата кнопка "рисовать ребро"
-                if (drawEdgeButton.Enabled == false)
-                {
-                    c.asDrawEdge(e, V, E, G, sheet, 0);
-                }
-                //нажата кнопка "удалить элемент"
-                if (deleteButton.Enabled == false)
-                {
-                    c.asDelete(e, V, E, sheet, G, routesEdge);
+                    //нажата кнопка "рисовать ребро"
+                    if (drawEdgeButton.Enabled == false)
+                    {
+                        c.asDrawEdge(e, V, E, G, sheet, 0);
+                    }
+                    //нажата кнопка "удалить элемент"
+                    if (deleteButton.Enabled == false)
+                    {
+                        c.asDelete(e, V, E, sheet, G, routesEdge);
 
+                    }
+                    return;
                 }
-                return;
-            }
 
-            if (Int32.TryParse(changeRoute.Text, out number) != false)
-            {
-                List<Vertex> routeV = routes[int.Parse(changeRoute.Text)];
-                if (stopPointButton.Enabled == false)
+                if (Int32.TryParse(changeRoute.Text, out number) != false)
                 {
-                    foreach (var sp in allstopPoints)
+                    List<Vertex> routeV = routes[int.Parse(changeRoute.Text)];
+                    if (stopPointButton.Enabled == false)
                     {
-                        if (Math.Pow((sp.x - e.X / zoom), 2) + Math.Pow((sp.y - e.Y / zoom), 2) <= G.R * G.R)
+                        foreach (var sp in allstopPoints)
                         {
-                            foreach (var gridPart in GetTheGrid())
+                            if (Math.Pow((sp.x - e.X / zoom), 2) + Math.Pow((sp.y - e.Y / zoom), 2) <= G.R * G.R)
                             {
-                                if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.width * zoom) && (e.Y < gridPart.y * zoom + GridPart.height * zoom)))
+                                foreach (var gridPart in GetTheGrid())
                                 {
-                                    if (stopPoints.ContainsKey(int.Parse(changeRoute.Text)))
+                                    if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.width * zoom) && (e.Y < gridPart.y * zoom + GridPart.height * zoom)))
                                     {
-                                        stopPoints[int.Parse(changeRoute.Text)].Add(new Vertex(sp.x, sp.y));
-                                        stopPoints[int.Parse(changeRoute.Text)].Last().gridNum = GetTheGrid().IndexOf(gridPart);
-                                        stopPointsInGrids[int.Parse(changeRoute.Text)].Add(GetTheGrid().IndexOf(gridPart));
-                                    }
-                                    else
-                                    {
-                                        stopPoints.Add(int.Parse(changeRoute.Text), new List<Vertex>());
-                                        stopPointsInGrids.Add(int.Parse(changeRoute.Text), new List<int>());
-                                        stopPoints[int.Parse(changeRoute.Text)].Add(new Vertex(sp.x, sp.y));
-                                        stopPoints[int.Parse(changeRoute.Text)].Last().gridNum = GetTheGrid().IndexOf(gridPart);
-                                        stopPointsInGrids[int.Parse(changeRoute.Text)].Add(GetTheGrid().IndexOf(gridPart));
-                                    }
-                                    //G.clearSheet();
-                                    G.drawStopRouteVertex(sp.x, sp.y);
-                                    sheet.Image = G.GetBitmap();
-                                    DrawGrid();
-                                    break;
-                                }
-                            }
-
-                        }
-                    }
-                }
-                //нажата кнопка "выбрать вершину", ищем степень вершины
-                if (selectButton.Enabled == false)
-                {
-                    c.asSelect(e, routeV, routesEdge[int.Parse(changeRoute.Text)], G, sheet, 1);
-                }
-                if (selectRoute.Enabled == false)
-                {
-                    for (int i = 0; i < V.Count; i++)
-                    {
-                        if (Math.Pow((V[i].x - e.X / Main.zoom), 2) + Math.Pow((V[i].y - e.Y / Main.zoom), 2) <= G.R * G.R)
-                        {
-                            if (selected.Count == 0)
-                            {
-                                selected.Add(i);
-                                if (!routeV.Contains(new Vertex(V[i].x, V[i].y)))
-                                    routeV.Add(new Vertex(V[i].x * zoom, V[i].y * zoom));
-                                G.drawSelectedVertex(V[i].x, V[i].y);
-                                break;
-                            }
-                            else
-                            {
-                                routesEdge[int.Parse(changeRoute.Text)].Add(new Edge(routeV.Count - 1, routeV.Count));
-                                selected.Add(routeV.Count);
-                                routeV.Add(new Vertex(V[i].x * zoom, V[i].y * zoom));
-                                G.drawEdge(V[routeV.Count - 1], V[routeV.Count], routesEdge[int.Parse(changeRoute.Text)][routesEdge[int.Parse(changeRoute.Text)].Count - 1], 1);
-                                //routesEdge[int.Parse(changeRoute.Text)][routesEdge[int.Parse(changeRoute.Text)].Count - 1], 1);                                                                                                                                                                                
-                                //    selected[0] = selected[1];                                                                                                                                                                                
-                                //    selected.Remove(selected[1]);
-                                G.clearSheet();
-                                G.drawALLGraph(V, E);
-                                G.drawALLGraph(routeV, routesEdge[int.Parse(changeRoute.Text)], 1);
-                                sheet.Image = G.GetBitmap();
-                                DrawGrid();
-                                G.drawSelectedVertex(V[i].x, V[i].y);
-                                break;
-                            }
-
-                        }
-                    }
-                    sheet.Image = G.GetBitmap();
-
-                    //  CreateOneRouteCoordinates(int.Parse(comboBox1.Text));
-
-                }
-                //нажата кнопка addBus
-                if (addBus.Enabled == false)
-                {
-                    if (AllCoordinates[int.Parse(changeRoute.Text)].Count != 0)
-                    {
-                        PictureBox bus = new PictureBox();
-                        // bus.Location = new System.Drawing.Point(zoom == 1 ? e.X + mainPanel.AutoScrollPosition.X : e.X * zoom + mainPanel.AutoScrollPosition.X, zoom == 1 ? e.Y + mainPanel.AutoScrollPosition.Y : e.Y * zoom + mainPanel.AutoScrollPosition.Y);
-                        bus.Location = new System.Drawing.Point(e.X / zoom + mainPanel.AutoScrollPosition.X, e.Y / zoom + mainPanel.AutoScrollPosition.Y);
-
-                        bus.Size = new System.Drawing.Size(zoom == 1 ? 15 : 15 * (zoom / 2), zoom == 1 ? 15 : 15 * (zoom / 2));
-                        bus.Image = new Bitmap("../../Resources/shkolnyy-avtobus.png");
-                        bus.SizeMode = PictureBoxSizeMode.StretchImage;
-                        mainPanel.Controls.Add(bus);
-                        bus.BringToFront();
-
-                        int pos = 0;
-
-                        if (e.Button == MouseButtons.Left)
-                        {
-                            double min = Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)].Last().X - e.X / zoom), 2) + Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)].Last().Y - e.Y / zoom), 2);
-                            for (int i = 0; i < AllCoordinates[int.Parse(changeRoute.Text)].Count; i++)
-                            {
-                                if (Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].Y - e.Y / zoom), 2) <= G.R * G.R * 500)
-                                {
-                                    if ((Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].Y - e.Y / zoom), 2) < min))
-                                    {
-                                        min = Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].Y - e.Y / zoom), 2);
-                                        pos = i;
+                                        if (stopPoints.ContainsKey(int.Parse(changeRoute.Text)))
+                                        {
+                                            stopPoints[int.Parse(changeRoute.Text)].Add(new Vertex(sp.x, sp.y));
+                                            stopPoints[int.Parse(changeRoute.Text)].Last().gridNum = GetTheGrid().IndexOf(gridPart);
+                                            stopPointsInGrids[int.Parse(changeRoute.Text)].Add(GetTheGrid().IndexOf(gridPart));
+                                        }
+                                        else
+                                        {
+                                            stopPoints.Add(int.Parse(changeRoute.Text), new List<Vertex>());
+                                            stopPointsInGrids.Add(int.Parse(changeRoute.Text), new List<int>());
+                                            stopPoints[int.Parse(changeRoute.Text)].Add(new Vertex(sp.x, sp.y));
+                                            stopPoints[int.Parse(changeRoute.Text)].Last().gridNum = GetTheGrid().IndexOf(gridPart);
+                                            stopPointsInGrids[int.Parse(changeRoute.Text)].Add(GetTheGrid().IndexOf(gridPart));
+                                        }
+                                        //G.clearSheet();
+                                        G.drawStopRouteVertex(sp.x, sp.y);
+                                        sheet.Image = G.GetBitmap();
+                                        DrawGrid();
+                                        break;
                                     }
                                 }
-                            }
-                        }
 
-                        if (checkedListBox1.GetItemChecked(0))
-                        {
-                            using (Graphics graphics = Graphics.FromImage(bus.Image))
-                            {
-                                using (Font arialFont = new Font("Arial", 300))
-                                {
-                                    graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(10, 10));
-                                }
                             }
-                            buses.Add(new Bus(routes[int.Parse(changeRoute.Text)], bus, pos, checkedListBox1.GetItemChecked(1), int.Parse(changeRoute.Text), true));
                         }
-                        else
-                        {
-                            bus.Image = MakeGray(new Bitmap("../../Resources/shkolnyy-avtobus.png"));
-                            using (Graphics graphics = Graphics.FromImage(bus.Image))
-                            {
-                                using (Font arialFont = new Font("Arial", 300))
-                                {
-                                    graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(10, 10));
-                                }
-                            }
-                            buses.Add(new Bus(routes[int.Parse(changeRoute.Text)], bus, pos, checkedListBox1.GetItemChecked(1), int.Parse(changeRoute.Text), false));
-                        };
-                        //  
-                        //  Bus.AllCoordinates = AllCoordinates;
-                        buses.Last().Set();
                     }
-                }
-                if (deleteBus.Enabled == false)
-                {
-                    if (AllCoordinates[int.Parse(changeRoute.Text)].Count != 0)
+                    //нажата кнопка "выбрать вершину", ищем степень вершины
+                    if (selectButton.Enabled == false)
                     {
-                        int? pos = null;
-                        double min = Math.Pow((sheet.Image.Width - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((sheet.Image.Height - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2);
-                        for (int i = 0; i < buses.Count; i++)
-                        {
-                            if (Math.Pow((buses[i].bus.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].bus.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) <= buses[i].R * buses[i].R * 500)
-                            {
-                                if (buses[i].route == int.Parse(changeRoute.Text))
-                                {
-                                    if (Math.Pow((buses[i].bus.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].bus.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) < min)
-                                    {
-                                        min = Math.Pow((buses[i].bus.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].bus.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2);
-                                        pos = i;
-                                    }
-
-                                }
-                            }
-                        }
-                        if (pos != null)
-                        {
-                            buses[int.Parse(pos.ToString())].Stop();
-                            mainPanel.Controls.Remove(buses[int.Parse(pos.ToString())].bus);
-                            buses.Remove(buses[int.Parse(pos.ToString())]);
-                        }
-                        G.clearSheet();
-                        G.drawALLGraph(V, E);
-                        G.drawALLGraph(routeV, routesEdge[int.Parse(changeRoute.Text)], 1);
-                        sheet.Image = G.GetBitmap();
-                        DrawGrid();
+                        c.asSelect(e, routeV, routesEdge[int.Parse(changeRoute.Text)], G, sheet, 1);
                     }
-                }
-
-                //нажата кнопка "рисовать ребро"
-                if (drawEdgeButton.Enabled == false)
-                {
-                    //c.drawEdge(sender, e, V, E, G, sheet, 1);
-                    if (e.Button == MouseButtons.Left)
+                    if (selectRoute.Enabled == false)
                     {
                         for (int i = 0; i < V.Count; i++)
                         {
                             if (Math.Pow((V[i].x - e.X / Main.zoom), 2) + Math.Pow((V[i].y - e.Y / Main.zoom), 2) <= G.R * G.R)
                             {
-                                if (selected1 == -1)
+                                if (selected.Count == 0)
                                 {
-                                    G.drawSelectedVertex(V[i].x, V[i].y);
+                                    selected.Add(i);
                                     if (!routeV.Contains(new Vertex(V[i].x, V[i].y)))
-                                        routeV.Add(new Vertex(V[i].x, V[i].y));
-                                    selected1 = i;
-                                    sheet.Image = G.GetBitmap();
-                                    break;
-                                }
-                                if (selected2 == -1)
-                                {
+                                        routeV.Add(new Vertex(V[i].x * zoom, V[i].y * zoom));
                                     G.drawSelectedVertex(V[i].x, V[i].y);
-                                    selected2 = i;
-                                    int res = 0;
-                                    foreach (var ed in E)
-                                    {
-                                        if ((ed.v1 == selected1 && ed.v2 == selected2) || (ed.v2 == selected1 && ed.v1 == selected2))
-                                        {
-
-                                            // if (!routeV.Contains(new Vertex(V[i].x, V[i].y))) {
-                                            routesEdge[int.Parse(changeRoute.Text)].Add(new Edge(routeV.Count - 1, routeV.Count));
-                                            routeV.Add(new Vertex(V[i].x, V[i].y));
-                                            //  routesEdge[int.Parse(changeRoute.Text)].Add(new Edge(routeV.Count - (routeV.Count / 2 + 1), routeV.Count - (routeV.Count / 2)));                                    
-                                            G.drawEdge(V[selected1], V[selected2], E[E.Count - 1], 1);
-                                            sheet.Image = G.GetBitmap();
-                                            selected1 = -1;
-                                            selected2 = -1;
-                                            res = 1;
-                                            break;
-                                        }
-                                    }
-                                    if (res == 0)
-                                    {
-                                        routeV.RemoveAt(routeV.Count - 1);
-                                        //routeV.RemoveAt(routeV.Count - 1);
-                                    }
-                                    //routePoints.Clear();
-                                    //foreach (var x in routes)
-                                    //{
-                                    //    Routes(x.Key, x.Value, routesEdge[x.Key]);
-                                    //};
-                                    G.clearSheet();
-                                    G.drawALLGraph(V, E);
-                                    G.drawALLGraph(routeV, routesEdge[int.Parse(changeRoute.Text)], 1);
-                                    selected1 = -1;
-                                    selected2 = -1;
-                                    sheet.Image = G.GetBitmap();
-                                    DrawGrid();
                                     break;
-                                }
-                            }
-                        }
-                    }
-                    //if (e.Button == MouseButtons.Right)
-                    //{
-                    //    if ((selected1 != -1) &&
-                    //        (Math.Pow((routeV[selected1].x - e.X), 2) + Math.Pow((routeV[selected1].y - e.Y), 2) <= G.R * G.R))
-                    //    {
-                    //        G.drawVertex(routeV[selected1].x, routeV[selected1].y, (selected1 + 1).ToString());
-                    //        selected1 = -1;
-                    //        sheet.Image = G.GetBitmap();
-                    //    }
-                    //}
-                }
-                //нажата кнопка "удалить элемент"
-                if (deleteButton.Enabled == false)
-                {
-                    //   c.deleteRoute(sender, e, routeV, routesEdge[int.Parse(changeRoute.Text)], sheet, G);
-
-                    bool flag = false; //удалили ли что-нибудь по ЭТОМУ клику
-                                       //ищем, возможно была нажата вершина
-
-                    foreach (var stopRoute in stopPoints.Values)
-                    {
-                        for (int i = 0; i < stopRoute.Count; i++)
-                        {
-                            if (Math.Pow((stopRoute[i].x - e.X), 2) + Math.Pow((stopRoute[i].y - e.Y), 2) <= G.R * G.R)
-                            {
-                                stopRoute.RemoveAt(i);
-                                flag = true;
-                                break;
-                            }
-                        }
-                    }
-                    for (var i = 0; i < traficLights.Count; i++)
-                    {
-                        if (Math.Pow((traficLights[i].x - e.X), 2) + Math.Pow((traficLights[i].y - e.Y), 2) <= G.R * G.R)
-                        {
-                            traficLights.RemoveAt(i);
-                            flag = true;
-                            break;
-                        }
-
-                    }
-                    for (int i = 0; i < routeV.Count; i++)
-                    {
-                        if (Math.Pow((routeV[i].x - e.X), 2) + Math.Pow((routeV[i].y - e.Y), 2) <= G.R * G.R)
-                        {
-                            for (int j = 0; j < routesEdge[int.Parse(changeRoute.Text)].Count; j++)
-                            {
-                                if ((routesEdge[int.Parse(changeRoute.Text)][j].v1 == i) || (routesEdge[int.Parse(changeRoute.Text)][j].v2 == i))
-                                {
-                                    routesEdge[int.Parse(changeRoute.Text)].RemoveAt(j);
-                                    j--;
                                 }
                                 else
                                 {
-                                    if (routesEdge[int.Parse(changeRoute.Text)][j].v1 > i) routesEdge[int.Parse(changeRoute.Text)][j].v1--;
-                                    if (routesEdge[int.Parse(changeRoute.Text)][j].v2 > i) routesEdge[int.Parse(changeRoute.Text)][j].v2--;
+                                    routesEdge[int.Parse(changeRoute.Text)].Add(new Edge(routeV.Count - 1, routeV.Count));
+                                    selected.Add(routeV.Count);
+                                    routeV.Add(new Vertex(V[i].x * zoom, V[i].y * zoom));
+                                    G.drawEdge(V[routeV.Count - 1], V[routeV.Count], routesEdge[int.Parse(changeRoute.Text)][routesEdge[int.Parse(changeRoute.Text)].Count - 1], 1);
+                                    //routesEdge[int.Parse(changeRoute.Text)][routesEdge[int.Parse(changeRoute.Text)].Count - 1], 1);                                                                                                                                                                                
+                                    //    selected[0] = selected[1];                                                                                                                                                                                
+                                    //    selected.Remove(selected[1]);
+                                    G.clearSheet();
+                                    G.drawALLGraph(V, E);
+                                    G.drawALLGraph(routeV, routesEdge[int.Parse(changeRoute.Text)], 1);
+                                    sheet.Image = G.GetBitmap();
+                                    DrawGrid();
+                                    G.drawSelectedVertex(V[i].x, V[i].y);
+                                    break;
+                                }
+
+                            }
+                        }
+                        sheet.Image = G.GetBitmap();
+
+                        //  CreateOneRouteCoordinates(int.Parse(comboBox1.Text));
+
+                    }
+                    //нажата кнопка addBus
+                    if (addBus.Enabled == false)
+                    {
+                        if (AllCoordinates[int.Parse(changeRoute.Text)].Count != 0)
+                        {
+                            PictureBox bus = new PictureBox();
+                            // bus.Location = new System.Drawing.Point(zoom == 1 ? e.X + mainPanel.AutoScrollPosition.X : e.X * zoom + mainPanel.AutoScrollPosition.X, zoom == 1 ? e.Y + mainPanel.AutoScrollPosition.Y : e.Y * zoom + mainPanel.AutoScrollPosition.Y);
+                            bus.Location = new System.Drawing.Point(e.X / zoom + mainPanel.AutoScrollPosition.X, e.Y / zoom + mainPanel.AutoScrollPosition.Y);
+
+                            bus.Size = new System.Drawing.Size(zoom == 1 ? 15 : 15 * (zoom / 2), zoom == 1 ? 15 : 15 * (zoom / 2));
+                            bus.Image = new Bitmap("../../Resources/shkolnyy-avtobus.png");
+                            bus.SizeMode = PictureBoxSizeMode.StretchImage;
+                            mainPanel.Controls.Add(bus);
+                            bus.BringToFront();
+
+                            int pos = 0;
+
+                            if (e.Button == MouseButtons.Left)
+                            {
+                                double min = Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)].Last().X - e.X / zoom), 2) + Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)].Last().Y - e.Y / zoom), 2);
+                                for (int i = 0; i < AllCoordinates[int.Parse(changeRoute.Text)].Count; i++)
+                                {
+                                    if (Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].Y - e.Y / zoom), 2) <= G.R * G.R * 500)
+                                    {
+                                        if ((Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].Y - e.Y / zoom), 2) < min))
+                                        {
+                                            min = Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].Y - e.Y / zoom), 2);
+                                            pos = i;
+                                        }
+                                    }
                                 }
                             }
-                            routeV.RemoveAt(i);
-                            flag = true;
-                            break;
+
+                            if (checkedListBox1.GetItemChecked(0))
+                            {
+                                using (Graphics graphics = Graphics.FromImage(bus.Image))
+                                {
+                                    using (Font arialFont = new Font("Arial", 300))
+                                    {
+                                        graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(10, 10));
+                                    }
+                                }
+                                buses.Add(new Bus(routes[int.Parse(changeRoute.Text)], bus, pos, checkedListBox1.GetItemChecked(1), int.Parse(changeRoute.Text), true));
+                            }
+                            else
+                            {
+                                bus.Image = MakeGray(new Bitmap("../../Resources/shkolnyy-avtobus.png"));
+                                using (Graphics graphics = Graphics.FromImage(bus.Image))
+                                {
+                                    using (Font arialFont = new Font("Arial", 300))
+                                    {
+                                        graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(10, 10));
+                                    }
+                                }
+                                buses.Add(new Bus(routes[int.Parse(changeRoute.Text)], bus, pos, checkedListBox1.GetItemChecked(1), int.Parse(changeRoute.Text), false));
+                            };
+                            //  
+                            //  Bus.AllCoordinates = AllCoordinates;
+                            buses.Last().Set();
                         }
                     }
-                    //ищем, возможно было нажато ребро
-                    if (!flag)
+                    if (deleteBus.Enabled == false)
                     {
-                        for (int i = 0; i < routesEdge[int.Parse(changeRoute.Text)].Count; i++)
+                        if (AllCoordinates[int.Parse(changeRoute.Text)].Count != 0)
                         {
-                            if (routesEdge[int.Parse(changeRoute.Text)][i].v1 == routesEdge[int.Parse(changeRoute.Text)][i].v2) //если это петля
+                            int? pos = null;
+                            double min = Math.Pow((sheet.Image.Width - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((sheet.Image.Height - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2);
+                            for (int i = 0; i < buses.Count; i++)
                             {
-                                if ((Math.Pow((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x - G.R - e.X), 2) + Math.Pow((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y - G.R - e.Y), 2) <= ((G.R + 2) * (G.R + 2))) &&
-                                    (Math.Pow((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x - G.R - e.X), 2) + Math.Pow((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y - G.R - e.Y), 2) >= ((G.R - 2) * (G.R - 2))))
+                                if (Math.Pow((buses[i].bus.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].bus.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) <= buses[i].R * buses[i].R * 500)
                                 {
-                                    routesEdge[int.Parse(changeRoute.Text)].RemoveAt(i);
+                                    if (buses[i].route == int.Parse(changeRoute.Text))
+                                    {
+                                        if (Math.Pow((buses[i].bus.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].bus.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) < min)
+                                        {
+                                            min = Math.Pow((buses[i].bus.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].bus.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2);
+                                            pos = i;
+                                        }
+
+                                    }
+                                }
+                            }
+                            if (pos != null)
+                            {
+                                buses[int.Parse(pos.ToString())].Stop();
+                                mainPanel.Controls.Remove(buses[int.Parse(pos.ToString())].bus);
+                                buses.Remove(buses[int.Parse(pos.ToString())]);
+                            }
+                            G.clearSheet();
+                            G.drawALLGraph(V, E);
+                            G.drawALLGraph(routeV, routesEdge[int.Parse(changeRoute.Text)], 1);
+                            sheet.Image = G.GetBitmap();
+                            DrawGrid();
+                        }
+                    }
+
+                    //нажата кнопка "рисовать ребро"
+                    if (drawEdgeButton.Enabled == false)
+                    {
+                        //c.drawEdge(sender, e, V, E, G, sheet, 1);
+                        if (e.Button == MouseButtons.Left)
+                        {
+                            for (int i = 0; i < V.Count; i++)
+                            {
+                                if (Math.Pow((V[i].x - e.X / Main.zoom), 2) + Math.Pow((V[i].y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                                {
+                                    if (selected1 == -1)
+                                    {
+                                        G.drawSelectedVertex(V[i].x, V[i].y);
+                                        if (!routeV.Contains(new Vertex(V[i].x, V[i].y)))
+                                            routeV.Add(new Vertex(V[i].x, V[i].y));
+                                        selected1 = i;
+                                        sheet.Image = G.GetBitmap();
+                                        break;
+                                    }
+                                    if (selected2 == -1)
+                                    {
+                                        G.drawSelectedVertex(V[i].x, V[i].y);
+                                        selected2 = i;
+                                        int res = 0;
+                                        foreach (var ed in E)
+                                        {
+                                            if ((ed.v1 == selected1 && ed.v2 == selected2) || (ed.v2 == selected1 && ed.v1 == selected2))
+                                            {
+
+                                                // if (!routeV.Contains(new Vertex(V[i].x, V[i].y))) {
+                                                routesEdge[int.Parse(changeRoute.Text)].Add(new Edge(routeV.Count - 1, routeV.Count));
+                                                routeV.Add(new Vertex(V[i].x, V[i].y));
+                                                //  routesEdge[int.Parse(changeRoute.Text)].Add(new Edge(routeV.Count - (routeV.Count / 2 + 1), routeV.Count - (routeV.Count / 2)));                                    
+                                                G.drawEdge(V[selected1], V[selected2], E[E.Count - 1], 1);
+                                                sheet.Image = G.GetBitmap();
+                                                selected1 = -1;
+                                                selected2 = -1;
+                                                res = 1;
+                                                break;
+                                            }
+                                        }
+                                        if (res == 0)
+                                        {
+                                            routeV.RemoveAt(routeV.Count - 1);
+                                            //routeV.RemoveAt(routeV.Count - 1);
+                                        }
+                                        //routePoints.Clear();
+                                        //foreach (var x in routes)
+                                        //{
+                                        //    Routes(x.Key, x.Value, routesEdge[x.Key]);
+                                        //};
+                                        G.clearSheet();
+                                        G.drawALLGraph(V, E);
+                                        G.drawALLGraph(routeV, routesEdge[int.Parse(changeRoute.Text)], 1);
+                                        selected1 = -1;
+                                        selected2 = -1;
+                                        sheet.Image = G.GetBitmap();
+                                        DrawGrid();
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        //if (e.Button == MouseButtons.Right)
+                        //{
+                        //    if ((selected1 != -1) &&
+                        //        (Math.Pow((routeV[selected1].x - e.X), 2) + Math.Pow((routeV[selected1].y - e.Y), 2) <= G.R * G.R))
+                        //    {
+                        //        G.drawVertex(routeV[selected1].x, routeV[selected1].y, (selected1 + 1).ToString());
+                        //        selected1 = -1;
+                        //        sheet.Image = G.GetBitmap();
+                        //    }
+                        //}
+                    }
+                    //нажата кнопка "удалить элемент"
+                    if (deleteButton.Enabled == false)
+                    {
+                        //   c.deleteRoute(sender, e, routeV, routesEdge[int.Parse(changeRoute.Text)], sheet, G);
+
+                        bool flag = false; //удалили ли что-нибудь по ЭТОМУ клику
+                                           //ищем, возможно была нажата вершина
+
+                        foreach (var stopRoute in stopPoints.Values)
+                        {
+                            for (int i = 0; i < stopRoute.Count; i++)
+                            {
+                                if (Math.Pow((stopRoute[i].x - e.X), 2) + Math.Pow((stopRoute[i].y - e.Y), 2) <= G.R * G.R)
+                                {
+                                    stopRoute.RemoveAt(i);
                                     flag = true;
                                     break;
                                 }
                             }
-                            else //не петля
+                        }
+                        for (var i = 0; i < traficLights.Count; i++)
+                        {
+                            if (Math.Pow((traficLights[i].x - e.X), 2) + Math.Pow((traficLights[i].y - e.Y), 2) <= G.R * G.R)
                             {
-                                try
-                                {
-                                    if (((e.X - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x) * (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].y - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y) / (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x) + routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y) <= (e.Y + 4) &&
-                                        ((e.X - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x) * (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].y - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y) / (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x) + routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y) >= (e.Y - 4))
-                                    {
-                                        if ((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x <= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x && routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x <= e.X && e.X <= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x) ||
-                                            (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x >= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x && routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x >= e.X && e.X >= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x))
-                                        {
-                                            routesEdge[int.Parse(changeRoute.Text)].RemoveAt(i);
-                                            flag = true;
-                                            break;
-                                        }
-                                    }
-                                }
-                                catch
-                                {
-
-                                }
+                                traficLights.RemoveAt(i);
+                                flag = true;
+                                break;
                             }
 
                         }
-                    }
-                    //если что-то было удалено, то обновляем граф на экране
-                    if (flag)
-                    {
-                        G.clearSheet();
-                        G.drawALLGraph(V, E);
-                        G.drawALLGraph(routeV, routesEdge[int.Parse(changeRoute.Text)], 1);
-                        sheet.Image = G.GetBitmap();
-                        DrawGrid();
-                    }
+                        for (int i = 0; i < routeV.Count; i++)
+                        {
+                            if (Math.Pow((routeV[i].x - e.X), 2) + Math.Pow((routeV[i].y - e.Y), 2) <= G.R * G.R)
+                            {
+                                for (int j = 0; j < routesEdge[int.Parse(changeRoute.Text)].Count; j++)
+                                {
+                                    if ((routesEdge[int.Parse(changeRoute.Text)][j].v1 == i) || (routesEdge[int.Parse(changeRoute.Text)][j].v2 == i))
+                                    {
+                                        routesEdge[int.Parse(changeRoute.Text)].RemoveAt(j);
+                                        j--;
+                                    }
+                                    else
+                                    {
+                                        if (routesEdge[int.Parse(changeRoute.Text)][j].v1 > i) routesEdge[int.Parse(changeRoute.Text)][j].v1--;
+                                        if (routesEdge[int.Parse(changeRoute.Text)][j].v2 > i) routesEdge[int.Parse(changeRoute.Text)][j].v2--;
+                                    }
+                                }
+                                routeV.RemoveAt(i);
+                                flag = true;
+                                break;
+                            }
+                        }
+                        //ищем, возможно было нажато ребро
+                        if (!flag)
+                        {
+                            for (int i = 0; i < routesEdge[int.Parse(changeRoute.Text)].Count; i++)
+                            {
+                                if (routesEdge[int.Parse(changeRoute.Text)][i].v1 == routesEdge[int.Parse(changeRoute.Text)][i].v2) //если это петля
+                                {
+                                    if ((Math.Pow((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x - G.R - e.X), 2) + Math.Pow((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y - G.R - e.Y), 2) <= ((G.R + 2) * (G.R + 2))) &&
+                                        (Math.Pow((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x - G.R - e.X), 2) + Math.Pow((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y - G.R - e.Y), 2) >= ((G.R - 2) * (G.R - 2))))
+                                    {
+                                        routesEdge[int.Parse(changeRoute.Text)].RemoveAt(i);
+                                        flag = true;
+                                        break;
+                                    }
+                                }
+                                else //не петля
+                                {
+                                    try
+                                    {
+                                        if (((e.X - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x) * (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].y - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y) / (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x) + routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y) <= (e.Y + 4) &&
+                                            ((e.X - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x) * (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].y - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y) / (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x) + routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y) >= (e.Y - 4))
+                                        {
+                                            if ((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x <= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x && routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x <= e.X && e.X <= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x) ||
+                                                (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x >= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x && routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x >= e.X && e.X >= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x))
+                                            {
+                                                routesEdge[int.Parse(changeRoute.Text)].RemoveAt(i);
+                                                flag = true;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    catch
+                                    {
 
+                                    }
+                                }
+
+                            }
+                        }
+                        //если что-то было удалено, то обновляем граф на экране
+                        if (flag)
+                        {
+                            G.clearSheet();
+                            G.drawALLGraph(V, E);
+                            G.drawALLGraph(routeV, routesEdge[int.Parse(changeRoute.Text)], 1);
+                            sheet.Image = G.GetBitmap();
+                            DrawGrid();
+                        }
+
+                    }
+                    //   
+
+                    DrawGrid();
+                    CreateOneRouteCoordinates(int.Parse(changeRoute.Text));
+                    Bus.AllCoordinates = AllCoordinates;
+                    return;
                 }
-                //   
-
-                DrawGrid();
-                CreateOneRouteCoordinates(int.Parse(changeRoute.Text));
-                Bus.AllCoordinates = AllCoordinates;
-                return;
             }
             //Bus.AllCoordinates = AllCoordinates;
         }
@@ -3403,6 +3432,7 @@ namespace SystAnalys_lr1
 
         private void gridButton_Click(object sender, EventArgs e)
         {
+            AsyncCreateAllCoordinates();
             if (changeRoute.Text == "All")
             {
                 selectRoute.Enabled = false;
@@ -3434,11 +3464,11 @@ namespace SystAnalys_lr1
             selected = new List<int>();
             delAllBusesOnRoute.Enabled = true;
             stopPointButton.Enabled = false;
-            AsyncCreateAllCoordinates();
         }
 
         private void delAllBusesOnRoute_Click(object sender, EventArgs e)
         {
+            AsyncCreateAllCoordinates();
             checkBuses();
             if (changeRoute.Text == "All")
             {
@@ -3500,7 +3530,6 @@ namespace SystAnalys_lr1
                 
             }
             selected = new List<int>();
-            AsyncCreateAllCoordinates();
         }
         private void checkBuses()
         {
@@ -3670,6 +3699,7 @@ namespace SystAnalys_lr1
 
         private void selectRoute_Click(object sender, EventArgs e)
         {
+            AsyncCreateAllCoordinates();
             if (changeRoute.Text == "All")
             {
                 selectRoute.Enabled = false;
@@ -3704,7 +3734,6 @@ namespace SystAnalys_lr1
             stopPointButton.Enabled = true;
             sheet.Image = G.GetBitmap();
             selected1 = -1;
-            AsyncCreateAllCoordinates();
             DrawGrid();
         }
 

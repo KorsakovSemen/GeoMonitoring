@@ -63,15 +63,16 @@ namespace SystAnalys_lr1
 
 
             ////?/
-            buttonOff();
-        
-            await Task.Run(() =>
+            //     buttonOff();
+            await Task.Run(async () =>
             {
+                await buttonOff();
                 CreateAllCoordinates();
+                await buttonOn();
             });
-        
 
-            buttonOn();
+
+            //  buttonOn();
             Bus.AllCoordinates = AllCoordinates;
             //label9.Text = "Закрывай";
             //label9.Visible = false;
