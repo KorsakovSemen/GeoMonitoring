@@ -2999,7 +2999,6 @@ namespace SystAnalys_lr1
                 {
                     c.asDelete(e, V, E, sheet, G, routesEdge);
 
-
                 }
                 return;
             }
@@ -3152,7 +3151,7 @@ namespace SystAnalys_lr1
                     if (AllCoordinates[int.Parse(changeRoute.Text)].Count != 0)
                     {
                         int? pos = null;
-                        double min = Math.Pow((buses.Last().bus.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses.Last().bus.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2);
+                        double min = Math.Pow((sheet.Image.Width - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((sheet.Image.Height - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2);
                         for (int i = 0; i < buses.Count; i++)
                         {
                             if (Math.Pow((buses[i].bus.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].bus.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) <= buses[i].R * buses[i].R * 500)

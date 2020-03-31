@@ -63,7 +63,7 @@ namespace SystAnalys_lr1
 
 
             ////?/
-             buttonOff();
+            buttonOff();
         
             await Task.Run(() =>
             {
@@ -75,7 +75,7 @@ namespace SystAnalys_lr1
             Bus.AllCoordinates = AllCoordinates;
             //label9.Text = "Закрывай";
             //label9.Visible = false;
-            MessageBox.Show("Готово");
+          //  MessageBox.Show("Готово");
 
         }
         //Mutex mutex = new Mutex();

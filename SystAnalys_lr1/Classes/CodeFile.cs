@@ -2305,7 +2305,11 @@ asMoveWithoutGraphics()
         }
         public void Stop()
         {
-            TimerLight.Stop();
+            if (TimerLight != null)
+            {
+                TimerLight.Stop();
+            }
+           
         }
         public void Start()
         {
