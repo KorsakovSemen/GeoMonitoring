@@ -1081,12 +1081,10 @@ namespace SystAnalys_lr1
 
         private void comboBox1_SelectedIndexChangedAsync(object sender, EventArgs e)
         {
-           
             AsyncCreateAllCoordinates();
-            //     buttonOff();
             if (changeRoute.Text == "None")
             {
-            //    AsyncCreateAllCoordinates();
+                //    AsyncCreateAllCoordinates();
                 selectedRoute = null;
                 deleteBus.Enabled = false;
                 checkedListBox1.Enabled = false;
@@ -1130,8 +1128,7 @@ namespace SystAnalys_lr1
                 G.drawALLGraph(V, E);
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
-                addBus.Enabled = true;
-                ///            buttonOn();
+                Console.WriteLine("All");
                 selected = new List<int>();
                 return;
             };
@@ -1140,7 +1137,6 @@ namespace SystAnalys_lr1
                 //Console.WriteLine();
                 if (routes.ElementAt(i).Key == int.Parse(changeRoute.Text))
                 {
-                //    AsyncCreateAllCoordinates();
                     selectedRoute = int.Parse(changeRoute.Text);
                     selectRoute.Enabled = true;
                     selectButton.Enabled = true;
@@ -1176,18 +1172,6 @@ namespace SystAnalys_lr1
             {
                 saveButton.Enabled = true;
                 loadButton.Enabled = true;
-                selectButton.Enabled = true;
-                drawVertexButton.Enabled = true;
-                drawEdgeButton.Enabled = true;
-                deleteButton.Enabled = true;
-                deleteALLButton.Enabled = true;
-                deleteRoute.Enabled = true;
-                addBus.Enabled = true;
-                deleteBus.Enabled = true;
-                delAllBusesOnRoute.Enabled = true;
-                stopPointButton.Enabled = true;
-                addTraficLight.Enabled = true;
-                selectRoute.Enabled = true;
             }));
             //    saveButton.Invoke(new DelBool((s) => saveButton.Enabled = s), true);
             //    loadButton.Invoke(new DelBool((s) => loadButton.Enabled = s), true);
@@ -1334,7 +1318,7 @@ namespace SystAnalys_lr1
 
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
-                   // AsyncCreateAllCoordinates();
+                    // AsyncCreateAllCoordinates();
                 }
             }
             catch
@@ -1446,11 +1430,11 @@ namespace SystAnalys_lr1
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            AsyncCreateAllCoordinates();
             G.clearSheet();
             G.drawALLGraph(V, E);
             if (changeRoute.Text == "All")
             {
-                AsyncCreateAllCoordinates();
                 checkedListBox1.Enabled = false;
                 addBus.Enabled = false;
                 deleteBus.Enabled = false;
@@ -1463,7 +1447,6 @@ namespace SystAnalys_lr1
             };
             if (Int32.TryParse(changeRoute.Text, out number) != false)
             {
-                AsyncCreateAllCoordinates();
                 checkedListBox1.Enabled = false;
                 addBus.Enabled = true;
                 deleteBus.Enabled = true;
@@ -1489,6 +1472,7 @@ namespace SystAnalys_lr1
             addBus.Enabled = false;
             checkedListBox1.Enabled = false;
             drawVertexButton.Enabled = false;
+            Console.WriteLine("DrawVert");
             selectButton.Enabled = true;
             drawEdgeButton.Enabled = true;
             deleteButton.Enabled = true;
@@ -2115,7 +2099,7 @@ namespace SystAnalys_lr1
                             string path = dialog.SelectedPath;
                             if (File.Exists(path + "/Map.png"))
                                 sheet.Image = Image.FromFile(path + "/Map.png");
-                            else                                
+                            else
                                 MetroMessageBox.Show(this, "Шайтан картинки нет", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             DisplayEpicenters.path = path;
                             wsheet = sheet.Width;
@@ -2174,10 +2158,10 @@ namespace SystAnalys_lr1
                             if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
                             {
                                 path = dialog.SelectedPath;
-                                if(File.Exists(path + "/Map.png"))
-                                  sheet.Image = Image.FromFile(path + "/Map.png");
+                                if (File.Exists(path + "/Map.png"))
+                                    sheet.Image = Image.FromFile(path + "/Map.png");
                                 else
-                                  MetroMessageBox.Show(this, "Шайтан картинки нет", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                    MetroMessageBox.Show(this, "Шайтан картинки нет", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                                 DisplayEpicenters.path = path;
                                 wsheet = sheet.Width;
                                 hsheet = sheet.Height;
@@ -2698,6 +2682,7 @@ namespace SystAnalys_lr1
                     }
                     foreach (var tll in traficLights)
                     {
+                        tll.Set();
                         tll.Start();
                     }
                 }
@@ -2989,6 +2974,7 @@ namespace SystAnalys_lr1
                             traficLights.ForEach((tl) =>
                             {
                                 loading.Value += 1;
+                                tl.Set();
                                 tl.Start();
                             });
                             AsyncCreateAllCoordinates();
@@ -3040,6 +3026,8 @@ namespace SystAnalys_lr1
                     //нажата кнопка "удалить элемент"
                     if (deleteButton.Enabled == false)
                     {
+
+                  
                         c.asDelete(e, V, E, sheet, G, routesEdge);
 
                     }
@@ -3511,23 +3499,23 @@ namespace SystAnalys_lr1
                     {
                         bus.Stop();
                         mainPanel.Controls.Remove(bus.bus);
-                        b.Add(bus);                       
+                        b.Add(bus);
                     }
                 }
                 Parallel.ForEach(b, (bus) =>
                 {
-                    foreach(var B in buses)
+                    foreach (var B in buses)
                     {
                         if (B == bus)
                         {
                             buses.Remove(bus);
                             break;
-                        }                         
+                        }
                     }
                 });
                 b.Clear();
                 delAllBusesOnRoute.Enabled = true;
-                
+
             }
             selected = new List<int>();
         }

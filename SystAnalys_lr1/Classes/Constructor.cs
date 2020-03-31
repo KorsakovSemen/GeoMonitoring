@@ -188,12 +188,12 @@ namespace SystAnalys_lr1.Classes
                 if (Math.Pow((tl.x - e.X / Main.zoom), 2) + Math.Pow((tl.y - e.Y / Main.zoom), 2) <= G.R * G.R)
                 {
                     tl.Stop();
+                    //        sheet.Controls.Remove(tl.)
                     Main.traficLights.Remove(tl);
                     Main.flag = true;
                     break;
                 }
             }
-
             //foreach()
 
             foreach (var sp in Main.allstopPoints)
