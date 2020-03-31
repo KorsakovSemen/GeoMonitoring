@@ -126,7 +126,6 @@ namespace SystAnalys_lr1
         }
 
 
-
         public void ERefreshRouts()
         {
             ERouts.Items.Clear();

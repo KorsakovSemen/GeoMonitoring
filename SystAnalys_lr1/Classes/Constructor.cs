@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -8,6 +9,42 @@ namespace SystAnalys_lr1.Classes
 {
     public class Constructor
     {
+        delegate void Del(Bitmap bmp);
+
+        public async void asSelect(MouseEventArgs e, List<Vertex> V, List<Edge> E, DrawGraph G, PictureBox sheet, int n = 0)
+        {
+            await Task.Run(() => Select(e, V, E, G, sheet, n));
+        }
+        
+        public async void asDrawEdge(MouseEventArgs e, List<Vertex> V, List<Edge> E, DrawGraph G, PictureBox sheet, int n)
+        {
+            await Task.Run(() => drawEdge(e, V, E, G, sheet, n));
+        }
+
+        public async void asDrawEdgeRoute(MouseEventArgs e, List<Vertex> V, List<Edge> E, DrawGraph G, PictureBox sheet, int n)
+        {
+            await Task.Run(() => drawEdgeRoute(e, V, E, G, sheet, n));
+        }
+
+        public async void asDelete(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, DrawGraph G, SerializableDictionary<int, List<Edge>> routesEdgeE)
+        {
+            await Task.Run(() => delete(e, V, E, sheet, G, routesEdgeE));
+            if (Main.flag)
+            {
+                G.clearSheet();
+                G.drawALLGraph(V, E);
+                sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
+                Main.DrawGrid();
+            }
+        }
+
+        public async void asDeleteRoute(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet, DrawGraph G)
+        {
+            await Task.Run(() => deleteRoute(e, routeV, routesEdge, sheet, G));
+            
+        }
+
+
         public void Select(MouseEventArgs e, List<Vertex> V, List<Edge> E, DrawGraph G, PictureBox sheet, int n = 0)
         {
             for (int i = 0; i < V.Count; i++)
@@ -20,14 +57,15 @@ namespace SystAnalys_lr1.Classes
                         G.clearSheet();
                         if (n != 0) G.drawALLGraph(Main.V, Main.E);
                         G.drawALLGraph(V, E, n);
-                        sheet.Image = G.GetBitmap();
+                        //  sheet.Image = G.GetBitmap();
+                        sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
                         Main.DrawGrid();
                     }
                     if (Main.selected1 == -1)
                     {
                         G.drawSelectedVertex(V[i].x, V[i].y);
                         Main.selected1 = i;
-                        sheet.Image = G.GetBitmap();
+                        sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
                         Main.DrawGrid();
                         //createAdjAndOut();
                         //listBoxMatrix.Items.Clear();
@@ -41,14 +79,16 @@ namespace SystAnalys_lr1.Classes
             }
         }
 
+
+
         public void drawVertex(MouseEventArgs e, List<Vertex> V, DrawGraph G, PictureBox sheet)
         {
             V.Add(new Vertex(e.X / Main.zoom, e.Y / Main.zoom));
             G.drawVertex(e.X / Main.zoom, e.Y / Main.zoom, V.Count.ToString());
             sheet.Image = G.GetBitmap();
             Main.DrawGrid();
-        }
 
+        }
 
         public void drawEdge(MouseEventArgs e, List<Vertex> V, List<Edge> E, DrawGraph G, PictureBox sheet, int n)
         {
@@ -62,7 +102,7 @@ namespace SystAnalys_lr1.Classes
                         {
                             G.drawSelectedVertex(V[i].x, V[i].y);
                             Main.selected1 = i;
-                            sheet.Image = G.GetBitmap();
+                            sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
                             break;
                         }
                         if (Main.selected2 == -1)
@@ -77,22 +117,12 @@ namespace SystAnalys_lr1.Classes
                             if (n != 0) G.drawALLGraph(Main.V, Main.E);
                             G.drawALLGraph(V, E, n);
                             Main.DrawGrid();
-                            sheet.Image = G.GetBitmap();
+                            sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
                             break;
                         }
                     }
                 }
             }
-            //if (e.Button == MouseButtons.Right)
-            //{
-            //    if ((Main.selected1 != -1) &&
-            //        (Math.Pow((V[Main.selected1].x - e.X), 2) + Math.Pow((V[Main.selected1].y - e.Y), 2) <= G.R * G.R))
-            //    {
-            //        G.drawVertex(V[Main.selected1].x, V[Main.selected1].y, (Main.selected1 + 1).ToString());
-            //        Main.selected1 = -1;
-            //        sheet.Image = G.GetBitmap();
-            //    }
-            //}
         }
 
         public void drawEdgeRoute(MouseEventArgs e, List<Vertex> V, List<Edge> E, DrawGraph G, PictureBox sheet, int n)
@@ -108,7 +138,7 @@ namespace SystAnalys_lr1.Classes
                             G.drawSelectedVertex(V[i].x, V[i].y);
                             V.Add(new Vertex(V[i].x / Main.zoom, V[i].y / Main.zoom));
                             Main.selected1 = i;
-                            sheet.Image = G.GetBitmap();
+                            sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
                             break;
                         }
                         if (Main.selected2 == -1)
@@ -127,7 +157,7 @@ namespace SystAnalys_lr1.Classes
                                     if (Main.E[j].v1 == z.v1 && Main.E[j].v2 == z.v2)
                                     {
                                         G.drawEdge(V[Main.selected1], V[Main.selected2], E[E.Count - 1], n);
-                                        sheet.Image = G.GetBitmap();
+                                        sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
                                         Main.selected1 = -1;
                                         Main.selected2 = -1;
                                         break;
@@ -137,41 +167,16 @@ namespace SystAnalys_lr1.Classes
                             E.Remove(E.Last());
                             G.clearSheet();
                             Main.DrawGrid();
-                            sheet.Image = G.GetBitmap();
+                            sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
                             Main.selected1 = -1;
                             Main.selected2 = -1;
-                            //routesEdge[int.Parse(comboBox1.Text)].Add(new Edge(routeV.Count - (routeV.Count / 2 + 1), routeV.Count - (routeV.Count / 2)));
-                            //G.drawEdge(routeV[routeV.Count - 2], routeV[routeV.Count - 1], routesEdge[int.Parse(comboBox1.Text)][routesEdge[int.Parse(comboBox1.Text)].Count - 1], 0, 1);
-                            //G.drawALLGraph(routeV, routesEdge[int.Parse(changeRoute.Text)], 1);
-                            //selected1 = -1;
-                            //selected2 = -1;
-                            //sheet.Image = G.GetBitmap();
-                            //        CreateOneRouteCoordinates(int.Parse(comboBox1.Text));
                             break;
                         }
                     }
                 }
             }
-            //if (e.Button == MouseButtons.Right)
-            //{
-            //    //G.drawALLGraph(routeV, routesEdge[int.Parse(comboBox1.Text)], 1);
-            //    //selected1 = -1;
-            //    //selected2 = -1;
-            //    if ((selected1 != -1) &&
-            //        (Math.Pow((routeV[selected1].x - e.X), 2) + Math.Pow((routeV[selected1].y - e.Y), 2) <= G.R * G.R))
-            //    {
-            //        G.drawVertex(routeV[selected1].x, routeV[selected1].y, (selected1 + 1).ToString());
-            //        selected1 = -1;
-            //        sheet.Image = G.GetBitmap();
-            //        //    CreateOneRouteCoordinates(int.Parse(comboBox1.Text));
-            //    }
-            //}
         }
 
-        public async void del(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, DrawGraph G, SerializableDictionary<int, List<Edge>> routesEdgeE)
-        {
-            await Task.Run(() => delete(e, V, E, sheet, G, routesEdgeE));
-        }
         public void delete(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, DrawGraph G, SerializableDictionary<int, List<Edge>> routesEdgeE)
         {
             //удалили ли что-нибудь по ЭТОМУ клику
@@ -183,18 +188,20 @@ namespace SystAnalys_lr1.Classes
                 if (Math.Pow((tl.x - e.X / Main.zoom), 2) + Math.Pow((tl.y - e.Y / Main.zoom), 2) <= G.R * G.R)
                 {
                     tl.Stop();
-                    Main.traficLights.Remove(tl);                    
+                    Main.traficLights.Remove(tl);
+                    Main.flag = true;
                     break;
                 }
             }
 
             //foreach()
 
-            foreach(var sp in Main.allstopPoints)
+            foreach (var sp in Main.allstopPoints)
             {
                 if (Math.Pow((sp.x - e.X / Main.zoom), 2) + Math.Pow((sp.y - e.Y / Main.zoom), 2) <= G.R * G.R)
                 {
                     Main.allstopPoints.Remove(sp);
+                    Main.flag = true;
                     break;
                 }
             }
@@ -297,48 +304,6 @@ namespace SystAnalys_lr1.Classes
                             if (E[j].v2 > i) E[j].v2--;
                         }
                     }
-                    //int er = 0;
-                    //foreach (var route in Main.routes)
-                    //{
-                    //    er = 0;
-                    //    foreach (var r in route.Value)
-                    //    {
-
-                    //        foreach (var rp in Main.routePoints)
-                    //        {
-                    //            if (rp.ContainsKey(i))
-                    //            {
-
-                    //                if (r.x == rp[i].x && r.y == rp[i].y)
-                    //                {
-                    //                    //       routesEdgeE[5].Remove(i);
-                    //                    // Console.WriteLine(routesEdgeE);                                                                    
-                    //                    //for (int w = 0; w < routesEdgeE[23].Count; w++)
-                    //                    //{
-                    //                    //    if ((routesEdgeE[23][w].v1 == i) || (routesEdgeE[23][w].v2 == i))
-                    //                    //    {
-                    //                    //        routesEdgeE[23].RemoveAt(w);
-                    //                    //        w--;
-                    //                    //    }
-                    //                    //    else
-                    //                    //    {
-                    //                    //        if (routesEdgeE[23][w].v1 > i) routesEdgeE[23][w].v1--;
-                    //                    //        if (routesEdgeE[23][w].v2 > i) routesEdgeE[23][w].v2--;
-                    //                    //    }
-
-                    //                    //}
-                    //                    route.Value.Remove(r);
-                    //                    er = 1;
-                    //                    //break;
-                    //                };
-                    //            }
-                    //        }
-                    //        if (er == 1)
-                    //        {
-                    //            break;
-                    //        };
-                    //    };
-                    //};
                     V.RemoveAt(i);
 
 
@@ -366,21 +331,28 @@ namespace SystAnalys_lr1.Classes
                             break;
                         }
                     }
-                    //else //не петля
-                    //{
-                    //    if (((e.X - V[E[i].v1].x) * (V[E[i].v2].y - V[E[i].v1].y) / (V[E[i].v2].x - V[E[i].v1].x) + V[E[i].v1].y) <= (e.Y + 4) &&
-                    //        ((e.X - V[E[i].v1].x) * (V[E[i].v2].y - V[E[i].v1].y) / (V[E[i].v2].x - V[E[i].v1].x) + V[E[i].v1].y) >= (e.Y - 4))
-                    //    {
-                    //        if ((V[E[i].v1].x <= V[E[i].v2].x && V[E[i].v1].x <= e.X && e.X <= V[E[i].v2].x) ||
-                    //            (V[E[i].v1].x >= V[E[i].v2].x && V[E[i].v1].x >= e.X && e.X >= V[E[i].v2].x))
-                    //        {
-                    //            E.RemoveAt(i);
-                    //            Main.flag = true;
-                    //            Main.DrawGrid();
-                    //            break;
-                    //        }
-                    //    }
-                    //}
+                    else //не петля
+                    {
+                        try
+                        {
+                            if (((e.X - V[E[i].v1].x) * (V[E[i].v2].y - V[E[i].v1].y) / (V[E[i].v2].x - V[E[i].v1].x) + V[E[i].v1].y) <= (e.Y + 4) &&
+                                ((e.X - V[E[i].v1].x) * (V[E[i].v2].y - V[E[i].v1].y) / (V[E[i].v2].x - V[E[i].v1].x) + V[E[i].v1].y) >= (e.Y - 4))
+                            {
+                                if ((V[E[i].v1].x <= V[E[i].v2].x && V[E[i].v1].x <= e.X && e.X <= V[E[i].v2].x) ||
+                                    (V[E[i].v1].x >= V[E[i].v2].x && V[E[i].v1].x >= e.X && e.X >= V[E[i].v2].x))
+                                {
+                                    E.RemoveAt(i);
+                                    Main.flag = true;
+                                    Main.DrawGrid();
+                                    break;
+                                }
+                            }
+                        }
+                        catch
+                        {
+
+                        }
+                    }
                 }
             }
             //если что-то было удалено, то обновляем граф на экране
@@ -439,21 +411,28 @@ namespace SystAnalys_lr1.Classes
                             break;
                         }
                     }
-                    //else //не петля
-                    //{
-                    //    if (((e.X - routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].x) * (routeV[routesEdge[int.Parse(comboBox1.Text)][i].v2].y - routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].y) / (routeV[routesEdge[int.Parse(comboBox1.Text)][i].v2].x - routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].x) + routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].y) <= (e.Y + 4) &&
-                    //        ((e.X - routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].x) * (routeV[routesEdge[int.Parse(comboBox1.Text)][i].v2].y - routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].y) / (routeV[routesEdge[int.Parse(comboBox1.Text)][i].v2].x - routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].x) + routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].y) >= (e.Y - 4))
-                    //    {
-                    //        if ((routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].x <= routeV[routesEdge[int.Parse(comboBox1.Text)][i].v2].x && routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].x <= e.X && e.X <= routeV[routesEdge[int.Parse(comboBox1.Text)][i].v2].x) ||
-                    //            (routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].x >= routeV[routesEdge[int.Parse(comboBox1.Text)][i].v2].x && routeV[routesEdge[int.Parse(comboBox1.Text)][i].v1].x >= e.X && e.X >= routeV[routesEdge[int.Parse(comboBox1.Text)][i].v2].x))
-                    //        {
-                    //            routesEdge[int.Parse(comboBox1.Text)].RemoveAt(i);
-                    //            flag = true;
-                    //            DrawGrid();
-                    //            break;
-                    //        }
-                    //    }
-                    //}
+                    else //не петля
+                    {
+                        try
+                        {
+                            if (((e.X - routeV[routesEdge[i].v1].x) * (routeV[routesEdge[i].v2].y - routeV[routesEdge[i].v1].y) / (routeV[routesEdge[i].v2].x - routeV[routesEdge[i].v1].x) + routeV[routesEdge[i].v1].y) <= (e.Y + 4) &&
+                                ((e.X - routeV[routesEdge[i].v1].x) * (routeV[routesEdge[i].v2].y - routeV[routesEdge[i].v1].y) / (routeV[routesEdge[i].v2].x - routeV[routesEdge[i].v1].x) + routeV[routesEdge[i].v1].y) >= (e.Y - 4))
+                            {
+                                if ((routeV[routesEdge[i].v1].x <= routeV[routesEdge[i].v2].x && routeV[routesEdge[i].v1].x <= e.X && e.X <= routeV[routesEdge[i].v2].x) ||
+                                    (routeV[routesEdge[i].v1].x >= routeV[routesEdge[i].v2].x && routeV[routesEdge[i].v1].x >= e.X && e.X >= routeV[routesEdge[i].v2].x))
+                                {
+                                    routesEdge.RemoveAt(i);
+                                    Main.flag = true;
+                                    Main.DrawGrid();
+                                    break;
+                                }
+                            }
+                        }
+                        catch
+                        {
+
+                        }
+                    }
                 }
             }
             //если что-то было удалено, то обновляем граф на экране
@@ -462,7 +441,7 @@ namespace SystAnalys_lr1.Classes
                 G.clearSheet();
                 G.drawALLGraph(Main.V, Main.E);
                 G.drawALLGraph(routeV, routesEdge, 1);
-                sheet.Image = G.GetBitmap();
+                sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
                 Main.DrawGrid();
             }
         }
