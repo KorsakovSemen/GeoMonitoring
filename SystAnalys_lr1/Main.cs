@@ -1,4 +1,5 @@
 ﻿using MetroFramework;
+using MetroFramework.Controls;
 using MetroFramework.Forms;
 using Newtonsoft.Json;
 using SystAnalys_lr1.Classes;
@@ -123,8 +124,8 @@ namespace SystAnalys_lr1
                 System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
             }
             InitializeComponent();
-            tracbarX = trackBar1.Location.X;
-            tracbarY = trackBar1.Location.Y;
+            tracbarX = metroTrackBar1.Location.X;
+            tracbarY = metroTrackBar1.Location.Y;
             ExpandEpicParamet = new List<string>();
             g = new Grid(0, 0, 0, 0, 80, 40);
             routePoints = new List<SerializableDictionary<int, Vertex>>();
@@ -193,7 +194,11 @@ namespace SystAnalys_lr1
                 // MessageBox.Show("Nine");
             }
             if (sheet.Image == null)
+            {
+                addRouteToolStripMenuItem.Enabled = false;
                 openEpicFormToolStripMenuItem.Enabled = false;
+                createGridToolStripMenuItem.Enabled = false;
+            }
             changeRoute.Text = "All";
             mainPanel.MaximumSize = new System.Drawing.Size(sheet.Width, sheet.Height);
             mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -928,7 +933,7 @@ namespace SystAnalys_lr1
 
             Bus.SetScrollX(mainPanel.AutoScrollPosition.X);
             Bus.SetScrollY(mainPanel.AutoScrollPosition.Y);
-            //trackBar1.Location= new Point(tracbarX- mainPanel.AutoScrollPosition.X, tracbarY - mainPanel.AutoScrollPosition.Y);
+            //metroTrackBar1.Location= new Point(tracbarX- mainPanel.AutoScrollPosition.X, tracbarY - mainPanel.AutoScrollPosition.Y);
 
         }
 
@@ -1055,12 +1060,15 @@ namespace SystAnalys_lr1
             //GifListAdd();
             //offBuses(5*10);
             //Baraban();
-            label5.Text = "";
-            TimeSpan ts = TimeSpan.FromTicks(int.Parse(textBox2.Text));
-            double minutesFromTs = ts.TotalSeconds;
-            Console.WriteLine(minutesFromTs);
-            //asModeling();
-            Modeling();
+            if (int.TryParse(textBox2.Text, out int t))
+            {
+                label5.Text = "";
+                TimeSpan ts = TimeSpan.FromTicks(int.Parse(textBox2.Text));
+                double minutesFromTs = ts.TotalSeconds;
+                Console.WriteLine(minutesFromTs);
+                //asModeling();
+                Modeling();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -1267,9 +1275,9 @@ namespace SystAnalys_lr1
             return result;
 
         }
-        public TrackBar GetTrackBar()
+        public MetroTrackBar GetTrackBar()
         {
-            return this.trackBar1;
+            return this.metroTrackBar1;
         }
         private static Image Zoom(Image img, Size size)
         {
@@ -1280,61 +1288,7 @@ namespace SystAnalys_lr1
         }
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            try
-            {
-                if (sheet.Image != null)
-                {
-                    sheet.Image = ResizeBitmap(new Bitmap(saveImage), wsheet * trackBar1.Value, hsheet * trackBar1.Value);
-                    globalMap = ResizeBitmap(new Bitmap(saveImage), wsheet * trackBar1.Value, hsheet * trackBar1.Value);
-                    mainPanel.AutoScrollPosition = new Point(scrollX * trackBar1.Value, scrollY * trackBar1.Value);
 
-                    ///
-                    scrollX = mainPanel.AutoScrollPosition.X;
-                    scrollY = mainPanel.AutoScrollPosition.Y;
-                    zoom = trackBar1.Value;
-                    Bus.SetScrollX(mainPanel.AutoScrollPosition.X);
-                    Bus.SetScrollY(mainPanel.AutoScrollPosition.Y);
-                    Bus.ZoomCoef = trackBar1.Value;
-
-                    foreach (var bus in buses)
-                    {
-                        bus.setBusSize();
-                    }
-
-                    //CreateGrid();
-                    //CreatePollutionInRoutes();
-                    //Bus.setEpicenters(Epics);
-                    Bus.setGrid(TheGrid);
-                    Bus.setMap(sheet);
-                    Bus.setAllCoordinates(AllCoordinates);
-
-                    //CreateAllOneGrids();
-
-
-                    G.clearSheet();
-                    if (Int32.TryParse(changeRoute.Text, out number) != false)
-                    {
-                        G.drawALLGraph(V, E);
-                        G.drawALLGraph(routes[int.Parse(changeRoute.Text)], routesEdge[int.Parse(changeRoute.Text)], 1);
-                    }
-                    else if (changeRoute.Text == "None")
-                    {
-                        G.clearSheet();
-                    }
-                    else
-                    {
-                        G.drawALLGraph(V, E);
-                    }
-
-                    sheet.Image = G.GetBitmap();
-                    DrawGrid();
-                    // //AsyncCreateAllCoordinates()();
-                }
-            }
-            catch
-            {
-
-            }
         }
 
         public static string NormalizePath(string path)
@@ -1628,6 +1582,8 @@ namespace SystAnalys_lr1
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
                 openEpicFormToolStripMenuItem.Enabled = true;
+                addRouteToolStripMenuItem.Enabled = true;
+                createGridToolStripMenuItem.Enabled = true;
             }
         }
 
@@ -1995,7 +1951,7 @@ namespace SystAnalys_lr1
 
                         Ep.RecReateFunction();
 
-                   
+
                         //await Task.Delay(50);
                         //   Thread.Sleep(250);
                         //if (small < old)
@@ -3923,6 +3879,67 @@ namespace SystAnalys_lr1
         private void metroButton1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void metroTrackBar1_ScrollAsync(object sender, ScrollEventArgs e)
+        {
+            try
+            {
+
+                if (sheet.Image != null)
+                {
+                    sheet.Image = ResizeBitmap(new Bitmap(saveImage), wsheet * metroTrackBar1.Value, hsheet * metroTrackBar1.Value);
+                    globalMap = ResizeBitmap(new Bitmap(saveImage), wsheet * metroTrackBar1.Value, hsheet * metroTrackBar1.Value);
+                    mainPanel.AutoScrollPosition = new Point(scrollX * metroTrackBar1.Value, scrollY * metroTrackBar1.Value);
+
+                    ///
+                    scrollX = mainPanel.AutoScrollPosition.X;
+                    scrollY = mainPanel.AutoScrollPosition.Y;
+                    zoom = metroTrackBar1.Value;
+                    Bus.SetScrollX(mainPanel.AutoScrollPosition.X);
+                    Bus.SetScrollY(mainPanel.AutoScrollPosition.Y);
+                    Bus.ZoomCoef = metroTrackBar1.Value;
+
+                    foreach (var bus in buses)
+                    {
+                        bus.setBusSize();
+                    }
+
+                    //CreateGrid();
+                    //CreatePollutionInRoutes();
+                    //Bus.setEpicenters(Epics);
+                    Bus.setGrid(TheGrid);
+                    Bus.setMap(sheet);
+                    Bus.setAllCoordinates(AllCoordinates);
+
+                    //CreateAllOneGrids();
+
+
+                    G.clearSheet();
+                    if (Int32.TryParse(changeRoute.Text, out number) != false)
+                    {
+                        G.drawALLGraph(V, E);
+                        G.drawALLGraph(routes[int.Parse(changeRoute.Text)], routesEdge[int.Parse(changeRoute.Text)], 1);
+                    }
+                    else if (changeRoute.Text == "None")
+                    {
+                        G.clearSheet();
+                    }
+                    else
+                    {
+                        G.drawALLGraph(V, E);
+                    }
+
+                    sheet.Image = G.GetBitmap();
+                    DrawGrid();
+                    // //AsyncCreateAllCoordinates()();
+                }
+
+            }
+            catch//(OutOfMemoryException ex)
+            {
+                Console.WriteLine("ex");
+            }
         }
 
         private void createGridToolStripMenuItem_Click(object sender, EventArgs e)

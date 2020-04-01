@@ -30,7 +30,7 @@ namespace SystAnalys_lr1
 
         }
 
-        private TrackBar EZoomBar = new TrackBar();
+        private MetroTrackBar EZoomBar = new MetroTrackBar();
         public PictureBox Esheet = new PictureBox();
         private Panel MapPanel = new Panel();
  
@@ -78,7 +78,8 @@ namespace SystAnalys_lr1
             EZoomBar.Left = MainForm.GetTrackBar().Left ;  
             EZoomBar.Top = MainForm.GetTrackBar().Top  ;
             EZoomBar.Scroll += EZoomBar_Scroll;
-
+            EZoomBar.LargeChange = 1;
+            EZoomBar.SmallChange = 1;
             //
             this.panel1.Controls.Add(ERouts);
             this.panel1.Controls.Add(EZoomBar);

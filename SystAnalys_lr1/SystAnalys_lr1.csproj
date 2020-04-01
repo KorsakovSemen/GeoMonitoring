@@ -137,6 +137,16 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\SerializableDictionary.cs" />
+    <Compile Include="Strings\MainStrings.en-US.Designer.cs">
+      <DependentUpon>MainStrings.en-US.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Strings\MainStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainStrings.resx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\AddGrid.resx">
       <DependentUpon>AddGrid.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,6 +181,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Strings\MainStrings.en-US.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainStrings.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\MainStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\BusPark.datasource" />
     <None Include="Properties\Settings.settings">

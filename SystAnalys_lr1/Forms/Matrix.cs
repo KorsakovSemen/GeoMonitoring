@@ -1,4 +1,5 @@
 ﻿using MetroFramework.Forms;
+using SystAnalys_lr1.Strings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,7 +58,10 @@ namespace SystAnalys_lr1
 
             int[,] myArr = new int[routesSorted.Count, parkSize];
 
-            dataGridView1.RowCount = routesSorted.Count;
+            if(routesSorted.Count == 0)
+                dataGridView1.RowCount = 1;
+            else
+                dataGridView1.RowCount = routesSorted.Count;
             dataGridView1.ColumnCount = parkSize + 1;
 
             for (int i = 1; i < parkSize; i++)
@@ -112,7 +116,7 @@ namespace SystAnalys_lr1
                // }               
             }
 
-            label8.Text = "С датчиками:" + res.ToString() + "  Без: " + (buses.Count - res).ToString() + " Всего: " + buses.Count.ToString();
+            label8.Text = MainStrings.matrixFirst + res.ToString() + " " + MainStrings.matrixSecond + (buses.Count - res).ToString() + " " + MainStrings.matrixThird + buses.Count.ToString();
         }
     }
 }
