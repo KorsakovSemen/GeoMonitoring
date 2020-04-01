@@ -138,7 +138,7 @@ namespace SystAnalys_lr1
         delegate void DelBitmap(Bitmap b);
         public void EDrawEpics()
         {
-            
+
             EG.clearSheet2();
             Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap()); //ошибка при закрытии формы
             // Esheet.Image = EG.GetBitmap();
@@ -385,7 +385,7 @@ namespace SystAnalys_lr1
 
 
             EG.clearSheet2();
-            Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap());
+            //Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap());
             // Esheet.Image = EG.GetBitmap();
             for (int i = 0; i < MainForm.GetTheGrid().Count; i++)
             {

@@ -131,9 +131,11 @@ namespace SystAnalys_lr1
         //для второй формы
         public void clearSheet2()
         {
-            // Graphics.FromImage(bitmap).Clear(Color.Wheat); /// ТУТ ЭКСЕПШН НА МОДЕЛИНГЕ
-            bitmap = new Bitmap(DisplayEpicenters.EsheetPicture);
-            gr = Graphics.FromImage(bitmap);
+        
+            /*Graphics.FromImage(bitmap).Clear(Color.Wheat); *//// ТУТ ЭКСЕПШН НА МОДЕЛИНГЕ   
+            bitmap = new Bitmap(Main.globalMap);
+            gr = null;
+            gr = (Graphics.FromImage(bitmap));
 
         }
         //

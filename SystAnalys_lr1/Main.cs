@@ -1888,9 +1888,7 @@ namespace SystAnalys_lr1
             //zamazka
             Directory.CreateDirectory(path + "/Generated_Epics");
             Directory.CreateDirectory(path + "/Recreated_Epics");
-            //zamazka
-            List<Image> NaturalEpics = new List<Image>();
-            List<Image> ReCreatedEpics = new List<Image>();
+
             //zamazka
             int? sum = null;
             List<Bus> optimizeBuses = new List<Bus>();
@@ -1929,6 +1927,8 @@ namespace SystAnalys_lr1
                 int ciclTotal = 5;
                 for (int cicl = 0; cicl < ciclTotal; cicl++)
                 {
+                    //NaturalEpics = new List<Image>();
+                    //ReCreatedEpics = new List<Image>();
                     offBuses(cicl * 10);
                     if (cicl == ciclTotal - 1)
                         buses[rnd.Next(0, buses.Count)].tracker = true;
@@ -1938,38 +1938,50 @@ namespace SystAnalys_lr1
                         loading.GetCurrentParent().Invoke(new DelInt((s) => loading.Maximum = s), ciclTotal * int.Parse(optText.Text));
                     }
                     Baraban();
-                    for (int i = 0; i < int.Parse(optText.Text); i++)
-                    {
-                        //asModelingTest();
-                        //  mutex.WaitOne();\
-                        CreateOneRandomEpicenter(EpicSizeParam, null);
-
-                        Modeling();
-
-
-                        Ep.EDrawEpics();
-                        NaturalEpics.Add(Ep.Esheet.Image);
-
-                        Ep.RecReateFunction();
-
-
-                        //await Task.Delay(50);
-                        //   Thread.Sleep(250);
-                        //if (small < old)
-                        //    mas.Add(small);
-                        //else
-                        //    mas.Add(null);
-                        small = 10000;
-
-
-                        ReCreatedEpics.Add(Ep.Esheet.Image);
-                        if (loading.GetCurrentParent().InvokeRequired)
+                   
+                        for (int i = 0; i < int.Parse(optText.Text); i++)
                         {
-                            loading.GetCurrentParent().Invoke(new DelInt((s) => loading.Value = s), loading.Value + 1);
+                            //asModelingTest();
+                            //  mutex.WaitOne();\
+                            CreateOneRandomEpicenter(EpicSizeParam, null);
+                     
+                           
+                                Modeling();
+
+                            lock (Ep.Esheet)
+                            {
+                                Ep.EDrawEpics();
+                            }
+
+
+
+                        using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
+                        {
+                            img.Save(path + "/Generated_Epics" + "/GeneredEpic_cicle" + cicl.ToString() + "_" + (i + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                         }
-                        //       label1.Invoke(new Del((s) => label1.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
-                        //   loading.Invoke(new DelInt((s) => loading.Value = s), s + 1) ;
-                    }
+
+
+                        lock (Ep.Esheet)
+                            {
+                                Ep.RecReateFunction();
+                            }
+
+
+                            small = 10000;
+
+                        using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
+                        {
+                            img.Save(path + "/Recreated_Epics" + "/Recreated_Epic_cicle" + cicl.ToString() + "_" + (i + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                        }
+
+                        if (loading.GetCurrentParent().InvokeRequired)
+                            {
+                                loading.GetCurrentParent().Invoke(new DelInt((s) => loading.Value = s), loading.Value + 1);
+                            }
+                            //       label1.Invoke(new Del((s) => label1.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
+                            //   loading.Invoke(new DelInt((s) => loading.Value = s), s + 1) ;
+                        }
+                    
 
                     int total = ResultFromModeling.Sum(x => Convert.ToInt32(x));
                     sum = total;
@@ -2018,37 +2030,20 @@ namespace SystAnalys_lr1
                         Console.WriteLine("Объект сериализован");
                     }
                     ResultFromModeling = new List<int?>();
+
+
+
+
+
+
+
+
+
                 }
 
                 //busesPark = busesparkreturn;
-                //////замазка
-                try
-                {
 
-                    foreach (var image in NaturalEpics)
-                    {
-                        using (System.Drawing.Image img = new Bitmap(image))
-                        {
-                            img.Save(path + "/Generated_Epics" + "/GeneredEpic_" + (NaturalEpics.IndexOf(image) + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                        }
 
-                    }
-
-                    foreach (var image in ReCreatedEpics)
-                    {
-                        using (System.Drawing.Image img = new Bitmap(image))
-                        {
-                            img.Save(path + "/Recreated_Epics" + "/Recreated_Epic_" + (ReCreatedEpics.IndexOf(image) + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                        }
-
-                    }
-
-                }
-                /////замазка
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
             });
 
             var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();//sum != null ? percentMean.Min(s => s.Value).ToString() + " " + (percentMean.ElementAt((int)percentMean.Min(s => s.Value)).Key).ToString() : "None";
@@ -3813,17 +3808,17 @@ namespace SystAnalys_lr1
             }
             else
             {
-                msmMain.Theme = MetroFramework.MetroThemeStyle.Light; 
+                msmMain.Theme = MetroFramework.MetroThemeStyle.Light;
                 toolStripMenu.BackColor = Color.FromArgb(255, 255, 255);
                 toolStripMenu.ForeColor = Color.FromArgb(0, 0, 0);
                 checkedListBox1.BackColor = Color.FromArgb(255, 255, 255);
                 checkedListBox1.ForeColor = Color.FromArgb(0, 0, 0);
             }
             this.StyleManager.Clone(Ep);
-      //      this.StyleManager.Clone(Ep.epSet);
-      //      this.StyleManager.Clone(addG);
-      //      this.StyleManager.Clone(addR);
-      //      this.StyleManager.Clone(crossSettings);
+            //      this.StyleManager.Clone(Ep.epSet);
+            //      this.StyleManager.Clone(addG);
+            //      this.StyleManager.Clone(addR);
+            //      this.StyleManager.Clone(crossSettings);
         }
 
         private void button2_Click_1(object sender, EventArgs e)
