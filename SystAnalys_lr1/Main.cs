@@ -728,6 +728,7 @@ namespace SystAnalys_lr1
                 {
                     while (bus.TickCount_ > 0)
                     {
+                        bus.MoveWithoutGraphicsByGrids();
                         if (ExpandTimer == 75)
                         {
                             lock (epList)
@@ -768,7 +769,6 @@ namespace SystAnalys_lr1
                             //bus.TickCount_--;
                         }
 
-                        bus.MoveWithoutGraphicsByGrids();
                         //OneGridFilling[(int)bus.getLocate()] += 1;
 
                         PollutionInRoutes[bus.getRoute()][AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt]].status = bus.DetectEpicenterByGrid();
@@ -2077,6 +2077,8 @@ namespace SystAnalys_lr1
             // //AsyncCreateAllCoordinates()();          
             if (optText.Text != "" && int.TryParse(optText.Text, out int sp))
             {
+                foreach (var bus in buses)
+                    bus.Stop();
                 LoadBox("Loading...", "", int.Parse(optText.Text) * 1000);
                 foreach (var tl in traficLights)
                     tl.TimerLight.Interval = 1;
