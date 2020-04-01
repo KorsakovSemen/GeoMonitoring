@@ -714,6 +714,8 @@ namespace SystAnalys_lr1
                 bus.Epicenters2.Clear();
                 bus.Epicenters2 = epList;
                 bus.TickCount_ = test;
+                if (bus.skip > 0)
+                    bus.skip -= 1;
                 // вот эту
                 //bus.PositionAt = 0;
                 //
@@ -729,12 +731,14 @@ namespace SystAnalys_lr1
                             }
                             ExpandTimer = 0;
                         }
+                        Console.WriteLine("Route " + (int)bus.getRoute());
+                        Console.WriteLine("Pos " + (int)bus.PositionAt);
                         if (TraficLightsInGrids.Contains(AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt])) //ошибка с выходом за пределы
                                                                                                                  //тушто нужно "вот эту" разкоментить
                         {
                             if (bus.skip == 0)
                             {
-                                foreach (var sp in Main.traficLights)
+                                foreach (var sp in traficLights)
                                 {
                                     if (sp.status != Status.RED)
                                     {
