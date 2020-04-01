@@ -1576,6 +1576,7 @@ namespace SystAnalys_lr1
                 addInComboBox();
                 globalMap = new Bitmap(sheet.Image);
                 Ep = new DisplayEpicenters(this);
+                this.StyleManager.Clone(Ep);
                 Ep.Show();
                 G.clearSheet();
                 G.drawALLGraph(V, E);
@@ -2846,6 +2847,7 @@ namespace SystAnalys_lr1
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
                 Ep = new DisplayEpicenters(this);
+                this.StyleManager.Clone(Ep);
                 Ep.Show();
                 loading.Value = 100;
                 await Task.Delay(1000);
@@ -3601,14 +3603,14 @@ namespace SystAnalys_lr1
                 }
             }
         }
-
+        CrossroadsSettings crossSettings;
         private void addTraficLight_Click(object sender, EventArgs e)
         {
             if (changeRoute.Text == "All")
             {
-                CrossroadsSettings f = new CrossroadsSettings();
-                f.StyleManager = msmMain;
-                f.ShowDialog();
+                crossSettings = new CrossroadsSettings();
+                this.StyleManager.Clone(crossSettings);
+                crossSettings.ShowDialog();
                 selectRoute.Enabled = false;
                 deleteBus.Enabled = false;
                 addBus.Enabled = false;
@@ -3779,15 +3781,16 @@ namespace SystAnalys_lr1
             Ep.Show();
 
         }
-
+        AddRoute addR;
         private void addRouteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddRoute f = new AddRoute();
-            f.StyleManager = msmMain;
-            f.ShowDialog();
+            addR = new AddRoute();
+            this.StyleManager.Clone(addR);
+            addR.ShowDialog();
+            addR.Dispose();
             Ep.ERefreshRouts();
-            if (f.textBox1.Text != "" && int.TryParse(f.textBox1.Text, out int t))
-                changeRoute.Items.Add(f.textBox1.Text);
+            if (addR.textBox1.Text != "" && int.TryParse(addR.textBox1.Text, out int t))
+                changeRoute.Items.Add(addR.textBox1.Text);
         }
 
         private void runTrafficLightsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3816,8 +3819,11 @@ namespace SystAnalys_lr1
                 checkedListBox1.BackColor = Color.FromArgb(255, 255, 255);
                 checkedListBox1.ForeColor = Color.FromArgb(0, 0, 0);
             }
-
             this.StyleManager.Clone(Ep);
+      //      this.StyleManager.Clone(Ep.epSet);
+      //      this.StyleManager.Clone(addG);
+      //      this.StyleManager.Clone(addR);
+      //      this.StyleManager.Clone(crossSettings);
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -3954,14 +3960,14 @@ namespace SystAnalys_lr1
                 Console.WriteLine("ex");
             }
         }
-
+        AddGrid addG;
         private void createGridToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (G.bitmap != null)
             {
-                AddGrid f = new AddGrid();
-                f.StyleManager = msmMain;
-                f.ShowDialog();
+                addG = new AddGrid();
+                this.StyleManager.Clone(addG);
+                addG.ShowDialog();
                 G.clearSheet();
                 Ep.EG.clearSheet2();
                 G.drawALLGraph(V, E);

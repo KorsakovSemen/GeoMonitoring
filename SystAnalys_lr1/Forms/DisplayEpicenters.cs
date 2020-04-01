@@ -138,9 +138,9 @@ namespace SystAnalys_lr1
         delegate void DelBitmap(Bitmap b);
         public void EDrawEpics()
         {
-
+            
             EG.clearSheet2();
-            Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap());
+            Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap()); //ошибка при закрытии формы
             // Esheet.Image = EG.GetBitmap();
             for (int i = 0; i < MainForm.GetEpicenters().Count; i++)
             {
@@ -363,13 +363,13 @@ namespace SystAnalys_lr1
             MainForm.GetEpicenters().First().ExpandEpic(Main.ExpandEpicParamet);
             EDrawEpics();
         }
-
+        public EpicSettings epSet;
         private void button11_Click(object sender, EventArgs e)
         {
 
-            EpicSettings f = new EpicSettings();
-            f.StyleManager = this.StyleManager;
-            f.ShowDialog();
+            epSet = new EpicSettings();
+            this.StyleManager.Clone(epSet);
+            epSet.ShowDialog();
             //G.clearSheet();
             //sheet.Image = G.GetBitmap();
             //DrawGrid();
