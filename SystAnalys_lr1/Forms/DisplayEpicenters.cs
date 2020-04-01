@@ -70,6 +70,7 @@ namespace SystAnalys_lr1
             EG.setBitmap2(Esheet.Image);
             ///
             //EZoomBar = MainForm.GetTrackBar();
+            EZoomBar.StyleManager = MainForm.GetTrackBar().StyleManager;
             EZoomBar.Size = MainForm.GetTrackBar().Size;
             EZoomBar.LargeChange = MainForm.GetTrackBar().LargeChange;
             EZoomBar.Value = MainForm.GetTrackBar().Value;
@@ -78,8 +79,6 @@ namespace SystAnalys_lr1
             EZoomBar.Left = MainForm.GetTrackBar().Left ;  
             EZoomBar.Top = MainForm.GetTrackBar().Top  ;
             EZoomBar.Scroll += EZoomBar_Scroll;
-            EZoomBar.LargeChange = 1;
-            EZoomBar.SmallChange = 1;
             //
             this.panel1.Controls.Add(ERouts);
             this.panel1.Controls.Add(EZoomBar);

@@ -1187,13 +1187,13 @@
     <value>Left</value>
   </data>
   <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 109</value>
+    <value>16, 105</value>
   </data>
   <data name="panel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>404, 976</value>
+    <value>404, 980</value>
   </data>
   <data name="panel4.TabIndex" type="System.Int32, mscorlib">
     <value>76</value>
@@ -1349,13 +1349,13 @@
     <value>Fill</value>
   </data>
   <data name="mainPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>420, 109</value>
+    <value>420, 105</value>
   </data>
   <data name="mainPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="mainPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1504, 976</value>
+    <value>1504, 980</value>
   </data>
   <data name="mainPanel.TabIndex" type="System.Int32, mscorlib">
     <value>78</value>
@@ -1373,10 +1373,10 @@
     <value>5</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 31</value>
+    <value>6, 27</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 31</value>
+    <value>6, 27</value>
   </data>
   <metadata name="toolStripMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>780, 17</value>
@@ -1439,7 +1439,7 @@
     <value>Magenta</value>
   </data>
   <data name="saveButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 28</value>
+    <value>59, 24</value>
   </data>
   <data name="saveButton.Text" xml:space="preserve">
     <value>Файл</value>
@@ -1460,7 +1460,7 @@
     <value>Magenta</value>
   </data>
   <data name="loadButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 28</value>
+    <value>83, 24</value>
   </data>
   <data name="loadButton.Text" xml:space="preserve">
     <value>Загрузка</value>
@@ -1469,7 +1469,7 @@
     <value>Magenta</value>
   </data>
   <data name="selectButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>29, 24</value>
   </data>
   <data name="selectButton.Text" xml:space="preserve">
     <value>toolStripButton2</value>
@@ -1481,7 +1481,7 @@
     <value>Magenta</value>
   </data>
   <data name="drawVertexButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>29, 24</value>
   </data>
   <data name="drawVertexButton.Text" xml:space="preserve">
     <value>toolStripButton2</value>
@@ -1493,7 +1493,7 @@
     <value>Magenta</value>
   </data>
   <data name="drawEdgeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>29, 24</value>
   </data>
   <data name="drawEdgeButton.Text" xml:space="preserve">
     <value>toolStripButton3</value>
@@ -1505,7 +1505,7 @@
     <value>Magenta</value>
   </data>
   <data name="deleteButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>29, 24</value>
   </data>
   <data name="deleteButton.Text" xml:space="preserve">
     <value>toolStripButton4</value>
@@ -1517,7 +1517,7 @@
     <value>Magenta</value>
   </data>
   <data name="deleteALLButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>29, 24</value>
   </data>
   <data name="deleteALLButton.Text" xml:space="preserve">
     <value>toolStripButton5</value>
@@ -1529,7 +1529,7 @@
     <value>Magenta</value>
   </data>
   <data name="deleteRoute.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>29, 24</value>
   </data>
   <data name="deleteRoute.Text" xml:space="preserve">
     <value>toolStripButton6</value>
@@ -1541,7 +1541,7 @@
     <value>Magenta</value>
   </data>
   <data name="addBus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>29, 24</value>
   </data>
   <data name="addBus.Text" xml:space="preserve">
     <value>toolStripButton7</value>
@@ -1553,7 +1553,7 @@
     <value>Magenta</value>
   </data>
   <data name="deleteBus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>29, 24</value>
   </data>
   <data name="deleteBus.Text" xml:space="preserve">
     <value>toolStripButton8</value>
@@ -1565,7 +1565,7 @@
     <value>Magenta</value>
   </data>
   <data name="delAllBusesOnRoute.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>29, 24</value>
   </data>
   <data name="delAllBusesOnRoute.Text" xml:space="preserve">
     <value>toolStripButton2</value>
@@ -1577,7 +1577,7 @@
     <value>Magenta</value>
   </data>
   <data name="stopPointButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>29, 24</value>
   </data>
   <data name="stopPointButton.Text" xml:space="preserve">
     <value>toolStripButton2</value>
@@ -1589,7 +1589,7 @@
     <value>Magenta</value>
   </data>
   <data name="addTraficLight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>29, 24</value>
   </data>
   <data name="addTraficLight.Text" xml:space="preserve">
     <value>toolStripButton2</value>
@@ -1598,7 +1598,7 @@
     <value>Magenta</value>
   </data>
   <data name="selectRoute.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 28</value>
+    <value>29, 24</value>
   </data>
   <data name="selectRoute.Text" xml:space="preserve">
     <value>toolStripButton2</value>
@@ -1616,7 +1616,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="toolStripMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1908, 31</value>
+    <value>1908, 27</value>
   </data>
   <data name="toolStripMenu.TabIndex" type="System.Int32, mscorlib">
     <value>70</value>
@@ -1836,6 +1836,9 @@
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>

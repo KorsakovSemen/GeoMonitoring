@@ -3773,8 +3773,9 @@ namespace SystAnalys_lr1
         private void openEpicFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Ep = new DisplayEpicenters(this);
-            Ep.StyleManager = msmMain;
+            this.StyleManager.Clone(Ep);
             Ep.Show();
+
         }
 
         private void addRouteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3814,7 +3815,7 @@ namespace SystAnalys_lr1
                 checkedListBox1.ForeColor = Color.FromArgb(0, 0, 0);
             }
 
-            Ep.StyleManager = msmMain;
+            this.StyleManager.Clone(Ep);
         }
 
         private void button2_Click_1(object sender, EventArgs e)
