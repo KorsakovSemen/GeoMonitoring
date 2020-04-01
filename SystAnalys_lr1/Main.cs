@@ -1186,7 +1186,7 @@ namespace SystAnalys_lr1
             button8.Invoke(new DelBool((s) => button8.Enabled = s), true);
             optimize.Invoke(new DelBool((s) => optimize.Enabled = s), true);
             button2.Invoke(new DelBool((s) => button2.Enabled = s), true);
-            toolStrip1.Invoke((System.Action)(() =>
+            toolStripMenu.Invoke((System.Action)(() =>
             {
                 saveButton.Enabled = true;
                 loadButton.Enabled = true;
@@ -1220,7 +1220,7 @@ namespace SystAnalys_lr1
             //optimize.Enabled = false;
             //button2.Enabled = false;
             //button8.Enabled = false;
-            toolStrip1.Invoke((System.Action)(() =>
+            toolStripMenu.Invoke((System.Action)(() =>
             {
                 saveButton.Enabled = false;
                 loadButton.Enabled = false;
@@ -3800,11 +3800,21 @@ namespace SystAnalys_lr1
             if (themes.Checked == true)
             {
                 msmMain.Theme = MetroFramework.MetroThemeStyle.Dark;
+                toolStripMenu.BackColor = Color.FromArgb(17, 17, 17);
+                toolStripMenu.ForeColor = Color.FromArgb(153, 153, 153);
+                checkedListBox1.BackColor = Color.FromArgb(17, 17, 17);
+                checkedListBox1.ForeColor = Color.FromArgb(153, 153, 153);
             }
             else
             {
-                msmMain.Theme = MetroFramework.MetroThemeStyle.Light;
+                msmMain.Theme = MetroFramework.MetroThemeStyle.Light; 
+                toolStripMenu.BackColor = Color.FromArgb(255, 255, 255);
+                toolStripMenu.ForeColor = Color.FromArgb(0, 0, 0);
+                checkedListBox1.BackColor = Color.FromArgb(255, 255, 255);
+                checkedListBox1.ForeColor = Color.FromArgb(0, 0, 0);
             }
+
+            Ep.StyleManager = msmMain;
         }
 
         private void button2_Click_1(object sender, EventArgs e)

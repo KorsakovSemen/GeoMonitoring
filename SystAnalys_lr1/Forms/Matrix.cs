@@ -33,8 +33,8 @@ namespace SystAnalys_lr1
 
         private void Matrix()
         {
-            dataGridView1.Rows.Clear();
-            dataGridView1.Refresh();
+            matrixGrid.Rows.Clear();
+            matrixGrid.Refresh();
 
             buses.Sort((a1, b1) => a1.route.CompareTo(b1.route));
 
@@ -59,27 +59,27 @@ namespace SystAnalys_lr1
             int[,] myArr = new int[routesSorted.Count, parkSize];
 
             if(routesSorted.Count == 0)
-                dataGridView1.RowCount = 1;
+                matrixGrid.RowCount = 1;
             else
-                dataGridView1.RowCount = routesSorted.Count;
-            dataGridView1.ColumnCount = parkSize + 1;
+                matrixGrid.RowCount = routesSorted.Count;
+            matrixGrid.ColumnCount = parkSize + 1;
 
             for (int i = 1; i < parkSize; i++)
             {
-                dataGridView1.Columns[i - 1].HeaderText = i.ToString();
+                matrixGrid.Columns[i - 1].HeaderText = i.ToString();
                 if (i + 1 == parkSize)
                 {
-                    dataGridView1.Columns[i].HeaderText = parkSize.ToString();
+                    matrixGrid.Columns[i].HeaderText = parkSize.ToString();
                 }
             }
 
-            dataGridView1.Columns[parkSize].HeaderText = "Total";
+            matrixGrid.Columns[parkSize].HeaderText = "Total";
 
             for (int i = 0; i < busesPark.Count; ++i)
             {
                 if (busesPark[i].Count != 0 )
                 {
-                    dataGridView1.Rows[i].HeaderCell.Value = busesPark[i].First().route.ToString();
+                    matrixGrid.Rows[i].HeaderCell.Value = busesPark[i].First().route.ToString();
                 }
             }
 
@@ -103,13 +103,13 @@ namespace SystAnalys_lr1
                             {
                                 myArr[i, j] = 0;
                             }
-                            dataGridView1.Rows[i].Cells[j].Value = myArr[i, j];
+                            matrixGrid.Rows[i].Cells[j].Value = myArr[i, j];
                         }
                         else
                         {
-                            dataGridView1.Rows[i].Cells[j].Value = 0;
+                            matrixGrid.Rows[i].Cells[j].Value = 0;
                         }
-                        dataGridView1.Rows[i].Cells[parkSize].Value = total;
+                        matrixGrid.Rows[i].Cells[parkSize].Value = total;
 
                     }
                     res += total;
