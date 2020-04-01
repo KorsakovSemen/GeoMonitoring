@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.ERouts = new MetroFramework.Controls.MetroComboBox();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.button11 = new MetroFramework.Controls.MetroButton();
@@ -40,7 +41,6 @@
             this.label3 = new MetroFramework.Controls.MetroLabel();
             this.button2 = new MetroFramework.Controls.MetroButton();
             this.label2 = new MetroFramework.Controls.MetroLabel();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +73,16 @@
             this.panel1.VerticalScrollbarBarColor = true;
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
             this.panel1.VerticalScrollbarSize = 10;
+            // 
+            // metroButton2
+            // 
+            this.metroButton2.Location = new System.Drawing.Point(242, 134);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(75, 23);
+            this.metroButton2.TabIndex = 97;
+            this.metroButton2.Text = "metroButton2";
+            this.metroButton2.UseSelectable = true;
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
             // ERouts
             // 
@@ -160,16 +170,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Отрисовать путь загрязнений";
             // 
-            // metroButton2
-            // 
-            this.metroButton2.Location = new System.Drawing.Point(242, 134);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(75, 23);
-            this.metroButton2.TabIndex = 97;
-            this.metroButton2.Text = "metroButton2";
-            this.metroButton2.UseSelectable = true;
-            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
-            // 
             // DisplayEpicenters
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -179,6 +179,7 @@
             this.MaximumSize = new System.Drawing.Size(1500, 1500);
             this.Name = "DisplayEpicenters";
             this.Text = "Display epicenters ";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DisplayEpicenters_FormClosed);
             this.Load += new System.EventHandler(this.DisplayEpicenters_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

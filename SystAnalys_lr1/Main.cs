@@ -1902,6 +1902,7 @@ namespace SystAnalys_lr1
             loading.Visible = true;
             loading.Value = 0;
             int old = small;
+            SavePictures.Enabled = false;
             await Task.Run(() =>
             {
 
@@ -1938,50 +1939,49 @@ namespace SystAnalys_lr1
                         loading.GetCurrentParent().Invoke(new DelInt((s) => loading.Maximum = s), ciclTotal * int.Parse(optText.Text));
                     }
                     Baraban();
-                   
-                        for (int i = 0; i < int.Parse(optText.Text); i++)
-                        {
-                            //asModelingTest();
-                            //  mutex.WaitOne();\
-                            CreateOneRandomEpicenter(EpicSizeParam, null);
-                     
-                           
-                                Modeling();
 
+                    for (int i = 0; i < int.Parse(optText.Text); i++)
+                    {
+                        //asModelingTest();
+                        //  mutex.WaitOne();\
+                        CreateOneRandomEpicenter(EpicSizeParam, null);
+
+
+                        Modeling();
+                        if (SavePictures.Checked)
+                        {
                             lock (Ep.Esheet)
                             {
                                 Ep.EDrawEpics();
                             }
 
+                            using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
+                            {
+                                img.Save(path + "/Generated_Epics" + "/GeneredEpic_cicle" + cicl.ToString() + "_" + (i + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                            }
 
-
-                        using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
-                        {
-                            img.Save(path + "/Generated_Epics" + "/GeneredEpic_cicle" + cicl.ToString() + "_" + (i + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                        }
-
-
-                        lock (Ep.Esheet)
+                            lock (Ep.Esheet)
                             {
                                 Ep.RecReateFunction();
                             }
-
-
-                            small = 10000;
-
-                        using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
-                        {
-                            img.Save(path + "/Recreated_Epics" + "/Recreated_Epic_cicle" + cicl.ToString() + "_" + (i + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                        }
-
-                        if (loading.GetCurrentParent().InvokeRequired)
+                            using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
                             {
-                                loading.GetCurrentParent().Invoke(new DelInt((s) => loading.Value = s), loading.Value + 1);
+                                img.Save(path + "/Recreated_Epics" + "/Recreated_Epic_cicle" + cicl.ToString() + "_" + (i + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                             }
-                            //       label1.Invoke(new Del((s) => label1.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
-                            //   loading.Invoke(new DelInt((s) => loading.Value = s), s + 1) ;
                         }
-                    
+                        else
+                        {
+
+                        }
+                        small = 10000;
+                        if (loading.GetCurrentParent().InvokeRequired)
+                        {
+                            loading.GetCurrentParent().Invoke(new DelInt((s) => loading.Value = s), loading.Value + 1);
+                        }
+                        //       label1.Invoke(new Del((s) => label1.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
+                        //   loading.Invoke(new DelInt((s) => loading.Value = s), s + 1) ;
+                    }
+
 
                     int total = ResultFromModeling.Sum(x => Convert.ToInt32(x));
                     sum = total;
@@ -2063,6 +2063,7 @@ namespace SystAnalys_lr1
             buses = optimizeBuses;
             await Task.Delay(1000);
             loading.Visible = false;
+            SavePictures.Enabled = true;
             MessageBox.Show("Готово");
         }
 
@@ -2084,7 +2085,10 @@ namespace SystAnalys_lr1
             }
 
         }
-
+        public MetroCheckBox GetSavePictruesCheckBox()
+        {
+            return this.SavePictures;
+        }
         private void loadFromToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
