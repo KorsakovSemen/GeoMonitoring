@@ -237,9 +237,9 @@ namespace SystAnalys_lr1
                     byte[] array = new byte[fstream.Length];
                     // асинхронное чтение файла
                     fstream.Read(array, 0, array.Length);
-                    msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf(System.Text.Encoding.Default.GetString(array)));
+                    msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf(System.Text.Encoding.Default.GetString(array).Replace(Environment.NewLine, "")));
                     Console.WriteLine($"Текст из файла: {savepath}");
-
+                    
                 }
             }
             else
