@@ -1397,16 +1397,17 @@ namespace SystAnalys_lr1
                 buses.Clear();
                 if (sheet.Image != null)
                 {
-                    await Task.Delay(10000);
+                    await Task.Delay(10001);
                     config.Text = "Config: ";
                 }
                 foreach (var tl in Main.traficLights)
                 {
                     tl.Stop();
-                    TraficLightsInGrids.Remove(tl.gridNum);
-                    traficLights.Remove(tl);
-                    break;
+                    //TraficLightsInGrids.Remove(tl.gridNum);
+                    //traficLights.Remove(tl);
+
                 }
+                TraficLightsInGrids.Clear();
                 V.Clear();
                 E.Clear();
                 if (G.bitmap != null) G.clearSheet();
@@ -1425,8 +1426,8 @@ namespace SystAnalys_lr1
                 G.setBitmap();
                 CreateGrid();
                 CreatePollutionInRoutes();
-                CreateOneRandomEpicenter(EpicSizeParam, null);
-                //Bus.setEpicenters(Epics);
+              
+            
                 Bus.setGrid(TheGrid);
                 Bus.setMap(sheet);
                 Bus.setAllCoordinates(AllCoordinates);
@@ -1739,6 +1740,11 @@ namespace SystAnalys_lr1
         }
         private async void Opt()
         {
+            if (SavePictures.Checked)
+            {
+                Ep.Hide();
+            }
+        
             Matrix();
             percentMean = new SerializableDictionary<int, int?>();
             string path = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute);
@@ -1812,19 +1818,24 @@ namespace SystAnalys_lr1
                             {
                                 Ep.EDrawEpics();
                             }
-
-                            using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
+                            lock (Ep.Esheet)
                             {
-                                img.Save(path + "/Generated_Epics" + "/GeneredEpic_cicle" + cicl.ToString() + "_" + (i + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                                using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
+                                {
+                                    img.Save(path + "/Generated_Epics" + "/GeneredEpic_cicle" + cicl.ToString() + "_" + (i + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                                }
                             }
 
                             lock (Ep.Esheet)
                             {
                                 Ep.RecReateFunction();
                             }
-                            using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
+                            lock (Ep.Esheet)
                             {
-                                img.Save(path + "/Recreated_Epics" + "/Recreated_Epic_cicle" + cicl.ToString() + "_" + (i + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                                using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
+                                {
+                                    img.Save(path + "/Recreated_Epics" + "/Recreated_Epic_cicle" + cicl.ToString() + "_" + (i + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                                }
                             }
                         }
                         else
@@ -1923,6 +1934,11 @@ namespace SystAnalys_lr1
             loading.Visible = false;
             SavePictures.Enabled = true;
             MessageBox.Show("Готово");
+            if (!Ep.IsDisposed)
+            {
+                Ep.Show();
+                SavePictures.Enabled = true;
+            }
         }
 
         public static int EpicSizeParam = 10;
@@ -1936,6 +1952,7 @@ namespace SystAnalys_lr1
                     bus.Stop();
                 foreach (var tl in traficLights)
                     tl.TimerLight.Interval = 1;
+ 
                 Opt();
                 MetroMessageBox.Show(this, "Your message here.", "Title Here", MessageBoxButtons.OKCancel, MessageBoxIcon.Hand);
                 foreach (var tl in traficLights)
