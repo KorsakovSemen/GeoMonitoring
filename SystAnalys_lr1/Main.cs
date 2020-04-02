@@ -174,7 +174,8 @@ namespace SystAnalys_lr1
                     // асинхронное чтение файла
                     fstream.Read(array, 0, array.Length);
                     savepath = System.Text.Encoding.Default.GetString(array);
-                    savepath = Path.GetFullPath(savepath);
+                    if(savepath != "")
+                        savepath = Path.GetFullPath(savepath);
                     Console.WriteLine($"Текст из файла: {savepath}");
 
                 }
@@ -227,7 +228,7 @@ namespace SystAnalys_lr1
             }
             else
             {
-                File.Create("../../SaveConfig/style.txt");
+                File.Create("../../SaveConfig/theme.txt");
             }
             if (File.Exists("../../SaveConfig/style.txt"))
             {
@@ -272,7 +273,7 @@ namespace SystAnalys_lr1
             mainPanel.MaximumSize = new System.Drawing.Size(sheet.Width, sheet.Height);
             mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.mainPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel6_MouseWheel);
-            if(buses != null)
+            if(buses.Count != 0)
             {
                 sizeBus = buses.Last().busPic.Width;
             }
