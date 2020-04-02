@@ -45,7 +45,7 @@ namespace SystAnalys_lr1
         public static int selected2;
         //массив всех маршрутов
         static public SerializableDictionary<int, List<Vertex>> routes;
-
+        //статичный размер басса
         public static int sizeBus;
         //очистить данные
         bool isChecked = false;
@@ -204,6 +204,14 @@ namespace SystAnalys_lr1
             mainPanel.MaximumSize = new System.Drawing.Size(sheet.Width, sheet.Height);
             mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.mainPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel6_MouseWheel);
+            if(buses != null)
+            {
+                sizeBus = buses.Last().busPic.Width;
+            }
+            else
+            {
+                sizeBus = 15;
+            }
             Matrix();
             timer2.Interval = 1000;
             timer2.Start();
@@ -509,167 +517,6 @@ namespace SystAnalys_lr1
         }
         private readonly Mutex _mutex = new Mutex();
 
-        //private void Modeling()
-        //{
-        //    List<Epicenter> epList = new List<Epicenter>();
-        //    int i = 0;
-        //    //foreach (var EpicList in Epics)
-        //    //{
-        //    //    EpicList.mutex.WaitOne();
-        //    //    epList.Add(new Epicenter(TheGrid));
-        //    //    foreach (var Sector in EpicList.GetEpicenterGrid())
-        //    //    {
-
-        //    //        epList[i].EpicenterGrid.Add(Sector.Key, new List<GridPart>());
-
-        //    //        _mutex.WaitOne();
-
-
-        //    //        foreach (var Square in Sector.Value)
-        //    //        {
-        //    //            epList[i].EpicenterGrid[Sector.Key].Add(new GridPart(Square.x, Square.y));
-        //    //        }
-        //    //        _mutex.ReleaseMutex();
-
-        //    //    }
-        //    //    i++;
-        //    //    // EpicList.mutex.WaitOne();
-        //    //}
-
-        //    epList = CreateOneEpicenter(epList);
-        //    ConcurrentQueue<Bus> cqBus = new ConcurrentQueue<Bus>();
-        //    ConcurrentQueue<Epicenter> cqEpics = new ConcurrentQueue<Epicenter>();
-        //    buses.ForEach((b) => cqBus.Enqueue((Bus)b.Clone()));
-        //    Epics.ForEach((e) => cqEpics.Enqueue((Epicenter)e.Clone()));
-        //    GifList = new Dictionary<int, List<GridPart>>();
-        //    //Bus.setEpicenters(Epics);
-        //    CreateAllOneGrids();
-        //    //Parallel.ForEach(cqBus, (bus) =>
-        //    foreach (var bus in cqBus)
-        //    {
-        //     //   bus.mutex.WaitOne();
-        //        //lock (buses)
-        //        //{
-        //        //foreach (var bus in buses)
-        //        //{
-        //        bus.Stop();
-        //        bus.Epicenters2.Clear();
-        //        //Epics.ForEach((b) => bus.Epicenters2.Add(
-        //        //    (Epicenter)b.Clone()
-        //        //));
-        //        i = 0;
-        //        foreach (var EpicList in epList)
-        //        {
-        //         //   EpicList.mutex.WaitOne();
-        //            bus.Epicenters2.Add(new Epicenter(TheGrid));
-        //            foreach (var Sector in EpicList.GetEpicenterGrid())
-        //            {
-
-        //                bus.Epicenters2[i].EpicenterGrid.Add(Sector.Key, new List<GridPart>());
-
-        //              //  _mutex.WaitOne();
-
-
-        //                foreach (var Square in Sector.Value)
-        //                {
-        //                    bus.Epicenters2[i].EpicenterGrid[Sector.Key].Add(new GridPart(Square.x, Square.y));
-        //                }
-        //               // _mutex.ReleaseMutex();
-
-        //            }
-        //            i++;
-        //            // EpicList.mutex.WaitOne();
-        //        }
-
-        //   //     bus.mutex.ReleaseMutex();
-        //    }
-        //    // });
-
-        //    CreatePollutionInRoutes();
-        //    small = 10000;
-        //    //label5.Text = "Время, за которое обнаружили загрязнение:" + " не обнаружено";
-        //    if (int.TryParse(textBox2.Text, out int test))
-        //    {
-        //        test = int.Parse(textBox2.Text) * 100;
-        //    };
-
-        //    Bus.FoundTime = small + 1;
-        //    int ExpandTimer = 0;
-        //    int GiTimer = 0;
-        //    Parallel.ForEach(cqBus, (bus) => 
-        //    {
-        //        //lock (bus)
-        //        //{
-        //       // bus.mutex.WaitOne();
-        //        bus.TickCount_ = test;
-        //        bus.EpicFounded = false;
-        //        while (bus.TickCount_ > 0)
-        //        {
-        //            if (ExpandTimer == 1000)
-        //            {
-        //               // ExpandEpics();
-        //                //GifListAdd(PollutionInRoutes);
-        //                ExpandTimer = 0;
-        //            }
-
-        //            bus.MoveWithoutGraphics();
-        //            bus.DetectRectangle2();
-        //            if (bus.lastLocate != bus.Locate)
-        //            {
-        //                OneGridFilling[(int)bus.getLocate()] += 1;
-        //                bus.lastLocate = bus.Locate;
-        //                PollutionInRoutes[bus.getRoute()][(int)bus.getLocate()].status = bus.DetectEpicenter2();
-
-        //                foreach (var Epic in bus.Epicenters2)
-        //                {
-        //                    if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 5)
-        //                    {
-        //                        if (bus.EpicFounded == false)
-        //                        {
-        //                            bus.EpicFounded = true;
-        //                            if (bus.EpicFounded == true)
-        //                            {
-
-        //                                Bus.FoundTime = (test - bus.TickCount_) / 3;
-
-        //                                if (small > Bus.FoundTime)
-        //                                {
-        //                                    small = Bus.FoundTime;
-        //                                    label5.Invoke(new Del((s) => label5.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
-
-        //                                }
-
-
-        //                            }
-        //                        }
-        //                    }
-        //                    //else { label5.Invoke(new Del((s) => label5.Text = s), Epic.DetectCount.ToString() + " " + (Epic.getEpicenterGrid()[1].Count / 5).ToString()); }
-        //                }
-        //            }
-        //            bus.TickCount_--;
-        //            ExpandTimer++;
-        //            ExpandTimer++;
-        //        }
-        //       // bus.mutex.ReleaseMutex();
-        //        // }
-        //        Console.WriteLine("после форыча" + small.ToString());
-        //    });
-        //    //bus.bus.Left = panel6.PointToClient(new Point(AllCoordinates[bus.route][bus.PositionAt].X, AllCoordinates[bus.route][bus.PositionAt].Y)).X;
-        //    //bus.bus.Top = panel6.PointToClient(new Point(AllCoordinates[bus.route][bus.PositionAt].X, AllCoordinates[bus.route][bus.PositionAt].Y)).Y;
-        //    //bus.bus.Left = AllCoordinates[bus.route][bus.PositionAt].X + mainPanel.AutoScrollPosition.X * zoom;
-        //    //bus.bus.Top = AllCoordinates[bus.route][bus.PositionAt].Y + mainPanel.AutoScrollPosition.Y * zoom;
-
-
-
-        //    //label5.Text = "Время, за которое обнаружили загрязнение:" + (small).ToString();
-        //    //AllGridFilling.Add(OneGridFilling);
-        //    //TimeForAllGridFilling.Add(int.Parse(textBox2.Text));
-        //    //AsyncGridMatrix();
-
-        //    //CreateAllOneGrids();
-        //    //EmptyGridCounts();
-
-        //}
         List<int?> ResultFromModeling = new List<int?>();
 
         private void Modeling()
@@ -900,25 +747,6 @@ namespace SystAnalys_lr1
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
             }
-
-            //foreach (var bus in buses)
-            //{
-            //    if (bus.grids != null)
-            //    {
-            //        for (int i = 0; i < TheGrid.Count; i++)
-            //        {
-            //            if (bus.getLocate() == i)
-            //            {
-            //                if (bus.lastLocate != bus.Locate)
-            //                {
-            //                    //OneRouteGridFilling[i][bus.getRoute()] += 1;
-            //                    OneGridFilling[i] += 1;
-            //                    bus.lastLocate = bus.Locate;
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
         }
 
 
@@ -1474,7 +1302,7 @@ namespace SystAnalys_lr1
                         if (b.route == int.Parse(changeRoute.Text))
                         {
                             b.Stop();
-                            mainPanel.Controls.Remove(b.bus);
+                            mainPanel.Controls.Remove(b.busPic);
                             test.Add(b);
                         };
                     }
@@ -1510,7 +1338,7 @@ namespace SystAnalys_lr1
                     foreach (var b in buses)
                     {
                         b.Stop();
-                        mainPanel.Controls.Remove(b.bus);
+                        mainPanel.Controls.Remove(b.busPic);
                     }
                     buses.Clear();
                     //File.Delete("vertex" + comboBox1.Text + ".xml");
@@ -1545,15 +1373,15 @@ namespace SystAnalys_lr1
             fb.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             if (fb.ShowDialog() == DialogResult.OK)
             {
+                foreach (var bus in buses)
+                {
+                    bus.Stop();
+                    mainPanel.Controls.Remove(bus.busPic);
+                }
+                buses.Clear();
                 V.Clear();
                 E.Clear();
-                foreach (var b in buses)
-                {
-                    b.Stop();
-                    mainPanel.Controls.Remove(b.bus);
-                };
                 if (G.bitmap != null) G.clearSheet();
-                buses.Clear();
                 routes.Clear();
                 routesEdge.Clear();
                 changeRoute.Items.Clear();
@@ -1629,7 +1457,7 @@ namespace SystAnalys_lr1
                         if (b.route == int.Parse(changeRoute.Text))
                         {
                             b.Stop();
-                            mainPanel.Controls.Remove(b.bus);
+                            mainPanel.Controls.Remove(b.busPic);
                             test.Add(b);
                         };
                     };
@@ -1652,7 +1480,7 @@ namespace SystAnalys_lr1
                     foreach (var b in buses)
                     {
                         b.Stop();
-                        mainPanel.Controls.Remove(b.bus);
+                        mainPanel.Controls.Remove(b.busPic);
                     };
                     buses.Clear();
                     routes.Clear();
@@ -2733,7 +2561,7 @@ namespace SystAnalys_lr1
                     foreach (var x in buses)
                     {
                         x.Stop();
-                        mainPanel.Controls.Remove(x.bus);
+                        mainPanel.Controls.Remove(x.busPic);
                     }
                     buses.Clear();
                 }
@@ -2763,9 +2591,9 @@ namespace SystAnalys_lr1
 
                 foreach (var x in buses)
                 {
-                    x.bus = new PictureBox();
-                    x.bus.Location = new System.Drawing.Point(int.Parse((x.x + mainPanel.AutoScrollPosition.X).ToString()), int.Parse((x.y + mainPanel.AutoScrollPosition.Y).ToString()));
-                    x.bus.Size = new System.Drawing.Size(15, 15);
+                    x.busPic = new PictureBox();
+                    x.busPic.Location = new System.Drawing.Point(int.Parse((x.x + mainPanel.AutoScrollPosition.X).ToString()), int.Parse((x.y + mainPanel.AutoScrollPosition.Y).ToString()));
+                    x.busPic.Size = new System.Drawing.Size(15, 15);
 
                     Bitmap bitmap = new Bitmap(Bus.sImg); //load the image file
                     using (Graphics graphics = Graphics.FromImage(bitmap))
@@ -2776,14 +2604,14 @@ namespace SystAnalys_lr1
                         }
                     }
 
-                    x.bus.Image = bitmap;
+                    x.busPic.Image = bitmap;
                     if (x.tracker == false)
                     {
-                        x.bus.Image = MakeGray(bitmap);
+                        x.busPic.Image = MakeGray(bitmap);
                     };
-                    x.bus.SizeMode = PictureBoxSizeMode.StretchImage;
-                    mainPanel.Controls.Add(x.bus);
-                    x.bus.BringToFront();
+                    x.busPic.SizeMode = PictureBoxSizeMode.StretchImage;
+                    mainPanel.Controls.Add(x.busPic);
+                    x.busPic.BringToFront();
                     x.Set();
 
                 }
@@ -3134,19 +2962,18 @@ namespace SystAnalys_lr1
                         if (AllCoordinates[int.Parse(changeRoute.Text)].Count != 0)
                         {
                             if (buses != null)
-                                sizeBus = buses.Last().bus.Width;
-                            PictureBox bus = new PictureBox();
-                            // bus.Location = new System.Drawing.Point(zoom == 1 ? e.X + mainPanel.AutoScrollPosition.X : e.X * zoom + mainPanel.AutoScrollPosition.X, zoom == 1 ? e.Y + mainPanel.AutoScrollPosition.Y : e.Y * zoom + mainPanel.AutoScrollPosition.Y);
-                            bus.Location = new System.Drawing.Point(e.X / zoom + mainPanel.AutoScrollPosition.X, e.Y / zoom + mainPanel.AutoScrollPosition.Y);
+                                sizeBus = buses.Last().busPic.Width;
+                            PictureBox busPic = new PictureBox();
+                            busPic.Location = new System.Drawing.Point(e.X / zoom + mainPanel.AutoScrollPosition.X, e.Y / zoom + mainPanel.AutoScrollPosition.Y);
                             if (busSize.Text != "")
-                                bus.Size = new System.Drawing.Size(zoom == 1 ? int.Parse(busSize.Text) : int.Parse(busSize.Text) * (zoom / 2), zoom == 1 ? int.Parse(busSize.Text) : int.Parse(busSize.Text) * (zoom / 2));
+                                busPic.Size = new System.Drawing.Size(int.Parse(busSize.Text), int.Parse(busSize.Text));
                             else
-                                bus.Size = new System.Drawing.Size(zoom == 1 ? buses.Last().bus.Width : buses.Last().bus.Width * (zoom / 2), zoom == 1 ? buses.Last().bus.Height : buses.Last().bus.Height * (zoom / 2));
-                            sizeBus = bus.Width;
-                            bus.Image = new Bitmap("../../Resources/shkolnyy-avtobus.png");
-                            bus.SizeMode = PictureBoxSizeMode.StretchImage;
-                            mainPanel.Controls.Add(bus);
-                            bus.BringToFront();
+                                busPic.Size = new System.Drawing.Size(sizeBus, sizeBus);
+                        //    sizeBus = busPic.Width;
+                            busPic.Image = new Bitmap("../../Resources/shkolnyy-avtobus.png");
+                            busPic.SizeMode = PictureBoxSizeMode.StretchImage;
+                            mainPanel.Controls.Add(busPic);
+                            busPic.BringToFront();
 
                             int pos = 0;
 
@@ -3168,26 +2995,26 @@ namespace SystAnalys_lr1
 
                             if (busSettings.GetItemChecked(0))
                             {
-                                using (Graphics graphics = Graphics.FromImage(bus.Image))
+                                using (Graphics graphics = Graphics.FromImage(busPic.Image))
                                 {
                                     using (Font arialFont = new Font("Arial", 300))
                                     {
                                         graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(10, 10));
                                     }
                                 }
-                                buses.Add(new Bus(routes[int.Parse(changeRoute.Text)], bus, pos, busSettings.GetItemChecked(1), int.Parse(changeRoute.Text), true));
+                                buses.Add(new Bus(routes[int.Parse(changeRoute.Text)], busPic, pos, busSettings.GetItemChecked(1), int.Parse(changeRoute.Text), true));
                             }
                             else
                             {
-                                bus.Image = MakeGray(new Bitmap("../../Resources/shkolnyy-avtobus.png"));
-                                using (Graphics graphics = Graphics.FromImage(bus.Image))
+                                busPic.Image = MakeGray(new Bitmap("../../Resources/shkolnyy-avtobus.png"));
+                                using (Graphics graphics = Graphics.FromImage(busPic.Image))
                                 {
                                     using (Font arialFont = new Font("Arial", 300))
                                     {
                                         graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(10, 10));
                                     }
                                 }
-                                buses.Add(new Bus(routes[int.Parse(changeRoute.Text)], bus, pos, busSettings.GetItemChecked(1), int.Parse(changeRoute.Text), false));
+                                buses.Add(new Bus(routes[int.Parse(changeRoute.Text)], busPic, pos, busSettings.GetItemChecked(1), int.Parse(changeRoute.Text), false));
                             };
                             //  
                             //  Bus.AllCoordinates = AllCoordinates;
@@ -3202,13 +3029,13 @@ namespace SystAnalys_lr1
                             double min = Math.Pow((sheet.Image.Width - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((sheet.Image.Height - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2);
                             for (int i = 0; i < buses.Count; i++)
                             {
-                                if (Math.Pow((buses[i].bus.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].bus.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) <= buses[i].R * buses[i].R * 500)
+                                if (Math.Pow((buses[i].busPic.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].busPic.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) <= buses[i].R * buses[i].R * 500)
                                 {
                                     if (buses[i].route == int.Parse(changeRoute.Text))
                                     {
-                                        if (Math.Pow((buses[i].bus.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].bus.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) < min)
+                                        if (Math.Pow((buses[i].busPic.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].busPic.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) < min)
                                         {
-                                            min = Math.Pow((buses[i].bus.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].bus.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2);
+                                            min = Math.Pow((buses[i].busPic.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].busPic.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2);
                                             pos = i;
                                         }
 
@@ -3218,7 +3045,7 @@ namespace SystAnalys_lr1
                             if (pos != null)
                             {
                                 buses[int.Parse(pos.ToString())].Stop();
-                                mainPanel.Controls.Remove(buses[int.Parse(pos.ToString())].bus);
+                                mainPanel.Controls.Remove(buses[int.Parse(pos.ToString())].busPic);
                                 buses.Remove(buses[int.Parse(pos.ToString())]);
                             }
                             G.clearSheet();
@@ -3501,7 +3328,7 @@ namespace SystAnalys_lr1
                 foreach (var bus in buses)
                 {
                     bus.Stop();
-                    mainPanel.Controls.Remove(bus.bus);
+                    mainPanel.Controls.Remove(bus.busPic);
                 }
                 buses.Clear();
                 delAllBusesOnRoute.Enabled = false;
@@ -3525,7 +3352,7 @@ namespace SystAnalys_lr1
                     if (bus.route == Int32.Parse(changeRoute.Text))
                     {
                         bus.Stop();
-                        mainPanel.Controls.Remove(bus.bus);
+                        mainPanel.Controls.Remove(bus.busPic);
                         b.Add(bus);
                     }
                 }
@@ -3914,13 +3741,12 @@ namespace SystAnalys_lr1
         {
             try
             {
-
                 if (sheet.Image != null)
                 {
                     sheet.Image = ResizeBitmap(new Bitmap(saveImage), wsheet * metroTrackBar1.Value, hsheet * metroTrackBar1.Value);
                     globalMap = ResizeBitmap(new Bitmap(saveImage), wsheet * metroTrackBar1.Value, hsheet * metroTrackBar1.Value);
                     mainPanel.AutoScrollPosition = new Point(scrollX * metroTrackBar1.Value, scrollY * metroTrackBar1.Value);
-
+                    //sizeBus = buses.Last().busPic.Width;
                     ///
                     scrollX = mainPanel.AutoScrollPosition.X;
                     scrollY = mainPanel.AutoScrollPosition.Y;
@@ -3929,10 +3755,11 @@ namespace SystAnalys_lr1
                     Bus.SetScrollY(mainPanel.AutoScrollPosition.Y);
                     Bus.ZoomCoef = metroTrackBar1.Value;
 
-                    foreach (var bus in buses)
-                    {
-                        bus.setBusSize();
-                    }
+                    //foreach (var bus in buses)
+                    //{
+                    //    bus.oldSize = sizeBus;
+                    //    bus.setBusSize();
+                    //}
 
                     //CreateGrid();
                     //CreatePollutionInRoutes();

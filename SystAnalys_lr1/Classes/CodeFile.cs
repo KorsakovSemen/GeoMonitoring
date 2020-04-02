@@ -400,7 +400,7 @@ namespace SystAnalys_lr1
         //для обратного движения по маршруту
         public bool TurnBack;
         [XmlIgnore, JsonIgnore]
-        public PictureBox bus;// { get; set; }
+        public PictureBox busPic;// { get; set; }
         //номер маршрута, по которому будет ездить автобус
         public int route;
         private double _date;
@@ -423,6 +423,7 @@ namespace SystAnalys_lr1
         public int passivniyTick;
         //не позволит басу двигаться на светофорах когда он должен стоять
         private bool InstaStop = false;
+        public int oldSize = 0;
         public static void SetScrollX(int x)
         {
             ScrollX = x;
@@ -441,20 +442,20 @@ namespace SystAnalys_lr1
         }
         int oldZoom = (int)ZoomCoef;
         public void setBusSize()
-        {
+        {                
             if (ZoomCoef < oldZoom)
             {
                 if (ZoomCoef == 1)
-                    bus.Size = new Size(Main.sizeBus, Main.sizeBus);
+                    busPic.Size = new Size(Main.sizeBus, Main.sizeBus);
                 else
-                    bus.Size = new Size(bus.Width / ((int)ZoomCoef / 2), bus.Height / ((int)ZoomCoef / 2));
+                    busPic.Size = new Size(oldSize - ((int)ZoomCoef), oldSize - ((int)ZoomCoef));
             }
             else
             {
                 if (ZoomCoef == 1)
-                    bus.Size = new Size(Main.sizeBus, Main.sizeBus);
+                    busPic.Size = new Size(Main.sizeBus, Main.sizeBus);
                 else
-                    bus.Size = new Size(bus.Width * ((int)ZoomCoef / 2), bus.Height * ((int)ZoomCoef / 2));
+                    busPic.Size = new Size(oldSize + ((int)ZoomCoef), oldSize + ((int)ZoomCoef));
 
             }
             oldZoom = (int)ZoomCoef;
@@ -508,10 +509,10 @@ namespace SystAnalys_lr1
         public bool tracker { get; set; }
 
 
-        public Bus(List<Vertex> m, PictureBox bus, int PositionAt, bool Turn, int route, bool not)
+        public Bus(List<Vertex> m, PictureBox busPic, int PositionAt, bool Turn, int route, bool not)
         {
             tracker = not;
-
+            oldSize = busPic.Size.Height;
             RoutMap = new List<Vertex>();
             this.RoutMap = m;
             this.grids = new SerializableDictionary<int, int>();
@@ -519,9 +520,9 @@ namespace SystAnalys_lr1
             {
                 this.grids.Add(i, 0);
             }
-            this.bus = bus;
-            x = bus.Left;
-            y = bus.Top;
+            this.busPic = busPic;
+            x = busPic.Left;
+            y = busPic.Top;
             this.PositionAt = PositionAt;
             TurnBack = Turn;
             this.route = route;
@@ -552,8 +553,8 @@ namespace SystAnalys_lr1
                 {
                     if (PositionAt < AllCoordinates[route].IndexOf(AllCoordinates[route].Last()))
                     {
-                        //bus.Left = AllCoordinates[route][PositionAt].X;
-                        //bus.Top = AllCoordinates[route][PositionAt].Y;
+                        //busPic.Left = AllCoordinates[route][PositionAt].X;
+                        //busPic.Top = AllCoordinates[route][PositionAt].Y;
                         PositionAt++;
                     }
                     else
@@ -589,8 +590,8 @@ namespace SystAnalys_lr1
                     if (PositionAt < Main.AllGridsInRoutes[route].Count - 1)
                     {
 
-                        //bus.Left = AllCoordinates[route][PositionAt].X;
-                        //bus.Top = AllCoordinates[route][PositionAt].Y;
+                        //busPic.Left = AllCoordinates[route][PositionAt].X;
+                        //busPic.Top = AllCoordinates[route][PositionAt].Y;
                         PositionAt++;
 
                     }
@@ -691,7 +692,7 @@ namespace SystAnalys_lr1
                                     }
                                 }
                             }
-                            bus.Location = new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - bus.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - bus.Height / 2);
+                            busPic.Location = new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2);
                             PositionAt++;
                         }
                         else
@@ -761,7 +762,7 @@ namespace SystAnalys_lr1
                                         }
                                     }
                                 }
-                                bus.Location = new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - bus.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - bus.Height / 2);
+                                busPic.Location = new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2);
                                 PositionAt--;
                             }
                         }
@@ -816,15 +817,15 @@ namespace SystAnalys_lr1
                                     switch (Sector.Key)
                                     {
                                         case 1:
-                                            Map.CreateGraphics().FillRectangle((Brush)Brushes.Red, (AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + bus.Width, AllCoordinates[route][PositionAt].Y * (int)ZoomCoef + bus.Height, 3, 3);
+                                            Map.CreateGraphics().FillRectangle((Brush)Brushes.Red, (AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + busPic.Width, AllCoordinates[route][PositionAt].Y * (int)ZoomCoef + busPic.Height, 3, 3);
                                             break;
 
                                         case 2:
-                                            Map.CreateGraphics().FillRectangle((Brush)Brushes.DarkOrange, AllCoordinates[route][PositionAt].X * (int)ZoomCoef + bus.Width, AllCoordinates[route][PositionAt].Y * (int)ZoomCoef + bus.Height, 3, 3);
+                                            Map.CreateGraphics().FillRectangle((Brush)Brushes.DarkOrange, AllCoordinates[route][PositionAt].X * (int)ZoomCoef + busPic.Width, AllCoordinates[route][PositionAt].Y * (int)ZoomCoef + busPic.Height, 3, 3);
                                             break;
 
                                         case 3:
-                                            Map.CreateGraphics().FillRectangle((Brush)Brushes.Yellow, AllCoordinates[route][PositionAt].X * (int)ZoomCoef + bus.Width, AllCoordinates[route][PositionAt].Y * (int)ZoomCoef + bus.Height, 3, 3);
+                                            Map.CreateGraphics().FillRectangle((Brush)Brushes.Yellow, AllCoordinates[route][PositionAt].X * (int)ZoomCoef + busPic.Width, AllCoordinates[route][PositionAt].Y * (int)ZoomCoef + busPic.Height, 3, 3);
                                             break;
 
                                         default:
@@ -985,7 +986,7 @@ namespace SystAnalys_lr1
         {
             for (int i = 0; i < Rectangles.Count; i++)
             {
-                if (((bus.Left + bus.Width / 2) > Rectangles[i].x) && ((bus.Left + bus.Width / 2) < Rectangles[i].x + GridPart.width) && ((bus.Top + bus.Height / 2) > Rectangles[i].y) && ((bus.Top + bus.Height / 2) < (Rectangles[i].y + GridPart.height)))
+                if (((busPic.Left + busPic.Width / 2) > Rectangles[i].x) && ((busPic.Left + busPic.Width / 2) < Rectangles[i].x + GridPart.width) && ((busPic.Top + busPic.Height / 2) > Rectangles[i].y) && ((busPic.Top + busPic.Height / 2) < (Rectangles[i].y + GridPart.height)))
                 {
                     //if (this.grids[i] == 0)
                     //{
@@ -995,7 +996,7 @@ namespace SystAnalys_lr1
                 }
             }
         }
-        //(double) bus.Top + bus.Height / 2, (double) Rectangles[i].x + Rectangles[i].width / 2, (double) Rectangles[i].y + Rectangles[i].height / 2) < Rectangles[i].width / 2)
+        //(double) busPic.Top + busPic.Height / 2, (double) Rectangles[i].x + Rectangles[i].width / 2, (double) Rectangles[i].y + Rectangles[i].height / 2) < Rectangles[i].width / 2)
         private void TimerDetectProcessor(object sender, EventArgs e)
         {
             if (tracker == true)
@@ -1072,8 +1073,8 @@ namespace SystAnalys_lr1
                         x -= Math.Sin(angle);
                         y -= Math.Cos(angle);
 
-                        bus.Left = (int)x;
-                        bus.Top = (int)y;
+                        busPic.Left = (int)x;
+                        busPic.Top = (int)y;
 
                     }
 
@@ -1104,8 +1105,8 @@ namespace SystAnalys_lr1
                         y -= Math.Cos(angle);
 
 
-                        bus.Left = (int)x;
-                        bus.Top = (int)y;
+                        busPic.Left = (int)x;
+                        busPic.Top = (int)y;
                     }
                     else
                     {
