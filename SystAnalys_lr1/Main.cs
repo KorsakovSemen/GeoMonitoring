@@ -1237,7 +1237,7 @@ namespace SystAnalys_lr1
             }
 
         }
-                          
+
         private void deleteButton_Click(object sender, EventArgs e)
         {
             //AsyncCreateAllCoordinates()();
@@ -1382,7 +1382,7 @@ namespace SystAnalys_lr1
             Ep.ERefreshRouts();
         }
 
-        private void newModelToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void newModelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog fb = new OpenFileDialog();
             fb.FilterIndex = 1;
@@ -1395,6 +1395,18 @@ namespace SystAnalys_lr1
                     mainPanel.Controls.Remove(bus.busPic);
                 }
                 buses.Clear();
+                if (sheet.Image != null)
+                {
+                    await Task.Delay(10000);
+                    config.Text = "Config: ";
+                }
+                foreach (var tl in Main.traficLights)
+                {
+                    tl.Stop();
+                    TraficLightsInGrids.Remove(tl.gridNum);
+                    traficLights.Remove(tl);
+                    break;
+                }
                 V.Clear();
                 E.Clear();
                 if (G.bitmap != null) G.clearSheet();

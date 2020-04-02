@@ -105,7 +105,8 @@ namespace SystAnalys_lr1
         }
 
         public void setBitmap()
-        {
+        {  
+            //эксепшн при загрузке левой директоории
             bitmap = new Bitmap(Main.globalMap);
             gr = Graphics.FromImage(bitmap);
         }

@@ -1,1 +1,1 @@
-C:\Users\pako2\Desktop\Diplom\Rebuild\SystAnalys_lr1\Configs\2_4_2020_17_38
+C:\Users\pako2\Desktop\Diplom\Rebuild\SystAnalys_lr1\bin\Debug/2_4_2020_18_11
