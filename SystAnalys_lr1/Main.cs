@@ -1389,6 +1389,7 @@ namespace SystAnalys_lr1
             fb.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             if (fb.ShowDialog() == DialogResult.OK)
             {
+                Ep.Close();
                 foreach (var bus in buses)
                 {
                     bus.Stop();
