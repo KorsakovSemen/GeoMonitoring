@@ -2005,7 +2005,7 @@ namespace SystAnalys_lr1
                     }
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
-                        if (!string.IsNullOrWhiteSpace(savepath))
+                        if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
                         {
                             string path = dialog.SelectedPath;
                             if (File.Exists(path + "/Map.png"))
