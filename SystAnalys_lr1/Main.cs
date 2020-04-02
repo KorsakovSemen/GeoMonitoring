@@ -196,8 +196,6 @@ namespace SystAnalys_lr1
                         msmMain.Theme = MetroThemeStyle.Dark;
                         toolStripMenu.BackColor = Color.FromArgb(17, 17, 17);
                         toolStripMenu.ForeColor = Color.FromArgb(153, 153, 153);
-                        busSettings.BackColor = Color.FromArgb(17, 17, 17);
-                        busSettings.ForeColor = Color.FromArgb(153, 153, 153);
                         fstream.Close();
                         themes.Checked = true;
                     }
@@ -206,8 +204,6 @@ namespace SystAnalys_lr1
                         msmMain.Theme = MetroThemeStyle.Light;
                         toolStripMenu.BackColor = Color.FromArgb(255, 255, 255);
                         toolStripMenu.ForeColor = Color.FromArgb(0, 0, 0);
-                        busSettings.BackColor = Color.FromArgb(255, 255, 255);
-                        busSettings.ForeColor = Color.FromArgb(0, 0, 0);
                         fstream.Close();
                         themes.Checked = false;
                     }
@@ -216,8 +212,6 @@ namespace SystAnalys_lr1
                         msmMain.Theme = MetroThemeStyle.Default;
                         toolStripMenu.BackColor = Color.FromArgb(255, 255, 255);
                         toolStripMenu.ForeColor = Color.FromArgb(0, 0, 0);
-                        busSettings.BackColor = Color.FromArgb(255, 255, 255);
-                        busSettings.ForeColor = Color.FromArgb(0, 0, 0);
                         fstream.Close();
                         themes.Checked = false;
                     }
@@ -1806,7 +1800,7 @@ namespace SystAnalys_lr1
             {
 
                 var busesparkreturn = busesPark;
-                if (changeProcent.Text != "" && int.TryParse(speed.Text, out int ch))
+                if (changeProcent.Text != "" && int.TryParse(speed.Text, out int ch) && changeProcent.Text != "")
                 {
                     offBuses(int.Parse(changeProcent.Text));
                     //double razm = Math.Round(buses.Count - buses.Count * 0.01 * int.Parse(changeProcent.Text));
@@ -1974,11 +1968,11 @@ namespace SystAnalys_lr1
             if (optText.Text != "" && int.TryParse(optText.Text, out int sp))
             {
                 foreach (var bus in buses)
-                    bus.Stop();
-                LoadBox("Loading...", "", int.Parse(optText.Text) * 1000);
+                    bus.Stop();                
                 foreach (var tl in traficLights)
                     tl.TimerLight.Interval = 1;
                 Opt();
+                MetroMessageBox.Show(this, "Your message here.", "Title Here", MessageBoxButtons.OKCancel, MessageBoxIcon.Hand);
                 foreach (var tl in traficLights)
                     tl.TimerLight.Interval = 1000;
             }
@@ -3062,7 +3056,7 @@ namespace SystAnalys_lr1
                                 }
                             }
 
-                            if (busSettings.GetItemChecked(0))
+                            if (trackerCheck.Checked == true)
                             {
                                 using (Graphics graphics = Graphics.FromImage(busPic.Image))
                                 {
@@ -3071,7 +3065,7 @@ namespace SystAnalys_lr1
                                         graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(10, 10));
                                     }
                                 }
-                                buses.Add(new Bus(routes[int.Parse(changeRoute.Text)], busPic, pos, busSettings.GetItemChecked(1), int.Parse(changeRoute.Text), true));
+                                buses.Add(new Bus(routes[int.Parse(changeRoute.Text)], busPic, pos, backsideCheck.Checked, int.Parse(changeRoute.Text), true));
                             }
                             else
                             {
@@ -3083,7 +3077,7 @@ namespace SystAnalys_lr1
                                         graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(10, 10));
                                     }
                                 }
-                                buses.Add(new Bus(routes[int.Parse(changeRoute.Text)], busPic, pos, busSettings.GetItemChecked(1), int.Parse(changeRoute.Text), false));
+                                buses.Add(new Bus(routes[int.Parse(changeRoute.Text)], busPic, pos, backsideCheck.Checked, int.Parse(changeRoute.Text), false));
                             };
                             //  
                             //  Bus.AllCoordinates = AllCoordinates;
@@ -3714,16 +3708,12 @@ namespace SystAnalys_lr1
                 msmMain.Theme = MetroFramework.MetroThemeStyle.Dark;
                 toolStripMenu.BackColor = Color.FromArgb(17, 17, 17);
                 toolStripMenu.ForeColor = Color.FromArgb(153, 153, 153);
-                busSettings.BackColor = Color.FromArgb(17, 17, 17);
-                busSettings.ForeColor = Color.FromArgb(153, 153, 153);
             }
             else
             {
                 msmMain.Theme = MetroFramework.MetroThemeStyle.Light;
                 toolStripMenu.BackColor = Color.FromArgb(255, 255, 255);
                 toolStripMenu.ForeColor = Color.FromArgb(0, 0, 0);
-                busSettings.BackColor = Color.FromArgb(255, 255, 255);
-                busSettings.ForeColor = Color.FromArgb(0, 0, 0);
             }
             using (StreamWriter fileV = new StreamWriter("../../SaveConfig/theme.txt"))
             {
@@ -3882,6 +3872,22 @@ namespace SystAnalys_lr1
             char number = e.KeyChar;
 
             if (!Char.IsDigit(number))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void optText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((!char.IsNumber(e.KeyChar)) && (!char.IsControl(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void speed_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((!char.IsNumber(e.KeyChar)) && (!char.IsControl(e.KeyChar)))
             {
                 e.Handled = true;
             }

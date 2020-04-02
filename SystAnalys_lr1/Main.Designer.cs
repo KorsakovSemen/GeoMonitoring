@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.about = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -62,9 +62,13 @@
             this.panel8 = new MetroFramework.Controls.MetroPanel();
             this.label8 = new MetroFramework.Controls.MetroLabel();
             this.panel7 = new MetroFramework.Controls.MetroPanel();
+            this.allBusSettings = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.busSize = new MetroFramework.Controls.MetroTextBox();
             this.button2 = new MetroFramework.Controls.MetroButton();
             this.changeRoute = new MetroFramework.Controls.MetroComboBox();
             this.label12 = new MetroFramework.Controls.MetroLabel();
+            this.changeProcent = new MetroFramework.Controls.MetroTextBox();
             this.theme = new MetroFramework.Controls.MetroLabel();
             this.changeTheme = new MetroFramework.Controls.MetroComboBox();
             this.mainPanel = new System.Windows.Forms.Panel();
@@ -105,13 +109,10 @@
             this.config = new MetroFramework.Controls.MetroLabel();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.allBusSettings = new MetroFramework.Controls.MetroPanel();
-            this.busSize = new MetroFramework.Controls.MetroTextBox();
-            this.busSettings = new System.Windows.Forms.CheckedListBox();
-            this.changeProcent = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.trackerCheck = new MetroFramework.Controls.MetroCheckBox();
+            this.backsideCheck = new MetroFramework.Controls.MetroCheckBox();
+            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -120,13 +121,13 @@
             this.panel4.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.allBusSettings.SuspendLayout();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.toolStripMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBus404_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).BeginInit();
-            this.allBusSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,36 +158,36 @@
             this.matrixGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.matrixGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.matrixGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.matrixGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.matrixGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.matrixGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.matrixGrid.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.matrixGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.matrixGrid.EnableHeadersVisualStyles = false;
             resources.ApplyResources(this.matrixGrid, "matrixGrid");
             this.matrixGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.matrixGrid.Name = "matrixGrid";
             this.matrixGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.matrixGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.matrixGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.matrixGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.matrixGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
@@ -294,6 +295,7 @@
             this.optText.UseSelectable = true;
             this.optText.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.optText.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.optText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.optText_KeyPress);
             // 
             // speed
             // 
@@ -324,6 +326,7 @@
             this.speed.UseSelectable = true;
             this.speed.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.speed.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.speed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.speed_KeyPress);
             // 
             // panel2
             // 
@@ -461,6 +464,56 @@
             this.panel7.VerticalScrollbarHighlightOnWheel = false;
             this.panel7.VerticalScrollbarSize = 6;
             // 
+            // allBusSettings
+            // 
+            this.allBusSettings.Controls.Add(this.backsideCheck);
+            this.allBusSettings.Controls.Add(this.trackerCheck);
+            this.allBusSettings.Controls.Add(this.metroLabel2);
+            this.allBusSettings.Controls.Add(this.busSize);
+            this.allBusSettings.HorizontalScrollbarBarColor = true;
+            this.allBusSettings.HorizontalScrollbarHighlightOnWheel = false;
+            this.allBusSettings.HorizontalScrollbarSize = 10;
+            resources.ApplyResources(this.allBusSettings, "allBusSettings");
+            this.allBusSettings.Name = "allBusSettings";
+            this.allBusSettings.VerticalScrollbarBarColor = true;
+            this.allBusSettings.VerticalScrollbarHighlightOnWheel = false;
+            this.allBusSettings.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel2
+            // 
+            resources.ApplyResources(this.metroLabel2, "metroLabel2");
+            this.metroLabel2.Name = "metroLabel2";
+            // 
+            // busSize
+            // 
+            // 
+            // 
+            // 
+            this.busSize.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            this.busSize.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode3")));
+            this.busSize.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location3")));
+            this.busSize.CustomButton.Name = "";
+            this.busSize.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size3")));
+            this.busSize.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.busSize.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex3")));
+            this.busSize.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.busSize.CustomButton.UseSelectable = true;
+            this.busSize.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible3")));
+            this.busSize.Lines = new string[0];
+            resources.ApplyResources(this.busSize, "busSize");
+            this.busSize.MaxLength = 32767;
+            this.busSize.Name = "busSize";
+            this.busSize.PasswordChar = '\0';
+            this.busSize.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.busSize.SelectedText = "";
+            this.busSize.SelectionLength = 0;
+            this.busSize.SelectionStart = 0;
+            this.busSize.ShortcutsEnabled = true;
+            this.busSize.UseSelectable = true;
+            this.busSize.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.busSize.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.busSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.busSize_KeyPress);
+            // 
             // button2
             // 
             resources.ApplyResources(this.button2, "button2");
@@ -481,6 +534,36 @@
             // 
             resources.ApplyResources(this.label12, "label12");
             this.label12.Name = "label12";
+            // 
+            // changeProcent
+            // 
+            // 
+            // 
+            // 
+            this.changeProcent.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            this.changeProcent.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode4")));
+            this.changeProcent.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location4")));
+            this.changeProcent.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin3")));
+            this.changeProcent.CustomButton.Name = "";
+            this.changeProcent.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size4")));
+            this.changeProcent.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.changeProcent.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex4")));
+            this.changeProcent.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.changeProcent.CustomButton.UseSelectable = true;
+            this.changeProcent.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible4")));
+            this.changeProcent.Lines = new string[0];
+            resources.ApplyResources(this.changeProcent, "changeProcent");
+            this.changeProcent.MaxLength = 32767;
+            this.changeProcent.Name = "changeProcent";
+            this.changeProcent.PasswordChar = '\0';
+            this.changeProcent.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.changeProcent.SelectedText = "";
+            this.changeProcent.SelectionLength = 0;
+            this.changeProcent.SelectionStart = 0;
+            this.changeProcent.ShortcutsEnabled = true;
+            this.changeProcent.UseSelectable = true;
+            this.changeProcent.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.changeProcent.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // theme
             // 
@@ -805,102 +888,26 @@
             resources.ApplyResources(this.metroLabel1, "metroLabel1");
             this.metroLabel1.Name = "metroLabel1";
             // 
-            // allBusSettings
-            // 
-            this.allBusSettings.Controls.Add(this.metroLabel2);
-            this.allBusSettings.Controls.Add(this.busSize);
-            this.allBusSettings.Controls.Add(this.busSettings);
-            this.allBusSettings.HorizontalScrollbarBarColor = true;
-            this.allBusSettings.HorizontalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.HorizontalScrollbarSize = 10;
-            resources.ApplyResources(this.allBusSettings, "allBusSettings");
-            this.allBusSettings.Name = "allBusSettings";
-            this.allBusSettings.VerticalScrollbarBarColor = true;
-            this.allBusSettings.VerticalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.VerticalScrollbarSize = 10;
-            // 
-            // busSize
-            // 
-            // 
-            // 
-            // 
-            this.busSize.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            this.busSize.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode3")));
-            this.busSize.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location3")));
-            this.busSize.CustomButton.Name = "";
-            this.busSize.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size3")));
-            this.busSize.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.busSize.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex3")));
-            this.busSize.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.busSize.CustomButton.UseSelectable = true;
-            this.busSize.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible3")));
-            this.busSize.Lines = new string[0];
-            resources.ApplyResources(this.busSize, "busSize");
-            this.busSize.MaxLength = 32767;
-            this.busSize.Name = "busSize";
-            this.busSize.PasswordChar = '\0';
-            this.busSize.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.busSize.SelectedText = "";
-            this.busSize.SelectionLength = 0;
-            this.busSize.SelectionStart = 0;
-            this.busSize.ShortcutsEnabled = true;
-            this.busSize.UseSelectable = true;
-            this.busSize.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.busSize.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.busSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.busSize_KeyPress);
-            // 
-            // busSettings
-            // 
-            this.busSettings.FormattingEnabled = true;
-            this.busSettings.Items.AddRange(new object[] {
-            resources.GetString("busSettings.Items"),
-            resources.GetString("busSettings.Items1")});
-            resources.ApplyResources(this.busSettings, "busSettings");
-            this.busSettings.Name = "busSettings";
-            // 
-            // changeProcent
-            // 
-            // 
-            // 
-            // 
-            this.changeProcent.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            this.changeProcent.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode4")));
-            this.changeProcent.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location4")));
-            this.changeProcent.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin3")));
-            this.changeProcent.CustomButton.Name = "";
-            this.changeProcent.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size4")));
-            this.changeProcent.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.changeProcent.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex4")));
-            this.changeProcent.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.changeProcent.CustomButton.UseSelectable = true;
-            this.changeProcent.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible4")));
-            this.changeProcent.Lines = new string[0];
-            resources.ApplyResources(this.changeProcent, "changeProcent");
-            this.changeProcent.MaxLength = 32767;
-            this.changeProcent.Name = "changeProcent";
-            this.changeProcent.PasswordChar = '\0';
-            this.changeProcent.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.changeProcent.SelectedText = "";
-            this.changeProcent.SelectionLength = 0;
-            this.changeProcent.SelectionStart = 0;
-            this.changeProcent.ShortcutsEnabled = true;
-            this.changeProcent.UseSelectable = true;
-            this.changeProcent.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.changeProcent.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel2
-            // 
-            resources.ApplyResources(this.metroLabel2, "metroLabel2");
-            this.metroLabel2.Name = "metroLabel2";
-            // 
-            // busParkBindingSource
-            // 
-            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
-            // 
             // timer1
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
+            // 
+            // trackerCheck
+            // 
+            resources.ApplyResources(this.trackerCheck, "trackerCheck");
+            this.trackerCheck.Name = "trackerCheck";
+            this.trackerCheck.UseSelectable = true;
+            // 
+            // backsideCheck
+            // 
+            resources.ApplyResources(this.backsideCheck, "backsideCheck");
+            this.backsideCheck.Name = "backsideCheck";
+            this.backsideCheck.UseSelectable = true;
+            // 
+            // busParkBindingSource
+            // 
+            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
             // 
             // Main
             // 
@@ -941,6 +948,8 @@
             this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.allBusSettings.ResumeLayout(false);
+            this.allBusSettings.PerformLayout();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
@@ -949,8 +958,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBus404_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).EndInit();
-            this.allBusSettings.ResumeLayout(false);
-            this.allBusSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1034,9 +1041,10 @@
         private MetroFramework.Controls.MetroPanel allBusSettings;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroTextBox busSize;
-        private System.Windows.Forms.CheckedListBox busSettings;
         private MetroFramework.Controls.MetroTextBox changeProcent;
         private System.Windows.Forms.Timer timer1;
+        private MetroFramework.Controls.MetroCheckBox backsideCheck;
+        private MetroFramework.Controls.MetroCheckBox trackerCheck;
     }
 }
 
