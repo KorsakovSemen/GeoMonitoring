@@ -166,16 +166,84 @@ namespace SystAnalys_lr1
             traficLights = new List<TraficLight>();
             routes = new SerializableDictionary<int, List<Vertex>>();
             buses = new List<Bus>();
-
-            using (FileStream fstream = File.OpenRead("../../SaveConfig/save.txt"))
+            if (File.Exists("../../SaveConfig/save.txt"))
             {
-                byte[] array = new byte[fstream.Length];
-                // асинхронное чтение файла
-                fstream.Read(array, 0, array.Length);
-                savepath = System.Text.Encoding.Default.GetString(array);
-                savepath = Path.GetFullPath(savepath);
-                Console.WriteLine($"Текст из файла: {savepath}");
+                using (FileStream fstream = File.OpenRead("../../SaveConfig/save.txt"))
+                {
+                    byte[] array = new byte[fstream.Length];
+                    // асинхронное чтение файла
+                    fstream.Read(array, 0, array.Length);
+                    savepath = System.Text.Encoding.Default.GetString(array);
+                    savepath = Path.GetFullPath(savepath);
+                    Console.WriteLine($"Текст из файла: {savepath}");
 
+                }
+            }
+            else
+            {
+                File.Create("../../SaveConfig/save.txt");
+            }
+            if (File.Exists("../../SaveConfig/theme.txt"))
+            {
+                using (FileStream fstream = File.OpenRead("../../SaveConfig/theme.txt"))
+                {
+                    byte[] array = new byte[fstream.Length];
+                    // асинхронное чтение файла
+                    fstream.Read(array, 0, array.Length);
+                    if(System.Text.Encoding.Default.GetString(array) == "Dark\r\n")
+                    {
+                        msmMain.Theme = MetroThemeStyle.Dark;
+                        toolStripMenu.BackColor = Color.FromArgb(17, 17, 17);
+                        toolStripMenu.ForeColor = Color.FromArgb(153, 153, 153);
+                        busSettings.BackColor = Color.FromArgb(17, 17, 17);
+                        busSettings.ForeColor = Color.FromArgb(153, 153, 153);
+                        fstream.Close();
+                        themes.Checked = true;
+                    }
+                    if (System.Text.Encoding.Default.GetString(array) == "Light\r\n")
+                    {
+                        msmMain.Theme = MetroThemeStyle.Light;
+                        toolStripMenu.BackColor = Color.FromArgb(255, 255, 255);
+                        toolStripMenu.ForeColor = Color.FromArgb(0, 0, 0);
+                        busSettings.BackColor = Color.FromArgb(255, 255, 255);
+                        busSettings.ForeColor = Color.FromArgb(0, 0, 0);
+                        fstream.Close();
+                        themes.Checked = false;
+                    }
+                    if (System.Text.Encoding.Default.GetString(array) == "Default\r\n")
+                    {
+                        msmMain.Theme = MetroThemeStyle.Default;
+                        toolStripMenu.BackColor = Color.FromArgb(255, 255, 255);
+                        toolStripMenu.ForeColor = Color.FromArgb(0, 0, 0);
+                        busSettings.BackColor = Color.FromArgb(255, 255, 255);
+                        busSettings.ForeColor = Color.FromArgb(0, 0, 0);
+                        fstream.Close();
+                        themes.Checked = false;
+                    }
+
+                    Console.WriteLine($"Текст из файла: {savepath}");
+
+                }
+            }
+            else
+            {
+                File.Create("../../SaveConfig/style.txt");
+            }
+            if (File.Exists("../../SaveConfig/style.txt"))
+            {
+                using (FileStream fstream = File.OpenRead("../../SaveConfig/style.txt"))
+                {
+                    byte[] array = new byte[fstream.Length];
+                    // асинхронное чтение файла
+                    fstream.Read(array, 0, array.Length);
+                    msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf(System.Text.Encoding.Default.GetString(array)));
+                    Console.WriteLine($"Текст из файла: {savepath}");
+
+                }
+            }
+            else
+            {
+                File.Create("../../SaveConfig/style.txt");
             }
             try
             {
@@ -3656,7 +3724,12 @@ namespace SystAnalys_lr1
                 busSettings.BackColor = Color.FromArgb(255, 255, 255);
                 busSettings.ForeColor = Color.FromArgb(0, 0, 0);
             }
+            using (StreamWriter fileV = new StreamWriter("../../SaveConfig/theme.txt"))
+            {
+                fileV.WriteLine(msmMain.Theme);
+            }
             this.StyleManager.Clone(Ep);
+
             //      this.StyleManager.Clone(Ep.epSet);
             //      this.StyleManager.Clone(addG);
             //      this.StyleManager.Clone(addR);
@@ -3679,6 +3752,10 @@ namespace SystAnalys_lr1
         private void changeTheme_SelectedIndexChanged(object sender, EventArgs e)
         {
             msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf(changeTheme.Text));
+            using (StreamWriter fileV = new StreamWriter("../../SaveConfig/style.txt"))
+            {
+                fileV.WriteLine(msmMain.Style);
+            }
         }
 
         private void launchBuses_Click(object sender, EventArgs e)
