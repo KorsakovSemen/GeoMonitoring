@@ -445,14 +445,14 @@ namespace SystAnalys_lr1
             if (ZoomCoef < oldZoom)
             {
                 if (ZoomCoef == 1)
-                    bus.Size = new Size(15, 15);
+                    bus.Size = new Size(Main.sizeBus, Main.sizeBus);
                 else
                     bus.Size = new Size(bus.Width / ((int)ZoomCoef / 2), bus.Height / ((int)ZoomCoef / 2));
             }
             else
             {
                 if (ZoomCoef == 1)
-                    bus.Size = new Size(15, 15);
+                    bus.Size = new Size(Main.sizeBus, Main.sizeBus);
                 else
                     bus.Size = new Size(bus.Width * ((int)ZoomCoef / 2), bus.Height * ((int)ZoomCoef / 2));
 

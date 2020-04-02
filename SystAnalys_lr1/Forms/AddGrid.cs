@@ -30,12 +30,20 @@ namespace SystAnalys_lr1.Forms
         {
             if (up.Text != "")
                  Main.g.left = int.Parse(up.Text);
+            else
+                errorProvider1.SetError(up, "Заполните поле!");
             if (left.Text != "")
                 Main.g.up = int.Parse(left.Text);
+            else
+                errorProvider1.SetError(left, "Заполните поле!");
             if (down.Text != "")
                 Main.g.right = int.Parse(down.Text);
+            else
+                errorProvider1.SetError(down, "Заполните поле!");
             if (right.Text != "")
                 Main.g.down = int.Parse(right.Text);
+            else
+                errorProvider1.SetError(right, "Заполните поле!");
             if (w.Text != "")
                 Main.g.gridWidth = int.Parse(w.Text);
             else
