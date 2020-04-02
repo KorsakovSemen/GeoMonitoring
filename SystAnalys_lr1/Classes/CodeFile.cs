@@ -369,7 +369,7 @@ namespace SystAnalys_lr1
     {
         public static int ScrollX;
         public static int ScrollY;
-        public int skip = 0;
+        public int skip = 1;
         public System.Threading.Mutex mutex = new System.Threading.Mutex();
         public static string sImg = "../../Resources/bus.PNG";
         //  public byte[] saveImg;
@@ -481,20 +481,6 @@ namespace SystAnalys_lr1
             Map = M;
         }
 
-        //public static void setEpicenters(List<Epicenter> E)
-        //{
-        //    Epicenters = new List<Epicenter>();
-        //    Epicenters = E;
-        //    foreach (var Epic in Epicenters)
-        //    {
-        //        Epic.DetectCount = 0;
-        //    }
-
-        //}
-        //public static List<Epicenter> getEpicenters()
-        //{
-        //    return Epicenters;
-        //}
         public static void setGrid(List<GridPart> G)
         {
             Rectangles = G;
@@ -554,8 +540,7 @@ namespace SystAnalys_lr1
                 }
             }
         }
-        public async Task
-asMoveWithoutGraphics()
+        public async Task asMoveWithoutGraphics()
         {
             await Task.Run(() => MoveWithoutGraphics());
         }
@@ -642,7 +627,7 @@ asMoveWithoutGraphics()
         }
         Random rnd = new Random();
         public bool skipTraffics = false;
-        int skipStops = 0;
+        int skipStops = 1;
         //движение с графикой (для визуализации движения)
         public async void MoveWithGraphics()
         {

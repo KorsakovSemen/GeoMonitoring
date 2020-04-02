@@ -40,8 +40,8 @@
             this.matrixGrid = new MetroFramework.Controls.MetroGrid();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.panel1 = new MetroFramework.Controls.MetroPanel();
+            this.SavePictures = new MetroFramework.Controls.MetroCheckBox();
             this.stopBuses = new MetroFramework.Controls.MetroButton();
             this.launchBuses = new MetroFramework.Controls.MetroButton();
             this.label9 = new MetroFramework.Controls.MetroLabel();
@@ -51,17 +51,11 @@
             this.mean = new MetroFramework.Controls.MetroLabel();
             this.optText = new MetroFramework.Controls.MetroTextBox();
             this.speed = new MetroFramework.Controls.MetroTextBox();
-            this.button6 = new MetroFramework.Controls.MetroButton();
             this.panel2 = new MetroFramework.Controls.MetroPanel();
-            this.label6 = new MetroFramework.Controls.MetroLabel();
-            this.label5 = new MetroFramework.Controls.MetroLabel();
-            this.button5 = new MetroFramework.Controls.MetroButton();
-            this.button3 = new MetroFramework.Controls.MetroButton();
             this.label7 = new MetroFramework.Controls.MetroLabel();
             this.textBox2 = new MetroFramework.Controls.MetroTextBox();
             this.button8 = new MetroFramework.Controls.MetroButton();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.loadLabel = new MetroFramework.Controls.MetroLabel();
             this.panel4 = new MetroFramework.Controls.MetroPanel();
@@ -71,9 +65,7 @@
             this.panel7 = new MetroFramework.Controls.MetroPanel();
             this.button2 = new MetroFramework.Controls.MetroButton();
             this.changeRoute = new MetroFramework.Controls.MetroComboBox();
-            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label12 = new MetroFramework.Controls.MetroLabel();
-            this.changeProcent = new MetroFramework.Controls.MetroTextBox();
             this.theme = new MetroFramework.Controls.MetroLabel();
             this.changeTheme = new MetroFramework.Controls.MetroComboBox();
             this.mainPanel = new System.Windows.Forms.Panel();
@@ -114,23 +106,28 @@
             this.config = new MetroFramework.Controls.MetroLabel();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.SavePictures = new MetroFramework.Controls.MetroCheckBox();
+            this.allBusSettings = new MetroFramework.Controls.MetroPanel();
+            this.busSize = new MetroFramework.Controls.MetroTextBox();
+            this.busSettings = new System.Windows.Forms.CheckedListBox();
+            this.changeProcent = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).BeginInit();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.toolStripMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBus404_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).BeginInit();
+            this.allBusSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -203,12 +200,6 @@
             this.timer2.Interval = 5000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // dataGridView3
-            // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resources.ApplyResources(this.dataGridView3, "dataGridView3");
-            this.dataGridView3.Name = "dataGridView3";
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -230,6 +221,12 @@
             this.panel1.VerticalScrollbarBarColor = true;
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
             this.panel1.VerticalScrollbarSize = 6;
+            // 
+            // SavePictures
+            // 
+            resources.ApplyResources(this.SavePictures, "SavePictures");
+            this.SavePictures.Name = "SavePictures";
+            this.SavePictures.UseSelectable = true;
             // 
             // stopBuses
             // 
@@ -333,21 +330,9 @@
             this.speed.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.speed.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // button6
-            // 
-            resources.ApplyResources(this.button6, "button6");
-            this.button6.Name = "button6";
-            this.button6.UseSelectable = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.textBox2);
             this.panel2.Controls.Add(this.button8);
@@ -359,30 +344,6 @@
             this.panel2.VerticalScrollbarBarColor = true;
             this.panel2.VerticalScrollbarHighlightOnWheel = false;
             this.panel2.VerticalScrollbarSize = 6;
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
-            // button5
-            // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.UseSelectable = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button3
-            // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseSelectable = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // label7
             // 
@@ -433,15 +394,6 @@
             resources.ApplyResources(this.dataGridView2, "dataGridView2");
             this.dataGridView2.Name = "dataGridView2";
             // 
-            // checkedListBox1
-            // 
-            resources.ApplyResources(this.checkedListBox1, "checkedListBox1");
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            resources.GetString("checkedListBox1.Items"),
-            resources.GetString("checkedListBox1.Items1")});
-            this.checkedListBox1.Name = "checkedListBox1";
-            // 
             // loadLabel
             // 
             resources.ApplyResources(this.loadLabel, "loadLabel");
@@ -457,7 +409,6 @@
             this.panel4.Controls.Add(this.panel7);
             this.panel4.Controls.Add(this.panel1);
             this.panel4.Controls.Add(this.panel2);
-            this.panel4.Controls.Add(this.dataGridView3);
             this.panel4.Controls.Add(this.changeProcent);
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.HorizontalScrollbarBarColor = true;
@@ -473,7 +424,7 @@
             this.metroTrackBar1.BackColor = System.Drawing.Color.Transparent;
             this.metroTrackBar1.LargeChange = 1;
             resources.ApplyResources(this.metroTrackBar1, "metroTrackBar1");
-            this.metroTrackBar1.Maximum = 10;
+            this.metroTrackBar1.Maximum = 5;
             this.metroTrackBar1.Minimum = 1;
             this.metroTrackBar1.Name = "metroTrackBar1";
             this.metroTrackBar1.Value = 1;
@@ -502,10 +453,10 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel7.Controls.Add(this.allBusSettings);
             this.panel7.Controls.Add(this.button2);
             this.panel7.Controls.Add(this.changeRoute);
             this.panel7.Controls.Add(this.label12);
-            this.panel7.Controls.Add(this.checkedListBox1);
             this.panel7.HorizontalScrollbarBarColor = true;
             this.panel7.HorizontalScrollbarHighlightOnWheel = false;
             this.panel7.HorizontalScrollbarSize = 6;
@@ -531,44 +482,10 @@
             this.changeRoute.UseSelectable = true;
             this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChangedAsync);
             // 
-            // busParkBindingSource
-            // 
-            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
-            // 
             // label12
             // 
             resources.ApplyResources(this.label12, "label12");
             this.label12.Name = "label12";
-            // 
-            // changeProcent
-            // 
-            // 
-            // 
-            // 
-            this.changeProcent.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            this.changeProcent.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode3")));
-            this.changeProcent.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location3")));
-            this.changeProcent.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin3")));
-            this.changeProcent.CustomButton.Name = "";
-            this.changeProcent.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size3")));
-            this.changeProcent.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.changeProcent.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex3")));
-            this.changeProcent.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.changeProcent.CustomButton.UseSelectable = true;
-            this.changeProcent.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible3")));
-            this.changeProcent.Lines = new string[0];
-            resources.ApplyResources(this.changeProcent, "changeProcent");
-            this.changeProcent.MaxLength = 32767;
-            this.changeProcent.Name = "changeProcent";
-            this.changeProcent.PasswordChar = '\0';
-            this.changeProcent.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.changeProcent.SelectedText = "";
-            this.changeProcent.SelectionLength = 0;
-            this.changeProcent.SelectionStart = 0;
-            this.changeProcent.ShortcutsEnabled = true;
-            this.changeProcent.UseSelectable = true;
-            this.changeProcent.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.changeProcent.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // theme
             // 
@@ -893,11 +810,98 @@
             resources.ApplyResources(this.metroLabel1, "metroLabel1");
             this.metroLabel1.Name = "metroLabel1";
             // 
-            // SavePictures
+            // allBusSettings
             // 
-            resources.ApplyResources(this.SavePictures, "SavePictures");
-            this.SavePictures.Name = "SavePictures";
-            this.SavePictures.UseSelectable = true;
+            this.allBusSettings.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.allBusSettings.Controls.Add(this.metroLabel2);
+            this.allBusSettings.Controls.Add(this.busSize);
+            this.allBusSettings.Controls.Add(this.busSettings);
+            this.allBusSettings.HorizontalScrollbarBarColor = true;
+            this.allBusSettings.HorizontalScrollbarHighlightOnWheel = false;
+            this.allBusSettings.HorizontalScrollbarSize = 10;
+            resources.ApplyResources(this.allBusSettings, "allBusSettings");
+            this.allBusSettings.Name = "allBusSettings";
+            this.allBusSettings.VerticalScrollbarBarColor = true;
+            this.allBusSettings.VerticalScrollbarHighlightOnWheel = false;
+            this.allBusSettings.VerticalScrollbarSize = 10;
+            // 
+            // busSize
+            // 
+            // 
+            // 
+            // 
+            this.busSize.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            this.busSize.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode3")));
+            this.busSize.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location3")));
+            this.busSize.CustomButton.Name = "";
+            this.busSize.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size3")));
+            this.busSize.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.busSize.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex3")));
+            this.busSize.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.busSize.CustomButton.UseSelectable = true;
+            this.busSize.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible3")));
+            this.busSize.Lines = new string[0];
+            resources.ApplyResources(this.busSize, "busSize");
+            this.busSize.MaxLength = 32767;
+            this.busSize.Name = "busSize";
+            this.busSize.PasswordChar = '\0';
+            this.busSize.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.busSize.SelectedText = "";
+            this.busSize.SelectionLength = 0;
+            this.busSize.SelectionStart = 0;
+            this.busSize.ShortcutsEnabled = true;
+            this.busSize.UseSelectable = true;
+            this.busSize.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.busSize.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.busSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.busSize_KeyPress);
+            // 
+            // busSettings
+            // 
+            this.busSettings.FormattingEnabled = true;
+            this.busSettings.Items.AddRange(new object[] {
+            resources.GetString("busSettings.Items"),
+            resources.GetString("busSettings.Items1")});
+            resources.ApplyResources(this.busSettings, "busSettings");
+            this.busSettings.Name = "busSettings";
+            // 
+            // changeProcent
+            // 
+            // 
+            // 
+            // 
+            this.changeProcent.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            this.changeProcent.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode4")));
+            this.changeProcent.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location4")));
+            this.changeProcent.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin3")));
+            this.changeProcent.CustomButton.Name = "";
+            this.changeProcent.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size4")));
+            this.changeProcent.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.changeProcent.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex4")));
+            this.changeProcent.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.changeProcent.CustomButton.UseSelectable = true;
+            this.changeProcent.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible4")));
+            this.changeProcent.Lines = new string[0];
+            resources.ApplyResources(this.changeProcent, "changeProcent");
+            this.changeProcent.MaxLength = 32767;
+            this.changeProcent.Name = "changeProcent";
+            this.changeProcent.PasswordChar = '\0';
+            this.changeProcent.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.changeProcent.SelectedText = "";
+            this.changeProcent.SelectionLength = 0;
+            this.changeProcent.SelectionStart = 0;
+            this.changeProcent.ShortcutsEnabled = true;
+            this.changeProcent.UseSelectable = true;
+            this.changeProcent.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.changeProcent.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel2
+            // 
+            resources.ApplyResources(this.metroLabel2, "metroLabel2");
+            this.metroLabel2.Name = "metroLabel2";
+            // 
+            // busParkBindingSource
+            // 
+            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
             // 
             // Main
             // 
@@ -928,7 +932,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -939,7 +942,6 @@
             this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
@@ -948,6 +950,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBus404_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).EndInit();
+            this.allBusSettings.ResumeLayout(false);
+            this.allBusSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -962,15 +967,12 @@
         private MetroFramework.Controls.MetroGrid matrixGrid;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.BindingSource busParkBindingSource;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
         private MetroFramework.Controls.MetroButton button8;
         private MetroFramework.Controls.MetroTextBox textBox2;
         private MetroFramework.Controls.MetroLabel label7;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private MetroFramework.Controls.MetroLabel loadLabel;
-        private MetroFramework.Controls.MetroLabel label5;
         private MetroFramework.Controls.MetroPanel panel2;
         private MetroFramework.Controls.MetroPanel panel4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -987,7 +989,6 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveInToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createModelToolStripMenuItem;
-        private MetroFramework.Controls.MetroButton button3;
         private System.Windows.Forms.ToolStripDropDownButton loadButton;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadFromToolStripMenuItem;
@@ -996,7 +997,6 @@
         private MetroFramework.Controls.MetroTextBox optText;
         private System.Windows.Forms.PictureBox sheet;
         private MetroFramework.Controls.MetroLabel mean;
-        private MetroFramework.Controls.MetroTextBox changeProcent;
         public System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.ToolStripButton stopPointButton;
         private System.Windows.Forms.ToolStripButton delAllBusesOnRoute;
@@ -1018,9 +1018,6 @@
         public MetroFramework.Controls.MetroComboBox changeRoute;
         private MetroFramework.Controls.MetroButton button1;
         private MetroFramework.Controls.MetroPanel panel1;
-        private MetroFramework.Controls.MetroButton button5;
-        private MetroFramework.Controls.MetroLabel label6;
-        private MetroFramework.Controls.MetroButton button6;
         private System.Windows.Forms.ToolStripMenuItem runTrafficLightsToolStripMenuItem;
         private MetroFramework.Controls.MetroButton button2;
         private MetroFramework.Controls.MetroLabel label9;
@@ -1036,6 +1033,11 @@
         private MetroFramework.Controls.MetroTrackBar metroTrackBar1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private MetroFramework.Controls.MetroCheckBox SavePictures;
+        private MetroFramework.Controls.MetroPanel allBusSettings;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroTextBox busSize;
+        private System.Windows.Forms.CheckedListBox busSettings;
+        private MetroFramework.Controls.MetroTextBox changeProcent;
     }
 }
 

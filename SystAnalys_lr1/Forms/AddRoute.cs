@@ -16,18 +16,46 @@ namespace SystAnalys_lr1
         public AddRoute()
         {
             InitializeComponent();
+            textBox1.Validated += textBox1_Validated;
+            errorProvider1.SetIconAlignment(textBox1, ErrorIconAlignment.MiddleRight);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            if (!Main.routes.ContainsKey(int.Parse(this.textBox1.Text)))
+            if(textBox1.Text != "")
             {
-                Main.routes.Add(int.Parse(this.textBox1.Text), new List<Vertex>());
-                Main.routesEdge.Add(int.Parse(this.textBox1.Text), new List<Edge>());
-            }
+                if (!Main.routes.ContainsKey(int.Parse(this.textBox1.Text)))
+                {
+                    Main.routes.Add(int.Parse(this.textBox1.Text), new List<Vertex>());
+                    Main.routesEdge.Add(int.Parse(this.textBox1.Text), new List<Edge>());
+                }
+            }         
 
-            this.Close();
         }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((!char.IsNumber(e.KeyChar)) && (!char.IsControl(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox1_Validated(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
+                errorProvider1.SetError(textBox1, "Заполните поле!");
+            else
+            {
+                errorProvider1.SetError(textBox1, string.Empty);
+                Close();
+            }
+            //if (string.IsNullOrWhiteSpace((sender as TextBox).Text))
+            //    errorProvider1.SetError(textBox1, "Заполните поле!");
+
+        }
+
+     
     }
 }

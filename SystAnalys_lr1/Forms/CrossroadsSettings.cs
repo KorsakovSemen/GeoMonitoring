@@ -26,9 +26,7 @@ namespace SystAnalys_lr1.Forms
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char number = e.KeyChar;
-
-            if (!Char.IsDigit(number))
+            if ((!char.IsNumber(e.KeyChar)) && (!char.IsControl(e.KeyChar)))
             {
                 e.Handled = true;
             }
@@ -36,9 +34,7 @@ namespace SystAnalys_lr1.Forms
 
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char number = e.KeyChar;
-
-            if (!Char.IsDigit(number))
+            if ((!char.IsNumber(e.KeyChar)) && (!char.IsControl(e.KeyChar)))
             {
                 e.Handled = true;
             }
@@ -46,9 +42,7 @@ namespace SystAnalys_lr1.Forms
 
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char number = e.KeyChar;
-
-            if (!Char.IsDigit(number))
+            if ((!char.IsNumber(e.KeyChar)) && (!char.IsControl(e.KeyChar)))
             {
                 e.Handled = true;
             }
@@ -56,32 +50,12 @@ namespace SystAnalys_lr1.Forms
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char number = e.KeyChar;
-
-            if (!Char.IsDigit(number))
+            if ((!char.IsNumber(e.KeyChar)) && (!char.IsControl(e.KeyChar)))
             {
                 e.Handled = true;
             }
         }
 
-        private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char number = e.KeyChar;
-
-            if (!Char.IsDigit(number))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char number = e.KeyChar;
-
-            if (!Char.IsDigit(number))
-            {
-                e.Handled = true;
-            }
-        }
+      
     }
 }

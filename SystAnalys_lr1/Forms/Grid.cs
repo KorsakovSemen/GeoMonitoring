@@ -21,28 +21,28 @@ namespace SystAnalys_lr1
             //    dataGridView3.Rows.Clear();
             //    dataGridView3.Columns.Clear();
             // dataGridView3.Refresh();
-            dataGridView3.Invoke(new DelInt((s) => dataGridView3.ColumnCount = s), AllGridFilling.Count());
-            dataGridView3.Invoke(new DelInt((s) => dataGridView3.RowCount = s), TheGrid.Count());
-            for (int i = 0; i < AllGridFilling.Count(); i++)
-            {
-                dataGridView3.Invoke(new Del((s) => dataGridView3.Columns[i].HeaderText = s), "Пак данных N" + i.ToString() + " за " + TimeForAllGridFilling[i].ToString() + " секунд");
+            //dataGridView3.Invoke(new DelInt((s) => dataGridView3.ColumnCount = s), AllGridFilling.Count());
+            //dataGridView3.Invoke(new DelInt((s) => dataGridView3.RowCount = s), TheGrid.Count());
+            //for (int i = 0; i < AllGridFilling.Count(); i++)
+            //{
+            //    dataGridView3.Invoke(new Del((s) => dataGridView3.Columns[i].HeaderText = s), "Пак данных N" + i.ToString() + " за " + TimeForAllGridFilling[i].ToString() + " секунд");
 
-            }
-            for (int i = 0; i < TheGrid.Count; ++i)
-            {
-                dataGridView3.Invoke(new Del((s) => dataGridView3.Rows[i].HeaderCell.Value = s), "Квадрат - " + i.ToString());
+            //}
+            //for (int i = 0; i < TheGrid.Count; ++i)
+            //{
+            //    dataGridView3.Invoke(new Del((s) => dataGridView3.Rows[i].HeaderCell.Value = s), "Квадрат - " + i.ToString());
 
-            }
-            //  dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            //  dataGridView3.RowHeadersWidth = 100;
-            for (int i = 0; i < AllGridFilling.Count(); i++)
-            {
+            //}
+            ////  dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ////  dataGridView3.RowHeadersWidth = 100;
+            //for (int i = 0; i < AllGridFilling.Count(); i++)
+            //{
 
-                for (int j = 0; j < AllGridFilling[i].Count(); j++)
-                {
-                    dataGridView3.Invoke(new Del((s) => dataGridView3.Rows[j].Cells[i].Value = s), AllGridFilling[i][j].ToString());
-                }
-            }
+            //    for (int j = 0; j < AllGridFilling[i].Count(); j++)
+            //    {
+            //        dataGridView3.Invoke(new Del((s) => dataGridView3.Rows[j].Cells[i].Value = s), AllGridFilling[i][j].ToString());
+            //    }
+            //}
         }
 
         //функция, которая создает/очищает контейнер для AllGridFilling
@@ -110,7 +110,7 @@ namespace SystAnalys_lr1
             }
 
             //label6.Text = "Количество пустых секторов : " + EmptyGridCount.Skip(1).Sum(ix => ix.Value);
-            label6.Invoke(new Del((s) => label6.Text = s), "Количество пустых секторов : " + EmptyGridCount.Skip(1).Sum(ix => ix.Value));
+          //  label6.Invoke(new Del((s) => label6.Text = s), "Количество пустых секторов : " + EmptyGridCount.Skip(1).Sum(ix => ix.Value));
         }
         public class Grid
         {
