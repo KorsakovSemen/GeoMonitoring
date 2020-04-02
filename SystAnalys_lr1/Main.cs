@@ -1079,6 +1079,8 @@ namespace SystAnalys_lr1
             button8.Invoke(new DelBool((s) => button8.Enabled = s), true);
             optimize.Invoke(new DelBool((s) => optimize.Enabled = s), true);
             button2.Invoke(new DelBool((s) => button2.Enabled = s), true);
+            launchBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), true);
+            stopBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), true);
             toolStripMenu.Invoke((System.Action)(() =>
             {
                 saveButton.Enabled = true;
@@ -1104,6 +1106,8 @@ namespace SystAnalys_lr1
             //selectButton.Invoke(new DelBool((s) => selectButton.Enabled = s), false);
             //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
             button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
+            launchBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), false);
+            stopBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), false);
             //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
             //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
             //   saveButton.Invoke(new DelBool((s) => saveButton.Enabled = s), false);
@@ -1741,6 +1745,7 @@ namespace SystAnalys_lr1
         }
         private async void Opt()
         {
+            await buttonOff();
             if (SavePictures.Checked)
             {
                 Ep.Hide();
@@ -1934,12 +1939,13 @@ namespace SystAnalys_lr1
             await Task.Delay(1000);
             loading.Visible = false;
             SavePictures.Enabled = true;
-            MessageBox.Show("Готово");
+            MetroMessageBox.Show(this, "Your message here.", "Title Here", MessageBoxButtons.OKCancel, MessageBoxIcon.Hand);
             if (!Ep.IsDisposed)
             {
                 Ep.Show();
                 SavePictures.Enabled = true;
             }
+            await buttonOn();
         }
 
         public static int EpicSizeParam = 10;
@@ -1955,7 +1961,7 @@ namespace SystAnalys_lr1
                     tl.TimerLight.Interval = 1;
  
                 Opt();
-                MetroMessageBox.Show(this, "Your message here.", "Title Here", MessageBoxButtons.OKCancel, MessageBoxIcon.Hand);
+                //MetroMessageBox.Show(this, "Your message here.", "Title Here", MessageBoxButtons.OKCancel, MessageBoxIcon.Hand);
                 foreach (var tl in traficLights)
                     tl.TimerLight.Interval = 1000;
             }

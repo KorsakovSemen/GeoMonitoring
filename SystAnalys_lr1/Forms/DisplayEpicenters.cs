@@ -37,6 +37,8 @@ namespace SystAnalys_lr1
 
         private void DisplayEpicenters_Load(object sender, EventArgs e)
         {
+            this.MinimumSize = MainForm.MinimumSize;
+            this.MaximumSize = MainForm.MaximumSize;
             MainForm.GetSavePictruesCheckBox().Enabled = true;
             panel1.Size = MainForm.GetMainPanel().Size;
             panel1.Left = MainForm.GetMainPanel().Left;
@@ -46,13 +48,14 @@ namespace SystAnalys_lr1
             this.ERouts.SelectedIndexChanged += ERouts_SelectedIndexChanged;
             // Esheet.Dock = DockStyle.Right;
             ////
+            this.MapPanel.AutoSize = MainForm.GetMapPanel().AutoSize;
             this.MapPanel.Location = MainForm.GetMapPanel().Location;
             this.MapPanel.MaximumSize = MainForm.GetMapPanel().MaximumSize;
             this.MapPanel.Size = MainForm.GetMapPanel().Size;
             this.MapPanel.AutoScroll = MainForm.GetMapPanel().AutoScroll;
             this.MapPanel.BorderStyle = MainForm.GetMapPanel().BorderStyle;
             this.MapPanel.AutoSizeMode = MainForm.GetMapPanel().AutoSizeMode;
-            this.MapPanel.Dock = DockStyle.Fill;
+            this.MapPanel.Dock = MainForm.GetMapPanel().Dock;
 
             //this.MapPanel.Dock = MainForm.GetMapPanel().Dock;
             ////
@@ -60,13 +63,15 @@ namespace SystAnalys_lr1
             this.Height = MainForm.Height;
             ////
             Esheet.Dock = MainForm.GetSheet().Dock;
-            Esheet.Width = MainForm.GetSheet().Width;
-            Esheet.Height = MainForm.GetSheet().Height;
+  
+            Esheet.Location = MainForm.GetSheet().Location;
+            Esheet.Size = MainForm.GetSheet().Size;
             Esheet.Image = Main.globalMap;
             EsheetPicture = Main.globalMap;
             wsheet = Esheet.Width;
             hsheet = Esheet.Height;
-            Esheet.SizeMode = PictureBoxSizeMode.AutoSize;
+            Esheet.AutoSize = MainForm.GetSheet().AutoSize;
+            Esheet.SizeMode = MainForm.GetSheet().SizeMode;
             EG = new DrawGraph();
             EG.setBitmap2(Esheet.Image);
             ///
@@ -100,11 +105,9 @@ namespace SystAnalys_lr1
 
                     ERefreshRouts();
                     MainForm.CreateOneRandomEpicenter(Main.EpicSizeParam, MainForm.GetTheGrid().IndexOf(gridPart));
-                    //Bus.setEpicenters(MainForm.GetEpicenters());
+
                     EG.clearSheet2();
-                    //Esheet.Image = EG.GetBitmap();
-                    //EDrawGrid();
-                    //EDrawEpics();
+             
                     EDrawPollutions();
                     break;
                 }
@@ -164,18 +167,6 @@ namespace SystAnalys_lr1
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            ERefreshRouts();
-            MainForm.CreateOneRandomEpicenter(Main.EpicSizeParam, null);
-            //Bus.setEpicenters(MainForm.GetEpicenters());
-            EG.clearSheet2();
-            //Esheet.Image = EG.GetBitmap();
-            //EDrawGrid();
-            //EDrawEpics();
-            EDrawPollutions();
-        }
         private void EDrawAllPollutionsInRoutes()
         {
             for (int i = 0; i < MainForm.GetPollutionInRoutes().Count; i++)
@@ -201,7 +192,7 @@ namespace SystAnalys_lr1
                             EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 0, 0)), new Rectangle(MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key][j].x * Ezoom, MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key][j].y * Ezoom, GridPart.width * Ezoom, GridPart.height * Ezoom));
                             break;
                         default:
-                            //EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 220, 220, 220)), new Rectangle(MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key][j].x, MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key][j].y, GridPart.width, GridPart.height));
+    
                             break;
                     }
                 }
@@ -254,7 +245,7 @@ namespace SystAnalys_lr1
                                 EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 0, 0)), new Rectangle(MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key][j].x * Ezoom, MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key][j].y * Ezoom, GridPart.width * Ezoom, GridPart.height * Ezoom));
                                 break;
                             default:
-                                //EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 220, 220, 220)), new Rectangle(MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key][j].x, MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key][j].y, GridPart.width, GridPart.height));
+                           
                                 break;
                         }
                     }
@@ -262,108 +253,8 @@ namespace SystAnalys_lr1
                 };
             }
         }
-        int ti = 1;
-        int tj = 0;
-        private void RISUY()
-        {
-            EG.clearSheet2();
-            EDrawEpics();
-            foreach (var item2 in MainForm.getGifList()[ti])
-            {
-                switch (item2.status)
-                {
-                    case 0:
-                        EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 0, 128, 0)), new Rectangle(item2.x * Ezoom, item2.y * Ezoom, GridPart.width * Ezoom, GridPart.height * Ezoom));
-                        break;
-                    case 1:
-                        EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 255, 0)), new Rectangle(item2.x * Ezoom, item2.y * Ezoom, GridPart.width * Ezoom, GridPart.height * Ezoom));
-                        break;
-
-                    case 2:
-                        EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 128, 0)), new Rectangle(item2.x * Ezoom, item2.y * Ezoom, GridPart.width * Ezoom, GridPart.height * Ezoom));
-
-                        break;
-                    case 3:
-                        EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 0, 0)), new Rectangle(item2.x * Ezoom, item2.y * Ezoom, GridPart.width * Ezoom, GridPart.height * Ezoom));
-                        break;
-                    default:
-                        //EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 220, 220, 220)), new Rectangle(MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key][j].x, MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key][j].y, GridPart.width, GridPart.height));
-                        break;
-                }
-
-            }
-            Esheet.Image = EG.GetBitmap();
-            if (ti < MainForm.getGifList().Count)
-            {
-                ti++;
-            }
-            else
-            {
-                ti = 1;
-            }
-            Console.WriteLine(ti.ToString());
-
-        }
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            switch (MainForm.getGifList()[ti][tj].status)
-            {
-                case 0:
-                    EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 0, 128, 0)), new Rectangle(MainForm.getGifList()[ti][tj].x * Ezoom, MainForm.getGifList()[ti][tj].y * Ezoom, GridPart.width * Ezoom, GridPart.height * Ezoom));
-                    break;
-
-                case 1:
-                    EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 255, 0)), new Rectangle(MainForm.getGifList()[ti][tj].x * Ezoom, MainForm.getGifList()[ti][tj].y * Ezoom, GridPart.width * Ezoom, GridPart.height * Ezoom));
-                    break;
 
 
-                case 2:
-                    EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 128, 0)), new Rectangle(MainForm.getGifList()[ti][tj].x * Ezoom, MainForm.getGifList()[ti][tj].y * Ezoom, GridPart.width * Ezoom, GridPart.height * Ezoom));
-
-                    break;
-                case 3:
-                    EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 0, 0)), new Rectangle(MainForm.getGifList()[ti][tj].x * Ezoom, MainForm.getGifList()[ti][tj].y * Ezoom, GridPart.width * Ezoom, GridPart.height * Ezoom));
-                    break;
-                default:
-                    //EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 220, 220, 220)), new Rectangle(MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key][j].x, MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key][j].y, GridPart.width, GridPart.height));
-                    break;
-            }
-            Esheet.Image = EG.GetBitmap();
-
-            if (tj + 1 >= MainForm.getGifList()[1].Count)
-            {
-                tj = 0;
-                if (ti + 1 >= MainForm.getGifList().Count)
-                {
-                    ti = 1;
-                    EG.clearSheet2();
-                }
-                else
-                {
-                    ti++;
-                    EG.clearSheet2();
-                }
-            }
-            else
-            {
-                tj++;
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //timer1.Interval = 25;
-            //timer1.Start();
-            RISUY();
-        }
-
-
-
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            MainForm.GetEpicenters().First().ExpandEpic(Main.ExpandEpicParamet);
-            EDrawEpics();
-        }
         public EpicSettings epSet;
         private void button11_Click(object sender, EventArgs e)
         {
@@ -371,12 +262,7 @@ namespace SystAnalys_lr1
             epSet = new EpicSettings();
             this.StyleManager.Clone(epSet);
             epSet.ShowDialog();
-            //G.clearSheet();
-            //sheet.Image = G.GetBitmap();
-            //DrawGrid();
-
-            //Ep.EDrawGrid();
-
+    
         }
         public void RecReateFunction()
         {
