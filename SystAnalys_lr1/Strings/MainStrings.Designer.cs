@@ -19,7 +19,7 @@ namespace SystAnalys_lr1.Strings {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class MainStrings {
@@ -61,6 +61,96 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Через путь.
+        /// </summary>
+        internal static string acrossThePath {
+            get {
+                return ResourceManager.GetString("acrossThePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Среднее:.
+        /// </summary>
+        internal static string average {
+            get {
+                return ResourceManager.GetString("average", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выберите другой путь для конфигурации.
+        /// </summary>
+        internal static string chooseWay {
+            get {
+                return ResourceManager.GetString("chooseWay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы действительно хотите очистить граф/маршрут?.
+        /// </summary>
+        internal static string clearGraph {
+            get {
+                return ResourceManager.GetString("clearGraph", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Конфигурация:.
+        /// </summary>
+        internal static string config {
+            get {
+                return ResourceManager.GetString("config", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Удаление.
+        /// </summary>
+        internal static string delete {
+            get {
+                return ResourceManager.GetString("delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы действительно хотите полностью удалить граф/маршрут? (произойдет удаление файлов из конфигурации).
+        /// </summary>
+        internal static string deleteGraph {
+            get {
+                return ResourceManager.GetString("deleteGraph", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Готово.
+        /// </summary>
+        internal static string done {
+            get {
+                return ResourceManager.GetString("done", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка.
+        /// </summary>
+        internal static string error {
+            get {
+                return ResourceManager.GetString("error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Загрузка....
+        /// </summary>
+        internal static string loading {
+            get {
+                return ResourceManager.GetString("loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на С датчиками:.
         /// </summary>
         internal static string matrixFirst {
@@ -84,6 +174,69 @@ namespace SystAnalys_lr1.Strings {
         internal static string matrixThird {
             get {
                 return ResourceManager.GetString("matrixThird", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сеть.
+        /// </summary>
+        internal static string network {
+            get {
+                return ResourceManager.GetString("network", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ничего.
+        /// </summary>
+        internal static string none {
+            get {
+                return ResourceManager.GetString("none", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на В папке отсутствует изображение.
+        /// </summary>
+        internal static string noPic {
+            get {
+                return ResourceManager.GetString("noPic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Процент неудач:.
+        /// </summary>
+        internal static string procentFailed {
+            get {
+                return ResourceManager.GetString("procentFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Процент успехов:.
+        /// </summary>
+        internal static string procentSuc {
+            get {
+                return ResourceManager.GetString("procentSuc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на (1)Осталось поставить светофоров.
+        /// </summary>
+        internal static string putTrafficLights1 {
+            get {
+                return ResourceManager.GetString("putTrafficLights1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на (2)Осталось поставить светофоров.
+        /// </summary>
+        internal static string putTrafficLights2 {
+            get {
+                return ResourceManager.GetString("putTrafficLights2", resourceCulture);
             }
         }
     }

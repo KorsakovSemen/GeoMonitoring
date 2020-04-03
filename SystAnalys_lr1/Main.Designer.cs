@@ -54,9 +54,7 @@
             this.label7 = new MetroFramework.Controls.MetroLabel();
             this.textBox2 = new MetroFramework.Controls.MetroTextBox();
             this.button8 = new MetroFramework.Controls.MetroButton();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.loadLabel = new MetroFramework.Controls.MetroLabel();
             this.panel4 = new MetroFramework.Controls.MetroPanel();
             this.metroTrackBar1 = new MetroFramework.Controls.MetroTrackBar();
             this.panel8 = new MetroFramework.Controls.MetroPanel();
@@ -69,6 +67,7 @@
             this.busSize = new MetroFramework.Controls.MetroTextBox();
             this.button2 = new MetroFramework.Controls.MetroButton();
             this.changeRoute = new MetroFramework.Controls.MetroComboBox();
+            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label12 = new MetroFramework.Controls.MetroLabel();
             this.changeProcent = new MetroFramework.Controls.MetroTextBox();
             this.theme = new MetroFramework.Controls.MetroLabel();
@@ -104,31 +103,25 @@
             this.stopPointButton = new System.Windows.Forms.ToolStripButton();
             this.addTraficLight = new System.Windows.Forms.ToolStripButton();
             this.loading = new System.Windows.Forms.ToolStripProgressBar();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.pictureBus404_1 = new System.Windows.Forms.PictureBox();
             this.msmMain = new MetroFramework.Components.MetroStyleManager(this.components);
             this.themes = new MetroFramework.Controls.MetroToggle();
             this.config = new MetroFramework.Controls.MetroLabel();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.allBusSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).BeginInit();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.toolStripMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBus404_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -386,19 +379,6 @@
             this.button8.UseSelectable = true;
             this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resources.ApplyResources(this.dataGridView2, "dataGridView2");
-            this.dataGridView2.Name = "dataGridView2";
-            // 
-            // loadLabel
-            // 
-            resources.ApplyResources(this.loadLabel, "loadLabel");
-            this.loadLabel.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.loadLabel.ForeColor = System.Drawing.Color.SeaShell;
-            this.loadLabel.Name = "loadLabel";
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Menu;
@@ -541,6 +521,10 @@
             this.changeRoute.Name = "changeRoute";
             this.changeRoute.UseSelectable = true;
             this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChangedAsync);
+            // 
+            // busParkBindingSource
+            // 
+            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
             // 
             // label12
             // 
@@ -852,21 +836,6 @@
             resources.ApplyResources(this.loading, "loading");
             this.loading.Step = 1;
             // 
-            // pictureBox15
-            // 
-            this.pictureBox15.Image = global::SystAnalys_lr1.Properties.Resources._107;
-            resources.ApplyResources(this.pictureBox15, "pictureBox15");
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.TabStop = false;
-            // 
-            // pictureBus404_1
-            // 
-            this.pictureBus404_1.Image = global::SystAnalys_lr1.Properties.Resources.xxx;
-            resources.ApplyResources(this.pictureBus404_1, "pictureBus404_1");
-            this.pictureBus404_1.InitialImage = global::SystAnalys_lr1.Properties.Resources._71;
-            this.pictureBus404_1.Name = "pictureBus404_1";
-            this.pictureBus404_1.TabStop = false;
-            // 
             // msmMain
             // 
             this.msmMain.Owner = this;
@@ -904,10 +873,6 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
-            // busParkBindingSource
-            // 
-            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
-            // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
@@ -920,11 +885,7 @@
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.changeTheme);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.loadLabel);
             this.Controls.Add(this.toolStripMenu);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.pictureBox15);
-            this.Controls.Add(this.pictureBus404_1);
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.HelpButton = true;
@@ -941,7 +902,6 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
@@ -949,15 +909,13 @@
             this.panel7.PerformLayout();
             this.allBusSettings.ResumeLayout(false);
             this.allBusSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBus404_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -966,9 +924,7 @@
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem about;
-        private System.Windows.Forms.PictureBox pictureBus404_1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.PictureBox pictureBox15;
         private MetroFramework.Controls.MetroGrid matrixGrid;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.BindingSource busParkBindingSource;
@@ -976,7 +932,6 @@
         private MetroFramework.Controls.MetroTextBox textBox2;
         private MetroFramework.Controls.MetroLabel label7;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private MetroFramework.Controls.MetroLabel loadLabel;
         private MetroFramework.Controls.MetroPanel panel2;
         private MetroFramework.Controls.MetroPanel panel4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -1035,7 +990,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroComboBox metroComboBox1;
         private MetroFramework.Controls.MetroTrackBar metroTrackBar1;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private MetroFramework.Controls.MetroCheckBox SavePictures;
         private MetroFramework.Controls.MetroPanel allBusSettings;
         private MetroFramework.Controls.MetroLabel metroLabel2;

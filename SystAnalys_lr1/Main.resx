@@ -154,7 +154,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>9</value>
   </data>
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
@@ -226,7 +226,7 @@
     <value>12, 61</value>
   </data>
   <data name="SavePictures.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 15</value>
+    <value>135, 15</value>
   </data>
   <data name="SavePictures.TabIndex" type="System.Int32, mscorlib">
     <value>95</value>
@@ -681,78 +681,9 @@
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="dataGridView2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>732, 117</value>
-  </data>
-  <data name="dataGridView2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="dataGridView2.RowHeadersWidth" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
-  <data name="dataGridView2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 136</value>
-  </data>
-  <data name="dataGridView2.TabIndex" type="System.Int32, mscorlib">
-    <value>65</value>
-  </data>
-  <data name="dataGridView2.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;dataGridView2.Name" xml:space="preserve">
-    <value>dataGridView2</value>
-  </data>
-  <data name="&gt;&gt;dataGridView2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridView2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;dataGridView2.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
   <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>470, 17</value>
   </metadata>
-  <data name="loadLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="loadLabel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="loadLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>534, 254</value>
-  </data>
-  <data name="loadLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="loadLabel.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>750, 767</value>
-  </data>
-  <data name="loadLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 19</value>
-  </data>
-  <data name="loadLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>74</value>
-  </data>
-  <data name="loadLabel.Text" xml:space="preserve">
-    <value>Загрузка</value>
-  </data>
-  <data name="loadLabel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;loadLabel.Name" xml:space="preserve">
-    <value>loadLabel</value>
-  </data>
-  <data name="&gt;&gt;loadLabel.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;loadLabel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;loadLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
   <data name="metroTrackBar1.Location" type="System.Drawing.Point, System.Drawing">
     <value>36, 699</value>
   </data>
@@ -868,7 +799,7 @@
     <value>13, 16</value>
   </data>
   <data name="trackerCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 15</value>
+    <value>61, 15</value>
   </data>
   <data name="trackerCheck.TabIndex" type="System.Int32, mscorlib">
     <value>101</value>
@@ -1268,7 +1199,7 @@
     <value>NoControl</value>
   </data>
   <data name="sheet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-5, 0</value>
+    <value>0, 0</value>
   </data>
   <data name="sheet.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1307,7 +1238,7 @@
     <value>1128, 741</value>
   </data>
   <data name="mainPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>78</value>
+    <value>102</value>
   </data>
   <data name="&gt;&gt;mainPanel.Name" xml:space="preserve">
     <value>mainPanel</value>
@@ -1583,67 +1514,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;toolStripMenu.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="pictureBox15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="pictureBox15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1200, 247</value>
-  </data>
-  <data name="pictureBox15.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="pictureBox15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 20</value>
-  </data>
-  <data name="pictureBox15.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>StretchImage</value>
-  </data>
-  <data name="pictureBox15.TabIndex" type="System.Int32, mscorlib">
-    <value>41</value>
-  </data>
-  <data name="&gt;&gt;pictureBox15.Name" xml:space="preserve">
-    <value>pictureBox15</value>
-  </data>
-  <data name="&gt;&gt;pictureBox15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBox15.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pictureBox15.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="pictureBus404_1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="pictureBus404_1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1170, 312</value>
-  </data>
-  <data name="pictureBus404_1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="pictureBus404_1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 20</value>
-  </data>
-  <data name="pictureBus404_1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>StretchImage</value>
-  </data>
-  <data name="pictureBus404_1.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;pictureBus404_1.Name" xml:space="preserve">
-    <value>pictureBus404_1</value>
-  </data>
-  <data name="&gt;&gt;pictureBus404_1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBus404_1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pictureBus404_1.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>8</value>
   </data>
   <metadata name="msmMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>940, 17</value>
@@ -1815,6 +1686,12 @@
   </data>
   <data name="&gt;&gt;saveFileDialog1.Type" xml:space="preserve">
     <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;busParkBindingSource.Name" xml:space="preserve">
+    <value>busParkBindingSource</value>
+  </data>
+  <data name="&gt;&gt;busParkBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
     <value>toolStripSeparator1</value>
@@ -1995,12 +1872,6 @@
   </data>
   <data name="&gt;&gt;timer1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;busParkBindingSource.Name" xml:space="preserve">
-    <value>busParkBindingSource</value>
-  </data>
-  <data name="&gt;&gt;busParkBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Main</value>

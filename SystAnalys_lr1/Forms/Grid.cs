@@ -63,33 +63,33 @@ namespace SystAnalys_lr1
         //потом
         private void GridMatrixByRoute()
         {
-            dataGridView2.Rows.Clear();
-            dataGridView2.Columns.Clear();
-            dataGridView2.Refresh();
-            dataGridView2.ColumnCount = AllRouteGridFilling.Count();
-            dataGridView2.RowCount = TheGrid.Count();
-            for (int i = 0; i < AllRouteGridFilling.Count(); i++)
-            {
-                dataGridView2.Columns[i].HeaderText = "Пак данных - " + i.ToString();
+            //dataGridView2.Rows.Clear();
+            //dataGridView2.Columns.Clear();
+            //dataGridView2.Refresh();
+            //dataGridView2.ColumnCount = AllRouteGridFilling.Count();
+            //dataGridView2.RowCount = TheGrid.Count();
+            //for (int i = 0; i < AllRouteGridFilling.Count(); i++)
+            //{
+            //    dataGridView2.Columns[i].HeaderText = "Пак данных - " + i.ToString();
 
-            }
-            for (int i = 0; i < TheGrid.Count; ++i)
-            {
-                dataGridView2.Rows[i].HeaderCell.Value = "Квадрат - " + i.ToString(); ;
+            //}
+            //for (int i = 0; i < TheGrid.Count; ++i)
+            //{
+            //    dataGridView2.Rows[i].HeaderCell.Value = "Квадрат - " + i.ToString(); ;
 
-            }
-            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView2.RowHeadersWidth = 100;
-            for (int i = 0; i < AllRouteGridFilling.Count(); i++)
-            {
+            //}
+            //dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dataGridView2.RowHeadersWidth = 100;
+            //for (int i = 0; i < AllRouteGridFilling.Count(); i++)
+            //{
 
-                for (int j = 0; j < AllRouteGridFilling[i].Count(); j++)
-                {
+            //    for (int j = 0; j < AllRouteGridFilling[i].Count(); j++)
+            //    {
 
-                    dataGridView2.Rows[j].Cells[i].Value = AllRouteGridFilling[i][j][7].ToString();
+            //        dataGridView2.Rows[j].Cells[i].Value = AllRouteGridFilling[i][j][7].ToString();
 
-                }
-            }
+            //    }
+            //}
         }
         //функция подсчитывает количество пустых квадратов 
         private void EmptyGridCounts()

@@ -444,11 +444,17 @@
   <data name="resource.TextImageRelation4" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>Overlay</value>
   </data>
+  <data name="theme.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1218, 31</value>
+  </data>
   <data name="theme.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 19</value>
   </data>
   <data name="theme.Text" xml:space="preserve">
     <value>Theme</value>
+  </data>
+  <data name="changeTheme.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1283, 28</value>
   </data>
   <data name="changeTheme.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 29</value>
@@ -519,16 +525,25 @@
   <data name="loadButton.Text" xml:space="preserve">
     <value>Load</value>
   </data>
+  <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>851, 31</value>
+  </data>
   <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 19</value>
   </data>
   <data name="metroLabel1.Text" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="metroComboBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>927, 28</value>
+  </data>
   <data name="config.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 19</value>
   </data>
   <data name="config.Text" xml:space="preserve">
     <value>Configuration:</value>
+  </data>
+  <data name="themes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1102, 33</value>
   </data>
 </root>
