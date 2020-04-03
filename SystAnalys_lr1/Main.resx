@@ -154,7 +154,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
@@ -1094,7 +1094,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="theme.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1121,7 +1121,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;theme.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="changeTheme.ItemHeight" type="System.Int32, mscorlib">
     <value>23</value>
@@ -1190,7 +1190,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;changeTheme.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="mainPanel.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1250,7 +1250,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;mainPanel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
@@ -1514,7 +1514,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;toolStripMenu.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <metadata name="msmMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>940, 17</value>
@@ -1530,6 +1530,33 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1455, 841</value>
+  </data>
+  <data name="hint.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="hint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>963, 64</value>
+  </data>
+  <data name="hint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 19</value>
+  </data>
+  <data name="hint.TabIndex" type="System.Int32, mscorlib">
+    <value>103</value>
+  </data>
+  <data name="hint.Text" xml:space="preserve">
+    <value>hint</value>
+  </data>
+  <data name="&gt;&gt;hint.Name" xml:space="preserve">
+    <value>hint</value>
+  </data>
+  <data name="&gt;&gt;hint.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;hint.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;hint.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="metroLabel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1556,7 +1583,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;metroLabel1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="metroComboBox1.AutoCompleteCustomSource" xml:space="preserve">
     <value>RU</value>
@@ -1586,7 +1613,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;metroComboBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="config.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1613,7 +1640,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;config.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="themes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1640,7 +1667,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;themes.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>

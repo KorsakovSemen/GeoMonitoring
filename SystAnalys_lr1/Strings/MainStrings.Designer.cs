@@ -142,6 +142,15 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Перезагрузите программу для смены языка.
+        /// </summary>
+        internal static string hint {
+            get {
+                return ResourceManager.GetString("hint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Загрузка....
         /// </summary>
         internal static string loading {

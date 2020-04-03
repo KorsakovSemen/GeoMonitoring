@@ -109,6 +109,7 @@
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.hint = new MetroFramework.Controls.MetroLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -873,10 +874,16 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
+            // hint
+            // 
+            resources.ApplyResources(this.hint, "hint");
+            this.hint.Name = "hint";
+            // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.hint);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroComboBox1);
             this.Controls.Add(this.config);
@@ -998,6 +1005,7 @@
         private System.Windows.Forms.Timer timer1;
         private MetroFramework.Controls.MetroCheckBox backsideCheck;
         private MetroFramework.Controls.MetroCheckBox trackerCheck;
+        private MetroFramework.Controls.MetroLabel hint;
     }
 }
 

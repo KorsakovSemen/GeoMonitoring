@@ -82,7 +82,7 @@ namespace SystAnalys_lr1
 
         //Светофоры
         public static List<TraficLight> traficLights;
-
+        bool lang = false;
         //1 пак данных для AllGridFilling
         Dictionary<int, int> OneGridFilling;
         //тут хранятся данные по квадратам, в которых ниразу не были автобусы за промежуток времени
@@ -280,7 +280,7 @@ namespace SystAnalys_lr1
             Matrix();
             timer2.Interval = 1000;
             timer2.Start();
-
+            hint.Visible = false;
         }
         //функция возвращает массив координат маршрутов (для 2 формы)
         public SerializableDictionary<int, List<Point>> GetAllCoordinates()
@@ -3779,10 +3779,16 @@ namespace SystAnalys_lr1
             {
                 metroComboBox1.SelectedValue = Properties.Settings.Default.Language;
             }
+            lang = true;
         }
 
         private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(lang == true)
+            {
+                hint.Visible = true;
+                hint.Text = MainStrings.hint;
+            }
             //this.Close();
         }
 

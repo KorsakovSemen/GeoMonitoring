@@ -177,4 +177,7 @@
   <data name="putTrafficLights2" xml:space="preserve">
     <value>(2)Осталось поставить светофоров</value>
   </data>
+  <data name="hint" xml:space="preserve">
+    <value>Перезагрузите программу для смены языка</value>
+  </data>
 </root>

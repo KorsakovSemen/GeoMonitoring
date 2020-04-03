@@ -177,4 +177,7 @@
   <data name="putTrafficLights2" xml:space="preserve">
     <value>(2) It remains to put traffic lights</value>
   </data>
+  <data name="hint" xml:space="preserve">
+    <value>Reboot the program to change the language</value>
+  </data>
 </root>
