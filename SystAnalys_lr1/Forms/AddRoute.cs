@@ -20,18 +20,6 @@ namespace SystAnalys_lr1
             errorProvider1.SetIconAlignment(textBox1, ErrorIconAlignment.MiddleRight);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if(textBox1.Text != "")
-            {
-                if (!Main.routes.ContainsKey(int.Parse(this.textBox1.Text)))
-                {
-                    Main.routes.Add(int.Parse(this.textBox1.Text), new List<Vertex>());
-                    Main.routesEdge.Add(int.Parse(this.textBox1.Text), new List<Edge>());
-                }
-            }         
-
-        }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -49,7 +37,7 @@ namespace SystAnalys_lr1
             else
             {
                 errorProvider1.SetError(textBox1, string.Empty);
-                Close();
+                this.Close();
             }
             //if (string.IsNullOrWhiteSpace((sender as TextBox).Text))
             //    errorProvider1.SetError(textBox1, "Заполните поле!");

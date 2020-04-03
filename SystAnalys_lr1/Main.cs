@@ -92,7 +92,7 @@ namespace SystAnalys_lr1
         //все квадраты сетки, которые есть в каждом из маршрутов 
         public static SerializableDictionary<int, List<int>> AllGridsInRoutes { get; set; }
         Image saveImage;
-
+        Random rnd = new Random();
         static public List<SerializableDictionary<int, Vertex>> routePoints;
         static public SerializableDictionary<int, List<Edge>> edgePoints;
         //вторая форма
@@ -1402,6 +1402,7 @@ namespace SystAnalys_lr1
             fb.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             if (fb.ShowDialog() == DialogResult.OK)
             {
+                savepath = null;
                 if(Ep != null)
                     Ep.Close();
                 foreach (var bus in buses)
@@ -1412,8 +1413,12 @@ namespace SystAnalys_lr1
                 buses.Clear();
                 if (sheet.Image != null)
                 {
+                    loading.Visible = true;
+                    loading.Value = 50;
                     await Task.Delay(10001);
-                    config.Text = "Config: ";
+                    loading.Value = 100;
+                    loading.Visible = false;
+                    config.Text = MainStrings.config;
                 }
                 foreach (var tl in Main.traficLights)
                 {
@@ -1459,6 +1464,7 @@ namespace SystAnalys_lr1
                 openEpicFormToolStripMenuItem.Enabled = true;
                 addRouteToolStripMenuItem.Enabled = true;
                 createGridToolStripMenuItem.Enabled = true;
+                MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
         }
 
@@ -1956,7 +1962,7 @@ namespace SystAnalys_lr1
         private void optimize_Click(object sender, EventArgs e)
         {
             // //AsyncCreateAllCoordinates()();          
-            if (optText.Text != "" && int.TryParse(optText.Text, out int sp))
+            if (optText.Text != "" && speed.Text != "" && buses.Count != 0 && buses != null)
             {
                 foreach (var bus in buses)
                     bus.Stop();
@@ -2010,6 +2016,8 @@ namespace SystAnalys_lr1
                                 fileV.WriteLine(path.ToString());
                             }
                         }
+                        addRouteToolStripMenuItem.Enabled = true;
+                        createGridToolStripMenuItem.Enabled = true;
                         MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                 }
@@ -2026,7 +2034,6 @@ namespace SystAnalys_lr1
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             if (savepath != null)
             {
                 try
@@ -2075,7 +2082,8 @@ namespace SystAnalys_lr1
                                 }
 
                             }
-
+                            addRouteToolStripMenuItem.Enabled = true;
+                            createGridToolStripMenuItem.Enabled = true;
                             MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         else
@@ -2451,7 +2459,6 @@ namespace SystAnalys_lr1
         }
 
 
-        Random rnd = new Random();
         private async void LoadRoutes(string load = "../../Data/")
         {
             try
@@ -2464,7 +2471,7 @@ namespace SystAnalys_lr1
                 globalMap = sheet.Image;
                 G.setBitmap();
                 // var extensions = extensionsFiles(load);
-                config.Text = "Config: " + load;
+                config.Text = MainStrings.config + load;
                 if (File.Exists(load + "Vertexes.xml"))
                 {
                     using (StreamReader reader = new StreamReader(load + "Vertexes.xml"))
@@ -3013,27 +3020,29 @@ namespace SystAnalys_lr1
                                 }
                                 else
                                 {
-                                    routesEdge[int.Parse(changeRoute.Text)].Add(new Edge(routeV.Count - 1, routeV.Count));
-                                    selected.Add(routeV.Count);
-                                    routeV.Add(new Vertex(V[i].x * zoom, V[i].y * zoom));
-                                    G.drawEdge(V[routeV.Count - 1], V[routeV.Count], routesEdge[int.Parse(changeRoute.Text)][routesEdge[int.Parse(changeRoute.Text)].Count - 1], 1);
-                                    //routesEdge[int.Parse(changeRoute.Text)][routesEdge[int.Parse(changeRoute.Text)].Count - 1], 1);                                                                                                                                                                                
-                                    //    selected[0] = selected[1];                                                                                                                                                                                
-                                    //    selected.Remove(selected[1]);
-                                    G.clearSheet();
-                                    G.drawALLGraph(V, E);
-                                    G.drawALLGraph(routeV, routesEdge[int.Parse(changeRoute.Text)], 1);
-                                    sheet.Image = G.GetBitmap();
-                                    DrawGrid();
-                                    G.drawSelectedVertex(V[i].x, V[i].y);
-                                    break;
+                                    selected.Add(i);
+                                    foreach (var ed in E)
+                                    {
+                                        if ((ed.v1 == selected[0] && ed.v2 == selected[1]) || (ed.v2 == selected[0] && ed.v1 == selected[1]))
+                                        {
+                                            routesEdge[int.Parse(changeRoute.Text)].Add(new Edge(routeV.Count - 1, routeV.Count));
+                                            routeV.Add(new Vertex(V[i].x * zoom, V[i].y * zoom));
+                                            G.clearSheet();
+                                            G.drawALLGraph(V, E);
+                                            G.drawALLGraph(routeV, routesEdge[int.Parse(changeRoute.Text)], 1);
+                                            sheet.Image = G.GetBitmap();
+                                            DrawGrid();
+                                            G.drawSelectedVertex(V[i].x, V[i].y);
+                                            break;
+                                        }
+                                    }
                                 }
+                                selected[0] = selected[1];
+                                selected.Remove(selected[1]);
 
                             }
                         }
-                        sheet.Image = G.GetBitmap();
 
-                        //  CreateOneRouteCoordinates(int.Parse(comboBox1.Text));
 
                     }
                     //нажата кнопка addBus
@@ -3041,7 +3050,7 @@ namespace SystAnalys_lr1
                     {
                         if (AllCoordinates[int.Parse(changeRoute.Text)].Count != 0)
                         {
-                            if (buses != null)
+                            if (buses.Count != 0)
                                 sizeBus = buses.Last().busPic.Width;
                             PictureBox busPic = new PictureBox();
                             busPic.Location = new System.Drawing.Point(e.X / zoom + mainPanel.AutoScrollPosition.X, e.Y / zoom + mainPanel.AutoScrollPosition.Y);
@@ -3167,7 +3176,7 @@ namespace SystAnalys_lr1
 
                                                 // if (!routeV.Contains(new Vertex(V[i].x, V[i].y))) {
                                                 routesEdge[int.Parse(changeRoute.Text)].Add(new Edge(routeV.Count - 1, routeV.Count));
-                                                routeV.Add(new Vertex(V[i].x, V[i].y));
+                                                routeV.Add(new Vertex(V[i].x * zoom, V[i].y * zoom));
                                                 //  routesEdge[int.Parse(changeRoute.Text)].Add(new Edge(routeV.Count - (routeV.Count / 2 + 1), routeV.Count - (routeV.Count / 2)));                                    
                                                 G.drawEdge(V[selected1], V[selected2], E[E.Count - 1], 1);
                                                 sheet.Image = G.GetBitmap();
@@ -3675,8 +3684,15 @@ namespace SystAnalys_lr1
             addR.ShowDialog();
             addR.Dispose();
             Ep.ERefreshRouts();
-            if (addR.textBox1.Text != "" && int.TryParse(addR.textBox1.Text, out int t))
-                changeRoute.Items.Add(addR.textBox1.Text);
+            if (addR.textBox1.Text != "")
+            {
+                if (!routes.ContainsKey(int.Parse(this.addR.textBox1.Text)))
+                {
+                    routes.Add(int.Parse(this.addR.textBox1.Text), new List<Vertex>());
+                    routesEdge.Add(int.Parse(this.addR.textBox1.Text), new List<Edge>());
+                    changeRoute.Items.Add(addR.textBox1.Text);
+                }
+            }
         }
 
         private void runTrafficLightsToolStripMenuItem_Click(object sender, EventArgs e)

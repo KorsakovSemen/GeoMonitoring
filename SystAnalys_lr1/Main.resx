@@ -457,13 +457,13 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 3</value>
+    <value>96, 2</value>
   </data>
   <data name="resource.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="resource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 27</value>
+    <value>21, 21</value>
   </data>
   <data name="resource.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -502,13 +502,13 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location1" type="System.Drawing.Point, System.Drawing">
-    <value>128, 3</value>
+    <value>96, 2</value>
   </data>
   <data name="resource.Margin1" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="resource.Size1" type="System.Drawing.Size, System.Drawing">
-    <value>28, 27</value>
+    <value>21, 21</value>
   </data>
   <data name="resource.TabIndex1" type="System.Int32, mscorlib">
     <value>1</value>
@@ -604,13 +604,13 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location2" type="System.Drawing.Point, System.Drawing">
-    <value>96, 3</value>
+    <value>72, 2</value>
   </data>
   <data name="resource.Margin2" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="resource.Size2" type="System.Drawing.Size, System.Drawing">
-    <value>28, 27</value>
+    <value>21, 21</value>
   </data>
   <data name="resource.TabIndex2" type="System.Int32, mscorlib">
     <value>1</value>
@@ -697,7 +697,7 @@
     <value>470, 17</value>
   </metadata>
   <data name="metroTrackBar1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 914</value>
+    <value>47, 864</value>
   </data>
   <data name="metroTrackBar1.Size" type="System.Drawing.Size, System.Drawing">
     <value>307, 24</value>
@@ -871,13 +871,13 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location3" type="System.Drawing.Point, System.Drawing">
-    <value>197, 3</value>
+    <value>148, 2</value>
   </data>
   <data name="resource.Margin3" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
   </data>
   <data name="resource.Size3" type="System.Drawing.Size, System.Drawing">
-    <value>33, 33</value>
+    <value>25, 25</value>
   </data>
   <data name="resource.TabIndex3" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1055,13 +1055,13 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location4" type="System.Drawing.Point, System.Drawing">
-    <value>272, 1</value>
+    <value>204, 1</value>
   </data>
   <data name="resource.Margin4" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="resource.Size4" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
+    <value>15, 15</value>
   </data>
   <data name="resource.TabIndex4" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1100,13 +1100,13 @@
     <value>Left</value>
   </data>
   <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 112</value>
+    <value>16, 105</value>
   </data>
   <data name="panel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>404, 971</value>
+    <value>404, 978</value>
   </data>
   <data name="panel4.TabIndex" type="System.Int32, mscorlib">
     <value>76</value>
@@ -1262,13 +1262,13 @@
     <value>Fill</value>
   </data>
   <data name="mainPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>420, 112</value>
+    <value>420, 105</value>
   </data>
   <data name="mainPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="mainPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1504, 971</value>
+    <value>1504, 978</value>
   </data>
   <data name="mainPanel.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
@@ -1286,10 +1286,10 @@
     <value>6</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 34</value>
+    <value>6, 27</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 34</value>
+    <value>6, 27</value>
   </data>
   <metadata name="toolStripMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>780, 17</value>
@@ -1352,7 +1352,7 @@
     <value>Magenta</value>
   </data>
   <data name="saveButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 31</value>
+    <value>59, 24</value>
   </data>
   <data name="saveButton.Text" xml:space="preserve">
     <value>Файл</value>
@@ -1373,7 +1373,7 @@
     <value>Magenta</value>
   </data>
   <data name="loadButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 31</value>
+    <value>83, 24</value>
   </data>
   <data name="loadButton.Text" xml:space="preserve">
     <value>Загрузка</value>
@@ -1382,7 +1382,7 @@
     <value>Magenta</value>
   </data>
   <data name="selectButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 31</value>
+    <value>29, 24</value>
   </data>
   <data name="selectButton.Text" xml:space="preserve">
     <value>toolStripButton2</value>
@@ -1394,7 +1394,7 @@
     <value>Magenta</value>
   </data>
   <data name="drawVertexButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 31</value>
+    <value>29, 24</value>
   </data>
   <data name="drawVertexButton.Text" xml:space="preserve">
     <value>toolStripButton2</value>
@@ -1406,7 +1406,7 @@
     <value>Magenta</value>
   </data>
   <data name="drawEdgeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 31</value>
+    <value>29, 24</value>
   </data>
   <data name="drawEdgeButton.Text" xml:space="preserve">
     <value>toolStripButton3</value>
@@ -1418,7 +1418,7 @@
     <value>Magenta</value>
   </data>
   <data name="selectRoute.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 31</value>
+    <value>29, 24</value>
   </data>
   <data name="selectRoute.Text" xml:space="preserve">
     <value>toolStripButton2</value>
@@ -1427,7 +1427,7 @@
     <value>Magenta</value>
   </data>
   <data name="deleteButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 31</value>
+    <value>29, 24</value>
   </data>
   <data name="deleteButton.Text" xml:space="preserve">
     <value>toolStripButton4</value>
@@ -1439,7 +1439,7 @@
     <value>Magenta</value>
   </data>
   <data name="deleteALLButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 31</value>
+    <value>29, 24</value>
   </data>
   <data name="deleteALLButton.Text" xml:space="preserve">
     <value>toolStripButton5</value>
@@ -1451,7 +1451,7 @@
     <value>Magenta</value>
   </data>
   <data name="deleteRoute.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 31</value>
+    <value>29, 24</value>
   </data>
   <data name="deleteRoute.Text" xml:space="preserve">
     <value>toolStripButton6</value>
@@ -1463,7 +1463,7 @@
     <value>Magenta</value>
   </data>
   <data name="addBus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 31</value>
+    <value>29, 24</value>
   </data>
   <data name="addBus.Text" xml:space="preserve">
     <value>toolStripButton7</value>
@@ -1475,7 +1475,7 @@
     <value>Magenta</value>
   </data>
   <data name="deleteBus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 31</value>
+    <value>29, 24</value>
   </data>
   <data name="deleteBus.Text" xml:space="preserve">
     <value>toolStripButton8</value>
@@ -1487,7 +1487,7 @@
     <value>Magenta</value>
   </data>
   <data name="delAllBusesOnRoute.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 31</value>
+    <value>29, 24</value>
   </data>
   <data name="delAllBusesOnRoute.Text" xml:space="preserve">
     <value>toolStripButton2</value>
@@ -1499,7 +1499,7 @@
     <value>Magenta</value>
   </data>
   <data name="stopPointButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 31</value>
+    <value>29, 24</value>
   </data>
   <data name="stopPointButton.Text" xml:space="preserve">
     <value>toolStripButton2</value>
@@ -1511,7 +1511,7 @@
     <value>Magenta</value>
   </data>
   <data name="addTraficLight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 31</value>
+    <value>29, 24</value>
   </data>
   <data name="addTraficLight.Text" xml:space="preserve">
     <value>toolStripButton2</value>
@@ -1529,7 +1529,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="toolStripMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1908, 34</value>
+    <value>1908, 27</value>
   </data>
   <data name="toolStripMenu.TabIndex" type="System.Int32, mscorlib">
     <value>70</value>
@@ -1762,12 +1762,6 @@
   <data name="&gt;&gt;saveFileDialog1.Type" xml:space="preserve">
     <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;busParkBindingSource.Name" xml:space="preserve">
-    <value>busParkBindingSource</value>
-  </data>
-  <data name="&gt;&gt;busParkBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
     <value>toolStripSeparator1</value>
   </data>
@@ -1947,6 +1941,12 @@
   </data>
   <data name="&gt;&gt;timer1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;busParkBindingSource.Name" xml:space="preserve">
+    <value>busParkBindingSource</value>
+  </data>
+  <data name="&gt;&gt;busParkBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Main</value>

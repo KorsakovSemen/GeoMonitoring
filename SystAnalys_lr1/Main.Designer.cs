@@ -67,7 +67,6 @@
             this.busSize = new MetroFramework.Controls.MetroTextBox();
             this.button2 = new MetroFramework.Controls.MetroButton();
             this.changeRoute = new MetroFramework.Controls.MetroComboBox();
-            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label12 = new MetroFramework.Controls.MetroLabel();
             this.changeProcent = new MetroFramework.Controls.MetroTextBox();
             this.theme = new MetroFramework.Controls.MetroLabel();
@@ -110,6 +109,7 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.hint = new MetroFramework.Controls.MetroLabel();
+            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -118,11 +118,11 @@
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.allBusSettings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).BeginInit();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.toolStripMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -524,10 +524,6 @@
             this.changeRoute.UseSelectable = true;
             this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChangedAsync);
             // 
-            // busParkBindingSource
-            // 
-            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
-            // 
             // label12
             // 
             resources.ApplyResources(this.label12, "label12");
@@ -880,6 +876,10 @@
             resources.ApplyResources(this.hint, "hint");
             this.hint.Name = "hint";
             // 
+            // busParkBindingSource
+            // 
+            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
+            // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
@@ -917,13 +917,13 @@
             this.panel7.PerformLayout();
             this.allBusSettings.ResumeLayout(false);
             this.allBusSettings.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
