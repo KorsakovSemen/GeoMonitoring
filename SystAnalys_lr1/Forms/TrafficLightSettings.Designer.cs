@@ -79,9 +79,9 @@
             // 
             // 
             this.textBox1.CustomButton.Image = null;
-            this.textBox1.CustomButton.Location = new System.Drawing.Point(62, 2);
+            this.textBox1.CustomButton.Location = new System.Drawing.Point(82, 2);
             this.textBox1.CustomButton.Name = "";
-            this.textBox1.CustomButton.Size = new System.Drawing.Size(11, 12);
+            this.textBox1.CustomButton.Size = new System.Drawing.Size(15, 15);
             this.textBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textBox1.CustomButton.TabIndex = 1;
             this.textBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -90,7 +90,7 @@
             this.textBox1.Enabled = false;
             this.textBox1.Lines = new string[0];
             this.textBox1.Location = new System.Drawing.Point(15, 117);
-            this.textBox1.MaxLength = 32767;
+            this.textBox1.MaxLength = 9;
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '\0';
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -145,7 +145,7 @@
             this.threeTrafficLights.AutoSize = true;
             this.threeTrafficLights.Location = new System.Drawing.Point(15, 46);
             this.threeTrafficLights.Name = "threeTrafficLights";
-            this.threeTrafficLights.Size = new System.Drawing.Size(240, 15);
+            this.threeTrafficLights.Size = new System.Drawing.Size(241, 15);
             this.threeTrafficLights.TabIndex = 0;
             this.threeTrafficLights.TabStop = true;
             this.threeTrafficLights.Text = "Т-образный перекресток (3 светофора)";

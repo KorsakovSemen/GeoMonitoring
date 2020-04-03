@@ -52,7 +52,7 @@
             this.textBox1.CustomButton.Visible = false;
             this.textBox1.Lines = new string[0];
             this.textBox1.Location = new System.Drawing.Point(271, 79);
-            this.textBox1.MaxLength = 32767;
+            this.textBox1.MaxLength = 9;
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '\0';
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;

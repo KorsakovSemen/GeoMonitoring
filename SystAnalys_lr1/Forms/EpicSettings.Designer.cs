@@ -56,11 +56,9 @@
             this.groupBox2.Controls.Add(this.radioEpicBig);
             this.groupBox2.Controls.Add(this.radioEpicMedium);
             this.groupBox2.Controls.Add(this.radioEpicSmall);
-            this.groupBox2.Location = new System.Drawing.Point(93, 96);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Location = new System.Drawing.Point(70, 78);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox2.Size = new System.Drawing.Size(353, 170);
+            this.groupBox2.Size = new System.Drawing.Size(265, 138);
             this.groupBox2.TabIndex = 93;
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
@@ -71,10 +69,9 @@
             // 
             // 
             this.textBox1.CustomButton.Image = null;
-            this.textBox1.CustomButton.Location = new System.Drawing.Point(145, 1);
-            this.textBox1.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.CustomButton.Location = new System.Drawing.Point(62, 2);
             this.textBox1.CustomButton.Name = "";
-            this.textBox1.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.textBox1.CustomButton.Size = new System.Drawing.Size(11, 12);
             this.textBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textBox1.CustomButton.TabIndex = 1;
             this.textBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -82,9 +79,8 @@
             this.textBox1.CustomButton.Visible = false;
             this.textBox1.Enabled = false;
             this.textBox1.Lines = new string[0];
-            this.textBox1.Location = new System.Drawing.Point(168, 66);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox1.MaxLength = 32767;
+            this.textBox1.Location = new System.Drawing.Point(126, 54);
+            this.textBox1.MaxLength = 9;
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '\0';
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -92,7 +88,7 @@
             this.textBox1.SelectionLength = 0;
             this.textBox1.SelectionStart = 0;
             this.textBox1.ShortcutsEnabled = true;
-            this.textBox1.Size = new System.Drawing.Size(133, 25);
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 6;
             this.textBox1.UseSelectable = true;
             this.textBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -102,10 +98,9 @@
             // radioCustom
             // 
             this.radioCustom.AutoSize = true;
-            this.radioCustom.Location = new System.Drawing.Point(168, 38);
-            this.radioCustom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioCustom.Location = new System.Drawing.Point(126, 31);
             this.radioCustom.Name = "radioCustom";
-            this.radioCustom.Size = new System.Drawing.Size(116, 17);
+            this.radioCustom.Size = new System.Drawing.Size(107, 15);
             this.radioCustom.TabIndex = 5;
             this.radioCustom.TabStop = true;
             this.radioCustom.Text = "Свой параметр";
@@ -115,10 +110,9 @@
             // radioEpicRandom
             // 
             this.radioEpicRandom.AutoSize = true;
-            this.radioEpicRandom.Location = new System.Drawing.Point(8, 123);
-            this.radioEpicRandom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioEpicRandom.Location = new System.Drawing.Point(6, 100);
             this.radioEpicRandom.Name = "radioEpicRandom";
-            this.radioEpicRandom.Size = new System.Drawing.Size(89, 17);
+            this.radioEpicRandom.Size = new System.Drawing.Size(87, 15);
             this.radioEpicRandom.TabIndex = 4;
             this.radioEpicRandom.Text = "Случайный";
             this.radioEpicRandom.UseSelectable = true;
@@ -127,20 +121,18 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(73, 11);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(55, 9);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(129, 20);
+            this.label12.Size = new System.Drawing.Size(123, 19);
             this.label12.TabIndex = 3;
             this.label12.Text = "Размер эпицентра";
             // 
             // radioEpicBig
             // 
             this.radioEpicBig.AutoSize = true;
-            this.radioEpicBig.Location = new System.Drawing.Point(8, 95);
-            this.radioEpicBig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioEpicBig.Location = new System.Drawing.Point(6, 77);
             this.radioEpicBig.Name = "radioEpicBig";
-            this.radioEpicBig.Size = new System.Drawing.Size(79, 17);
+            this.radioEpicBig.Size = new System.Drawing.Size(75, 15);
             this.radioEpicBig.TabIndex = 2;
             this.radioEpicBig.Text = "Большой";
             this.radioEpicBig.UseSelectable = true;
@@ -150,10 +142,9 @@
             // 
             this.radioEpicMedium.AutoSize = true;
             this.radioEpicMedium.Checked = true;
-            this.radioEpicMedium.Location = new System.Drawing.Point(8, 66);
-            this.radioEpicMedium.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioEpicMedium.Location = new System.Drawing.Point(6, 54);
             this.radioEpicMedium.Name = "radioEpicMedium";
-            this.radioEpicMedium.Size = new System.Drawing.Size(75, 17);
+            this.radioEpicMedium.Size = new System.Drawing.Size(71, 15);
             this.radioEpicMedium.TabIndex = 1;
             this.radioEpicMedium.TabStop = true;
             this.radioEpicMedium.Text = "Средний";
@@ -163,10 +154,9 @@
             // radioEpicSmall
             // 
             this.radioEpicSmall.AutoSize = true;
-            this.radioEpicSmall.Location = new System.Drawing.Point(8, 38);
-            this.radioEpicSmall.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioEpicSmall.Location = new System.Drawing.Point(6, 31);
             this.radioEpicSmall.Name = "radioEpicSmall";
-            this.radioEpicSmall.Size = new System.Drawing.Size(91, 17);
+            this.radioEpicSmall.Size = new System.Drawing.Size(86, 15);
             this.radioEpicSmall.TabIndex = 0;
             this.radioEpicSmall.Text = "Маленький";
             this.radioEpicSmall.UseSelectable = true;
@@ -179,11 +169,9 @@
             this.groupBox1.Controls.Add(this.right);
             this.groupBox1.Controls.Add(this.down);
             this.groupBox1.Controls.Add(this.up);
-            this.groupBox1.Location = new System.Drawing.Point(93, 273);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(70, 222);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(353, 158);
+            this.groupBox1.Size = new System.Drawing.Size(265, 128);
             this.groupBox1.TabIndex = 94;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -191,20 +179,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(73, 17);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(55, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 20);
+            this.label1.Size = new System.Drawing.Size(174, 19);
             this.label1.TabIndex = 4;
             this.label1.Text = "Направление расширения";
             // 
             // left
             // 
             this.left.AutoSize = true;
-            this.left.Location = new System.Drawing.Point(21, 129);
-            this.left.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.left.Location = new System.Drawing.Point(16, 105);
             this.left.Name = "left";
-            this.left.Size = new System.Drawing.Size(60, 17);
+            this.left.Size = new System.Drawing.Size(56, 15);
             this.left.TabIndex = 3;
             this.left.Text = "Влево";
             this.left.UseSelectable = true;
@@ -212,10 +198,9 @@
             // right
             // 
             this.right.AutoSize = true;
-            this.right.Location = new System.Drawing.Point(21, 101);
-            this.right.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.right.Location = new System.Drawing.Point(16, 82);
             this.right.Name = "right";
-            this.right.Size = new System.Drawing.Size(68, 17);
+            this.right.Size = new System.Drawing.Size(63, 15);
             this.right.TabIndex = 2;
             this.right.Text = "Вправо";
             this.right.UseSelectable = true;
@@ -223,10 +208,9 @@
             // down
             // 
             this.down.AutoSize = true;
-            this.down.Location = new System.Drawing.Point(21, 73);
-            this.down.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.down.Location = new System.Drawing.Point(16, 59);
             this.down.Name = "down";
-            this.down.Size = new System.Drawing.Size(51, 17);
+            this.down.Size = new System.Drawing.Size(49, 15);
             this.down.TabIndex = 1;
             this.down.Text = "Вниз";
             this.down.UseSelectable = true;
@@ -234,20 +218,18 @@
             // up
             // 
             this.up.AutoSize = true;
-            this.up.Location = new System.Drawing.Point(21, 44);
-            this.up.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.up.Location = new System.Drawing.Point(16, 36);
             this.up.Name = "up";
-            this.up.Size = new System.Drawing.Size(59, 17);
+            this.up.Size = new System.Drawing.Size(54, 15);
             this.up.TabIndex = 0;
             this.up.Text = "Вверх";
             this.up.UseSelectable = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(231, 438);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(173, 356);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
+            this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 95;
             this.button1.Text = "Set";
             this.button1.UseSelectable = true;
@@ -255,18 +237,16 @@
             // 
             // EpicSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 521);
+            this.ClientSize = new System.Drawing.Size(402, 423);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(536, 521);
+            this.MaximumSize = new System.Drawing.Size(402, 423);
             this.MinimizeBox = false;
             this.Name = "EpicSettings";
-            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "Epic settings";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

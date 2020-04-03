@@ -54,9 +54,9 @@
             // 
             // 
             this.textBox1.CustomButton.Image = null;
-            this.textBox1.CustomButton.Location = new System.Drawing.Point(62, 2);
+            this.textBox1.CustomButton.Location = new System.Drawing.Point(82, 2);
             this.textBox1.CustomButton.Name = "";
-            this.textBox1.CustomButton.Size = new System.Drawing.Size(11, 12);
+            this.textBox1.CustomButton.Size = new System.Drawing.Size(15, 15);
             this.textBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textBox1.CustomButton.TabIndex = 1;
             this.textBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -64,7 +64,7 @@
             this.textBox1.CustomButton.Visible = false;
             this.textBox1.Lines = new string[0];
             this.textBox1.Location = new System.Drawing.Point(91, 88);
-            this.textBox1.MaxLength = 32767;
+            this.textBox1.MaxLength = 2;
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '\0';
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -86,9 +86,9 @@
             // 
             // 
             this.textBox2.CustomButton.Image = null;
-            this.textBox2.CustomButton.Location = new System.Drawing.Point(62, 2);
+            this.textBox2.CustomButton.Location = new System.Drawing.Point(82, 2);
             this.textBox2.CustomButton.Name = "";
-            this.textBox2.CustomButton.Size = new System.Drawing.Size(11, 12);
+            this.textBox2.CustomButton.Size = new System.Drawing.Size(15, 15);
             this.textBox2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textBox2.CustomButton.TabIndex = 1;
             this.textBox2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -96,7 +96,7 @@
             this.textBox2.CustomButton.Visible = false;
             this.textBox2.Lines = new string[0];
             this.textBox2.Location = new System.Drawing.Point(91, 118);
-            this.textBox2.MaxLength = 32767;
+            this.textBox2.MaxLength = 2;
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '\0';
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -146,9 +146,9 @@
             // 
             // 
             this.textBox3.CustomButton.Image = null;
-            this.textBox3.CustomButton.Location = new System.Drawing.Point(62, 2);
+            this.textBox3.CustomButton.Location = new System.Drawing.Point(82, 2);
             this.textBox3.CustomButton.Name = "";
-            this.textBox3.CustomButton.Size = new System.Drawing.Size(11, 12);
+            this.textBox3.CustomButton.Size = new System.Drawing.Size(15, 15);
             this.textBox3.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textBox3.CustomButton.TabIndex = 1;
             this.textBox3.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -156,7 +156,7 @@
             this.textBox3.CustomButton.Visible = false;
             this.textBox3.Lines = new string[0];
             this.textBox3.Location = new System.Drawing.Point(91, 158);
-            this.textBox3.MaxLength = 32767;
+            this.textBox3.MaxLength = 9;
             this.textBox3.Name = "textBox3";
             this.textBox3.PasswordChar = '\0';
             this.textBox3.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -178,9 +178,9 @@
             // 
             // 
             this.textBox4.CustomButton.Image = null;
-            this.textBox4.CustomButton.Location = new System.Drawing.Point(62, 2);
+            this.textBox4.CustomButton.Location = new System.Drawing.Point(82, 2);
             this.textBox4.CustomButton.Name = "";
-            this.textBox4.CustomButton.Size = new System.Drawing.Size(11, 12);
+            this.textBox4.CustomButton.Size = new System.Drawing.Size(15, 15);
             this.textBox4.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textBox4.CustomButton.TabIndex = 1;
             this.textBox4.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -188,7 +188,7 @@
             this.textBox4.CustomButton.Visible = false;
             this.textBox4.Lines = new string[0];
             this.textBox4.Location = new System.Drawing.Point(91, 188);
-            this.textBox4.MaxLength = 32767;
+            this.textBox4.MaxLength = 9;
             this.textBox4.Name = "textBox4";
             this.textBox4.PasswordChar = '\0';
             this.textBox4.ScrollBars = System.Windows.Forms.ScrollBars.None;

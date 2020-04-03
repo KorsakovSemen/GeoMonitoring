@@ -958,6 +958,13 @@ namespace SystAnalys_lr1
             if (int.TryParse(textBox2.Text, out int t))
             {
                 //      label5.Text = "";
+
+                foreach(var bus in buses)
+                {
+                    bus.Stop();
+                    bus.PositionAt = 0;
+                }
+
                 TimeSpan ts = TimeSpan.FromTicks(int.Parse(textBox2.Text));
                 double minutesFromTs = ts.TotalSeconds;
                 Console.WriteLine(minutesFromTs);
@@ -1999,6 +2006,13 @@ namespace SystAnalys_lr1
                     {
                         if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
                         {
+                            foreach (var tl in Main.traficLights)
+                            {
+                                tl.Stop();
+                            }
+                            TraficLightsInGrids.Clear();
+                            stopPoints.Clear();
+                            allstopPoints.Clear();
                             string path = dialog.SelectedPath;
                             if (File.Exists(path + "/Map.png"))
                                 sheet.Image = Image.FromFile(path + "/Map.png");
@@ -2008,6 +2022,7 @@ namespace SystAnalys_lr1
                             wsheet = sheet.Width;
                             hsheet = sheet.Height;
                             saveImage = sheet.Image;
+                       
                             LoadRoutes(path + "/");
                             savepath = path;
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
@@ -3670,6 +3685,11 @@ namespace SystAnalys_lr1
 
         private void openEpicFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!Ep.IsDisposed)
+            {
+                Ep.Close();
+                
+            }
             Ep = new DisplayEpicenters(this);
             this.StyleManager.Clone(Ep);
             Ep.Show();

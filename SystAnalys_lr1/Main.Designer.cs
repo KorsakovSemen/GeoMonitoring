@@ -205,12 +205,12 @@
             this.panel1.Controls.Add(this.speed);
             this.panel1.HorizontalScrollbarBarColor = true;
             this.panel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel1.HorizontalScrollbarSize = 8;
+            this.panel1.HorizontalScrollbarSize = 6;
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             this.panel1.VerticalScrollbarBarColor = true;
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
-            this.panel1.VerticalScrollbarSize = 8;
+            this.panel1.VerticalScrollbarSize = 6;
             // 
             // SavePictures
             // 
@@ -278,7 +278,7 @@
             this.optText.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible")));
             this.optText.Lines = new string[0];
             resources.ApplyResources(this.optText, "optText");
-            this.optText.MaxLength = 32767;
+            this.optText.MaxLength = 9;
             this.optText.Name = "optText";
             this.optText.PasswordChar = '\0';
             this.optText.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -309,7 +309,7 @@
             this.speed.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible1")));
             this.speed.Lines = new string[0];
             resources.ApplyResources(this.speed, "speed");
-            this.speed.MaxLength = 32767;
+            this.speed.MaxLength = 9;
             this.speed.Name = "speed";
             this.speed.PasswordChar = '\0';
             this.speed.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -330,12 +330,12 @@
             this.panel2.Controls.Add(this.button8);
             this.panel2.HorizontalScrollbarBarColor = true;
             this.panel2.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel2.HorizontalScrollbarSize = 8;
+            this.panel2.HorizontalScrollbarSize = 6;
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             this.panel2.VerticalScrollbarBarColor = true;
             this.panel2.VerticalScrollbarHighlightOnWheel = false;
-            this.panel2.VerticalScrollbarSize = 8;
+            this.panel2.VerticalScrollbarSize = 6;
             // 
             // label7
             // 
@@ -360,7 +360,7 @@
             this.textBox2.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible2")));
             this.textBox2.Lines = new string[0];
             resources.ApplyResources(this.textBox2, "textBox2");
-            this.textBox2.MaxLength = 32767;
+            this.textBox2.MaxLength = 9;
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '\0';
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -392,11 +392,11 @@
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.HorizontalScrollbarBarColor = true;
             this.panel4.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel4.HorizontalScrollbarSize = 8;
+            this.panel4.HorizontalScrollbarSize = 6;
             this.panel4.Name = "panel4";
             this.panel4.VerticalScrollbarBarColor = true;
             this.panel4.VerticalScrollbarHighlightOnWheel = false;
-            this.panel4.VerticalScrollbarSize = 8;
+            this.panel4.VerticalScrollbarSize = 6;
             // 
             // metroTrackBar1
             // 
@@ -417,12 +417,12 @@
             this.panel8.Controls.Add(this.matrixGrid);
             this.panel8.HorizontalScrollbarBarColor = true;
             this.panel8.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel8.HorizontalScrollbarSize = 8;
+            this.panel8.HorizontalScrollbarSize = 6;
             resources.ApplyResources(this.panel8, "panel8");
             this.panel8.Name = "panel8";
             this.panel8.VerticalScrollbarBarColor = true;
             this.panel8.VerticalScrollbarHighlightOnWheel = false;
-            this.panel8.VerticalScrollbarSize = 8;
+            this.panel8.VerticalScrollbarSize = 6;
             // 
             // label8
             // 
@@ -438,12 +438,12 @@
             this.panel7.Controls.Add(this.label12);
             this.panel7.HorizontalScrollbarBarColor = true;
             this.panel7.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel7.HorizontalScrollbarSize = 8;
+            this.panel7.HorizontalScrollbarSize = 6;
             resources.ApplyResources(this.panel7, "panel7");
             this.panel7.Name = "panel7";
             this.panel7.VerticalScrollbarBarColor = true;
             this.panel7.VerticalScrollbarHighlightOnWheel = false;
-            this.panel7.VerticalScrollbarSize = 8;
+            this.panel7.VerticalScrollbarSize = 6;
             // 
             // allBusSettings
             // 
@@ -453,12 +453,12 @@
             this.allBusSettings.Controls.Add(this.busSize);
             this.allBusSettings.HorizontalScrollbarBarColor = true;
             this.allBusSettings.HorizontalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.HorizontalScrollbarSize = 13;
+            this.allBusSettings.HorizontalScrollbarSize = 10;
             resources.ApplyResources(this.allBusSettings, "allBusSettings");
             this.allBusSettings.Name = "allBusSettings";
             this.allBusSettings.VerticalScrollbarBarColor = true;
             this.allBusSettings.VerticalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.VerticalScrollbarSize = 13;
+            this.allBusSettings.VerticalScrollbarSize = 10;
             // 
             // backsideCheck
             // 
@@ -485,7 +485,6 @@
             this.busSize.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
             this.busSize.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode3")));
             this.busSize.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location3")));
-            this.busSize.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin3")));
             this.busSize.CustomButton.Name = "";
             this.busSize.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size3")));
             this.busSize.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -541,7 +540,7 @@
             this.changeProcent.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
             this.changeProcent.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode4")));
             this.changeProcent.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location4")));
-            this.changeProcent.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin4")));
+            this.changeProcent.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin3")));
             this.changeProcent.CustomButton.Name = "";
             this.changeProcent.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size4")));
             this.changeProcent.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -551,7 +550,7 @@
             this.changeProcent.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible4")));
             this.changeProcent.Lines = new string[0];
             resources.ApplyResources(this.changeProcent, "changeProcent");
-            this.changeProcent.MaxLength = 32767;
+            this.changeProcent.MaxLength = 9;
             this.changeProcent.Name = "changeProcent";
             this.changeProcent.PasswordChar = '\0';
             this.changeProcent.ScrollBars = System.Windows.Forms.ScrollBars.None;
