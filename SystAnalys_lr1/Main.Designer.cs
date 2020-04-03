@@ -205,12 +205,12 @@
             this.panel1.Controls.Add(this.speed);
             this.panel1.HorizontalScrollbarBarColor = true;
             this.panel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel1.HorizontalScrollbarSize = 6;
+            this.panel1.HorizontalScrollbarSize = 8;
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             this.panel1.VerticalScrollbarBarColor = true;
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
-            this.panel1.VerticalScrollbarSize = 6;
+            this.panel1.VerticalScrollbarSize = 8;
             // 
             // SavePictures
             // 
@@ -330,12 +330,12 @@
             this.panel2.Controls.Add(this.button8);
             this.panel2.HorizontalScrollbarBarColor = true;
             this.panel2.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel2.HorizontalScrollbarSize = 6;
+            this.panel2.HorizontalScrollbarSize = 8;
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             this.panel2.VerticalScrollbarBarColor = true;
             this.panel2.VerticalScrollbarHighlightOnWheel = false;
-            this.panel2.VerticalScrollbarSize = 6;
+            this.panel2.VerticalScrollbarSize = 8;
             // 
             // label7
             // 
@@ -392,11 +392,11 @@
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.HorizontalScrollbarBarColor = true;
             this.panel4.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel4.HorizontalScrollbarSize = 6;
+            this.panel4.HorizontalScrollbarSize = 8;
             this.panel4.Name = "panel4";
             this.panel4.VerticalScrollbarBarColor = true;
             this.panel4.VerticalScrollbarHighlightOnWheel = false;
-            this.panel4.VerticalScrollbarSize = 6;
+            this.panel4.VerticalScrollbarSize = 8;
             // 
             // metroTrackBar1
             // 
@@ -417,12 +417,12 @@
             this.panel8.Controls.Add(this.matrixGrid);
             this.panel8.HorizontalScrollbarBarColor = true;
             this.panel8.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel8.HorizontalScrollbarSize = 6;
+            this.panel8.HorizontalScrollbarSize = 8;
             resources.ApplyResources(this.panel8, "panel8");
             this.panel8.Name = "panel8";
             this.panel8.VerticalScrollbarBarColor = true;
             this.panel8.VerticalScrollbarHighlightOnWheel = false;
-            this.panel8.VerticalScrollbarSize = 6;
+            this.panel8.VerticalScrollbarSize = 8;
             // 
             // label8
             // 
@@ -438,12 +438,12 @@
             this.panel7.Controls.Add(this.label12);
             this.panel7.HorizontalScrollbarBarColor = true;
             this.panel7.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel7.HorizontalScrollbarSize = 6;
+            this.panel7.HorizontalScrollbarSize = 8;
             resources.ApplyResources(this.panel7, "panel7");
             this.panel7.Name = "panel7";
             this.panel7.VerticalScrollbarBarColor = true;
             this.panel7.VerticalScrollbarHighlightOnWheel = false;
-            this.panel7.VerticalScrollbarSize = 6;
+            this.panel7.VerticalScrollbarSize = 8;
             // 
             // allBusSettings
             // 
@@ -453,12 +453,12 @@
             this.allBusSettings.Controls.Add(this.busSize);
             this.allBusSettings.HorizontalScrollbarBarColor = true;
             this.allBusSettings.HorizontalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.HorizontalScrollbarSize = 10;
+            this.allBusSettings.HorizontalScrollbarSize = 13;
             resources.ApplyResources(this.allBusSettings, "allBusSettings");
             this.allBusSettings.Name = "allBusSettings";
             this.allBusSettings.VerticalScrollbarBarColor = true;
             this.allBusSettings.VerticalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.VerticalScrollbarSize = 10;
+            this.allBusSettings.VerticalScrollbarSize = 13;
             // 
             // backsideCheck
             // 
@@ -485,6 +485,7 @@
             this.busSize.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
             this.busSize.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode3")));
             this.busSize.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location3")));
+            this.busSize.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin3")));
             this.busSize.CustomButton.Name = "";
             this.busSize.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size3")));
             this.busSize.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -540,7 +541,7 @@
             this.changeProcent.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
             this.changeProcent.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode4")));
             this.changeProcent.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location4")));
-            this.changeProcent.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin3")));
+            this.changeProcent.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin4")));
             this.changeProcent.CustomButton.Name = "";
             this.changeProcent.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size4")));
             this.changeProcent.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;

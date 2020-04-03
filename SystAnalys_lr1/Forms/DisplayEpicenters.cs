@@ -142,14 +142,17 @@ namespace SystAnalys_lr1
         delegate void DelBitmap(Bitmap b);
         public void EDrawEpics()
         {
-
             EG.clearSheet2();
             Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap()); //ошибка при закрытии формы
             // Esheet.Image = EG.GetBitmap();
-            for (int i = 0; i < MainForm.GetEpicenters().Count; i++)
+            if(MainForm.GetEpicenters() != null)
             {
-                MainForm.GetEpicenters()[i].DrawEpicenter(EG, Ezoom);
-            }
+                for (int i = 0; i < MainForm.GetEpicenters().Count; i++)
+                {
+                    MainForm.GetEpicenters()[i].DrawEpicenter(EG, Ezoom);
+                }
+
+            }           
             EDrawGrid();
 
 

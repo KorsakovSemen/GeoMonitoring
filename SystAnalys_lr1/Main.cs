@@ -295,7 +295,7 @@ namespace SystAnalys_lr1
         //функция возвращает эпицентры (для 2 формы)
         public List<Epicenter> GetEpicenters()
         {
-            return this.Epics;
+            return Epics;
         }
         //функция возвращает сетку (для 2 формы)
         public List<GridPart> GetTheGrid()
