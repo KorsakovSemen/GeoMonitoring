@@ -5,6 +5,74 @@
       <int>2</int>
     </key>
     <value>
+      <ArrayOfVertex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <Vertex>
+          <gridNum>0</gridNum>
+          <x>494</x>
+          <y>261</y>
+        </Vertex>
+        <Vertex>
+          <gridNum>0</gridNum>
+          <x>493</x>
+          <y>204</y>
+        </Vertex>
+        <Vertex>
+          <gridNum>0</gridNum>
+          <x>467</x>
+          <y>150</y>
+        </Vertex>
+        <Vertex>
+          <gridNum>0</gridNum>
+          <x>467</x>
+          <y>150</y>
+        </Vertex>
+        <Vertex>
+          <gridNum>0</gridNum>
+          <x>522</x>
+          <y>151</y>
+        </Vertex>
+        <Vertex>
+          <gridNum>0</gridNum>
+          <x>493</x>
+          <y>204</y>
+        </Vertex>
+      </ArrayOfVertex>
+    </value>
+  </item>
+  <item>
+    <key>
+      <int>54</int>
+    </key>
+    <value>
+      <ArrayOfVertex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <Vertex>
+          <gridNum>0</gridNum>
+          <x>467</x>
+          <y>150</y>
+        </Vertex>
+        <Vertex>
+          <gridNum>0</gridNum>
+          <x>522</x>
+          <y>151</y>
+        </Vertex>
+        <Vertex>
+          <gridNum>0</gridNum>
+          <x>493</x>
+          <y>204</y>
+        </Vertex>
+        <Vertex>
+          <gridNum>0</gridNum>
+          <x>467</x>
+          <y>150</y>
+        </Vertex>
+      </ArrayOfVertex>
+    </value>
+  </item>
+  <item>
+    <key>
+      <int>55</int>
+    </key>
+    <value>
       <ArrayOfVertex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
     </value>
   </item>
