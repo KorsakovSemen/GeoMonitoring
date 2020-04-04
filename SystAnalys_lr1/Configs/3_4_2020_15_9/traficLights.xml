@@ -3,7 +3,7 @@
   <TraficLight>
     <x>486</x>
     <y>173</y>
-    <tick>3</tick>
+    <tick>0</tick>
     <greenTime>1</greenTime>
     <redTime>1</redTime>
     <yellowTime>2</yellowTime>
@@ -14,56 +14,12 @@
   <TraficLight>
     <x>521</x>
     <y>172</y>
-    <tick>0</tick>
+    <tick>3</tick>
     <greenTime>1</greenTime>
     <redTime>1</redTime>
     <yellowTime>2</yellowTime>
     <gridNum>501</gridNum>
     <bal>0</bal>
     <status>2</status>
-  </TraficLight>
-  <TraficLight>
-    <x>283</x>
-    <y>148</y>
-    <tick>23</tick>
-    <greenTime>20</greenTime>
-    <redTime>20</redTime>
-    <yellowTime>2</yellowTime>
-    <gridNum>411</gridNum>
-    <bal>19</bal>
-    <status>3</status>
-  </TraficLight>
-  <TraficLight>
-    <x>275</x>
-    <y>156</y>
-    <tick>1</tick>
-    <greenTime>20</greenTime>
-    <redTime>20</redTime>
-    <yellowTime>2</yellowTime>
-    <gridNum>411</gridNum>
-    <bal>19</bal>
-    <status>1</status>
-  </TraficLight>
-  <TraficLight>
-    <x>275</x>
-    <y>182</y>
-    <tick>10</tick>
-    <greenTime>10</greenTime>
-    <redTime>10</redTime>
-    <yellowTime>2</yellowTime>
-    <gridNum>491</gridNum>
-    <bal>0</bal>
-    <status>1</status>
-  </TraficLight>
-  <TraficLight>
-    <x>276</x>
-    <y>209</y>
-    <tick>22</tick>
-    <greenTime>10</greenTime>
-    <redTime>10</redTime>
-    <yellowTime>2</yellowTime>
-    <gridNum>571</gridNum>
-    <bal>0</bal>
-    <status>3</status>
   </TraficLight>
 </ArrayOfTraficLight>
