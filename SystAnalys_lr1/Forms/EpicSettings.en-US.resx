@@ -117,180 +117,104 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Matrix</value>
-  </data>
-  <data name="stopBuses.Text" xml:space="preserve">
-    <value>Stop buses</value>
-  </data>
-  <data name="launchBuses.Text" xml:space="preserve">
-    <value>Run buses</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>Number of walkthroughs</value>
-  </data>
-  <data name="optimize.Text" xml:space="preserve">
-    <value>Optimization</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="mean.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 19</value>
+  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>146, 64</value>
   </data>
-  <data name="mean.Text" xml:space="preserve">
-    <value>Average:</value>
+  <data name="radioCustom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>146, 41</value>
   </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 19</value>
+  <data name="radioCustom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 15</value>
   </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Time in seconds</value>
+  <data name="radioCustom.Text" xml:space="preserve">
+    <value>You parameter</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="textBox2.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="radioEpicRandom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 110</value>
   </data>
-  <data name="button8.Text" xml:space="preserve">
-    <value>Generation</value>
+  <data name="radioEpicRandom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 15</value>
   </data>
-  <data name="button8.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="radioEpicRandom.Text" xml:space="preserve">
+    <value>Random</value>
   </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 19</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>With sensors: Without:  Total: </value>
-  </data>
-  <data name="createCoordinates.Text" xml:space="preserve">
-    <value>Create an array of coordinates</value>
-  </data>
-  <data name="createCoordinates.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="backsideCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 15</value>
-  </data>
-  <data name="backsideCheck.Text" xml:space="preserve">
-    <value>Backside</value>
-  </data>
-  <data name="trackerCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 15</value>
-  </data>
-  <data name="trackerCheck.Text" xml:space="preserve">
-    <value>Tracker</value>
-  </data>
-  <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 19</value>
-  </data>
-  <data name="metroLabel2.Text" xml:space="preserve">
-    <value>Bus size:</value>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>90, 16</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 19</value>
+    <value>88, 19</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
-    <value>Traffic lights</value>
+    <value>Epicenter size</value>
   </data>
-  <data name="theme.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1218, 31</value>
+  <data name="radioEpicBig.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 87</value>
   </data>
-  <data name="theme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 19</value>
+  <data name="radioEpicBig.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 15</value>
   </data>
-  <data name="theme.Text" xml:space="preserve">
-    <value>Theme</value>
+  <data name="radioEpicBig.Text" xml:space="preserve">
+    <value>Large</value>
   </data>
-  <data name="changeTheme.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1283, 28</value>
+  <data name="radioEpicMedium.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 64</value>
   </data>
-  <data name="changeTheme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 29</value>
+  <data name="radioEpicMedium.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 15</value>
   </data>
-  <data name="createModelToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+  <data name="radioEpicMedium.Text" xml:space="preserve">
+    <value>Middle</value>
   </data>
-  <data name="createModelToolStripMenuItem.Text" xml:space="preserve">
-    <value>Create model</value>
+  <data name="radioEpicSmall.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 41</value>
   </data>
-  <data name="openEpicFormToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+  <data name="radioEpicSmall.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 15</value>
   </data>
-  <data name="openEpicFormToolStripMenuItem.Text" xml:space="preserve">
-    <value>Open second form</value>
+  <data name="radioEpicSmall.Text" xml:space="preserve">
+    <value>Small</value>
   </data>
-  <data name="addRouteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>265, 139</value>
   </data>
-  <data name="addRouteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Add route</value>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>70, 14</value>
   </data>
-  <data name="createGridToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 19</value>
   </data>
-  <data name="createGridToolStripMenuItem.Text" xml:space="preserve">
-    <value>Grid settings</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Extenstion direction</value>
   </data>
-  <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+  <data name="left.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 15</value>
   </data>
-  <data name="saveToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save</value>
+  <data name="left.Text" xml:space="preserve">
+    <value>Left</value>
   </data>
-  <data name="saveInToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+  <data name="right.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 15</value>
   </data>
-  <data name="saveInToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save in...</value>
+  <data name="right.Text" xml:space="preserve">
+    <value>Right</value>
   </data>
-  <data name="runTrafficLightsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+  <data name="down.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 15</value>
   </data>
-  <data name="runTrafficLightsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Run traffic lights</value>
+  <data name="down.Text" xml:space="preserve">
+    <value>Down</value>
   </data>
-  <data name="saveButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 24</value>
+  <data name="up.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 15</value>
   </data>
-  <data name="saveButton.Text" xml:space="preserve">
-    <value>File</value>
+  <data name="up.Text" xml:space="preserve">
+    <value>Up</value>
   </data>
-  <data name="loadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>165, 377</value>
   </data>
-  <data name="loadToolStripMenuItem.Text" xml:space="preserve">
-    <value>Load</value>
-  </data>
-  <data name="loadFromToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
-  </data>
-  <data name="loadFromToolStripMenuItem.Text" xml:space="preserve">
-    <value>Load from...</value>
-  </data>
-  <data name="loadButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 24</value>
-  </data>
-  <data name="loadButton.Text" xml:space="preserve">
-    <value>Load</value>
-  </data>
-  <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>851, 31</value>
-  </data>
-  <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 19</value>
-  </data>
-  <data name="metroLabel1.Text" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="metroComboBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>927, 28</value>
-  </data>
-  <data name="config.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 19</value>
-  </data>
-  <data name="config.Text" xml:space="preserve">
-    <value>Configuration:</value>
-  </data>
-  <data name="themes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1102, 33</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Epicenter settings</value>
   </data>
 </root>

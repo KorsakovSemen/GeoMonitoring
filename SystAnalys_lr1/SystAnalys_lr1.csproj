@@ -147,17 +147,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MainStrings.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\AddGrid.en-US.resx">
+      <DependentUpon>AddGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddGrid.resx">
       <DependentUpon>AddGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddRoute.en-US.resx">
+      <DependentUpon>AddRoute.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddRoute.resx">
       <DependentUpon>AddRoute.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CrossroadsSettings.en-US.resx">
+      <DependentUpon>CrossroadsSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CrossroadsSettings.resx">
       <DependentUpon>CrossroadsSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DisplayEpicenters.en-US.resx">
+      <DependentUpon>DisplayEpicenters.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DisplayEpicenters.resx">
       <DependentUpon>DisplayEpicenters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EpicSettings.en-US.resx">
+      <DependentUpon>EpicSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EpicSettings.resx">
       <DependentUpon>EpicSettings.cs</DependentUpon>

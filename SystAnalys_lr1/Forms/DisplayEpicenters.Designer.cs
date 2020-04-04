@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DisplayEpicenters));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new MetroFramework.Controls.MetroPanel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
@@ -42,6 +43,7 @@
             // 
             // panel1
             // 
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.metroLabel2);
@@ -50,85 +52,57 @@
             this.panel1.Controls.Add(this.metroButton1);
             this.panel1.Controls.Add(this.button11);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.HorizontalScrollbarBarColor = true;
             this.panel1.HorizontalScrollbarHighlightOnWheel = false;
             this.panel1.HorizontalScrollbarSize = 10;
-            this.panel1.Location = new System.Drawing.Point(20, 60);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(303, 487);
-            this.panel1.TabIndex = 1;
             this.panel1.VerticalScrollbarBarColor = true;
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
             this.panel1.VerticalScrollbarSize = 10;
             // 
             // metroLabel2
             // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(63, 176);
+            resources.ApplyResources(this.metroLabel2, "metroLabel2");
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(159, 19);
-            this.metroLabel2.TabIndex = 98;
-            this.metroLabel2.Text = "Параметры загрязнения";
             // 
             // metroLabel1
             // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(57, 99);
+            resources.ApplyResources(this.metroLabel1, "metroLabel1");
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(172, 19);
-            this.metroLabel1.TabIndex = 97;
-            this.metroLabel1.Text = "Восстановить загрязнение";
             // 
             // ERouts
             // 
+            resources.ApplyResources(this.ERouts, "ERouts");
             this.ERouts.FormattingEnabled = true;
-            this.ERouts.ItemHeight = 23;
-            this.ERouts.Location = new System.Drawing.Point(57, 57);
             this.ERouts.Name = "ERouts";
-            this.ERouts.Size = new System.Drawing.Size(165, 29);
-            this.ERouts.TabIndex = 96;
             this.ERouts.UseSelectable = true;
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(57, 121);
+            resources.ApplyResources(this.metroButton1, "metroButton1");
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(165, 37);
-            this.metroButton1.TabIndex = 95;
-            this.metroButton1.Text = "Recreate";
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(57, 198);
+            resources.ApplyResources(this.button11, "button11");
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(165, 37);
-            this.button11.TabIndex = 94;
-            this.button11.Text = "Настроить эпицентр";
             this.button11.UseSelectable = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 35);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(191, 19);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Отрисовать путь загрязнений";
             // 
             // DisplayEpicenters
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1500, 567);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1500, 1500);
             this.Name = "DisplayEpicenters";
-            this.Text = "Display epicenters ";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DisplayEpicenters_FormClosed);
             this.Load += new System.EventHandler(this.DisplayEpicenters_Load);
             this.panel1.ResumeLayout(false);

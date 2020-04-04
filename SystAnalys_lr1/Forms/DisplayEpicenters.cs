@@ -1,6 +1,7 @@
 ﻿using MetroFramework.Controls;
 using MetroFramework.Forms;
 using SystAnalys_lr1.Forms;
+using SystAnalys_lr1.Strings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -211,12 +212,12 @@ namespace SystAnalys_lr1
         {
             EG.clearSheet2();
             EDrawEpics();
-            if (ERouts.Text == "None")
+            if (ERouts.Text == MainStrings.none)
             {
 
                 return;
             };
-            if (ERouts.Text == "All")
+            if (ERouts.Text == MainStrings.network)
             {
 
                 EDrawAllPollutionsInRoutes();

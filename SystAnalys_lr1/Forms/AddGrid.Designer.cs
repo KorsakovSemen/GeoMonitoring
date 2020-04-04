@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddGrid));
             this.up = new MetroFramework.Controls.MetroTextBox();
             this.left = new MetroFramework.Controls.MetroTextBox();
             this.button1 = new MetroFramework.Controls.MetroButton();
@@ -57,17 +58,18 @@
             // 
             // 
             // 
-            this.up.CustomButton.Image = null;
-            this.up.CustomButton.Location = new System.Drawing.Point(51, 2);
+            this.up.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.up.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode")));
+            this.up.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location")));
             this.up.CustomButton.Name = "";
-            this.up.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.up.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size")));
             this.up.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.up.CustomButton.TabIndex = 1;
+            this.up.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex")));
             this.up.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.up.CustomButton.UseSelectable = true;
-            this.up.CustomButton.Visible = false;
+            this.up.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible")));
             this.up.Lines = new string[0];
-            this.up.Location = new System.Drawing.Point(254, 77);
+            resources.ApplyResources(this.up, "up");
             this.up.MaxLength = 32767;
             this.up.Name = "up";
             this.up.PasswordChar = '\0';
@@ -76,8 +78,6 @@
             this.up.SelectionLength = 0;
             this.up.SelectionStart = 0;
             this.up.ShortcutsEnabled = true;
-            this.up.Size = new System.Drawing.Size(69, 20);
-            this.up.TabIndex = 0;
             this.up.UseSelectable = true;
             this.up.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.up.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -89,17 +89,18 @@
             // 
             // 
             // 
-            this.left.CustomButton.Image = null;
-            this.left.CustomButton.Location = new System.Drawing.Point(51, 2);
+            this.left.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.left.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode1")));
+            this.left.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location1")));
             this.left.CustomButton.Name = "";
-            this.left.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.left.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size1")));
             this.left.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.left.CustomButton.TabIndex = 1;
+            this.left.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex1")));
             this.left.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.left.CustomButton.UseSelectable = true;
-            this.left.CustomButton.Visible = false;
+            this.left.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible1")));
             this.left.Lines = new string[0];
-            this.left.Location = new System.Drawing.Point(254, 112);
+            resources.ApplyResources(this.left, "left");
             this.left.MaxLength = 32767;
             this.left.Name = "left";
             this.left.PasswordChar = '\0';
@@ -108,8 +109,6 @@
             this.left.SelectionLength = 0;
             this.left.SelectionStart = 0;
             this.left.ShortcutsEnabled = true;
-            this.left.Size = new System.Drawing.Size(69, 20);
-            this.left.TabIndex = 1;
             this.left.UseSelectable = true;
             this.left.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.left.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -118,11 +117,8 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(329, 235);
+            resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Создать";
             this.button1.UseSelectable = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -131,17 +127,18 @@
             // 
             // 
             // 
-            this.down.CustomButton.Image = null;
-            this.down.CustomButton.Location = new System.Drawing.Point(51, 2);
+            this.down.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            this.down.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode2")));
+            this.down.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location2")));
             this.down.CustomButton.Name = "";
-            this.down.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.down.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size2")));
             this.down.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.down.CustomButton.TabIndex = 1;
+            this.down.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex2")));
             this.down.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.down.CustomButton.UseSelectable = true;
-            this.down.CustomButton.Visible = false;
+            this.down.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible2")));
             this.down.Lines = new string[0];
-            this.down.Location = new System.Drawing.Point(396, 112);
+            resources.ApplyResources(this.down, "down");
             this.down.MaxLength = 32767;
             this.down.Name = "down";
             this.down.PasswordChar = '\0';
@@ -150,8 +147,6 @@
             this.down.SelectionLength = 0;
             this.down.SelectionStart = 0;
             this.down.ShortcutsEnabled = true;
-            this.down.Size = new System.Drawing.Size(69, 20);
-            this.down.TabIndex = 4;
             this.down.UseSelectable = true;
             this.down.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.down.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -163,17 +158,18 @@
             // 
             // 
             // 
-            this.right.CustomButton.Image = null;
-            this.right.CustomButton.Location = new System.Drawing.Point(51, 2);
+            this.right.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            this.right.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode3")));
+            this.right.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location3")));
             this.right.CustomButton.Name = "";
-            this.right.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.right.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size3")));
             this.right.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.right.CustomButton.TabIndex = 1;
+            this.right.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex3")));
             this.right.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.right.CustomButton.UseSelectable = true;
-            this.right.CustomButton.Visible = false;
+            this.right.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible3")));
             this.right.Lines = new string[0];
-            this.right.Location = new System.Drawing.Point(396, 77);
+            resources.ApplyResources(this.right, "right");
             this.right.MaxLength = 32767;
             this.right.Name = "right";
             this.right.PasswordChar = '\0';
@@ -182,8 +178,6 @@
             this.right.SelectionLength = 0;
             this.right.SelectionStart = 0;
             this.right.ShortcutsEnabled = true;
-            this.right.Size = new System.Drawing.Size(69, 20);
-            this.right.TabIndex = 3;
             this.right.UseSelectable = true;
             this.right.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.right.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -192,66 +186,46 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(73, 77);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 19);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Отступ сверху";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(73, 114);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 19);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Отступ слева";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(507, 76);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 19);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Отступ справа";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(507, 112);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 19);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Отступ снизу";
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(73, 149);
-            this.label5.MaximumSize = new System.Drawing.Size(1000, 1000);
-            this.label5.MinimumSize = new System.Drawing.Size(100, 100);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(163, 100);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Отступ по высоте\r\nквадрата (опционально)";
             // 
             // h
             // 
             // 
             // 
             // 
-            this.h.CustomButton.Image = null;
-            this.h.CustomButton.Location = new System.Drawing.Point(51, 2);
+            this.h.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            this.h.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode4")));
+            this.h.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location4")));
             this.h.CustomButton.Name = "";
-            this.h.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.h.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size4")));
             this.h.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.h.CustomButton.TabIndex = 1;
+            this.h.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex4")));
             this.h.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.h.CustomButton.UseSelectable = true;
-            this.h.CustomButton.Visible = false;
+            this.h.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible4")));
             this.h.Lines = new string[0];
-            this.h.Location = new System.Drawing.Point(396, 149);
+            resources.ApplyResources(this.h, "h");
             this.h.MaxLength = 32767;
             this.h.Name = "h";
             this.h.PasswordChar = '\0';
@@ -260,8 +234,6 @@
             this.h.SelectionLength = 0;
             this.h.SelectionStart = 0;
             this.h.ShortcutsEnabled = true;
-            this.h.Size = new System.Drawing.Size(69, 20);
-            this.h.TabIndex = 9;
             this.h.UseSelectable = true;
             this.h.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.h.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -269,28 +241,26 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(507, 149);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(280, 43);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Отступ по ширине \r\nквадрата (опционально)";
             // 
             // w
             // 
             // 
             // 
             // 
-            this.w.CustomButton.Image = null;
-            this.w.CustomButton.Location = new System.Drawing.Point(51, 2);
+            this.w.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
+            this.w.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode5")));
+            this.w.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location5")));
             this.w.CustomButton.Name = "";
-            this.w.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.w.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size5")));
             this.w.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.w.CustomButton.TabIndex = 1;
+            this.w.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex5")));
             this.w.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.w.CustomButton.UseSelectable = true;
-            this.w.CustomButton.Visible = false;
+            this.w.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible5")));
             this.w.Lines = new string[0];
-            this.w.Location = new System.Drawing.Point(254, 149);
+            resources.ApplyResources(this.w, "w");
             this.w.MaxLength = 32767;
             this.w.Name = "w";
             this.w.PasswordChar = '\0';
@@ -299,8 +269,6 @@
             this.w.SelectionLength = 0;
             this.w.SelectionStart = 0;
             this.w.ShortcutsEnabled = true;
-            this.w.Size = new System.Drawing.Size(69, 20);
-            this.w.TabIndex = 11;
             this.w.UseSelectable = true;
             this.w.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.w.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -324,9 +292,8 @@
             // 
             // AddGrid
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 290);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.w);
             this.Controls.Add(this.label5);
@@ -341,10 +308,8 @@
             this.Controls.Add(this.left);
             this.Controls.Add(this.up);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(732, 290);
             this.MinimizeBox = false;
             this.Name = "AddGrid";
-            this.Text = "Grid settings";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();

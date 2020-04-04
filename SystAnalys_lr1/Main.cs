@@ -106,8 +106,8 @@ namespace SystAnalys_lr1
         private void addInComboBox()
         {
             changeRoute.Items.Clear();
-            changeRoute.Items.Add("None");
-            changeRoute.Items.Add("All");
+            changeRoute.Items.Add(MainStrings.none);
+            changeRoute.Items.Add(MainStrings.network);
             foreach (var r in routes)
             {
                 changeRoute.Items.Add(r.Key);
@@ -265,7 +265,7 @@ namespace SystAnalys_lr1
                 openEpicFormToolStripMenuItem.Enabled = false;
                 createGridToolStripMenuItem.Enabled = false;
             }
-            changeRoute.Text = "All";
+            changeRoute.Text = MainStrings.network;
             mainPanel.MaximumSize = new System.Drawing.Size(sheet.Width, sheet.Height);
             mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.mainPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel6_MouseWheel);
@@ -940,25 +940,11 @@ namespace SystAnalys_lr1
             return this.mainPanel;
         }
 
-        //private void button2_Click(object sender, EventArgs e)
-        //{
-        //    AutoClosingMessageBox.Show("Load", "", 1000);
-        //    AsyncCreateAllCoordinates();
-        //    //AsyncCreateAllCoordinates();
-        //    Bus.AllCoordinates = AllCoordinates;
-        //    MessageBox.Show("Готово");
-        //}
 
         private void button8_Click_1(object sender, EventArgs e)
         {
-            //GifList = new Dictionary<int, List<GridPart>>();
-            //GifListAdd();
-            //offBuses(5*10);
-            //Baraban();
             if (int.TryParse(textBox2.Text, out int t))
             {
-                //      label5.Text = "";
-
                 foreach (var bus in buses)
                 {
                     bus.Stop();
@@ -968,7 +954,6 @@ namespace SystAnalys_lr1
                 TimeSpan ts = TimeSpan.FromTicks(int.Parse(textBox2.Text));
                 double minutesFromTs = ts.TotalSeconds;
                 Console.WriteLine(minutesFromTs);
-                //asModeling();
                 Modeling();
             }
         }
@@ -1004,7 +989,7 @@ namespace SystAnalys_lr1
         private void comboBox1_SelectedIndexChangedAsync(object sender, EventArgs e)
         {
             //AsyncCreateAllCoordinates()();
-            if (changeRoute.Text == "None")
+            if (changeRoute.Text == MainStrings.none)
             {
                 //    //AsyncCreateAllCoordinates()();
                 selectedRoute = null;
@@ -1030,7 +1015,7 @@ namespace SystAnalys_lr1
                 selected = new List<int>();
                 return;
             };
-            if (changeRoute.Text == "All")
+            if (changeRoute.Text == MainStrings.network)
             {
                 selectedRoute = null;
                 selectRoute.Enabled = true;
@@ -1052,7 +1037,7 @@ namespace SystAnalys_lr1
                 label12.Visible = false;
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
-                Console.WriteLine("All");
+                Console.WriteLine(MainStrings.network);
                 selected = new List<int>();
                 return;
             };
@@ -1269,7 +1254,7 @@ namespace SystAnalys_lr1
             //AsyncCreateAllCoordinates()();
             G.clearSheet();
             G.drawALLGraph(V, E);
-            if (changeRoute.Text == "All")
+            if (changeRoute.Text == MainStrings.network)
             {
                 allBusSettings.Visible = false;
                 addBus.Enabled = false;
@@ -1372,7 +1357,7 @@ namespace SystAnalys_lr1
                     //     checkBusesOnRoute();
 
                 }
-                if (MBSave == DialogResult.Yes && changeRoute.Text == "All")
+                if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
                 {
                     //sheet.Image = null;
                     DirectoryInfo dirInfo = new DirectoryInfo(savepath);
@@ -1409,7 +1394,7 @@ namespace SystAnalys_lr1
                     checkBuses();
                 }
             }
-            if (changeRoute.Text == "All")
+            if (changeRoute.Text == MainStrings.network)
             {
                 deleteBus.Enabled = false;
                 addBus.Enabled = false;
@@ -1519,7 +1504,7 @@ namespace SystAnalys_lr1
             var MBSave = MetroMessageBox.Show(this, message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (routes != null || routesEdge != null || E != null || V != null || buses != null)
             {
-                if (MBSave == DialogResult.Yes && changeRoute.Text != "All")
+                if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
                 {
                     routes[int.Parse(changeRoute.Text)].Clear();
                     routesEdge[int.Parse(changeRoute.Text)].Clear();
@@ -1545,7 +1530,7 @@ namespace SystAnalys_lr1
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
                 }
-                if (MBSave == DialogResult.Yes && changeRoute.Text == "All")
+                if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
                 {
                     V.Clear();
                     E.Clear();
@@ -1564,7 +1549,7 @@ namespace SystAnalys_lr1
                     DrawGrid();
                 };
             }
-            if (changeRoute.Text == "All")
+            if (changeRoute.Text == MainStrings.network)
             {
                 deleteBus.Enabled = false;
                 addBus.Enabled = false;
@@ -1590,7 +1575,7 @@ namespace SystAnalys_lr1
         private void selectButton_Click(object sender, EventArgs e)
         {
             //AsyncCreateAllCoordinates()();
-            if (changeRoute.Text == "All")
+            if (changeRoute.Text == MainStrings.network)
             {
                 addBus.Enabled = false;
                 allBusSettings.Visible = false;
@@ -1963,7 +1948,7 @@ namespace SystAnalys_lr1
 
             });
 
-            var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();//sum != null ? percentMean.Min(s => s.Value).ToString() + " " + (percentMean.ElementAt((int)percentMean.Min(s => s.Value)).Key).ToString() : "None";
+            var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();//sum != null ? percentMean.Min(s => s.Value).ToString() + " " + (percentMean.ElementAt((int)percentMean.Min(s => s.Value)).Key).ToString() : MainStrings.none;
             var min = percentMean.Min(v => v.Value);
             if (res.Count == 0)
                 mean.Text = sum != 0 ? "За:" + min + " При:" + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null";
@@ -2176,7 +2161,7 @@ namespace SystAnalys_lr1
 
                 }
             }
-            changeRoute.Text = "All";
+            changeRoute.Text = MainStrings.network;
         }
 
         private void drawEdgeButton_Click(object sender, EventArgs e)
@@ -2184,7 +2169,7 @@ namespace SystAnalys_lr1
             //AsyncCreateAllCoordinates()();
             G.clearSheet();
             G.drawALLGraph(V, E);
-            if (changeRoute.Text == "All")
+            if (changeRoute.Text == MainStrings.network)
             {
                 allBusSettings.Visible = false;
                 addBus.Enabled = false;
@@ -2852,7 +2837,7 @@ namespace SystAnalys_lr1
 
             //}
 
-            if (changeRoute.Text == "All")
+            if (changeRoute.Text == MainStrings.network)
             {
                 if (selectRoute.Enabled == false)
                 {
@@ -3415,7 +3400,7 @@ namespace SystAnalys_lr1
         private void gridButton_Click(object sender, EventArgs e)
         {
             //AsyncCreateAllCoordinates()();
-            if (changeRoute.Text == "All")
+            if (changeRoute.Text == MainStrings.network)
             {
                 selectRoute.Enabled = false;
                 deleteBus.Enabled = false;
@@ -3457,7 +3442,7 @@ namespace SystAnalys_lr1
             {
                 //AsyncCreateAllCoordinates()();
                 checkBuses();
-                if (changeRoute.Text == "All")
+                if (changeRoute.Text == MainStrings.network)
                 {
                     selectRoute.Enabled = false;
                     deleteBus.Enabled = false;
@@ -3524,7 +3509,7 @@ namespace SystAnalys_lr1
         }
         private void checkBuses()
         {
-            if (buses.Count != 0 && changeRoute.Text == "All")
+            if (buses.Count != 0 && changeRoute.Text == MainStrings.network)
             {
                 delAllBusesOnRoute.Enabled = true;
             }
@@ -3588,7 +3573,7 @@ namespace SystAnalys_lr1
         CrossroadsSettings crossSettings;
         private void addTraficLight_Click(object sender, EventArgs e)
         {
-            if (changeRoute.Text == "All")
+            if (changeRoute.Text == MainStrings.network)
             {
                 crossSettings = new CrossroadsSettings();
                 this.StyleManager.Clone(crossSettings);
@@ -3665,7 +3650,7 @@ namespace SystAnalys_lr1
         private void selectRoute_Click(object sender, EventArgs e)
         {
             //AsyncCreateAllCoordinates()();
-            if (changeRoute.Text == "All")
+            if (changeRoute.Text == MainStrings.network)
             {
                 selectRoute.Enabled = false;
                 deleteBus.Enabled = false;
@@ -3908,7 +3893,7 @@ namespace SystAnalys_lr1
                         G.drawALLGraph(V, E);
                         G.drawALLGraph(routes[int.Parse(changeRoute.Text)], routesEdge[int.Parse(changeRoute.Text)], 1);
                     }
-                    else if (changeRoute.Text == "None")
+                    else if (changeRoute.Text == MainStrings.none)
                     {
                         G.clearSheet();
                     }

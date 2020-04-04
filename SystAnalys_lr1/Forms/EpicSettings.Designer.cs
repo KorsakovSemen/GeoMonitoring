@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EpicSettings));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new MetroFramework.Controls.MetroTextBox();
             this.radioCustom = new MetroFramework.Controls.MetroRadioButton();
@@ -49,6 +50,7 @@
             // 
             // groupBox2
             // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.radioCustom);
             this.groupBox2.Controls.Add(this.radioEpicRandom);
@@ -56,30 +58,44 @@
             this.groupBox2.Controls.Add(this.radioEpicBig);
             this.groupBox2.Controls.Add(this.radioEpicMedium);
             this.groupBox2.Controls.Add(this.radioEpicSmall);
-            this.groupBox2.Location = new System.Drawing.Point(70, 78);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(265, 138);
-            this.groupBox2.TabIndex = 93;
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // textBox1
             // 
+            resources.ApplyResources(this.textBox1, "textBox1");
             // 
             // 
             // 
-            this.textBox1.CustomButton.Image = null;
-            this.textBox1.CustomButton.Location = new System.Drawing.Point(62, 2);
+            this.textBox1.CustomButton.AccessibleDescription = resources.GetString("resource.AccessibleDescription");
+            this.textBox1.CustomButton.AccessibleName = resources.GetString("resource.AccessibleName");
+            this.textBox1.CustomButton.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("resource.Anchor")));
+            this.textBox1.CustomButton.AutoSize = ((bool)(resources.GetObject("resource.AutoSize")));
+            this.textBox1.CustomButton.AutoSizeMode = ((System.Windows.Forms.AutoSizeMode)(resources.GetObject("resource.AutoSizeMode")));
+            this.textBox1.CustomButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("resource.BackgroundImage")));
+            this.textBox1.CustomButton.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("resource.BackgroundImageLayout")));
+            this.textBox1.CustomButton.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("resource.Dock")));
+            this.textBox1.CustomButton.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("resource.FlatStyle")));
+            this.textBox1.CustomButton.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font")));
+            this.textBox1.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.textBox1.CustomButton.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.ImageAlign")));
+            this.textBox1.CustomButton.ImageIndex = ((int)(resources.GetObject("resource.ImageIndex")));
+            this.textBox1.CustomButton.ImageKey = resources.GetString("resource.ImageKey");
+            this.textBox1.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode")));
+            this.textBox1.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location")));
+            this.textBox1.CustomButton.MaximumSize = ((System.Drawing.Size)(resources.GetObject("resource.MaximumSize")));
             this.textBox1.CustomButton.Name = "";
-            this.textBox1.CustomButton.Size = new System.Drawing.Size(11, 12);
+            this.textBox1.CustomButton.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("resource.RightToLeft")));
+            this.textBox1.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size")));
             this.textBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.textBox1.CustomButton.TabIndex = 1;
+            this.textBox1.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex")));
+            this.textBox1.CustomButton.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.TextAlign")));
+            this.textBox1.CustomButton.TextImageRelation = ((System.Windows.Forms.TextImageRelation)(resources.GetObject("resource.TextImageRelation")));
             this.textBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textBox1.CustomButton.UseSelectable = true;
-            this.textBox1.CustomButton.Visible = false;
-            this.textBox1.Enabled = false;
+            this.textBox1.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible")));
             this.textBox1.Lines = new string[0];
-            this.textBox1.Location = new System.Drawing.Point(126, 54);
             this.textBox1.MaxLength = 9;
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '\0';
@@ -88,8 +104,6 @@
             this.textBox1.SelectionLength = 0;
             this.textBox1.SelectionStart = 0;
             this.textBox1.ShortcutsEnabled = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 6;
             this.textBox1.UseSelectable = true;
             this.textBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -97,157 +111,105 @@
             // 
             // radioCustom
             // 
-            this.radioCustom.AutoSize = true;
-            this.radioCustom.Location = new System.Drawing.Point(126, 31);
+            resources.ApplyResources(this.radioCustom, "radioCustom");
             this.radioCustom.Name = "radioCustom";
-            this.radioCustom.Size = new System.Drawing.Size(107, 15);
-            this.radioCustom.TabIndex = 5;
             this.radioCustom.TabStop = true;
-            this.radioCustom.Text = "Свой параметр";
             this.radioCustom.UseSelectable = true;
             this.radioCustom.CheckedChanged += new System.EventHandler(this.radioCustom_CheckedChanged);
             // 
             // radioEpicRandom
             // 
-            this.radioEpicRandom.AutoSize = true;
-            this.radioEpicRandom.Location = new System.Drawing.Point(6, 100);
+            resources.ApplyResources(this.radioEpicRandom, "radioEpicRandom");
             this.radioEpicRandom.Name = "radioEpicRandom";
-            this.radioEpicRandom.Size = new System.Drawing.Size(87, 15);
-            this.radioEpicRandom.TabIndex = 4;
-            this.radioEpicRandom.Text = "Случайный";
             this.radioEpicRandom.UseSelectable = true;
             this.radioEpicRandom.CheckedChanged += new System.EventHandler(this.radioEpicRandom_CheckedChanged);
             // 
             // label12
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(55, 9);
+            resources.ApplyResources(this.label12, "label12");
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(123, 19);
-            this.label12.TabIndex = 3;
-            this.label12.Text = "Размер эпицентра";
             // 
             // radioEpicBig
             // 
-            this.radioEpicBig.AutoSize = true;
-            this.radioEpicBig.Location = new System.Drawing.Point(6, 77);
+            resources.ApplyResources(this.radioEpicBig, "radioEpicBig");
             this.radioEpicBig.Name = "radioEpicBig";
-            this.radioEpicBig.Size = new System.Drawing.Size(75, 15);
-            this.radioEpicBig.TabIndex = 2;
-            this.radioEpicBig.Text = "Большой";
             this.radioEpicBig.UseSelectable = true;
             this.radioEpicBig.CheckedChanged += new System.EventHandler(this.radioEpicBig_CheckedChanged);
             // 
             // radioEpicMedium
             // 
-            this.radioEpicMedium.AutoSize = true;
+            resources.ApplyResources(this.radioEpicMedium, "radioEpicMedium");
             this.radioEpicMedium.Checked = true;
-            this.radioEpicMedium.Location = new System.Drawing.Point(6, 54);
             this.radioEpicMedium.Name = "radioEpicMedium";
-            this.radioEpicMedium.Size = new System.Drawing.Size(71, 15);
-            this.radioEpicMedium.TabIndex = 1;
             this.radioEpicMedium.TabStop = true;
-            this.radioEpicMedium.Text = "Средний";
             this.radioEpicMedium.UseSelectable = true;
             this.radioEpicMedium.CheckedChanged += new System.EventHandler(this.radioEpicMedium_CheckedChanged);
             // 
             // radioEpicSmall
             // 
-            this.radioEpicSmall.AutoSize = true;
-            this.radioEpicSmall.Location = new System.Drawing.Point(6, 31);
+            resources.ApplyResources(this.radioEpicSmall, "radioEpicSmall");
             this.radioEpicSmall.Name = "radioEpicSmall";
-            this.radioEpicSmall.Size = new System.Drawing.Size(86, 15);
-            this.radioEpicSmall.TabIndex = 0;
-            this.radioEpicSmall.Text = "Маленький";
             this.radioEpicSmall.UseSelectable = true;
             this.radioEpicSmall.CheckedChanged += new System.EventHandler(this.radioEpicSmall_CheckedChanged);
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.left);
             this.groupBox1.Controls.Add(this.right);
             this.groupBox1.Controls.Add(this.down);
             this.groupBox1.Controls.Add(this.up);
-            this.groupBox1.Location = new System.Drawing.Point(70, 222);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(265, 128);
-            this.groupBox1.TabIndex = 94;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(55, 14);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(174, 19);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Направление расширения";
             // 
             // left
             // 
-            this.left.AutoSize = true;
-            this.left.Location = new System.Drawing.Point(16, 105);
+            resources.ApplyResources(this.left, "left");
             this.left.Name = "left";
-            this.left.Size = new System.Drawing.Size(56, 15);
-            this.left.TabIndex = 3;
-            this.left.Text = "Влево";
             this.left.UseSelectable = true;
             // 
             // right
             // 
-            this.right.AutoSize = true;
-            this.right.Location = new System.Drawing.Point(16, 82);
+            resources.ApplyResources(this.right, "right");
             this.right.Name = "right";
-            this.right.Size = new System.Drawing.Size(63, 15);
-            this.right.TabIndex = 2;
-            this.right.Text = "Вправо";
             this.right.UseSelectable = true;
             // 
             // down
             // 
-            this.down.AutoSize = true;
-            this.down.Location = new System.Drawing.Point(16, 59);
+            resources.ApplyResources(this.down, "down");
             this.down.Name = "down";
-            this.down.Size = new System.Drawing.Size(49, 15);
-            this.down.TabIndex = 1;
-            this.down.Text = "Вниз";
             this.down.UseSelectable = true;
             // 
             // up
             // 
-            this.up.AutoSize = true;
-            this.up.Location = new System.Drawing.Point(16, 36);
+            resources.ApplyResources(this.up, "up");
             this.up.Name = "up";
-            this.up.Size = new System.Drawing.Size(54, 15);
-            this.up.TabIndex = 0;
-            this.up.Text = "Вверх";
             this.up.UseSelectable = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(173, 356);
+            resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 95;
-            this.button1.Text = "Set";
             this.button1.UseSelectable = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // EpicSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 423);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(402, 423);
             this.MinimizeBox = false;
             this.Name = "EpicSettings";
-            this.Text = "Epic settings";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
