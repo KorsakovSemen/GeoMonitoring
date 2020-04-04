@@ -134,18 +134,24 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="mean.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 19</value>
+    <value>64, 20</value>
   </data>
   <data name="mean.Text" xml:space="preserve">
     <value>Average:</value>
   </data>
+  <data name="createCoordinates.Text" xml:space="preserve">
+    <value>Create an array of coordinates</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="createCoordinates.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 19</value>
+    <value>110, 20</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Time in seconds</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="textBox2.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -156,37 +162,31 @@
     <value>False</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 19</value>
+    <value>189, 20</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>With sensors: Without:  Total: </value>
   </data>
-  <data name="createCoordinates.Text" xml:space="preserve">
-    <value>Create an array of coordinates</value>
-  </data>
-  <data name="createCoordinates.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="backsideCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 15</value>
+    <value>74, 17</value>
   </data>
   <data name="backsideCheck.Text" xml:space="preserve">
     <value>Backside</value>
   </data>
   <data name="trackerCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 15</value>
+    <value>66, 17</value>
   </data>
   <data name="trackerCheck.Text" xml:space="preserve">
     <value>Tracker</value>
   </data>
   <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 19</value>
+    <value>62, 20</value>
   </data>
   <data name="metroLabel2.Text" xml:space="preserve">
     <value>Bus size:</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 19</value>
+    <value>81, 20</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
     <value>Traffic lights</value>
@@ -195,79 +195,82 @@
     <value>1218, 31</value>
   </data>
   <data name="theme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 19</value>
+    <value>53, 20</value>
   </data>
   <data name="theme.Text" xml:space="preserve">
     <value>Theme</value>
+  </data>
+  <data name="changeTheme.ItemHeight" type="System.Int32, mscorlib">
+    <value>24</value>
   </data>
   <data name="changeTheme.Location" type="System.Drawing.Point, System.Drawing">
     <value>1283, 28</value>
   </data>
   <data name="changeTheme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 29</value>
+    <value>160, 30</value>
   </data>
   <data name="createModelToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>215, 26</value>
   </data>
   <data name="createModelToolStripMenuItem.Text" xml:space="preserve">
     <value>Create model</value>
   </data>
   <data name="openEpicFormToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>215, 26</value>
   </data>
   <data name="openEpicFormToolStripMenuItem.Text" xml:space="preserve">
     <value>Open second form</value>
   </data>
   <data name="addRouteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>215, 26</value>
   </data>
   <data name="addRouteToolStripMenuItem.Text" xml:space="preserve">
     <value>Add route</value>
   </data>
   <data name="createGridToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>215, 26</value>
   </data>
   <data name="createGridToolStripMenuItem.Text" xml:space="preserve">
     <value>Grid settings</value>
   </data>
   <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>215, 26</value>
   </data>
   <data name="saveToolStripMenuItem.Text" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="saveInToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>215, 26</value>
   </data>
   <data name="saveInToolStripMenuItem.Text" xml:space="preserve">
     <value>Save in...</value>
   </data>
   <data name="runTrafficLightsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
+    <value>215, 26</value>
   </data>
   <data name="runTrafficLightsToolStripMenuItem.Text" xml:space="preserve">
     <value>Run traffic lights</value>
   </data>
   <data name="saveButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 24</value>
+    <value>46, 28</value>
   </data>
   <data name="saveButton.Text" xml:space="preserve">
     <value>File</value>
   </data>
   <data name="loadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
+    <value>170, 26</value>
   </data>
   <data name="loadToolStripMenuItem.Text" xml:space="preserve">
     <value>Load</value>
   </data>
   <data name="loadFromToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
+    <value>170, 26</value>
   </data>
   <data name="loadFromToolStripMenuItem.Text" xml:space="preserve">
     <value>Load from...</value>
   </data>
   <data name="loadButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 24</value>
+    <value>56, 28</value>
   </data>
   <data name="loadButton.Text" xml:space="preserve">
     <value>Load</value>
@@ -276,7 +279,7 @@
     <value>851, 31</value>
   </data>
   <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 19</value>
+    <value>70, 20</value>
   </data>
   <data name="metroLabel1.Text" xml:space="preserve">
     <value>Language</value>
@@ -285,12 +288,16 @@
     <value>927, 28</value>
   </data>
   <data name="config.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 19</value>
+    <value>95, 20</value>
   </data>
   <data name="config.Text" xml:space="preserve">
     <value>Configuration:</value>
   </data>
   <data name="themes.Location" type="System.Drawing.Point, System.Drawing">
     <value>1102, 33</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
 </root>
