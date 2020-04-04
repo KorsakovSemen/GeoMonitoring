@@ -994,6 +994,7 @@ namespace SystAnalys_lr1
             allBusSettings.Visible = true;
             sheet.Image = G.GetBitmap();
             selected1 = -1;
+            label12.Visible = false;
             selected = new List<int>();
             addTraficLight.Enabled = false;
             DrawGrid();
@@ -1022,6 +1023,7 @@ namespace SystAnalys_lr1
                 G.clearSheet();
                 stopPointButton.Enabled = true;
                 addTraficLight.Enabled = true;
+                label12.Visible = false;
                 DrawGrid();
                 //        buttonOn();
                 selected = new List<int>();
@@ -1046,6 +1048,7 @@ namespace SystAnalys_lr1
                 checkBuses();
                 G.clearSheet();
                 G.drawALLGraph(V, E);
+                label12.Visible = false;
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
                 Console.WriteLine("All");
@@ -1069,6 +1072,7 @@ namespace SystAnalys_lr1
                     deleteRoute.Enabled = true;
                     addBus.Enabled = true;
                     stopPointButton.Enabled = true;
+                    label12.Visible = false;
                     addTraficLight.Enabled = false;
                     checkBusesOnRoute();
                     G.clearSheet();
@@ -1165,6 +1169,7 @@ namespace SystAnalys_lr1
             selected1 = -1;
             stopPointButton.Enabled = true;
             selected = new List<int>();
+            label12.Visible = false;
             DrawGrid();
             checkBusesOnRoute();
         }
@@ -1288,6 +1293,7 @@ namespace SystAnalys_lr1
                 G.drawALLGraph(routes[int.Parse(changeRoute.Text)], routesEdge[int.Parse(changeRoute.Text)], 1);
                 checkBusesOnRoute();
             }
+            label12.Visible = false;
             selected = new List<int>();
             stopPointButton.Enabled = true;
             sheet.Image = G.GetBitmap();
@@ -1310,6 +1316,7 @@ namespace SystAnalys_lr1
             G.drawALLGraph(V, E);
             sheet.Image = G.GetBitmap();
             stopPointButton.Enabled = true;
+            label12.Visible = false;
             addTraficLight.Enabled = true;
             DrawGrid();
             selected = new List<int>();
@@ -1395,6 +1402,7 @@ namespace SystAnalys_lr1
                     checkBuses();
                 }
             }
+            label12.Visible = false;
             selected = new List<int>();
             stopPointButton.Enabled = true;
             traficLights.Clear();
@@ -1549,6 +1557,7 @@ namespace SystAnalys_lr1
                     DrawGrid();
                 };
             }
+            label12.Visible = false;
             selected = new List<int>();
             stopPointButton.Enabled = true;
             //  traficLights.Clear();
@@ -1587,6 +1596,7 @@ namespace SystAnalys_lr1
                 addTraficLight.Enabled = false;
                 checkBusesOnRoute();
             }
+            label12.Visible = false;
             stopPointButton.Enabled = true;
             sheet.Image = G.GetBitmap();
             selected1 = -1;
@@ -2183,6 +2193,7 @@ namespace SystAnalys_lr1
                 G.drawALLGraph(routes[int.Parse(changeRoute.Text)], routesEdge[int.Parse(changeRoute.Text)], 1);
                 checkBusesOnRoute();
             }
+            label12.Visible = false;
             delAllBusesOnRoute.Enabled = true;
             stopPointButton.Enabled = true;
             sheet.Image = G.GetBitmap();
@@ -3407,6 +3418,7 @@ namespace SystAnalys_lr1
                 checkBusesOnRoute();
             }
             selected = new List<int>();
+            label12.Visible = false;
             delAllBusesOnRoute.Enabled = true;
             stopPointButton.Enabled = false;
         }
@@ -3474,6 +3486,7 @@ namespace SystAnalys_lr1
                 delAllBusesOnRoute.Enabled = true;
 
             }
+            label12.Visible = false;
             selected = new List<int>();
         }
         private void checkBuses()
@@ -3649,6 +3662,7 @@ namespace SystAnalys_lr1
                 delAllBusesOnRoute.Enabled = true;
                 checkBusesOnRoute();
             }
+            label12.Visible = false;
             stopPointButton.Enabled = true;
             sheet.Image = G.GetBitmap();
             selected1 = -1;
