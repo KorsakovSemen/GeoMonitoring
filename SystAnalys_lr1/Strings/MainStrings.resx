@@ -180,4 +180,7 @@
   <data name="hint" xml:space="preserve">
     <value>Перезагрузите программу для смены языка</value>
   </data>
+  <data name="deleteBus" xml:space="preserve">
+    <value>Вы действительно хотите удалить все автобусы маршрута/сети?</value>
+  </data>
 </root>

@@ -115,6 +115,15 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы действительно хотите удалить все автобусы маршрута/сети?.
+        /// </summary>
+        internal static string deleteBus {
+            get {
+                return ResourceManager.GetString("deleteBus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вы действительно хотите полностью удалить граф/маршрут? (произойдет удаление файлов из конфигурации).
         /// </summary>
         internal static string deleteGraph {

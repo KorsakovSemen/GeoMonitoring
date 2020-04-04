@@ -180,4 +180,7 @@
   <data name="hint" xml:space="preserve">
     <value>Reboot the program to change the language</value>
   </data>
+  <data name="deleteBus" xml:space="preserve">
+    <value>Are you sure you want to delete all route / network buses?</value>
+  </data>
 </root>
