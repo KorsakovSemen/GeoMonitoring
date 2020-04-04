@@ -119,7 +119,7 @@ namespace SystAnalys_lr1
         public Main()
         {
             // Если в настройках есть язык, устанавлияем его для текущего потока, в котором выполняется приложение.
-            if (!String.IsNullOrEmpty(Properties.Settings.Default.Language))
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.Language))
             {
                 // ВАЖНО: Устанавливать язык нужно до создания элементов формы!
                 // Это можно сделать глобально, в рамках приложения в классе Program (см. файл Program.cs).
@@ -142,7 +142,7 @@ namespace SystAnalys_lr1
             addTraficLight.Enabled = false;
             delAllBusesOnRoute.Enabled = false;
             stopPointButton.Enabled = false;
-            allBusSettings.Visible = false;
+            allBusSettings.Enabled = false;
             drawEdgeButton.Enabled = false;
             selectButton.Enabled = false;
             drawVertexButton.Enabled = false;
@@ -976,7 +976,7 @@ namespace SystAnalys_lr1
             drawVertexButton.Enabled = false;
             drawEdgeButton.Enabled = true;
             deleteButton.Enabled = true;
-            allBusSettings.Visible = true;
+            allBusSettings.Enabled = true;
             sheet.Image = G.GetBitmap();
             selected1 = -1;
             selectRoute.Enabled = true;
@@ -994,7 +994,7 @@ namespace SystAnalys_lr1
                 //    //AsyncCreateAllCoordinates()();
                 selectedRoute = null;
                 deleteBus.Enabled = false;
-                allBusSettings.Visible = false;
+                allBusSettings.Enabled = false;
                 selectButton.Enabled = false;
                 drawVertexButton.Enabled = false;
                 drawEdgeButton.Enabled = false;
@@ -1020,7 +1020,7 @@ namespace SystAnalys_lr1
                 selectedRoute = null;
                 selectRoute.Enabled = true;
                 deleteBus.Enabled = true;
-                allBusSettings.Visible = false;
+                allBusSettings.Enabled = false;
                 drawEdgeButton.Enabled = true;
                 selectButton.Enabled = true;
                 drawVertexButton.Enabled = true;
@@ -1050,7 +1050,7 @@ namespace SystAnalys_lr1
                     selectRoute.Enabled = true;
                     selectButton.Enabled = true;
                     deleteBus.Enabled = true;
-                    allBusSettings.Visible = false;
+                    allBusSettings.Enabled = false;
                     drawVertexButton.Enabled = false;
                     drawEdgeButton.Enabled = true;
                     deleteButton.Enabled = true;
@@ -1145,7 +1145,7 @@ namespace SystAnalys_lr1
             drawVertexButton.Enabled = false;
             drawEdgeButton.Enabled = true;
             deleteButton.Enabled = true;
-            allBusSettings.Visible = false;
+            allBusSettings.Enabled = false;
             addTraficLight.Enabled = false;
             selectRoute.Enabled = true;
             G.clearSheet();
@@ -1256,7 +1256,7 @@ namespace SystAnalys_lr1
             G.drawALLGraph(V, E);
             if (changeRoute.Text == MainStrings.network)
             {
-                allBusSettings.Visible = false;
+                allBusSettings.Enabled = false;
                 addBus.Enabled = false;
                 deleteBus.Enabled = false;
                 drawEdgeButton.Enabled = true;
@@ -1268,7 +1268,7 @@ namespace SystAnalys_lr1
             };
             if (Int32.TryParse(changeRoute.Text, out number) != false)
             {
-                allBusSettings.Visible = false;
+                allBusSettings.Enabled = false;
                 addBus.Enabled = true;
                 deleteBus.Enabled = true;
                 drawEdgeButton.Enabled = true;
@@ -1293,7 +1293,7 @@ namespace SystAnalys_lr1
             //AsyncCreateAllCoordinates()();
             deleteBus.Enabled = false;
             addBus.Enabled = false;
-            allBusSettings.Visible = false;
+            allBusSettings.Enabled = false;
             drawVertexButton.Enabled = false;
             Console.WriteLine("DrawVert");
             selectButton.Enabled = true;
@@ -1313,7 +1313,7 @@ namespace SystAnalys_lr1
         private void deleteRoute_Click(object sender, EventArgs e)
         {
             //AsyncCreateAllCoordinates()();
-            allBusSettings.Visible = false;
+            allBusSettings.Enabled = false;
             addBus.Enabled = true;
             selectButton.Enabled = true;
             drawVertexButton.Enabled = true;
@@ -1495,7 +1495,7 @@ namespace SystAnalys_lr1
             //AsyncCreateAllCoordinates()();
             addBus.Enabled = true;
             drawVertexButton.Enabled = false;
-            allBusSettings.Visible = false;
+            allBusSettings.Enabled = false;
             selectButton.Enabled = true;
             drawEdgeButton.Enabled = true;
             deleteButton.Enabled = true;
@@ -1578,7 +1578,7 @@ namespace SystAnalys_lr1
             if (changeRoute.Text == MainStrings.network)
             {
                 addBus.Enabled = false;
-                allBusSettings.Visible = false;
+                allBusSettings.Enabled = false;
                 selectButton.Enabled = false;
                 drawVertexButton.Enabled = true;
                 drawEdgeButton.Enabled = true;
@@ -1589,7 +1589,7 @@ namespace SystAnalys_lr1
             {
                 addBus.Enabled = true;
                 deleteBus.Enabled = true;
-                allBusSettings.Visible = false;
+                allBusSettings.Enabled = false;
                 selectButton.Enabled = false;
                 drawVertexButton.Enabled = false;
                 drawEdgeButton.Enabled = true;
@@ -2171,7 +2171,7 @@ namespace SystAnalys_lr1
             G.drawALLGraph(V, E);
             if (changeRoute.Text == MainStrings.network)
             {
-                allBusSettings.Visible = false;
+                allBusSettings.Enabled = false;
                 addBus.Enabled = false;
                 deleteBus.Enabled = false;
                 drawEdgeButton.Enabled = false;
@@ -2183,7 +2183,7 @@ namespace SystAnalys_lr1
             };
             if (Int32.TryParse(changeRoute.Text, out number) != false)
             {
-                allBusSettings.Visible = false;
+                allBusSettings.Enabled = false;
                 addBus.Enabled = true;
                 deleteBus.Enabled = true;
                 drawEdgeButton.Enabled = false;
@@ -2941,7 +2941,7 @@ namespace SystAnalys_lr1
                         selectedRoute = null;
                         selectRoute.Enabled = true;
                         deleteBus.Enabled = true;
-                        allBusSettings.Visible = false;
+                        allBusSettings.Enabled = false;
                         drawEdgeButton.Enabled = true;
                         selectButton.Enabled = true;
                         drawVertexButton.Enabled = true;
@@ -3409,7 +3409,7 @@ namespace SystAnalys_lr1
                 drawVertexButton.Enabled = true;
                 drawEdgeButton.Enabled = true;
                 deleteButton.Enabled = true;
-                allBusSettings.Visible = false;
+                allBusSettings.Enabled = false;
                 selectRoute.Enabled = true;
                 addTraficLight.Enabled = true;
                 checkBuses();
@@ -3424,7 +3424,7 @@ namespace SystAnalys_lr1
                 drawEdgeButton.Enabled = true;
                 deleteButton.Enabled = true;
                 selectRoute.Enabled = true;
-                allBusSettings.Visible = false;
+                allBusSettings.Enabled = false;
                 addTraficLight.Enabled = false;
                 checkBusesOnRoute();
             }
@@ -3453,7 +3453,7 @@ namespace SystAnalys_lr1
                     drawEdgeButton.Enabled = true;
                     deleteButton.Enabled = true;
                     selectRoute.Enabled = true;
-                    allBusSettings.Visible = false;
+                    allBusSettings.Enabled = false;
                     stopPointButton.Enabled = true;
                     addTraficLight.Enabled = true;
                     foreach (var bus in buses)
@@ -3475,7 +3475,7 @@ namespace SystAnalys_lr1
                     drawEdgeButton.Enabled = true;
                     deleteButton.Enabled = true;
                     selectRoute.Enabled = true;
-                    allBusSettings.Visible = false;
+                    allBusSettings.Enabled = false;
                     stopPointButton.Enabled = true;
                     List<Bus> b = new List<Bus>();
                     foreach (var bus in buses)
@@ -3586,7 +3586,7 @@ namespace SystAnalys_lr1
                 drawVertexButton.Enabled = true;
                 drawEdgeButton.Enabled = true;
                 deleteButton.Enabled = true;
-                allBusSettings.Visible = false;
+                allBusSettings.Enabled = false;
                 delAllBusesOnRoute.Enabled = false;
                 if (firstCrossRoads != 0 && secondCrossRoads != 0)
                 {
@@ -3661,7 +3661,7 @@ namespace SystAnalys_lr1
                 drawVertexButton.Enabled = true;
                 drawEdgeButton.Enabled = true;
                 deleteButton.Enabled = true;
-                allBusSettings.Visible = false;
+                allBusSettings.Enabled = false;
                 delAllBusesOnRoute.Enabled = false;
                 addTraficLight.Enabled = true;
                 checkBuses();
@@ -3677,7 +3677,7 @@ namespace SystAnalys_lr1
                 drawVertexButton.Enabled = false;
                 drawEdgeButton.Enabled = true;
                 deleteButton.Enabled = true;
-                allBusSettings.Visible = false;
+                allBusSettings.Enabled = false;
                 delAllBusesOnRoute.Enabled = true;
                 checkBusesOnRoute();
             }
@@ -3700,7 +3700,7 @@ namespace SystAnalys_lr1
             drawVertexButton.Enabled = true;
             drawEdgeButton.Enabled = true;
             deleteButton.Enabled = true;
-            allBusSettings.Visible = true;
+            allBusSettings.Enabled = true;
             delAllBusesOnRoute.Enabled = false;
             selected = new List<int>();
             stopPointButton.Enabled = true;
