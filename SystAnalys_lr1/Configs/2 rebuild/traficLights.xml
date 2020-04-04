@@ -3,78 +3,78 @@
   <TraficLight>
     <x>421</x>
     <y>220</y>
-    <tick>15</tick>
+    <tick>17</tick>
     <greenTime>20</greenTime>
     <redTime>40</redTime>
     <yellowTime>2</yellowTime>
     <gridNum>265</gridNum>
-    <bal>5</bal>
+    <bal>3</bal>
     <status>1</status>
   </TraficLight>
   <TraficLight>
     <x>423</x>
     <y>255</y>
-    <tick>57</tick>
+    <tick>59</tick>
     <greenTime>40</greenTime>
     <redTime>20</redTime>
     <yellowTime>2</yellowTime>
     <gridNum>351</gridNum>
-    <bal>5</bal>
+    <bal>3</bal>
     <status>3</status>
   </TraficLight>
   <TraficLight>
     <x>456</x>
     <y>230</y>
-    <tick>56</tick>
+    <tick>58</tick>
     <greenTime>40</greenTime>
     <redTime>20</redTime>
     <yellowTime>2</yellowTime>
     <gridNum>310</gridNum>
-    <bal>6</bal>
+    <bal>4</bal>
     <status>3</status>
   </TraficLight>
   <TraficLight>
     <x>608</x>
     <y>581</y>
-    <tick>41</tick>
+    <tick>43</tick>
     <greenTime>30</greenTime>
     <redTime>15</redTime>
     <yellowTime>2</yellowTime>
     <gridNum>1094</gridNum>
-    <bal>6</bal>
+    <bal>4</bal>
     <status>3</status>
   </TraficLight>
   <TraficLight>
     <x>635</x>
     <y>559</y>
-    <tick>40</tick>
+    <tick>42</tick>
     <greenTime>30</greenTime>
     <redTime>15</redTime>
     <yellowTime>2</yellowTime>
     <gridNum>1052</gridNum>
-    <bal>7</bal>
+    <bal>5</bal>
     <status>3</status>
   </TraficLight>
   <TraficLight>
     <x>608</x>
     <y>552</y>
-    <tick>8</tick>
+    <tick>10</tick>
     <greenTime>15</greenTime>
     <redTime>30</redTime>
     <yellowTime>2</yellowTime>
     <gridNum>1051</gridNum>
-    <bal>7</bal>
+    <bal>5</bal>
     <status>1</status>
   </TraficLight>
   <TraficLight>
     <x>634</x>
     <y>582</y>
-    <tick>8</tick>
+    <tick>10</tick>
     <greenTime>15</greenTime>
     <redTime>30</redTime>
     <yellowTime>2</yellowTime>
     <gridNum>1095</gridNum>
-    <bal>7</bal>
+    <bal>5</bal>
     <status>1</status>
   </TraficLight>
 </ArrayOfTraficLight>

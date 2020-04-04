@@ -2710,6 +2710,7 @@ namespace SystAnalys_lr1
                     }
                     x.skip = 5;
                     x.skipStops = 5;
+                    x.skipEnd = 5;
                     x.busPic.Image = bitmap;
                     if (x.tracker == false)
                     {

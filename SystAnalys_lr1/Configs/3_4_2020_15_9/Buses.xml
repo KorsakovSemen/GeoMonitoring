@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <ArrayOfBus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Bus>
-    <skip>99</skip>
+    <skip>88</skip>
     <mutex>
       <SafeWaitHandle />
     </mutex>
     <angle>0</angle>
     <x>302</x>
     <y>227</y>
-    <PositionAt>100</PositionAt>
-    <TurnBack>true</TurnBack>
+    <PositionAt>27</PositionAt>
+    <TurnBack>false</TurnBack>
     <route>55</route>
     <grids>
       <item>
@@ -25619,7 +25619,7 @@
     <passivniyTick>0</passivniyTick>
     <oldSize>15</oldSize>
     <skipTraffics>false</skipTraffics>
-    <skipStops>0</skipStops>
+    <skipStops>48</skipStops>
     <skipEnd>0</skipEnd>
     <Epicenters2 />
     <TickCount_>0</TickCount_>

@@ -701,7 +701,7 @@ namespace SystAnalys_lr1
                             }
                             else
                             {
-                                if (skipEnd > 5)
+                                if (skipEnd == 0)
                                 {
                                     MovingTimer.Stop();
                                     await Task.Delay(rnd.Next(0, 10000));                                    
@@ -775,7 +775,7 @@ namespace SystAnalys_lr1
                             }
                             else
                             {
-                                if(skipEnd > 5)
+                                if(skipEnd == 0)
                                 {
                                     MovingTimer.Stop();
                                     await Task.Delay(rnd.Next(0, 10000));
