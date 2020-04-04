@@ -959,7 +959,7 @@ namespace SystAnalys_lr1
             {
                 //      label5.Text = "";
 
-                foreach(var bus in buses)
+                foreach (var bus in buses)
                 {
                     bus.Stop();
                     bus.PositionAt = 0;
@@ -1091,7 +1091,7 @@ namespace SystAnalys_lr1
             changeRoute.Invoke(new DelBool((s) => changeRoute.Enabled = s), true);
             button8.Invoke(new DelBool((s) => button8.Enabled = s), true);
             optimize.Invoke(new DelBool((s) => optimize.Enabled = s), true);
-            button2.Invoke(new DelBool((s) => button2.Enabled = s), true);
+            createCoordinates.Invoke(new DelBool((s) => createCoordinates.Enabled = s), true);
             launchBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), true);
             stopBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), true);
             toolStripMenu.Invoke((System.Action)(() =>
@@ -1118,7 +1118,7 @@ namespace SystAnalys_lr1
             //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
             //selectButton.Invoke(new DelBool((s) => selectButton.Enabled = s), false);
             //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
-            button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
+            createCoordinates.Invoke(new DelBool((s) => createCoordinates.Enabled = s), false);
             launchBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), false);
             stopBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), false);
             //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
@@ -2032,7 +2032,7 @@ namespace SystAnalys_lr1
                             wsheet = sheet.Width;
                             hsheet = sheet.Height;
                             saveImage = sheet.Image;
-                       
+
                             LoadRoutes(path + "/");
                             savepath = path;
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
@@ -2708,7 +2708,8 @@ namespace SystAnalys_lr1
                             graphics.DrawString(x.route.ToString(), arialFont, Brushes.Black, new Point(10, 10));
                         }
                     }
-
+                    x.skip = 5;
+                    x.skipStops = 5;
                     x.busPic.Image = bitmap;
                     if (x.tracker == false)
                     {
@@ -2853,7 +2854,7 @@ namespace SystAnalys_lr1
                             {
                                 selected.Add(i);
                                 E.Add(new Edge(selected[0], selected[1]));
-                               // V.Add(new Vertex(V[i].x / zoom, V[i].y / zoom));
+                                // V.Add(new Vertex(V[i].x / zoom, V[i].y / zoom));
                                 G.drawEdge(V[selected[0]], V[selected[1]], E[E.Count - 1], 1);
                                 selected[0] = selected[1];
                                 selected.Remove(selected[1]);
@@ -3073,6 +3074,8 @@ namespace SystAnalys_lr1
                 //нажата кнопка addBus
                 if (addBus.Enabled == false)
                 {
+                    //try
+                    //{
                     if (AllCoordinates[int.Parse(changeRoute.Text)].Count != 0)
                     {
                         if (buses.Count != 0)
@@ -3134,6 +3137,11 @@ namespace SystAnalys_lr1
                         //  Bus.AllCoordinates = AllCoordinates;
                         buses.Last().Set();
                     }
+                    //}
+                    //catch
+                    //{
+                    //    MetroMessageBox.Show(this, "В маршруте должно быть как минимум 2 ребра", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //}
                 }
                 if (deleteBus.Enabled == false)
                 {
@@ -3702,7 +3710,7 @@ namespace SystAnalys_lr1
             if (!Ep.IsDisposed)
             {
                 Ep.Close();
-                
+
             }
             Ep = new DisplayEpicenters(this);
             this.StyleManager.Clone(Ep);
@@ -3762,18 +3770,6 @@ namespace SystAnalys_lr1
             //      this.StyleManager.Clone(crossSettings);
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            //buttonOff();
-
-            //AutoClosingMessageBox.Show("Load", "", 1000);
-            AsyncCreateAllCoordinates();
-            //AsyncCreateAllCoordinates();
-            //Bus.AllCoordinates = AllCoordinates;
-            //CreateAllCoordinates();
-
-
-        }
 
         private void changeTheme_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -3932,6 +3928,11 @@ namespace SystAnalys_lr1
             {
                 e.Handled = true;
             }
+        }
+
+        private void metroButton1_Click_1(object sender, EventArgs e)
+        {
+            AsyncCreateAllCoordinates();
         }
 
         private void createGridToolStripMenuItem_Click(object sender, EventArgs e)

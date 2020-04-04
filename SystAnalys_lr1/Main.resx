@@ -154,7 +154,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
@@ -226,7 +226,7 @@
     <value>12, 61</value>
   </data>
   <data name="SavePictures.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 15</value>
+    <value>135, 15</value>
   </data>
   <data name="SavePictures.TabIndex" type="System.Int32, mscorlib">
     <value>95</value>
@@ -247,10 +247,10 @@
     <value>2</value>
   </data>
   <data name="stopBuses.Location" type="System.Drawing.Point, System.Drawing">
-    <value>171, 70</value>
+    <value>158, 90</value>
   </data>
   <data name="stopBuses.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 23</value>
+    <value>124, 23</value>
   </data>
   <data name="stopBuses.TabIndex" type="System.Int32, mscorlib">
     <value>94</value>
@@ -271,10 +271,10 @@
     <value>3</value>
   </data>
   <data name="launchBuses.Location" type="System.Drawing.Point, System.Drawing">
-    <value>171, 41</value>
+    <value>158, 61</value>
   </data>
   <data name="launchBuses.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 23</value>
+    <value>124, 23</value>
   </data>
   <data name="launchBuses.TabIndex" type="System.Int32, mscorlib">
     <value>93</value>
@@ -293,36 +293,6 @@
   </data>
   <data name="&gt;&gt;launchBuses.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>181, 97</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 19</value>
-  </data>
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>92</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>закрытие</value>
-  </data>
-  <data name="label9.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
     <value>102, 13</value>
@@ -349,7 +319,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -379,7 +349,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="optimize.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 79</value>
@@ -406,7 +376,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;optimize.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="mean.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -436,7 +406,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;mean.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="resource.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -481,7 +451,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;optText.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="resource.Image1" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -526,7 +496,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;speed.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 177</value>
@@ -657,6 +627,54 @@
   <data name="&gt;&gt;button8.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="resource.Image3" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.ImeMode3" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="resource.Location3" type="System.Drawing.Point, System.Drawing">
+    <value>153, 1</value>
+  </data>
+  <data name="resource.Margin3" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="resource.Size3" type="System.Drawing.Size, System.Drawing">
+    <value>11, 11</value>
+  </data>
+  <data name="resource.TabIndex3" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Visible3" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="changeProcent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 77</value>
+  </data>
+  <data name="changeProcent.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="changeProcent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 13</value>
+  </data>
+  <data name="changeProcent.TabIndex" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="changeProcent.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;changeProcent.Name" xml:space="preserve">
+    <value>changeProcent</value>
+  </data>
+  <data name="&gt;&gt;changeProcent.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;changeProcent.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;changeProcent.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 505</value>
   </data>
@@ -685,7 +703,7 @@
     <value>470, 17</value>
   </metadata>
   <data name="metroTrackBar1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>35, 661</value>
+    <value>29, 711</value>
   </data>
   <data name="metroTrackBar1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -765,6 +783,30 @@
   <data name="&gt;&gt;panel8.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="createCoordinates.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 129</value>
+  </data>
+  <data name="createCoordinates.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 23</value>
+  </data>
+  <data name="createCoordinates.TabIndex" type="System.Int32, mscorlib">
+    <value>101</value>
+  </data>
+  <data name="createCoordinates.Text" xml:space="preserve">
+    <value>Создать массив координат</value>
+  </data>
+  <data name="&gt;&gt;createCoordinates.Name" xml:space="preserve">
+    <value>createCoordinates</value>
+  </data>
+  <data name="&gt;&gt;createCoordinates.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;createCoordinates.Parent" xml:space="preserve">
+    <value>panel7</value>
+  </data>
+  <data name="&gt;&gt;createCoordinates.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="backsideCheck.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -799,7 +841,7 @@
     <value>13, 16</value>
   </data>
   <data name="trackerCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 15</value>
+    <value>61, 15</value>
   </data>
   <data name="trackerCheck.TabIndex" type="System.Int32, mscorlib">
     <value>101</value>
@@ -846,22 +888,22 @@
   <data name="&gt;&gt;metroLabel2.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="resource.Image3" type="System.Resources.ResXNullRef, System.Windows.Forms">
+  <data name="resource.Image4" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="resource.ImeMode3" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="resource.ImeMode4" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="resource.Location3" type="System.Drawing.Point, System.Drawing">
+  <data name="resource.Location4" type="System.Drawing.Point, System.Drawing">
     <value>110, 1</value>
   </data>
-  <data name="resource.Size3" type="System.Drawing.Size, System.Drawing">
+  <data name="resource.Size4" type="System.Drawing.Size, System.Drawing">
     <value>21, 21</value>
   </data>
-  <data name="resource.TabIndex3" type="System.Int32, mscorlib">
+  <data name="resource.TabIndex4" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="resource.Visible3" type="System.Boolean, mscorlib">
+  <data name="resource.Visible4" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="busSize.Location" type="System.Drawing.Point, System.Drawing">
@@ -886,7 +928,7 @@
     <value>5</value>
   </data>
   <data name="allBusSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>115, 3</value>
+    <value>131, 3</value>
   </data>
   <data name="allBusSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 118</value>
@@ -904,65 +946,7 @@
     <value>panel7</value>
   </data>
   <data name="&gt;&gt;allBusSettings.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 124</value>
-  </data>
-  <data name="button2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 19</value>
-  </data>
-  <data name="button2.TabIndex" type="System.Int32, mscorlib">
-    <value>97</value>
-  </data>
-  <data name="button2.Text" xml:space="preserve">
-    <value>Создать массив координат
-</value>
-  </data>
-  <data name="&gt;&gt;button2.Name" xml:space="preserve">
-    <value>button2</value>
-  </data>
-  <data name="&gt;&gt;button2.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;button2.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <metadata name="busParkBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>606, 17</value>
-  </metadata>
-  <data name="changeRoute.ItemHeight" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="changeRoute.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 19</value>
-  </data>
-  <data name="changeRoute.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="changeRoute.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 29</value>
-  </data>
-  <data name="changeRoute.TabIndex" type="System.Int32, mscorlib">
-    <value>77</value>
-  </data>
-  <data name="&gt;&gt;changeRoute.Name" xml:space="preserve">
-    <value>changeRoute</value>
-  </data>
-  <data name="&gt;&gt;changeRoute.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;changeRoute.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;changeRoute.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -995,7 +979,7 @@
     <value>panel7</value>
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="panel7.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 11</value>
@@ -1020,54 +1004,6 @@
   </data>
   <data name="&gt;&gt;panel7.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="resource.Image4" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="resource.ImeMode4" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="resource.Location4" type="System.Drawing.Point, System.Drawing">
-    <value>153, 1</value>
-  </data>
-  <data name="resource.Margin3" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="resource.Size4" type="System.Drawing.Size, System.Drawing">
-    <value>11, 11</value>
-  </data>
-  <data name="resource.TabIndex4" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="resource.Visible4" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="changeProcent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 719</value>
-  </data>
-  <data name="changeProcent.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="changeProcent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 13</value>
-  </data>
-  <data name="changeProcent.TabIndex" type="System.Int32, mscorlib">
-    <value>83</value>
-  </data>
-  <data name="changeProcent.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;changeProcent.Name" xml:space="preserve">
-    <value>changeProcent</value>
-  </data>
-  <data name="&gt;&gt;changeProcent.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;changeProcent.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;changeProcent.ZOrder" xml:space="preserve">
-    <value>7</value>
   </data>
   <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -1094,7 +1030,37 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
+  </data>
+  <metadata name="busParkBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>606, 17</value>
+  </metadata>
+  <data name="changeRoute.ItemHeight" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="changeRoute.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 103</value>
+  </data>
+  <data name="changeRoute.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="changeRoute.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 29</value>
+  </data>
+  <data name="changeRoute.TabIndex" type="System.Int32, mscorlib">
+    <value>77</value>
+  </data>
+  <data name="&gt;&gt;changeRoute.Name" xml:space="preserve">
+    <value>changeRoute</value>
+  </data>
+  <data name="&gt;&gt;changeRoute.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;changeRoute.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;changeRoute.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="theme.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1121,7 +1087,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;theme.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="changeTheme.ItemHeight" type="System.Int32, mscorlib">
     <value>23</value>
@@ -1190,7 +1156,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;changeTheme.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="mainPanel.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1250,7 +1216,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;mainPanel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
@@ -1514,7 +1480,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;toolStripMenu.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <metadata name="msmMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>940, 17</value>
@@ -1667,7 +1633,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;themes.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>

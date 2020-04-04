@@ -82,8 +82,8 @@ namespace SystAnalys_lr1
             EZoomBar.Value = MainForm.GetTrackBar().Value;
             EZoomBar.Maximum = MainForm.GetTrackBar().Maximum;
             EZoomBar.Minimum = MainForm.GetTrackBar().Minimum;
-            EZoomBar.Left = MainForm.GetTrackBar().Left ;  
-            EZoomBar.Top = MainForm.GetTrackBar().Top  ;
+            EZoomBar.Left = MainForm.GetTrackBar().Left;  
+            EZoomBar.Top = MainForm.GetTrackBar().Top;
             EZoomBar.Scroll += EZoomBar_Scroll;
             //
             this.panel1.Controls.Add(ERouts);

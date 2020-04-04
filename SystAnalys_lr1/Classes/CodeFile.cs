@@ -629,7 +629,8 @@ namespace SystAnalys_lr1
         }
         Random rnd = new Random();
         public bool skipTraffics = false;
-        int skipStops = 1;
+        public int skipStops = 1;
+        public int skipEnd = 5;
         //движение с графикой (для визуализации движения)
         public async void MoveWithGraphics()
         {
@@ -700,8 +701,11 @@ namespace SystAnalys_lr1
                             }
                             else
                             {
-                                MovingTimer.Stop();
-                                await Task.Delay(rnd.Next(0, 10000));
+                                if (skipEnd > 5)
+                                {
+                                    MovingTimer.Stop();
+                                    await Task.Delay(rnd.Next(0, 10000));                                    
+                                }
                                 if (InstaStop == false)
                                 {
                                     MovingTimer.Start();
@@ -771,8 +775,11 @@ namespace SystAnalys_lr1
                             }
                             else
                             {
-                                MovingTimer.Stop();
-                                await Task.Delay(rnd.Next(0, 10000));
+                                if(skipEnd > 5)
+                                {
+                                    MovingTimer.Stop();
+                                    await Task.Delay(rnd.Next(0, 10000));
+                                }
                                 if (InstaStop == false)
                                 {
                                     MovingTimer.Start();
@@ -1026,6 +1033,8 @@ namespace SystAnalys_lr1
             {
                 skipStops -= 1;
             }
+            if (skipEnd != 0)
+                skipEnd -= 1;
         }
         public void Set()
         {

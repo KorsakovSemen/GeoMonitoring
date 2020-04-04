@@ -31,18 +31,14 @@
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.ERouts = new MetroFramework.Controls.MetroComboBox();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.button11 = new MetroFramework.Controls.MetroButton();
             this.label2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // timer1
-            // 
-
             // 
             // panel1
             // 
@@ -66,11 +62,29 @@
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
             this.panel1.VerticalScrollbarSize = 10;
             // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(63, 176);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(159, 19);
+            this.metroLabel2.TabIndex = 98;
+            this.metroLabel2.Text = "Параметры загрязнения";
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(57, 99);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(172, 19);
+            this.metroLabel1.TabIndex = 97;
+            this.metroLabel1.Text = "Восстановить загрязнение";
+            // 
             // ERouts
             // 
             this.ERouts.FormattingEnabled = true;
             this.ERouts.ItemHeight = 23;
-            this.ERouts.Location = new System.Drawing.Point(30, 55);
+            this.ERouts.Location = new System.Drawing.Point(57, 57);
             this.ERouts.Name = "ERouts";
             this.ERouts.Size = new System.Drawing.Size(165, 29);
             this.ERouts.TabIndex = 96;
@@ -78,7 +92,7 @@
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(30, 119);
+            this.metroButton1.Location = new System.Drawing.Point(57, 121);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(165, 37);
             this.metroButton1.TabIndex = 95;
@@ -88,7 +102,7 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(30, 196);
+            this.button11.Location = new System.Drawing.Point(57, 198);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(165, 37);
             this.button11.TabIndex = 94;
@@ -99,29 +113,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 33);
+            this.label2.Location = new System.Drawing.Point(47, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(191, 19);
             this.label2.TabIndex = 2;
             this.label2.Text = "Отрисовать путь загрязнений";
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(30, 97);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(172, 19);
-            this.metroLabel1.TabIndex = 97;
-            this.metroLabel1.Text = "Восстановить загрязнение";
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(30, 174);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(159, 19);
-            this.metroLabel2.TabIndex = 98;
-            this.metroLabel2.Text = "Параметры загрязнения";
             // 
             // DisplayEpicenters
             // 
