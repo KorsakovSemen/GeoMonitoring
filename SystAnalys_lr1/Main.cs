@@ -1433,12 +1433,9 @@ namespace SystAnalys_lr1
                     loading.Visible = false;
                     config.Text = MainStrings.config;
                 }
-                foreach (var tl in Main.traficLights)
+                foreach (var tl in traficLights)
                 {
                     tl.Stop();
-                    //TraficLightsInGrids.Remove(tl.gridNum);
-                    //traficLights.Remove(tl);
-
                 }
                 TraficLightsInGrids.Clear();
                 V.Clear();
@@ -1793,7 +1790,6 @@ namespace SystAnalys_lr1
             //zamazka
             Directory.CreateDirectory(path + "/Generated_Epics");
             Directory.CreateDirectory(path + "/Recreated_Epics");
-
             //zamazka
             int? sum = null;
             List<Bus> optimizeBuses = new List<Bus>();
@@ -1856,7 +1852,6 @@ namespace SystAnalys_lr1
                                     img.Save(path + "/Generated_Epics" + "/GeneredEpic_cicle" + cicl.ToString() + "_" + (i + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                                 }
                             }
-
                             lock (Ep.Esheet)
                             {
                                 Ep.RecReateFunction();
@@ -1937,7 +1932,7 @@ namespace SystAnalys_lr1
                     ResultFromModeling = new List<int?>();
                 }
                 //busesPark = busesparkreturn;
-                
+
 
             });
             MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -1996,7 +1991,6 @@ namespace SystAnalys_lr1
         {
             try
             {
-                //      string path = null;
                 using (var dialog = new FolderBrowserDialog())
                 {
                     if (!Directory.Exists(savepath))
@@ -2011,7 +2005,7 @@ namespace SystAnalys_lr1
                     {
                         if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
                         {
-                            foreach (var tl in Main.traficLights)
+                            foreach (var tl in traficLights)
                             {
                                 tl.Stop();
                             }
@@ -2019,16 +2013,14 @@ namespace SystAnalys_lr1
                             stopPoints.Clear();
                             allstopPoints.Clear();
                             string path = dialog.SelectedPath;
-                            if (File.Exists(path + "/Map.png"))
-                                sheet.Image = Image.FromFile(path + "/Map.png");
-                            else
-                                MetroMessageBox.Show(this, MainStrings.noPic, "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             DisplayEpicenters.path = path;
                             wsheet = sheet.Width;
                             hsheet = sheet.Height;
                             saveImage = sheet.Image;
-
-                            MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                            if (File.Exists(path + "/Map.png"))
+                                sheet.Image = Image.FromFile(path + "/Map.png");
+                            else
+                                MetroMessageBox.Show(this, MainStrings.noPic, "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             LoadRoutes(path + "/");
                             savepath = path;
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
@@ -2036,6 +2028,7 @@ namespace SystAnalys_lr1
                             {
                                 fileV.WriteLine(path.ToString());
                             }
+                            MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         addRouteToolStripMenuItem.Enabled = true;
                         createGridToolStripMenuItem.Enabled = true;
@@ -2084,15 +2077,22 @@ namespace SystAnalys_lr1
                         {
                             if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
                             {
+                                foreach (var tl in traficLights)
+                                {
+                                    tl.Stop();
+                                }
+                                TraficLightsInGrids.Clear();
+                                stopPoints.Clear();
+                                allstopPoints.Clear();
                                 path = dialog.SelectedPath;
-                                if (File.Exists(path + "/Map.png"))
-                                    sheet.Image = Image.FromFile(path + "/Map.png");
-                                else
-                                    MetroMessageBox.Show(this, MainStrings.noPic, "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                                 DisplayEpicenters.path = path;
                                 wsheet = sheet.Width;
                                 hsheet = sheet.Height;
                                 saveImage = sheet.Image;
+                                if (File.Exists(path + "/Map.png"))
+                                    sheet.Image = Image.FromFile(path + "/Map.png");
+                                else
+                                    MetroMessageBox.Show(this, MainStrings.noPic, "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                                 LoadRoutes(path + "/");
                                 savepath = path;
                                 File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
@@ -2100,11 +2100,10 @@ namespace SystAnalys_lr1
                                 {
                                     fileV.WriteLine(path.ToString());
                                 }
-
+                                MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                             }
                             addRouteToolStripMenuItem.Enabled = true;
                             createGridToolStripMenuItem.Enabled = true;
-                            MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         else
                         {
@@ -2117,28 +2116,32 @@ namespace SystAnalys_lr1
                     }
                 }
             }
-
             else
             {
                 string path = "";
                 using (var dialog = new FolderBrowserDialog())
                 {
-
                     dialog.SelectedPath = Path.GetFullPath(savepath);
-                    //    dialog.RootFolder = Environment.SpecialFolder.
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
                         if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
                         {
+                            foreach (var tl in traficLights)
+                            {
+                                tl.Stop();
+                            }
+                            TraficLightsInGrids.Clear();
+                            stopPoints.Clear();
+                            allstopPoints.Clear();
                             path = dialog.SelectedPath;
-                            if (File.Exists(path + "/Map.png"))
-                                sheet.Image = Image.FromFile(path + "/Map.png");
-                            else
-                                MetroMessageBox.Show(this, MainStrings.noPic, "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             DisplayEpicenters.path = path;
                             wsheet = sheet.Width;
                             hsheet = sheet.Height;
                             saveImage = sheet.Image;
+                            if (File.Exists(path + "/Map.png"))
+                                sheet.Image = Image.FromFile(path + "/Map.png");
+                            else
+                                MetroMessageBox.Show(this, MainStrings.noPic, "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             LoadRoutes(path + "/");
                             savepath = path;
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
@@ -2146,10 +2149,9 @@ namespace SystAnalys_lr1
                             {
                                 fileV.WriteLine(path.ToString());
                             }
-
+                            MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
 
-                        MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
 
                     }
 
@@ -2413,7 +2415,10 @@ namespace SystAnalys_lr1
                 if (stackTrace.FrameCount > 0)
                 {
                     MetroMessageBox.Show(this, $"{exc.StackTrace}", MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    loading.Visible = false;
+
                 }
+
             }
         }
 
