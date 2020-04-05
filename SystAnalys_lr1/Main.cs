@@ -1806,10 +1806,14 @@ namespace SystAnalys_lr1
             loading.Visible = true;
             loading.Value = 0;
             int old = small;
+            var style = msmMain.Style;
             SavePictures.Enabled = false;
+            if (msmMain.Style == (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf("Red")))
+                msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf("Yellow"));
+            else
+                msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf("Red"));
             await Task.Run(() =>
             {
-
                 var busesparkreturn = busesPark;
                 if (changeProcent.Text != "" && int.TryParse(speed.Text, out int ch) && changeProcent.Text != "")
                 {
@@ -1965,6 +1969,7 @@ namespace SystAnalys_lr1
             buses = optimizeBuses;
             await Task.Delay(1000);
             loading.Visible = false;
+            msmMain.Style = style;
             SavePictures.Enabled = true;
             MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (!Ep.IsDisposed)
@@ -1988,7 +1993,7 @@ namespace SystAnalys_lr1
                     tl.TimerLight.Interval = 1;
 
                 Opt();
-                MetroMessageBox.Show(this, "", MainStrings.loading, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MetroMessageBox.Show(this, "", MainStrings.loading, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 foreach (var tl in traficLights)
                     tl.TimerLight.Interval = 1000;
             }
