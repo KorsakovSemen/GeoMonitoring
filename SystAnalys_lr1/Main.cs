@@ -3945,6 +3945,7 @@ namespace SystAnalys_lr1
             AsyncCreateAllCoordinates();
         }
 
+
         private void createGridToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (G.bitmap != null)

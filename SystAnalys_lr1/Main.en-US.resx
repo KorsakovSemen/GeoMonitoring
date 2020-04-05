@@ -120,6 +120,13 @@
   <data name="button1.Text" xml:space="preserve">
     <value>Matrix</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="SavePictures.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 15</value>
+  </data>
+  <data name="SavePictures.Text" xml:space="preserve">
+    <value>Save pictures</value>
+  </data>
   <data name="stopBuses.Text" xml:space="preserve">
     <value>Stop buses</value>
   </data>
@@ -132,7 +139,6 @@
   <data name="optimize.Text" xml:space="preserve">
     <value>Optimization</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="mean.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 19</value>
   </data>
@@ -180,17 +186,11 @@
   <data name="resource.ImageKey" xml:space="preserve">
     <value />
   </data>
-  <data name="resource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>72, 2</value>
-  </data>
   <data name="resource.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="resource.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Inherit</value>
-  </data>
-  <data name="resource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 15</value>
   </data>
   <data name="resource.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -237,17 +237,11 @@
   <data name="resource.ImageKey1" xml:space="preserve">
     <value />
   </data>
-  <data name="resource.Location1" type="System.Drawing.Point, System.Drawing">
-    <value>72, 2</value>
-  </data>
   <data name="resource.MaximumSize1" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="resource.RightToLeft1" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Inherit</value>
-  </data>
-  <data name="resource.Size1" type="System.Drawing.Size, System.Drawing">
-    <value>15, 15</value>
   </data>
   <data name="resource.TextAlign1" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -306,17 +300,11 @@
   <data name="resource.ImageKey2" xml:space="preserve">
     <value />
   </data>
-  <data name="resource.Location2" type="System.Drawing.Point, System.Drawing">
-    <value>54, 2</value>
-  </data>
   <data name="resource.MaximumSize2" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="resource.RightToLeft2" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Inherit</value>
-  </data>
-  <data name="resource.Size2" type="System.Drawing.Size, System.Drawing">
-    <value>15, 15</value>
   </data>
   <data name="resource.TextAlign2" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -372,17 +360,11 @@
   <data name="resource.ImageKey3" xml:space="preserve">
     <value />
   </data>
-  <data name="resource.Location3" type="System.Drawing.Point, System.Drawing">
-    <value>153, 1</value>
-  </data>
   <data name="resource.MaximumSize3" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="resource.RightToLeft3" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Inherit</value>
-  </data>
-  <data name="resource.Size3" type="System.Drawing.Size, System.Drawing">
-    <value>11, 11</value>
   </data>
   <data name="resource.TextAlign3" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -395,6 +377,18 @@
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>With sensors: Without:  Total: </value>
+  </data>
+  <data name="metroLabel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 19</value>
+  </data>
+  <data name="metroLabel4.Text" xml:space="preserve">
+    <value>Bus settings</value>
+  </data>
+  <data name="metroLabel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 19</value>
+  </data>
+  <data name="metroLabel3.Text" xml:space="preserve">
+    <value>Routes</value>
   </data>
   <data name="backsideCheck.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 15</value>
@@ -453,17 +447,11 @@
   <data name="resource.ImageKey4" xml:space="preserve">
     <value />
   </data>
-  <data name="resource.Location4" type="System.Drawing.Point, System.Drawing">
-    <value>110, 1</value>
-  </data>
   <data name="resource.MaximumSize4" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="resource.RightToLeft4" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Inherit</value>
-  </data>
-  <data name="resource.Size4" type="System.Drawing.Size, System.Drawing">
-    <value>21, 21</value>
   </data>
   <data name="resource.TextAlign4" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -557,6 +545,9 @@
   </data>
   <data name="loadButton.Text" xml:space="preserve">
     <value>Load</value>
+  </data>
+  <data name="hint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>927, 60</value>
   </data>
   <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>851, 31</value>
