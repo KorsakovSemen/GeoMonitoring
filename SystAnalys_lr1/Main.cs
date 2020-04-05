@@ -1667,7 +1667,6 @@ namespace SystAnalys_lr1
                 {
                     foreach (var b in buses)
                     {
-
                         if (b.route == bp.First().route)
                         {
                             int r = rnd.Next(0, AllGridsInRoutes[bp.First().route].Count - 1);
@@ -1784,7 +1783,9 @@ namespace SystAnalys_lr1
             {
                 Ep.Hide();
             }
-
+            LoadingForm loadingForm = new LoadingForm();
+            loadingForm.Theme = msmMain.Theme;
+            loadingForm.Style = msmMain.Style;
             Matrix();
             percentMean = new SerializableDictionary<int, int?>();
             string path = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute);
@@ -1803,8 +1804,9 @@ namespace SystAnalys_lr1
             {
                 textBox2.Text = speed.Text;
             }
-            loading.Visible = true;
-            loading.Value = 0;
+            loadingForm.Show();
+            //loading.Visible = true;
+            //loading.Value = 0;
             int old = small;
             var style = msmMain.Style;
             SavePictures.Enabled = false;
@@ -1814,26 +1816,14 @@ namespace SystAnalys_lr1
                 msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf("Red"));
             await Task.Run(() =>
             {
+                int v = 0;
                 var busesparkreturn = busesPark;
                 if (changeProcent.Text != "" && int.TryParse(speed.Text, out int ch) && changeProcent.Text != "")
                 {
                     offBuses(int.Parse(changeProcent.Text));
-                    //double razm = Math.Round(buses.Count - buses.Count * 0.01 * int.Parse(changeProcent.Text));
-                    //double limit = Math.Round(buses.Count - razm, 0);
-                    //foreach (var b in buses)
-                    //{
-                    //    if (0 != limit)
-                    //    {
-                    //        b.tracker = false;
-                    //        limit = limit - 1;
-                    //    }
-                    //    else
-                    //    {
-                    //        break;
-                    //    };
-                    //};
                 };
                 int ciclTotal = 5;
+                loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Maximum = s), ciclTotal * int.Parse(optText.Text));
                 for (int cicl = 0; cicl < ciclTotal; cicl++)
                 {
                     //NaturalEpics = new List<Image>();
@@ -1842,19 +1832,16 @@ namespace SystAnalys_lr1
                     if (cicl == ciclTotal - 1)
                         buses[rnd.Next(0, buses.Count)].tracker = true;
                     List<int?> mas = new List<int?>();
-                    if (loading.GetCurrentParent().InvokeRequired)
-                    {
-                        loading.GetCurrentParent().Invoke(new DelInt((s) => loading.Maximum = s), ciclTotal * int.Parse(optText.Text));
-                    }
+                    //loadingForm.loading.Maximum = ciclTotal * int.Parse(optText.Text);
+                    //if (loading.GetCurrentParent().InvokeRequired)
+                    //{
+                    //   // loading.GetCurrentParent().Invoke(new DelInt((s) => loading.Maximum = s), ciclTotal * int.Parse(optText.Text));
+                    //}
                     Baraban();
 
                     for (int i = 0; i < int.Parse(optText.Text); i++)
                     {
-                        //asModelingTest();
-                        //  mutex.WaitOne();\
                         CreateOneRandomEpicenter(EpicSizeParam, null);
-
-
                         Modeling();
                         if (SavePictures.Checked)
                         {
@@ -1887,10 +1874,13 @@ namespace SystAnalys_lr1
 
                         }
                         small = 10000;
-                        if (loading.GetCurrentParent().InvokeRequired)
-                        {
-                            loading.GetCurrentParent().Invoke(new DelInt((s) => loading.Value = s), loading.Value + 1);
-                        }
+                        v += 1;
+                        loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Value = s), v);
+                        //   loadingForm.loading.Value += 1;
+                        //if (loading.GetCurrentParent().InvokeRequired)
+                        //{
+                        // //   loading.GetCurrentParent().Invoke(new DelInt((s) => loading.Value = s), loading.Value + 1);
+                        //}
                         //       label1.Invoke(new Del((s) => label1.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
                         //   loading.Invoke(new DelInt((s) => loading.Value = s), s + 1) ;
                     }
@@ -1946,12 +1936,11 @@ namespace SystAnalys_lr1
                     }
                     ResultFromModeling = new List<int?>();
                 }
-
                 //busesPark = busesparkreturn;
-
+                
 
             });
-
+            MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();//sum != null ? percentMean.Min(s => s.Value).ToString() + " " + (percentMean.ElementAt((int)percentMean.Min(s => s.Value)).Key).ToString() : MainStrings.none;
             var min = percentMean.Min(v => v.Value);
             if (res.Count == 0)
@@ -1967,16 +1956,17 @@ namespace SystAnalys_lr1
             }
             Matrix();
             buses = optimizeBuses;
-            await Task.Delay(1000);
-            loading.Visible = false;
+
+            //   loading.Visible = false;
             msmMain.Style = style;
             SavePictures.Enabled = true;
-            MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (!Ep.IsDisposed)
             {
                 Ep.Show();
                 SavePictures.Enabled = true;
             }
+            await Task.Delay(1000);
+            loadingForm.Close();
             await buttonOn();
         }
 
@@ -1993,7 +1983,6 @@ namespace SystAnalys_lr1
                     tl.TimerLight.Interval = 1;
 
                 Opt();
-                //MetroMessageBox.Show(this, "", MainStrings.loading, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 foreach (var tl in traficLights)
                     tl.TimerLight.Interval = 1000;
             }
@@ -2039,6 +2028,7 @@ namespace SystAnalys_lr1
                             hsheet = sheet.Height;
                             saveImage = sheet.Image;
 
+                            MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                             LoadRoutes(path + "/");
                             savepath = path;
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
@@ -2049,7 +2039,6 @@ namespace SystAnalys_lr1
                         }
                         addRouteToolStripMenuItem.Enabled = true;
                         createGridToolStripMenuItem.Enabled = true;
-                        MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                 }
             }
