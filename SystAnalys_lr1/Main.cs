@@ -227,6 +227,7 @@ namespace SystAnalys_lr1
             {
                 File.Create("../../SaveConfig/theme.txt");
             }
+            string text = "Default";
             if (File.Exists("../../SaveConfig/style.txt"))
             {
                 using (FileStream fstream = File.OpenRead("../../SaveConfig/style.txt"))
@@ -234,7 +235,8 @@ namespace SystAnalys_lr1
                     byte[] array = new byte[fstream.Length];
                     // асинхронное чтение файла
                     fstream.Read(array, 0, array.Length);
-                    msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf(System.Text.Encoding.Default.GetString(array).Replace(Environment.NewLine, "")));
+                    text = System.Text.Encoding.Default.GetString(array).Replace(Environment.NewLine, "");
+                    msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf(text));
                     Console.WriteLine($"Текст из файла: {savepath}");
 
                 }
@@ -243,6 +245,7 @@ namespace SystAnalys_lr1
             {
                 File.Create("../../SaveConfig/style.txt");
             }
+            changeTheme.Text = text;
             try
             {
                 if (Directory.Exists(savepath))

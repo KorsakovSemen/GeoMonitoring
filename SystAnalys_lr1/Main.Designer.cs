@@ -69,7 +69,6 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.busSize = new MetroFramework.Controls.MetroTextBox();
             this.changeRoute = new MetroFramework.Controls.MetroComboBox();
-            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel8 = new MetroFramework.Controls.MetroPanel();
             this.label8 = new MetroFramework.Controls.MetroLabel();
             this.label12 = new MetroFramework.Controls.MetroLabel();
@@ -112,6 +111,8 @@
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.hint = new MetroFramework.Controls.MetroLabel();
+            this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -119,12 +120,12 @@
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
             this.allBusSettings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).BeginInit();
             this.panel8.SuspendLayout();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.toolStripMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -420,11 +421,14 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Menu;
+            this.panel4.Controls.Add(this.metroLabel7);
             this.panel4.Controls.Add(this.metroLabel6);
             this.panel4.Controls.Add(this.metroLabel5);
+            this.panel4.Controls.Add(this.panel8);
             this.panel4.Controls.Add(this.metroTrackBar1);
             this.panel4.Controls.Add(this.panel7);
             this.panel4.Controls.Add(this.panel1);
+            this.panel4.Controls.Add(this.panel2);
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.HorizontalScrollbarBarColor = true;
             this.panel4.HorizontalScrollbarHighlightOnWheel = false;
@@ -555,10 +559,6 @@
             this.changeRoute.Name = "changeRoute";
             this.changeRoute.UseSelectable = true;
             this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChangedAsync);
-            // 
-            // busParkBindingSource
-            // 
-            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
             // 
             // panel8
             // 
@@ -898,6 +898,15 @@
             resources.ApplyResources(this.hint, "hint");
             this.hint.Name = "hint";
             // 
+            // busParkBindingSource
+            // 
+            this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
+            // 
+            // metroLabel7
+            // 
+            resources.ApplyResources(this.metroLabel7, "metroLabel7");
+            this.metroLabel7.Name = "metroLabel7";
+            // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
@@ -906,10 +915,8 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroComboBox1);
             this.Controls.Add(this.config);
-            this.Controls.Add(this.panel8);
             this.Controls.Add(this.themes);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.theme);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.changeTheme);
@@ -937,7 +944,6 @@
             this.panel7.PerformLayout();
             this.allBusSettings.ResumeLayout(false);
             this.allBusSettings.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.mainPanel.ResumeLayout(false);
@@ -946,6 +952,7 @@
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.busParkBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1031,6 +1038,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
     }
 }
 
