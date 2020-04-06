@@ -1408,11 +1408,11 @@ namespace SystAnalys_lr1
                 buses.Clear();
                 if (sheet.Image != null)
                 {
-                    loading.Visible = true;
-                    loading.Value = 50;
-                    await Task.Delay(10001);
-                    loading.Value = 100;
-                    loading.Visible = false;
+                    //loading.Visible = true;
+                    //loading.Value = 50;
+                    //await Task.Delay(10001);
+                    //loading.Value = 100;
+                    //loading.Visible = false;
                     config.Text = MainStrings.config;
                 }
                 foreach (var tl in traficLights)
@@ -1670,19 +1670,22 @@ namespace SystAnalys_lr1
                         array.Add(i);
                         i += tot;
                     }
-                    foreach (var b in buses)
+                    if (array.Count != 0)
                     {
-
-                        if (b.route == bp.First().route)
+                        foreach (var b in buses)
                         {
-                            int r = rnd.Next(0, array.Count - 1);
-                            b.PositionAt = array[r];//rnd.Next(0, AllGridsInRoutes[b.route].Count - 1);
-                            array.RemoveAt(r);
-                            //  b.TurnBack = NextBool();
-                            //tot += tot;
-                        }
 
-                    };
+                            if (b.route == bp.First().route)
+                            {
+                                int r = rnd.Next(0, array.Count - 1);
+                                b.PositionAt = array[r];//rnd.Next(0, AllGridsInRoutes[b.route].Count - 1);
+                                array.RemoveAt(r);
+                                //  b.TurnBack = NextBool();
+                                //tot += tot;
+                            }
+
+                        };
+                    }
                 }
             }
         }
@@ -1954,18 +1957,33 @@ namespace SystAnalys_lr1
         public static int EpicSizeParam = 10;
         public static List<string> ExpandEpicParamet;
         private void optimize_Click(object sender, EventArgs e)
-        {
-            // //AsyncCreateAllCoordinates()();          
+        {        
             if (optText.Text != "" && speed.Text != "" && buses.Count != 0 && buses != null)
             {
+                bool check = false;
                 foreach (var bus in buses)
-                    bus.Stop();
-                foreach (var tl in traficLights)
-                    tl.TimerLight.Interval = 1;
-
-                Opt();
-                foreach (var tl in traficLights)
-                    tl.TimerLight.Interval = 1000;
+                {
+                    if (bus.tracker == true)
+                    {
+                        check = true;
+                        break;
+                    }
+                }
+                if (check)
+                {
+                    foreach (var bus in buses)
+                        bus.Stop();
+                    foreach (var tl in traficLights)
+                        tl.TimerLight.Interval = 1;
+                    Opt();
+                    foreach (var tl in traficLights)
+                        tl.TimerLight.Interval = 1000;
+                }
+                else
+                {
+                    return;
+                }
+            
             }
 
         }
@@ -2040,7 +2058,6 @@ namespace SystAnalys_lr1
             {
                 try
                 {
-
                     sheet.Image = Image.FromFile(savepath + "/Map.png");
                     DisplayEpicenters.path = savepath;
                     metroTrackBar1.Value = 1;
@@ -2149,6 +2166,8 @@ namespace SystAnalys_lr1
                             {
                                 fileV.WriteLine(path.ToString());
                             }
+                            addRouteToolStripMenuItem.Enabled = true;
+                            createGridToolStripMenuItem.Enabled = true;
                             this.BringToFront();
                             MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
