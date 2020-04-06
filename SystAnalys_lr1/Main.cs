@@ -265,7 +265,7 @@ namespace SystAnalys_lr1
                 addRouteToolStripMenuItem.Enabled = false;
                 openEpicFormToolStripMenuItem.Enabled = false;
                 createGridToolStripMenuItem.Enabled = false;
-            }            
+            }
             mainPanel.MaximumSize = new System.Drawing.Size(sheet.Width, sheet.Height);
             mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.mainPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel6_MouseWheel);
@@ -1973,7 +1973,7 @@ namespace SystAnalys_lr1
         private void loadFromToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
-            {                
+            {
                 using (var dialog = new FolderBrowserDialog())
                 {
                     if (!Directory.Exists(savepath))
@@ -2001,11 +2001,11 @@ namespace SystAnalys_lr1
                                 sheet.Image = Image.FromFile(path + "/Map.png");
                             else
                                 MetroMessageBox.Show(this, MainStrings.noPic, "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            saveImage = sheet.Image;
                             metroTrackBar1.Value = 1;
-                            ZoomHelper();
                             wsheet = sheet.Width;
                             hsheet = sheet.Height;
-                            saveImage = sheet.Image;
+                            ZoomHelper();
                             LoadRoutes(path + "/");
                             savepath = path;
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
@@ -2037,17 +2037,17 @@ namespace SystAnalys_lr1
             {
                 try
                 {
-                   
+
                     sheet.Image = Image.FromFile(savepath + "/Map.png");
                     DisplayEpicenters.path = savepath;
                     metroTrackBar1.Value = 1;
-                    ZoomHelper();
+                    saveImage = sheet.Image;
                     wsheet = sheet.Width;
                     hsheet = sheet.Height;
-                   /// G.clearSheet();
-                   // sheet.Image = G.GetBitmap();
-                    saveImage = sheet.Image;
-                   // globalMap = sheet.Image;
+                    ZoomHelper();
+                    /// G.clearSheet();
+                    // sheet.Image = G.GetBitmap();
+                    // globalMap = sheet.Image;
                     LoadRoutes(savepath + "/");
                     //      MessageBox.Show("Done");
                 }
@@ -2068,7 +2068,7 @@ namespace SystAnalys_lr1
                         if (dialog.ShowDialog() == DialogResult.OK)
                         {
                             if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
-                            {                                
+                            {
                                 foreach (var tl in traficLights)
                                 {
                                     tl.Stop();
@@ -2082,12 +2082,12 @@ namespace SystAnalys_lr1
                                     sheet.Image = Image.FromFile(path + "/Map.png");
                                 else
                                     MetroMessageBox.Show(this, MainStrings.noPic, "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                                metroTrackBar1.Value = 1;
-                                ZoomHelper();
                                 wsheet = sheet.Width;
                                 hsheet = sheet.Height;
                                 saveImage = sheet.Image;
-                                LoadRoutes(path + "/");                               
+                                metroTrackBar1.Value = 1;
+                                ZoomHelper();
+                                LoadRoutes(path + "/");
                                 savepath = path;
                                 File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
                                 using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
@@ -2134,12 +2134,12 @@ namespace SystAnalys_lr1
                                 sheet.Image = Image.FromFile(path + "/Map.png");
                             else
                                 MetroMessageBox.Show(this, MainStrings.noPic, "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                            metroTrackBar1.Value = 1;
-                            ZoomHelper();
                             wsheet = sheet.Width;
                             hsheet = sheet.Height;
                             saveImage = sheet.Image;
-                            LoadRoutes(path + "/");                          
+                            metroTrackBar1.Value = 1;                          
+                            ZoomHelper();
+                            LoadRoutes(path + "/");
                             savepath = path;
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
                             using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
@@ -2822,7 +2822,7 @@ namespace SystAnalys_lr1
         static public int refreshLights = 0;
         public static bool flag = false;
         private void sheet_MouseClick_1(object sender, MouseEventArgs e)
-        {           
+        {
 
             if (changeRoute.Text == MainStrings.network)
             {
@@ -3242,7 +3242,7 @@ namespace SystAnalys_lr1
                 {
                     bool flag = false; //удалили ли что-нибудь по ЭТОМУ клику
                                        //ищем, возможно была нажата вершина
-                                    
+
 
                     foreach (var stopRoute in stopPoints[int.Parse(changeRoute.Text)])
                     {
@@ -3310,8 +3310,8 @@ namespace SystAnalys_lr1
                                     if (((e.X / zoom - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x) * (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].y - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y) / (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x) + routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y) <= (e.Y / zoom + 4) &&
                                         ((e.X / zoom - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x) * (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].y - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y) / (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x) + routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y) >= (e.Y / zoom - 4))
                                     {
-                                        if ((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x <= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x  && routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x <= e.X / zoom && e.X / zoom <= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x) ||
-                                            (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x >= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x  && routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x >= e.X / zoom && e.X / zoom >= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x))
+                                        if ((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x <= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x && routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x <= e.X / zoom && e.X / zoom <= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x) ||
+                                            (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x >= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x && routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x >= e.X / zoom && e.X / zoom >= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x))
                                         {
                                             routesEdge[int.Parse(changeRoute.Text)].RemoveAt(i);
                                             flag = true;
@@ -3853,9 +3853,9 @@ namespace SystAnalys_lr1
                     //CreateGrid();
                     //CreatePollutionInRoutes();
                     //Bus.setEpicenters(Epics);
-                   // Bus.setGrid(TheGrid);
-                   // Bus.setMap(sheet);
-                   // Bus.setAllCoordinates(AllCoordinates);
+                    // Bus.setGrid(TheGrid);
+                    // Bus.setMap(sheet);
+                    // Bus.setAllCoordinates(AllCoordinates);
 
                     //CreateAllOneGrids();
 
