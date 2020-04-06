@@ -3714,6 +3714,7 @@ namespace SystAnalys_lr1
                     routes.Add(int.Parse(this.addR.textBox1.Text), new List<Vertex>());
                     routesEdge.Add(int.Parse(this.addR.textBox1.Text), new List<Edge>());
                     changeRoute.Items.Add(addR.textBox1.Text);
+                    stopPoints.Add(int.Parse(this.addR.textBox1.Text), new List<Vertex>());
                 }
             }
         }
@@ -3744,8 +3745,13 @@ namespace SystAnalys_lr1
             {
                 fileV.WriteLine(msmMain.Theme);
             }
-            this.StyleManager.Clone(Ep);
 
+            this.StyleManager.Clone(Ep);
+            if (Ep != null)
+            {
+                Ep.Refresh();
+
+            }
             //      this.StyleManager.Clone(Ep.epSet);
             //      this.StyleManager.Clone(addG);
             //      this.StyleManager.Clone(addR);
@@ -3755,10 +3761,16 @@ namespace SystAnalys_lr1
 
         private void changeTheme_SelectedIndexChanged(object sender, EventArgs e)
         {
+         //   Ep.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf(changeTheme.Text));
             msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf(changeTheme.Text));
+            this.StyleManager.Clone(Ep);
             using (StreamWriter fileV = new StreamWriter("../../SaveConfig/style.txt"))
             {
                 fileV.WriteLine(msmMain.Style);
+            }
+            if (Ep != null)
+            {
+                Ep.Refresh();
             }
         }
 
@@ -3853,6 +3865,7 @@ namespace SystAnalys_lr1
                     //CreateGrid();
                     //CreatePollutionInRoutes();
                     //Bus.setEpicenters(Epics);
+
                     // Bus.setGrid(TheGrid);
                     // Bus.setMap(sheet);
                     // Bus.setAllCoordinates(AllCoordinates);
