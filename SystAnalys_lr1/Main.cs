@@ -1009,7 +1009,6 @@ namespace SystAnalys_lr1
                 G.clearSheet();
                 label12.Visible = false;
                 DrawGrid();
-                //        buttonOn();
                 selected = new List<int>();
                 return;
             };
@@ -2012,13 +2011,13 @@ namespace SystAnalys_lr1
                             allstopPoints.Clear();
                             string path = dialog.SelectedPath;
                             DisplayEpicenters.path = path;
-                            wsheet = sheet.Width;
-                            hsheet = sheet.Height;
-                            saveImage = sheet.Image;
                             if (File.Exists(path + "/Map.png"))
                                 sheet.Image = Image.FromFile(path + "/Map.png");
                             else
                                 MetroMessageBox.Show(this, MainStrings.noPic, "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            wsheet = sheet.Width;
+                            hsheet = sheet.Height;
+                            saveImage = sheet.Image;
                             LoadRoutes(path + "/");
                             savepath = path;
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
@@ -2085,15 +2084,14 @@ namespace SystAnalys_lr1
                                 allstopPoints.Clear();
                                 path = dialog.SelectedPath;
                                 DisplayEpicenters.path = path;
-                                wsheet = sheet.Width;
-                                hsheet = sheet.Height;
-                                saveImage = sheet.Image;
                                 if (File.Exists(path + "/Map.png"))
                                     sheet.Image = Image.FromFile(path + "/Map.png");
                                 else
                                     MetroMessageBox.Show(this, MainStrings.noPic, "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                                MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                                LoadRoutes(path + "/");
+                                wsheet = sheet.Width;
+                                hsheet = sheet.Height;
+                                saveImage = sheet.Image;
+                                LoadRoutes(path + "/");                               
                                 savepath = path;
                                 File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
                                 using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
@@ -2136,14 +2134,14 @@ namespace SystAnalys_lr1
                             allstopPoints.Clear();
                             path = dialog.SelectedPath;
                             DisplayEpicenters.path = path;
-                            wsheet = sheet.Width;
-                            hsheet = sheet.Height;
-                            saveImage = sheet.Image;
                             if (File.Exists(path + "/Map.png"))
                                 sheet.Image = Image.FromFile(path + "/Map.png");
                             else
                                 MetroMessageBox.Show(this, MainStrings.noPic, "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                            LoadRoutes(path + "/");
+                            wsheet = sheet.Width;
+                            hsheet = sheet.Height;
+                            saveImage = sheet.Image;
+                            LoadRoutes(path + "/");                          
                             savepath = path;
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
                             using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
@@ -3872,9 +3870,9 @@ namespace SystAnalys_lr1
                     //CreateGrid();
                     //CreatePollutionInRoutes();
                     //Bus.setEpicenters(Epics);
-                    Bus.setGrid(TheGrid);
-                    Bus.setMap(sheet);
-                    Bus.setAllCoordinates(AllCoordinates);
+                   // Bus.setGrid(TheGrid);
+                   // Bus.setMap(sheet);
+                   // Bus.setAllCoordinates(AllCoordinates);
 
                     //CreateAllOneGrids();
 
