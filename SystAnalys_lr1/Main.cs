@@ -3764,7 +3764,7 @@ namespace SystAnalys_lr1
 
         private void changeTheme_SelectedIndexChanged(object sender, EventArgs e)
         {
-         //   Ep.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf(changeTheme.Text));
+            //   Ep.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf(changeTheme.Text));
             msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf(changeTheme.Text));
             this.StyleManager.Clone(Ep);
             using (StreamWriter fileV = new StreamWriter("../../SaveConfig/style.txt"))
@@ -3853,60 +3853,78 @@ namespace SystAnalys_lr1
         }
         private void metroTrackBar1_ScrollAsync(object sender, ScrollEventArgs e)
         {
-            try
+            //try
+            //{
+            if (sheet.Image != null)
             {
-                if (sheet.Image != null)
+                ZoomHelper();
+
+                //foreach (var bus in buses)
+                //{
+                //    bus.oldSize = sizeBus;
+                //    bus.setBusSize();
+                //}
+
+                //CreateGrid();
+                //CreatePollutionInRoutes();
+                //Bus.setEpicenters(Epics);
+
+                // Bus.setGrid(TheGrid);
+                // Bus.setMap(sheet);
+                // Bus.setAllCoordinates(AllCoordinates);
+
+                //CreateAllOneGrids();
+
+                G.clearSheet();
+                if (Int32.TryParse(changeRoute.Text, out number) != false)
                 {
-                    ZoomHelper();
-
-                    //foreach (var bus in buses)
-                    //{
-                    //    bus.oldSize = sizeBus;
-                    //    bus.setBusSize();
-                    //}
-
-                    //CreateGrid();
-                    //CreatePollutionInRoutes();
-                    //Bus.setEpicenters(Epics);
-
-                    // Bus.setGrid(TheGrid);
-                    // Bus.setMap(sheet);
-                    // Bus.setAllCoordinates(AllCoordinates);
-
-                    //CreateAllOneGrids();
-
+                    G.drawALLGraph(V, E);
+                    G.drawALLGraph(routes[int.Parse(changeRoute.Text)], routesEdge[int.Parse(changeRoute.Text)], 1);
+                }
+                else if (changeRoute.Text == MainStrings.none)
+                {
                     G.clearSheet();
-                    if (Int32.TryParse(changeRoute.Text, out number) != false)
-                    {
-                        G.drawALLGraph(V, E);
-                        G.drawALLGraph(routes[int.Parse(changeRoute.Text)], routesEdge[int.Parse(changeRoute.Text)], 1);
-                    }
-                    else if (changeRoute.Text == MainStrings.none)
-                    {
-                        G.clearSheet();
-                    }
-                    else
-                    {
-                        G.drawALLGraph(V, E);
-                    }
+                }
+                else
+                {
+                    G.drawALLGraph(V, E);
+                }
 
-                    sheet.Image = G.GetBitmap();
-                    DrawGrid();
-                    // //AsyncCreateAllCoordinates()();
-                    Console.WriteLine("Done");
-                    if (Bus.InstaStop == true)
-                    {
-                        foreach (var bus in buses)
-                        {
-                            bus.AlignBus();
-                        }
-                    }
+                sheet.Image = G.GetBitmap();
+                DrawGrid();
+                // //AsyncCreateAllCoordinates()();
+                Console.WriteLine("Done");
+                //для оптимизации под большое кол-во басов
+                //if (Bus.InstaStop == true)
+                //{
+                //    foreach (var bus in buses)
+                //    {
+
+                //        bus.AlignBus();
+                //    }
+                //}
+                //else
+                //{
+                //    Bus.InstaStop = true;
+                //    foreach (var bus in buses)
+                //    {
+                //        if (bus.GetMovingTimer().Enabled == false)
+                //            bus.AlignBus();
+                //    }
+                //    Bus.InstaStop = false;
+                //}
+                //  для оптимизации под большое кол-во басов
+                foreach (var bus in buses)
+                {
+
+                    bus.AlignBus();
                 }
             }
-            catch//(OutOfMemoryException ex)
-            {
-                Console.WriteLine("ex");
-            }
+            //}
+            //catch//(OutOfMemoryException ex)
+            //{
+            //    Console.WriteLine("ex");
+            //}
         }
         AddGrid addG;
 
@@ -3941,6 +3959,10 @@ namespace SystAnalys_lr1
             AsyncCreateAllCoordinates();
         }
 
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
 
         private void createGridToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -632,9 +632,26 @@ namespace SystAnalys_lr1
         public int skipStops = 1;
         public int skipEnd = 5;
         //движение с графикой (для визуализации движения)
+        delegate void Dpoint(Point pos);
         public void AlignBus()
         {
-            busPic.Location = new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2);
+            //busPic.Location = new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2);
+            //label5.Invoke(new Del((s) => label5.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
+            //label5.Invoke(new Del((s) => label5.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
+
+            if (PositionAt < AllCoordinates[route].Count)
+            {
+                busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
+            }
+            else
+            {
+                busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((AllCoordinates[route][PositionAt-1].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt-1].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
+            }
+
+        }
+        public Timer GetMovingTimer()
+        {
+            return MovingTimer;
         }
         public async void MoveWithGraphics()
         {
@@ -700,7 +717,8 @@ namespace SystAnalys_lr1
                                         }
                                     }
                                 }
-                                busPic.Location = new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2);
+                               // busPic.Location = new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2);
+                                busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
                                 PositionAt++;
                             }
                             else
@@ -760,6 +778,7 @@ namespace SystAnalys_lr1
                                                 {
                                                     skip = 100;
                                                     MovingTimer.Stop();
+                                           
                                                     // int bal = sp.bal / 2;
                                                     await Task.Delay(sp.bal / 2 * 1000);
                                                //     Console.WriteLine("After:");
@@ -773,7 +792,9 @@ namespace SystAnalys_lr1
                                             }
                                         }
                                     }
-                                    busPic.Location = new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2);
+                                    //
+                                    //  busPic.Location = new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2);
+                                    busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
                                     PositionAt--;
                                 }
                             }
