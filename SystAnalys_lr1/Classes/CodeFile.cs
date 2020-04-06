@@ -277,9 +277,9 @@ namespace SystAnalys_lr1
             }
             if (Main.selectedRoute != null)
             {
-                if (Main.stopPoints.ContainsKey((int)Main.selectedRoute))
+                if (Main.stopPoints.ContainsKey(Main.selectedRoute))
                 {
-                    foreach (var stopPoints in Main.stopPoints[(int)Main.selectedRoute])
+                    foreach (var stopPoints in Main.stopPoints[Main.selectedRoute])
                     {
                         drawStopRouteVertex(stopPoints.x, stopPoints.y);
                     }
@@ -403,13 +403,13 @@ namespace SystAnalys_lr1
         [XmlIgnore, JsonIgnore]
         public PictureBox busPic;// { get; set; }
         //номер маршрута, по которому будет ездить автобус
-        public int route;
+        public string route;
         private double _date;
         public SerializableDictionary<int, int> grids;
         //текущий квадрат, в котором находится автобус
         public int? Locate = null;
         //все координаты для движения автобуса
-        static public SerializableDictionary<int, List<Point>> AllCoordinates;
+        static public SerializableDictionary<string, List<Point>> AllCoordinates;
         //для того, чтобы 1 раз прибавлять к OneGridFilling
         public int? lastLocate;
         public int R = 7;
@@ -462,13 +462,13 @@ namespace SystAnalys_lr1
             oldZoom = (int)ZoomCoef;
         }
 
-        public static SerializableDictionary<int, List<Point>> getAllCoordinates()
+        public static SerializableDictionary<string, List<Point>> getAllCoordinates()
         {
             return AllCoordinates;
         }
 
 
-        public static void setAllCoordinates(SerializableDictionary<int, List<Point>> A)
+        public static void setAllCoordinates(SerializableDictionary<string, List<Point>> A)
         {
             AllCoordinates = A;
         }
@@ -510,7 +510,7 @@ namespace SystAnalys_lr1
         public bool tracker { get; set; }
 
 
-        public Bus(List<Vertex> m, PictureBox busPic, int PositionAt, bool Turn, int route, bool not)
+        public Bus(List<Vertex> m, PictureBox busPic, int PositionAt, bool Turn, string route, bool not)
         {
             tracker = not;
             oldSize = busPic.Size.Height;
@@ -824,7 +824,7 @@ namespace SystAnalys_lr1
             }
             catch { }
         }
-        public int getRoute()
+        public string getRoute()
         {
             return route;
         }
@@ -1197,7 +1197,7 @@ namespace SystAnalys_lr1
         {
             return this.MemberwiseClone();
         }
-        public void Recreate(Dictionary<int, List<GridPart>> PollutionInRoutes)
+        public void Recreate(Dictionary<string, List<GridPart>> PollutionInRoutes)
         {
             EpicenterGrid.Add(1, new List<GridPart>());
             EpicenterGrid.Add(2, new List<GridPart>());

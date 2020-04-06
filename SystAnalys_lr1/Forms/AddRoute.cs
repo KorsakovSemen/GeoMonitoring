@@ -23,10 +23,10 @@ namespace SystAnalys_lr1
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((!char.IsNumber(e.KeyChar)) && (!char.IsControl(e.KeyChar)))
-            {
-                e.Handled = true;
-            }
+            //if ((!char.IsNumber(e.KeyChar)) && (!char.IsControl(e.KeyChar)))
+            //{
+            //    e.Handled = true;
+            //}
         }
 
         private void textBox1_Validated(object sender, EventArgs e)

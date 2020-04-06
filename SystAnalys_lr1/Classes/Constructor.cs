@@ -26,7 +26,7 @@ namespace SystAnalys_lr1.Classes
             await Task.Run(() => drawEdgeRoute(e, V, E, G, sheet, n));
         }
 
-        public async void asDelete(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, DrawGraph G, SerializableDictionary<int, List<Edge>> routesEdgeE)
+        public async void asDelete(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, DrawGraph G, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
             await Task.Run(() => delete(e, V, E, sheet, G, routesEdgeE));
             if (Main.flag)
@@ -174,7 +174,7 @@ namespace SystAnalys_lr1.Classes
                 }
             }
         }
-        public void delete(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, DrawGraph G, SerializableDictionary<int, List<Edge>> routesEdgeE)
+        public void delete(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, DrawGraph G, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
             //удалили ли что-нибудь по ЭТОМУ клику
             //ищем, возможно была нажата вершина

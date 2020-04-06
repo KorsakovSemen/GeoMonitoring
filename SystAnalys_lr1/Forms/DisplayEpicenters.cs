@@ -232,7 +232,7 @@ namespace SystAnalys_lr1
             };
             for (int i = 0; i < MainForm.GetPollutionInRoutes().Count; i++)
             {
-                if (MainForm.GetPollutionInRoutes().ElementAt(i).Key == int.Parse(ERouts.Text))
+                if (MainForm.GetPollutionInRoutes().ElementAt(i).Key == (ERouts.Text))
                 {
 
                     for (int j = 0; j < MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key].Count; j++)

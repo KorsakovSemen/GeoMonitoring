@@ -46,19 +46,19 @@ namespace SystAnalys_lr1
         }
 
         //функция, которая создает/очищает контейнер для AllGridFilling
-        private void CreateAllOneGrids()
-        {
-            OneGridFilling = new Dictionary<int, int>();
-            OneRouteGridFilling = new Dictionary<int, Dictionary<int, int>>();
-            for (int i = 0; i < TheGrid.Count; i++)
-            {
-                OneGridFilling.Add(i, 0);
-                OneRouteGridFilling.Add(i, new Dictionary<int, int>());
-                for (int j = 0; j < routes.Count; j++)
+        //private void CreateAllOneGrids()
+        //{
+        //    OneGridFilling = new Dictionary<int, int>();
+        //    OneRouteGridFilling = new Dictionary<int, Dictionary<int, int>>();
+        //    for (int i = 0; i < TheGrid.Count; i++)
+        //    {
+        //        OneGridFilling.Add(i, 0);
+        //        OneRouteGridFilling.Add(i, new Dictionary<int, int>());
+        //        for (int j = 0; j < routes.Count; j++)
 
-                    OneRouteGridFilling[i].Add(routes.ElementAt(j).Key, 0);
-            }
-        }
+        //            OneRouteGridFilling[i].Add(routes.ElementAt(j).Key, 0);
+        //    }
+        //}
 
         //потом
         private void GridMatrixByRoute()
@@ -92,26 +92,26 @@ namespace SystAnalys_lr1
             //}
         }
         //функция подсчитывает количество пустых квадратов 
-        private void EmptyGridCounts()
-        {
-            EmptyGridCount = new Dictionary<int, int>();
-            for (int i = 0; i < TheGrid.Count; i++)
-            {
-                EmptyGridCount.Add(i, 0);
-            }
+        //private void EmptyGridCounts()
+        //{
+        //    EmptyGridCount = new Dictionary<int, int>();
+        //    for (int i = 0; i < TheGrid.Count; i++)
+        //    {
+        //        EmptyGridCount.Add(i, 0);
+        //    }
 
 
-            for (int i = 0; i < AllGridFilling.Last().Count; i++)
-            {
-                if (AllGridFilling.Last()[i] == 0)
-                {
-                    EmptyGridCount[i] = 1;
-                }
-            }
+        //    for (int i = 0; i < AllGridFilling.Last().Count; i++)
+        //    {
+        //        if (AllGridFilling.Last()[i] == 0)
+        //        {
+        //            EmptyGridCount[i] = 1;
+        //        }
+        //    }
 
-            //label6.Text = "Количество пустых секторов : " + EmptyGridCount.Skip(1).Sum(ix => ix.Value);
-          //  label6.Invoke(new Del((s) => label6.Text = s), "Количество пустых секторов : " + EmptyGridCount.Skip(1).Sum(ix => ix.Value));
-        }
+        //    //label6.Text = "Количество пустых секторов : " + EmptyGridCount.Skip(1).Sum(ix => ix.Value);
+        //  //  label6.Invoke(new Del((s) => label6.Text = s), "Количество пустых секторов : " + EmptyGridCount.Skip(1).Sum(ix => ix.Value));
+        //}
         public class Grid
         {
             public Grid() { }
@@ -150,17 +150,17 @@ namespace SystAnalys_lr1
         }
        
         //функция рисует пустые квадраты
-        private void DrawEmptyGrid()
-        {
-            for (int i = 0; i < EmptyGridCount.Count; i++)
-            {
-                if (EmptyGridCount[i] == 1)
-                {
-                    TheGrid[i].DrawPartInRed(G);
-                }
-            }
-            sheet.Image = G.GetBitmap();
-        }
+        //private void DrawEmptyGrid()
+        //{
+        //    for (int i = 0; i < EmptyGridCount.Count; i++)
+        //    {
+        //        if (EmptyGridCount[i] == 1)
+        //        {
+        //            TheGrid[i].DrawPartInRed(G);
+        //        }
+        //    }
+        //    sheet.Image = G.GetBitmap();
+        //}
 
     }
 }

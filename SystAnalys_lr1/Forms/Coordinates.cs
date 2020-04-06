@@ -14,7 +14,7 @@ namespace SystAnalys_lr1
     {
 
         //функция, которая создает все координаты для одного маршрута
-        private void CreateOneRouteCoordinates(int i)
+        private void CreateOneRouteCoordinates(string i)
         {
             if (routes[i].Count > 2)
             {
@@ -92,8 +92,8 @@ namespace SystAnalys_lr1
             //try { 
             
          
-            AllCoordinates = new SerializableDictionary<int, List<Point>>();
-            AllGridsInRoutes = new SerializableDictionary<int, List<int>>();
+            AllCoordinates = new SerializableDictionary<string, List<Point>>();
+            AllGridsInRoutes = new SerializableDictionary<string, List<int>>();
             for (int i = 0; i < routes.Count; i++)
             {
                 AllCoordinates.Add(routes.ElementAt(i).Key, new List<Point>());

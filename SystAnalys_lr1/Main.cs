@@ -24,7 +24,7 @@ namespace SystAnalys_lr1
     public partial class Main : MetroForm
     {
         int tracbarX, tracbarY;
-        public static int? selectedRoute;
+        public static string selectedRoute;
         public static int firstCrossRoads = 0;
         public static int firstCrossRoadsGreenLight = 0;
         public static int firstCrossRoadsRedLight = 0;
@@ -46,51 +46,51 @@ namespace SystAnalys_lr1
         public static int selected1; //выбранные вершины, для соединения линиями
         public static int selected2;
         //массив всех маршрутов
-        static public SerializableDictionary<int, List<Vertex>> routes;
+        static public SerializableDictionary<string, List<Vertex>> routes;
         //статичный размер басса
         public static int sizeBus;
         //очистить данные
         bool isChecked = false;
         static public List<Vertex> V;
 
-        static public SerializableDictionary<int, List<Edge>> routesEdge;
+        static public SerializableDictionary<string, List<Edge>> routesEdge;
 
         public static List<Edge> E;
         //readonly List<Point> AllRotationsPoints;
         //для AllGridFilling, чтобы отображать время за которое моделилось движение
         List<int> TimeForAllGridFilling;
         //тут хранятся данные сколько автобусов побывало в каждом из квадратов
-        List<Dictionary<int, int>> AllGridFilling;
+        //List<Dictionary<int, int>> AllGridFilling;
         //потом
-        List<Dictionary<int, Dictionary<int, int>>> AllRouteGridFilling;
+        List<Dictionary<string, Dictionary<string, int>>> AllRouteGridFilling;
         //потом
-        Dictionary<int, Dictionary<int, int>> OneRouteGridFilling;
+        Dictionary<string, Dictionary<string, int>> OneRouteGridFilling;
         //уровень загрязнения в координатах
-        Dictionary<int, List<GridPart>> PollutionInRoutes;
+        Dictionary<string, List<GridPart>> PollutionInRoutes;
         //гифка
-        Dictionary<int, List<GridPart>> GifList;
+        //Dictionary<int, List<GridPart>> GifList;
 
 
         // лист номеров квадратов, в которм есть светофор
         static public List<int> TraficLightsInGrids;
         // словарь номеров квадратов, в которм есть остановка для каждого маршрута
         public static List<Vertex> allstopPoints;
-        public static SerializableDictionary<int, List<int>> stopPointsInGrids;
+        public static SerializableDictionary<string, List<int>> stopPointsInGrids;
         //  public static List<Vertex> stopPoints;
         //Остановки маршрутов
-        public static SerializableDictionary<int, List<Vertex>> stopPoints;
+        public static SerializableDictionary<string, List<Vertex>> stopPoints;
 
         //Светофоры
         public static List<TraficLight> traficLights;
         bool lang = false;
         //1 пак данных для AllGridFilling
-        Dictionary<int, int> OneGridFilling;
+        //Dictionary<int, int> OneGridFilling;
         //тут хранятся данные по квадратам, в которых ниразу не были автобусы за промежуток времени
-        Dictionary<int, int> EmptyGridCount;
+        //Dictionary<int, int> EmptyGridCount;
         //все координаты движения автобусов
-        private SerializableDictionary<int, List<Point>> AllCoordinates;
+        private SerializableDictionary<string, List<Point>> AllCoordinates;
         //все квадраты сетки, которые есть в каждом из маршрутов 
-        public static SerializableDictionary<int, List<int>> AllGridsInRoutes { get; set; }
+        public static SerializableDictionary<string, List<int>> AllGridsInRoutes { get; set; }
         Image saveImage;
         Random rnd = new Random();
         static public List<SerializableDictionary<int, Vertex>> routePoints;
@@ -134,11 +134,11 @@ namespace SystAnalys_lr1
             g = new Grid(0, 0, 0, 0, 80, 40);
             routePoints = new List<SerializableDictionary<int, Vertex>>();
             edgePoints = new SerializableDictionary<int, List<Edge>>();
-            AllCoordinates = new SerializableDictionary<int, List<Point>>();
-            AllGridsInRoutes = new SerializableDictionary<int, List<int>>();
+            AllCoordinates = new SerializableDictionary<string, List<Point>>();
+            AllGridsInRoutes = new SerializableDictionary<string, List<int>>();
             TraficLightsInGrids = new List<int>();
             allstopPoints = new List<Vertex>();
-            stopPoints = new SerializableDictionary<int, List<Vertex>>();
+            stopPoints = new SerializableDictionary<string, List<Vertex>>();
             this.StyleManager = msmMain;
             addTraficLight.Enabled = false;
             delAllBusesOnRoute.Enabled = false;
@@ -162,12 +162,12 @@ namespace SystAnalys_lr1
             scrollX = 0;
             scrollY = 0;
 
-            routesEdge = new SerializableDictionary<int, List<Edge>>();
-            AllGridFilling = new List<Dictionary<int, int>>();
-            AllRouteGridFilling = new List<Dictionary<int, Dictionary<int, int>>>();
+            routesEdge = new SerializableDictionary<string, List<Edge>>();
+            //AllGridFilling = new List<Dictionary<int, int>>();
+            AllRouteGridFilling = new List<Dictionary<string, Dictionary<string, int>>>();
             TimeForAllGridFilling = new List<int>();
             traficLights = new List<TraficLight>();
-            routes = new SerializableDictionary<int, List<Vertex>>();
+            routes = new SerializableDictionary<string, List<Vertex>>();
             buses = new List<Bus>();
             if (File.Exists("../../SaveConfig/save.txt"))
             {
@@ -294,12 +294,12 @@ namespace SystAnalys_lr1
             hint.Visible = false;
         }
         //функция возвращает массив координат маршрутов (для 2 формы)
-        public SerializableDictionary<int, List<Point>> GetAllCoordinates()
+        public SerializableDictionary<string, List<Point>> GetAllCoordinates()
         {
             return AllCoordinates;
         }
         //функция возвращает массив загрязнений по маршрутам (для 2 формы)
-        public Dictionary<int, List<GridPart>> GetPollutionInRoutes()
+        public Dictionary<string, List<GridPart>> GetPollutionInRoutes()
         {
             return this.PollutionInRoutes;
         }
@@ -329,50 +329,50 @@ namespace SystAnalys_lr1
         //функция, которая моделирует движение
         // расширение эпица
         private void fdfd() { }
-        private void CreateGiftList()
-        {
-            GifList = new Dictionary<int, List<GridPart>>();
+        //private void CreateGiftList()
+        //{
+        //    GifList = new Dictionary<int, List<GridPart>>();
 
-        }
-        public Dictionary<int, List<GridPart>> getGifList()
-        {
-            return GifList;
-        }
-        private void iwantToDie()
-        {
-            foreach (var PollutionInRoute in GifList)
-            {
-                foreach (var PollutedGrid in PollutionInRoute.Value)
-                {
+        //}
+        //public Dictionary<int, List<GridPart>> getGifList()
+        //{
+        //    return GifList;
+        //}
+        //private void iwantToDie()
+        //{
+        //    foreach (var PollutionInRoute in GifList)
+        //    {
+        //        foreach (var PollutedGrid in PollutionInRoute.Value)
+        //        {
 
-                    GifList.Last().Value[PollutionInRoute.Value.IndexOf(PollutedGrid)].status = PollutedGrid.status;
-                }
-            }
-        }
-        private void GifListAdd()
-        {
-            if (GifList == null)
-            {
-                GifList = new Dictionary<int, List<GridPart>>();
-                GifList.Add(1, new List<GridPart>());
-                foreach (var Gridpart in TheGrid)
-                {
-                    GifList[1].Add(new GridPart(Gridpart.x, Gridpart.y));
-                }
-            }
-            else
-            {
-                GifList.Add(GifList.Last().Key + 1, new List<GridPart>());
-                foreach (var Gridpart in TheGrid)
-                {
-                    GifList[GifList.Last().Key].Add(new GridPart(Gridpart.x, Gridpart.y));
-                }
-                iwantToDie();
-            }
+        //            GifList.Last().Value[PollutionInRoute.Value.IndexOf(PollutedGrid)].status = PollutedGrid.status;
+        //        }
+        //    }
+        //}
+        //private void GifListAdd()
+        //{
+        //    if (GifList == null)
+        //    {
+        //        GifList = new Dictionary<int, List<GridPart>>();
+        //        GifList.Add(1, new List<GridPart>());
+        //        foreach (var Gridpart in TheGrid)
+        //        {
+        //            GifList[1].Add(new GridPart(Gridpart.x, Gridpart.y));
+        //        }
+        //    }
+        //    else
+        //    {
+        //        GifList.Add(GifList.Last().Key + 1, new List<GridPart>());
+        //        foreach (var Gridpart in TheGrid)
+        //        {
+        //            GifList[GifList.Last().Key].Add(new GridPart(Gridpart.x, Gridpart.y));
+        //        }
+        //        iwantToDie();
+        //    }
 
 
 
-        }
+        //}
         private void ExpandEpics(List<Epicenter> Epics)
         {
             if (ExpandEpicParamet.Count > 0)
@@ -382,196 +382,9 @@ namespace SystAnalys_lr1
 
         }
         //
-        private void normModeling()
-        {
-            //Bus.setEpicenters(Epics);
-            CreateAllOneGrids();
-            Parallel.ForEach(buses, (bus) =>
-            {
-                bus.Stop();
-                bus.Epicenters2.Clear();
-                //Epics.ForEach((b) => bus.Epicenters2.Add(
-                //    (Epicenter)b.Clone()
-                //));
-                int i = 0;
+ 
 
-                foreach (var EpicList in Epics)
-                {
-
-                    bus.Epicenters2.Add(new Epicenter(TheGrid));
-                    foreach (var Sector in EpicList.GetEpicenterGrid())
-                    {
-
-                        bus.Epicenters2[i].EpicenterGrid.Add(Sector.Key, new List<GridPart>());
-                        foreach (var Square in Sector.Value)
-                        {
-
-                            bus.Epicenters2[i].EpicenterGrid[Sector.Key].Add(new GridPart(Square.x, Square.y));
-                        }
-
-                    }
-                    i++;
-                }
-            });
-
-            CreatePollutionInRoutes();
-            small = 10000;
-            //label5.Text = "Время, за которое обнаружили загрязнение:" + " не обнаружено";
-            if (int.TryParse(textBox2.Text, out int test))
-            {
-                test = int.Parse(textBox2.Text) * 100;
-            };
-
-            Bus.FoundTime = small + 1;
-            int ExpandTimer = 0;
-            foreach (var bus in buses)
-            {
-                bus.TickCount_ = test;
-                bus.EpicFounded = false;
-                while (bus.TickCount_ > 0)
-                {
-                    if (ExpandTimer == 1000)
-                    {
-                        //ExpandEpics();
-                    }
-                    bus.MoveWithoutGraphics();
-                    bus.DetectRectangle2();
-                    if (bus.lastLocate != bus.Locate)
-                    {
-                        OneGridFilling[(int)bus.getLocate()] += 1;
-                        bus.lastLocate = bus.Locate;
-                        PollutionInRoutes[bus.getRoute()][(int)bus.getLocate()].status = bus.DetectEpicenter2();
-                        foreach (var Epic in bus.Epicenters2)
-                        {
-                            if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 5)
-                            {
-                                if (bus.EpicFounded == false)
-                                {
-                                    bus.EpicFounded = true;
-                                    if (bus.EpicFounded == true)
-                                    {
-                                        Bus.FoundTime = (test - bus.TickCount_) / 3;
-
-                                        if (small > Bus.FoundTime)
-                                        {
-                                            small = Bus.FoundTime;
-                                            //label5.Invoke(new Del((s) => label5.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
-                                        }
-
-                                    }
-                                }
-                            }
-                            //else { label5.Invoke(new Del((s) => label5.Text = s), Epic.DetectCount.ToString() + " " + (Epic.getEpicenterGrid()[1].Count / 5).ToString()); }
-                        }
-                    }
-                    bus.TickCount_--;
-                    ExpandTimer++;
-                    //ExpandTicks++;
-                }
-
-
-            }
-
-
-        }
-
-        private async void asModelingTest()
-        {
-            //Bus.setEpicenters(Epics);
-            CreateAllOneGrids();
-            Parallel.ForEach(buses, (bus) =>
-            {
-                bus.Stop();
-                bus.Epicenters2.Clear();
-                //Epics.ForEach((b) => bus.Epicenters2.Add(
-                //    (Epicenter)b.Clone()
-                //));
-                int i = 0;
-
-                foreach (var EpicList in Epics)
-                {
-                    bus.Epicenters2.Add(new Epicenter(TheGrid));
-                    foreach (var Sector in EpicList.GetEpicenterGrid())
-                    {
-                        bus.Epicenters2[i].EpicenterGrid.Add(Sector.Key, new List<GridPart>());
-                        foreach (var Square in Sector.Value)
-                        {
-
-                            bus.Epicenters2[i].EpicenterGrid[Sector.Key].Add(new GridPart(Square.x, Square.y));
-                        }
-
-                    }
-                    i++;
-                }
-            });
-
-            CreatePollutionInRoutes();
-            small = 10000;
-            //label5.Text = "Время, за которое обнаружили загрязнение:" + " не обнаружено";
-            if (int.TryParse(textBox2.Text, out int test))
-            {
-                test = int.Parse(textBox2.Text) * 100;
-            };
-
-            Bus.FoundTime = small + 1;
-            int ExpandTimer = 0;
-            await Task.Run(() =>
-            {
-
-                Parallel.ForEach(buses, (bus) =>
-                {
-                    lock (bus)
-                    {
-                        bus.TickCount_ = test;
-                        bus.EpicFounded = false;
-                        while (bus.TickCount_ > 0)
-                        {
-                            if (ExpandTimer == 1000)
-                            {
-                                //ExpandEpics();
-                            }
-
-                            bus.MoveWithoutGraphics();
-                            bus.DetectRectangle2();
-                            if (bus.lastLocate != bus.Locate)
-                            {
-                                OneGridFilling[(int)bus.getLocate()] += 1;
-                                bus.lastLocate = bus.Locate;
-                                PollutionInRoutes[bus.getRoute()][(int)bus.getLocate()].status = bus.DetectEpicenter2();
-                                foreach (var Epic in bus.Epicenters2)
-                                {
-                                    if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 5)
-                                    {
-                                        if (bus.EpicFounded == false)
-                                        {
-                                            bus.EpicFounded = true;
-                                            if (bus.EpicFounded == true)
-                                            {
-                                                Bus.FoundTime = (test - bus.TickCount_) / 3;
-
-                                                if (small > Bus.FoundTime)
-                                                {
-                                                    small = Bus.FoundTime;
-                                                    //label5.Invoke(new Del((s) => label5.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
-                                                }
-
-                                            }
-                                        }
-                                    }
-                                    //else { label5.Invoke(new Del((s) => label5.Text = s), Epic.DetectCount.ToString() + " " + (Epic.getEpicenterGrid()[1].Count / 5).ToString()); }
-                                }
-                            }
-                            bus.TickCount_--;
-                            ExpandTimer++;
-                            //ExpandTicks++;
-
-                        }
-                    }
-
-                });
-
-            });
-        }
+   
 
         private readonly SemaphoreSlim readLock = new SemaphoreSlim(1, 1);
         private async void asModeling()
@@ -662,7 +475,7 @@ namespace SystAnalys_lr1
                             }
                             ExpandTimer = 0;
                         }
-                        Console.WriteLine("Route " + (int)bus.getRoute());
+                        Console.WriteLine("Route " + bus.getRoute());
                         Console.WriteLine("Pos " + (int)bus.PositionAt);
                         if (TraficLightsInGrids.Contains(AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt])) //ошибка с выходом за пределы
                                                                                                                  //тушто нужно "вот эту" разкоментить
@@ -784,7 +597,7 @@ namespace SystAnalys_lr1
         //функция создает массив загрязнений в маршруте
         private void CreatePollutionInRoutes()
         {
-            PollutionInRoutes = new Dictionary<int, List<GridPart>>();
+            PollutionInRoutes = new Dictionary<string, List<GridPart>>();
             for (int i = 0; i < AllCoordinates.Count; i++)
             {
                 PollutionInRoutes.Add(AllCoordinates.ElementAt(i).Key, new List<GridPart>());
@@ -800,7 +613,7 @@ namespace SystAnalys_lr1
         }
         private void CreateGridRoutes()
         {
-            PollutionInRoutes = new Dictionary<int, List<GridPart>>();
+            PollutionInRoutes = new Dictionary<string, List<GridPart>>();
             for (int i = 0; i < AllCoordinates.Count; i++)
             {
                 PollutionInRoutes.Add(AllCoordinates.ElementAt(i).Key, new List<GridPart>());
@@ -880,32 +693,32 @@ namespace SystAnalys_lr1
             //    };
             //}
         }
-        private void button5_Click(object sender, EventArgs e)
-        {
-            if (isChecked == false)
-            {
-                if (EmptyGridCount != null)
-                {
-                    DrawEmptyGrid();
-                    isChecked = true;
-                }
-            }
-            else
-            {
-                //G.clearSheet();
-                for (int i = 0; i < routes.Count; i++)
-                {
-                    //if (routes.ElementAt(i).Key == int.Parse(comboBox1.Text))
-                    //{
-                    G.clearSheet();
-                    //G.drawALLGraph(routes.ElementAt(i).Value, E);
-                    sheet.Image = G.GetBitmap();
-                    DrawGrid();
-                    //};
-                }
-                isChecked = false;
-            }
-        }
+        //private void button5_Click(object sender, EventArgs e)
+        //{
+        //    if (isChecked == false)
+        //    {
+        //        if (EmptyGridCount != null)
+        //        {
+        //            DrawEmptyGrid();
+        //            isChecked = true;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        //G.clearSheet();
+        //        for (int i = 0; i < routes.Count; i++)
+        //        {
+        //            //if (routes.ElementAt(i).Key == int.Parse(comboBox1.Text))
+        //            //{
+        //            G.clearSheet();
+        //            //G.drawALLGraph(routes.ElementAt(i).Value, E);
+        //            sheet.Image = G.GetBitmap();
+        //            DrawGrid();
+        //            //};
+        //        }
+        //        isChecked = false;
+        //    }
+        //}
 
 
         private void button7_Click(object sender, EventArgs e)
@@ -1039,9 +852,9 @@ namespace SystAnalys_lr1
             for (int i = 0; i < routes.Count; i++)
             {
                 //Console.WriteLine();
-                if (routes.ElementAt(i).Key == int.Parse(changeRoute.Text))
+                if (routes.ElementAt(i).Key == (changeRoute.Text))
                 {
-                    selectedRoute = int.Parse(changeRoute.Text);
+                    selectedRoute = (changeRoute.Text);
                     selectRoute.Enabled = true;
                     selectButton.Enabled = true;
                     deleteBus.Enabled = true;
@@ -1058,7 +871,7 @@ namespace SystAnalys_lr1
                     checkBusesOnRoute();
                     G.clearSheet();
                     G.drawALLGraph(V, E);
-                    G.drawALLGraph(routes[int.Parse(changeRoute.Text)], routesEdge[int.Parse(changeRoute.Text)], 1);
+                    G.drawALLGraph(routes[(changeRoute.Text)], routesEdge[(changeRoute.Text)], 1);
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
                     selected = new List<int>();
@@ -1145,7 +958,7 @@ namespace SystAnalys_lr1
             selectRoute.Enabled = true;
             G.clearSheet();
             G.drawALLGraph(V, E);
-            G.drawALLGraph(routes[int.Parse(changeRoute.Text)], routesEdge[int.Parse(changeRoute.Text)], 1);
+            G.drawALLGraph(routes[(changeRoute.Text)], routesEdge[(changeRoute.Text)], 1);
             sheet.Image = G.GetBitmap();
             selected1 = -1;
             stopPointButton.Enabled = true;
@@ -1263,7 +1076,7 @@ namespace SystAnalys_lr1
                 addTraficLight.Enabled = true;
                 checkBuses();
             };
-            if (Int32.TryParse(changeRoute.Text, out number) != false)
+            if (changeRoute.SelectedIndex>1)
             {
                 allBusSettings.Enabled = false;
                 addBus.Enabled = true;
@@ -1273,7 +1086,7 @@ namespace SystAnalys_lr1
                 drawVertexButton.Enabled = false;
                 deleteButton.Enabled = false;
                 addTraficLight.Enabled = false;
-                G.drawALLGraph(routes[int.Parse(changeRoute.Text)], routesEdge[int.Parse(changeRoute.Text)], 1);
+                G.drawALLGraph(routes[(changeRoute.Text)], routesEdge[(changeRoute.Text)], 1);
                 checkBusesOnRoute();
             }
             label12.Visible = false;
@@ -1327,7 +1140,7 @@ namespace SystAnalys_lr1
                     List<Bus> test = new List<Bus>();
                     foreach (var b in buses)
                     {
-                        if (b.route == int.Parse(changeRoute.Text))
+                        if (b.route == (changeRoute.Text))
                         {
                             b.Stop();
                             mainPanel.Controls.Remove(b.busPic);
@@ -1339,9 +1152,9 @@ namespace SystAnalys_lr1
                         buses.Remove(b);
                     }
 
-                    routes.Remove(int.Parse(changeRoute.Text));
-                    routesEdge.Remove(int.Parse(changeRoute.Text));
-                    AllCoordinates.Remove(int.Parse(changeRoute.Text));
+                    routes.Remove(changeRoute.Text);
+                    routesEdge.Remove(changeRoute.Text);
+                    AllCoordinates.Remove(changeRoute.Text);
                     SaveRoutes(saveF, savepath + "/");
                     addInComboBox();
                     changeRoute.Text = changeRoute.Items[0].ToString();
@@ -1453,7 +1266,7 @@ namespace SystAnalys_lr1
                 Bus.setGrid(TheGrid);
                 Bus.setMap(sheet);
                 Bus.setAllCoordinates(AllCoordinates);
-                CreateAllOneGrids();
+       
                 addInComboBox();
                 globalMap = new Bitmap(sheet.Image);
                 Ep = new DisplayEpicenters(this);
@@ -1495,12 +1308,12 @@ namespace SystAnalys_lr1
             {
                 if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
                 {
-                    routes[int.Parse(changeRoute.Text)].Clear();
-                    routesEdge[int.Parse(changeRoute.Text)].Clear();
+                    routes[changeRoute.Text].Clear();
+                    routesEdge[changeRoute.Text].Clear();
                     List<Bus> test = new List<Bus>();
                     foreach (var b in buses)
                     {
-                        if (b.route == int.Parse(changeRoute.Text))
+                        if (b.route == changeRoute.Text)
                         {
                             b.Stop();
                             mainPanel.Controls.Remove(b.busPic);
@@ -1512,7 +1325,7 @@ namespace SystAnalys_lr1
                         buses.Remove(b);
                     }
 
-                    AllCoordinates[int.Parse(changeRoute.Text)].Clear();
+                    AllCoordinates[changeRoute.Text].Clear();
                     SaveRoutes();
                     G.clearSheet();
                     G.drawALLGraph(V, E);
@@ -1578,7 +1391,7 @@ namespace SystAnalys_lr1
                 addTraficLight.Enabled = true;
                 checkBuses();
             };
-            if (Int32.TryParse(changeRoute.Text, out number) != false)
+            if (changeRoute.SelectedIndex>1)
             {
                 addBus.Enabled = true;
                 deleteBus.Enabled = true;
@@ -2147,7 +1960,8 @@ namespace SystAnalys_lr1
                 string path = "";
                 using (var dialog = new FolderBrowserDialog())
                 {
-                    dialog.SelectedPath = Path.GetFullPath(savepath);
+                    dialog.SelectedPath = Path.GetFullPath(savepath); //ошибка если нажать "создать модель" а потом "загрузить
+
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
                         if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
@@ -2209,7 +2023,7 @@ namespace SystAnalys_lr1
                 deleteButton.Enabled = true;
                 checkBuses();
             };
-            if (Int32.TryParse(changeRoute.Text, out number) != false)
+            if (changeRoute.SelectedIndex>1)
             {
                 allBusSettings.Enabled = false;
                 addBus.Enabled = true;
@@ -2219,7 +2033,7 @@ namespace SystAnalys_lr1
                 drawVertexButton.Enabled = false;
                 deleteButton.Enabled = true;
                 addTraficLight.Enabled = false;
-                G.drawALLGraph(routes[int.Parse(changeRoute.Text)], routesEdge[int.Parse(changeRoute.Text)], 1);
+                G.drawALLGraph(routes[changeRoute.Text], routesEdge[changeRoute.Text], 1);
                 checkBusesOnRoute();
             }
             selectRoute.Enabled = true;
@@ -2234,7 +2048,7 @@ namespace SystAnalys_lr1
         }
 
 
-        List<SerializableDictionary<int, Edge>> routePointsEdge = new List<SerializableDictionary<int, Edge>>();
+        List<SerializableDictionary<string, Edge>> routePointsEdge = new List<SerializableDictionary<string, Edge>>();
         private void Routes(int num, List<Vertex> route, List<Edge> edges)
         {
             SerializableDictionary<int, Vertex> rp = new SerializableDictionary<int, Vertex>();
@@ -2271,10 +2085,7 @@ namespace SystAnalys_lr1
             //  routePointsEdge.Add(ep);
         }
 
-        private void AddEpicenters()
-        {
-
-        }
+       
 
         private void Save_Click(object sender, EventArgs e)
         {
@@ -2590,14 +2401,14 @@ namespace SystAnalys_lr1
                     using (StreamReader reader = new StreamReader(load + "StopPoints.xml"))
                     {
                         XmlSerializer deserializerV = new XmlSerializer(typeof(SerializableDictionary<int, List<Vertex>>));
-                        stopPoints = (SerializableDictionary<int, List<Vertex>>)deserializerV.Deserialize(reader);
+                        stopPoints = (SerializableDictionary<string, List<Vertex>>)deserializerV.Deserialize(reader);
                         foreach (var sp in stopPoints.Values)
                         {
                             foreach (var s in sp)
                                 if (!allstopPoints.Contains(s))
                                     allstopPoints.Add(s);
                         }
-                        stopPointsInGrids = new SerializableDictionary<int, List<int>>();
+                        stopPointsInGrids = new SerializableDictionary<string, List<int>>();
                         foreach (var StopList in stopPoints)
                         {
                             stopPointsInGrids.Add(StopList.Key, new List<int>());
@@ -2614,8 +2425,8 @@ namespace SystAnalys_lr1
                 {
                     using (StreamReader reader = new StreamReader(load + "StopPoints.json"))
                     {
-                        stopPoints = JsonConvert.DeserializeObject<SerializableDictionary<int, List<Vertex>>>(File.ReadAllText(load + "StopPoints.json")); //reader.ReadToEnd()
-                        stopPointsInGrids = new SerializableDictionary<int, List<int>>();
+                        stopPoints = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Vertex>>>(File.ReadAllText(load + "StopPoints.json")); //reader.ReadToEnd()
+                        stopPointsInGrids = new SerializableDictionary<string, List<int>>();
                         foreach (var StopList in stopPoints)
                         {
                             stopPointsInGrids.Add(StopList.Key, new List<int>());
@@ -2633,14 +2444,14 @@ namespace SystAnalys_lr1
                 if (File.Exists(load + "AllCoordinates.xml"))
                 {
                     using (StreamReader reader = new StreamReader(load + "AllCoordinates.xml"))
-                        AllCoordinates = (SerializableDictionary<int, List<Point>>)deserializerAllCoor.Deserialize(reader);
+                        AllCoordinates = (SerializableDictionary<string, List<Point>>)deserializerAllCoor.Deserialize(reader);
                 }
 
                 if (File.Exists(load + "AllCoordinates.json"))
                 {
                     using (StreamReader reader = new StreamReader(load + "AllCoordinates.json"))
                     {
-                        AllCoordinates = JsonConvert.DeserializeObject<SerializableDictionary<int, List<Point>>>(reader.ReadToEnd());
+                        AllCoordinates = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Point>>>(reader.ReadToEnd());
                     }
                 }
                 if (File.Exists(load + "traficLights.xml"))
@@ -2683,14 +2494,14 @@ namespace SystAnalys_lr1
                 if (File.Exists(load + "AllGridsInRoutes.xml"))
                 {
                     using (StreamReader reader = new StreamReader(load + "AllGridsInRoutes.xml"))
-                        AllGridsInRoutes = (SerializableDictionary<int, List<int>>)deserializerAllGridsInRoutes.Deserialize(reader);
+                        AllGridsInRoutes = (SerializableDictionary<string, List<int>>)deserializerAllGridsInRoutes.Deserialize(reader);
                 }
 
                 if (File.Exists(load + "AllGridsInRoutes.json"))
                 {
                     using (StreamReader reader = new StreamReader(load + "AllGridsInRoutes.json"))
                     {
-                        AllGridsInRoutes = JsonConvert.DeserializeObject<SerializableDictionary<int, List<int>>>(reader.ReadToEnd());
+                        AllGridsInRoutes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<int>>>(reader.ReadToEnd());
                     }
                 }
                 loading.Value = 50;
@@ -2767,21 +2578,21 @@ namespace SystAnalys_lr1
                 if (File.Exists(load + "vertexRoutes.xml"))
                 {
                     using (StreamReader reader = new StreamReader(load + "vertexRoutes.xml"))
-                        routes = (SerializableDictionary<int, List<Vertex>>)Ver.Deserialize(reader);
+                        routes = (SerializableDictionary<string, List<Vertex>>)Ver.Deserialize(reader);
                 }
 
                 if (File.Exists(load + "vertexRoutes.json"))
                 {
                     using (StreamReader reader = new StreamReader(load + "vertexRoutes.json"))
                     {
-                        routes = JsonConvert.DeserializeObject<SerializableDictionary<int, List<Vertex>>>(reader.ReadToEnd());
+                        routes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Vertex>>>(reader.ReadToEnd());
                     }
                 }
                 loading.Value = 80;
                 if (File.Exists(load + "edgeRoutes.xml"))
                 {
                     using (StreamReader reader = new StreamReader(load + "edgeRoutes.xml"))
-                        routesEdge = (SerializableDictionary<int, List<Edge>>)Edge.Deserialize(reader);
+                        routesEdge = (SerializableDictionary<string, List<Edge>>)Edge.Deserialize(reader);
                     saveF = "xml";
                 }
 
@@ -2789,7 +2600,7 @@ namespace SystAnalys_lr1
                 {
                     using (StreamReader reader = new StreamReader(load + "edgeRoutes.json"))
                     {
-                        routesEdge = JsonConvert.DeserializeObject<SerializableDictionary<int, List<Edge>>>(reader.ReadToEnd());
+                        routesEdge = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Edge>>>(reader.ReadToEnd());
                     }
                     saveF = "json";
                 }
@@ -2807,7 +2618,6 @@ namespace SystAnalys_lr1
                 Bus.setMap(sheet);
                 Bus.setAllCoordinates(AllCoordinates);
 
-                CreateAllOneGrids();
 
                 //Ep = new DisplayEpicenters(this);
                 //Ep.Show();
@@ -3006,9 +2816,9 @@ namespace SystAnalys_lr1
                 return;
             }
 
-            if (Int32.TryParse(changeRoute.Text, out number) != false)
+            if (changeRoute.SelectedIndex > 1)
             {
-                List<Vertex> routeV = routes[int.Parse(changeRoute.Text)];
+                List<Vertex> routeV = routes[changeRoute.Text];
                 if (stopPointButton.Enabled == false)
                 {
                     foreach (var sp in allstopPoints)
@@ -3019,19 +2829,19 @@ namespace SystAnalys_lr1
                             {
                                 if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.width * zoom) && (e.Y < gridPart.y * zoom + GridPart.height * zoom)))
                                 {
-                                    if (stopPoints.ContainsKey(int.Parse(changeRoute.Text)))
+                                    if (stopPoints.ContainsKey(changeRoute.Text))
                                     {
-                                        stopPoints[int.Parse(changeRoute.Text)].Add(new Vertex(sp.x, sp.y));
-                                        stopPoints[int.Parse(changeRoute.Text)].Last().gridNum = GetTheGrid().IndexOf(gridPart);
-                                        stopPointsInGrids[int.Parse(changeRoute.Text)].Add(GetTheGrid().IndexOf(gridPart));
+                                        stopPoints[changeRoute.Text].Add(new Vertex(sp.x, sp.y));
+                                        stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
+                                        stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart));
                                     }
                                     else
                                     {
-                                        stopPoints.Add(int.Parse(changeRoute.Text), new List<Vertex>());
-                                        stopPointsInGrids.Add(int.Parse(changeRoute.Text), new List<int>());
-                                        stopPoints[int.Parse(changeRoute.Text)].Add(new Vertex(sp.x, sp.y));
-                                        stopPoints[int.Parse(changeRoute.Text)].Last().gridNum = GetTheGrid().IndexOf(gridPart);
-                                        stopPointsInGrids[int.Parse(changeRoute.Text)].Add(GetTheGrid().IndexOf(gridPart));
+                                        stopPoints.Add(changeRoute.Text, new List<Vertex>());
+                                        stopPointsInGrids.Add(changeRoute.Text, new List<int>());
+                                        stopPoints[changeRoute.Text].Add(new Vertex(sp.x, sp.y));
+                                        stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
+                                        stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart));
                                     }
                                     //G.clearSheet();
                                     G.drawStopRouteVertex(sp.x, sp.y);
@@ -3047,7 +2857,7 @@ namespace SystAnalys_lr1
                 //нажата кнопка "выбрать вершину", ищем степень вершины
                 if (selectButton.Enabled == false)
                 {
-                    c.asSelect(e, routeV, routesEdge[int.Parse(changeRoute.Text)], G, sheet, 1);
+                    c.asSelect(e, routeV, routesEdge[changeRoute.Text], G, sheet, 1);
                 }
                 if (selectRoute.Enabled == false)
                 {
@@ -3070,11 +2880,11 @@ namespace SystAnalys_lr1
                                 {
                                     if ((ed.v1 == selected[0] && ed.v2 == selected[1]) || (ed.v2 == selected[0] && ed.v1 == selected[1]))
                                     {
-                                        routesEdge[int.Parse(changeRoute.Text)].Add(new Edge(routeV.Count - 1, routeV.Count));
+                                        routesEdge[changeRoute.Text].Add(new Edge(routeV.Count - 1, routeV.Count));
                                         routeV.Add(new Vertex(V[i].x, V[i].y));
                                         G.clearSheet();
                                         G.drawALLGraph(V, E);
-                                        G.drawALLGraph(routeV, routesEdge[int.Parse(changeRoute.Text)], 1);
+                                        G.drawALLGraph(routeV, routesEdge[changeRoute.Text], 1);
                                         sheet.Image = G.GetBitmap();
                                         DrawGrid();
                                         G.drawSelectedVertex(V[i].x, V[i].y);
@@ -3095,7 +2905,7 @@ namespace SystAnalys_lr1
                 {
                     //try
                     //{
-                    if (AllCoordinates[int.Parse(changeRoute.Text)].Count != 0)
+                    if (AllCoordinates[changeRoute.Text].Count != 0)
                     {
                         if (buses.Count != 0)
                             sizeBus = buses.Last().busPic.Width;
@@ -3115,14 +2925,14 @@ namespace SystAnalys_lr1
 
                         if (e.Button == MouseButtons.Left)
                         {
-                            double min = Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)].Last().X - e.X / zoom), 2) + Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)].Last().Y - e.Y / zoom), 2);
-                            for (int i = 0; i < AllCoordinates[int.Parse(changeRoute.Text)].Count; i++)
+                            double min = Math.Pow((AllCoordinates[changeRoute.Text].Last().X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text].Last().Y - e.Y / zoom), 2);
+                            for (int i = 0; i < AllCoordinates[changeRoute.Text].Count; i++)
                             {
-                                if (Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].Y - e.Y / zoom), 2) <= G.R * G.R * 500)
+                                if (Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2) <= G.R * G.R * 500)
                                 {
-                                    if ((Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].Y - e.Y / zoom), 2) < min))
+                                    if ((Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2) < min))
                                     {
-                                        min = Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[int.Parse(changeRoute.Text)][i].Y - e.Y / zoom), 2);
+                                        min = Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2);
                                         pos = i;
                                     }
                                 }
@@ -3138,7 +2948,7 @@ namespace SystAnalys_lr1
                                     graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(10, 10));
                                 }
                             }
-                            buses.Add(new Bus(routes[int.Parse(changeRoute.Text)], busPic, pos, backsideCheck.Checked, int.Parse(changeRoute.Text), true));
+                            buses.Add(new Bus(routes[changeRoute.Text], busPic, pos, backsideCheck.Checked, changeRoute.Text, true));
                         }
                         else
                         {
@@ -3150,7 +2960,7 @@ namespace SystAnalys_lr1
                                     graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(10, 10));
                                 }
                             }
-                            buses.Add(new Bus(routes[int.Parse(changeRoute.Text)], busPic, pos, backsideCheck.Checked, int.Parse(changeRoute.Text), false));
+                            buses.Add(new Bus(routes[changeRoute.Text], busPic, pos, backsideCheck.Checked, changeRoute.Text, false));
                         };
                         //  
                         //  Bus.AllCoordinates = AllCoordinates;
@@ -3164,7 +2974,7 @@ namespace SystAnalys_lr1
                 }
                 if (deleteBus.Enabled == false)
                 {
-                    if (AllCoordinates[int.Parse(changeRoute.Text)].Count != 0)
+                    if (AllCoordinates[changeRoute.Text].Count != 0)
                     {
                         int? pos = null;
                         double min = Math.Pow((sheet.Image.Width - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((sheet.Image.Height - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2);
@@ -3172,7 +2982,7 @@ namespace SystAnalys_lr1
                         {
                             if (Math.Pow((buses[i].busPic.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].busPic.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) <= buses[i].R * buses[i].R * 500)
                             {
-                                if (buses[i].route == int.Parse(changeRoute.Text))
+                                if (buses[i].route == changeRoute.Text)
                                 {
                                     if (Math.Pow((buses[i].busPic.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].busPic.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) < min)
                                     {
@@ -3191,7 +3001,7 @@ namespace SystAnalys_lr1
                         }
                         G.clearSheet();
                         G.drawALLGraph(V, E);
-                        G.drawALLGraph(routeV, routesEdge[int.Parse(changeRoute.Text)], 1);
+                        G.drawALLGraph(routeV, routesEdge[changeRoute.Text], 1);
                         sheet.Image = G.GetBitmap();
                         DrawGrid();
                     }
@@ -3227,7 +3037,7 @@ namespace SystAnalys_lr1
                                         {
 
                                             // if (!routeV.Contains(new Vertex(V[i].x, V[i].y))) {
-                                            routesEdge[int.Parse(changeRoute.Text)].Add(new Edge(routeV.Count - 1, routeV.Count));
+                                            routesEdge[changeRoute.Text].Add(new Edge(routeV.Count - 1, routeV.Count));
                                             routeV.Add(new Vertex(V[i].x, V[i].y));
                                             //  routesEdge[int.Parse(changeRoute.Text)].Add(new Edge(routeV.Count - (routeV.Count / 2 + 1), routeV.Count - (routeV.Count / 2)));                                    
                                             G.drawEdge(V[selected1], V[selected2], E[E.Count - 1], 1);
@@ -3250,7 +3060,7 @@ namespace SystAnalys_lr1
                                     //};
                                     G.clearSheet();
                                     G.drawALLGraph(V, E);
-                                    G.drawALLGraph(routeV, routesEdge[int.Parse(changeRoute.Text)], 1);
+                                    G.drawALLGraph(routeV, routesEdge[changeRoute.Text], 1);
                                     selected1 = -1;
                                     selected2 = -1;
                                     sheet.Image = G.GetBitmap();
@@ -3278,12 +3088,12 @@ namespace SystAnalys_lr1
                                        //ищем, возможно была нажата вершина
 
 
-                    foreach (var stopRoute in stopPoints[int.Parse(changeRoute.Text)])
+                    foreach (var stopRoute in stopPoints[changeRoute.Text])
                     {
                         if (Math.Pow((stopRoute.x - e.X / zoom), 2) + Math.Pow((stopRoute.y - e.Y / zoom), 2) <= G.R * G.R)
                         {
-                            stopPointsInGrids[int.Parse(changeRoute.Text)].Remove(stopRoute.gridNum);
-                            stopPoints[int.Parse(changeRoute.Text)].Remove(stopRoute);
+                            stopPointsInGrids[changeRoute.Text].Remove(stopRoute.gridNum);
+                            stopPoints[changeRoute.Text].Remove(stopRoute);
                             flag = true;
                             break;
                         }
@@ -3304,17 +3114,17 @@ namespace SystAnalys_lr1
                     {
                         if (Math.Pow((routeV[i].x - e.X / zoom), 2) + Math.Pow((routeV[i].y - e.Y / zoom), 2) <= G.R * G.R)
                         {
-                            for (int j = 0; j < routesEdge[int.Parse(changeRoute.Text)].Count; j++)
+                            for (int j = 0; j < routesEdge[changeRoute.Text].Count; j++)
                             {
-                                if ((routesEdge[int.Parse(changeRoute.Text)][j].v1 == i) || (routesEdge[int.Parse(changeRoute.Text)][j].v2 == i))
+                                if ((routesEdge[changeRoute.Text][j].v1 == i) || (routesEdge[changeRoute.Text][j].v2 == i))
                                 {
-                                    routesEdge[int.Parse(changeRoute.Text)].RemoveAt(j);
+                                    routesEdge[changeRoute.Text].RemoveAt(j);
                                     j--;
                                 }
                                 else
                                 {
-                                    if (routesEdge[int.Parse(changeRoute.Text)][j].v1 > i) routesEdge[int.Parse(changeRoute.Text)][j].v1--;
-                                    if (routesEdge[int.Parse(changeRoute.Text)][j].v2 > i) routesEdge[int.Parse(changeRoute.Text)][j].v2--;
+                                    if (routesEdge[changeRoute.Text][j].v1 > i) routesEdge[changeRoute.Text][j].v1--;
+                                    if (routesEdge[changeRoute.Text][j].v2 > i) routesEdge[changeRoute.Text][j].v2--;
                                 }
                             }
                             routeV.RemoveAt(i);
@@ -3325,14 +3135,14 @@ namespace SystAnalys_lr1
                     //ищем, возможно было нажато ребро
                     if (!flag)
                     {
-                        for (int i = 0; i < routesEdge[int.Parse(changeRoute.Text)].Count; i++)
+                        for (int i = 0; i < routesEdge[changeRoute.Text].Count; i++)
                         {
-                            if (routesEdge[int.Parse(changeRoute.Text)][i].v1 == routesEdge[int.Parse(changeRoute.Text)][i].v2) //если это петля
+                            if (routesEdge[changeRoute.Text][i].v1 == routesEdge[changeRoute.Text][i].v2) //если это петля
                             {
-                                if ((Math.Pow((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x - G.R - e.X / zoom), 2) + Math.Pow((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y - G.R - e.Y / zoom), 2) <= ((G.R + 2) * (G.R + 2))) &&
-                                    (Math.Pow((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x - G.R - e.X / zoom), 2) + Math.Pow((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y - G.R - e.Y / zoom), 2) >= ((G.R - 2) * (G.R - 2))))
+                                if ((Math.Pow((routeV[routesEdge[changeRoute.Text][i].v1].x - G.R - e.X / zoom), 2) + Math.Pow((routeV[routesEdge[changeRoute.Text][i].v1].y - G.R - e.Y / zoom), 2) <= ((G.R + 2) * (G.R + 2))) &&
+                                    (Math.Pow((routeV[routesEdge[changeRoute.Text][i].v1].x - G.R - e.X / zoom), 2) + Math.Pow((routeV[routesEdge[changeRoute.Text][i].v1].y - G.R - e.Y / zoom), 2) >= ((G.R - 2) * (G.R - 2))))
                                 {
-                                    routesEdge[int.Parse(changeRoute.Text)].RemoveAt(i);
+                                    routesEdge[changeRoute.Text].RemoveAt(i);
                                     flag = true;
                                     break;
                                 }
@@ -3341,13 +3151,13 @@ namespace SystAnalys_lr1
                             {
                                 try
                                 {
-                                    if (((e.X / zoom - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x) * (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].y - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y) / (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x) + routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y) <= (e.Y / zoom + 4) &&
-                                        ((e.X / zoom - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x) * (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].y - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y) / (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x - routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x) + routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].y) >= (e.Y / zoom - 4))
+                                    if (((e.X / zoom - routeV[routesEdge[changeRoute.Text][i].v1].x) * (routeV[routesEdge[(changeRoute.Text)][i].v2].y - routeV[routesEdge[changeRoute.Text][i].v1].y) / (routeV[routesEdge[(changeRoute.Text)][i].v2].x - routeV[routesEdge[(changeRoute.Text)][i].v1].x) + routeV[routesEdge[(changeRoute.Text)][i].v1].y) <= (e.Y / zoom + 4) &&
+                                        ((e.X / zoom - routeV[routesEdge[(changeRoute.Text)][i].v1].x) * (routeV[routesEdge[(changeRoute.Text)][i].v2].y - routeV[routesEdge[(changeRoute.Text)][i].v1].y) / (routeV[routesEdge[(changeRoute.Text)][i].v2].x - routeV[routesEdge[(changeRoute.Text)][i].v1].x) + routeV[routesEdge[(changeRoute.Text)][i].v1].y) >= (e.Y / zoom - 4))
                                     {
-                                        if ((routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x <= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x && routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x <= e.X / zoom && e.X / zoom <= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x) ||
-                                            (routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x >= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x && routeV[routesEdge[int.Parse(changeRoute.Text)][i].v1].x >= e.X / zoom && e.X / zoom >= routeV[routesEdge[int.Parse(changeRoute.Text)][i].v2].x))
+                                        if ((routeV[routesEdge[(changeRoute.Text)][i].v1].x <= routeV[routesEdge[(changeRoute.Text)][i].v2].x && routeV[routesEdge[(changeRoute.Text)][i].v1].x <= e.X / zoom && e.X / zoom <= routeV[routesEdge[(changeRoute.Text)][i].v2].x) ||
+                                            (routeV[routesEdge[(changeRoute.Text)][i].v1].x >= routeV[routesEdge[(changeRoute.Text)][i].v2].x && routeV[routesEdge[(changeRoute.Text)][i].v1].x >= e.X / zoom && e.X / zoom >= routeV[routesEdge[(changeRoute.Text)][i].v2].x))
                                         {
-                                            routesEdge[int.Parse(changeRoute.Text)].RemoveAt(i);
+                                            routesEdge[(changeRoute.Text)].RemoveAt(i);
                                             flag = true;
                                             break;
                                         }
@@ -3366,7 +3176,7 @@ namespace SystAnalys_lr1
                     {
                         G.clearSheet();
                         G.drawALLGraph(V, E);
-                        G.drawALLGraph(routeV, routesEdge[int.Parse(changeRoute.Text)], 1);
+                        G.drawALLGraph(routeV, routesEdge[(changeRoute.Text)], 1);
                         sheet.Image = G.GetBitmap();
                         DrawGrid();
                     }
@@ -3375,7 +3185,7 @@ namespace SystAnalys_lr1
                 //   
 
                 DrawGrid();
-                CreateOneRouteCoordinates(int.Parse(changeRoute.Text));
+                CreateOneRouteCoordinates((changeRoute.Text));
                 Bus.AllCoordinates = AllCoordinates;
                 return;
             }
@@ -3419,7 +3229,7 @@ namespace SystAnalys_lr1
                 addTraficLight.Enabled = true;
                 checkBuses();
             };
-            if (Int32.TryParse(changeRoute.Text, out number) != false)
+            if (changeRoute.SelectedIndex > 1)
             {
                 selectRoute.Enabled = true;
                 deleteBus.Enabled = true;
@@ -3470,7 +3280,7 @@ namespace SystAnalys_lr1
                     delAllBusesOnRoute.Enabled = false;
                 };
                 checkBusesOnRoute();
-                if (Int32.TryParse(changeRoute.Text, out number) != false)
+                if (changeRoute.SelectedIndex > 1)
                 {
                     selectRoute.Enabled = true;
                     deleteBus.Enabled = true;
@@ -3485,7 +3295,7 @@ namespace SystAnalys_lr1
                     List<Bus> b = new List<Bus>();
                     foreach (var bus in buses)
                     {
-                        if (bus.route == Int32.Parse(changeRoute.Text))
+                        if (bus.route == (changeRoute.Text))
                         {
                             bus.Stop();
                             mainPanel.Controls.Remove(bus.busPic);
@@ -3523,7 +3333,7 @@ namespace SystAnalys_lr1
         {
             foreach (var bus in buses)
             {
-                if (bus.route == Int32.Parse(changeRoute.Text))
+                if (bus.route == (changeRoute.Text))
                 {
                     delAllBusesOnRoute.Enabled = true;
                     break;
@@ -3671,7 +3481,7 @@ namespace SystAnalys_lr1
                 addTraficLight.Enabled = true;
                 checkBuses();
             };
-            if (Int32.TryParse(changeRoute.Text, out number) != false)
+            if (changeRoute.SelectedIndex > 1)
             {
                 selectRoute.Enabled = false;
                 deleteBus.Enabled = true;
@@ -3743,12 +3553,12 @@ namespace SystAnalys_lr1
             Ep.ERefreshRouts();
             if (addR.textBox1.Text != "")
             {
-                if (!routes.ContainsKey(int.Parse(this.addR.textBox1.Text)))
+                if (!routes.ContainsKey(this.addR.textBox1.Text))
                 {
-                    routes.Add(int.Parse(this.addR.textBox1.Text), new List<Vertex>());
-                    routesEdge.Add(int.Parse(this.addR.textBox1.Text), new List<Edge>());
+                    routes.Add((this.addR.textBox1.Text), new List<Vertex>());
+                    routesEdge.Add((this.addR.textBox1.Text), new List<Edge>());
                     changeRoute.Items.Add(addR.textBox1.Text);
-                    stopPoints.Add(int.Parse(this.addR.textBox1.Text), new List<Vertex>());
+                    stopPoints.Add((this.addR.textBox1.Text), new List<Vertex>());
                 }
             }
         }
@@ -3907,10 +3717,10 @@ namespace SystAnalys_lr1
                 //CreateAllOneGrids();
 
                 G.clearSheet();
-                if (Int32.TryParse(changeRoute.Text, out number) != false)
+                if (changeRoute.SelectedIndex > 1)
                 {
                     G.drawALLGraph(V, E);
-                    G.drawALLGraph(routes[int.Parse(changeRoute.Text)], routesEdge[int.Parse(changeRoute.Text)], 1);
+                    G.drawALLGraph(routes[(changeRoute.Text)], routesEdge[(changeRoute.Text)], 1);
                 }
                 else if (changeRoute.Text == MainStrings.none)
                 {

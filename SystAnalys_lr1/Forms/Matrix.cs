@@ -29,7 +29,7 @@ namespace SystAnalys_lr1
             return buses;
         }
 
-        SortedDictionary<int, List<Vertex>> routesSorted;
+        SortedDictionary<string, List<Vertex>> routesSorted;
 
         private void Matrix()
         {
@@ -40,7 +40,7 @@ namespace SystAnalys_lr1
 
             SplitBuses();
 
-            routesSorted  = new SortedDictionary<int, List<Vertex>>(routes); 
+            routesSorted  = new SortedDictionary<string, List<Vertex>>(routes); 
            
             foreach(var x in routes)
             {
