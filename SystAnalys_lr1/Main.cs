@@ -2137,7 +2137,7 @@ namespace SystAnalys_lr1
                             wsheet = sheet.Width;
                             hsheet = sheet.Height;
                             saveImage = sheet.Image;
-                            metroTrackBar1.Value = 1;                          
+                            metroTrackBar1.Value = 1;
                             ZoomHelper();
                             LoadRoutes(path + "/");
                             savepath = path;
@@ -3878,6 +3878,13 @@ namespace SystAnalys_lr1
                     DrawGrid();
                     // //AsyncCreateAllCoordinates()();
                     Console.WriteLine("Done");
+                    if (Bus.InstaStop == true)
+                    {
+                        foreach (var bus in buses)
+                        {
+                            bus.AlignBus();
+                        }
+                    }
                 }
             }
             catch//(OutOfMemoryException ex)

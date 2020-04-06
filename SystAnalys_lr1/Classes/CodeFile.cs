@@ -423,7 +423,7 @@ namespace SystAnalys_lr1
         static public int small { get; set; } = 1000;
         public int passivniyTick;
         //не позволит басу двигаться на светофорах когда он должен стоять
-        private bool InstaStop = false;
+        public static bool InstaStop { get; set; } = false;
         public int oldSize = 0;
         public static void SetScrollX(int x)
         {
@@ -632,6 +632,10 @@ namespace SystAnalys_lr1
         public int skipStops = 1;
         public int skipEnd = 5;
         //движение с графикой (для визуализации движения)
+        public void AlignBus()
+        {
+            busPic.Location = new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2);
+        }
         public async void MoveWithGraphics()
         {
             try
