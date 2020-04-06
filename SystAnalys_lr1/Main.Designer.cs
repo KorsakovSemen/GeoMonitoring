@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.about = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -154,37 +154,37 @@
             this.matrixGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.matrixGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.matrixGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.matrixGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.matrixGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.matrixGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.matrixGrid.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.matrixGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.matrixGrid.EnableHeadersVisualStyles = false;
             resources.ApplyResources(this.matrixGrid, "matrixGrid");
             this.matrixGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.matrixGrid.Name = "matrixGrid";
             this.matrixGrid.ReadOnly = true;
             this.matrixGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.matrixGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.matrixGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.matrixGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.matrixGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
@@ -208,12 +208,12 @@
             this.panel1.Controls.Add(this.speed);
             this.panel1.HorizontalScrollbarBarColor = true;
             this.panel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel1.HorizontalScrollbarSize = 8;
+            this.panel1.HorizontalScrollbarSize = 6;
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             this.panel1.VerticalScrollbarBarColor = true;
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
-            this.panel1.VerticalScrollbarSize = 8;
+            this.panel1.VerticalScrollbarSize = 6;
             // 
             // SavePictures
             // 
@@ -330,12 +330,12 @@
             this.panel2.Controls.Add(this.changeProcent);
             this.panel2.HorizontalScrollbarBarColor = true;
             this.panel2.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel2.HorizontalScrollbarSize = 8;
+            this.panel2.HorizontalScrollbarSize = 6;
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             this.panel2.VerticalScrollbarBarColor = true;
             this.panel2.VerticalScrollbarHighlightOnWheel = false;
-            this.panel2.VerticalScrollbarSize = 8;
+            this.panel2.VerticalScrollbarSize = 6;
             // 
             // createCoordinates
             // 
@@ -428,11 +428,11 @@
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.HorizontalScrollbarBarColor = true;
             this.panel4.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel4.HorizontalScrollbarSize = 8;
+            this.panel4.HorizontalScrollbarSize = 6;
             this.panel4.Name = "panel4";
             this.panel4.VerticalScrollbarBarColor = true;
             this.panel4.VerticalScrollbarHighlightOnWheel = false;
-            this.panel4.VerticalScrollbarSize = 8;
+            this.panel4.VerticalScrollbarSize = 6;
             // 
             // metroLabel6
             // 
@@ -464,12 +464,12 @@
             this.panel7.Controls.Add(this.changeRoute);
             this.panel7.HorizontalScrollbarBarColor = true;
             this.panel7.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel7.HorizontalScrollbarSize = 8;
+            this.panel7.HorizontalScrollbarSize = 6;
             resources.ApplyResources(this.panel7, "panel7");
             this.panel7.Name = "panel7";
             this.panel7.VerticalScrollbarBarColor = true;
             this.panel7.VerticalScrollbarHighlightOnWheel = false;
-            this.panel7.VerticalScrollbarSize = 8;
+            this.panel7.VerticalScrollbarSize = 6;
             // 
             // metroLabel4
             // 
@@ -491,14 +491,14 @@
             this.allBusSettings.Controls.Add(this.busSize);
             this.allBusSettings.HorizontalScrollbarBarColor = true;
             this.allBusSettings.HorizontalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.HorizontalScrollbarSize = 13;
+            this.allBusSettings.HorizontalScrollbarSize = 10;
             resources.ApplyResources(this.allBusSettings, "allBusSettings");
             this.allBusSettings.Name = "allBusSettings";
             this.allBusSettings.Style = MetroFramework.MetroColorStyle.Blue;
             this.allBusSettings.UseStyleColors = true;
             this.allBusSettings.VerticalScrollbarBarColor = true;
             this.allBusSettings.VerticalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.VerticalScrollbarSize = 13;
+            this.allBusSettings.VerticalScrollbarSize = 10;
             // 
             // backsideCheck
             // 
@@ -525,7 +525,6 @@
             this.busSize.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
             this.busSize.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode4")));
             this.busSize.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location4")));
-            this.busSize.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin4")));
             this.busSize.CustomButton.Name = "";
             this.busSize.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size4")));
             this.busSize.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -566,12 +565,12 @@
             this.panel8.Controls.Add(this.matrixGrid);
             this.panel8.HorizontalScrollbarBarColor = true;
             this.panel8.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel8.HorizontalScrollbarSize = 8;
+            this.panel8.HorizontalScrollbarSize = 6;
             resources.ApplyResources(this.panel8, "panel8");
             this.panel8.Name = "panel8";
             this.panel8.VerticalScrollbarBarColor = true;
             this.panel8.VerticalScrollbarHighlightOnWheel = false;
-            this.panel8.VerticalScrollbarSize = 8;
+            this.panel8.VerticalScrollbarSize = 6;
             // 
             // label8
             // 

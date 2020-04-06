@@ -43,22 +43,21 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.metroLabel2);
             this.panel1.Controls.Add(this.metroLabel1);
             this.panel1.Controls.Add(this.ERouts);
             this.panel1.Controls.Add(this.metroButton1);
             this.panel1.Controls.Add(this.button11);
             this.panel1.Controls.Add(this.label2);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.HorizontalScrollbarBarColor = true;
             this.panel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel1.HorizontalScrollbarSize = 10;
+            this.panel1.HorizontalScrollbarSize = 6;
             this.panel1.Name = "panel1";
             this.panel1.VerticalScrollbarBarColor = true;
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
-            this.panel1.VerticalScrollbarSize = 10;
+            this.panel1.VerticalScrollbarSize = 6;
             // 
             // metroLabel2
             // 
@@ -72,8 +71,8 @@
             // 
             // ERouts
             // 
-            resources.ApplyResources(this.ERouts, "ERouts");
             this.ERouts.FormattingEnabled = true;
+            resources.ApplyResources(this.ERouts, "ERouts");
             this.ERouts.Name = "ERouts";
             this.ERouts.UseSelectable = true;
             // 

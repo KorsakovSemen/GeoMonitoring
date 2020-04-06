@@ -922,7 +922,7 @@ namespace SystAnalys_lr1
         {
             return sheet;
         }
-        public Panel GetMapPanel()
+        public MetroPanel GetMapPanel()
         {
             return this.mainPanel;
         }

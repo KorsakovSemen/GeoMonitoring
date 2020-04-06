@@ -44,28 +44,33 @@ namespace SystAnalys_lr1
             panel1.Size = MainForm.GetMainPanel().Size;
             panel1.Left = MainForm.GetMainPanel().Left;
             panel1.Top = MainForm.GetMainPanel().Top;
-
+            panel1.Dock = MainForm.GetMainPanel().Dock;
             ERefreshRouts();
             this.ERouts.SelectedIndexChanged += ERouts_SelectedIndexChanged;
             // Esheet.Dock = DockStyle.Right;
             ////
+            this.MapPanel.Dock = MainForm.GetMapPanel().Dock;
             this.MapPanel.AutoSize = MainForm.GetMapPanel().AutoSize;
             this.MapPanel.Location = MainForm.GetMapPanel().Location;
-            this.MapPanel.MaximumSize = MainForm.GetMapPanel().MaximumSize;
-            this.MapPanel.Size = MainForm.GetMapPanel().Size;
+           
             this.MapPanel.AutoScroll = MainForm.GetMapPanel().AutoScroll;
             this.MapPanel.BorderStyle = MainForm.GetMapPanel().BorderStyle;
             this.MapPanel.AutoSizeMode = MainForm.GetMapPanel().AutoSizeMode;
-            this.MapPanel.Dock = MainForm.GetMapPanel().Dock;
+           
+            //this.MapPanel.MaximumSize = MainForm.GetMapPanel().MaximumSize;
+            //this.MapPanel.Size = MainForm.GetMapPanel().Size;
 
             //this.MapPanel.Dock = MainForm.GetMapPanel().Dock;
             ////
             this.Width = MainForm.Width;
             this.Height = MainForm.Height;
             ////
+            this.Controls.Add(MapPanel);
+            this.MapPanel.Controls.Add(Esheet);
             Esheet.Dock = MainForm.GetSheet().Dock;
-  
-            Esheet.Location = MainForm.GetSheet().Location;
+
+            //Esheet.Location = new Point(MainForm.GetSheet().Location.X, MainForm.GetSheet().Location.Y - MainForm.GetmainToolStrip().Height);
+            Esheet.Location = new Point(panel1.Width, 0);
             Esheet.Size = MainForm.GetSheet().Size;
             Esheet.Image = Main.globalMap;
             EsheetPicture = Main.globalMap;
@@ -73,6 +78,7 @@ namespace SystAnalys_lr1
             hsheet = Esheet.Height;
             Esheet.AutoSize = MainForm.GetSheet().AutoSize;
             Esheet.SizeMode = MainForm.GetSheet().SizeMode;
+            Esheet.Anchor = MainForm.GetSheet().Anchor;
             EG = new DrawGraph();
             EG.setBitmap2(Esheet.Image);
             ///
@@ -89,9 +95,9 @@ namespace SystAnalys_lr1
             //
             this.panel1.Controls.Add(ERouts);
             this.panel1.Controls.Add(EZoomBar);
-            this.Controls.Add(MapPanel);
             
-            this.MapPanel.Controls.Add(Esheet);
+            
+        
             //EDrawGrid();
             EDrawEpics();
             Esheet.MouseClick += Esheet_MouseClick;

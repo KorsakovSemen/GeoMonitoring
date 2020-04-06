@@ -3,78 +3,78 @@
   <TraficLight>
     <x>421</x>
     <y>220</y>
-    <tick>14</tick>
+    <tick>29</tick>
     <greenTime>20</greenTime>
     <redTime>40</redTime>
     <yellowTime>2</yellowTime>
     <gridNum>265</gridNum>
-    <bal>6</bal>
-    <status>1</status>
+    <bal>33</bal>
+    <status>3</status>
   </TraficLight>
   <TraficLight>
     <x>423</x>
     <y>255</y>
-    <tick>56</tick>
+    <tick>7</tick>
     <greenTime>40</greenTime>
     <redTime>20</redTime>
     <yellowTime>2</yellowTime>
     <gridNum>351</gridNum>
-    <bal>6</bal>
-    <status>3</status>
+    <bal>33</bal>
+    <status>1</status>
   </TraficLight>
   <TraficLight>
     <x>456</x>
     <y>230</y>
-    <tick>55</tick>
+    <tick>6</tick>
     <greenTime>40</greenTime>
     <redTime>20</redTime>
     <yellowTime>2</yellowTime>
     <gridNum>310</gridNum>
-    <bal>7</bal>
-    <status>3</status>
+    <bal>34</bal>
+    <status>1</status>
   </TraficLight>
   <TraficLight>
     <x>608</x>
     <y>581</y>
-    <tick>6</tick>
+    <tick>21</tick>
     <greenTime>30</greenTime>
     <redTime>15</redTime>
     <yellowTime>2</yellowTime>
     <gridNum>1094</gridNum>
-    <bal>24</bal>
+    <bal>9</bal>
     <status>1</status>
   </TraficLight>
   <TraficLight>
     <x>635</x>
     <y>559</y>
-    <tick>5</tick>
+    <tick>20</tick>
     <greenTime>30</greenTime>
     <redTime>15</redTime>
     <yellowTime>2</yellowTime>
     <gridNum>1052</gridNum>
-    <bal>25</bal>
+    <bal>10</bal>
     <status>1</status>
   </TraficLight>
   <TraficLight>
     <x>608</x>
     <y>552</y>
-    <tick>22</tick>
+    <tick>37</tick>
     <greenTime>15</greenTime>
     <redTime>30</redTime>
     <yellowTime>2</yellowTime>
     <gridNum>1051</gridNum>
-    <bal>25</bal>
+    <bal>10</bal>
     <status>3</status>
   </TraficLight>
   <TraficLight>
     <x>634</x>
     <y>582</y>
-    <tick>22</tick>
+    <tick>37</tick>
     <greenTime>15</greenTime>
     <redTime>30</redTime>
     <yellowTime>2</yellowTime>
     <gridNum>1095</gridNum>
-    <bal>25</bal>
+    <bal>10</bal>
     <status>3</status>
   </TraficLight>
 </ArrayOfTraficLight>
