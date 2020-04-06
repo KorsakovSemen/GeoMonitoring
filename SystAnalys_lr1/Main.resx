@@ -520,7 +520,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="createCoordinates.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 51</value>
@@ -726,6 +726,33 @@
   <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>470, 17</value>
   </metadata>
+  <data name="metroLabel6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 688</value>
+  </data>
+  <data name="metroLabel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 19</value>
+  </data>
+  <data name="metroLabel6.TabIndex" type="System.Int32, mscorlib">
+    <value>104</value>
+  </data>
+  <data name="metroLabel6.Text" xml:space="preserve">
+    <value>|</value>
+  </data>
+  <data name="&gt;&gt;metroLabel6.Name" xml:space="preserve">
+    <value>metroLabel6</value>
+  </data>
+  <data name="&gt;&gt;metroLabel6.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel6.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;metroLabel6.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="metroLabel5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -751,7 +778,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;metroLabel5.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="metroTrackBar1.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 709</value>
@@ -778,7 +805,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;metroTrackBar1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="metroLabel4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1027,7 +1054,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;panel7.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -1339,13 +1366,13 @@
     <value>Сохранить</value>
   </data>
   <data name="jSONToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="jSONToolStripMenuItem.Text" xml:space="preserve">
     <value>JSON</value>
   </data>
   <data name="xMLToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="xMLToolStripMenuItem.Text" xml:space="preserve">
     <value>XML</value>
@@ -1935,12 +1962,6 @@
   <data name="&gt;&gt;msmMain.Type" xml:space="preserve">
     <value>MetroFramework.Components.MetroStyleManager, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <data name="&gt;&gt;timer1.Name" xml:space="preserve">
-    <value>timer1</value>
-  </data>
-  <data name="&gt;&gt;timer1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;busParkBindingSource.Name" xml:space="preserve">
     <value>busParkBindingSource</value>
   </data>
@@ -1953,7 +1974,4 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>MetroFramework.Forms.MetroForm, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>296, 17</value>
-  </metadata>
 </root>

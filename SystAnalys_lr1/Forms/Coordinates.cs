@@ -65,14 +65,14 @@ namespace SystAnalys_lr1
     
             ////?/
             //     buttonOff();
-            await Task.Run(async () =>
+            await Task.Run(() =>
             {
       //          await buttonOff();
-                Console.WriteLine("Buttonoff finish");
+             //   Console.WriteLine("Buttonoff finish");
                 CreateAllCoordinates();
                 Bus.AllCoordinates = AllCoordinates;
         //        await buttonOn();
-                Console.WriteLine("Buttonon finish");
+            //   Console.WriteLine("Buttonon finish");
 
             });
 

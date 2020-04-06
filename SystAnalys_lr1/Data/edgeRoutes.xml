@@ -10,48 +10,10 @@
   </item>
   <item>
     <key>
-      <int>54</int>
-    </key>
-    <value>
-      <ArrayOfEdge xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-        <Edge>
-          <v1>0</v1>
-          <v2>1</v2>
-        </Edge>
-        <Edge>
-          <v1>1</v1>
-          <v2>2</v2>
-        </Edge>
-        <Edge>
-          <v1>2</v1>
-          <v2>3</v2>
-        </Edge>
-      </ArrayOfEdge>
-    </value>
-  </item>
-  <item>
-    <key>
       <int>55</int>
     </key>
     <value>
-      <ArrayOfEdge xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-        <Edge>
-          <v1>0</v1>
-          <v2>1</v2>
-        </Edge>
-        <Edge>
-          <v1>1</v1>
-          <v2>2</v2>
-        </Edge>
-        <Edge>
-          <v1>2</v1>
-          <v2>3</v2>
-        </Edge>
-        <Edge>
-          <v1>3</v1>
-          <v2>4</v2>
-        </Edge>
-      </ArrayOfEdge>
+      <ArrayOfEdge xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
     </value>
   </item>
 </dictionary>

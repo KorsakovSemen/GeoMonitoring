@@ -138,7 +138,8 @@ namespace SystAnalys_lr1
             {
                 ERouts.Items.Add(r);
             };
-            ERouts.SelectedIndex = 0;
+            if(ERouts.Items.Count != 0)
+                ERouts.SelectedIndex = 0;
         }
         delegate void DelBitmap(Bitmap b);
         public void EDrawEpics()

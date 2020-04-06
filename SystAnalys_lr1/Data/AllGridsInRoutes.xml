@@ -5,33 +5,7 @@
       <int>2</int>
     </key>
     <value>
-      <ArrayOfInt xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-        <int>821</int>
-        <int>741</int>
-        <int>661</int>
-        <int>580</int>
-        <int>500</int>
-        <int>499</int>
-        <int>419</int>
-        <int>502</int>
-        <int>501</int>
-        <int>581</int>
-      </ArrayOfInt>
-    </value>
-  </item>
-  <item>
-    <key>
-      <int>54</int>
-    </key>
-    <value>
-      <ArrayOfInt xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-        <int>502</int>
-        <int>501</int>
-        <int>581</int>
-        <int>580</int>
-        <int>500</int>
-        <int>499</int>
-      </ArrayOfInt>
+      <ArrayOfInt xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
     </value>
   </item>
   <item>
@@ -39,12 +13,7 @@
       <int>55</int>
     </key>
     <value>
-      <ArrayOfInt xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-        <int>491</int>
-        <int>411</int>
-        <int>412</int>
-        <int>492</int>
-      </ArrayOfInt>
+      <ArrayOfInt xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
     </value>
   </item>
 </dictionary>

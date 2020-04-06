@@ -57,6 +57,7 @@
             this.changeProcent = new MetroFramework.Controls.MetroTextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel4 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroTrackBar1 = new MetroFramework.Controls.MetroTrackBar();
             this.panel7 = new MetroFramework.Controls.MetroPanel();
@@ -109,7 +110,6 @@
             this.config = new MetroFramework.Controls.MetroLabel();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.hint = new MetroFramework.Controls.MetroLabel();
             this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
@@ -420,6 +420,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Menu;
+            this.panel4.Controls.Add(this.metroLabel6);
             this.panel4.Controls.Add(this.metroLabel5);
             this.panel4.Controls.Add(this.metroTrackBar1);
             this.panel4.Controls.Add(this.panel7);
@@ -433,6 +434,11 @@
             this.panel4.VerticalScrollbarHighlightOnWheel = false;
             this.panel4.VerticalScrollbarSize = 6;
             // 
+            // metroLabel6
+            // 
+            resources.ApplyResources(this.metroLabel6, "metroLabel6");
+            this.metroLabel6.Name = "metroLabel6";
+            // 
             // metroLabel5
             // 
             resources.ApplyResources(this.metroLabel5, "metroLabel5");
@@ -443,7 +449,7 @@
             this.metroTrackBar1.BackColor = System.Drawing.Color.Transparent;
             this.metroTrackBar1.LargeChange = 1;
             resources.ApplyResources(this.metroTrackBar1, "metroTrackBar1");
-            this.metroTrackBar1.Maximum = 5;
+            this.metroTrackBar1.Maximum = 3;
             this.metroTrackBar1.Minimum = 1;
             this.metroTrackBar1.Name = "metroTrackBar1";
             this.metroTrackBar1.Value = 1;
@@ -883,11 +889,6 @@
             resources.ApplyResources(this.metroLabel1, "metroLabel1");
             this.metroLabel1.Name = "metroLabel1";
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
-            // 
             // hint
             // 
             resources.ApplyResources(this.hint, "hint");
@@ -1016,7 +1017,6 @@
         private MetroFramework.Controls.MetroTrackBar metroTrackBar1;
         private MetroFramework.Controls.MetroCheckBox SavePictures;
         private MetroFramework.Controls.MetroTextBox changeProcent;
-        private System.Windows.Forms.Timer timer1;
         private MetroFramework.Controls.MetroLabel hint;
         private MetroFramework.Controls.MetroButton createCoordinates;
         private MetroFramework.Controls.MetroPanel panel7;
@@ -1030,6 +1030,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
     }
 }
 

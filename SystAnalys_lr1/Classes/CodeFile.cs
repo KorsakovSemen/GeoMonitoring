@@ -684,8 +684,8 @@ namespace SystAnalys_lr1
                                                 MovingTimer.Stop();
                                                 // int bal = sp.bal / 2;
                                                 await Task.Delay(sp.bal / 2 * 1000);
-                                                Console.WriteLine("After:");
-                                                Console.WriteLine(sp.bal);
+                                             //   Console.WriteLine("After:");
+                                             //   Console.WriteLine(sp.bal);
                                                 if (InstaStop == false)
                                                 {
                                                     MovingTimer.Start();
@@ -758,8 +758,8 @@ namespace SystAnalys_lr1
                                                     MovingTimer.Stop();
                                                     // int bal = sp.bal / 2;
                                                     await Task.Delay(sp.bal / 2 * 1000);
-                                                    Console.WriteLine("After:");
-                                                    Console.WriteLine(sp.bal);
+                                               //     Console.WriteLine("After:");
+                                               //     Console.WriteLine(sp.bal);
                                                     if (InstaStop == false)
                                                     {
                                                         MovingTimer.Start();
