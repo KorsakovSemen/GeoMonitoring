@@ -2060,6 +2060,7 @@ namespace SystAnalys_lr1
                     MetroMessageBox.Show(this, $"{exc.StackTrace}", MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+            BringToFront();
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2187,6 +2188,7 @@ namespace SystAnalys_lr1
 
                 }
             }
+            BringToFront();
             changeRoute.Text = MainStrings.network;
         }
 

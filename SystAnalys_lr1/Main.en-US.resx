@@ -252,9 +252,6 @@
   <data name="createCoordinates.Text" xml:space="preserve">
     <value>Create an array of coordinates</value>
   </data>
-  <data name="createCoordinates.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 19</value>
   </data>
@@ -312,14 +309,8 @@
   <data name="resource.TextImageRelation2" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>Overlay</value>
   </data>
-  <data name="textBox2.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="button8.Text" xml:space="preserve">
     <value>Generation</value>
-  </data>
-  <data name="button8.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="resource.AccessibleDescription3" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -371,6 +362,12 @@
   </data>
   <data name="resource.TextImageRelation3" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>Overlay</value>
+  </data>
+  <data name="metroLabel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 19</value>
+  </data>
+  <data name="metroLabel5.Text" xml:space="preserve">
+    <value>Optimization</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 19</value>
@@ -569,8 +566,5 @@
   </data>
   <data name="themes.Location" type="System.Drawing.Point, System.Drawing">
     <value>1102, 33</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
 </root>
