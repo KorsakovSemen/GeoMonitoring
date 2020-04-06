@@ -2144,7 +2144,7 @@ namespace SystAnalys_lr1
 
                     //AsyncCreateAllCoordinates();
                     File.Delete(save + "AllCoordinates.xml");
-                    XmlSerializer serializerAllCoor = new XmlSerializer(typeof(SerializableDictionary<int, List<Point>>));
+                    XmlSerializer serializerAllCoor = new XmlSerializer(typeof(SerializableDictionary<string, List<Point>>));
                     using (FileStream fileA = new FileStream(save + "AllCoordinates.xml", FileMode.OpenOrCreate))
                     {
                         serializerAllCoor.Serialize(fileA, AllCoordinates);
@@ -2152,15 +2152,15 @@ namespace SystAnalys_lr1
                     }
                     loading.Value = 50;
                     File.Delete(save + "AllGridsInRoutes.xml");
-                    XmlSerializer serializerAllGridsInRoutes = new XmlSerializer(typeof(SerializableDictionary<int, List<int>>));
+                    XmlSerializer serializerAllGridsInRoutes = new XmlSerializer(typeof(SerializableDictionary<string, List<int>>));
                     using (FileStream fileAG = new FileStream(save + "AllGridsInRoutes.xml", FileMode.OpenOrCreate))
                     {
                         serializerAllGridsInRoutes.Serialize(fileAG, AllGridsInRoutes);
                         Console.WriteLine("Объект сериализован");
                     }
                     loading.Value = 60;
-                    XmlSerializer Ver = new XmlSerializer(typeof(SerializableDictionary<int, List<Vertex>>));
-                    XmlSerializer Edge = new XmlSerializer(typeof(SerializableDictionary<int, List<Edge>>));
+                    XmlSerializer Ver = new XmlSerializer(typeof(SerializableDictionary<string, List<Vertex>>));
+                    XmlSerializer Edge = new XmlSerializer(typeof(SerializableDictionary<string, List<Edge>>));
 
                     File.Delete(save + "vertexRoutes.xml");
                     using (FileStream fileV = new FileStream(save + "vertexRoutes.xml", FileMode.OpenOrCreate))
@@ -2400,7 +2400,7 @@ namespace SystAnalys_lr1
                 {
                     using (StreamReader reader = new StreamReader(load + "StopPoints.xml"))
                     {
-                        XmlSerializer deserializerV = new XmlSerializer(typeof(SerializableDictionary<int, List<Vertex>>));
+                        XmlSerializer deserializerV = new XmlSerializer(typeof(SerializableDictionary<string, List<Vertex>>));
                         stopPoints = (SerializableDictionary<string, List<Vertex>>)deserializerV.Deserialize(reader);
                         foreach (var sp in stopPoints.Values)
                         {
@@ -2440,7 +2440,7 @@ namespace SystAnalys_lr1
                 }
                 loading.Value = 30;
 
-                XmlSerializer deserializerAllCoor = new XmlSerializer(typeof(SerializableDictionary<int, List<Point>>));
+                XmlSerializer deserializerAllCoor = new XmlSerializer(typeof(SerializableDictionary<string, List<Point>>));
                 if (File.Exists(load + "AllCoordinates.xml"))
                 {
                     using (StreamReader reader = new StreamReader(load + "AllCoordinates.xml"))
@@ -2490,7 +2490,7 @@ namespace SystAnalys_lr1
                     }
                 }
                 loading.Value = 40;
-                XmlSerializer deserializerAllGridsInRoutes = new XmlSerializer(typeof(SerializableDictionary<int, List<int>>));
+                XmlSerializer deserializerAllGridsInRoutes = new XmlSerializer(typeof(SerializableDictionary<string, List<int>>));
                 if (File.Exists(load + "AllGridsInRoutes.xml"))
                 {
                     using (StreamReader reader = new StreamReader(load + "AllGridsInRoutes.xml"))
@@ -2572,8 +2572,8 @@ namespace SystAnalys_lr1
                 XmlSerializer ed = new XmlSerializer(typeof(List<Edge>));
 
 
-                XmlSerializer Ver = new XmlSerializer(typeof(SerializableDictionary<int, List<Vertex>>));
-                XmlSerializer Edge = new XmlSerializer(typeof(SerializableDictionary<int, List<Edge>>));
+                XmlSerializer Ver = new XmlSerializer(typeof(SerializableDictionary<string, List<Vertex>>));
+                XmlSerializer Edge = new XmlSerializer(typeof(SerializableDictionary<string, List<Edge>>));
 
                 if (File.Exists(load + "vertexRoutes.xml"))
                 {
