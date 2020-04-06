@@ -177,8 +177,15 @@ namespace SystAnalys_lr1
                     // асинхронное чтение файла
                     fstream.Read(array, 0, array.Length);
                     savepath = System.Text.Encoding.Default.GetString(array);
-                    if (savepath != "")
-                        savepath = Path.GetFullPath(savepath);
+                    try
+                    {
+                        if (savepath != "")
+                            savepath = Path.GetFullPath(savepath);
+                    }
+                    catch
+                    {
+
+                    }                    
                     Console.WriteLine($"Текст из файла: {savepath}");
 
                 }
@@ -250,6 +257,7 @@ namespace SystAnalys_lr1
             {
                 if (Directory.Exists(savepath))
                 {
+                    Console.WriteLine(savepath);
                     sheet.Image = Image.FromFile(savepath + "/Map.png");
                     DisplayEpicenters.path = savepath;
                     wsheet = sheet.Width;
@@ -1202,6 +1210,8 @@ namespace SystAnalys_lr1
                     }
                     else
                     {
+                       
+
                         using (var dialog = new FolderBrowserDialog())
                         {
                             dialog.SelectedPath = System.Windows.Forms.Application.StartupPath;
@@ -1209,16 +1219,16 @@ namespace SystAnalys_lr1
                             {
                                 string path = dialog.SelectedPath;
                                 File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
-                                using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
-                                {
-                                    fileV.WriteLine(path.ToString());
-                                }
                                 savepath = path + "/" + string.Format("{0}_{1}_{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute);
                                 Directory.CreateDirectory(savepath);
                                 saveImage.Save(savepath + "/Map.png", System.Drawing.Imaging.ImageFormat.Png);
                                 SaveRoutes(saveF, savepath + "/");
+                                using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
+                                {
+                                    fileV.WriteLine(savepath.ToString());
+                                }
                                 MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
-
+                              
                             }
                         }
                     }
