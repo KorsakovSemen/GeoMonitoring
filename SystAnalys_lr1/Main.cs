@@ -112,6 +112,7 @@ namespace SystAnalys_lr1
             {
                 changeRoute.Items.Add(r.Key);
             };
+            changeRoute.Text = MainStrings.network;
         }
 
         private static Main _instance;
@@ -264,8 +265,7 @@ namespace SystAnalys_lr1
                 addRouteToolStripMenuItem.Enabled = false;
                 openEpicFormToolStripMenuItem.Enabled = false;
                 createGridToolStripMenuItem.Enabled = false;
-            }
-            changeRoute.Text = MainStrings.network;
+            }            
             mainPanel.MaximumSize = new System.Drawing.Size(sheet.Width, sheet.Height);
             mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.mainPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel6_MouseWheel);
@@ -1007,8 +1007,6 @@ namespace SystAnalys_lr1
                 selectRoute.Enabled = false;
                 delAllBusesOnRoute.Enabled = false;
                 G.clearSheet();
-                stopPointButton.Enabled = true;
-                addTraficLight.Enabled = true;
                 label12.Visible = false;
                 DrawGrid();
                 //        buttonOn();
@@ -2028,6 +2026,7 @@ namespace SystAnalys_lr1
                             {
                                 fileV.WriteLine(path.ToString());
                             }
+                            this.BringToFront();
                             MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         addRouteToolStripMenuItem.Enabled = true;
@@ -2093,6 +2092,7 @@ namespace SystAnalys_lr1
                                     sheet.Image = Image.FromFile(path + "/Map.png");
                                 else
                                     MetroMessageBox.Show(this, MainStrings.noPic, "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                                 LoadRoutes(path + "/");
                                 savepath = path;
                                 File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
@@ -2100,6 +2100,7 @@ namespace SystAnalys_lr1
                                 {
                                     fileV.WriteLine(path.ToString());
                                 }
+                                this.BringToFront();
                                 MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                             }
                             addRouteToolStripMenuItem.Enabled = true;
@@ -2149,6 +2150,7 @@ namespace SystAnalys_lr1
                             {
                                 fileV.WriteLine(path.ToString());
                             }
+                            this.BringToFront();
                             MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
 
@@ -2791,7 +2793,6 @@ namespace SystAnalys_lr1
                 this.StyleManager.Clone(Ep);
                 Ep.Show();
                 loading.Value = 100;
-                await Task.Delay(1000);
                 loading.Visible = false;
             }
             catch (Exception exc)
@@ -2825,16 +2826,7 @@ namespace SystAnalys_lr1
         static public int refreshLights = 0;
         public static bool flag = false;
         private void sheet_MouseClick_1(object sender, MouseEventArgs e)
-        {
-            //  label2.Text = e.X.ToString() + ";" + e.Y.ToString();
-            //for (int i = 0; i < TheGrid.Count; i++)
-            //{
-            //    if (GetDistance((double)e.X, (double)e.Y, (double)TheGrid[i].x + TheGrid[i].width / 2, (double)TheGrid[i].y + TheGrid[i].height / 2) < TheGrid[i].width / 2)
-            //    {
-            //        label4.Text = TheGrid[i].res.ToString();
-            //    }
-
-            //}
+        {           
 
             if (changeRoute.Text == MainStrings.network)
             {
@@ -2850,6 +2842,7 @@ namespace SystAnalys_lr1
                                 //if (!V.Contains(new Vertex(V[i].x, V[i].y)))
                                 //    V.Add(new Vertex(V[i].x / zoom, V[i].y / zoom));
                                 G.drawSelectedVertex(V[i].x, V[i].y);
+                                sheet.Image = G.GetBitmap();
                                 break;
                             }
                             else

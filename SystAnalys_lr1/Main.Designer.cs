@@ -57,9 +57,8 @@
             this.changeProcent = new MetroFramework.Controls.MetroTextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel4 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroTrackBar1 = new MetroFramework.Controls.MetroTrackBar();
-            this.panel8 = new MetroFramework.Controls.MetroPanel();
-            this.label8 = new MetroFramework.Controls.MetroLabel();
             this.panel7 = new MetroFramework.Controls.MetroPanel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -69,6 +68,8 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.busSize = new MetroFramework.Controls.MetroTextBox();
             this.changeRoute = new MetroFramework.Controls.MetroComboBox();
+            this.panel8 = new MetroFramework.Controls.MetroPanel();
+            this.label8 = new MetroFramework.Controls.MetroLabel();
             this.label12 = new MetroFramework.Controls.MetroLabel();
             this.theme = new MetroFramework.Controls.MetroLabel();
             this.changeTheme = new MetroFramework.Controls.MetroComboBox();
@@ -110,16 +111,15 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.hint = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.allBusSettings.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.toolStripMenu.SuspendLayout();
@@ -433,6 +433,11 @@
             this.panel4.VerticalScrollbarHighlightOnWheel = false;
             this.panel4.VerticalScrollbarSize = 6;
             // 
+            // metroLabel5
+            // 
+            resources.ApplyResources(this.metroLabel5, "metroLabel5");
+            this.metroLabel5.Name = "metroLabel5";
+            // 
             // metroTrackBar1
             // 
             this.metroTrackBar1.BackColor = System.Drawing.Color.Transparent;
@@ -443,27 +448,6 @@
             this.metroTrackBar1.Name = "metroTrackBar1";
             this.metroTrackBar1.Value = 1;
             this.metroTrackBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.metroTrackBar1_ScrollAsync);
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Controls.Add(this.button1);
-            this.panel8.Controls.Add(this.label8);
-            this.panel8.Controls.Add(this.matrixGrid);
-            this.panel8.HorizontalScrollbarBarColor = true;
-            this.panel8.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel8.HorizontalScrollbarSize = 6;
-            resources.ApplyResources(this.panel8, "panel8");
-            this.panel8.Name = "panel8";
-            this.panel8.VerticalScrollbarBarColor = true;
-            this.panel8.VerticalScrollbarHighlightOnWheel = false;
-            this.panel8.VerticalScrollbarSize = 6;
-            // 
-            // label8
-            // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
             // 
             // panel7
             // 
@@ -565,6 +549,27 @@
             this.changeRoute.Name = "changeRoute";
             this.changeRoute.UseSelectable = true;
             this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChangedAsync);
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Controls.Add(this.button1);
+            this.panel8.Controls.Add(this.label8);
+            this.panel8.Controls.Add(this.matrixGrid);
+            this.panel8.HorizontalScrollbarBarColor = true;
+            this.panel8.HorizontalScrollbarHighlightOnWheel = false;
+            this.panel8.HorizontalScrollbarSize = 6;
+            resources.ApplyResources(this.panel8, "panel8");
+            this.panel8.Name = "panel8";
+            this.panel8.VerticalScrollbarBarColor = true;
+            this.panel8.VerticalScrollbarHighlightOnWheel = false;
+            this.panel8.VerticalScrollbarSize = 6;
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
             // 
             // label12
             // 
@@ -888,11 +893,6 @@
             resources.ApplyResources(this.hint, "hint");
             this.hint.Name = "hint";
             // 
-            // metroLabel5
-            // 
-            resources.ApplyResources(this.metroLabel5, "metroLabel5");
-            this.metroLabel5.Name = "metroLabel5";
-            // 
             // busParkBindingSource
             // 
             this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
@@ -932,12 +932,12 @@
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.allBusSettings.ResumeLayout(false);
             this.allBusSettings.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
