@@ -272,9 +272,9 @@ namespace SystAnalys_lr1
                 StackTrace stackTrace = new StackTrace(exc, true);
                 if (stackTrace.FrameCount > 0)
                 {
+                    BringToFront();
                     MetroMessageBox.Show(this, $"{exc.StackTrace}", MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    loading.Visible = false;
-
+                    loading.Visible = false;                    
                 }
             }
             if (sheet.Image == null)
@@ -1251,7 +1251,7 @@ namespace SystAnalys_lr1
                 TraficLightsInGrids.Clear();
                 V.Clear();
                 E.Clear();
-                if (G.bitmap != null) G.clearSheet();
+                //if (G.bitmap != null) G.clearSheet();
                 routes.Clear();
                 routesEdge.Clear();
                 changeRoute.Items.Clear();
@@ -1260,31 +1260,32 @@ namespace SystAnalys_lr1
                 stopPoints.Clear();
                 traficLights.Clear();
                 sheet.Image = Image.FromFile(fb.FileName);
+                saveImage = sheet.Image;
+                metroTrackBar1.Value = 1;
                 wsheet = sheet.Width;
                 hsheet = sheet.Height;
+                ZoomHelper();
+                G.clearSheet();
+                G.clearSheet2();
+                G.drawALLGraph(V, E);
                 globalMap = sheet.Image;
                 saveImage = sheet.Image;
-                G.setBitmap();
                 CreateGrid();
                 CreatePollutionInRoutes();
-
-
                 Bus.setGrid(TheGrid);
                 Bus.setMap(sheet);
                 Bus.setAllCoordinates(AllCoordinates);
-
                 addInComboBox();
-                globalMap = new Bitmap(sheet.Image);
+                //globalMap = new Bitmap(sheet.Image);
                 Ep = new DisplayEpicenters(this);
                 StyleManager.Clone(Ep);
                 Ep.Show();
-                G.clearSheet();
-                G.drawALLGraph(V, E);
-                sheet.Image = G.GetBitmap();
                 DrawGrid();
                 openEpicFormToolStripMenuItem.Enabled = true;
                 addRouteToolStripMenuItem.Enabled = true;
                 createGridToolStripMenuItem.Enabled = true;
+                Matrix();
+                BringToFront();
                 MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
         }
@@ -1935,7 +1936,6 @@ namespace SystAnalys_lr1
                                     allstopPoints.Clear();
                                     path = dialog.SelectedPath;
                                     DisplayEpicenters.path = path;
-
                                     // if (File.Exists(path + "/Map.png"))
                                     sheet.Image = Image.FromFile(path + "/Map.png");
                                     wsheet = sheet.Width;
@@ -2471,7 +2471,7 @@ namespace SystAnalys_lr1
                 if (File.Exists(load + "AllCoordinates.xml"))
                 {
                     using (StreamReader reader = new StreamReader(load + "AllCoordinates.xml"))
-                        AllCoordinates = (SerializableDictionary<string, List<Point>>)deserializerAllCoor.Deserialize(reader);
+                        AllCoordinates = (SerializableDictionary<string, List<Point>>)deserializerAllCoor.Deserialize(reader);                    
                 }
 
                 if (File.Exists(load + "AllCoordinates.json"))
@@ -2481,6 +2481,11 @@ namespace SystAnalys_lr1
                         AllCoordinates = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Point>>>(reader.ReadToEnd());
                     }
                 }
+
+                if (AllCoordinates.Count == 0)
+                    CreateAllCoordinates();
+
+
                 if (File.Exists(load + "traficLights.xml"))
                 {
                     XmlSerializer tl = new XmlSerializer(typeof(List<TraficLight>));
@@ -2689,7 +2694,7 @@ namespace SystAnalys_lr1
 
         Constructor c = new Constructor();
 
-        int number;
+        //int number;
         static public int refreshLights = 0;
         public static bool flag = false;
         private void sheet_MouseClick_1(object sender, MouseEventArgs e)
@@ -3842,8 +3847,9 @@ namespace SystAnalys_lr1
                 G.clearSheet();
                 Ep.EG.clearSheet2();
                 G.drawALLGraph(V, E);
-                sheet.Image = G.GetBitmap();
                 CreateGrid();
+                sheet.Image = G.GetBitmap();         
+                DrawGrid();
                 Ep.EDrawGrid();
             }
         }

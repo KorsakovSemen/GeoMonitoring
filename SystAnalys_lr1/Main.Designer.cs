@@ -41,14 +41,14 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new MetroFramework.Controls.MetroPanel();
             this.SavePictures = new MetroFramework.Controls.MetroCheckBox();
-            this.stopBuses = new MetroFramework.Controls.MetroButton();
-            this.launchBuses = new MetroFramework.Controls.MetroButton();
             this.label14 = new MetroFramework.Controls.MetroLabel();
             this.label13 = new MetroFramework.Controls.MetroLabel();
             this.optimize = new MetroFramework.Controls.MetroButton();
             this.mean = new MetroFramework.Controls.MetroLabel();
             this.optText = new MetroFramework.Controls.MetroTextBox();
             this.speed = new MetroFramework.Controls.MetroTextBox();
+            this.stopBuses = new MetroFramework.Controls.MetroButton();
+            this.launchBuses = new MetroFramework.Controls.MetroButton();
             this.panel2 = new MetroFramework.Controls.MetroPanel();
             this.createCoordinates = new MetroFramework.Controls.MetroButton();
             this.label7 = new MetroFramework.Controls.MetroLabel();
@@ -62,7 +62,6 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.panel8 = new MetroFramework.Controls.MetroPanel();
             this.label8 = new MetroFramework.Controls.MetroLabel();
-            this.metroTrackBar1 = new MetroFramework.Controls.MetroTrackBar();
             this.panel7 = new MetroFramework.Controls.MetroPanel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -72,6 +71,7 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.busSize = new MetroFramework.Controls.MetroTextBox();
             this.changeRoute = new MetroFramework.Controls.MetroComboBox();
+            this.metroTrackBar1 = new MetroFramework.Controls.MetroTrackBar();
             this.label12 = new MetroFramework.Controls.MetroLabel();
             this.theme = new MetroFramework.Controls.MetroLabel();
             this.changeTheme = new MetroFramework.Controls.MetroComboBox();
@@ -199,8 +199,6 @@
             this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.SavePictures);
-            this.panel1.Controls.Add(this.stopBuses);
-            this.panel1.Controls.Add(this.launchBuses);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.optimize);
@@ -221,20 +219,6 @@
             resources.ApplyResources(this.SavePictures, "SavePictures");
             this.SavePictures.Name = "SavePictures";
             this.SavePictures.UseSelectable = true;
-            // 
-            // stopBuses
-            // 
-            resources.ApplyResources(this.stopBuses, "stopBuses");
-            this.stopBuses.Name = "stopBuses";
-            this.stopBuses.UseSelectable = true;
-            this.stopBuses.Click += new System.EventHandler(this.stopBuses_Click);
-            // 
-            // launchBuses
-            // 
-            resources.ApplyResources(this.launchBuses, "launchBuses");
-            this.launchBuses.Name = "launchBuses";
-            this.launchBuses.UseSelectable = true;
-            this.launchBuses.Click += new System.EventHandler(this.launchBuses_Click);
             // 
             // label14
             // 
@@ -320,6 +304,20 @@
             this.speed.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.speed.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.speed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.speed_KeyPress);
+            // 
+            // stopBuses
+            // 
+            resources.ApplyResources(this.stopBuses, "stopBuses");
+            this.stopBuses.Name = "stopBuses";
+            this.stopBuses.UseSelectable = true;
+            this.stopBuses.Click += new System.EventHandler(this.stopBuses_Click);
+            // 
+            // launchBuses
+            // 
+            resources.ApplyResources(this.launchBuses, "launchBuses");
+            this.launchBuses.Name = "launchBuses";
+            this.launchBuses.UseSelectable = true;
+            this.launchBuses.Click += new System.EventHandler(this.launchBuses_Click);
             // 
             // panel2
             // 
@@ -474,17 +472,6 @@
             resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
             // 
-            // metroTrackBar1
-            // 
-            this.metroTrackBar1.BackColor = System.Drawing.Color.Transparent;
-            this.metroTrackBar1.LargeChange = 1;
-            resources.ApplyResources(this.metroTrackBar1, "metroTrackBar1");
-            this.metroTrackBar1.Maximum = 3;
-            this.metroTrackBar1.Minimum = 1;
-            this.metroTrackBar1.Name = "metroTrackBar1";
-            this.metroTrackBar1.Value = 1;
-            this.metroTrackBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.metroTrackBar1_ScrollAsync);
-            // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -516,6 +503,8 @@
             this.allBusSettings.BackColor = System.Drawing.Color.DimGray;
             this.allBusSettings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.allBusSettings.Controls.Add(this.backsideCheck);
+            this.allBusSettings.Controls.Add(this.stopBuses);
+            this.allBusSettings.Controls.Add(this.launchBuses);
             this.allBusSettings.Controls.Add(this.trackerCheck);
             this.allBusSettings.Controls.Add(this.metroLabel2);
             this.allBusSettings.Controls.Add(this.busSize);
@@ -586,6 +575,17 @@
             this.changeRoute.Name = "changeRoute";
             this.changeRoute.UseSelectable = true;
             this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChangedAsync);
+            // 
+            // metroTrackBar1
+            // 
+            this.metroTrackBar1.BackColor = System.Drawing.Color.Transparent;
+            this.metroTrackBar1.LargeChange = 1;
+            resources.ApplyResources(this.metroTrackBar1, "metroTrackBar1");
+            this.metroTrackBar1.Maximum = 3;
+            this.metroTrackBar1.Minimum = 1;
+            this.metroTrackBar1.Name = "metroTrackBar1";
+            this.metroTrackBar1.Value = 1;
+            this.metroTrackBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.metroTrackBar1_ScrollAsync);
             // 
             // label12
             // 
