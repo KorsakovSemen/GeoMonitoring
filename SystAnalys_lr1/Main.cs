@@ -1978,8 +1978,14 @@ namespace SystAnalys_lr1
                     string path = "";
                     using (var dialog = new FolderBrowserDialog())
                     {
-                        dialog.SelectedPath = Path.GetFullPath(savepath); //ошибка если нажать "создать модель" а потом "загрузить
-
+                        if (!Directory.Exists(savepath))
+                        {
+                            dialog.SelectedPath = System.Windows.Forms.Application.StartupPath;
+                        }
+                        else
+                        {
+                            dialog.SelectedPath = Path.GetFullPath(savepath);
+                        }
                         if (dialog.ShowDialog() == DialogResult.OK)
                         {
                             if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))

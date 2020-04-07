@@ -98,7 +98,7 @@ namespace SystAnalys_lr1
             {
                 AllCoordinates.Add(routes.ElementAt(i).Key, new List<Point>());
                 AllGridsInRoutes.Add(routes.ElementAt(i).Key, new List<int>());
-                if (routes.ElementAt(i).Value.Count != 0)
+                if (routes.ElementAt(i).Value.Count >=2 )
                 {
                     PictureBox bus = new PictureBox();
                     bus.Location = new System.Drawing.Point(routes.ElementAt(i).Value[0].x, routes.ElementAt(i).Value[0].y);
@@ -106,7 +106,7 @@ namespace SystAnalys_lr1
                     bus.Size = new System.Drawing.Size(1, 1);
                     Bus onebus = new Bus(routes[routes.ElementAt(i).Key], bus, 0, false, routes.ElementAt(i).Key, false);
 
-
+                  
                     while (onebus.TurnBack == false)
                     {
                         onebus.MoveForCoordinates();

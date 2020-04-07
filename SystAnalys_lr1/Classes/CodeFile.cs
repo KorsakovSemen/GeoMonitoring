@@ -1102,7 +1102,7 @@ namespace SystAnalys_lr1
         //старое движение(сейчас используется для создания координат для всех маршрутов 
         public void MoveForCoordinates()
         {
-            if (RoutMap.Count > 2)
+            if (RoutMap.Count >= 2)
             {
                 if (TurnBack == false)
                 {
