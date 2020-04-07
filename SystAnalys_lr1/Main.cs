@@ -274,7 +274,7 @@ namespace SystAnalys_lr1
                 {
                     BringToFront();
                     MetroMessageBox.Show(this, $"{exc.StackTrace}", MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    loading.Visible = false;                    
+                    loading.Visible = false;
                 }
             }
             if (sheet.Image == null)
@@ -1219,7 +1219,7 @@ namespace SystAnalys_lr1
             Ep.ERefreshRouts();
         }
 
-        private async void newModelToolStripMenuItem_Click(object sender, EventArgs e)
+        private void newModelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog fb = new OpenFileDialog();
             fb.FilterIndex = 1;
@@ -1235,15 +1235,7 @@ namespace SystAnalys_lr1
                     mainPanel.Controls.Remove(bus.busPic);
                 }
                 buses.Clear();
-                if (sheet.Image != null)
-                {
-                    //loading.Visible = true;
-                    //loading.Value = 50;
-                    //await Task.Delay(10001);
-                    //loading.Value = 100;
-                    //loading.Visible = false;
-                    config.Text = MainStrings.config;
-                }
+                config.Text = MainStrings.config;
                 foreach (var tl in traficLights)
                 {
                     tl.Stop();
@@ -1251,7 +1243,12 @@ namespace SystAnalys_lr1
                 TraficLightsInGrids.Clear();
                 V.Clear();
                 E.Clear();
-                //if (G.bitmap != null) G.clearSheet();
+                if (G.bitmap != null)
+                {
+                    ZoomHelper();
+                    G.clearSheet();
+                    G.clearSheet2();
+                }
                 routes.Clear();
                 routesEdge.Clear();
                 changeRoute.Items.Clear();
@@ -1264,19 +1261,15 @@ namespace SystAnalys_lr1
                 metroTrackBar1.Value = 1;
                 wsheet = sheet.Width;
                 hsheet = sheet.Height;
-                ZoomHelper();
-                G.clearSheet();
-                G.clearSheet2();
-                G.drawALLGraph(V, E);
                 globalMap = sheet.Image;
                 saveImage = sheet.Image;
+                G.setBitmap();
                 CreateGrid();
                 CreatePollutionInRoutes();
                 Bus.setGrid(TheGrid);
                 Bus.setMap(sheet);
                 Bus.setAllCoordinates(AllCoordinates);
                 addInComboBox();
-                //globalMap = new Bitmap(sheet.Image);
                 Ep = new DisplayEpicenters(this);
                 StyleManager.Clone(Ep);
                 Ep.Show();
@@ -2024,7 +2017,7 @@ namespace SystAnalys_lr1
 
                     }
                 }
-                catch(Exception exc)
+                catch (Exception exc)
                 {
                     StackTrace stackTrace = new StackTrace(exc, true);
                     if (stackTrace.FrameCount > 0)
@@ -2477,7 +2470,7 @@ namespace SystAnalys_lr1
                 if (File.Exists(load + "AllCoordinates.xml"))
                 {
                     using (StreamReader reader = new StreamReader(load + "AllCoordinates.xml"))
-                        AllCoordinates = (SerializableDictionary<string, List<Point>>)deserializerAllCoor.Deserialize(reader);                    
+                        AllCoordinates = (SerializableDictionary<string, List<Point>>)deserializerAllCoor.Deserialize(reader);
                 }
 
                 if (File.Exists(load + "AllCoordinates.json"))
@@ -3854,7 +3847,7 @@ namespace SystAnalys_lr1
                 Ep.EG.clearSheet2();
                 G.drawALLGraph(V, E);
                 CreateGrid();
-                sheet.Image = G.GetBitmap();         
+                sheet.Image = G.GetBitmap();
                 DrawGrid();
                 Ep.EDrawGrid();
             }

@@ -1,1 +1,1 @@
-C:\Users\User\source\repos\Diplom\SystAnalys_lr1\Configs\STRING_FORMAT_JSON_Bug
+C:\Users\deacl\source\repos\Diplom\SystAnalys_lr1\Configs\STRING_FORMAT_JSON_Bug

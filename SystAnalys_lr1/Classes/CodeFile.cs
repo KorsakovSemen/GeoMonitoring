@@ -371,9 +371,7 @@ namespace SystAnalys_lr1
         public static int ScrollX;
         public static int ScrollY;
         public int skip = 1;
-        public System.Threading.Mutex mutex = new System.Threading.Mutex();
         public static string sImg = "../../Resources/bus.PNG";
-        //  public byte[] saveImg;
         //таймер для движения
         Timer MovingTimer;
         //таймер определения эпицентров
