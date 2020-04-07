@@ -192,6 +192,9 @@
     <EmbeddedResource Include="Forms\TrafficLightSettings.resx">
       <DependentUpon>TrafficLightSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Main.en-SD.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.en-US.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>

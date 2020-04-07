@@ -121,8 +121,11 @@
     <value>Matrix</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="matrixGrid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>255, 114</value>
+  </data>
   <data name="SavePictures.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 17</value>
+    <value>92, 15</value>
   </data>
   <data name="SavePictures.Text" xml:space="preserve">
     <value>Save pictures</value>
@@ -131,28 +134,31 @@
     <value>Number of walkthroughs</value>
   </data>
   <data name="optimize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 120</value>
+    <value>12, 105</value>
   </data>
   <data name="optimize.Text" xml:space="preserve">
     <value>Optimization</value>
   </data>
   <data name="mean.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 120</value>
+    <value>164, 105</value>
   </data>
   <data name="mean.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 20</value>
+    <value>61, 19</value>
   </data>
   <data name="mean.Text" xml:space="preserve">
     <value>Average:</value>
   </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 255</value>
+  </data>
   <data name="stopBuses.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 58</value>
+    <value>140, 49</value>
   </data>
   <data name="stopBuses.Text" xml:space="preserve">
     <value>Stop buses</value>
   </data>
   <data name="launchBuses.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 20</value>
+    <value>140, 20</value>
   </data>
   <data name="launchBuses.Text" xml:space="preserve">
     <value>Run buses</value>
@@ -161,7 +167,7 @@
     <value>Create an array of coordinates</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 20</value>
+    <value>102, 19</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Time in seconds</value>
@@ -172,29 +178,47 @@
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>39, 815</value>
   </data>
+  <data name="metroLabel8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 408</value>
+  </data>
+  <data name="metroLabel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 19</value>
+  </data>
+  <data name="metroLabel8.Text" xml:space="preserve">
+    <value>Matrix</value>
+  </data>
   <data name="metroLabel6.Location" type="System.Drawing.Point, System.Drawing">
     <value>184, 900</value>
   </data>
+  <data name="metroLabel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 227</value>
+  </data>
   <data name="metroLabel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 20</value>
+    <value>85, 19</value>
   </data>
   <data name="metroLabel5.Text" xml:space="preserve">
     <value>Optimization</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 20</value>
+    <value>180, 19</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>With sensors: Without:  Total: </value>
   </data>
+  <data name="panel8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 432</value>
+  </data>
+  <data name="metroLabel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 67</value>
+  </data>
   <data name="metroLabel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 20</value>
+    <value>76, 19</value>
   </data>
   <data name="metroLabel4.Text" xml:space="preserve">
     <value>Bus settings</value>
   </data>
   <data name="metroLabel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
+    <value>48, 19</value>
   </data>
   <data name="metroLabel3.Text" xml:space="preserve">
     <value>Routes</value>
@@ -203,7 +227,7 @@
     <value>13, 47</value>
   </data>
   <data name="backsideCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 17</value>
+    <value>69, 15</value>
   </data>
   <data name="backsideCheck.Text" xml:space="preserve">
     <value>Backside</value>
@@ -212,153 +236,159 @@
     <value>13, 20</value>
   </data>
   <data name="trackerCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
+    <value>60, 15</value>
   </data>
   <data name="trackerCheck.Text" xml:space="preserve">
     <value>Tracker</value>
   </data>
   <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 80</value>
+    <value>10, 65</value>
   </data>
   <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 20</value>
+    <value>57, 19</value>
   </data>
   <data name="metroLabel2.Text" xml:space="preserve">
     <value>Bus size:</value>
   </data>
   <data name="busSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 104</value>
+    <value>13, 87</value>
+  </data>
+  <data name="allBusSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 88</value>
+  </data>
+  <data name="allBusSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>279, 128</value>
+  </data>
+  <data name="panel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="panel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>308, 227</value>
   </data>
   <data name="metroTrackBar1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 927</value>
+    <value>33, 623</value>
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>404, 974</value>
+    <value>311, 654</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 20</value>
+    <value>77, 19</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
     <value>Traffic lights</value>
   </data>
   <data name="theme.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1624, 41</value>
+    <value>1272, 37</value>
   </data>
   <data name="theme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
+    <value>49, 19</value>
   </data>
   <data name="theme.Text" xml:space="preserve">
     <value>Theme</value>
   </data>
   <data name="changeTheme.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1711, 37</value>
+    <value>1327, 31</value>
   </data>
   <data name="changeTheme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 30</value>
+    <value>96, 29</value>
+  </data>
+  <data name="mainPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>323, 87</value>
   </data>
   <data name="mainPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1504, 974</value>
+    <value>1103, 654</value>
   </data>
   <data name="createModelToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 26</value>
+    <value>173, 22</value>
   </data>
   <data name="createModelToolStripMenuItem.Text" xml:space="preserve">
     <value>Create model</value>
   </data>
   <data name="openEpicFormToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 26</value>
+    <value>173, 22</value>
   </data>
   <data name="openEpicFormToolStripMenuItem.Text" xml:space="preserve">
     <value>Open second form</value>
   </data>
   <data name="addRouteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 26</value>
+    <value>173, 22</value>
   </data>
   <data name="addRouteToolStripMenuItem.Text" xml:space="preserve">
     <value>Add route</value>
   </data>
   <data name="createGridToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 26</value>
+    <value>173, 22</value>
   </data>
   <data name="createGridToolStripMenuItem.Text" xml:space="preserve">
     <value>Grid settings</value>
   </data>
   <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 26</value>
+    <value>173, 22</value>
   </data>
   <data name="saveToolStripMenuItem.Text" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="saveInToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 26</value>
+    <value>173, 22</value>
   </data>
   <data name="saveInToolStripMenuItem.Text" xml:space="preserve">
     <value>Save in...</value>
   </data>
   <data name="runTrafficLightsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 26</value>
+    <value>173, 22</value>
   </data>
   <data name="runTrafficLightsToolStripMenuItem.Text" xml:space="preserve">
     <value>Run traffic lights</value>
   </data>
   <data name="saveButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 28</value>
+    <value>38, 24</value>
   </data>
   <data name="saveButton.Text" xml:space="preserve">
     <value>File</value>
   </data>
   <data name="loadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 26</value>
+    <value>138, 22</value>
   </data>
   <data name="loadToolStripMenuItem.Text" xml:space="preserve">
     <value>Load</value>
   </data>
   <data name="loadFromToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 26</value>
+    <value>138, 22</value>
   </data>
   <data name="loadFromToolStripMenuItem.Text" xml:space="preserve">
     <value>Load from...</value>
   </data>
   <data name="loadButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 28</value>
+    <value>46, 24</value>
   </data>
   <data name="loadButton.Text" xml:space="preserve">
     <value>Load</value>
   </data>
-  <data name="toolStripMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1908, 31</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1940, 1100</value>
-  </data>
   <data name="hint.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1236, 78</value>
+    <value>883, 65</value>
   </data>
   <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1135, 41</value>
+    <value>796, 37</value>
   </data>
   <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 20</value>
+    <value>66, 19</value>
   </data>
   <data name="metroLabel1.Text" xml:space="preserve">
     <value>Language</value>
   </data>
   <data name="metroComboBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1236, 37</value>
+    <value>883, 31</value>
   </data>
   <data name="config.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 20</value>
+    <value>92, 19</value>
   </data>
   <data name="config.Text" xml:space="preserve">
     <value>Configuration:</value>
   </data>
   <data name="themes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1469, 43</value>
+    <value>1117, 38</value>
   </data>
   <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1940, 1148</value>
-  </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1917, 1028</value>
+    <value>1900, 754</value>
   </data>
 </root>
