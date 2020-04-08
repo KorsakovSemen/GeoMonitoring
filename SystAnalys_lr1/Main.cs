@@ -3670,10 +3670,11 @@ namespace SystAnalys_lr1
 
 
 
-        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        private async void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             Properties.Settings.Default.Language = metroComboBox1.SelectedValue.ToString();
             Properties.Settings.Default.Save();
+            await Task.Delay(1000);
         }
 
         private void Main_Load(object sender, EventArgs e)

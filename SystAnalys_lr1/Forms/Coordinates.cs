@@ -98,7 +98,7 @@ namespace SystAnalys_lr1
             {
                 AllCoordinates.Add(routes.ElementAt(i).Key, new List<Point>());
                 AllGridsInRoutes.Add(routes.ElementAt(i).Key, new List<int>());
-                if (routes.ElementAt(i).Value.Count >=2 )
+                if (routes.ElementAt(i).Value.Count >= 2)
                 {
                     PictureBox bus = new PictureBox();
                     bus.Location = new System.Drawing.Point(routes.ElementAt(i).Value[0].x, routes.ElementAt(i).Value[0].y);
