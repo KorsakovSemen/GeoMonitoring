@@ -496,7 +496,7 @@
     <value>allBusSettings</value>
   </data>
   <data name="&gt;&gt;stopBuses.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="launchBuses.Location" type="System.Drawing.Point, System.Drawing">
     <value>146, 21</value>
@@ -520,7 +520,7 @@
     <value>allBusSettings</value>
   </data>
   <data name="&gt;&gt;launchBuses.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="createCoordinates.Location" type="System.Drawing.Point, System.Drawing">
     <value>86, 72</value>
@@ -924,6 +924,30 @@
   <data name="&gt;&gt;metroLabel3.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="metroButton1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 80</value>
+  </data>
+  <data name="metroButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="metroButton1.TabIndex" type="System.Int32, mscorlib">
+    <value>103</value>
+  </data>
+  <data name="metroButton1.Text" xml:space="preserve">
+    <value>metroButton1</value>
+  </data>
+  <data name="&gt;&gt;metroButton1.Name" xml:space="preserve">
+    <value>metroButton1</value>
+  </data>
+  <data name="&gt;&gt;metroButton1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroButton1.Parent" xml:space="preserve">
+    <value>allBusSettings</value>
+  </data>
+  <data name="&gt;&gt;metroButton1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="backsideCheck.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -949,7 +973,7 @@
     <value>allBusSettings</value>
   </data>
   <data name="&gt;&gt;backsideCheck.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="trackerCheck.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -976,7 +1000,7 @@
     <value>allBusSettings</value>
   </data>
   <data name="&gt;&gt;trackerCheck.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="metroLabel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1003,7 +1027,7 @@
     <value>allBusSettings</value>
   </data>
   <data name="&gt;&gt;metroLabel2.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="resource.Image4" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -1045,7 +1069,7 @@
     <value>allBusSettings</value>
   </data>
   <data name="&gt;&gt;busSize.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="allBusSettings.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 89</value>

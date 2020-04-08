@@ -1197,7 +1197,10 @@ namespace SystAnalys_lr1
             {
                 savepath = null;
                 if (Ep != null)
+                {
+                    Ep.EG.clearSheet2();
                     Ep.Close();
+                }
                 foreach (var bus in buses)
                 {
                     bus.Stop();
@@ -3778,14 +3781,20 @@ namespace SystAnalys_lr1
             AsyncCreateAllCoordinates();
         }
 
-        private void panel4_Paint(object sender, PaintEventArgs e)
+        private void metroButton1_Click_2(object sender, EventArgs e)
         {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
+            foreach (var bus in buses)
+            {
+                bus.PositionAt = 1;
+                bus.Stop();
+            }
+            CreateAllCoordinates();
+            BarabanAfterOpti();
+            foreach (var bus in buses)
+            {
+             
+                bus.Start();
+            }
         }
 
         private void createGridToolStripMenuItem_Click(object sender, EventArgs e)

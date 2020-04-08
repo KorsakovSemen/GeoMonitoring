@@ -113,6 +113,7 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.hint = new MetroFramework.Controls.MetroLabel();
             this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -213,7 +214,6 @@
             this.panel1.VerticalScrollbarBarColor = true;
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
             this.panel1.VerticalScrollbarSize = 8;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // SavePictures
             // 
@@ -503,6 +503,7 @@
             // 
             this.allBusSettings.BackColor = System.Drawing.Color.DimGray;
             this.allBusSettings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.allBusSettings.Controls.Add(this.metroButton1);
             this.allBusSettings.Controls.Add(this.backsideCheck);
             this.allBusSettings.Controls.Add(this.stopBuses);
             this.allBusSettings.Controls.Add(this.launchBuses);
@@ -909,6 +910,13 @@
             // 
             this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
             // 
+            // metroButton1
+            // 
+            resources.ApplyResources(this.metroButton1, "metroButton1");
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click_2);
+            // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
@@ -1041,6 +1049,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel8;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }
 

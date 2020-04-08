@@ -107,7 +107,7 @@ namespace SystAnalys_lr1
         }
 
         public void setBitmap()
-        {  
+        {
             //эксепшн при загрузке левой директоории
             bitmap = new Bitmap(Main.globalMap);
             gr = Graphics.FromImage(bitmap);
@@ -367,7 +367,7 @@ namespace SystAnalys_lr1
     //        );
     //    }
     //}
-
+  
     public class Bus : ICloneable
     {
         public static int ScrollX;
@@ -376,10 +376,10 @@ namespace SystAnalys_lr1
         public static string sImg = "../../Resources/bus.PNG";
         //таймер для движения
         Timer MovingTimer;
-        //таймер определения эпицентров
-        Timer DetectTimer;
-        //массив эпицентров
-        //private static List<Epicenter> Epicenters;
+      
+       
+   
+ 
 
 
         /////////////////////////////////////////////////////////////////////
@@ -443,7 +443,7 @@ namespace SystAnalys_lr1
         }
         int oldZoom = (int)ZoomCoef;
         public void setBusSize()
-        {                
+        {
             if (ZoomCoef < oldZoom)
             {
                 if (ZoomCoef == 1)
@@ -633,9 +633,6 @@ namespace SystAnalys_lr1
         delegate void Dpoint(Point pos);
         public void AlignBus()
         {
-            //busPic.Location = new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2);
-            //label5.Invoke(new Del((s) => label5.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
-            //label5.Invoke(new Del((s) => label5.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
 
             if (PositionAt < AllCoordinates[route].Count)
             {
@@ -643,7 +640,7 @@ namespace SystAnalys_lr1
             }
             else
             {
-                busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((AllCoordinates[route][PositionAt-1].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt-1].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
+                busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((AllCoordinates[route][PositionAt - 1].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt - 1].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
             }
 
         }
@@ -703,8 +700,8 @@ namespace SystAnalys_lr1
                                                 MovingTimer.Stop();
                                                 // int bal = sp.bal / 2;
                                                 await Task.Delay(sp.bal / 2 * 1000);
-                                             //   Console.WriteLine("After:");
-                                             //   Console.WriteLine(sp.bal);
+                                                //   Console.WriteLine("After:");
+                                                //   Console.WriteLine(sp.bal);
                                                 if (InstaStop == false)
                                                 {
                                                     MovingTimer.Start();
@@ -715,7 +712,7 @@ namespace SystAnalys_lr1
                                         }
                                     }
                                 }
-                               // busPic.Location = new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2);
+             
                                 busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
                                 PositionAt++;
                             }
@@ -724,7 +721,7 @@ namespace SystAnalys_lr1
                                 if (skipEnd == 0)
                                 {
                                     MovingTimer.Stop();
-                                    await Task.Delay(rnd.Next(0, 10000));                                    
+                                    await Task.Delay(rnd.Next(0, 10000));
                                 }
                                 if (InstaStop == false)
                                 {
@@ -776,11 +773,11 @@ namespace SystAnalys_lr1
                                                 {
                                                     skip = 100;
                                                     MovingTimer.Stop();
-                                           
+
                                                     // int bal = sp.bal / 2;
                                                     await Task.Delay(sp.bal / 2 * 1000);
-                                               //     Console.WriteLine("After:");
-                                               //     Console.WriteLine(sp.bal);
+                                                    //     Console.WriteLine("After:");
+                                                    //     Console.WriteLine(sp.bal);
                                                     if (InstaStop == false)
                                                     {
                                                         MovingTimer.Start();
@@ -791,14 +788,14 @@ namespace SystAnalys_lr1
                                         }
                                     }
                                     //
-                                    //  busPic.Location = new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2);
+                                
                                     busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
                                     PositionAt--;
                                 }
                             }
                             else
                             {
-                                if(skipEnd == 0)
+                                if (skipEnd == 0)
                                 {
                                     MovingTimer.Stop();
                                     await Task.Delay(rnd.Next(0, 10000));
@@ -827,51 +824,6 @@ namespace SystAnalys_lr1
             return route;
         }
 
-        double GetAngle(double x2, double y2)
-        {
-            return Math.Atan2((x - x2), (y - y2));
-        }
-
-        public double GetDistance(double x1, double y1, double x2, double y2)
-        {
-            return (int)Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
-        }
-        //визуализация обмнаружения эпицентра 
-        private void DetectEpicenter()
-        {
-            if (AllCoordinates.Any())
-            {
-                foreach (var EpicList in Epicenters2)
-                {
-                    foreach (var Sector in EpicList.GetEpicenterGrid())
-                    {
-                        foreach (var Square in Sector.Value)
-                            if ((PositionAt < AllCoordinates[route].Count))
-                                if (((AllCoordinates[route][PositionAt].X * ZoomCoef) > Square.x * ZoomCoef) && ((AllCoordinates[route][PositionAt].X * ZoomCoef) < Square.x * ZoomCoef + GridPart.width * ZoomCoef) && ((AllCoordinates[route][PositionAt].Y * ZoomCoef) > Square.y * ZoomCoef) && ((AllCoordinates[route][PositionAt].Y * ZoomCoef) < (Square.y * ZoomCoef + GridPart.height * ZoomCoef)))
-                                {
-                                    switch (Sector.Key)
-                                    {
-                                        case 1:
-                                            Map.CreateGraphics().FillRectangle((Brush)Brushes.Red, (AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + busPic.Width, AllCoordinates[route][PositionAt].Y * (int)ZoomCoef + busPic.Height, 3, 3);
-                                            break;
-
-                                        case 2:
-                                            Map.CreateGraphics().FillRectangle((Brush)Brushes.DarkOrange, AllCoordinates[route][PositionAt].X * (int)ZoomCoef + busPic.Width, AllCoordinates[route][PositionAt].Y * (int)ZoomCoef + busPic.Height, 3, 3);
-                                            break;
-
-                                        case 3:
-                                            Map.CreateGraphics().FillRectangle((Brush)Brushes.Yellow, AllCoordinates[route][PositionAt].X * (int)ZoomCoef + busPic.Width, AllCoordinates[route][PositionAt].Y * (int)ZoomCoef + busPic.Height, 3, 3);
-                                            break;
-
-                                        default:
-                                            break;
-
-                                    }
-                                }
-                    }
-                }
-            }
-        }
         public async Task asDetectEpicenter2()
         {
             await Task.Run(() => DetectEpicenter2());
@@ -994,55 +946,9 @@ namespace SystAnalys_lr1
             }
 
         }
-        //определение квадрата по новому
-        public void DetectRectangleByGrids()
-        {
 
-            //for (int i = 0; i < Rectangles.Count; i++)
-            //{
-            //    if ((PositionAt < AllCoordinates[route].Count))
-
-            //        if (((AllCoordinates[route][PositionAt].X) > Rectangles[i].x) && ((AllCoordinates[route][PositionAt].X) < Rectangles[i].x + GridPart.width) && ((AllCoordinates[route][PositionAt].Y) > Rectangles[i].y) && ((AllCoordinates[route][PositionAt].Y) < (Rectangles[i].y + GridPart.height)))
-            //        {
-            //            //if (this.grids[i] == 0)
-            //            //{
-            //            //    this.grids[i] = 1;
-            //            //}
-            //            Locate = i;
-            //        }
-
-
-            //}
-
-
-        }
-        //определение квадрата по старому
-        public void DetectRectangle()
-        {
-            for (int i = 0; i < Rectangles.Count; i++)
-            {
-                if (((busPic.Left + busPic.Width / 2) > Rectangles[i].x) && ((busPic.Left + busPic.Width / 2) < Rectangles[i].x + GridPart.width) && ((busPic.Top + busPic.Height / 2) > Rectangles[i].y) && ((busPic.Top + busPic.Height / 2) < (Rectangles[i].y + GridPart.height)))
-                {
-                    //if (this.grids[i] == 0)
-                    //{
-                    //    this.grids[i] = 1;
-                    //}
-                    Locate = i;
-                }
-            }
-        }
-        //(double) busPic.Top + busPic.Height / 2, (double) Rectangles[i].x + Rectangles[i].width / 2, (double) Rectangles[i].y + Rectangles[i].height / 2) < Rectangles[i].width / 2)
-        private void TimerDetectProcessor(object sender, EventArgs e)
-        {
-            if (tracker == true)
-            {
-                DetectEpicenter();
-            };
-            if (grids != null)
-            {
-                DetectRectangle();
-            }
-        }
+        
+ 
         private void TimerMoveProcessor(object sender, EventArgs e)
         {
             //   System.Threading.Thread.Sleep(2000);
@@ -1066,16 +972,10 @@ namespace SystAnalys_lr1
             MovingTimer = new Timer
             {
                 Interval = 1
-            };
-            DetectTimer = new Timer
-            {
-                Interval = 1
-            };
+            };       
             MovingTimer.Tick += new EventHandler(TimerMoveProcessor);
-            //DetectTimer.Tick += new EventHandler(TimerDetectProcessor);
             MovingTimer.Start();
-            //DetectTimer.Start();
-         
+
         }
         public void Start()
         {
@@ -1098,71 +998,7 @@ namespace SystAnalys_lr1
 
         }
         //старое движение(сейчас используется для создания координат для всех маршрутов 
-        public void MoveForCoordinates()
-        {
-            if (RoutMap.Count >= 2)
-            {
-                if (TurnBack == false)
-                {
-                    if ((TurnBack == false) && (Math.Abs((Math.Abs(x) + Math.Abs(y)) - (Math.Abs((RoutMap[PositionAt].x) + Math.Abs(RoutMap[PositionAt].y))))) > 1)
-                    {
-
-                        x -= Math.Sin(angle);
-                        y -= Math.Cos(angle);
-
-                        busPic.Left = (int)x;
-                        busPic.Top = (int)y;
-
-                    }
-
-                    else
-                    {
-                        if (PositionAt >= RoutMap.Count - 1)
-                        {
-                            TurnBack = true;
-                            PositionAt -= 1;
-                            angle = GetAngle(RoutMap[PositionAt].x, RoutMap[PositionAt].y);
-
-
-                        }
-                        else
-                        {
-                            PositionAt++;
-                            angle = GetAngle(RoutMap[PositionAt].x, RoutMap[PositionAt].y);
-                        }
-                    }
-                }
-                if (TurnBack == true)
-                {
-
-                    if ((Math.Abs((Math.Abs(x) + Math.Abs(y)) - (Math.Abs(RoutMap[PositionAt].x + Math.Abs(RoutMap[PositionAt].y))))) > 1)
-                    {
-
-                        x -= Math.Sin(angle);
-                        y -= Math.Cos(angle);
-
-
-                        busPic.Left = (int)x;
-                        busPic.Top = (int)y;
-                    }
-                    else
-                    {
-                        if (PositionAt == 0)
-                        {
-                            TurnBack = false;
-                        }
-                        else
-                        {
-                            PositionAt -= 1;
-                            angle = GetAngle(RoutMap[PositionAt].x, RoutMap[PositionAt].y);
-                        }
-
-                    }
-
-                }
-            }           
-
-        }
+  
 
     }
     public class Epicenter : ICloneable
@@ -2352,7 +2188,7 @@ namespace SystAnalys_lr1
             {
                 TimerLight.Stop();
             }
-           
+
         }
         public void Start()
         {

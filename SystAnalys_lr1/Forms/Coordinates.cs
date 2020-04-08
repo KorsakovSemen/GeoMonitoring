@@ -16,82 +16,111 @@ namespace SystAnalys_lr1
         //функция, которая создает все координаты для одного маршрута
         private void CreateOneRouteCoordinates(string i)
         {
-            if (routes[i].Count > 2)
+            if (routes[i].Count >= 2)
             {
                 AllCoordinates[i] = new List<Point>();
                 AllGridsInRoutes[i] = new List<int>();
-                PictureBox bus = new PictureBox();
-                bus.Location = new System.Drawing.Point(routes[i][0].x, routes[i][0].y);
-
-                bus.Size = new System.Drawing.Size(25, 25);
-
-               Bus onebus = new Bus(routes[i], bus, 0, false, i, false);
-
-
-                while (onebus.TurnBack == false)
-                {
-                    onebus.MoveForCoordinates();
-                    onebus.DetectRectangle();
-                    if (onebus.grids != null)
-                    {
-                        for (int k = 0; k < TheGrid.Count; k++)
-                        {
-                            if (onebus.getLocate() == k)
-                            {
-                                if (onebus.lastLocate != onebus.Locate)
-                                {
-
-                                    AllGridsInRoutes[i].Add(k);
-                                    onebus.lastLocate = onebus.Locate;
-                                }
-                            }
-                        }
-                    }
-                    AllCoordinates[i].Add(new Point((int)onebus.x, (int)onebus.y));
-                }
-                onebus = new Bus();
+                AllCoordinates[i].AddRange(getPoints(routes[i],i));
+  
             }
             Bus.SetScrollX(mainPanel.AutoScrollPosition.X);
             Bus.SetScrollY(mainPanel.AutoScrollPosition.Y);
-            CreatePollutionInRoutes();
+
 
         }
         private async void AsyncCreateAllCoordinates()
         {
-            //label9.Visible = true;
-            //label9.Text = "ТИШЕ ТИШЕ ТИШЕ";
 
-
-    
-            ////?/
-            //     buttonOff();
             await Task.Run(() =>
             {
-      //          await buttonOff();
-             //   Console.WriteLine("Buttonoff finish");
+
                 CreateAllCoordinates();
                 Bus.AllCoordinates = AllCoordinates;
-        //        await buttonOn();
-            //   Console.WriteLine("Buttonon finish");
+
 
             });
 
-       
-            //  buttonOn();
-            //label9.Text = "Закрывай";
-            //label9.Visible = false;
-          //  MessageBox.Show("Готово");
-
         }
-        //Mutex mutex = new Mutex();
-        //функция, которая создает все координаты для каждого маршрута
+
+        public List<Point> getPoints(List<Vertex> routeVertexes,string route)
+        {
+            var points = new List<Point>();
+            int RectCheckCount = 0;
+            int Locate=0;
+            int LastLocate=0;
+            for (int i = 0; i < routeVertexes.IndexOf(routeVertexes.Last()); i++)
+            {
+                Point p1 = new Point(routeVertexes[i].x, routeVertexes[i].y);
+                Point p2 = new Point(routeVertexes[i + 1].x, routeVertexes[i + 1].y);
+                int ydiff = p2.Y - p1.Y, xdiff = p2.X - p1.X;
+                double slope = (double)(p2.Y - p1.Y) / (p2.X - p1.X);
+                double x, y;
+                int quantity = (int)GetDistance(p1.X, p1.Y, p2.X, p2.Y);     
+                for (double j = 0; j < quantity; j++)
+                {
+                    y = slope == 0 ? 0 : ydiff * (j / quantity);
+                    x = slope == 0 ? xdiff * (j / quantity) : y / slope;
+                    points.Add(new Point((int)Math.Round(x) + p1.X, (int)Math.Round(y) + p1.Y));
+                    if (RectCheckCount == 10)
+                    {
+                        foreach (var gridpart in TheGrid)
+                        {
+                            if ((points.Last().X > gridpart.x) && ((points.Last().X) < gridpart.x + GridPart.width) && ((points.Last().Y) > gridpart.y) && ((points.Last().Y) < (gridpart.y + GridPart.height)))
+                            {
+
+                                Locate = TheGrid.IndexOf(gridpart);
+                            }
+                        }
+                        for (int k = 0; k < TheGrid.Count; k++)
+                        {
+                            if (Locate == k)
+                            {
+                                if (LastLocate != Locate)
+                                {
+                                    AllGridsInRoutes[route].Add(k);
+                                   
+                                   LastLocate = Locate;
+                                }
+                            }
+                        }
+                        RectCheckCount=0;
+                    }
+                    else
+                    {
+                        RectCheckCount++;
+                    }
+
+                }
+                points.Add(p2);
+                foreach (var gridpart in TheGrid)
+                {
+                    if ((points.Last().X > gridpart.x) && ((points.Last().X) < gridpart.x + GridPart.width) && ((points.Last().Y) > gridpart.y) && ((points.Last().Y) < (gridpart.y + GridPart.height)))
+                    {
+
+                        Locate = TheGrid.IndexOf(gridpart);
+                    }
+                }
+                for (int k = 0; k < TheGrid.Count; k++)
+                {
+                    if (Locate == k)
+                    {
+                        if (LastLocate != Locate)
+                        {
+                            AllGridsInRoutes[route].Add(k);
+                            Console.WriteLine(AllGridsInRoutes[route].Last().ToString());
+                            LastLocate = Locate;
+                        }
+                    }
+                }
+            }
+            return points;
+        }
+        //функция, которая создает все координаты для всех маршрутов
         private void CreateAllCoordinates()
         {
-            //    label9.Text = "ТИШЕ ТИШЕ ТИШЕ";
-            //  progressBar1.Visible = true;
-            //try { 
-            
          
+
+
             AllCoordinates = new SerializableDictionary<string, List<Point>>();
             AllGridsInRoutes = new SerializableDictionary<string, List<int>>();
             for (int i = 0; i < routes.Count; i++)
@@ -100,70 +129,13 @@ namespace SystAnalys_lr1
                 AllGridsInRoutes.Add(routes.ElementAt(i).Key, new List<int>());
                 if (routes.ElementAt(i).Value.Count >= 2)
                 {
-                    PictureBox bus = new PictureBox();
-                    bus.Location = new System.Drawing.Point(routes.ElementAt(i).Value[0].x, routes.ElementAt(i).Value[0].y);
-
-                    bus.Size = new System.Drawing.Size(1, 1);
-                    Bus onebus = new Bus(routes[routes.ElementAt(i).Key], bus, 0, false, routes.ElementAt(i).Key, false);
-
-                  
-                    while (onebus.TurnBack == false)
-                    {
-                        onebus.MoveForCoordinates();
-                        onebus.DetectRectangle();
-                        if (onebus.grids != null)
-                        {
-                            //Parallel.For(0, TheGrid.Count, (k) =>
-                            //{
-                            for (int k = 0; k < TheGrid.Count; k++)
-                            {                           
-                                if (onebus.getLocate() == k)
-                                {
-                                    if (onebus.lastLocate != onebus.Locate)
-                                    {
-                                        AllGridsInRoutes[routes.ElementAt(i).Key].Add(k);
-                                        onebus.lastLocate = onebus.Locate;
-                                    }
-                                }
-                            }
-                            //});
-                        }
-                        //lock (AllCoordinates)
-                        //{
-                        //  buses.Last().mutex.WaitOne();
-                        //await Task.Delay(10);
-                        AllCoordinates[AllCoordinates.ElementAt(i).Key].Add(new Point((int)onebus.x, (int)onebus.y));//ошипка                   
-
-                     //   buses.Last().mutex.ReleaseMutex();
-                        //}
-
-
-                    }
-                    //onebus.Stop();
-                    onebus = new Bus();
-
+                    AllCoordinates[AllCoordinates.ElementAt(i).Key].AddRange(getPoints(routes.ElementAt(i).Value, routes.ElementAt(i).Key));                 
                 }
                 Bus.SetScrollX(mainPanel.AutoScrollPosition.X);
                 Bus.SetScrollY(mainPanel.AutoScrollPosition.Y);
-                //CreatePollutionInRoutes();
+     
             }
-            //}
-            //    catch
-            //    {
-            //       // MessageBox.Show("быстрый быстрый");
-            //    }.
-            //  label9.Text = "Закрывай";
-            //foreach (var traflight in traficLights)
-            //{
-            //    traflight.Start();
-            //}
-            //foreach (var bus in buses)
-            //{
-            //    bus.Start();
-            //}
-            
-            //buttonOn();
-            //Bus.AllCoordinates = AllCoordinates;
+           
         }
 
     }
