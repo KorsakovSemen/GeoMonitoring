@@ -50,7 +50,6 @@ namespace SystAnalys_lr1
         //статичный размер басса
         public static int sizeBus;
         //очистить данные
-        bool isChecked = false;
         static public List<Vertex> V;
 
         static public SerializableDictionary<string, List<Edge>> routesEdge;
@@ -63,8 +62,6 @@ namespace SystAnalys_lr1
         //List<Dictionary<int, int>> AllGridFilling;
         //потом
         List<Dictionary<string, Dictionary<string, int>>> AllRouteGridFilling;
-        //потом
-        Dictionary<string, Dictionary<string, int>> OneRouteGridFilling;
         //уровень загрязнения в координатах
         Dictionary<string, List<GridPart>> PollutionInRoutes;
         //гифка
@@ -413,18 +410,13 @@ namespace SystAnalys_lr1
         private readonly Mutex _mutex = new Mutex();
 
         List<int?> ResultFromModeling = new List<int?>();
-
+        int v = 0;
         private void Modeling()
         {
             List<Epicenter> epList = new List<Epicenter>();
             int i = 0;
-            //epList = CreateOneEpicenter(epList);
             ConcurrentQueue<Bus> cqBus = new ConcurrentQueue<Bus>();
-            //ConcurrentQueue<Epicenter> cqEpics = new ConcurrentQueue<Epicenter>();
             buses.ForEach((b) => cqBus.Enqueue((Bus)b.Clone()));
-            //Epics.ForEach((e) => cqEpics.Enqueue((Epicenter)e.Clone()));
-            //GifList = new Dictionary<int, List<GridPart>>();
-            //CreateAllOneGrids();
             foreach (var EpicList in Epics)
             {
                 epList.Add(new Epicenter(TheGrid));
@@ -481,8 +473,6 @@ namespace SystAnalys_lr1
                             }
                             ExpandTimer = 0;
                         }
-                        Console.WriteLine("Route " + bus.getRoute());
-                        Console.WriteLine("Pos " + (int)bus.PositionAt);
                         if (TraficLightsInGrids.Contains(AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt])) //ошибка с выходом за пределы
                                                                                                                  //тушто нужно "вот эту" разкоментить
                         {
@@ -886,7 +876,7 @@ namespace SystAnalys_lr1
             }
             //  buttonOn();
         }
-        private async Task buttonOn()
+        private void buttonOn()
         {
             changeRoute.Invoke(new DelBool((s) => changeRoute.Enabled = s), true);
             button8.Invoke(new DelBool((s) => button8.Enabled = s), true);
@@ -899,37 +889,15 @@ namespace SystAnalys_lr1
                 saveButton.Enabled = true;
                 loadButton.Enabled = true;
             }));
-            //    saveButton.Invoke(new DelBool((s) => saveButton.Enabled = s), true);
-            //    loadButton.Invoke(new DelBool((s) => loadButton.Enabled = s), true);
-
-            //changeRoute.Enabled = true;
-            //optimize.Enabled = true;
-            //button2.Enabled = true;
-            //button8.Enabled = true;
-            //saveButton.Enabled = true;
-            //loadButton.Enabled = true;
         }
-        private async Task buttonOff()
+        private void buttonOff()
         {
-            //   label5.Invoke(new Del((s) => label5.Text = s), "Время, за которое обнаружили загрязнение:" + (small).ToString());
             changeRoute.Invoke(new DelBool((s) => changeRoute.Enabled = s), false);
             button8.Invoke(new DelBool((s) => button8.Enabled = s), false);
             optimize.Invoke(new DelBool((s) => optimize.Enabled = s), false);
-            //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
-            //selectButton.Invoke(new DelBool((s) => selectButton.Enabled = s), false);
-            //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
             createCoordinates.Invoke(new DelBool((s) => createCoordinates.Enabled = s), false);
             launchBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), false);
             stopBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), false);
-            //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
-            //button2.Invoke(new DelBool((s) => button2.Enabled = s), false);
-            //   saveButton.Invoke(new DelBool((s) => saveButton.Enabled = s), false);
-            //    loadButton.Invoke(new DelBool((s) => loadButton.Enabled = s), false);
-            //changeRoute.Enabled = false;
-            //button8.Enabled = false;
-            //optimize.Enabled = false;
-            //button2.Enabled = false;
-            //button8.Enabled = false;
             toolStripMenu.Invoke((System.Action)(() =>
             {
                 saveButton.Enabled = false;
@@ -1029,7 +997,6 @@ namespace SystAnalys_lr1
                     }
                     else
                     {
-
 
                         using (var dialog = new FolderBrowserDialog())
                         {
@@ -1585,14 +1552,16 @@ namespace SystAnalys_lr1
             }
             return null;
         }
+
+        LoadingForm loadingForm = new LoadingForm();
         private async void Opt()
         {
-            await buttonOff();
+            loadingForm = new LoadingForm();
+            buttonOff();
             if (SavePictures.Checked)
             {
                 Ep.Hide();
             }
-            LoadingForm loadingForm = new LoadingForm();
             loadingForm.Theme = msmMain.Theme;
             loadingForm.Style = msmMain.Style;
             Matrix();
@@ -1613,8 +1582,6 @@ namespace SystAnalys_lr1
                 textBox2.Text = speed.Text;
             }
             loadingForm.Show();
-            //loading.Visible = true;
-            //loading.Value = 0;
             int old = small;
             var style = msmMain.Style;
             SavePictures.Enabled = false;
@@ -1622,9 +1589,10 @@ namespace SystAnalys_lr1
                 msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf("Yellow"));
             else
                 msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf("Red"));
+
             await Task.Run(() =>
             {
-                int v = 0;
+                //v = 0;
                 var busesparkreturn = busesPark;
                 if (changeProcent.Text != "" && int.TryParse(speed.Text, out int ch) && changeProcent.Text != "")
                 {
@@ -1676,13 +1644,11 @@ namespace SystAnalys_lr1
                                 }
                             }
                         }
-                        else
-                        {
 
-                        }
+
+                        loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Value = s), loadingForm.loading.Value +1);
+                        //v += 1;
                         small = 10000;
-                        v += 1;
-                        loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Value = s), v);
                         //   loadingForm.loading.Value += 1;
                         //if (loading.GetCurrentParent().InvokeRequired)
                         //{
@@ -1745,9 +1711,8 @@ namespace SystAnalys_lr1
                 }
                 //busesPark = busesparkreturn;
 
-
+                MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
             });
-            MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();//sum != null ? percentMean.Min(s => s.Value).ToString() + " " + (percentMean.ElementAt((int)percentMean.Min(s => s.Value)).Key).ToString() : MainStrings.none;
             var min = percentMean.Min(v => v.Value);
             if (res.Count == 0)
@@ -1764,7 +1729,6 @@ namespace SystAnalys_lr1
             Matrix();
             buses = optimizeBuses;
 
-            //   loading.Visible = false;
             msmMain.Style = style;
             SavePictures.Enabled = true;
             if (!Ep.IsDisposed)
@@ -1772,9 +1736,10 @@ namespace SystAnalys_lr1
                 Ep.Show();
                 SavePictures.Enabled = true;
             }
-            await Task.Delay(1000);
+            BringToFront();
+            loadingForm.close = true;
             loadingForm.Close();
-            await buttonOn();
+            buttonOn();
         }
 
         public static int EpicSizeParam = 10;
@@ -1812,12 +1777,10 @@ namespace SystAnalys_lr1
         }
         public MetroCheckBox GetSavePictruesCheckBox()
         {
-            return this.SavePictures;
+            return SavePictures;
         }
         private void loadFromToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //try
-            //{
             using (var dialog = new FolderBrowserDialog())
             {
                 if (!Directory.Exists(savepath))
@@ -1841,14 +1804,12 @@ namespace SystAnalys_lr1
                             TraficLightsInGrids.Clear();
                             stopPoints.Clear();
                             allstopPoints.Clear();
-                            string path = dialog.SelectedPath;
-                            DisplayEpicenters.path = path;
-                            LoadRoutes(path + "/");
-                            savepath = path;
+                            LoadRoutes(dialog.SelectedPath + "/");
+                            savepath = dialog.SelectedPath;
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
                             using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
                             {
-                                fileV.WriteLine(path.ToString());
+                                fileV.WriteLine(savepath.ToString());
                             }
                             this.BringToFront();
                             MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
@@ -1863,18 +1824,10 @@ namespace SystAnalys_lr1
                         {
                             MetroMessageBox.Show(this, $"{exc.StackTrace}", MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
+                        savepath = "";
                     }
                 }
             }
-            //}
-            //catch (Exception exc)
-            //{
-            //    StackTrace stackTrace = new StackTrace(exc, true);
-            //    if (stackTrace.FrameCount > 0)
-            //    {
-            //        MetroMessageBox.Show(this, $"{exc.StackTrace}", MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    }
-            //}
             BringToFront();
         }
 
@@ -1891,7 +1844,6 @@ namespace SystAnalys_lr1
                     try
                     {
                         MetroMessageBox.Show(this, MainStrings.chooseWay, MainStrings.acrossThePath, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        string path = "";
                         using (var dialog = new FolderBrowserDialog())
                         {
                             if (!Directory.Exists(savepath))
@@ -1913,15 +1865,14 @@ namespace SystAnalys_lr1
                                     TraficLightsInGrids.Clear();
                                     stopPoints.Clear();
                                     allstopPoints.Clear();
-                                    path = dialog.SelectedPath;
-                                    LoadRoutes(path + "/");
-                                    savepath = path;
+                                    LoadRoutes(dialog.SelectedPath + "/");
+                                    savepath = dialog.SelectedPath;
                                     File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
                                     using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
                                     {
-                                        fileV.WriteLine(path.ToString());
+                                        fileV.WriteLine(savepath.ToString());
                                     }
-                                    this.BringToFront();
+                                    BringToFront();
                                     MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                                 }
                                 addRouteToolStripMenuItem.Enabled = true;
@@ -1942,7 +1893,6 @@ namespace SystAnalys_lr1
             }
             else
             {
-                string path = "";
                 using (var dialog = new FolderBrowserDialog())
                 {
                     if (!Directory.Exists(savepath))
@@ -1964,17 +1914,16 @@ namespace SystAnalys_lr1
                             TraficLightsInGrids.Clear();
                             stopPoints.Clear();
                             allstopPoints.Clear();
-                            path = dialog.SelectedPath;
-                            LoadRoutes(path + "/");
-                            savepath = path;
+                            LoadRoutes(dialog.SelectedPath + "/");
+                            savepath = dialog.SelectedPath;
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
                             using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
                             {
-                                fileV.WriteLine(path.ToString());
+                                fileV.WriteLine(savepath.ToString());
                             }
                             addRouteToolStripMenuItem.Enabled = true;
                             createGridToolStripMenuItem.Enabled = true;
-                            this.BringToFront();
+                            BringToFront();
                             MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
 
@@ -2084,13 +2033,16 @@ namespace SystAnalys_lr1
             return returnImage;
         }
         string saveF = "xml";
-        private async void SaveRoutes(string saveFormat = "xml", string save = "../../Data/")
+        private void SaveRoutes(string saveFormat = "xml", string save = "../../Data/")
         {
             try
             {
-                loading.Visible = true;
-                loading.Value = 0;
-                loading.Maximum = 100;
+                loadingForm = new LoadingForm();
+                loadingForm.loading.Value = 0;
+                //loading.Visible = true;
+                loadingForm.Show();
+                loadingForm.close = false;
+                loadingForm.loading.Maximum = 100;
                 if (saveFormat == "xml")
                 {
                     XmlSerializer serializerV = new XmlSerializer(typeof(List<Vertex>));
@@ -2103,7 +2055,7 @@ namespace SystAnalys_lr1
                         Console.WriteLine("Объект сериализован");
                         fileV.Close();
                     }
-                    loading.Value = 10;
+                    loadingForm.loading.Value = 10;
                     File.Delete(save + "Edges.xml");
                     using (FileStream fileE = new FileStream(save + "Edges.xml", FileMode.OpenOrCreate))
                     {
@@ -2111,7 +2063,7 @@ namespace SystAnalys_lr1
                         Console.WriteLine("Объект сериализован");
                         fileE.Close();
                     }
-                    loading.Value = 20;
+                    loadingForm.loading.Value = 20;
                     File.Delete(save + "Buses.xml");
                     XmlSerializer serializerAllBuses = new XmlSerializer(typeof(List<Bus>));
                     using (FileStream fileB = new FileStream(save + "Buses.xml", FileMode.OpenOrCreate))
@@ -2119,7 +2071,7 @@ namespace SystAnalys_lr1
                         serializerAllBuses.Serialize(fileB, buses);
                         Console.WriteLine("Объект сериализован");
                     }
-                    loading.Value = 30;
+                    loadingForm.loading.Value = 30;
 
                     //AsyncCreateAllCoordinates();
                     File.Delete(save + "AllCoordinates.xml");
@@ -2129,7 +2081,7 @@ namespace SystAnalys_lr1
                         serializerAllCoor.Serialize(fileA, AllCoordinates);
                         Console.WriteLine("Объект сериализован");
                     }
-                    loading.Value = 50;
+                    loadingForm.loading.Value = 50;
                     File.Delete(save + "AllGridsInRoutes.xml");
                     XmlSerializer serializerAllGridsInRoutes = new XmlSerializer(typeof(SerializableDictionary<string, List<int>>));
                     using (FileStream fileAG = new FileStream(save + "AllGridsInRoutes.xml", FileMode.OpenOrCreate))
@@ -2137,7 +2089,7 @@ namespace SystAnalys_lr1
                         serializerAllGridsInRoutes.Serialize(fileAG, AllGridsInRoutes);
                         Console.WriteLine("Объект сериализован");
                     }
-                    loading.Value = 60;
+                    loadingForm.loading.Value = 60;
                     XmlSerializer Ver = new XmlSerializer(typeof(SerializableDictionary<string, List<Vertex>>));
                     XmlSerializer Edge = new XmlSerializer(typeof(SerializableDictionary<string, List<Edge>>));
 
@@ -2147,14 +2099,14 @@ namespace SystAnalys_lr1
                         Ver.Serialize(fileV, routes);
                         Console.WriteLine("Объект сериализован");
                     }
-                    loading.Value = 70;
+                    loadingForm.loading.Value = 70;
                     File.Delete(save + "StopPoints.xml");
                     using (FileStream fileV = new FileStream(save + "StopPoints.xml", FileMode.OpenOrCreate))
                     {
                         Ver.Serialize(fileV, stopPoints);
                         Console.WriteLine("Объект сериализован");
                     }
-                    loading.Value = 80;
+                    loadingForm.loading.Value = 80;
 
                     File.Delete(save + "edgeRoutes.xml");
                     using (FileStream fileE = new FileStream(save + "edgeRoutes.xml", FileMode.OpenOrCreate))
@@ -2185,48 +2137,48 @@ namespace SystAnalys_lr1
                         Console.WriteLine("Объект сериализован");
 
                     }
-                    loading.Value = 90;
+                    loadingForm.loading.Value = 90;
                     saveF = saveFormat;
-                    await Task.Delay(1000);
-                    loading.Value = 100;
-                    loading.Visible = false;
+                    loadingForm.loading.Value = 100;
+                    loadingForm.close = true;
+                    loadingForm.Close();
                     return;
                 }
                 if (saveFormat == "json")
                 {
-                    loading.Value = 10;
+                    loadingForm.loading.Value = 10;
                     string json = JsonConvert.SerializeObject(V);
                     File.WriteAllText(save + "Vertex.json", json);
-                    loading.Value = 20;
+                    loadingForm.loading.Value = 20;
                     json = JsonConvert.SerializeObject(E);
                     File.WriteAllText(save + "Edges.json", json);
-                    loading.Value = 30;
+                    loadingForm.loading.Value = 30;
                     json = JsonConvert.SerializeObject(buses);
                     File.WriteAllText(save + "Buses.json", json);
-                    loading.Value = 50;
+                    loadingForm.loading.Value = 50;
                     //AsyncCreateAllCoordinates();
                     json = JsonConvert.SerializeObject(AllCoordinates);
                     File.WriteAllText(save + "AllCoordinates.json", json);
-                    loading.Value = 60;
+                    loadingForm.loading.Value = 60;
                     json = JsonConvert.SerializeObject(AllGridsInRoutes);
                     File.WriteAllText(save + "AllGridsInRoutes.json", json);
-                    loading.Value = 70;
+                    loadingForm.loading.Value = 70;
                     json = JsonConvert.SerializeObject(stopPoints);
                     File.WriteAllText(save + "StopPoints.json", json);
-                    loading.Value = 80;
+                    loadingForm.loading.Value = 80;
                     json = JsonConvert.SerializeObject(routes);
                     File.WriteAllText(save + "vertexRoutes.json", json);
                     json = JsonConvert.SerializeObject(g);
                     File.WriteAllText(save + "grid.json", json);
-                    loading.Value = 90;
+                    loadingForm.loading.Value = 90;
                     json = JsonConvert.SerializeObject(routesEdge);
                     File.WriteAllText(save + "edgeRoutes.json", json);
                     json = JsonConvert.SerializeObject(traficLights);
                     File.WriteAllText(save + "traficLights.json", json);
-                    loading.Value = 100;
                     saveF = saveFormat;
-                    await Task.Delay(1000);
-                    loading.Visible = false;
+                    loadingForm.loading.Value = 100;
+                    loadingForm.close = true;
+                    loadingForm.Close();
                     return;
                 }
 
@@ -2237,8 +2189,8 @@ namespace SystAnalys_lr1
                 if (stackTrace.FrameCount > 0)
                 {
                     MetroMessageBox.Show(this, $"{exc.StackTrace}", MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    loading.Visible = false;
-
+                    loadingForm.close = true;
+                    loadingForm.Close();
                 }
 
             }
@@ -2320,8 +2272,11 @@ namespace SystAnalys_lr1
                 hsheet = sheet.Height;
                 ZoomHelper();
                 //   await Task.Run(() => {
-                loading.Visible = true;
-                loading.Value = 0;
+                loadingForm = new LoadingForm();
+                loadingForm.close = false;
+                loadingForm.Show();
+                //loading.Visible = true;
+                loadingForm.loading.Value = 0;
                 //   });            
                 routePoints.Clear();
                 globalMap = sheet.Image;
@@ -2344,7 +2299,7 @@ namespace SystAnalys_lr1
                         V = JsonConvert.DeserializeObject<List<Vertex>>(File.ReadAllText(load + "Vertex.json")); //reader.ReadToEnd()
                     }
                 }
-                loading.Value = 10;
+                loadingForm.loading.Value = 10;
 
                 if (File.Exists(load + "Edges.xml"))
                 {
@@ -2380,7 +2335,7 @@ namespace SystAnalys_lr1
                     }
                 }
 
-                loading.Value = 20;
+                loadingForm.loading.Value = 20;
 
                 if (File.Exists(load + "StopPoints.xml"))
                 {
@@ -2424,7 +2379,7 @@ namespace SystAnalys_lr1
                         }
                     }
                 }
-                loading.Value = 30;
+                loadingForm.loading.Value = 30;
 
                 XmlSerializer deserializerAllCoor = new XmlSerializer(typeof(SerializableDictionary<string, List<Point>>));
                 if (File.Exists(load + "AllCoordinates.xml"))
@@ -2480,7 +2435,7 @@ namespace SystAnalys_lr1
                         sheet.Image = G.GetBitmap();
                     }
                 }
-                loading.Value = 40;
+                loadingForm.loading.Value = 40;
                 XmlSerializer deserializerAllGridsInRoutes = new XmlSerializer(typeof(SerializableDictionary<string, List<int>>));
                 if (File.Exists(load + "AllGridsInRoutes.xml"))
                 {
@@ -2495,7 +2450,7 @@ namespace SystAnalys_lr1
                         AllGridsInRoutes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<int>>>(reader.ReadToEnd());
                     }
                 }
-                loading.Value = 50;
+                loadingForm.loading.Value = 50;
                 if (buses != null)
                 {
                     foreach (var x in buses)
@@ -2522,7 +2477,7 @@ namespace SystAnalys_lr1
                         buses = (List<Bus>)deserializerAllBuses.Deserialize(reader);
                     }
                 }
-                loading.Value = 60;
+                loadingForm.loading.Value = 60;
                 foreach (var tl in traficLights)
                 {
                     tl.Start();
@@ -2579,7 +2534,7 @@ namespace SystAnalys_lr1
                         routes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Vertex>>>(reader.ReadToEnd());
                     }
                 }
-                loading.Value = 80;
+                loadingForm.loading.Value = 80;
                 if (File.Exists(load + "edgeRoutes.xml"))
                 {
                     using (StreamReader reader = new StreamReader(load + "edgeRoutes.xml"))
@@ -2595,7 +2550,7 @@ namespace SystAnalys_lr1
                     }
                     saveF = "json";
                 }
-                loading.Value = 90;
+                loadingForm.loading.Value = 90;
                 //foreach (var x in routes)
                 //{
                 //    Routes(x.Key, x.Value, routesEdge[x.Key]);
@@ -2623,8 +2578,9 @@ namespace SystAnalys_lr1
                 Ep = new DisplayEpicenters(this);
                 this.StyleManager.Clone(Ep);
                 Ep.Show();
-                loading.Value = 100;
-                loading.Visible = false;
+                loadingForm.loading.Value = 100;
+                loadingForm.close = true;
+                loadingForm.Close(); // loading.Visible = false;
             }
             catch (Exception exc)
             {
@@ -2633,7 +2589,9 @@ namespace SystAnalys_lr1
                 //{
                 //    MetroMessageBox.Show(this, $"{exc.StackTrace}", MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 //}
-                loading.Visible = false;
+                loadingForm.close = true;
+                loadingForm.Close();
+                //loading.Visible = false;
                 throw exc;
             }
         }
@@ -2659,7 +2617,6 @@ namespace SystAnalys_lr1
         public static bool flag = false;
         private void sheet_MouseClick_1(object sender, MouseEventArgs e)
         {
-
             if (changeRoute.Text == MainStrings.network)
             {
                 if (selectRoute.Enabled == false)
@@ -2895,74 +2852,72 @@ namespace SystAnalys_lr1
                 //нажата кнопка addBus
                 if (addBus.Enabled == false)
                 {
-                    //try
-                    //{
-                    if (AllCoordinates[changeRoute.Text].Count != 0)
+                    try
                     {
-                        if (buses.Count != 0)
-                            sizeBus = buses.Last().busPic.Width;
-                        PictureBox busPic = new PictureBox();
-                        busPic.Location = new System.Drawing.Point(e.X / zoom + mainPanel.AutoScrollPosition.X, e.Y / zoom + mainPanel.AutoScrollPosition.Y);
-                        if (busSize.Text != "")
-                            busPic.Size = new System.Drawing.Size(int.Parse(busSize.Text), int.Parse(busSize.Text));
-                        else
-                            busPic.Size = new System.Drawing.Size(sizeBus, sizeBus);
-                        //    sizeBus = busPic.Width;
-                        busPic.Image = new Bitmap("../../Resources/shkolnyy-avtobus.png");
-                        busPic.SizeMode = PictureBoxSizeMode.StretchImage;
-                        mainPanel.Controls.Add(busPic);
-                        busPic.BringToFront();
-
-                        int pos = 0;
-
-                        if (e.Button == MouseButtons.Left)
+                        if (AllCoordinates[changeRoute.Text].Count != 0)
                         {
-                            double min = Math.Pow((AllCoordinates[changeRoute.Text].Last().X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text].Last().Y - e.Y / zoom), 2);
-                            for (int i = 0; i < AllCoordinates[changeRoute.Text].Count; i++)
+                            if (buses.Count != 0)
+                                sizeBus = buses.Last().busPic.Width;
+                            PictureBox busPic = new PictureBox();
+                            busPic.Location = new System.Drawing.Point(e.X / zoom + mainPanel.AutoScrollPosition.X, e.Y / zoom + mainPanel.AutoScrollPosition.Y);
+                            if (busSize.Text != "")
+                                busPic.Size = new System.Drawing.Size(int.Parse(busSize.Text), int.Parse(busSize.Text));
+                            else
+                                busPic.Size = new System.Drawing.Size(sizeBus, sizeBus);
+                            //    sizeBus = busPic.Width;
+                            busPic.Image = new Bitmap("../../Resources/shkolnyy-avtobus.png");
+                            busPic.SizeMode = PictureBoxSizeMode.StretchImage;
+                            mainPanel.Controls.Add(busPic);
+                            busPic.BringToFront();
+
+                            int pos = 0;
+
+                            if (e.Button == MouseButtons.Left)
                             {
-                                if (Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2) <= G.R * G.R * 500)
+                                double min = Math.Pow((AllCoordinates[changeRoute.Text].Last().X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text].Last().Y - e.Y / zoom), 2);
+                                for (int i = 0; i < AllCoordinates[changeRoute.Text].Count; i++)
                                 {
-                                    if ((Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2) < min))
+                                    if (Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2) <= G.R * G.R * 500)
                                     {
-                                        min = Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2);
-                                        pos = i;
+                                        if ((Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2) < min))
+                                        {
+                                            min = Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2);
+                                            pos = i;
+                                        }
                                     }
                                 }
                             }
-                        }
 
-                        if (trackerCheck.Checked == true)
-                        {
-                            using (Graphics graphics = Graphics.FromImage(busPic.Image))
+                            if (trackerCheck.Checked == true)
                             {
-                                using (Font arialFont = new Font("Arial", 300))
+                                using (Graphics graphics = Graphics.FromImage(busPic.Image))
                                 {
-                                    graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(10, 10));
+                                    using (Font arialFont = new Font("Arial", 300))
+                                    {
+                                        graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(10, 10));
+                                    }
                                 }
+                                buses.Add(new Bus(routes[changeRoute.Text], busPic, pos, backsideCheck.Checked, changeRoute.Text, true));
                             }
-                            buses.Add(new Bus(routes[changeRoute.Text], busPic, pos, backsideCheck.Checked, changeRoute.Text, true));
+                            else
+                            {
+                                busPic.Image = MakeGray(new Bitmap("../../Resources/shkolnyy-avtobus.png"));
+                                using (Graphics graphics = Graphics.FromImage(busPic.Image))
+                                {
+                                    using (Font arialFont = new Font("Arial", 300))
+                                    {
+                                        graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(10, 10));
+                                    }
+                                }
+                                buses.Add(new Bus(routes[changeRoute.Text], busPic, pos, backsideCheck.Checked, changeRoute.Text, false));
+                            };
+                            buses.Last().Set();
                         }
-                        else
-                        {
-                            busPic.Image = MakeGray(new Bitmap("../../Resources/shkolnyy-avtobus.png"));
-                            using (Graphics graphics = Graphics.FromImage(busPic.Image))
-                            {
-                                using (Font arialFont = new Font("Arial", 300))
-                                {
-                                    graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(10, 10));
-                                }
-                            }
-                            buses.Add(new Bus(routes[changeRoute.Text], busPic, pos, backsideCheck.Checked, changeRoute.Text, false));
-                        };
-                        //  
-                        //  Bus.AllCoordinates = AllCoordinates;
-                        buses.Last().Set();
                     }
-                    //}
-                    //catch
-                    //{
-                    //    MetroMessageBox.Show(this, "В маршруте должно быть как минимум 2 ребра", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //}
+                    catch
+                    {
+                        MetroMessageBox.Show(this, MainStrings.bus, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 if (deleteBus.Enabled == false)
                 {
@@ -3551,6 +3506,7 @@ namespace SystAnalys_lr1
                     routesEdge.Add((this.addR.textBox1.Text), new List<Edge>());
                     changeRoute.Items.Add(addR.textBox1.Text);
                     stopPoints.Add((this.addR.textBox1.Text), new List<Vertex>());
+                    changeRoute.SelectedIndex = changeRoute.Items.IndexOf(addR.textBox1.Text);
                 }
             }
         }

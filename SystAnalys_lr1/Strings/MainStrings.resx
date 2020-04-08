@@ -183,4 +183,7 @@
   <data name="deleteBus" xml:space="preserve">
     <value>Вы действительно хотите удалить все автобусы маршрута/сети?</value>
   </data>
+  <data name="bus" xml:space="preserve">
+    <value>Должно быть больше 2 ребер</value>
+  </data>
 </root>

@@ -43,7 +43,11 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.loading);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "LoadingForm";
+            this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoadingForm_FormClosing);
             this.ResumeLayout(false);
 
         }

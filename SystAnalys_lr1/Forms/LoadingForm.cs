@@ -17,5 +17,20 @@ namespace SystAnalys_lr1.Forms
         {
             InitializeComponent();
         }
+        public bool close = false;
+        private void LoadingForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!close)
+            {
+                ControlBox = false;
+                base.OnClosing(e);
+                e.Cancel = true;
+            }
+            else
+            {
+                e.Cancel = false;
+            }
+
+        }
     }
 }

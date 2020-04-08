@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using MetroFramework;
+using Newtonsoft.Json;
+using SystAnalys_lr1.Strings;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -552,8 +554,6 @@ namespace SystAnalys_lr1
                 {
                     if (PositionAt < AllCoordinates[route].IndexOf(AllCoordinates[route].Last()))
                     {
-                        //busPic.Left = AllCoordinates[route][PositionAt].X;
-                        //busPic.Top = AllCoordinates[route][PositionAt].Y;
                         PositionAt++;
                     }
                     else
@@ -1160,7 +1160,7 @@ namespace SystAnalys_lr1
                     }
 
                 }
-            }
+            }           
 
         }
 

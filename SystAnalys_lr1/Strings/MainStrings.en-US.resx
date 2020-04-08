@@ -183,4 +183,7 @@
   <data name="deleteBus" xml:space="preserve">
     <value>Are you sure you want to delete all route / network buses?</value>
   </data>
+  <data name="bus" xml:space="preserve">
+    <value>Must have more than 2 ribs</value>
+  </data>
 </root>

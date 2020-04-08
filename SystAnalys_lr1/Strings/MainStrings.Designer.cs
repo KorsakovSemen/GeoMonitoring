@@ -79,6 +79,15 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Должно быть больше 2 ребер.
+        /// </summary>
+        internal static string bus {
+            get {
+                return ResourceManager.GetString("bus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Выберите другой путь для конфигурации.
         /// </summary>
         internal static string chooseWay {
