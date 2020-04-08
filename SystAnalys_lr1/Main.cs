@@ -1611,11 +1611,11 @@ namespace SystAnalys_lr1
                 msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf("Yellow"));
             else
                 msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf("Red"));
+            var busesparkreturn = busesPark;
 
             await Task.Run(() =>
             {
                 //v = 0;
-                var busesparkreturn = busesPark;
                 if (changeProcent.Text != "" && int.TryParse(speed.Text, out int ch) && changeProcent.Text != "")
                 {
                     offBuses(int.Parse(changeProcent.Text));
@@ -1749,7 +1749,8 @@ namespace SystAnalys_lr1
                 fileV.WriteLine(sum != 0 ? "За:" + min + " При:" + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
             }
             Matrix();
-            //buses = optimizeBuses;
+            busesPark = busesparkreturn;
+            buses = optimizeBuses;
 
             msmMain.Style = style;
             SavePictures.Enabled = true;
