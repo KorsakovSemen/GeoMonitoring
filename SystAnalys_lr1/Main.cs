@@ -1431,7 +1431,22 @@ namespace SystAnalys_lr1
             // as simple as possible
             return rnd.Next(0, 2) == 1;
         }
+        private void BarabanAfterOpti()
+        {
+            Random rnd = new Random();
+            foreach (var b in buses)
+            {
 
+
+                int r = rnd.Next(0, AllCoordinates[b.route].Count - 1);
+                b.PositionAt = r;//rnd.Next(0, AllGridsInRoutes[b.route].Count - 1);
+
+                //  b.TurnBack = NextBool();
+                //tot += tot;
+
+
+            };
+        }
         private void Baraban()
         {
 
@@ -1560,19 +1575,21 @@ namespace SystAnalys_lr1
         {
             loadingForm = new LoadingForm();
             buttonOff();
+            string path = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute);
             if (SavePictures.Checked)
             {
                 Ep.Hide();
+                Directory.CreateDirectory(path + "/Generated_Epics");
+                Directory.CreateDirectory(path + "/Recreated_Epics");
             }
             loadingForm.Theme = msmMain.Theme;
             loadingForm.Style = msmMain.Style;
             Matrix();
             percentMean = new SerializableDictionary<int, int?>();
-            string path = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute);
+
             Directory.CreateDirectory(path);
             //zamazka
-            Directory.CreateDirectory(path + "/Generated_Epics");
-            Directory.CreateDirectory(path + "/Recreated_Epics");
+
             //zamazka
             int? sum = null;
             List<Bus> optimizeBuses = new List<Bus>();
@@ -1648,7 +1665,7 @@ namespace SystAnalys_lr1
                         }
 
 
-                        loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Value = s), loadingForm.loading.Value +1);
+                        loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Value = s), loadingForm.loading.Value + 1);
                         //v += 1;
                         small = 10000;
                         //   loadingForm.loading.Value += 1;
@@ -1711,7 +1728,7 @@ namespace SystAnalys_lr1
                     }
                     ResultFromModeling = new List<int?>();
                 }
-                //busesPark = busesparkreturn;
+                //busesPark = busesparkreturn; //невозможно взяимодействовать с басами после опти из-за этой строчки
 
                 MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
             });
@@ -1729,7 +1746,7 @@ namespace SystAnalys_lr1
                 fileV.WriteLine(sum != 0 ? "За:" + min + " При:" + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
             }
             Matrix();
-            buses = optimizeBuses;
+            //buses = optimizeBuses;
 
             msmMain.Style = style;
             SavePictures.Enabled = true;
@@ -1737,6 +1754,11 @@ namespace SystAnalys_lr1
             {
                 Ep.Show();
                 SavePictures.Enabled = true;
+            }
+            BarabanAfterOpti();
+            foreach (var bus in buses)
+            {
+                bus.Start();
             }
             BringToFront();
             loadingForm.close = true;
@@ -3574,9 +3596,11 @@ namespace SystAnalys_lr1
         private void launchBuses_Click(object sender, EventArgs e)
         {
             //Parallel.ForEach(buses, bus => bus.Start());
+            BarabanAfterOpti();
 
             foreach (var bus in buses)
             {
+          
                 bus.Start();
             }
         }
@@ -3759,6 +3783,10 @@ namespace SystAnalys_lr1
 
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
 
         private void createGridToolStripMenuItem_Click(object sender, EventArgs e)
         {
