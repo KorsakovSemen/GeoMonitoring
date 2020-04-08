@@ -66,6 +66,7 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.allBusSettings = new MetroFramework.Controls.MetroPanel();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.backsideCheck = new MetroFramework.Controls.MetroCheckBox();
             this.trackerCheck = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
@@ -113,7 +114,6 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.hint = new MetroFramework.Controls.MetroLabel();
             this.busParkBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -208,12 +208,12 @@
             this.panel1.Controls.Add(this.speed);
             this.panel1.HorizontalScrollbarBarColor = true;
             this.panel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel1.HorizontalScrollbarSize = 8;
+            this.panel1.HorizontalScrollbarSize = 10;
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             this.panel1.VerticalScrollbarBarColor = true;
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
-            this.panel1.VerticalScrollbarSize = 8;
+            this.panel1.VerticalScrollbarSize = 11;
             // 
             // SavePictures
             // 
@@ -330,12 +330,12 @@
             this.panel2.Controls.Add(this.changeProcent);
             this.panel2.HorizontalScrollbarBarColor = true;
             this.panel2.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel2.HorizontalScrollbarSize = 8;
+            this.panel2.HorizontalScrollbarSize = 10;
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             this.panel2.VerticalScrollbarBarColor = true;
             this.panel2.VerticalScrollbarHighlightOnWheel = false;
-            this.panel2.VerticalScrollbarSize = 8;
+            this.panel2.VerticalScrollbarSize = 11;
             // 
             // createCoordinates
             // 
@@ -431,11 +431,11 @@
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.HorizontalScrollbarBarColor = true;
             this.panel4.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel4.HorizontalScrollbarSize = 8;
+            this.panel4.HorizontalScrollbarSize = 10;
             this.panel4.Name = "panel4";
             this.panel4.VerticalScrollbarBarColor = true;
             this.panel4.VerticalScrollbarHighlightOnWheel = false;
-            this.panel4.VerticalScrollbarSize = 8;
+            this.panel4.VerticalScrollbarSize = 11;
             // 
             // metroLabel8
             // 
@@ -461,12 +461,12 @@
             this.panel8.Controls.Add(this.matrixGrid);
             this.panel8.HorizontalScrollbarBarColor = true;
             this.panel8.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel8.HorizontalScrollbarSize = 8;
+            this.panel8.HorizontalScrollbarSize = 10;
             resources.ApplyResources(this.panel8, "panel8");
             this.panel8.Name = "panel8";
             this.panel8.VerticalScrollbarBarColor = true;
             this.panel8.VerticalScrollbarHighlightOnWheel = false;
-            this.panel8.VerticalScrollbarSize = 8;
+            this.panel8.VerticalScrollbarSize = 11;
             // 
             // label8
             // 
@@ -482,12 +482,12 @@
             this.panel7.Controls.Add(this.changeRoute);
             this.panel7.HorizontalScrollbarBarColor = true;
             this.panel7.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel7.HorizontalScrollbarSize = 8;
+            this.panel7.HorizontalScrollbarSize = 10;
             resources.ApplyResources(this.panel7, "panel7");
             this.panel7.Name = "panel7";
             this.panel7.VerticalScrollbarBarColor = true;
             this.panel7.VerticalScrollbarHighlightOnWheel = false;
-            this.panel7.VerticalScrollbarSize = 8;
+            this.panel7.VerticalScrollbarSize = 11;
             // 
             // metroLabel4
             // 
@@ -512,14 +512,21 @@
             this.allBusSettings.Controls.Add(this.busSize);
             this.allBusSettings.HorizontalScrollbarBarColor = true;
             this.allBusSettings.HorizontalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.HorizontalScrollbarSize = 13;
+            this.allBusSettings.HorizontalScrollbarSize = 17;
             resources.ApplyResources(this.allBusSettings, "allBusSettings");
             this.allBusSettings.Name = "allBusSettings";
             this.allBusSettings.Style = MetroFramework.MetroColorStyle.Blue;
             this.allBusSettings.UseStyleColors = true;
             this.allBusSettings.VerticalScrollbarBarColor = true;
             this.allBusSettings.VerticalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.VerticalScrollbarSize = 13;
+            this.allBusSettings.VerticalScrollbarSize = 17;
+            // 
+            // metroButton1
+            // 
+            resources.ApplyResources(this.metroButton1, "metroButton1");
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click_2);
             // 
             // backsideCheck
             // 
@@ -909,13 +916,6 @@
             // busParkBindingSource
             // 
             this.busParkBindingSource.DataSource = typeof(SystAnalys_lr1.Bus);
-            // 
-            // metroButton1
-            // 
-            resources.ApplyResources(this.metroButton1, "metroButton1");
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click_2);
             // 
             // Main
             // 

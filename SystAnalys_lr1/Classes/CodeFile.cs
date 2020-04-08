@@ -101,7 +101,7 @@ namespace SystAnalys_lr1
             };
 
             Random random = new Random();
-            color = Color.FromArgb(random.Next(255), random.Next(255), random.Next(255));
+            color = Color.LightSeaGreen;//Color.FromArgb(random.Next(255), random.Next(255), random.Next(255));
             fo = new Font("Arial", 15);
             br = Brushes.Black;
         }
