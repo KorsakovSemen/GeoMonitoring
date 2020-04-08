@@ -2398,7 +2398,6 @@ namespace SystAnalys_lr1
     }
     public class GridPart
     {
-        public System.Threading.Mutex mutex;
         public int x, y;
         public int status { get; set; }
         public bool check { get; set; } = false; //todo

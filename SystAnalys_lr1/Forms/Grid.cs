@@ -1,4 +1,5 @@
 ﻿using MetroFramework.Forms;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -128,7 +129,9 @@ namespace SystAnalys_lr1
             public int up;
             public int right;
             public int down;
+            [XmlIgnore, JsonIgnore]
             public int gridWidth;
+            [XmlIgnore, JsonIgnore]
             public int gridHeight;
         }
     //    public static int left = 90, up = 300, right = 100, down = 300, gridWidth = 80 , gridHeight = 40;

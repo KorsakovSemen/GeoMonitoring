@@ -61,7 +61,6 @@
             this.up.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
             this.up.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode")));
             this.up.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location")));
-            this.up.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin")));
             this.up.CustomButton.Name = "";
             this.up.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size")));
             this.up.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -93,7 +92,6 @@
             this.left.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
             this.left.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode1")));
             this.left.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location1")));
-            this.left.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin1")));
             this.left.CustomButton.Name = "";
             this.left.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size1")));
             this.left.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -132,7 +130,6 @@
             this.down.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
             this.down.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode2")));
             this.down.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location2")));
-            this.down.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin2")));
             this.down.CustomButton.Name = "";
             this.down.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size2")));
             this.down.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -164,7 +161,6 @@
             this.right.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
             this.right.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode3")));
             this.right.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location3")));
-            this.right.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin3")));
             this.right.CustomButton.Name = "";
             this.right.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size3")));
             this.right.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -221,7 +217,6 @@
             this.h.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
             this.h.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode4")));
             this.h.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location4")));
-            this.h.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin4")));
             this.h.CustomButton.Name = "";
             this.h.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size4")));
             this.h.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -229,8 +224,8 @@
             this.h.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.h.CustomButton.UseSelectable = true;
             this.h.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible4")));
-            this.h.Lines = new string[0];
             resources.ApplyResources(this.h, "h");
+            this.h.Lines = new string[0];
             this.h.MaxLength = 9;
             this.h.Name = "h";
             this.h.PasswordChar = '\0';
@@ -257,7 +252,6 @@
             this.w.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
             this.w.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode5")));
             this.w.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location5")));
-            this.w.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin5")));
             this.w.CustomButton.Name = "";
             this.w.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size5")));
             this.w.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -265,8 +259,8 @@
             this.w.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.w.CustomButton.UseSelectable = true;
             this.w.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible5")));
-            this.w.Lines = new string[0];
             resources.ApplyResources(this.w, "w");
+            this.w.Lines = new string[0];
             this.w.MaxLength = 9;
             this.w.Name = "w";
             this.w.PasswordChar = '\0';

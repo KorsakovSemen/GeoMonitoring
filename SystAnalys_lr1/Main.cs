@@ -993,6 +993,7 @@ namespace SystAnalys_lr1
                         if (!File.Exists(savepath + "/Map.png"))
                             saveImage.Save(savepath + "/Map.png", System.Drawing.Imaging.ImageFormat.Png);
                         SaveRoutes(saveF, savepath + "/");
+                        BringToFront();
                         MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     else
@@ -1013,6 +1014,7 @@ namespace SystAnalys_lr1
                                 {
                                     fileV.WriteLine(savepath.ToString());
                                 }
+                                BringToFront();
                                 MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
 
                             }
@@ -1020,6 +1022,7 @@ namespace SystAnalys_lr1
                     }
                     stopPointButton.Enabled = true;
                 }
+
             }
             catch (Exception exc)
             {
@@ -1029,7 +1032,6 @@ namespace SystAnalys_lr1
                     MetroMessageBox.Show(this, $"{exc.StackTrace}", MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -1671,9 +1673,9 @@ namespace SystAnalys_lr1
                     }
                     if (total < 0 || count < ResultFromModeling.Count / 2)
                     {
-                        mean.Invoke(new Del((s) => mean.Text = s), MainStrings.none + "\n" + MainStrings.procentSuc + " " + (ResultFromModeling.Count / 100.00) * count + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count / 100.00) * (ResultFromModeling.Count - count)));
+                        mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + (ResultFromModeling.Count / 100.00) * count + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count / 100.00) * (ResultFromModeling.Count - count)));
                         percentMean.Add(cicl * 10, null);
-                        mean.Invoke(new Del((s) => mean.Text = s), MainStrings.none);
+                        mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none);
                     }
                     else
                     {
@@ -1716,10 +1718,10 @@ namespace SystAnalys_lr1
             var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();//sum != null ? percentMean.Min(s => s.Value).ToString() + " " + (percentMean.ElementAt((int)percentMean.Min(s => s.Value)).Key).ToString() : MainStrings.none;
             var min = percentMean.Min(v => v.Value);
             if (res.Count == 0)
-                mean.Text = sum != 0 ? "За:" + min + " При:" + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null";
+                mean.Text = MainStrings.average + (sum != 0 ? "За:" + min + " При:" + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
             else
             {
-                mean.Text = "При " + res.Max().ToString() + " - " + "За " + percentMean.Min(v => v.Value);
+                mean.Text = MainStrings.average + ("При " + res.Max().ToString() + " - " + "За " + percentMean.Min(v => v.Value));
             }
 
             using (StreamWriter fileV = new StreamWriter(path + "/Average.txt"))
@@ -2332,6 +2334,8 @@ namespace SystAnalys_lr1
                     using (StreamReader reader = new StreamReader(load + "grid.json"))
                     {
                         g = JsonConvert.DeserializeObject<Grid>(reader.ReadToEnd());
+                        g.gridHeight = 40;
+                        g.gridWidth = 80;
                     }
                 }
 
@@ -2512,7 +2516,6 @@ namespace SystAnalys_lr1
                     x.Set();
 
                 }
-
 
                 XmlSerializer ver = new XmlSerializer(typeof(List<Vertex>));
                 XmlSerializer ed = new XmlSerializer(typeof(List<Edge>));
@@ -3330,6 +3333,7 @@ namespace SystAnalys_lr1
                         MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                 }
+                BringToFront();
             }
         }
         CrossroadsSettings crossSettings;
@@ -3406,6 +3410,7 @@ namespace SystAnalys_lr1
                         MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                 }
+                BringToFront();
             }
         }
 
@@ -3753,6 +3758,7 @@ namespace SystAnalys_lr1
         {
 
         }
+
 
         private void createGridToolStripMenuItem_Click(object sender, EventArgs e)
         {

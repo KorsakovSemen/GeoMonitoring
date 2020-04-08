@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<dictionary>
+  <item>
+    <key>
+      <string>23</string>
+    </key>
+    <value>
+      <ArrayOfVertex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </value>
+  </item>
+  <item>
+    <key>
+      <string>5B</string>
+    </key>
+    <value>
+      <ArrayOfVertex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </value>
+  </item>
+  <item>
+    <key>
+      <string>35</string>
+    </key>
+    <value>
+      <ArrayOfVertex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+    </value>
+  </item>
+</dictionary>
