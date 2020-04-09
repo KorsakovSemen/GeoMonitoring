@@ -90,7 +90,6 @@
     <Compile Include="Forms\AddRoute.Designer.cs">
       <DependentUpon>AddRoute.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\AllRotations.cs" />
     <Compile Include="Classes\CodeFile.cs" />
     <Compile Include="Forms\Coordinates.cs">
       <SubType>Form</SubType>

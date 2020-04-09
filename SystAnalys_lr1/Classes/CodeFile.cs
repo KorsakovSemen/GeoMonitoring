@@ -13,18 +13,17 @@ namespace SystAnalys_lr1
 {
     public class Vertex //: ICloneable
     {
-        public int x { get; set; }
-        public int y { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
         public int gridNum;
 
         public Vertex()
-        {
-        }
+        { }
 
         public Vertex(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            X = x;
+            Y = y;
         }
 
         public override bool Equals(object obj)
@@ -38,22 +37,17 @@ namespace SystAnalys_lr1
         public bool Equals(Vertex other)
         {
             if (other == null) return false;
-            return (this.x.Equals(other.x) && this.y.Equals(other.y));
+            return (this.X.Equals(other.X) && this.Y.Equals(other.Y));
         }
 
         public override int GetHashCode()
         {
             var hashCode = -1577951254;
-            hashCode = hashCode * -1521134295 + x.GetHashCode();
-            hashCode = hashCode * -1521134295 + y.GetHashCode();
+            hashCode = hashCode * -1521134295 + X.GetHashCode();
+            hashCode = hashCode * -1521134295 + Y.GetHashCode();
             hashCode = hashCode * -1521134295 + gridNum.GetHashCode();
             return hashCode;
         }
-
-        //public object Clone()
-        //{
-        //    return this.MemberwiseClone();
-        //}
     }
 
     public class Edge
@@ -62,8 +56,7 @@ namespace SystAnalys_lr1
         public int v2 { get; set; }
 
         public Edge()
-        {
-        }
+        { }
 
         public Edge(int v1, int v2)
         {
@@ -95,13 +88,13 @@ namespace SystAnalys_lr1
             {
                 Width = 1
             };
-            darkGoldPen = new Pen(Color.DeepPink)
+            darkGoldPen = new Pen(Color.MediumAquamarine)
             {
                 Width = 1
             };
 
             Random random = new Random();
-            color = Color.LightSeaGreen;//Color.FromArgb(random.Next(255), random.Next(255), random.Next(255));
+            color = Color.ForestGreen;//Color.FromArgb(random.Next(255), random.Next(255), random.Next(255));
             fo = new Font("Arial", 15);
             br = Brushes.Black;
         }
@@ -134,7 +127,6 @@ namespace SystAnalys_lr1
         //для второй формы
         public void clearSheet2()
         {
-
             /*Graphics.FromImage(bitmap).Clear(Color.Wheat); *//// ТУТ ЭКСЕПШН НА МОДЕЛИНГЕ   
             bitmap = new Bitmap(DisplayEpicenters.EsheetPicture);
             gr = null;
@@ -146,9 +138,6 @@ namespace SystAnalys_lr1
         {
             gr.FillEllipse(Brushes.GreenYellow, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
             gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
-            //     gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * Main.zoom * R * Main.zoom * R * Main.zoom, R * Main.zoom * R * Main.zoom * R * Main.zoom);
-            //   point = new PointF(x - 9, y - 9);
-            // gr.DrawString(number, fo, br, point);
         }
 
         public void drawSelectedVertex(int x, int y)
@@ -182,8 +171,6 @@ namespace SystAnalys_lr1
         {
             gr.FillEllipse(Brushes.Orange, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
             gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
-            //  gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom,  R * Main.zoom * R * Main.zoom, R * Main.zoom * R * Main.zoom);
-
         }
 
         public void drawStopRouteVertex(int x, int y)
@@ -210,21 +197,13 @@ namespace SystAnalys_lr1
 
             if (E.v1 == E.v2)
             {
-                gr.DrawArc(pen, (V1.x - 2 * R) * Main.zoom, (V1.y - 2 * R) * Main.zoom, 2 * R, 2 * R, 90, 270);
-                //  gr.DrawArc(pen, (V1.x + R), (V1.y + R), R, R, 90, 270);
-
-                //point = new PointF(V1.x - (int)(2.75 * R), V1.y - (int)(2.75 * R));
-                //gr.DrawString(((char)('a' + numberE)).ToString(), fo, br, point);
-                //drawVertex(V1.x, V1.y, (E.v1 + 1).ToString());
+                gr.DrawArc(pen, (V1.X - 2 * R) * Main.zoom, (V1.Y - 2 * R) * Main.zoom, 2 * R, 2 * R, 90, 270);
             }
             else
             {
-                gr.DrawLine(darkGoldPen, V1.x * Main.zoom, V1.y * Main.zoom, V2.x * Main.zoom, V2.y * Main.zoom);
-                //gr.DrawLine(pen, V1.x + R, V1.y + R, V2.x + R, V2.y + R);
-                //point = new PointF((V1.x + V2.x) / 2, (V1.y + V2.y) / 2);
-                //gr.DrawString(((char)('a' + numberE)).ToString(), fo, br, point);
-                drawVertex(V1.x * Main.zoom, V1.y * Main.zoom, (E.v1 + 1).ToString());
-                drawVertex(V2.x * Main.zoom, V2.y * Main.zoom, (E.v2 + 1).ToString());
+                gr.DrawLine(darkGoldPen, V1.X * Main.zoom, V1.Y * Main.zoom, V2.X * Main.zoom, V2.Y * Main.zoom);
+                drawVertex(V1.X * Main.zoom, V1.Y * Main.zoom, (E.v1 + 1).ToString());
+                drawVertex(V2.X * Main.zoom, V2.Y * Main.zoom, (E.v2 + 1).ToString());
             }
         }
 
@@ -248,34 +227,29 @@ namespace SystAnalys_lr1
             {
                 if (E[i].v1 == E[i].v2)
                 {
-                    gr.DrawArc(pen, V[E[i].v1].x - 2 * R * Main.zoom, V[E[i].v1].y - 2 * R * Main.zoom, 2 * R * Main.zoom, 2 * R * Main.zoom, 90, 270);
-                    //point = new PointF(V[E[i].v1].x - (int)(2.75 * R), V[E[i].v1].y - (int)(2.75 * R));
-                    //gr.DrawString(((char)('a' + i)).ToString(), fo, br, point);
+                    gr.DrawArc(pen, V[E[i].v1].X - 2 * R * Main.zoom, V[E[i].v1].Y - 2 * R * Main.zoom, 2 * R * Main.zoom, 2 * R * Main.zoom, 90, 270);
                 }
                 else
                 {
                     //проблема с отрисовкой
                     if (E[i].v1 < V.Count && E[i].v2 < V.Count)
                     {
-                        gr.DrawLine(pen, V[E[i].v1].x * Main.zoom, V[E[i].v1].y * Main.zoom, V[E[i].v2].x * Main.zoom, V[E[i].v2].y * Main.zoom);
-                        //gr.DrawLine(pen, V[E[i].v1].x + R, V[E[i].v1].y + R, V[E[i].v2].x + R, V[E[i].v2].y + R);
+                        gr.DrawLine(pen, V[E[i].v1].X * Main.zoom, V[E[i].v1].Y * Main.zoom, V[E[i].v2].X * Main.zoom, V[E[i].v2].Y * Main.zoom);
                     }
-                    //point = new PointF((V[E[i].v1].x + V[E[i].v2].x) / 2, (V[E[i].v1].y + V[E[i].v2].y) / 2);
-                    //gr.DrawString(((char)('a' + i)).ToString(), fo, br, point);
                 }
             }
             //рисуем вершины
             for (int i = 0; i < V.Count; i++)
             {
                 if (rand != 0)
-                    drawRouteVertex(V[i].x, V[i].y);
+                    drawRouteVertex(V[i].X, V[i].Y);
                 else
-                    drawVertex(V[i].x, V[i].y, (i + 1).ToString());
+                    drawVertex(V[i].X, V[i].Y, (i + 1).ToString());
             }
 
             foreach (var stopPoints in Main.allstopPoints)
             {
-                drawStopVertex(stopPoints.x, stopPoints.y);
+                drawStopVertex(stopPoints.X, stopPoints.Y);
             }
             if (Main.selectedRoute != null)
             {
@@ -283,7 +257,7 @@ namespace SystAnalys_lr1
                 {
                     foreach (var stopPoints in Main.stopPoints[Main.selectedRoute])
                     {
-                        drawStopRouteVertex(stopPoints.x, stopPoints.y);
+                        drawStopRouteVertex(stopPoints.X, stopPoints.Y);
                     }
                 }
             }
@@ -305,69 +279,10 @@ namespace SystAnalys_lr1
             }
 
         }
-        //public void drawRouteStopPoints(int route)
-        //{
-        //    foreach (var stopPoints in Main.stopPoints)
-        //    {
-        //        foreach(var s)
-        //        //рисуем остановки
-        //        if (rand != 0)
-        //            drawStopRouteVertex(stopPoints.x, stopPoints.y);
-        //        else
-        //            drawStopVertex(stopPoints.x, stopPoints.y);
-
-        //    }
-        //}
-
-
-        ////заполняет матрицу смежности
-        public void fillAdjacencyMatrix(int numberV, List<Edge> E, int[,] matrix)
-        {
-            for (int i = 0; i < numberV; i++)
-                for (int j = 0; j < numberV; j++)
-                    matrix[i, j] = 0;
-            for (int i = 0; i < E.Count; i++)
-            {
-                matrix[E[i].v1, E[i].v2] = 1;
-                matrix[E[i].v2, E[i].v1] = 1;
-            }
-        }
-
-        ////заполняет матрицу инцидентности
-        //public void fillIncidenceMatrix(int numberV, List<Edge> E, int[,] matrix)
-        //{
-        //    for (int i = 0; i < numberV; i++)
-        //        for (int j = 0; j < E.Count; j++)
-        //            matrix[i, j] = 0;
-        //    for (int i = 0; i < E.Count; i++)
-        //    {
-        //        matrix[E[i].v1, i] = 1;
-        //        matrix[E[i].v2, i] = 1;
-        //    }
-        //}
 
 
     }
 
-
-    //public static class EnumerableExtensions
-    //{       
-    //    public static Task ForEachAsync<T>(this IEnumerable<T> source, int degreeOfParallelism, Func<T, Task> body, IProgress<T> progress = null)
-    //    {
-    //        return Task.WhenAll(
-    //            Partitioner.Create(source).GetPartitions(degreeOfParallelism)
-    //                .Select(partition => Task.Run(async () => {
-    //                    using (partition)
-    //                        while (partition.MoveNext())
-    //                        {
-    //                            await body(partition.Current);
-    //                            progress?.Report(partition.Current);
-    //                        }
-    //                }))
-    //        );
-    //    }
-    //}
-  
     public class Bus : ICloneable
     {
         public static int ScrollX;
@@ -376,24 +291,9 @@ namespace SystAnalys_lr1
         public static string sImg = "../../Resources/bus.PNG";
         //таймер для движения
         Timer MovingTimer;
-      
-       
-   
- 
-
-
-        /////////////////////////////////////////////////////////////////////
-
-        public List<Epicenter> Epicenters2 { get; set; } = new List<Epicenter>();
-
-        //////////////////////////////////////////////////////////////////////
-
+        public List<Epicenter> Epicenters { get; set; } = new List<Epicenter>();
         //сетка
         private static List<GridPart> Rectangles;
-        //карта
-        private static PictureBox Map;
-        //маршрут движения целиком
-        readonly private List<Vertex> RoutMap;
         //для создания координат
         public double angle, x, y;
         //позиция автобуса
@@ -401,17 +301,14 @@ namespace SystAnalys_lr1
         //для обратного движения по маршруту
         public bool TurnBack;
         [XmlIgnore, JsonIgnore]
-        public PictureBox busPic;// { get; set; }
+        public PictureBox busPic;
         //номер маршрута, по которому будет ездить автобус
         public string route;
-        private double _date;
-        public SerializableDictionary<int, int> grids;
         //текущий квадрат, в котором находится автобус
-        public int? Locate = null;
+        private int? Locate = null;
         //все координаты для движения автобуса
         static public SerializableDictionary<string, List<Point>> AllCoordinates;
         //для того, чтобы 1 раз прибавлять к OneGridFilling
-        public int? lastLocate;
         public int R = 7;
         //сколько автобусу нужно проехать в тиках
         public int TickCount_ { get; set; }
@@ -419,12 +316,11 @@ namespace SystAnalys_lr1
         public static int FoundTime { get; set; }
         //проверка нашел ли автобус эпицентр
         public bool EpicFounded { get; set; }
+        public int oldSize;
         static public int? ZoomCoef { get; set; } = 1;
         static public int small { get; set; } = 1000;
-        public int passivniyTick;
         //не позволит басу двигаться на светофорах когда он должен стоять
         public static bool InstaStop { get; set; } = false;
-        public int oldSize = 0;
         public static void SetScrollX(int x)
         {
             ScrollX = x;
@@ -441,6 +337,7 @@ namespace SystAnalys_lr1
         {
             ScrollY = y;
         }
+
         int oldZoom = (int)ZoomCoef;
         public void setBusSize()
         {
@@ -449,14 +346,14 @@ namespace SystAnalys_lr1
                 if (ZoomCoef == 1)
                     busPic.Size = new Size(Main.sizeBus, Main.sizeBus);
                 else
-                    busPic.Size = new Size(oldSize - ((int)ZoomCoef), oldSize - ((int)ZoomCoef));
+                    busPic.Size = new Size(oldSize / (int)ZoomCoef, oldSize / (int)ZoomCoef);
             }
             else
             {
                 if (ZoomCoef == 1)
                     busPic.Size = new Size(Main.sizeBus, Main.sizeBus);
                 else
-                    busPic.Size = new Size(oldSize + ((int)ZoomCoef), oldSize + ((int)ZoomCoef));
+                    busPic.Size = new Size(oldSize * (int)ZoomCoef, oldSize * (int)ZoomCoef);
 
             }
             oldZoom = (int)ZoomCoef;
@@ -478,11 +375,6 @@ namespace SystAnalys_lr1
             return Locate;
         }
 
-        public static void setMap(PictureBox M)
-        {
-            Map = M;
-        }
-
         public static void setGrid(List<GridPart> G)
         {
             Rectangles = G;
@@ -493,34 +385,21 @@ namespace SystAnalys_lr1
             return Rectangles;
         }
 
-
-        public double Date
-        {
-            get { return _date; }
-            set { _date = value; }
-        }
-
         public object Clone()
         {
-            return this.MemberwiseClone();
+            return MemberwiseClone();
         }
 
         public Bus()
         { }
+
         public bool tracker { get; set; }
 
 
-        public Bus(List<Vertex> m, PictureBox busPic, int PositionAt, bool Turn, string route, bool not)
+        public Bus(PictureBox busPic, int PositionAt, bool Turn, string route, bool not)
         {
             tracker = not;
             oldSize = busPic.Size.Height;
-            RoutMap = new List<Vertex>();
-            this.RoutMap = m;
-            this.grids = new SerializableDictionary<int, int>();
-            for (int i = 0; i < Rectangles.Count; i++)
-            {
-                this.grids.Add(i, 0);
-            }
             this.busPic = busPic;
             x = busPic.Left;
             y = busPic.Top;
@@ -529,12 +408,12 @@ namespace SystAnalys_lr1
             this.route = route;
             ScrollX = 0;
             ScrollY = 0;
-
+            oldSize = busPic.Height;
         }
         //движение без графики (для моделирования)
         public void ClearAroundEpic()
         {
-            foreach (var Epic in Epicenters2)
+            foreach (var Epic in Epicenters)
             {
                 for (int i = 2; i < Epic.EpicenterGrid.Count + 1; i++)
                 {
@@ -588,17 +467,11 @@ namespace SystAnalys_lr1
 
                     if (PositionAt < Main.AllGridsInRoutes[route].Count - 1)
                     {
-
-                        //busPic.Left = AllCoordinates[route][PositionAt].X;
-                        //busPic.Top = AllCoordinates[route][PositionAt].Y;
                         PositionAt++;
 
                     }
                     else
                     {
-                        //MovingTimer.Stop();
-                        //await Task.Delay(rnd.Next(1000, 10000));
-                        //MovingTimer.Start();
                         TurnBack = true;
                         PositionAt--;
                     }
@@ -607,9 +480,7 @@ namespace SystAnalys_lr1
                 {
                     if (PositionAt > 0)
                     {
-
                         PositionAt--;
-
                     }
                     else
                     {
@@ -652,8 +523,6 @@ namespace SystAnalys_lr1
         {
             try
             {
-                //if (tracker == true)
-                //{
                 if (InstaStop == false)
                 {
                     if (AllCoordinates.ContainsKey(route))
@@ -668,7 +537,7 @@ namespace SystAnalys_lr1
                                     {
                                         foreach (var sp in Main.stopPoints[route])
                                         {
-                                            if (Math.Pow((double.Parse((sp.x * (int)ZoomCoef - AllCoordinates[route][PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - AllCoordinates[route][PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
+                                            if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - AllCoordinates[route][PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - AllCoordinates[route][PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
                                             {
                                                 MovingTimer.Stop();
                                                 await Task.Delay(rnd.Next(0, 10000));
@@ -698,10 +567,7 @@ namespace SystAnalys_lr1
                                             {
                                                 skip = 100;
                                                 MovingTimer.Stop();
-                                                // int bal = sp.bal / 2;
                                                 await Task.Delay(sp.bal / 2 * 1000);
-                                                //   Console.WriteLine("After:");
-                                                //   Console.WriteLine(sp.bal);
                                                 if (InstaStop == false)
                                                 {
                                                     MovingTimer.Start();
@@ -712,7 +578,7 @@ namespace SystAnalys_lr1
                                         }
                                     }
                                 }
-             
+
                                 busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
                                 PositionAt++;
                             }
@@ -743,7 +609,7 @@ namespace SystAnalys_lr1
                                         {
                                             foreach (var sp in Main.stopPoints[route])
                                             {
-                                                if (Math.Pow((double.Parse((sp.x * (int)ZoomCoef - AllCoordinates[route][PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - AllCoordinates[route][PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
+                                                if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - AllCoordinates[route][PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - AllCoordinates[route][PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
                                                 {
                                                     MovingTimer.Stop();
                                                     await Task.Delay(rnd.Next(0, 10000));
@@ -768,16 +634,11 @@ namespace SystAnalys_lr1
                                                     skip = 100;
                                                     break;
                                                 }
-                                                //else
                                                 if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - AllCoordinates[route][PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - AllCoordinates[route][PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef) && sp.status == Status.RED)
                                                 {
                                                     skip = 100;
                                                     MovingTimer.Stop();
-
-                                                    // int bal = sp.bal / 2;
                                                     await Task.Delay(sp.bal / 2 * 1000);
-                                                    //     Console.WriteLine("After:");
-                                                    //     Console.WriteLine(sp.bal);
                                                     if (InstaStop == false)
                                                     {
                                                         MovingTimer.Start();
@@ -787,8 +648,7 @@ namespace SystAnalys_lr1
                                             }
                                         }
                                     }
-                                    //
-                                
+
                                     busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
                                     PositionAt--;
                                 }
@@ -814,7 +674,6 @@ namespace SystAnalys_lr1
                     {
                         MovingTimer.Stop();
                     };
-                    // }
                 }
             }
             catch { }
@@ -831,9 +690,7 @@ namespace SystAnalys_lr1
         // обмнаружение  эпицентров через точки
         public int DetectEpicenter2()
         {
-            //if (tracker == true)
-            //{
-            foreach (var EpicList in Epicenters2)
+            foreach (var EpicList in Epicenters)
             {
                 foreach (var Sector in EpicList.GetEpicenterGrid())
                 {
@@ -841,8 +698,6 @@ namespace SystAnalys_lr1
                         if ((PositionAt < AllCoordinates[route].Count))
                             if (((AllCoordinates[route][PositionAt].X * ZoomCoef) >= Square.x * ZoomCoef) && ((AllCoordinates[route][PositionAt].X * ZoomCoef) <= Square.x * ZoomCoef + GridPart.width * ZoomCoef) && ((AllCoordinates[route][PositionAt].Y * ZoomCoef) >= Square.y * ZoomCoef) && ((AllCoordinates[route][PositionAt].Y * ZoomCoef) <= (Square.y * ZoomCoef + GridPart.height * ZoomCoef)))
                             {
-                                //if (Square.check != true)
-                                //{
                                 switch (Sector.Key)
                                 {
                                     case 1:
@@ -852,33 +707,23 @@ namespace SystAnalys_lr1
                                             EpicList.DetectCount++;
                                         }
                                         return 3;
-
                                     case 2:
-                                        //Square.check = true;
                                         return 2;
-
                                     case 3:
-                                        //Square.check = true;
                                         return 1;
-
                                     default:
                                         return 0;
 
                                 }
-                                //}
                             }
                 }
             }
-
-            //}
 
             return 0;
         }
         public int DetectEpicenterByGrid()
         {
-            //if (tracker == true)
-            //{
-            foreach (var EpicList in Epicenters2)
+            foreach (var EpicList in Epicenters)
             {
                 foreach (var Sector in EpicList.GetEpicenterGrid())
                 {
@@ -887,8 +732,6 @@ namespace SystAnalys_lr1
 
                         if (((Rectangles[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Rectangles[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
                         {
-                            //if (Square.check != true)
-                            //{
                             switch (Sector.Key)
                             {
                                 case 1:
@@ -898,26 +741,19 @@ namespace SystAnalys_lr1
                                         EpicList.DetectCount++;
                                     }
                                     return 3;
-
                                 case 2:
-                                    //Square.check = true;
                                     return 2;
-
                                 case 3:
-                                    //Square.check = true;
                                     return 1;
 
                                 default:
                                     return 0;
 
                             }
-                            //}
                         }
                     }
                 }
             }
-
-            //}
 
             return 0;
         }
@@ -935,25 +771,17 @@ namespace SystAnalys_lr1
 
                     if (((AllCoordinates[route][PositionAt].X) > Rectangles[i].x) && ((AllCoordinates[route][PositionAt].X) < Rectangles[i].x + GridPart.width) && ((AllCoordinates[route][PositionAt].Y) > Rectangles[i].y) && ((AllCoordinates[route][PositionAt].Y) < (Rectangles[i].y + GridPart.height)))
                     {
-                        //if (this.grids[i] == 0)
-                        //{
-                        //    this.grids[i] = 1;
-                        //}
                         Locate = i;
                     }
-
-
             }
 
         }
 
-        
- 
+
+
         private void TimerMoveProcessor(object sender, EventArgs e)
         {
-            //   System.Threading.Thread.Sleep(2000);
             MoveWithGraphics();
-            //        MovingTimer.Interval = 1;//rnd.Next(1, 100);
             if (skip != 0)
             {
                 skip -= 1;
@@ -972,7 +800,7 @@ namespace SystAnalys_lr1
             MovingTimer = new Timer
             {
                 Interval = 1
-            };       
+            };
             MovingTimer.Tick += new EventHandler(TimerMoveProcessor);
             MovingTimer.Start();
 
@@ -982,7 +810,6 @@ namespace SystAnalys_lr1
             if (MovingTimer != null)
             {
                 MovingTimer.Start();
-                //DetectTimer.Stop();
                 InstaStop = false;
             }
 
@@ -992,13 +819,11 @@ namespace SystAnalys_lr1
             if (MovingTimer != null)
             {
                 MovingTimer.Stop();
-                //DetectTimer.Stop();
                 InstaStop = true;
             }
 
         }
-        //старое движение(сейчас используется для создания координат для всех маршрутов 
-  
+
 
     }
     public class Epicenter : ICloneable
@@ -1019,17 +844,15 @@ namespace SystAnalys_lr1
             EpicenterGrid = new SerializableDictionary<int, List<GridPart>>();
         }
         public Epicenter()
-        {
+        { }
 
-
-        }
         public Dictionary<int, List<GridPart>> GetEpicenterGrid()
         {
-            return this.EpicenterGrid;
+            return EpicenterGrid;
         }
         public object Clone()
         {
-            return this.MemberwiseClone();
+            return MemberwiseClone();
         }
         public void Recreate(Dictionary<string, List<GridPart>> PollutionInRoutes)
         {
@@ -1046,20 +869,6 @@ namespace SystAnalys_lr1
                         bool net = false;
                         switch (PollutedSqure.status)
                         {
-                            //case 1:
-                            //    foreach (var part in EpicenterGrid[3])
-                            //    {
-                            //        if ((part.x == PollutedSqure.x) && (part.y == PollutedSqure.y))
-                            //        {
-                            //            net = true;
-                            //            break;
-                            //        }
-                            //    }
-                            //    if (net == false)
-                            //    {
-                            //        EpicenterGrid[3].Add(new GridPart(PollutedSqure.x, PollutedSqure.y));
-                            //    }
-                            //    break;
                             case 2:
                                 foreach (var part in EpicenterGrid[2])
                                 {
@@ -1133,12 +942,9 @@ namespace SystAnalys_lr1
                                             bufpart.x -= GridPart.width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
-                                        //}
                                     }
                                 }
                             }
-                            //BufferList.Add(new GridPart(start.x, start.y));
-
                         }
                         while (ScanGrid.y < RedGrid.y)
                         {
@@ -1173,7 +979,6 @@ namespace SystAnalys_lr1
                                     }
                                 }
                             }
-                            //BufferList.Add(new GridPart(start.x, start.y));
                         }
                         while (ScanGrid.y < RedGrid.y + GridPart.height * i)
                         {
@@ -1209,7 +1014,6 @@ namespace SystAnalys_lr1
                                     }
                                 }
                             }
-                            //BufferList.Add(new GridPart(start.x, start.y));
                         }
                         while (ScanGrid.x > RedGrid.x)
                         {
@@ -1244,7 +1048,6 @@ namespace SystAnalys_lr1
                                     }
                                 }
                             }
-                            //BufferList.Add(new GridPart(start.x, start.y));
                         }
                         while (ScanGrid.x > RedGrid.x - GridPart.width * i)
                         {
@@ -1280,7 +1083,6 @@ namespace SystAnalys_lr1
                                     }
                                 }
                             }
-                            //BufferList.Add(new GridPart(start.x, start.y));
                         }
                         while (ScanGrid.y > RedGrid.y)
                         {
@@ -1316,7 +1118,6 @@ namespace SystAnalys_lr1
                                     }
                                 }
                             }
-                            //BufferList.Add(new GridPart(start.x, start.y));
                         }
                         while (ScanGrid.y > RedGrid.y - GridPart.width * i)
                         {
@@ -1352,7 +1153,6 @@ namespace SystAnalys_lr1
                                     }
                                 }
                             }
-                            //BufferList.Add(new GridPart(start.x, start.y));
                         }
                         while (ScanGrid.x < RedGrid.x)
                         {
@@ -1389,7 +1189,6 @@ namespace SystAnalys_lr1
                                     }
                                 }
                             }
-                            //BufferList.Add(new GridPart(start.x, start.y));
                         }
                     }
 
@@ -1413,11 +1212,10 @@ namespace SystAnalys_lr1
                     EpicenterGrid[1].Add(new GridPart(BufGrid.x, BufGrid.y));
                 }
             }
-            ////////
             for (int i = 2; i < 4; i++)
             {
 
-                List<GridPart> tesdsfdst = new List<GridPart>();
+                List<GridPart> tesdsfdst = new List<GridPart>();  /// классная переменная
                 foreach (var item in EpicenterGrid[i - 1])
                 {
                     tesdsfdst.Add(new GridPart(item.x, item.y));
@@ -1485,58 +1283,9 @@ namespace SystAnalys_lr1
 
                         }
                     }
-                    //foreach(var BufGrid in OrangeBuffer)
-                    //{
-
-                    //    foreach (var EpGridList in EpicenterGrid)
-                    //    {
-                    //        bool net = false;
-                    //        int? Red = null;
-                    //        foreach (var EpGrid in EpGridList.Value)
-                    //        {
-
-                    //            if ((BufGrid.x == EpGrid.x) && (BufGrid.y == EpGrid.y))
-                    //            {
-                    //                //if (EpGridList.Key == 1)
-                    //                //{
-                    //                //    Red = EpGridList.Value.IndexOf(EpGrid);
-                    //                //    net = true;
-                    //                //    break;
-                    //                //}
-
-                    //                net = true;
-                    //                break;
-
-
-                    //            }
-                    //        }
-                    //        //if (Red != null)
-                    //        //{
-                    //        //    EpicenterGrid[1].RemoveAt((int)Red);
-                    //        //    EpicenterGrid[i].Add(new GridPart(BufGrid.x, BufGrid.y));
-                    //        //}
-                    //        if (net == false)
-                    //        {
-                    //            EpicenterGrid[i].Add(new GridPart(BufGrid.x, BufGrid.y));
-                    //        }
-
-
-                    //    }
-
-                    //}
                 }
 
             }
-
-
-
-
-
-
-
-
-
-
         }
         public void ExpandEpic(List<string> Parameters)
         {
@@ -1823,306 +1572,7 @@ namespace SystAnalys_lr1
                         g.gr.FillRectangle(new SolidBrush(Color.FromArgb(80, 255, 255, 0)), new Rectangle(EpicenterGrid[i][j].x * zoom, EpicenterGrid[i][j].y * zoom, GridPart.width * zoom, GridPart.height * zoom));
                 }
             }
-
-
-        }
-        //public void CreateRandomEpicenter2(int SizeParam, int? StartPos)
-        //{
-        //    var rand = new Random();
-        //    EpicenterGrid2 = new List<int>();
-        //    if (StartPos == null)
-        //    {
-        //        EpicenterGrid2.Add(TheGrid.IndexOf(TheGrid[rand.Next(TheGrid.IndexOf(TheGrid.First()), TheGrid.IndexOf(TheGrid.Last()))]));
-        //    }
-        //    else
-        //    {
-        //        EpicenterGrid2.Add(TheGrid.IndexOf(TheGrid[(int)StartPos]));
-
-        //    }
-        //    for (int i = 0; i < SizeParam; i++)
-        //    {
-        //        List<string> Parameter = new List<string>();
-
-        //        int StarterEpicPart = EpicenterGrid2[rand.Next(EpicenterGrid2.IndexOf(EpicenterGrid2.First()), EpicenterGrid2.IndexOf(EpicenterGrid2.Last()))];
-
-        //        Parameter = Strashno2(StarterEpicPart, Parameter);
-        //        if (Parameter.Count > 0)
-        //            foreach (var item in Parameter)
-        //            {
-        //                Creater2(item, StarterEpicPart, 1);
-        //            }
-
-        //    }
-        //    for (int i = 2; i < 4; i++)
-        //    {
-        //        EpicenterGrid.Add(i, new List<GridPart>());
-        //        List<GridPart> tesdsfdst = new List<GridPart>();
-        //        foreach (var item in EpicenterGrid[i - 1])
-        //        {
-        //            tesdsfdst.Add(new GridPart(item.x, item.y));
-        //        }
-        //        foreach (var itwms in tesdsfdst)
-        //        {
-        //            List<string> Parameter = new List<string>();
-        //            Parameter = Strashno(itwms, Parameter);
-        //            if (Parameter.Count > 0)
-        //                foreach (var items in Parameter)
-        //                {
-        //                    Creater(items, itwms, i);
-        //                }
-        //        }
-        //        tesdsfdst = new List<GridPart>();
-        //        foreach (var item in EpicenterGrid[i])
-        //        {
-        //            tesdsfdst.Add(new GridPart(item.x, item.y));
-        //        }
-        //        foreach (var itwms in tesdsfdst)
-        //        {
-        //            List<string> Parameter = new List<string>();
-        //            Parameter = Strashno(itwms, Parameter);
-        //            if (Parameter.Count > 0)
-        //                foreach (var items in Parameter)
-        //                {
-        //                    Creater(items, itwms, i);
-        //                }
-        //        }
-
-        //    }
-
-        //}
-        //public List<string> Strashno2(int EpicPart, List<string> Parameter)
-        //{
-        //    if (TheGrid[EpicPart].x < TheGrid.Last().x)
-        //    {
-        //        bool net = false;
-        //        foreach (var part in EpicenterGrid2)
-        //            if ((TheGrid[part].x == TheGrid[EpicPart].x + GridPart.width) && (TheGrid[part].y == TheGrid[EpicPart].y))
-        //            {
-        //                net = true;
-        //                break;
-        //            }
-
-        //        if (net == false)
-        //        {
-        //            Parameter.Add("right");
-        //        }
-
-        //    }
-        //    if ((TheGrid[EpicPart].x < TheGrid.Last().x) && (TheGrid[EpicPart].y < TheGrid.Last().y))
-        //    {
-        //        bool net = false;
-        //        foreach (var part in EpicenterGrid2)
-        //        {
-        //            if ((TheGrid[part].x == TheGrid[EpicPart].x + GridPart.width) && (TheGrid[part].y == TheGrid[EpicPart].y + GridPart.height))
-        //            {
-        //                net = true;
-        //                break;
-        //            }
-        //        }
-        //        if (net == false)
-        //        {
-        //            Parameter.Add("right-down");
-        //        }
-
-        //    }
-        //    if ((TheGrid[EpicPart].x < TheGrid.Last().x) && (TheGrid[EpicPart].y > TheGrid.Last().y))
-        //    {
-        //        bool net = false;
-        //        foreach (var part in EpicenterGrid2)
-        //        {
-        //            if ((TheGrid[part].x == TheGrid[EpicPart].x + GridPart.width) && (TheGrid[part].y == TheGrid[EpicPart].y - GridPart.height))
-        //            {
-        //                net = true;
-        //                break;
-        //            }
-        //        }
-        //        if (net == false)
-        //        {
-        //            Parameter.Add("right-up");
-        //        }
-
-        //    }
-        //    if (TheGrid[EpicPart].y < TheGrid.Last().y)
-        //    {
-        //        bool net = false;
-        //        foreach (var part in EpicenterGrid2)
-        //        {
-        //            if ((TheGrid[part].x == TheGrid[EpicPart].x) && (TheGrid[part].y == TheGrid[EpicPart].y + GridPart.height))
-        //            {
-        //                net = true;
-        //                break;
-        //            }
-        //        }
-        //        if (net == false)
-        //        {
-        //            Parameter.Add("down");
-        //        }
-        //    }
-
-        //    if (TheGrid[EpicPart].y > TheGrid.First().y)
-        //    {
-        //        bool net = false;
-        //        foreach (var part in EpicenterGrid2)
-        //        {
-        //            if ((TheGrid[part].x == TheGrid[EpicPart].x) && (TheGrid[part].y == TheGrid[EpicPart].y - GridPart.height))
-        //            {
-        //                net = true;
-        //                break;
-        //            }
-        //        }
-        //        if (net == false)
-        //        {
-        //            Parameter.Add("up");
-        //        }
-        //    }
-        //    if (TheGrid[EpicPart].x > TheGrid.First().x)
-        //    {
-        //        bool net = false;
-        //        foreach (var part in EpicenterGrid2)
-        //        {
-        //            if ((TheGrid[part].x == TheGrid[EpicPart].x - GridPart.width) && (TheGrid[part].y == TheGrid[EpicPart].y))
-        //            {
-        //                net = true;
-        //                break;
-        //            }
-        //        }
-        //        if (net == false)
-        //        {
-        //            Parameter.Add("left");
-        //        }
-        //    }
-        //    if ((TheGrid[EpicPart].x > TheGrid.First().x) && (TheGrid[EpicPart].y > TheGrid.Last().y))
-        //    {
-        //        bool net = false;
-        //        foreach (var part in EpicenterGrid2)
-        //        {
-        //            if ((TheGrid[part].x == TheGrid[EpicPart].x - GridPart.width) && (TheGrid[part].y == TheGrid[EpicPart].y - GridPart.height))
-        //            {
-        //                net = true;
-        //                break;
-        //            }
-        //        }
-        //        if (net == false)
-        //        {
-        //            Parameter.Add("left-up");
-        //        }
-
-        //    }
-        //    if ((TheGrid[EpicPart].x > TheGrid.First().x) && (TheGrid[EpicPart].y < TheGrid.Last().y))
-        //    {
-        //        bool net = false;
-        //        foreach (var part in EpicenterGrid2)
-        //        {
-        //            if ((TheGrid[part].x == TheGrid[EpicPart].x - GridPart.width) && (TheGrid[part].y == TheGrid[EpicPart].y + GridPart.height))
-        //            {
-        //                net = true;
-        //                break;
-        //            }
-        //        }
-        //        if (net == false)
-        //        {
-        //            Parameter.Add("left-down");
-        //        }
-        //    }
-        //    return Parameter;
-        //}
-        //public void Creater2(string Param, int StarterEpicPart, int level)
-        //{
-        //    switch (Param)
-        //    {
-        //        case "right":
-        //            //EpicenterGrid2.Add(new GridPart(StarterEpicPart.x + GridPart.width, StarterEpicPart.y));
-        //            //EpicenterGrid2.Add(TheGrid.IndexOf(TheGrid.FindIndex()));
-        //            foreach (var grid in TheGrid)
-        //            {
-        //                if ((grid.x ==TheGrid[StarterEpicPart].x + GridPart.width)&&(grid.y== TheGrid[StarterEpicPart].y))
-        //                {
-        //                    EpicenterGrid2.Add(TheGrid.IndexOf(grid));
-        //                    break;
-        //                }
-        //            }
-        //            break;
-        //        case "right-down":
-        //            //EpicenterGrid2.Add(new GridPart(StarterEpicPart.x + GridPart.width, StarterEpicPart.y + GridPart.height));
-        //            foreach (var grid in TheGrid)
-        //            {
-        //                if ((grid.x == TheGrid[StarterEpicPart].x + GridPart.width) && (grid.y == TheGrid[StarterEpicPart].y + GridPart.height))
-        //                {
-        //                    EpicenterGrid2.Add(TheGrid.IndexOf(grid));
-        //                    break;
-        //                }
-        //            }
-        //            break;
-        //        case "right-up":
-        //            //EpicenterGrid2.Add(new GridPart(StarterEpicPart.x + GridPart.width, StarterEpicPart.y - GridPart.height));
-        //            foreach (var grid in TheGrid)
-        //            {
-        //                if ((grid.x == TheGrid[StarterEpicPart].x + GridPart.width) && (grid.y == TheGrid[StarterEpicPart].y - GridPart.height))
-        //                {
-        //                    EpicenterGrid2.Add(TheGrid.IndexOf(grid));
-        //                    break;
-        //                }
-        //            }
-        //            break;
-        //        case "down":
-        //            //EpicenterGrid2.Add(new GridPart(StarterEpicPart.x, StarterEpicPart.y + GridPart.height));
-        //            foreach (var grid in TheGrid)
-        //            {
-        //                if ((grid.x == TheGrid[StarterEpicPart].x ) && (grid.y == TheGrid[StarterEpicPart].y + GridPart.height))
-        //                {
-        //                    EpicenterGrid2.Add(TheGrid.IndexOf(grid));
-        //                    break;
-        //                }
-        //            }
-        //            break;
-        //        case "up":
-        //            //EpicenterGrid2.Add(new GridPart(StarterEpicPart.x, StarterEpicPart.y - GridPart.height));
-        //            foreach (var grid in TheGrid)
-        //            {
-        //                if ((grid.x == TheGrid[StarterEpicPart].x ) && (grid.y == TheGrid[StarterEpicPart].y - GridPart.height))
-        //                {
-        //                    EpicenterGrid2.Add(TheGrid.IndexOf(grid));
-        //                    break;
-        //                }
-        //            }
-        //            break;
-        //        case "left":
-        //            //EpicenterGrid2.Add(new GridPart(StarterEpicPart.x - GridPart.width, StarterEpicPart.y));
-        //            foreach (var grid in TheGrid)
-        //            {
-        //                if ((grid.x == TheGrid[StarterEpicPart].x - GridPart.width) && (grid.y == TheGrid[StarterEpicPart].y))
-        //                {
-        //                    EpicenterGrid2.Add(TheGrid.IndexOf(grid));
-        //                    break;
-        //                }
-        //            }
-        //            break;
-        //        case "left-down":
-        //            //EpicenterGrid2.Add(new GridPart(StarterEpicPart.x - GridPart.width, StarterEpicPart.y + GridPart.height));
-        //            foreach (var grid in TheGrid)
-        //            {
-        //                if ((grid.x == TheGrid[StarterEpicPart].x - GridPart.width) && (grid.y == TheGrid[StarterEpicPart].y + GridPart.height))
-        //                {
-        //                    EpicenterGrid2.Add(TheGrid.IndexOf(grid));
-        //                    break;
-        //                }
-        //            }
-        //            break;
-        //        case "left-up":
-        //            //EpicenterGrid2.Add(new GridPart(StarterEpicPart.x - GridPart.width, StarterEpicPart.y - GridPart.height));
-        //            foreach (var grid in TheGrid)
-        //            {
-        //                if ((grid.x == TheGrid[StarterEpicPart].x - GridPart.width) && (grid.y == TheGrid[StarterEpicPart].y - GridPart.height))
-        //                {
-        //                    EpicenterGrid2.Add(TheGrid.IndexOf(grid));
-        //                    break;
-        //                }
-        //            }
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //}
+        }      
     }
     public class StringValueAttribute : Attribute
     {
@@ -2136,17 +1586,11 @@ namespace SystAnalys_lr1
 
     public enum Status
     {
-        //    [XmlEnum("G")]
         [XmlEnum(Name = "1")]
-        //   [StringValue("1")]
         GREEN = 1,
-        //    [XmlEnum("Y")]
         [XmlEnum(Name = "2")]
-        //     [StringValue("2")]
         YELLOW = 2,
-        //    [XmlEnum("R")]
         [XmlEnum(Name = "3")]
-        //     [StringValue("3")]
         RED = 3
     }
     public class TraficLight
@@ -2236,7 +1680,7 @@ namespace SystAnalys_lr1
     {
         public int x, y;
         public int status { get; set; }
-        public bool check { get; set; } = false; //todo
+        public bool check { get; set; } = false; 
         public static int width { get; set; } = 1;
         public static int height { get; set; } = 1;
         public GridPart(int x, int y)

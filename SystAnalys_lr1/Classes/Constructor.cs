@@ -49,7 +49,7 @@ namespace SystAnalys_lr1.Classes
         {
             for (int i = 0; i < V.Count; i++)
             {
-                if (Math.Pow((V[i].x - e.X / Main.zoom), 2) + Math.Pow((V[i].y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                if (Math.Pow((V[i].X - e.X / Main.zoom), 2) + Math.Pow((V[i].Y - e.Y / Main.zoom), 2) <= G.R * G.R)
                 {
                     if (Main.selected1 != -1)
                     {
@@ -63,7 +63,7 @@ namespace SystAnalys_lr1.Classes
                     }
                     if (Main.selected1 == -1)
                     {
-                        G.drawSelectedVertex(V[i].x, V[i].y);
+                        G.drawSelectedVertex(V[i].X, V[i].Y);
                         Main.selected1 = i;
                         sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
                         Main.DrawGrid();
@@ -96,18 +96,18 @@ namespace SystAnalys_lr1.Classes
             {
                 for (int i = 0; i < V.Count; i++)
                 {
-                    if (Math.Pow((V[i].x - e.X / Main.zoom), 2) + Math.Pow((V[i].y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                    if (Math.Pow((V[i].X - e.X / Main.zoom), 2) + Math.Pow((V[i].Y - e.Y / Main.zoom), 2) <= G.R * G.R)
                     {
                         if (Main.selected1 == -1)
                         {
-                            G.drawSelectedVertex(V[i].x, V[i].y);
+                            G.drawSelectedVertex(V[i].X, V[i].Y);
                             Main.selected1 = i;
                             sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
                             break;
                         }
                         if (Main.selected2 == -1)
                         {
-                            G.drawSelectedVertex(V[i].x, V[i].y);
+                            G.drawSelectedVertex(V[i].X, V[i].Y);
                             Main.selected2 = i;
                             E.Add(new Edge(Main.selected1, Main.selected2));
                             G.drawEdge(V[Main.selected1], V[Main.selected2], E[E.Count - 1], n);
@@ -131,21 +131,21 @@ namespace SystAnalys_lr1.Classes
             {
                 for (int i = 0; i < V.Count; i++)
                 {
-                    if (Math.Pow((V[i].x - e.X / Main.zoom), 2) + Math.Pow((V[i].y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                    if (Math.Pow((V[i].X - e.X / Main.zoom), 2) + Math.Pow((V[i].Y - e.Y / Main.zoom), 2) <= G.R * G.R)
                     {
                         if (Main.selected1 == -1)
                         {
-                            G.drawSelectedVertex(V[i].x, V[i].y);
+                            G.drawSelectedVertex(V[i].X, V[i].Y);
                             Main.selected1 = i;
                             sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
                             break;
                         }
                         if (Main.selected2 == -1)
                         {
-                            G.drawSelectedVertex(V[i].x, V[i].y);
+                            G.drawSelectedVertex(V[i].X, V[i].Y);
                             Main.selected2 = i;
                             E.Add(new Edge(V.Count - 2, V.Count - 1));
-                            G.drawSelectedVertex(V[i].x, V[i].y);
+                            G.drawSelectedVertex(V[i].X, V[i].Y);
                             Main.selected2 = i;
                             E.Add(new Edge(Main.selected1, Main.selected2));
                             for (var j = 0; j < Main.E.Count; i++)
@@ -195,7 +195,7 @@ namespace SystAnalys_lr1.Classes
             if (!Main.flag) {
                 foreach (var sp in Main.allstopPoints)
                 {
-                    if (Math.Pow((sp.x - e.X / Main.zoom), 2) + Math.Pow((sp.y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                    if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= G.R * G.R)
                     {
                         Main.allstopPoints.Remove(sp);
                         Main.flag = true;
@@ -210,7 +210,7 @@ namespace SystAnalys_lr1.Classes
                 {
                     foreach (var sp in stop.Value)
                     {
-                        if (Math.Pow((sp.x - e.X / Main.zoom), 2) + Math.Pow((sp.y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                        if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= G.R * G.R)
                         {
                             Main.stopPointsInGrids[stop.Key].Remove(sp.gridNum);
                             stop.Value.Remove(sp);
@@ -228,7 +228,7 @@ namespace SystAnalys_lr1.Classes
                 {
                     for (int i = 0; i < routeV.Value.Count; i++)
                     {
-                        if (Math.Pow((routeV.Value[i].x - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[i].y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                        if (Math.Pow((routeV.Value[i].X - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[i].Y - e.Y / Main.zoom), 2) <= G.R * G.R)
                         {
                             //foreach(var routesEdge in routesEdgeE.Values)
                             //{
@@ -267,8 +267,8 @@ namespace SystAnalys_lr1.Classes
                             {
                                 if (routesEdgeE[routeV.Key][i].v1 == routesEdgeE[routeV.Key][i].v2) //если это петля
                                 {
-                                    if ((Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].v1].x - G.R - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].v1].y - G.R - e.Y / Main.zoom), 2) <= ((G.R + 2) * (G.R + 2))) &&
-                                        (Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].v1].x - G.R - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].v1].y - G.R - e.Y / Main.zoom), 2) >= ((G.R - 2) * (G.R - 2))))
+                                    if ((Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].v1].X - G.R - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].v1].Y - G.R - e.Y / Main.zoom), 2) <= ((G.R + 2) * (G.R + 2))) &&
+                                        (Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].v1].X - G.R - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].v1].Y - G.R - e.Y / Main.zoom), 2) >= ((G.R - 2) * (G.R - 2))))
                                     {
                                         routesEdgeE[routeV.Key].RemoveAt(i);
                                         Main.flag = true;
@@ -277,11 +277,11 @@ namespace SystAnalys_lr1.Classes
                                 }
                                 else //не петля
                                 {
-                                    if (((e.X / Main.zoom - routeV.Value[routesEdgeE[routeV.Key][i].v1].x) * (routeV.Value[routesEdgeE[routeV.Key][i].v2].y - routeV.Value[routesEdgeE[routeV.Key][i].v1].y) / (routeV.Value[routesEdgeE[routeV.Key][i].v2].x - routeV.Value[routesEdgeE[routeV.Key][i].v1].x) + routeV.Value[routesEdgeE[routeV.Key][i].v1].y) <= (e.Y / Main.zoom + 4) &&
-                                        ((e.X / Main.zoom - routeV.Value[routesEdgeE[routeV.Key][i].v1].x) * (routeV.Value[routesEdgeE[routeV.Key][i].v2].y - routeV.Value[routesEdgeE[routeV.Key][i].v1].y) / (routeV.Value[routesEdgeE[routeV.Key][i].v2].x - routeV.Value[routesEdgeE[routeV.Key][i].v1].x) + routeV.Value[routesEdgeE[routeV.Key][i].v1].y) >= (e.Y / Main.zoom - 4))
+                                    if (((e.X / Main.zoom - routeV.Value[routesEdgeE[routeV.Key][i].v1].X) * (routeV.Value[routesEdgeE[routeV.Key][i].v2].Y - routeV.Value[routesEdgeE[routeV.Key][i].v1].Y) / (routeV.Value[routesEdgeE[routeV.Key][i].v2].X - routeV.Value[routesEdgeE[routeV.Key][i].v1].X) + routeV.Value[routesEdgeE[routeV.Key][i].v1].Y) <= (e.Y / Main.zoom + 4) &&
+                                        ((e.X / Main.zoom - routeV.Value[routesEdgeE[routeV.Key][i].v1].X) * (routeV.Value[routesEdgeE[routeV.Key][i].v2].Y - routeV.Value[routesEdgeE[routeV.Key][i].v1].Y) / (routeV.Value[routesEdgeE[routeV.Key][i].v2].X - routeV.Value[routesEdgeE[routeV.Key][i].v1].X) + routeV.Value[routesEdgeE[routeV.Key][i].v1].Y) >= (e.Y / Main.zoom - 4))
                                     {
-                                        if ((routeV.Value[routesEdgeE[routeV.Key][i].v1].x <= routeV.Value[routesEdgeE[routeV.Key][i].v2].x && routeV.Value[routesEdgeE[routeV.Key][i].v1].x <= e.X / Main.zoom && e.X / Main.zoom <= routeV.Value[routesEdgeE[routeV.Key][i].v2].x) ||
-                                            (routeV.Value[routesEdgeE[routeV.Key][i].v1].x >= routeV.Value[routesEdgeE[routeV.Key][i].v2].x && routeV.Value[routesEdgeE[routeV.Key][i].v1].x >= e.X / Main.zoom && e.X / Main.zoom >= routeV.Value[routesEdgeE[routeV.Key][i].v2].x))
+                                        if ((routeV.Value[routesEdgeE[routeV.Key][i].v1].X <= routeV.Value[routesEdgeE[routeV.Key][i].v2].X && routeV.Value[routesEdgeE[routeV.Key][i].v1].X <= e.X / Main.zoom && e.X / Main.zoom <= routeV.Value[routesEdgeE[routeV.Key][i].v2].X) ||
+                                            (routeV.Value[routesEdgeE[routeV.Key][i].v1].X >= routeV.Value[routesEdgeE[routeV.Key][i].v2].X && routeV.Value[routesEdgeE[routeV.Key][i].v1].X >= e.X / Main.zoom && e.X / Main.zoom >= routeV.Value[routesEdgeE[routeV.Key][i].v2].X))
                                         {
                                             routesEdgeE[routeV.Key].RemoveAt(i);
                                             Main.flag = true;
@@ -303,7 +303,7 @@ namespace SystAnalys_lr1.Classes
 
             for (int i = 0; i < V.Count; i++)
             {
-                if (Math.Pow((V[i].x - e.X / Main.zoom), 2) + Math.Pow((V[i].y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                if (Math.Pow((V[i].X - e.X / Main.zoom), 2) + Math.Pow((V[i].Y - e.Y / Main.zoom), 2) <= G.R * G.R)
                 {
                     for (int j = 0; j < E.Count; j++)
                     {
@@ -334,8 +334,8 @@ namespace SystAnalys_lr1.Classes
                 {
                     if (E[i].v1 == E[i].v2) //если это петля
                     {
-                        if ((Math.Pow((V[E[i].v1].x - G.R - e.X / Main.zoom), 2) + Math.Pow((V[E[i].v1].y - G.R - e.Y / Main.zoom), 2) <= ((G.R + 2) * (G.R + 2))) &&
-                            (Math.Pow((V[E[i].v1].x - G.R - e.X / Main.zoom), 2) + Math.Pow((V[E[i].v1].y - G.R - e.Y / Main.zoom), 2) >= ((G.R - 2) * (G.R - 2))))
+                        if ((Math.Pow((V[E[i].v1].X - G.R - e.X / Main.zoom), 2) + Math.Pow((V[E[i].v1].Y - G.R - e.Y / Main.zoom), 2) <= ((G.R + 2) * (G.R + 2))) &&
+                            (Math.Pow((V[E[i].v1].X - G.R - e.X / Main.zoom), 2) + Math.Pow((V[E[i].v1].Y - G.R - e.Y / Main.zoom), 2) >= ((G.R - 2) * (G.R - 2))))
                         {
                             E.RemoveAt(i);
                             Main.flag = true;
@@ -346,11 +346,11 @@ namespace SystAnalys_lr1.Classes
                     {
                         try
                         {
-                            if (((e.X / Main.zoom - V[E[i].v1].x) * (V[E[i].v2].y - V[E[i].v1].y) / (V[E[i].v2].x - V[E[i].v1].x) + V[E[i].v1].y ) <= (e.Y / Main.zoom + 4) &&
-                                ((e.X / Main.zoom - V[E[i].v1].x) * (V[E[i].v2].y - V[E[i].v1].y) / (V[E[i].v2].x - V[E[i].v1].x) + V[E[i].v1].y) >= (e.Y / Main.zoom - 4))
+                            if (((e.X / Main.zoom - V[E[i].v1].X) * (V[E[i].v2].Y - V[E[i].v1].Y) / (V[E[i].v2].X - V[E[i].v1].X) + V[E[i].v1].Y ) <= (e.Y / Main.zoom + 4) &&
+                                ((e.X / Main.zoom - V[E[i].v1].X) * (V[E[i].v2].Y - V[E[i].v1].Y) / (V[E[i].v2].X - V[E[i].v1].X) + V[E[i].v1].Y) >= (e.Y / Main.zoom - 4))
                             {
-                                if ((V[E[i].v1].x <= V[E[i].v2].x && V[E[i].v1].x <= e.X / Main.zoom && e.X / Main.zoom <= V[E[i].v2].x) ||
-                                    (V[E[i].v1].x >= V[E[i].v2].x && V[E[i].v1].x >= e.X / Main.zoom && e.X / Main.zoom >= V[E[i].v2].x))
+                                if ((V[E[i].v1].X <= V[E[i].v2].X && V[E[i].v1].X <= e.X / Main.zoom && e.X / Main.zoom <= V[E[i].v2].X) ||
+                                    (V[E[i].v1].X >= V[E[i].v2].X && V[E[i].v1].X >= e.X / Main.zoom && e.X / Main.zoom >= V[E[i].v2].X))
                                 {
                                     E.RemoveAt(i);
                                     Main.flag = true;
@@ -373,7 +373,7 @@ namespace SystAnalys_lr1.Classes
                                //ищем, возможно была нажата вершина
             for (int i = 0; i < routeV.Count; i++)
             {
-                if (Math.Pow((routeV[i].x - e.X / Main.zoom), 2) + Math.Pow((routeV[i].y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                if (Math.Pow((routeV[i].X - e.X / Main.zoom), 2) + Math.Pow((routeV[i].Y - e.Y / Main.zoom), 2) <= G.R * G.R)
                 {
                     for (int j = 0; j < routesEdge.Count; j++)
                     {
@@ -402,8 +402,8 @@ namespace SystAnalys_lr1.Classes
                 {
                     if (routesEdge[i].v1 == routesEdge[i].v2) //если это петля
                     {
-                        if ((Math.Pow((routeV[routesEdge[i].v1].x - G.R - e.X), 2) + Math.Pow((routeV[routesEdge[i].v1].y - G.R - e.Y), 2) <= ((G.R + 2) * (G.R + 2))) &&
-                            (Math.Pow((routeV[routesEdge[i].v1].x - G.R - e.X), 2) + Math.Pow((routeV[routesEdge[i].v1].y - G.R - e.Y), 2) >= ((G.R - 2) * (G.R - 2))))
+                        if ((Math.Pow((routeV[routesEdge[i].v1].X - G.R - e.X), 2) + Math.Pow((routeV[routesEdge[i].v1].Y - G.R - e.Y), 2) <= ((G.R + 2) * (G.R + 2))) &&
+                            (Math.Pow((routeV[routesEdge[i].v1].X - G.R - e.X), 2) + Math.Pow((routeV[routesEdge[i].v1].Y - G.R - e.Y), 2) >= ((G.R - 2) * (G.R - 2))))
                         {
                             routesEdge.RemoveAt(i);
                             flag = true;
@@ -415,11 +415,11 @@ namespace SystAnalys_lr1.Classes
                     {
                         try
                         {
-                            if (((e.X - routeV[routesEdge[i].v1].x) * (routeV[routesEdge[i].v2].y - routeV[routesEdge[i].v1].y) / (routeV[routesEdge[i].v2].x - routeV[routesEdge[i].v1].x) + routeV[routesEdge[i].v1].y) <= (e.Y + 4) &&
-                                ((e.X - routeV[routesEdge[i].v1].x) * (routeV[routesEdge[i].v2].y - routeV[routesEdge[i].v1].y) / (routeV[routesEdge[i].v2].x - routeV[routesEdge[i].v1].x) + routeV[routesEdge[i].v1].y) >= (e.Y - 4))
+                            if (((e.X - routeV[routesEdge[i].v1].X) * (routeV[routesEdge[i].v2].Y - routeV[routesEdge[i].v1].Y) / (routeV[routesEdge[i].v2].X - routeV[routesEdge[i].v1].X) + routeV[routesEdge[i].v1].Y) <= (e.Y + 4) &&
+                                ((e.X - routeV[routesEdge[i].v1].X) * (routeV[routesEdge[i].v2].Y - routeV[routesEdge[i].v1].Y) / (routeV[routesEdge[i].v2].X - routeV[routesEdge[i].v1].X) + routeV[routesEdge[i].v1].Y) >= (e.Y - 4))
                             {
-                                if ((routeV[routesEdge[i].v1].x <= routeV[routesEdge[i].v2].x && routeV[routesEdge[i].v1].x <= e.X && e.X <= routeV[routesEdge[i].v2].x) ||
-                                    (routeV[routesEdge[i].v1].x >= routeV[routesEdge[i].v2].x && routeV[routesEdge[i].v1].x >= e.X && e.X >= routeV[routesEdge[i].v2].x))
+                                if ((routeV[routesEdge[i].v1].X <= routeV[routesEdge[i].v2].X && routeV[routesEdge[i].v1].X <= e.X && e.X <= routeV[routesEdge[i].v2].X) ||
+                                    (routeV[routesEdge[i].v1].X >= routeV[routesEdge[i].v2].X && routeV[routesEdge[i].v1].X >= e.X && e.X >= routeV[routesEdge[i].v2].X))
                                 {
                                     routesEdge.RemoveAt(i);
                                     Main.flag = true;

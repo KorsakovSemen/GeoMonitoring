@@ -50,8 +50,8 @@ namespace SystAnalys_lr1
             int LastLocate=0;
             for (int i = 0; i < routeVertexes.IndexOf(routeVertexes.Last()); i++)
             {
-                Point p1 = new Point(routeVertexes[i].x, routeVertexes[i].y);
-                Point p2 = new Point(routeVertexes[i + 1].x, routeVertexes[i + 1].y);
+                Point p1 = new Point(routeVertexes[i].X, routeVertexes[i].Y);
+                Point p2 = new Point(routeVertexes[i + 1].X, routeVertexes[i + 1].Y);
                 int ydiff = p2.Y - p1.Y, xdiff = p2.X - p1.X;
                 double slope = (double)(p2.Y - p1.Y) / (p2.X - p1.X);
                 double x, y;
