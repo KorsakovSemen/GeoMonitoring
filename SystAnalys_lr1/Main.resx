@@ -219,6 +219,45 @@
   <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>383, 17</value>
   </metadata>
+  <metadata name="Avg.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Avg.HeaderText" xml:space="preserve">
+    <value>Avg</value>
+  </data>
+  <data name="Avg.MinimumWidth" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="Avg.Width" type="System.Int32, mscorlib">
+    <value>125</value>
+  </data>
+  <data name="results.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11px</value>
+  </data>
+  <data name="results.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 53</value>
+  </data>
+  <data name="results.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="results.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 103</value>
+  </data>
+  <data name="results.TabIndex" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
+  <data name="&gt;&gt;results.Name" xml:space="preserve">
+    <value>results</value>
+  </data>
+  <data name="&gt;&gt;results.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroGrid, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;results.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;results.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="SavePictures.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -247,7 +286,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;SavePictures.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
     <value>136, 17</value>
@@ -274,7 +313,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -286,13 +325,13 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 20</value>
+    <value>17, 20</value>
   </data>
   <data name="label13.TabIndex" type="System.Int32, mscorlib">
     <value>90</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>V bus</value>
+    <value>T</value>
   </data>
   <data name="&gt;&gt;label13.Name" xml:space="preserve">
     <value>label13</value>
@@ -304,7 +343,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="optimize.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 126</value>
@@ -331,7 +370,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;optimize.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="mean.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -361,7 +400,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;mean.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="resource.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -370,13 +409,13 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 3</value>
+    <value>96, 2</value>
   </data>
   <data name="resource.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="resource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 27</value>
+    <value>21, 21</value>
   </data>
   <data name="resource.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -406,7 +445,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;optText.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="resource.Image1" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -415,13 +454,13 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location1" type="System.Drawing.Point, System.Drawing">
-    <value>128, 3</value>
+    <value>96, 2</value>
   </data>
   <data name="resource.Margin1" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="resource.Size1" type="System.Drawing.Size, System.Drawing">
-    <value>28, 27</value>
+    <value>21, 21</value>
   </data>
   <data name="resource.TabIndex1" type="System.Int32, mscorlib">
     <value>1</value>
@@ -451,7 +490,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;speed.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 323</value>
@@ -601,13 +640,13 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location2" type="System.Drawing.Point, System.Drawing">
-    <value>96, 3</value>
+    <value>72, 2</value>
   </data>
   <data name="resource.Margin2" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="resource.Size2" type="System.Drawing.Size, System.Drawing">
-    <value>28, 27</value>
+    <value>21, 21</value>
   </data>
   <data name="resource.TabIndex2" type="System.Int32, mscorlib">
     <value>1</value>
@@ -679,13 +718,13 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location3" type="System.Drawing.Point, System.Drawing">
-    <value>272, 1</value>
+    <value>204, 1</value>
   </data>
   <data name="resource.Margin3" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="resource.Size3" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
+    <value>15, 15</value>
   </data>
   <data name="resource.TabIndex3" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1075,13 +1114,13 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location4" type="System.Drawing.Point, System.Drawing">
-    <value>181, 3</value>
+    <value>136, 2</value>
   </data>
   <data name="resource.Margin4" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>9, 9, 9, 9</value>
   </data>
   <data name="resource.Size4" type="System.Drawing.Size, System.Drawing">
-    <value>33, 33</value>
+    <value>25, 25</value>
   </data>
   <data name="resource.TabIndex4" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2090,6 +2129,12 @@
   </data>
   <data name="&gt;&gt;msmMain.Type" xml:space="preserve">
     <value>MetroFramework.Components.MetroStyleManager, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;Avg.Name" xml:space="preserve">
+    <value>Avg</value>
+  </data>
+  <data name="&gt;&gt;Avg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Main</value>

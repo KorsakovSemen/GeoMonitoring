@@ -409,14 +409,14 @@ namespace SystAnalys_lr1
 
                         foreach (var Epic in bus.Epicenters)
                         {
-                            if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 3)
+                            if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 5)
                             {
                                 if (EpicFounded == false)
                                 {
                                     EpicFounded = true;
                                     if (EpicFounded == true)
                                     {
-                                        FoundTime = (test - bus.TickCount_) / 3;
+                                        FoundTime = (test - bus.TickCount_) / 5;
                                         if (small > FoundTime)
                                         {
                                             small = FoundTime;
@@ -439,11 +439,11 @@ namespace SystAnalys_lr1
                 if (small == 0)
                 {
                     small += 1;
-                    ResultFromModeling.Add(small);
+                    ResultFromModeling.Add(small * 25);
                 }
                 else
                 {
-                    ResultFromModeling.Add(small);
+                    ResultFromModeling.Add(small * 25);
                 }
             }
 
@@ -1309,8 +1309,8 @@ namespace SystAnalys_lr1
         }
         List<int> withoutSensorsBuses = new List<int>();
         private void offBuses(int proc = 0)
-        {
-            int countSensors = 0;
+        {            
+            int countSensors = 0;            
             int tot = 0;
             SplitBuses();
             foreach (var b in busesPark)
@@ -1335,13 +1335,13 @@ namespace SystAnalys_lr1
                     buses[tot] = b[i];
                     tot += 1;
                 }
-            };
+            };            
             countWithoutSensors -= countSensors;//(int)(buses.Count * 0.01 * proc);
             if(withoutSensorsBuses.Count == 4)
             {
                 countWithoutSensors = 1;
             }
-            if(countWithoutSensors != 0)
+            if (withoutSensorsBuses.Count != 5)
             {
                 withoutSensorsBuses.Add(countWithoutSensors);
             }
@@ -1360,7 +1360,7 @@ namespace SystAnalys_lr1
 
         LoadingForm loadingForm = new LoadingForm();
         private async void Opt()
-        {
+        { 
             loadingForm = new LoadingForm();
             buttonOff();
             string path = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute);
@@ -1405,7 +1405,12 @@ namespace SystAnalys_lr1
                     offBuses(int.Parse(changeProcent.Text));
                 };
                 int ciclTotal = 5;
-                loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Maximum = s), ciclTotal * int.Parse(optText.Text));
+                int totalW = 0;
+                if (int.Parse(optText.Text) < 20)
+                    totalW = 1;
+                else
+                    totalW = int.Parse(optText.Text) / 20;
+                loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Maximum = s), ciclTotal * totalW);
                 for (int cicl = 0; cicl < ciclTotal; cicl++)
                 {
                     offBuses(cicl * 10);
@@ -1414,7 +1419,7 @@ namespace SystAnalys_lr1
                     List<int?> mas = new List<int?>();
                     Baraban();
 
-                    for (int i = 0; i < int.Parse(optText.Text); i++)
+                    for (int i = 0; i < totalW; i++)
                     {
                         CreateOneRandomEpicenter(EpicSizeParam, null);
                         Modeling();
@@ -1518,6 +1523,7 @@ namespace SystAnalys_lr1
                 fileV.WriteLine(sum != 0 ? MainStrings.average + ":" + min + MainStrings.countSensors + ":"  + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
             }
             Matrix();
+            resMatrix();
             busesPark = busesparkreturn;
             buses = optimizeBuses;
 
@@ -1545,6 +1551,8 @@ namespace SystAnalys_lr1
         {
             if (optText.Text != "" && speed.Text != "" && buses.Count != 0 && buses != null)
             {
+                withoutSensorsBuses = new List<int>();
+                countWithoutSensors = buses.Count;
                 bool check = false;
                 foreach (var bus in buses)
                 {
@@ -1571,6 +1579,19 @@ namespace SystAnalys_lr1
 
             }
 
+        }
+        public void resMatrix()
+        {
+            results.Rows.Clear();
+            results.Refresh();
+            results.RowCount = 5;
+            int i = 0;
+            foreach (var pm in percentMean)
+            {
+                results.Rows[i].HeaderCell.Value = pm.Key.ToString();
+                results.Rows[i].Cells[0].Value = pm.Value.ToString();
+                i += 1; 
+            }
         }
         public MetroCheckBox GetSavePictruesCheckBox()
         {
