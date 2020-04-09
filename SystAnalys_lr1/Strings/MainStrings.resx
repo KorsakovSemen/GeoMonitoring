@@ -186,4 +186,7 @@
   <data name="bus" xml:space="preserve">
     <value>Должно быть больше 2 ребер</value>
   </data>
+  <data name="errorPath" xml:space="preserve">
+    <value>Неверный путь к файлу</value>
+  </data>
 </root>

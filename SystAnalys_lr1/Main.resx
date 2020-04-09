@@ -1368,6 +1368,12 @@
   <data name="mainPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
+  <data name="mainPanel.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1111, 654</value>
+  </data>
+  <data name="mainPanel.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1111, 654</value>
+  </data>
   <data name="mainPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>1111, 654</value>
   </data>
@@ -1426,13 +1432,13 @@
     <value>Сохранить</value>
   </data>
   <data name="jSONToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="jSONToolStripMenuItem.Text" xml:space="preserve">
     <value>JSON</value>
   </data>
   <data name="xMLToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="xMLToolStripMenuItem.Text" xml:space="preserve">
     <value>XML</value>

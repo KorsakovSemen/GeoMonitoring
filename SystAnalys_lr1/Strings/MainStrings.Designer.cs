@@ -160,6 +160,15 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Неверный путь к файлу.
+        /// </summary>
+        internal static string errorPath {
+            get {
+                return ResourceManager.GetString("errorPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Перезагрузите программу для смены языка.
         /// </summary>
         internal static string hint {

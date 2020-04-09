@@ -186,4 +186,7 @@
   <data name="bus" xml:space="preserve">
     <value>Must have more than 2 ribs</value>
   </data>
+  <data name="errorPath" xml:space="preserve">
+    <value>Invalid file path</value>
+  </data>
 </root>
