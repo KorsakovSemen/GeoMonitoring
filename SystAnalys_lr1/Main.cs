@@ -82,7 +82,7 @@ namespace SystAnalys_lr1
         static public SerializableDictionary<int, List<Edge>> edgePoints;
         //вторая форма
         DisplayEpicenters Ep;
-
+        int countWithoutSensors;
         int wsheet;
         int hsheet;
         static public Image globalMap;
@@ -275,6 +275,7 @@ namespace SystAnalys_lr1
             {
                 sizeBus = 15;
             }
+            countWithoutSensors = buses.Count;
             Matrix();
             timer2.Interval = 1000;
             timer2.Start();
@@ -404,7 +405,7 @@ namespace SystAnalys_lr1
                             bus.TickCount_ = bus.TickCount_ - rnd.Next(0, 3);
                         }
 
-                        PollutionInRoutes[bus.getRoute()][AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt]].status = bus.DetectEpicenterByGrid();
+                        PollutionInRoutes[bus.getRoute()][AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt]].status = bus.DetectEpicenterByGrid(); // ошибка
 
                         foreach (var Epic in bus.Epicenters)
                         {
@@ -1306,6 +1307,7 @@ namespace SystAnalys_lr1
             [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
             static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
         }
+        List<int> withoutSensorsBuses = new List<int>();
         private void offBuses(int proc = 0)
         {
             int tot = 0;
@@ -1332,6 +1334,8 @@ namespace SystAnalys_lr1
                     tot += 1;
                 }
             };
+            countWithoutSensors -= (int)(buses.Count * 0.01 * proc);
+            withoutSensorsBuses.Add(countWithoutSensors);
         }
 
         SerializableDictionary<int, int?> percentMean;
@@ -1387,7 +1391,6 @@ namespace SystAnalys_lr1
 
             await Task.Run(() =>
             {
-                //v = 0;
                 if (changeProcent.Text != "" && int.TryParse(speed.Text, out int ch) && changeProcent.Text != "")
                 {
                     offBuses(int.Parse(changeProcent.Text));
@@ -1449,28 +1452,30 @@ namespace SystAnalys_lr1
                     if (total < 0 || count < ResultFromModeling.Count / 2)
                     {
                         mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + (ResultFromModeling.Count / 100.00) * count + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count / 100.00) * (ResultFromModeling.Count - count)));
-                        percentMean.Add(cicl * 10, null);
+                        percentMean.Add(withoutSensorsBuses.Last(), null);
                         mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none);
                     }
                     else
                     {
                         mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
                             + "\n" + MainStrings.procentSuc + " " + (ResultFromModeling.Count / 100.00) * count + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count / 100.00) * (ResultFromModeling.Count - count)));
-                        percentMean.Add(cicl * 10, total / ResultFromModeling.Count);
+                        percentMean.Add(withoutSensorsBuses.Last(), total / ResultFromModeling.Count);
                         mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (Convert.ToDouble(total / ResultFromModeling.Count).ToString()));
                     }
 ;
                     using (StreamWriter fileV = new StreamWriter(path + @"\" + cicl.ToString() + "0%" + ".txt"))
                     {
-                        fileV.WriteLine("Снижение кол-ва датчиков в процентах");
+                        fileV.WriteLine(MainStrings.sensorsDown);
                         fileV.WriteLine((cicl * 10).ToString());
-                        fileV.WriteLine("Кол-во итераций " + optText.Text);
-                        fileV.WriteLine("При скорости " + textBox2.Text);
-                        fileV.WriteLine("Найдено: " + (from num in ResultFromModeling where (num != null) select num).Count());
+                        fileV.WriteLine(MainStrings.countBuses);
+                        fileV.WriteLine((withoutSensorsBuses.Last()).ToString());
+                        fileV.WriteLine(MainStrings.numIter + optText.Text);
+                        fileV.WriteLine(MainStrings.distance + textBox2.Text);
+                        fileV.WriteLine(MainStrings.found + (from num in ResultFromModeling where (num != null) select num).Count());
                         fileV.WriteLine(MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
                             + "\n" + MainStrings.procentSuc + " " + (ResultFromModeling.Count / 100.00) * count + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count / 100.00) * (ResultFromModeling.Count - count)).ToString());
                         fileV.WriteLine(MainStrings.average + " " + (total / ResultFromModeling.Count).ToString());
-                        fileV.WriteLine("Цикл: " + cicl.ToString());
+                        fileV.WriteLine(MainStrings.cycle + cicl.ToString());
                         for (int i = 0; i < ResultFromModeling.Count; i++)
                             if (ResultFromModeling[i] != null)
                             {
@@ -1478,7 +1483,7 @@ namespace SystAnalys_lr1
                             }
                             else
                             {
-                                fileV.WriteLine(i.ToString() + " : " + "Nothing");
+                                fileV.WriteLine(i.ToString() + " : " + MainStrings.none);
                             }
 
                         Console.WriteLine("Объект сериализован");
@@ -1492,15 +1497,16 @@ namespace SystAnalys_lr1
             var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();
             var min = percentMean.Min(v => v.Value);
             if (res.Count == 0)
-                mean.Text = MainStrings.average + (sum != 0 ? "За:" + min + " При:" + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
+                mean.Text = (sum != 0 ? MainStrings.average + ":" + min + MainStrings.countSensors + ":" + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
             else
             {
-                mean.Text = MainStrings.average + ("При " + res.Max().ToString() + " - " + "За " + percentMean.Min(v => v.Value));
+                mean.Text = MainStrings.none;
+             //   mean.Text = ("Кол-во датчиков:" + res.Max().ToString() + " - " + "Среднее время:" + percentMean.Min(v => v.Value));
             }
 
             using (StreamWriter fileV = new StreamWriter(path + "/Average.txt"))
             {
-                fileV.WriteLine(sum != 0 ? "За:" + min + " При:" + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
+                fileV.WriteLine(sum != 0 ? MainStrings.average + ":" + min + MainStrings.countSensors + ":"  + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
             }
             Matrix();
             busesPark = busesparkreturn;

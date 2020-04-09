@@ -189,4 +189,25 @@
   <data name="errorPath" xml:space="preserve">
     <value>Неверный путь к файлу</value>
   </data>
+  <data name="countBuses" xml:space="preserve">
+    <value>Кол-во автобусов</value>
+  </data>
+  <data name="countSensors" xml:space="preserve">
+    <value>Кол-во датчиков</value>
+  </data>
+  <data name="cycle" xml:space="preserve">
+    <value>Цикл</value>
+  </data>
+  <data name="distance" xml:space="preserve">
+    <value>При пройденном расстоянии</value>
+  </data>
+  <data name="found" xml:space="preserve">
+    <value>Найдено</value>
+  </data>
+  <data name="numIter" xml:space="preserve">
+    <value>Кол-во итераций</value>
+  </data>
+  <data name="sensorsDown" xml:space="preserve">
+    <value>Снижение кол-ва датчиков в процентах</value>
+  </data>
 </root>

@@ -189,4 +189,25 @@
   <data name="errorPath" xml:space="preserve">
     <value>Invalid file path</value>
   </data>
+  <data name="countBuses" xml:space="preserve">
+    <value>Number of buses</value>
+  </data>
+  <data name="countSensors" xml:space="preserve">
+    <value>Number of sensors</value>
+  </data>
+  <data name="cycle" xml:space="preserve">
+    <value>Cycle</value>
+  </data>
+  <data name="distance" xml:space="preserve">
+    <value>With distance traveled</value>
+  </data>
+  <data name="found" xml:space="preserve">
+    <value>Found</value>
+  </data>
+  <data name="numIter" xml:space="preserve">
+    <value>Number of iterations</value>
+  </data>
+  <data name="sensorsDown" xml:space="preserve">
+    <value>Percentage reduction in sensors</value>
+  </data>
 </root>

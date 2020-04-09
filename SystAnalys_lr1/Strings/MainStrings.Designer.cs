@@ -115,6 +115,33 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Кол-во автобусов.
+        /// </summary>
+        internal static string countBuses {
+            get {
+                return ResourceManager.GetString("countBuses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Кол-во датчиков.
+        /// </summary>
+        internal static string countSensors {
+            get {
+                return ResourceManager.GetString("countSensors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Цикл.
+        /// </summary>
+        internal static string cycle {
+            get {
+                return ResourceManager.GetString("cycle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Удаление.
         /// </summary>
         internal static string delete {
@@ -142,6 +169,15 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на При пройденном расстоянии.
+        /// </summary>
+        internal static string distance {
+            get {
+                return ResourceManager.GetString("distance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Готово.
         /// </summary>
         internal static string done {
@@ -165,6 +201,15 @@ namespace SystAnalys_lr1.Strings {
         internal static string errorPath {
             get {
                 return ResourceManager.GetString("errorPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Найдено.
+        /// </summary>
+        internal static string found {
+            get {
+                return ResourceManager.GetString("found", resourceCulture);
             }
         }
         
@@ -241,6 +286,15 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Кол-во итераций.
+        /// </summary>
+        internal static string numIter {
+            get {
+                return ResourceManager.GetString("numIter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Процент неудач:.
         /// </summary>
         internal static string procentFailed {
@@ -273,6 +327,15 @@ namespace SystAnalys_lr1.Strings {
         internal static string putTrafficLights2 {
             get {
                 return ResourceManager.GetString("putTrafficLights2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Снижение кол-ва датчиков в процентах.
+        /// </summary>
+        internal static string sensorsDown {
+            get {
+                return ResourceManager.GetString("sensorsDown", resourceCulture);
             }
         }
     }
