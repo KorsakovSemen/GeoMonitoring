@@ -1310,6 +1310,7 @@ namespace SystAnalys_lr1
         List<int> withoutSensorsBuses = new List<int>();
         private void offBuses(int proc = 0)
         {
+            int countSensors = 0;
             int tot = 0;
             SplitBuses();
             foreach (var b in busesPark)
@@ -1320,6 +1321,7 @@ namespace SystAnalys_lr1
                 {
                     if (0 != limit)
                     {
+                        countSensors += 1;
                         bus.tracker = false;
                         limit = limit - 1;
                     }
@@ -1334,8 +1336,15 @@ namespace SystAnalys_lr1
                     tot += 1;
                 }
             };
-            countWithoutSensors -= (int)(buses.Count * 0.01 * proc);
-            withoutSensorsBuses.Add(countWithoutSensors);
+            countWithoutSensors -= countSensors;//(int)(buses.Count * 0.01 * proc);
+            if(withoutSensorsBuses.Count == 4)
+            {
+                countWithoutSensors = 1;
+            }
+            if(countWithoutSensors != 0)
+            {
+                withoutSensorsBuses.Add(countWithoutSensors);
+            }
         }
 
         SerializableDictionary<int, int?> percentMean;
@@ -1496,7 +1505,7 @@ namespace SystAnalys_lr1
             });
             var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();
             var min = percentMean.Min(v => v.Value);
-            if (res.Count == 0)
+            if (res.Count != 0)
                 mean.Text = (sum != 0 ? MainStrings.average + ":" + min + MainStrings.countSensors + ":" + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
             else
             {
