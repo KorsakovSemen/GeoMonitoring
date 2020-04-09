@@ -3450,6 +3450,8 @@ namespace SystAnalys_lr1
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
                 Ep.EDrawGrid();
+                CreatePollutionInRoutes();
+                CreateAllCoordinates();
             }
         }
 
