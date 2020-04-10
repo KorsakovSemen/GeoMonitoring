@@ -304,7 +304,7 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Процент успехов:.
+        ///   Ищет локализованную строку, похожую на Процент успеха:.
         /// </summary>
         internal static string procentSuc {
             get {

@@ -1386,7 +1386,7 @@ namespace SystAnalys_lr1
             ));
             if (speed.Text != "" && int.TryParse(speed.Text, out int sp))
             {
-                textBox2.Text = speed.Text;
+                textBox2.Text = (int.Parse(speed.Text) / 20).ToString();
             }
             loadingForm.Show();
             int old = small;
@@ -1406,11 +1406,11 @@ namespace SystAnalys_lr1
                 };
                 int ciclTotal = 5;
                 int totalW = 0;
-                if (int.Parse(optText.Text) < 20)
+                if (int.Parse(speed.Text) < 20)
                     totalW = 1;
                 else
-                    totalW = int.Parse(optText.Text) / 20;
-                loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Maximum = s), ciclTotal * totalW);
+                    totalW = int.Parse(speed.Text) / 20;
+                loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Maximum = s), ciclTotal * int.Parse(optText.Text));
                 for (int cicl = 0; cicl < ciclTotal; cicl++)
                 {
                     offBuses(cicl * 10);
@@ -1419,7 +1419,7 @@ namespace SystAnalys_lr1
                     List<int?> mas = new List<int?>();
                     Baraban();
 
-                    for (int i = 0; i < totalW; i++)
+                    for (int i = 0; i < int.Parse(optText.Text); i++)
                     {
                         CreateOneRandomEpicenter(EpicSizeParam, null);
                         Modeling();
@@ -1452,7 +1452,6 @@ namespace SystAnalys_lr1
                         small = 10000;
                     }
 
-
                     int total = ResultFromModeling.Sum(x => Convert.ToInt32(x));
                     sum = total;
                     int count = 0;
@@ -1460,19 +1459,20 @@ namespace SystAnalys_lr1
                     {
                         if (m != null)
                         {
-                            count += 1;
+                          count += 1;
                         }
                     }
+
                     if (total < 0 || count < ResultFromModeling.Count / 2)
                     {
-                        mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + (ResultFromModeling.Count / 100.00) * count + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count / 100.00) * (ResultFromModeling.Count - count)));
+                        mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text))  + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
                         percentMean.Add(withoutSensorsBuses.Last(), null);
                         mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none);
                     }
                     else
                     {
                         mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
-                            + "\n" + MainStrings.procentSuc + " " + (ResultFromModeling.Count / 100.00) * count + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count / 100.00) * (ResultFromModeling.Count - count)));
+                            + "\n" + MainStrings.procentSuc + " " + ResultFromModeling.Count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
                         percentMean.Add(withoutSensorsBuses.Last(), total / ResultFromModeling.Count);
                         mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (Convert.ToDouble(total / ResultFromModeling.Count).ToString()));
                     }
@@ -1484,9 +1484,8 @@ namespace SystAnalys_lr1
                         fileV.WriteLine(MainStrings.numIter + ": " + optText.Text);
                         fileV.WriteLine(MainStrings.distance + ": " + textBox2.Text);
                         fileV.WriteLine(MainStrings.found + ": " + (from num in ResultFromModeling where (num != null) select num).Count());
-                        fileV.WriteLine(MainStrings.average + ": " + (total / ResultFromModeling.Count).ToString()
-                            + "\n" + MainStrings.procentSuc + ": " + (ResultFromModeling.Count / 100.00) * count + "\n" + MainStrings.procentFailed + ": " + ((ResultFromModeling.Count / 100.00) * (ResultFromModeling.Count - count)).ToString());
-                        fileV.WriteLine(MainStrings.average + ": " + (total / ResultFromModeling.Count).ToString());
+                        fileV.WriteLine(MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
+                            + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + (((ResultFromModeling.Count - count) * 100.00 / int.Parse(optText.Text))).ToString());
                         fileV.WriteLine(MainStrings.cycle + " " + cicl.ToString());
                         for (int i = 0; i < ResultFromModeling.Count; i++)
                             if (ResultFromModeling[i] != null)
@@ -1508,8 +1507,8 @@ namespace SystAnalys_lr1
             });
             var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();
             var min = percentMean.Min(v => v.Value);
-            if (res.Count != 0 && min != 0)
-                mean.Text = MainStrings.average + min + "-" + MainStrings.countSensors + ":" + GetKeyByValue(percentMean.Min(v => v.Value));
+            if (res.Count != 0 && min != 0 && min != null)
+                mean.Text = MainStrings.average + " " + min + " - " + MainStrings.countSensors + ": " + GetKeyByValue(percentMean.Min(v => v.Value));
             else
             {
                 mean.Text = MainStrings.none;
@@ -1517,7 +1516,7 @@ namespace SystAnalys_lr1
 
             using (StreamWriter fileV = new StreamWriter(path + "/Average.txt"))
             {
-                fileV.WriteLine(sum != 0 ? MainStrings.average + min + "-" + MainStrings.countSensors + ":"  + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
+                fileV.WriteLine(sum != 0 ? MainStrings.average + " " + min + " - " + MainStrings.countSensors + ": "  + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
             }
             Matrix();
             resMatrix();
@@ -1546,7 +1545,7 @@ namespace SystAnalys_lr1
         public static List<string> ExpandEpicParamet;
         private void optimize_Click(object sender, EventArgs e)
         {
-            if (optText.Text != "" && speed.Text != "" && buses.Count != 0 && buses != null)
+            if (optText.Text != "" && speed.Text != "" && buses.Count != 0 && int.Parse(optText.Text) > 0 && int.Parse(speed.Text) > 0 && buses != null)
             {
                 withoutSensorsBuses = new List<int>();
                 countWithoutSensors = buses.Count;
@@ -1586,7 +1585,8 @@ namespace SystAnalys_lr1
             foreach (var pm in percentMean)
             {
                 results.Rows[i].HeaderCell.Value = pm.Key.ToString();
-                results.Rows[i].Cells[0].Value = pm.Value.ToString();
+                if(pm.Value != 0)
+                    results.Rows[i].Cells[0].Value = pm.Value.ToString();
                 i += 1; 
             }
         }

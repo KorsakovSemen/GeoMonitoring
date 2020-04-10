@@ -169,7 +169,7 @@
     <value>Процент неудач:</value>
   </data>
   <data name="procentSuc" xml:space="preserve">
-    <value>Процент успехов:</value>
+    <value>Процент успеха:</value>
   </data>
   <data name="putTrafficLights1" xml:space="preserve">
     <value>(1)Осталось поставить светофоров</value>
