@@ -1479,17 +1479,15 @@ namespace SystAnalys_lr1
 ;
                     using (StreamWriter fileV = new StreamWriter(path + @"\" + cicl.ToString() + "0%" + ".txt"))
                     {
-                        fileV.WriteLine(MainStrings.sensorsDown);
-                        fileV.WriteLine((cicl * 10).ToString());
-                        fileV.WriteLine(MainStrings.countBuses);
-                        fileV.WriteLine((withoutSensorsBuses.Last()).ToString());
-                        fileV.WriteLine(MainStrings.numIter + optText.Text);
-                        fileV.WriteLine(MainStrings.distance + textBox2.Text);
-                        fileV.WriteLine(MainStrings.found + (from num in ResultFromModeling where (num != null) select num).Count());
-                        fileV.WriteLine(MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
-                            + "\n" + MainStrings.procentSuc + " " + (ResultFromModeling.Count / 100.00) * count + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count / 100.00) * (ResultFromModeling.Count - count)).ToString());
-                        fileV.WriteLine(MainStrings.average + " " + (total / ResultFromModeling.Count).ToString());
-                        fileV.WriteLine(MainStrings.cycle + cicl.ToString());
+                        fileV.WriteLine(MainStrings.sensorsDown + ": " + (cicl * 10).ToString());
+                        fileV.WriteLine(MainStrings.countBuses + ": " + (withoutSensorsBuses.Last()).ToString());
+                        fileV.WriteLine(MainStrings.numIter + ": " + optText.Text);
+                        fileV.WriteLine(MainStrings.distance + ": " + textBox2.Text);
+                        fileV.WriteLine(MainStrings.found + ": " + (from num in ResultFromModeling where (num != null) select num).Count());
+                        fileV.WriteLine(MainStrings.average + ": " + (total / ResultFromModeling.Count).ToString()
+                            + "\n" + MainStrings.procentSuc + ": " + (ResultFromModeling.Count / 100.00) * count + "\n" + MainStrings.procentFailed + ": " + ((ResultFromModeling.Count / 100.00) * (ResultFromModeling.Count - count)).ToString());
+                        fileV.WriteLine(MainStrings.average + ": " + (total / ResultFromModeling.Count).ToString());
+                        fileV.WriteLine(MainStrings.cycle + " " + cicl.ToString());
                         for (int i = 0; i < ResultFromModeling.Count; i++)
                             if (ResultFromModeling[i] != null)
                             {
@@ -1510,22 +1508,19 @@ namespace SystAnalys_lr1
             });
             var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();
             var min = percentMean.Min(v => v.Value);
-            if (res.Count != 0)
-                mean.Text = (sum != 0 ? MainStrings.average + ":" + min + MainStrings.countSensors + ":" + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
+            if (res.Count != 0 && min != 0)
+                mean.Text = MainStrings.average + min + "-" + MainStrings.countSensors + ":" + GetKeyByValue(percentMean.Min(v => v.Value));
             else
             {
                 mean.Text = MainStrings.none;
-             //   mean.Text = ("Кол-во датчиков:" + res.Max().ToString() + " - " + "Среднее время:" + percentMean.Min(v => v.Value));
             }
 
             using (StreamWriter fileV = new StreamWriter(path + "/Average.txt"))
             {
-                fileV.WriteLine(sum != 0 ? MainStrings.average + ":" + min + MainStrings.countSensors + ":"  + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
+                fileV.WriteLine(sum != 0 ? MainStrings.average + min + "-" + MainStrings.countSensors + ":"  + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
             }
             Matrix();
             resMatrix();
-            busesPark = busesparkreturn;
-            buses = optimizeBuses;
 
             msmMain.Style = style;
             SavePictures.Enabled = true;
@@ -1543,6 +1538,8 @@ namespace SystAnalys_lr1
             loadingForm.close = true;
             loadingForm.Close();
             buttonOn();
+            busesPark = busesparkreturn;
+            buses = optimizeBuses;
         }
 
         public static int EpicSizeParam = 10;
