@@ -319,7 +319,7 @@ namespace SystAnalys_lr1
                 Epics.First().ExpandEpic(ExpandEpicParamet);
             }
         }
-
+        int T;
         List<int?> ResultFromModeling = new List<int?>();
         private void Modeling(string SavePath, int Cicle, int ModelNum)
         {
@@ -344,14 +344,6 @@ namespace SystAnalys_lr1
             CreatePollutionInRoutes();
             int small = 10000;
             int old = small;
-            if (int.TryParse(textBox2.Text, out int test))
-            {
-                test = int.Parse(textBox2.Text);
-            }
-            else
-            {
-                return;
-            }
             int FoundTime = small + 1;
             bool EpicFounded = false;
             int ExpandTimer = 0;
@@ -362,16 +354,14 @@ namespace SystAnalys_lr1
                 bus.Epicenters = epList;
             }
             for (int j = 3; j > 0; j--)
-            {
-               
-          
+            {                    
           
                 foreach (var bus in cqBus)
                 {
                     bus.Stop();
                     //bus.Epicenters.Clear();
                     bus.Epicenters = epList;
-                    bus.TickCount_ = test /3;
+                    bus.TickCount_ = T /3;
                     if (bus.skip > 0)
                         bus.skip -= 1;
                     if (bus.tracker == true)
@@ -426,7 +416,7 @@ namespace SystAnalys_lr1
                                         EpicFounded = true;
                                         if (EpicFounded == true)
                                         {
-                                            FoundTime = (test /2 - bus.TickCount_) / 5;
+                                            FoundTime = (T /2 - bus.TickCount_) / 5;
                                             if (small > FoundTime)
                                             {
                                                 small = FoundTime;
@@ -439,11 +429,9 @@ namespace SystAnalys_lr1
                             ExpandTimer++;
 
                         }
-                        //Console.WriteLine("после форыча" + small.ToString());
                     }
                 }
 
-                //Console.WriteLine("после форыча" + j.ToString());
                 if (SavePictures.Checked)                 
                 {
                     //Epics = buses.First().Epicenters;
@@ -937,17 +925,17 @@ namespace SystAnalys_lr1
                 if (MBSave == DialogResult.Yes && int.TryParse(changeRoute.Text, out int t) == true)
                 {
 
-                    List<Bus> test = new List<Bus>();
+                    List<Bus> testBus = new List<Bus>();
                     foreach (var b in buses)
                     {
                         if (b.route == (changeRoute.Text))
                         {
                             b.Stop();
                             mainPanel.Controls.Remove(b.busPic);
-                            test.Add(b);
+                            testBus.Add(b);
                         };
                     }
-                    foreach (var b in test)
+                    foreach (var b in testBus)
                     {
                         buses.Remove(b);
                     }
@@ -1105,17 +1093,17 @@ namespace SystAnalys_lr1
                 {
                     routes[changeRoute.Text].Clear();
                     routesEdge[changeRoute.Text].Clear();
-                    List<Bus> test = new List<Bus>();
+                    List<Bus> busTest = new List<Bus>();
                     foreach (var b in buses)
                     {
                         if (b.route == changeRoute.Text)
                         {
                             b.Stop();
                             mainPanel.Controls.Remove(b.busPic);
-                            test.Add(b);
+                            busTest.Add(b);
                         };
                     };
-                    foreach (var b in test)
+                    foreach (var b in busTest)
                     {
                         buses.Remove(b);
                     }
@@ -1410,7 +1398,7 @@ namespace SystAnalys_lr1
             ));
             if (speed.Text != "" && int.TryParse(speed.Text, out int sp))
             {
-                textBox2.Text = (int.Parse(speed.Text) / 20).ToString();
+                T = int.Parse(speed.Text) / 20;
             }
             loadingForm.Show();
             int old = small;
@@ -1430,10 +1418,10 @@ namespace SystAnalys_lr1
                 };
                 int ciclTotal = 5;
                 int totalW = 0;
-                if (int.Parse(speed.Text) < 20)
+                if (T < 20)
                     totalW = 1;
                 else
-                    totalW = int.Parse(speed.Text) / 20;
+                    totalW = T / 20;
                 loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Maximum = s), ciclTotal * int.Parse(optText.Text));
                 for (int cicl = 0; cicl < ciclTotal; cicl++)
                 {
@@ -1450,7 +1438,6 @@ namespace SystAnalys_lr1
                     {
                         if (SavePictures.Checked)
                         {
-
                             Directory.CreateDirectory(path+"/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString());
                         }
                         CreateOneRandomEpicenter(EpicSizeParam, null);
@@ -1515,7 +1502,7 @@ namespace SystAnalys_lr1
                         fileV.WriteLine(MainStrings.sensorsDown + ": " + (cicl * 10).ToString());
                         fileV.WriteLine(MainStrings.countBuses + ": " + (withoutSensorsBuses.Last()).ToString());
                         fileV.WriteLine(MainStrings.numIter + ": " + optText.Text);
-                        fileV.WriteLine(MainStrings.distance + ": " + textBox2.Text);
+                        fileV.WriteLine(MainStrings.distance + ": " + speed.Text);
                         fileV.WriteLine(MainStrings.found + ": " + (from num in ResultFromModeling where (num != null) select num).Count());
                         fileV.WriteLine(MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
                             + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + (((ResultFromModeling.Count - count) * 100.00 / int.Parse(optText.Text))).ToString());

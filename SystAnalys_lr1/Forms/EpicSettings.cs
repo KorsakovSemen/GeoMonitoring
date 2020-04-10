@@ -133,7 +133,7 @@ namespace SystAnalys_lr1.Forms
                                 break;
                             case "radioCustom":
                                 Main.EpicSizeParamSave = "radioCustom";
-                                if (int.TryParse(textBox1.Text, out int test))
+                                if (int.TryParse(textBox1.Text, out int T))
                                 {
                                     EpicSizeParam = int.Parse(textBox1.Text);
                                 }
