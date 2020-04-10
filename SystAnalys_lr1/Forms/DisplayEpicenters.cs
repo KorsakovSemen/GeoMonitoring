@@ -92,11 +92,11 @@ namespace SystAnalys_lr1
             //
             this.panel1.Controls.Add(ERouts);
             this.panel1.Controls.Add(EZoomBar);
-            
-            
-        
+
+
+
             //EDrawGrid();
-            EDrawEpics();
+            EDrawMAinEpics();
             Esheet.MouseClick += Esheet_MouseClick;
         }
 
@@ -145,24 +145,40 @@ namespace SystAnalys_lr1
                 ERouts.SelectedIndex = 0;
         }
         delegate void DelBitmap(Bitmap b);
-        public void EDrawEpics()
+        public void EDrawEpics(System.Collections.Generic.List<Epicenter>Epics)
         {
             EG.clearSheet2();
             Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap()); //ошибка при закрытии формы
             // Esheet.Image = EG.GetBitmap();
-            if(MainForm.GetEpicenters() != null)
+            if (Epics != null)
+            {
+                for (int i = 0; i < Epics.Count; i++)
+                {
+                    Epics[i].DrawEpicenter(EG, Ezoom);
+                }
+
+            }
+            EDrawGrid();
+
+
+        }
+        public void EDrawMAinEpics()
+        {
+            EG.clearSheet2();
+            Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap()); //ошибка при закрытии формы
+            // Esheet.Image = EG.GetBitmap();
+            if (MainForm.GetEpicenters() != null)
             {
                 for (int i = 0; i < MainForm.GetEpicenters().Count; i++)
                 {
                     MainForm.GetEpicenters()[i].DrawEpicenter(EG, Ezoom);
                 }
 
-            }           
+            }
             EDrawGrid();
 
 
         }
-
         public void EDrawGrid()
         {
             //EG.clearSheet();
@@ -215,7 +231,7 @@ namespace SystAnalys_lr1
         private void EDrawPollutions()
         {
             EG.clearSheet2();
-            EDrawEpics();
+            EDrawMAinEpics();
             if (ERouts.Text == MainStrings.none)
             {
 
@@ -303,7 +319,7 @@ namespace SystAnalys_lr1
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            EDrawEpics();
+            EDrawMAinEpics();
         }
 
         private void DisplayEpicenters_FormClosed(object sender, FormClosedEventArgs e)

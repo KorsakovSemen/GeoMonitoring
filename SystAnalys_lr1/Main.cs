@@ -257,7 +257,7 @@ namespace SystAnalys_lr1
             {
                 File.Create("../../SaveConfig/style.txt");
             }
-            changeTheme.Text = text;            
+            changeTheme.Text = text;
             if (sheet.Image == null)
             {
                 addRouteToolStripMenuItem.Enabled = false;
@@ -321,7 +321,7 @@ namespace SystAnalys_lr1
         }
 
         List<int?> ResultFromModeling = new List<int?>();
-        private void Modeling()
+        private void Modeling(string SavePath, int Cicle, int ModelNum)
         {
             List<Epicenter> epList = new List<Epicenter>();
             int i = 0;
@@ -356,80 +356,123 @@ namespace SystAnalys_lr1
             bool EpicFounded = false;
             int ExpandTimer = 0;
             Epics = epList;
-            foreach (var bus in cqBus)
+            i = 1;
+            foreach(var bus in buses)
             {
-                bus.Stop();
-                bus.Epicenters.Clear();
                 bus.Epicenters = epList;
-                bus.TickCount_ = test;
-                if (bus.skip > 0)
-                    bus.skip -= 1;
-                if (bus.tracker == true)
+            }
+            for (int j = 3; j > 0; j--)
+            {
+               
+          
+          
+                foreach (var bus in cqBus)
                 {
-                    while (bus.TickCount_ > 0)
+                    bus.Stop();
+                    //bus.Epicenters.Clear();
+                    bus.Epicenters = epList;
+                    bus.TickCount_ = test /3;
+                    if (bus.skip > 0)
+                        bus.skip -= 1;
+                    if (bus.tracker == true)
                     {
-                        bus.MoveWithoutGraphicsByGrids();
-                        if (ExpandTimer == 75)
+                        while (bus.TickCount_ > 0)
                         {
-                            lock (epList)
+                            bus.MoveWithoutGraphicsByGrids();
+                            if (ExpandTimer == 150)
                             {
-                                ExpandEpics(epList);
-                            }
-                            ExpandTimer = 0;
-                        }
-                        if (TraficLightsInGrids.Contains(AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt])) //ошибка с выходом за пределы
-                                                                                                                 //тушто нужно "вот эту" разкоментить
-                        {
-                            if (bus.skip == 0)
-                            {
-                                foreach (var sp in traficLights)
+                                lock (epList)
                                 {
-                                    if (sp.status != Status.RED)
-                                    {
-                                        bus.skip = sp.greenTime;
-                                        break;
-                                    }
-                                    if (sp.status == Status.RED)
-                                    {
-                                        bus.TickCount_ = bus.TickCount_ - sp.bal;
-                                        bus.skip = sp.greenTime;
-                                        break;
-
-                                    }
+                                    ExpandEpics(epList);
                                 }
+                                ExpandTimer = 0;
                             }
-                        }
-
-                        if ((stopPointsInGrids.ContainsKey(bus.getRoute())) && (stopPointsInGrids[bus.getRoute()].Contains(AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt])))
-                        {
-                            bus.TickCount_ = bus.TickCount_ - rnd.Next(0, 3);
-                        }
-
-                        PollutionInRoutes[bus.getRoute()][AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt]].status = bus.DetectEpicenterByGrid(); // ошибка
-
-                        foreach (var Epic in bus.Epicenters)
-                        {
-                            if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 5)
+                            if (TraficLightsInGrids.Contains(AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt])) //ошибка с выходом за пределы
+                                                                                                                     //тушто нужно "вот эту" разкоментить
                             {
-                                if (EpicFounded == false)
+                                if (bus.skip == 0)
                                 {
-                                    EpicFounded = true;
-                                    if (EpicFounded == true)
+                                    foreach (var sp in traficLights)
                                     {
-                                        FoundTime = (test - bus.TickCount_) / 5;
-                                        if (small > FoundTime)
+                                        if (sp.status != Status.RED)
                                         {
-                                            small = FoundTime;
+                                            bus.skip = sp.greenTime;
+                                            break;
+                                        }
+                                        if (sp.status == Status.RED)
+                                        {
+                                            bus.TickCount_ = bus.TickCount_ - sp.bal;
+                                            bus.skip = sp.greenTime;
+                                            break;
+
                                         }
                                     }
                                 }
                             }
-                        }
-                        bus.TickCount_--;
-                        ExpandTimer++;
 
+                            if ((stopPointsInGrids.ContainsKey(bus.getRoute())) && (stopPointsInGrids[bus.getRoute()].Contains(AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt])))
+                            {
+                                bus.TickCount_ = bus.TickCount_ - rnd.Next(0, 3);
+                            }
+
+                            PollutionInRoutes[bus.getRoute()][AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt]].status = bus.DetectEpicenterByGrid(); // ошибка
+
+                            foreach (var Epic in bus.Epicenters)
+                            {
+                                if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 5)
+                                {
+                                    if (EpicFounded == false)
+                                    {
+                                        EpicFounded = true;
+                                        if (EpicFounded == true)
+                                        {
+                                            FoundTime = (test /2 - bus.TickCount_) / 5;
+                                            if (small > FoundTime)
+                                            {
+                                                small = FoundTime;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            bus.TickCount_--;
+                            ExpandTimer++;
+
+                        }
+                        //Console.WriteLine("после форыча" + small.ToString());
                     }
-                    Console.WriteLine("после форыча" + small.ToString());
+                }
+
+                //Console.WriteLine("после форыча" + j.ToString());
+                if (SavePictures.Checked)                 
+                {
+                    //Epics = buses.First().Epicenters;
+                    if (SavePictures.Checked)
+                    {
+                        Directory.CreateDirectory(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + i.ToString());
+                       
+                    }
+                    lock (Ep.Esheet)
+                    {
+                        Ep.EDrawEpics(epList);
+                        using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
+                        {
+                            img.Save(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + i.ToString() + "/" + i.ToString() + "_nat" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                        }
+                    }
+             
+                    lock (Ep.Esheet)
+                    {
+                        Ep.RecReateFunction();
+                    }
+                    lock (Ep.Esheet)
+                    {
+                        using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
+                        {
+                            img.Save(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + i.ToString() + "/" + i.ToString() + "_re" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                        }
+                    }
+                    i++;
                 }
             }
             if (small == old)
@@ -446,7 +489,6 @@ namespace SystAnalys_lr1
                     ResultFromModeling.Add(small * 25);
                 }
             }
-
         }
         delegate void DelBmp(Bitmap bmp);
         //отрисовать всю сетку
@@ -526,7 +568,7 @@ namespace SystAnalys_lr1
         public Panel GetMainPanel()
         {
             return this.panel4;
-        }       
+        }
 
 
         private void button7_Click(object sender, EventArgs e)
@@ -560,22 +602,7 @@ namespace SystAnalys_lr1
         }
 
 
-        private void button8_Click_1(object sender, EventArgs e)
-        {
-            if (int.TryParse(textBox2.Text, out int t))
-            {
-                foreach (var bus in buses)
-                {
-                    bus.Stop();
-                    bus.PositionAt = 0;
-                }
 
-                TimeSpan ts = TimeSpan.FromTicks(int.Parse(textBox2.Text));
-                double minutesFromTs = ts.TotalSeconds;
-                Console.WriteLine(minutesFromTs);
-                Modeling();
-            }
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -1309,8 +1336,8 @@ namespace SystAnalys_lr1
         }
         List<int> withoutSensorsBuses = new List<int>();
         private void offBuses(int proc = 0)
-        {            
-            int countSensors = 0;            
+        {
+            int countSensors = 0;
             int tot = 0;
             SplitBuses();
             foreach (var b in busesPark)
@@ -1335,9 +1362,9 @@ namespace SystAnalys_lr1
                     buses[tot] = b[i];
                     tot += 1;
                 }
-            };            
+            };
             countWithoutSensors -= countSensors;//(int)(buses.Count * 0.01 * proc);
-            if(withoutSensorsBuses.Count == 4)
+            if (withoutSensorsBuses.Count == 4)
             {
                 countWithoutSensors = 1;
             }
@@ -1360,15 +1387,15 @@ namespace SystAnalys_lr1
 
         LoadingForm loadingForm = new LoadingForm();
         private async void Opt()
-        { 
+        {
             loadingForm = new LoadingForm();
             buttonOff();
             string path = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute);
             if (SavePictures.Checked)
             {
                 Ep.Hide();
-                Directory.CreateDirectory(path + "/Generated_Epics");
-                Directory.CreateDirectory(path + "/Recreated_Epics");
+
+                Directory.CreateDirectory(path+"/Epics");
             }
             loadingForm.Theme = msmMain.Theme;
             loadingForm.Style = msmMain.Style;
@@ -1376,9 +1403,6 @@ namespace SystAnalys_lr1
             percentMean = new SerializableDictionary<int, int?>();
 
             Directory.CreateDirectory(path);
-            //zamazka
-
-            //zamazka
             int? sum = null;
             List<Bus> optimizeBuses = new List<Bus>();
             buses.ForEach((b) => optimizeBuses.Add(
@@ -1418,36 +1442,45 @@ namespace SystAnalys_lr1
                         buses[rnd.Next(0, buses.Count)].tracker = true;
                     List<int?> mas = new List<int?>();
                     Baraban();
-
+                    if (SavePictures.Checked)
+                    {
+                        Directory.CreateDirectory(path+"/Epics" + "/" + (cicl + 1).ToString());
+                    }
                     for (int i = 0; i < int.Parse(optText.Text); i++)
                     {
-                        CreateOneRandomEpicenter(EpicSizeParam, null);
-                        Modeling();
                         if (SavePictures.Checked)
                         {
-                            lock (Ep.Esheet)
-                            {
-                                Ep.EDrawEpics();
-                            }
-                            lock (Ep.Esheet)
-                            {
-                                using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
-                                {
-                                    img.Save(path + "/Generated_Epics" + "/GeneredEpic_cicle" + cicl.ToString() + "_" + (i + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                                }
-                            }
-                            lock (Ep.Esheet)
-                            {
-                                Ep.RecReateFunction();
-                            }
-                            lock (Ep.Esheet)
-                            {
-                                using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
-                                {
-                                    img.Save(path + "/Recreated_Epics" + "/Recreated_Epic_cicle" + cicl.ToString() + "_" + (i + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                                }
-                            }
+
+                            Directory.CreateDirectory(path+"/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString());
                         }
+                        CreateOneRandomEpicenter(EpicSizeParam, null);
+                        Modeling(path, cicl, i);
+                        //if (SavePictures.Checked)
+                        //{
+                        //    lock (Ep.Esheet)
+                        //    {
+                        //        Ep.EDrawEpics();
+                        //    }
+                        //    lock (Ep.Esheet)
+                        //    {
+                        //        using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())     
+                        //        {
+                        //            Directory.CreateDirectory(path + "/Recreated_Epics" + "/" + (cicl + 1).ToString());
+                        //            img.Save(path + "/Generated_Epics" + "/GeneredEpic_cicle" + cicl.ToString() + "_" + (i + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                        //        }
+                        //    }
+                        //    lock (Ep.Esheet)
+                        //    {
+                        //        Ep.RecReateFunction();
+                        //    }
+                        //    lock (Ep.Esheet)
+                        //    {
+                        //        using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
+                        //        {
+                        //            img.Save(path + "/Recreated_Epics" + "/Recreated_Epic_cicle" + cicl.ToString() + "_" + (i + 1).ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                        //        }
+                        //    }
+                        //}
                         loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Value = s), loadingForm.loading.Value + 1);
                         small = 10000;
                     }
@@ -1459,13 +1492,13 @@ namespace SystAnalys_lr1
                     {
                         if (m != null)
                         {
-                          count += 1;
+                            count += 1;
                         }
                     }
 
                     if (total < 0 || count < ResultFromModeling.Count / 2)
                     {
-                        mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text))  + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
+                        mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
                         percentMean.Add(withoutSensorsBuses.Last(), null);
                         mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none);
                     }
@@ -1516,7 +1549,7 @@ namespace SystAnalys_lr1
 
             using (StreamWriter fileV = new StreamWriter(path + "/Average.txt"))
             {
-                fileV.WriteLine(sum != 0 ? MainStrings.average + " " + min + " - " + MainStrings.countSensors + ": "  + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
+                fileV.WriteLine(sum != 0 ? MainStrings.average + " " + min + " - " + MainStrings.countSensors + ": " + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
             }
             Matrix();
             resMatrix();
@@ -1585,9 +1618,9 @@ namespace SystAnalys_lr1
             foreach (var pm in percentMean)
             {
                 results.Rows[i].HeaderCell.Value = pm.Key.ToString();
-                if(pm.Value != 0)
+                if (pm.Value != 0)
                     results.Rows[i].Cells[0].Value = pm.Value.ToString();
-                i += 1; 
+                i += 1;
             }
         }
         public MetroCheckBox GetSavePictruesCheckBox()
@@ -2165,7 +2198,7 @@ namespace SystAnalys_lr1
                 {
                     using (StreamReader reader = new StreamReader(load + "StopPoints.json"))
                     {
-                        stopPoints = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Vertex>>>(File.ReadAllText(load + "StopPoints.json")); 
+                        stopPoints = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Vertex>>>(File.ReadAllText(load + "StopPoints.json"));
                         stopPointsInGrids = new SerializableDictionary<string, List<int>>();
                         foreach (var StopList in stopPoints)
                         {
@@ -2369,7 +2402,7 @@ namespace SystAnalys_lr1
                 Ep.Show();
                 loadingForm.loading.Value = 100;
                 loadingForm.close = true;
-                loadingForm.Close(); 
+                loadingForm.Close();
             }
             catch (Exception exc)
             {
@@ -3180,7 +3213,7 @@ namespace SystAnalys_lr1
         }
 
         private void selectRoute_Click(object sender, EventArgs e)
-        {      
+        {
             if (changeRoute.Text == MainStrings.network)
             {
                 selectRoute.Enabled = false;
@@ -3218,7 +3251,7 @@ namespace SystAnalys_lr1
             selected1 = -1;
             DrawGrid();
         }
-        
+
 
         private void openEpicFormToolStripMenuItem_Click(object sender, EventArgs e)
         {

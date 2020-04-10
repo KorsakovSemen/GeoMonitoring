@@ -1310,9 +1310,44 @@ namespace SystAnalys_lr1
                             Creater(item, StarterEpicPart, 1);
                     }
                 }
+            }
+            ////
+            for (int i = 2; i < 4; i++)
+            {
+               // EpicenterGrid.Add(i, new List<GridPart>());
+                List<GridPart> tesdsfdst = new List<GridPart>();
+                foreach (var item in EpicenterGrid[i - 1])
+                {
+                    tesdsfdst.Add(new GridPart(item.x, item.y));
+                }
+                foreach (var itwms in tesdsfdst)
+                {
+                    List<string> Parameter = new List<string>();
+                    Parameter = Strashno(itwms, Parameter);
+                    if (Parameter.Count > 0)
+                        foreach (var items in Parameter)
+                        {
+                            Creater(items, itwms, i);
+                        }
+                }
+                tesdsfdst = new List<GridPart>();
+                foreach (var item in EpicenterGrid[i])
+                {
+                    tesdsfdst.Add(new GridPart(item.x, item.y));
+                }
+                foreach (var itwms in tesdsfdst)
+                {
+                    List<string> Parameter = new List<string>();
+                    Parameter = Strashno(itwms, Parameter);
+                    if (Parameter.Count > 0)
+                        foreach (var items in Parameter)
+                        {
+                            Creater(items, itwms, i);
+                        }
+                }
 
             }
-
+            ///
         }
         public void CreateRandomEpicenter(int SizeParam, int? StartPos)
         {
