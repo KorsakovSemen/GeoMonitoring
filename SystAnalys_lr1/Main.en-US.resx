@@ -124,6 +124,12 @@
   <data name="matrixGrid.Size" type="System.Drawing.Size, System.Drawing">
     <value>255, 114</value>
   </data>
+  <data name="extendedSavePictures.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 15</value>
+  </data>
+  <data name="extendedSavePictures.Text" xml:space="preserve">
+    <value>Phased Saving</value>
+  </data>
   <data name="results.Location" type="System.Drawing.Point, System.Drawing">
     <value>156, 38</value>
   </data>

@@ -910,6 +910,9 @@ namespace SystAnalys_lr1
 
         private void deleteRoute_Click(object sender, EventArgs e)
         {
+            LoadingForm loadingForm = new LoadingForm();
+            loadingForm.loading.Value = 0;
+            loadingForm.loading.Maximum = 100;
             allBusSettings.Enabled = false;
             addBus.Enabled = true;
             selectButton.Enabled = true;
@@ -923,7 +926,9 @@ namespace SystAnalys_lr1
             {
                 if (MBSave == DialogResult.Yes && changeRoute.Text != "" && changeRoute.Text != MainStrings.network)
                 {
+                    loadingForm.Show();
                     List<Bus> busTest = new List<Bus>();
+                    loadingForm.loading.Value = 20;
                     foreach (var b in buses)
                     {
                         if (b.route == changeRoute.Text)
@@ -933,6 +938,7 @@ namespace SystAnalys_lr1
                             busTest.Add(b);
                         };
                     };
+                    loadingForm.loading.Value = 40;
                     foreach (var b in busTest)
                     {
                         buses.Remove(b);
@@ -947,19 +953,27 @@ namespace SystAnalys_lr1
                     G.drawALLGraph(V, E);
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
-                    SaveRoutes(saveF, savepath + @"\");
+                    loadingForm.loading.Value = 60;
+                    // SaveRoutes(saveF, savepath + @"\");
 
+                }
+                else
+                {
+                    loadingForm.close = true;
+                    loadingForm.Close();
                 }
                 if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
                 {
-                    DirectoryInfo dirInfo = new DirectoryInfo(savepath);
-                    foreach (FileInfo file in dirInfo.GetFiles())
-                    {
-                        if (Path.GetExtension(file.FullName) != ".png")
-                        {
-                            file.Delete();
-                        }
-                    }
+                    //DirectoryInfo dirInfo = new DirectoryInfo(savepath);
+                    //foreach (FileInfo file in dirInfo.GetFiles())
+                    //{
+                    //    if (Path.GetExtension(file.FullName) != ".png")
+                    //    {
+                    //        file.Delete();
+                    //    }
+                    //}
+                    loadingForm.Show();
+                    loadingForm.loading.Value = 20;
                     foreach (var b in buses)
                     {
                         b.Stop();
@@ -968,6 +982,7 @@ namespace SystAnalys_lr1
                     buses.Clear();
                     addBus.Enabled = false;
                     deleteBus.Enabled = false;
+                    loadingForm.loading.Value = 40;
                     V.Clear();
                     E.Clear();
                     addTraficLight.Enabled = true;
@@ -980,6 +995,12 @@ namespace SystAnalys_lr1
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
                     checkBuses();
+                    loadingForm.loading.Value = 60;
+                }
+                else
+                {
+                    loadingForm.close = true;
+                    loadingForm.Close();
                 }
             }
             if (changeRoute.Text == MainStrings.network)
@@ -989,16 +1010,22 @@ namespace SystAnalys_lr1
                 drawVertexButton.Enabled = true;
                 addTraficLight.Enabled = true;
             };
+            loadingForm.loading.Value = 70;
             label12.Visible = false;
             selectRoute.Enabled = true;
             selected = new List<int>();
             stopPointButton.Enabled = true;
             Ep.ERefreshRouts();
             BarabanAfterOpti();
+            loadingForm.loading.Value = 85;
             foreach (var bus in buses)
             {
                 bus.Start();
             }
+            loadingForm.loading.Value = 100;
+            loadingForm.close = true;
+            loadingForm.Close();
+            BringToFront();
         }
 
         private void newModelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1080,6 +1107,9 @@ namespace SystAnalys_lr1
 
         private void deleteALLButton_Click(object sender, EventArgs e)
         {
+            LoadingForm loadingForm = new LoadingForm();
+            loadingForm.loading.Value = 0;
+            loadingForm.loading.Maximum = 100;
             addBus.Enabled = true;
             drawVertexButton.Enabled = false;
             allBusSettings.Enabled = false;
@@ -1093,8 +1123,10 @@ namespace SystAnalys_lr1
             {
                 if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
                 {
+                    loadingForm.Show();
                     routes[changeRoute.Text].Clear();
                     routesEdge[changeRoute.Text].Clear();
+                    loadingForm.loading.Value = 20;
                     List<Bus> busTest = new List<Bus>();
                     foreach (var b in buses)
                     {
@@ -1105,34 +1137,40 @@ namespace SystAnalys_lr1
                             busTest.Add(b);
                         };
                     };
+                    loadingForm.loading.Value = 40;
                     foreach (var b in busTest)
                     {
                         buses.Remove(b);
                     }
-
+                    loadingForm.loading.Value = 50;
                     AllCoordinates[changeRoute.Text].Clear();
-                    SaveRoutes();
+                 //   SaveRoutes();
                     G.clearSheet();
                     G.drawALLGraph(V, E);
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
+                    
                 }
                 if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
                 {
                     //V.Clear();
                     //E.Clear();
+                    loadingForm.Show();
                     foreach (var b in buses)
                     {
                         b.Stop();
                         mainPanel.Controls.Remove(b.busPic);
                     };
+                    loadingForm.loading.Value = 20;
                     buses.Clear();
                     routes.Keys.ToList().ForEach(x => routes[x] = new List<Vertex>());
                     routesEdge.Keys.ToList().ForEach(x => routesEdge[x] = new List<Edge>());
+                    loadingForm.loading.Value = 40;
                     AllCoordinates.Clear();
                     G.clearSheet();
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
+                    loadingForm.loading.Value = 50;
                 };
             }
             if (changeRoute.Text == MainStrings.network)
@@ -1144,6 +1182,7 @@ namespace SystAnalys_lr1
             };
             G.drawALLGraph(V, E);
             selectRoute.Enabled = true;
+            loadingForm.loading.Value = 80;
             label12.Visible = false;
             selected = new List<int>();
             stopPointButton.Enabled = true;
@@ -1153,6 +1192,10 @@ namespace SystAnalys_lr1
             {
                 bus.Start();
             }
+            loadingForm.loading.Value = 100;
+            loadingForm.close = true;
+            loadingForm.Close();
+            BringToFront();
         }
 
         private void button3_Click_1(object sender, EventArgs e)
