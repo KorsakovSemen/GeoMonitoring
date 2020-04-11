@@ -923,20 +923,19 @@ namespace SystAnalys_lr1
             var MBSave = MetroMessageBox.Show(this, message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (routes != null && routesEdge != null && E != null && V != null && buses != null)
             {
-                if (MBSave == DialogResult.Yes && int.TryParse(changeRoute.Text, out int t) == true)
+                if (MBSave == DialogResult.Yes && changeRoute.Text != "" && changeRoute.Text != MainStrings.network)
                 {
-
-                    List<Bus> testBus = new List<Bus>();
+                    List<Bus> busTest = new List<Bus>();
                     foreach (var b in buses)
                     {
-                        if (b.route == (changeRoute.Text))
+                        if (b.route == changeRoute.Text)
                         {
                             b.Stop();
                             mainPanel.Controls.Remove(b.busPic);
-                            testBus.Add(b);
+                            busTest.Add(b);
                         };
-                    }
-                    foreach (var b in testBus)
+                    };
+                    foreach (var b in busTest)
                     {
                         buses.Remove(b);
                     }
@@ -944,7 +943,6 @@ namespace SystAnalys_lr1
                     routes.Remove(changeRoute.Text);
                     routesEdge.Remove(changeRoute.Text);
                     AllCoordinates.Remove(changeRoute.Text);
-                    SaveRoutes(saveF, savepath + @"\");
                     addInComboBox();
                     changeRoute.Text = changeRoute.Items[0].ToString();
                     G.clearSheet();
@@ -1118,8 +1116,8 @@ namespace SystAnalys_lr1
                 }
                 if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
                 {
-                    V.Clear();
-                    E.Clear();
+                    //V.Clear();
+                    //E.Clear();
                     foreach (var b in buses)
                     {
                         b.Stop();
@@ -3131,8 +3129,9 @@ namespace SystAnalys_lr1
                     }
                     config.Text = MainStrings.config + savepath;
                 }
-                BringToFront();
             }
+            BringToFront();
+
         }
         CrossroadsSettings crossSettings;
         private void addTraficLight_Click(object sender, EventArgs e)
@@ -3209,8 +3208,8 @@ namespace SystAnalys_lr1
                     }
                     config.Text = MainStrings.config + savepath;
                 }
-                BringToFront();
             }
+            BringToFront();
         }
 
         private void selectRoute_Click(object sender, EventArgs e)

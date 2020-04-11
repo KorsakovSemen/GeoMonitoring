@@ -1,1 +1,1 @@
-C:\Users\pako2\Desktop\Diplom\Rebuild\SystAnalys_lr1\Configs\XML_STRING_NO_BAGS
+C:\Users\pako2\Desktop\Diplom\Rebuild\SystAnalys_lr1\Configs\STRING_FORMAT_JSON_Bug
