@@ -121,6 +121,7 @@ namespace SystAnalys_lr1
             edgePoints = new SerializableDictionary<int, List<Edge>>();
             AllCoordinates = new SerializableDictionary<string, List<Point>>();
             AllGridsInRoutes = new SerializableDictionary<string, List<int>>();
+            stopPointsInGrids = new SerializableDictionary<string, List<int>>();
             TraficLightsInGrids = new List<int>();
             allstopPoints = new List<Vertex>();
             stopPoints = new SerializableDictionary<string, List<Vertex>>();
@@ -1646,7 +1647,7 @@ namespace SystAnalys_lr1
                             {
                                 fileV.WriteLine(savepath.ToString());
                             }
-                            this.BringToFront();
+                            BringToFront();
                             MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         addRouteToolStripMenuItem.Enabled = true;
@@ -2076,12 +2077,25 @@ namespace SystAnalys_lr1
             return extensions;
         }
 
+        private void deleteAll()
+        {
+            TraficLightsInGrids.Clear();
+            allstopPoints.Clear();
+            stopPoints.Clear();
+            stopPointsInGrids.Clear();
+            V.Clear();
+            E.Clear();
+            routes.Clear();
+            routesEdge.Clear();
+            
+        }
 
         private void LoadRoutes(string load = "../../Data/")
         {
             try
             {
-                DisplayEpicenters.path = savepath;
+                deleteAll();
+                DisplayEpicenters.path = load;
                 sheet.Image = Image.FromFile(load + "/Map.png");
                 saveImage = sheet.Image;
                 metroTrackBar1.Value = 1;
