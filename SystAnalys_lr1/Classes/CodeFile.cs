@@ -1162,7 +1162,7 @@ namespace SystAnalys_lr1
                                 if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
                                 {
                                     List<string> Parameters = new List<string>();
-                                    Parameters = Strashno(ScanGrid, Parameters);
+                                    Parameters = EpicenterGenerator(ScanGrid, Parameters);
                                     GridPart bufpart = new GridPart(ScanGrid.x, ScanGrid.y);
                                     while (((bufpart.x == RedGrid.x) && (bufpart.y == RedGrid.y)) == false)
                                     {
@@ -1215,30 +1215,30 @@ namespace SystAnalys_lr1
             for (int i = 2; i < 4; i++)
             {
 
-                List<GridPart> tesdsfdst = new List<GridPart>();  /// классная переменная
+                List<GridPart> fillEpicenter = new List<GridPart>();  
                 foreach (var item in EpicenterGrid[i - 1])
                 {
-                    tesdsfdst.Add(new GridPart(item.x, item.y));
+                    fillEpicenter.Add(new GridPart(item.x, item.y));
                 }
-                foreach (var itwms in tesdsfdst)
+                foreach (var itwms in fillEpicenter)
                 {
                     List<string> Parameter = new List<string>();
-                    Parameter = Strashno(itwms, Parameter);
+                    Parameter = EpicenterGenerator(itwms, Parameter);
                     if (Parameter.Count > 0)
                         foreach (var items in Parameter)
                         {
                             Creater(items, itwms, i);
                         }
                 }
-                tesdsfdst = new List<GridPart>();
+                fillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i])
                 {
-                    tesdsfdst.Add(new GridPart(item.x, item.y));
+                    fillEpicenter.Add(new GridPart(item.x, item.y));
                 }
-                foreach (var itwms in tesdsfdst)
+                foreach (var itwms in fillEpicenter)
                 {
                     List<string> Parameter = new List<string>();
-                    Parameter = Strashno(itwms, Parameter);
+                    Parameter = EpicenterGenerator(itwms, Parameter);
                     if (Parameter.Count > 0)
                         foreach (var items in Parameter)
                         {
@@ -1300,7 +1300,7 @@ namespace SystAnalys_lr1
 
                 GridPart StarterEpicPart = EpicenterGrid[1][rand.Next(EpicenterGrid[1].IndexOf(EpicenterGrid[1].First()), EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()))];
 
-                Parameter = Strashno(StarterEpicPart, Parameter);
+                Parameter = EpicenterGenerator(StarterEpicPart, Parameter);
                 if (Parameter.Count > 0)
                 {
 
@@ -1314,31 +1314,31 @@ namespace SystAnalys_lr1
             ////
             for (int i = 2; i < 4; i++)
             {
-               // EpicenterGrid.Add(i, new List<GridPart>());
-                List<GridPart> tesdsfdst = new List<GridPart>();
+                // EpicenterGrid.Add(i, new List<GridPart>());
+                List<GridPart> fillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i - 1])
                 {
-                    tesdsfdst.Add(new GridPart(item.x, item.y));
+                    fillEpicenter.Add(new GridPart(item.x, item.y));
                 }
-                foreach (var itwms in tesdsfdst)
+                foreach (var itwms in fillEpicenter)
                 {
                     List<string> Parameter = new List<string>();
-                    Parameter = Strashno(itwms, Parameter);
+                    Parameter = EpicenterGenerator(itwms, Parameter);
                     if (Parameter.Count > 0)
                         foreach (var items in Parameter)
                         {
                             Creater(items, itwms, i);
                         }
                 }
-                tesdsfdst = new List<GridPart>();
+                fillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i])
                 {
-                    tesdsfdst.Add(new GridPart(item.x, item.y));
+                    fillEpicenter.Add(new GridPart(item.x, item.y));
                 }
-                foreach (var itwms in tesdsfdst)
+                foreach (var itwms in fillEpicenter)
                 {
                     List<string> Parameter = new List<string>();
-                    Parameter = Strashno(itwms, Parameter);
+                    Parameter = EpicenterGenerator(itwms, Parameter);
                     if (Parameter.Count > 0)
                         foreach (var items in Parameter)
                         {
@@ -1364,47 +1364,50 @@ namespace SystAnalys_lr1
                 EpicenterGrid[1].Add(new GridPart(TheGrid[(int)StartPos].x, TheGrid[(int)StartPos].y));
 
             }
-            for (int i = 0; i < SizeParam; i++)
+            while (EpicenterGrid[1].Count < SizeParam)
             {
                 List<string> Parameter = new List<string>();
 
                 GridPart StarterEpicPart = EpicenterGrid[1][rand.Next(EpicenterGrid[1].IndexOf(EpicenterGrid[1].First()), EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()))];
 
-                Parameter = Strashno(StarterEpicPart, Parameter);
+                Parameter = EpicenterGenerator(StarterEpicPart, Parameter);
                 if (Parameter.Count > 0)
                     foreach (var item in Parameter)
                     {
-                        Creater(item, StarterEpicPart, 1);
+                        if (EpicenterGrid[1].Count < SizeParam)
+                        {
+                            Creater(item, StarterEpicPart, 1);
+                        }
+                        
                     }
-
             }
             for (int i = 2; i < 4; i++)
             {
                 EpicenterGrid.Add(i, new List<GridPart>());
-                List<GridPart> tesdsfdst = new List<GridPart>();
+                List<GridPart> FillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i - 1])
                 {
-                    tesdsfdst.Add(new GridPart(item.x, item.y));
+                    FillEpicenter.Add(new GridPart(item.x, item.y));
                 }
-                foreach (var itwms in tesdsfdst)
+                foreach (var itwms in FillEpicenter)
                 {
                     List<string> Parameter = new List<string>();
-                    Parameter = Strashno(itwms, Parameter);
+                    Parameter = EpicenterGenerator(itwms, Parameter);
                     if (Parameter.Count > 0)
                         foreach (var items in Parameter)
                         {
                             Creater(items, itwms, i);
                         }
                 }
-                tesdsfdst = new List<GridPart>();
+                FillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i])
                 {
-                    tesdsfdst.Add(new GridPart(item.x, item.y));
+                    FillEpicenter.Add(new GridPart(item.x, item.y));
                 }
-                foreach (var itwms in tesdsfdst)
+                foreach (var itwms in FillEpicenter)
                 {
                     List<string> Parameter = new List<string>();
-                    Parameter = Strashno(itwms, Parameter);
+                    Parameter = EpicenterGenerator(itwms, Parameter);
                     if (Parameter.Count > 0)
                         foreach (var items in Parameter)
                         {
@@ -1415,7 +1418,7 @@ namespace SystAnalys_lr1
             }
 
         }
-        public List<string> Strashno(GridPart EpicPart, List<string> Parameter)
+        public List<string> EpicenterGenerator(GridPart EpicPart, List<string> Parameter)
         {
             if (EpicPart.x < TheGrid.Last().x)
             {
@@ -1607,7 +1610,7 @@ namespace SystAnalys_lr1
                         g.gr.FillRectangle(new SolidBrush(Color.FromArgb(80, 255, 255, 0)), new Rectangle(EpicenterGrid[i][j].x * zoom, EpicenterGrid[i][j].y * zoom, GridPart.width * zoom, GridPart.height * zoom));
                 }
             }
-        }      
+        }
     }
     public class StringValueAttribute : Attribute
     {
@@ -1715,7 +1718,7 @@ namespace SystAnalys_lr1
     {
         public int x, y;
         public int status { get; set; }
-        public bool check { get; set; } = false; 
+        public bool check { get; set; } = false;
         public static int width { get; set; } = 1;
         public static int height { get; set; } = 1;
         public GridPart(int x, int y)
