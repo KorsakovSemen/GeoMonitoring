@@ -996,6 +996,11 @@ namespace SystAnalys_lr1
             selected = new List<int>();
             stopPointButton.Enabled = true;
             Ep.ERefreshRouts();
+            BarabanAfterOpti();
+            foreach (var bus in buses)
+            {
+                bus.Start();
+            }
         }
 
         private void newModelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1145,6 +1150,11 @@ namespace SystAnalys_lr1
             selected = new List<int>();
             stopPointButton.Enabled = true;
             Ep.ERefreshRouts();
+            BarabanAfterOpti();
+            foreach (var bus in buses)
+            {
+                bus.Start();
+            }
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -3121,7 +3131,8 @@ namespace SystAnalys_lr1
                         }
                         else
                         {
-                            Directory.CreateDirectory(savepath + rnd.Next(0, 100).ToString());
+                            savepath = savepath + rnd.Next(0, 100).ToString();
+                            Directory.CreateDirectory(savepath);
                             SaveRoutes("json", savepath + @"\");
                             saveImage.Save(savepath + "/Map.png", System.Drawing.Imaging.ImageFormat.Png);
                         }
@@ -3200,7 +3211,8 @@ namespace SystAnalys_lr1
                         }
                         else
                         {
-                            Directory.CreateDirectory(savepath + rnd.Next(0, 100).ToString());
+                            savepath = savepath + rnd.Next(0, 100).ToString();
+                            Directory.CreateDirectory(savepath);
                             SaveRoutes("xml", savepath + @"\");
                             saveImage.Save(savepath + "/Map.png", System.Drawing.Imaging.ImageFormat.Png);
                         }
