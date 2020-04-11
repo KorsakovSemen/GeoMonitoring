@@ -1144,12 +1144,12 @@ namespace SystAnalys_lr1
                     }
                     loadingForm.loading.Value = 50;
                     AllCoordinates[changeRoute.Text].Clear();
-                 //   SaveRoutes();
+                    //   SaveRoutes();
                     G.clearSheet();
                     G.drawALLGraph(V, E);
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
-                    
+
                 }
                 if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
                 {
@@ -1186,7 +1186,11 @@ namespace SystAnalys_lr1
             label12.Visible = false;
             selected = new List<int>();
             stopPointButton.Enabled = true;
-            Ep.ERefreshRouts();
+            if (!Ep.IsDisposed)
+            {
+                Ep.ERefreshRouts();
+            }
+            
             BarabanAfterOpti();
             foreach (var bus in buses)
             {
@@ -3008,8 +3012,11 @@ namespace SystAnalys_lr1
                 G.clearSheet();
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
-
-                Ep.EDrawGrid();
+                if(!Ep.IsDisposed)
+                {
+                    Ep.EDrawGrid();
+                }
+              
             }
         }
 
@@ -3328,7 +3335,10 @@ namespace SystAnalys_lr1
             this.StyleManager.Clone(addR);
             addR.ShowDialog();
             addR.Dispose();
-            Ep.ERefreshRouts();
+            if (!Ep.IsDisposed)
+            {
+                Ep.ERefreshRouts();
+            }
             if (addR.textBox1.Text != "")
             {
                 if (!routes.ContainsKey(this.addR.textBox1.Text))
@@ -3572,12 +3582,18 @@ namespace SystAnalys_lr1
                 this.StyleManager.Clone(addG);
                 addG.ShowDialog();
                 G.clearSheet();
-                Ep.EG.clearSheet2();
+                if (!Ep.IsDisposed)
+                {
+                    Ep.EG.clearSheet2();
+                }
                 G.drawALLGraph(V, E);
                 CreateGrid();
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
-                Ep.EDrawGrid();
+                if (!Ep.IsDisposed)
+                {
+                    Ep.EDrawGrid();
+                }
                 CreatePollutionInRoutes();
                 CreateAllCoordinates();
             }
@@ -3595,11 +3611,7 @@ namespace SystAnalys_lr1
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Ep = new DisplayEpicenters(this);
-            Ep.Show();
-        }
+      
 
 
     }

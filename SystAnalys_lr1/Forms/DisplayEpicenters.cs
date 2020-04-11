@@ -165,6 +165,7 @@ namespace SystAnalys_lr1
         public void EDrawMAinEpics()
         {
             EG.clearSheet2();
+           
             Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap()); //ошибка при закрытии формы
             // Esheet.Image = EG.GetBitmap();
             if (MainForm.GetEpicenters() != null)
