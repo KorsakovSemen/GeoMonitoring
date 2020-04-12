@@ -2256,6 +2256,12 @@ namespace SystAnalys_lr1
                     using (StreamReader reader = new StreamReader(load + "StopPoints.json"))
                     {
                         stopPoints = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Vertex>>>(File.ReadAllText(load + "StopPoints.json"));
+                        foreach (var sp in stopPoints.Values)
+                        {
+                            foreach (var s in sp)
+                                if (!allstopPoints.Contains(s))
+                                    allstopPoints.Add(s);
+                        }
                         stopPointsInGrids = new SerializableDictionary<string, List<int>>();
                         foreach (var StopList in stopPoints)
                         {
