@@ -13,6 +13,7 @@ namespace SystAnalys_lr1
 {
     public partial class DisplayEpicenters : MetroForm
     {
+        public static bool FormOpen;
         private Epicenter restoredEpic;
         public static string path { get; set; }
         public int wsheet { get; set; }
@@ -35,9 +36,10 @@ namespace SystAnalys_lr1
 
         private void DisplayEpicenters_Load(object sender, EventArgs e)
         {
+            FormOpen = true;
             this.MinimumSize = MainForm.MinimumSize;
             this.MaximumSize = MainForm.MaximumSize;
-            MainForm.GetSavePictruesCheckBox().Enabled = true;
+            //MainForm.GetSavePictruesCheckBox().Enabled = true;
             panel1.Size = MainForm.GetMainPanel().Size;
             panel1.Left = MainForm.GetMainPanel().Left;
             panel1.Top = MainForm.GetMainPanel().Top;
@@ -325,8 +327,9 @@ namespace SystAnalys_lr1
 
         private void DisplayEpicenters_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MainForm.GetSavePictruesCheckBox().Checked = false;
-            MainForm.GetSavePictruesCheckBox().Enabled = false;
+            FormOpen = false;
+            Main.SavePictures = false;
+            Main.extendedSavePictures = false;
         }
     }
 }

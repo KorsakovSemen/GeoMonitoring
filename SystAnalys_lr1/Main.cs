@@ -30,8 +30,21 @@ namespace SystAnalys_lr1
         public static int firstCrossRoadsRedLight = 0;
         public static int secondCrossRoads = 0;
         public static string EpicSizeParamSave = "radioEpicMedium";
+        //
+        public static string EpicFreqSpreadSave = null;
+        public static int EpicFreqSpreadParam = 0;
+        //
+        public static string EpicPhaseSavingSave = null;
+        public static int EpicPhaseSavingParam = 1;
+        //
         string savepath;
 
+        /// 
+        public static bool SavePictures = false;
+        ///
+        ///
+        public static bool extendedSavePictures = false;
+        ///
         public static Grid g;
         //Лист всех эпицентров
         List<Epicenter> Epics;
@@ -354,8 +367,28 @@ namespace SystAnalys_lr1
             {
                 bus.Epicenters = epList;
             }
-            for (int j = 3; j > 0; j--)
+            for (int j = EpicPhaseSavingParam; j > 0; j--)
             {
+                ////
+                if (j == EpicPhaseSavingParam)
+                {
+                    if ((SavePictures == true) && (extendedSavePictures == true))
+                    {
+                        Directory.CreateDirectory(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + 0.ToString());
+                        lock (Ep.Esheet)
+                        {
+                            Ep.EDrawEpics(epList);
+                        }
+                        lock (Ep.Esheet)
+                        {
+                            using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
+                            {
+                                img.Save(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + 0.ToString() + "/" + 0.ToString() + "_nat" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                            }
+                        }
+                    }
+                }
+                ////
 
                 foreach (var bus in cqBus)
                 {
@@ -370,13 +403,16 @@ namespace SystAnalys_lr1
                         while (bus.TickCount_ > 0)
                         {
                             bus.MoveWithoutGraphicsByGrids();
-                            if (ExpandTimer == 150)
+                            if (EpicSettings.TurnSpreadingSet == true)
                             {
-                                lock (epList)
+                                if (ExpandTimer == ((EpicFreqSpreadParam / T) * cqBus.Count))
                                 {
-                                    ExpandEpics(epList);
+                                    lock (epList)
+                                    {
+                                        ExpandEpics(epList);
+                                    }
+                                    ExpandTimer = 0;
                                 }
-                                ExpandTimer = 0;
                             }
                             if (TraficLightsInGrids.Contains(AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt])) //ошибка с выходом за пределы
                                                                                                                      //тушто нужно "вот эту" разкоментить
@@ -427,13 +463,16 @@ namespace SystAnalys_lr1
                                 }
                             }
                             bus.TickCount_--;
-                            ExpandTimer++;
+                            if (EpicSettings.TurnSpreadingSet == true)
+                            {
+                                ExpandTimer++;
+                            }
 
                         }
                     }
                 }
 
-                if ((SavePictures.Checked) && (extendedSavePictures.Checked))
+                if ((SavePictures == true) && (extendedSavePictures == true))
                 {
                     Directory.CreateDirectory(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + i.ToString());
                     lock (Ep.Esheet)
@@ -1190,7 +1229,7 @@ namespace SystAnalys_lr1
             {
                 Ep.ERefreshRouts();
             }
-            
+
             BarabanAfterOpti();
             foreach (var bus in buses)
             {
@@ -1433,7 +1472,7 @@ namespace SystAnalys_lr1
             loadingForm = new LoadingForm();
             buttonOff();
             string path = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute);
-            if (SavePictures.Checked)
+            if (SavePictures == true)
             {
                 Ep.Hide();
 
@@ -1457,7 +1496,7 @@ namespace SystAnalys_lr1
             loadingForm.Show();
             int old = small;
             var style = msmMain.Style;
-            SavePictures.Enabled = false;
+            //SavePictures.Enabled = false;
             if (msmMain.Style == (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf("Red")))
                 msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf("Yellow"));
             else
@@ -1484,19 +1523,19 @@ namespace SystAnalys_lr1
                         buses[rnd.Next(0, buses.Count)].tracker = true;
                     List<int?> mas = new List<int?>();
                     Baraban();
-                    if (SavePictures.Checked)
+                    if (SavePictures == true)
                     {
                         Directory.CreateDirectory(path + "/Epics" + "/" + (cicl + 1).ToString());
                     }
                     for (int i = 0; i < int.Parse(optText.Text); i++)
                     {
-                        if (SavePictures.Checked)
+                        if (SavePictures == true)
                         {
                             Directory.CreateDirectory(path + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString());
                         }
                         CreateOneRandomEpicenter(EpicSizeParam, null);
                         Modeling(path, cicl, i);
-                        if ((SavePictures.Checked) && (!extendedSavePictures.Checked))
+                        if ((SavePictures == true) && (!extendedSavePictures == true))
                         {
 
                             lock (Ep.Esheet)
@@ -1599,11 +1638,11 @@ namespace SystAnalys_lr1
             resMatrix();
 
             msmMain.Style = style;
-            SavePictures.Enabled = true;
+            //SavePictures.Enabled = true;
             if (!Ep.IsDisposed)
             {
                 Ep.Show();
-                SavePictures.Enabled = true;
+                //SavePictures.Enabled = true;
             }
             BarabanAfterOpti();
             foreach (var bus in buses)
@@ -1618,7 +1657,7 @@ namespace SystAnalys_lr1
             buses = optimizeBuses;
         }
 
-        public static int EpicSizeParam = 10;
+        public static int EpicSizeParam = 25;
         public static List<string> ExpandEpicParamet;
         private void optimize_Click(object sender, EventArgs e)
         {
@@ -1667,7 +1706,7 @@ namespace SystAnalys_lr1
                 i += 1;
             }
         }
-        public MetroCheckBox GetSavePictruesCheckBox()
+        public bool GetSavePictruesCheckBox()
         {
             return SavePictures;
         }
@@ -3018,11 +3057,11 @@ namespace SystAnalys_lr1
                 G.clearSheet();
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
-                if(!Ep.IsDisposed)
+                if (!Ep.IsDisposed)
                 {
                     Ep.EDrawGrid();
                 }
-              
+
             }
         }
 
@@ -3227,7 +3266,7 @@ namespace SystAnalys_lr1
                     stopPointButton.Enabled = true;
                     addTraficLight.Enabled = false;
                     selectRoute.Enabled = true;
-                }               
+                }
                 sheet.Image = G.GetBitmap();
                 selected1 = -1;
                 DrawGrid();
@@ -3551,6 +3590,17 @@ namespace SystAnalys_lr1
             AsyncCreateAllCoordinates();
         }
 
+        //
+        public EpicSettings epSet;
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+
+            epSet = new EpicSettings();
+            this.StyleManager.Clone(epSet);
+            epSet.ShowDialog();
+
+        }
+        //
         private void metroButton1_Click_2(object sender, EventArgs e)
         {
             foreach (var bus in buses)
@@ -3567,18 +3617,7 @@ namespace SystAnalys_lr1
             }
         }
 
-        private void SavePictures_CheckedChanged(object sender, EventArgs e)
-        {
-            if (SavePictures.Checked == false)
-            {
-                extendedSavePictures.Checked = false;
-                extendedSavePictures.Enabled = false;
-            }
-            else
-            {
-                extendedSavePictures.Enabled = true;
-            }
-        }
+
 
         private void createGridToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -3617,7 +3656,7 @@ namespace SystAnalys_lr1
             }
         }
 
-      
+
 
 
     }
