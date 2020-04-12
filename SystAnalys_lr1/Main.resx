@@ -232,7 +232,7 @@
     <value>True</value>
   </metadata>
   <data name="metroButton2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 72</value>
+    <value>7, 72</value>
   </data>
   <data name="metroButton2.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 23</value>
