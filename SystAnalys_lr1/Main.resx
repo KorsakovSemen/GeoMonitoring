@@ -120,9 +120,6 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="menuStrip1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="about.Size" type="System.Drawing.Size, System.Drawing">
     <value>12, 20</value>
@@ -162,9 +159,6 @@
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
   </metadata>
-  <metadata name="button1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 11</value>
   </data>
@@ -192,9 +186,6 @@
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="matrixGrid.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="matrixGrid.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 11px</value>
   </data>
@@ -228,9 +219,6 @@
   <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>383, 17</value>
   </metadata>
-  <metadata name="panel1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="metroButton2.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 72</value>
   </data>
@@ -255,9 +243,6 @@
   <data name="&gt;&gt;metroButton2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="results.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="Avg.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -303,9 +288,6 @@
   <data name="&gt;&gt;results.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="label14.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
     <value>102, 13</value>
   </data>
@@ -333,9 +315,6 @@
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="label13.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -366,9 +345,6 @@
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <metadata name="optimize.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="optimize.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 98</value>
   </data>
@@ -396,9 +372,6 @@
   <data name="&gt;&gt;optimize.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <metadata name="mean.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="mean.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -429,9 +402,6 @@
   <data name="&gt;&gt;mean.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <metadata name="optText.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="resource.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
@@ -477,9 +447,6 @@
   <data name="&gt;&gt;optText.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <metadata name="speed.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="resource.Image1" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
@@ -549,9 +516,6 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <metadata name="stopBuses.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="stopBuses.Location" type="System.Drawing.Point, System.Drawing">
     <value>146, 50</value>
   </data>
@@ -576,9 +540,6 @@
   <data name="&gt;&gt;stopBuses.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="launchBuses.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="launchBuses.Location" type="System.Drawing.Point, System.Drawing">
     <value>146, 21</value>
   </data>
@@ -603,12 +564,6 @@
   <data name="&gt;&gt;launchBuses.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <metadata name="panel2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="createCoordinates.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="createCoordinates.Location" type="System.Drawing.Point, System.Drawing">
     <value>86, 72</value>
   </data>
@@ -636,9 +591,6 @@
   <data name="&gt;&gt;createCoordinates.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="label7.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -672,9 +624,6 @@
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="textBox2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="resource.Image2" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
@@ -723,9 +672,6 @@
   <data name="&gt;&gt;textBox2.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="button8.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="button8.Location" type="System.Drawing.Point, System.Drawing">
     <value>227, 57</value>
   </data>
@@ -756,9 +702,6 @@
   <data name="&gt;&gt;button8.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <metadata name="changeProcent.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="resource.Image3" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
@@ -834,12 +777,6 @@
   <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>470, 17</value>
   </metadata>
-  <metadata name="panel4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="metroLabel8.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="metroLabel8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -867,9 +804,6 @@
   <data name="&gt;&gt;metroLabel8.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="metroLabel6.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="metroLabel6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -897,9 +831,6 @@
   <data name="&gt;&gt;metroLabel6.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="metroLabel5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="metroLabel5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -927,12 +858,6 @@
   <data name="&gt;&gt;metroLabel5.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="panel8.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="label8.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -987,12 +912,6 @@
   <data name="&gt;&gt;panel8.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <metadata name="panel7.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="metroLabel4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="metroLabel4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1020,9 +939,6 @@
   <data name="&gt;&gt;metroLabel4.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="metroLabel3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="metroLabel3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1050,12 +966,6 @@
   <data name="&gt;&gt;metroLabel3.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="allBusSettings.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="metroButton1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="metroButton1.Location" type="System.Drawing.Point, System.Drawing">
     <value>146, 79</value>
   </data>
@@ -1083,9 +993,6 @@
   <data name="&gt;&gt;metroButton1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="backsideCheck.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="backsideCheck.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1113,9 +1020,6 @@
   <data name="&gt;&gt;backsideCheck.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="trackerCheck.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="trackerCheck.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1123,7 +1027,7 @@
     <value>8, 11</value>
   </data>
   <data name="trackerCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 15</value>
+    <value>61, 15</value>
   </data>
   <data name="trackerCheck.TabIndex" type="System.Int32, mscorlib">
     <value>101</value>
@@ -1143,9 +1047,6 @@
   <data name="&gt;&gt;trackerCheck.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <metadata name="metroLabel2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="metroLabel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1173,9 +1074,6 @@
   <data name="&gt;&gt;metroLabel2.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <metadata name="busSize.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="resource.Image4" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
@@ -1239,9 +1137,6 @@
   <data name="&gt;&gt;allBusSettings.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="changeRoute.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="changeRoute.ItemHeight" type="System.Int32, mscorlib">
     <value>23</value>
   </data>
@@ -1293,9 +1188,6 @@
   <data name="&gt;&gt;panel7.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <metadata name="metroTrackBar1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="metroTrackBar1.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 635</value>
   </data>
@@ -1350,9 +1242,6 @@
   <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <metadata name="label12.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1386,9 +1275,6 @@
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <metadata name="theme.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="theme.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1416,9 +1302,6 @@
   <data name="&gt;&gt;theme.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <metadata name="changeTheme.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="changeTheme.ItemHeight" type="System.Int32, mscorlib">
     <value>23</value>
   </data>
@@ -1488,15 +1371,9 @@
   <data name="&gt;&gt;changeTheme.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <metadata name="mainPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="mainPanel.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <metadata name="sheet.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="sheet.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1568,9 +1445,6 @@
   </data>
   <metadata name="toolStripMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>601, 19</value>
-  </metadata>
-  <metadata name="toolStripMenu.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <data name="createModelToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 22</value>
@@ -1833,24 +1707,15 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>62</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
-  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1438, 754</value>
   </data>
-  <metadata name="hint.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="hint.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1878,9 +1743,6 @@
   <data name="&gt;&gt;hint.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="metroLabel1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="metroLabel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1908,9 +1770,6 @@
   <data name="&gt;&gt;metroLabel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="metroComboBox1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="metroComboBox1.AutoCompleteCustomSource" xml:space="preserve">
     <value>RU</value>
   </data>
@@ -1941,9 +1800,6 @@
   <data name="&gt;&gt;metroComboBox1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="config.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="config.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1971,9 +1827,6 @@
   <data name="&gt;&gt;config.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="themes.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="themes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
