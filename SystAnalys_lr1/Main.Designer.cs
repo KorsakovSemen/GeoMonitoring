@@ -988,6 +988,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Main";
+            this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Default;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
@@ -1098,8 +1099,12 @@
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroButton metroButton1;
+
+        //test
         private MetroFramework.Controls.MetroGrid results;
         private System.Windows.Forms.DataGridViewTextBoxColumn Avg;
+
+
         private MetroFramework.Controls.MetroButton metroButton2;
     }
 }
