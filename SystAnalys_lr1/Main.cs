@@ -395,7 +395,7 @@ namespace SystAnalys_lr1
                     bus.Stop();
                     //bus.Epicenters.Clear();
                     bus.Epicenters = epList;
-                    bus.TickCount_ = T / 3;
+                    bus.TickCount_ = T / EpicPhaseSavingParam;
                     if (bus.skip > 0)
                         bus.skip -= 1;
                     if (bus.tracker == true)

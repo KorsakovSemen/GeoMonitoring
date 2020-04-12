@@ -94,22 +94,22 @@ namespace SystAnalys_lr1.Forms
             //
             switch (Main.EpicFreqSpreadSave)
             {
-                case "RadioFreq10":
+                case "RadioFreq100":
                     RadioFreq100.Checked = true;
                     break;
-                case "RadioFreq50":
+                case "RadioFreq500":
                     RadioFreq500.Checked = true;
                     break;
-                case "RadioFreq100":
+                case "RadioFreq1000":
                     RadioFreq1000.Checked = true;
                     break;
-                case "RadioFreq250":
+                case "RadioFreq2500":
                     RadioFreq2500.Checked = true;
                     break;
-                case "RadioFreq500":
+                case "RadioFreq5000":
                     RadioFreq5000.Checked = true;
                     break;
-                case "RadioFreq1000":
+                case "RadioFreq10000":
                     RadioFreq10000.Checked = true;
                     break;
                 case "RadioFreqRandom":
