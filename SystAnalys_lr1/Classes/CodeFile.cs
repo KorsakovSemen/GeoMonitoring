@@ -567,7 +567,7 @@ namespace SystAnalys_lr1
                                             {
                                                 skip = 100;
                                                 MovingTimer.Stop();
-                                                await Task.Delay(sp.bal / 2 * 1000);
+                                                await Task.Delay(sp.bal * 1000);
                                                 if (InstaStop == false)
                                                 {
                                                     MovingTimer.Start();
@@ -603,6 +603,24 @@ namespace SystAnalys_lr1
                             {
                                 if (PositionAt < AllCoordinates[route].Count)
                                 {
+                                    //if (Main.buses.Count != 0)
+                                    //{
+                                    //    //if (skipStops == 0)
+                                    //    //{
+                                    //    foreach (var sp in Main.buses)
+                                    //    {
+                                    //        if (Math.Pow((double.Parse((sp.busPic.Location.X * (int)ZoomCoef - AllCoordinates[route][PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.busPic.Location.Y * (int)ZoomCoef - AllCoordinates[route][PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
+                                    //        {
+                                    //            MovingTimer.Stop();
+                                    //            break;
+                                    //        }
+                                    //        //else
+                                    //        //{
+                                    //        //    MovingTimer.Start();
+                                    //        //}
+                                    //    }
+                                    //    // }
+                                    //}
                                     if (Main.stopPoints.Count != 0 && Main.stopPoints.ContainsKey(route))
                                     {
                                         if (skipStops == 0)
@@ -638,7 +656,7 @@ namespace SystAnalys_lr1
                                                 {
                                                     skip = 100;
                                                     MovingTimer.Stop();
-                                                    await Task.Delay(sp.bal / 2 * 1000);
+                                                    await Task.Delay(sp.bal * 1000);
                                                     if (InstaStop == false)
                                                     {
                                                         MovingTimer.Start();
@@ -1215,7 +1233,7 @@ namespace SystAnalys_lr1
             for (int i = 2; i < 4; i++)
             {
 
-                List<GridPart> fillEpicenter = new List<GridPart>();  
+                List<GridPart> fillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i - 1])
                 {
                     fillEpicenter.Add(new GridPart(item.x, item.y));
@@ -1378,7 +1396,7 @@ namespace SystAnalys_lr1
                         {
                             Creater(item, StarterEpicPart, 1);
                         }
-                        
+
                     }
             }
             for (int i = 2; i < 4; i++)
