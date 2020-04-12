@@ -531,6 +531,21 @@ namespace SystAnalys_lr1
                         {
                             if (PositionAt < AllCoordinates[route].Count)
                             {
+                                if (Main.buses.Count != 0)
+                                {
+                                        foreach (var sp in Main.buses)
+                                        {
+                                            if (Math.Pow((double.Parse((sp.busPic.Location.X * (int)ZoomCoef - AllCoordinates[route][PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.busPic.Location.Y * (int)ZoomCoef - AllCoordinates[route][PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef) && sp.MovingTimer.Enabled == false)
+                                            {
+                                                MovingTimer.Stop();
+                                                break;
+                                            }
+                                            //else
+                                            //{
+                                            //    MovingTimer.Start();
+                                            //}
+                                        }
+                                }
                                 if (Main.stopPoints.Count != 0 && Main.stopPoints.ContainsKey(route))
                                 {
                                     if (skipStops == 0)
@@ -603,24 +618,24 @@ namespace SystAnalys_lr1
                             {
                                 if (PositionAt < AllCoordinates[route].Count)
                                 {
-                                    //if (Main.buses.Count != 0)
-                                    //{
-                                    //    //if (skipStops == 0)
-                                    //    //{
-                                    //    foreach (var sp in Main.buses)
-                                    //    {
-                                    //        if (Math.Pow((double.Parse((sp.busPic.Location.X * (int)ZoomCoef - AllCoordinates[route][PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.busPic.Location.Y * (int)ZoomCoef - AllCoordinates[route][PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
-                                    //        {
-                                    //            MovingTimer.Stop();
-                                    //            break;
-                                    //        }
-                                    //        //else
-                                    //        //{
-                                    //        //    MovingTimer.Start();
-                                    //        //}
-                                    //    }
-                                    //    // }
-                                    //}
+                                    if (Main.buses.Count != 0)
+                                    {
+                                        //if (skipStops == 0)
+                                        //{
+                                        foreach (var sp in Main.buses)
+                                        {
+                                            if (Math.Pow((double.Parse((sp.busPic.Location.X * (int)ZoomCoef - AllCoordinates[route][PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.busPic.Location.Y * (int)ZoomCoef - AllCoordinates[route][PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef) && sp.MovingTimer.Enabled == false)
+                                            {
+                                                MovingTimer.Stop();
+                                                break;
+                                            }
+                                            //else
+                                            //{
+                                            //    MovingTimer.Start();
+                                            //}
+                                        }
+                                        // }
+                                    }
                                     if (Main.stopPoints.Count != 0 && Main.stopPoints.ContainsKey(route))
                                     {
                                         if (skipStops == 0)
