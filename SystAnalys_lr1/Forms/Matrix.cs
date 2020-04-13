@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace SystAnalys_lr1
 {
     public partial class Main : MetroForm
-    {      
+    {
         public List<Bus> BubbleSortEx(List<Bus> buses)
         {
             var temp = new Bus();
@@ -40,11 +40,12 @@ namespace SystAnalys_lr1
 
             SplitBuses();
 
-            routesSorted  = new SortedDictionary<string, List<Vertex>>(routes); 
-           
-            foreach(var x in routes)
+            routesSorted = new SortedDictionary<string, List<Vertex>>(routes);
+
+            foreach (var x in routes)
             {
-                if (x.Value.Count == 0) {
+                if (x.Value.Count == 0)
+                {
                     routesSorted.Remove(x.Key);
                 }
             }
@@ -58,7 +59,7 @@ namespace SystAnalys_lr1
 
             int[,] myArr = new int[routesSorted.Count, parkSize];
 
-            if(routesSorted.Count == 0)
+            if (routesSorted.Count == 0)
                 matrixGrid.RowCount = 1;
             else
                 matrixGrid.RowCount = routesSorted.Count;
@@ -77,7 +78,7 @@ namespace SystAnalys_lr1
 
             for (int i = 0; i < busesPark.Count; ++i)
             {
-                if (busesPark[i].Count != 0 )
+                if (busesPark[i].Count != 0)
                 {
                     matrixGrid.Rows[i].HeaderCell.Value = busesPark[i].First().route.ToString();
                 }
@@ -87,33 +88,30 @@ namespace SystAnalys_lr1
             res = 0;
             for (int i = 0; i < busesPark.Count; i++)
             {
-                //if(routesSorted.Values.Count != 0)
-               // {
-                    total = 0;
-                    for (int j = 0; j < parkSize + 1; j++)
+                total = 0;
+                for (int j = 0; j < parkSize + 1; j++)
+                {
+                    if (j < busesPark[i].Count)
                     {
-                        if (j < busesPark[i].Count)
+                        if (busesPark[i][j].tracker == true)
                         {
-                            if (busesPark[i][j].tracker == true)//getRoute() == routesSorted.ElementAt(i).Key)
-                            {
-                                myArr[i, j] = 1;
-                                total++;
-                            }
-                            else
-                            {
-                                myArr[i, j] = 0;
-                            }
-                            matrixGrid.Rows[i].Cells[j].Value = myArr[i, j];
+                            myArr[i, j] = 1;
+                            total++;
                         }
                         else
                         {
-                            matrixGrid.Rows[i].Cells[j].Value = 0;
+                            myArr[i, j] = 0;
                         }
-                        matrixGrid.Rows[i].Cells[parkSize].Value = total;
-
+                        matrixGrid.Rows[i].Cells[j].Value = myArr[i, j];
                     }
-                    res += total;
-               // }               
+                    else
+                    {
+                        matrixGrid.Rows[i].Cells[j].Value = 0;
+                    }
+                    matrixGrid.Rows[i].Cells[parkSize].Value = total;
+
+                }
+                res += total;
             }
 
             label8.Text = MainStrings.matrixFirst + res.ToString() + " " + MainStrings.matrixSecond + (buses.Count - res).ToString() + " " + MainStrings.matrixThird + buses.Count.ToString();

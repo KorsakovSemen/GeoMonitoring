@@ -46,6 +46,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoadingForm";
+            this.Resizable = false;
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoadingForm_FormClosing);
             this.ResumeLayout(false);

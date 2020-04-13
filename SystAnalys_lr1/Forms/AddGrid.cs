@@ -24,6 +24,10 @@ namespace SystAnalys_lr1.Forms
             errorProvider2.SetIconAlignment(down, ErrorIconAlignment.MiddleRight);
             errorProvider3.SetIconAlignment(left, ErrorIconAlignment.MiddleRight);
             errorProvider4.SetIconAlignment(right, ErrorIconAlignment.MiddleRight);
+            errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+            errorProvider2.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+            errorProvider3.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+            errorProvider4.BlinkStyle = ErrorBlinkStyle.NeverBlink;
         }
 
         private void button1_Click(object sender, EventArgs e)

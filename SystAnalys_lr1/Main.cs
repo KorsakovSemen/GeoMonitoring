@@ -196,7 +196,7 @@ namespace SystAnalys_lr1
                                 {
                                     BringToFront();
                                     MetroMessageBox.Show(this, $"{exc.StackTrace}", MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                    loading.Visible = false;
+                                    //loading.Visible = false;
                                 }
                             }
                         }
@@ -266,12 +266,12 @@ namespace SystAnalys_lr1
                     Console.WriteLine($"Текст из файла: {savepath}");
 
                 }
+                changeTheme.Text = text;
             }
             else
             {
                 File.Create("../../SaveConfig/style.txt");
             }
-            changeTheme.Text = text;
             if (sheet.Image == null)
             {
                 addRouteToolStripMenuItem.Enabled = false;
@@ -1774,7 +1774,7 @@ namespace SystAnalys_lr1
                 {
                     try
                     {
-                        MetroMessageBox.Show(this, MainStrings.chooseWay, MainStrings.acrossThePath, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //MetroMessageBox.Show(this, MainStrings.chooseWay, MainStrings.acrossThePath, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         using (var dialog = new FolderBrowserDialog())
                         {
                             if (!Directory.Exists(savepath))
@@ -2618,17 +2618,17 @@ namespace SystAnalys_lr1
                     if (firstCrossRoads <= 0 && secondCrossRoads <= 0)
                     {
                         label12.Visible = false;
-                        loading.Enabled = true;
-                        loading.Value = 0;
-                        loading.Maximum = traficLights.Count;
+                        ///loading.Enabled = true;
+                        //loading.Value = 0;
+                        //loading.Maximum = traficLights.Count;
                         traficLights.ForEach((tl) =>
                         {
-                            loading.Value += 1;
+                            //loading.Value += 1;
                             tl.Set();
                             tl.Start();
                         });
                         //AsyncCreateAllCoordinates()();
-                        loading.Enabled = false;
+                        //loading.Enabled = false;
                         selectedRoute = null;
                         selectRoute.Enabled = true;
                         deleteBus.Enabled = true;
@@ -3435,6 +3435,7 @@ namespace SystAnalys_lr1
 
         private void changeTheme_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf(changeTheme.Text));
             StyleManager.Clone(Ep);
             using (StreamWriter fileV = new StreamWriter("../../SaveConfig/style.txt"))
@@ -3445,6 +3446,8 @@ namespace SystAnalys_lr1
             {
                 Ep.Refresh();
             }
+
+
         }
 
         private void launchBuses_Click(object sender, EventArgs e)
@@ -3594,12 +3597,56 @@ namespace SystAnalys_lr1
         public EpicSettings epSet;
         private void metroButton2_Click(object sender, EventArgs e)
         {
-
             epSet = new EpicSettings();
-            this.StyleManager.Clone(epSet);
+            StyleManager.Clone(epSet);
             epSet.ShowDialog();
-
         }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            savepath = null;
+            if (Ep != null)
+            {
+                Ep.EG.clearSheet2();
+                Ep.Close();
+            }
+            foreach (var bus in buses)
+            {
+                bus.Stop();
+                mainPanel.Controls.Remove(bus.busPic);
+            }
+            buses.Clear();
+            config.Text = MainStrings.config;
+            foreach (var tl in traficLights)
+            {
+                tl.Stop();
+            }
+            TraficLightsInGrids.Clear();
+            V.Clear();
+            E.Clear();
+            sheet.Image = null;
+            if (G.GetBitmap() != null)
+            {
+                G.clearSheet();
+                G.clearSheet2();
+            }
+            routes.Clear();
+            routesEdge.Clear();
+            changeRoute.Items.Clear();
+            Console.WriteLine(changeRoute.Items.Count);
+            AllCoordinates.Clear();
+            allstopPoints.Clear();
+            stopPoints.Clear();
+            traficLights.Clear();
+            metroTrackBar1.Value = 1;
+            openEpicFormToolStripMenuItem.Enabled = false;
+            addRouteToolStripMenuItem.Enabled = false;
+            createGridToolStripMenuItem.Enabled = false;
+            File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
+            BringToFront();
+            MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
+        }
+
         //
         private void metroButton1_Click_2(object sender, EventArgs e)
         {
