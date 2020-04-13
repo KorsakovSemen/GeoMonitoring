@@ -1094,6 +1094,7 @@ namespace SystAnalys_lr1
                     tl.Stop();
                 }
                 TraficLightsInGrids.Clear();
+                stopPointsInGrids.Clear();
                 V.Clear();
                 E.Clear();
                 if (G.bitmap != null)
@@ -3604,6 +3605,9 @@ namespace SystAnalys_lr1
 
         private void clearButton_Click(object sender, EventArgs e)
         {
+            openEpicFormToolStripMenuItem.Enabled = false;
+            addRouteToolStripMenuItem.Enabled = false;
+            createGridToolStripMenuItem.Enabled = false;
             savepath = null;
             if (Ep != null)
             {
@@ -3622,28 +3626,43 @@ namespace SystAnalys_lr1
                 tl.Stop();
             }
             TraficLightsInGrids.Clear();
+            stopPointsInGrids.Clear();
             V.Clear();
             E.Clear();
-            sheet.Image = null;
             if (G.GetBitmap() != null)
             {
                 G.clearSheet();
                 G.clearSheet2();
+                sheet.Image = null;
+                G = new DrawGraph();
             }
             routes.Clear();
             routesEdge.Clear();
             changeRoute.Items.Clear();
-            Console.WriteLine(changeRoute.Items.Count);
+            changeRoute.Items.Add(MainStrings.none);
+            changeRoute.Items.Clear();
+            changeRoute.Text = "";
             AllCoordinates.Clear();
             allstopPoints.Clear();
             stopPoints.Clear();
             traficLights.Clear();
             metroTrackBar1.Value = 1;
-            openEpicFormToolStripMenuItem.Enabled = false;
-            addRouteToolStripMenuItem.Enabled = false;
-            createGridToolStripMenuItem.Enabled = false;
+            deleteBus.Enabled = false;
+            allBusSettings.Enabled = false;
+            selectButton.Enabled = false;
+            drawVertexButton.Enabled = false;
+            drawEdgeButton.Enabled = false;
+            deleteButton.Enabled = false;
+            deleteALLButton.Enabled = false;
+            addTraficLight.Enabled = false;
+            stopPointButton.Enabled = false;
+            deleteRoute.Enabled = false;
+            addBus.Enabled = false;
+            selectRoute.Enabled = false;
+            delAllBusesOnRoute.Enabled = false;
             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
             BringToFront();
+            Matrix();
             MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
