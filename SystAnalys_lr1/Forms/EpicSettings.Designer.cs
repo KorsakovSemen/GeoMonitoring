@@ -78,6 +78,7 @@
             // 
             // groupBox2
             // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.radioCustom);
             this.groupBox2.Controls.Add(this.radioEpicRandom);
@@ -85,26 +86,42 @@
             this.groupBox2.Controls.Add(this.radioEpicBig);
             this.groupBox2.Controls.Add(this.radioEpicMedium);
             this.groupBox2.Controls.Add(this.radioEpicSmall);
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
             // textBox1
             // 
+            resources.ApplyResources(this.textBox1, "textBox1");
             // 
             // 
             // 
+            this.textBox1.CustomButton.AccessibleDescription = resources.GetString("resource.AccessibleDescription");
+            this.textBox1.CustomButton.AccessibleName = resources.GetString("resource.AccessibleName");
+            this.textBox1.CustomButton.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("resource.Anchor")));
+            this.textBox1.CustomButton.AutoSize = ((bool)(resources.GetObject("resource.AutoSize")));
+            this.textBox1.CustomButton.AutoSizeMode = ((System.Windows.Forms.AutoSizeMode)(resources.GetObject("resource.AutoSizeMode")));
+            this.textBox1.CustomButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("resource.BackgroundImage")));
+            this.textBox1.CustomButton.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("resource.BackgroundImageLayout")));
+            this.textBox1.CustomButton.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("resource.Dock")));
+            this.textBox1.CustomButton.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("resource.FlatStyle")));
+            this.textBox1.CustomButton.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font")));
             this.textBox1.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.textBox1.CustomButton.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.ImageAlign")));
+            this.textBox1.CustomButton.ImageIndex = ((int)(resources.GetObject("resource.ImageIndex")));
+            this.textBox1.CustomButton.ImageKey = resources.GetString("resource.ImageKey");
             this.textBox1.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode")));
             this.textBox1.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location")));
+            this.textBox1.CustomButton.MaximumSize = ((System.Drawing.Size)(resources.GetObject("resource.MaximumSize")));
             this.textBox1.CustomButton.Name = "";
+            this.textBox1.CustomButton.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("resource.RightToLeft")));
             this.textBox1.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size")));
             this.textBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.textBox1.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex")));
+            this.textBox1.CustomButton.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.TextAlign")));
+            this.textBox1.CustomButton.TextImageRelation = ((System.Windows.Forms.TextImageRelation)(resources.GetObject("resource.TextImageRelation")));
             this.textBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.textBox1.CustomButton.UseSelectable = true;
             this.textBox1.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible")));
-            resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.Lines = new string[0];
             this.textBox1.MaxLength = 9;
             this.textBox1.Name = "textBox1";
@@ -164,12 +181,12 @@
             // 
             // directionBox
             // 
+            resources.ApplyResources(this.directionBox, "directionBox");
             this.directionBox.Controls.Add(this.metroLabel1);
             this.directionBox.Controls.Add(this.left);
             this.directionBox.Controls.Add(this.right);
             this.directionBox.Controls.Add(this.down);
             this.directionBox.Controls.Add(this.up);
-            resources.ApplyResources(this.directionBox, "directionBox");
             this.directionBox.Name = "directionBox";
             this.directionBox.TabStop = false;
             // 
@@ -216,6 +233,7 @@
             // 
             // frequencyBox
             // 
+            resources.ApplyResources(this.frequencyBox, "frequencyBox");
             this.frequencyBox.Controls.Add(this.metroTextBox1);
             this.frequencyBox.Controls.Add(this.RadioFreqCustom);
             this.frequencyBox.Controls.Add(this.RadioFreq10000);
@@ -225,26 +243,43 @@
             this.frequencyBox.Controls.Add(this.RadioFreq500);
             this.frequencyBox.Controls.Add(this.RadioFreq100);
             this.frequencyBox.Controls.Add(this.metroLabel3);
-            resources.ApplyResources(this.frequencyBox, "frequencyBox");
             this.frequencyBox.Name = "frequencyBox";
             this.frequencyBox.TabStop = false;
             // 
             // metroTextBox1
             // 
+            resources.ApplyResources(this.metroTextBox1, "metroTextBox1");
             // 
             // 
             // 
+            this.metroTextBox1.CustomButton.AccessibleDescription = resources.GetString("resource.AccessibleDescription1");
+            this.metroTextBox1.CustomButton.AccessibleName = resources.GetString("resource.AccessibleName1");
+            this.metroTextBox1.CustomButton.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("resource.Anchor1")));
+            this.metroTextBox1.CustomButton.AutoSize = ((bool)(resources.GetObject("resource.AutoSize1")));
+            this.metroTextBox1.CustomButton.AutoSizeMode = ((System.Windows.Forms.AutoSizeMode)(resources.GetObject("resource.AutoSizeMode1")));
+            this.metroTextBox1.CustomButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("resource.BackgroundImage1")));
+            this.metroTextBox1.CustomButton.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("resource.BackgroundImageLayout1")));
+            this.metroTextBox1.CustomButton.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("resource.Dock1")));
+            this.metroTextBox1.CustomButton.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("resource.FlatStyle1")));
+            this.metroTextBox1.CustomButton.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font1")));
             this.metroTextBox1.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.metroTextBox1.CustomButton.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.ImageAlign1")));
+            this.metroTextBox1.CustomButton.ImageIndex = ((int)(resources.GetObject("resource.ImageIndex1")));
+            this.metroTextBox1.CustomButton.ImageKey = resources.GetString("resource.ImageKey1");
+            this.metroTextBox1.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode1")));
             this.metroTextBox1.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location1")));
+            this.metroTextBox1.CustomButton.MaximumSize = ((System.Drawing.Size)(resources.GetObject("resource.MaximumSize1")));
             this.metroTextBox1.CustomButton.Name = "";
+            this.metroTextBox1.CustomButton.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("resource.RightToLeft1")));
             this.metroTextBox1.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size1")));
             this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTextBox1.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex1")));
+            this.metroTextBox1.CustomButton.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.TextAlign1")));
+            this.metroTextBox1.CustomButton.TextImageRelation = ((System.Windows.Forms.TextImageRelation)(resources.GetObject("resource.TextImageRelation1")));
             this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTextBox1.CustomButton.UseSelectable = true;
             this.metroTextBox1.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible1")));
             this.metroTextBox1.Lines = new string[0];
-            resources.ApplyResources(this.metroTextBox1, "metroTextBox1");
             this.metroTextBox1.MaxLength = 9;
             this.metroTextBox1.Name = "metroTextBox1";
             this.metroTextBox1.PasswordChar = '\0';
@@ -307,42 +342,60 @@
             // 
             // groupBox4
             // 
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.phasesSettingsBox);
             this.groupBox4.Controls.Add(this.extendedSavePictures);
             this.groupBox4.Controls.Add(this.SavePictures);
             this.groupBox4.Controls.Add(this.metroLabel2);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
             // phasesSettingsBox
             // 
+            resources.ApplyResources(this.phasesSettingsBox, "phasesSettingsBox");
             this.phasesSettingsBox.Controls.Add(this.metroTextBox2);
             this.phasesSettingsBox.Controls.Add(this.radioPhaseCustom);
             this.phasesSettingsBox.Controls.Add(this.radioPhase10);
             this.phasesSettingsBox.Controls.Add(this.radioPhase5);
             this.phasesSettingsBox.Controls.Add(this.radioPhase3);
             this.phasesSettingsBox.Controls.Add(this.radioPhase2);
-            resources.ApplyResources(this.phasesSettingsBox, "phasesSettingsBox");
             this.phasesSettingsBox.Name = "phasesSettingsBox";
             this.phasesSettingsBox.TabStop = false;
             // 
             // metroTextBox2
             // 
+            resources.ApplyResources(this.metroTextBox2, "metroTextBox2");
             // 
             // 
             // 
+            this.metroTextBox2.CustomButton.AccessibleDescription = resources.GetString("resource.AccessibleDescription2");
+            this.metroTextBox2.CustomButton.AccessibleName = resources.GetString("resource.AccessibleName2");
+            this.metroTextBox2.CustomButton.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("resource.Anchor2")));
+            this.metroTextBox2.CustomButton.AutoSize = ((bool)(resources.GetObject("resource.AutoSize2")));
+            this.metroTextBox2.CustomButton.AutoSizeMode = ((System.Windows.Forms.AutoSizeMode)(resources.GetObject("resource.AutoSizeMode2")));
+            this.metroTextBox2.CustomButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("resource.BackgroundImage2")));
+            this.metroTextBox2.CustomButton.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("resource.BackgroundImageLayout2")));
+            this.metroTextBox2.CustomButton.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("resource.Dock2")));
+            this.metroTextBox2.CustomButton.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("resource.FlatStyle2")));
+            this.metroTextBox2.CustomButton.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font2")));
             this.metroTextBox2.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            this.metroTextBox2.CustomButton.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.ImageAlign2")));
+            this.metroTextBox2.CustomButton.ImageIndex = ((int)(resources.GetObject("resource.ImageIndex2")));
+            this.metroTextBox2.CustomButton.ImageKey = resources.GetString("resource.ImageKey2");
+            this.metroTextBox2.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode2")));
             this.metroTextBox2.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location2")));
+            this.metroTextBox2.CustomButton.MaximumSize = ((System.Drawing.Size)(resources.GetObject("resource.MaximumSize2")));
             this.metroTextBox2.CustomButton.Name = "";
+            this.metroTextBox2.CustomButton.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("resource.RightToLeft2")));
             this.metroTextBox2.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size2")));
             this.metroTextBox2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTextBox2.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex2")));
+            this.metroTextBox2.CustomButton.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.TextAlign2")));
+            this.metroTextBox2.CustomButton.TextImageRelation = ((System.Windows.Forms.TextImageRelation)(resources.GetObject("resource.TextImageRelation2")));
             this.metroTextBox2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTextBox2.CustomButton.UseSelectable = true;
             this.metroTextBox2.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible2")));
             this.metroTextBox2.Lines = new string[0];
-            resources.ApplyResources(this.metroTextBox2, "metroTextBox2");
             this.metroTextBox2.MaxLength = 2;
             this.metroTextBox2.Name = "metroTextBox2";
             this.metroTextBox2.PasswordChar = '\0';
@@ -407,11 +460,11 @@
             // 
             // groupBox5
             // 
+            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Controls.Add(this.TurnSpreading);
             this.groupBox5.Controls.Add(this.directionBox);
             this.groupBox5.Controls.Add(this.frequencyBox);
             this.groupBox5.Controls.Add(this.label1);
-            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 

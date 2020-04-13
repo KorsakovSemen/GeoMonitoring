@@ -426,5 +426,7 @@ namespace SystAnalys_lr1.Forms
                 e.Handled = true;
             }
         }
+
+       
     }
 }

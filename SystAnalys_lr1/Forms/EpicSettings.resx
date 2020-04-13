@@ -117,1417 +117,1243 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
-    <value>textBox1</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="resource.ImageAlign2" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
   </data>
-  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="resource.TextImageRelation1" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>Overlay</value>
   </data>
-  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;radioCustom.Name" xml:space="preserve">
-    <value>radioCustom</value>
-  </data>
-  <data name="&gt;&gt;radioCustom.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;radioCustom.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;radioCustom.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;radioEpicRandom.Name" xml:space="preserve">
-    <value>radioEpicRandom</value>
-  </data>
-  <data name="&gt;&gt;radioEpicRandom.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;radioEpicRandom.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;radioEpicRandom.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+  <data name="&gt;&gt;metroLabel2.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="radioPhase2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;radioEpicBig.Name" xml:space="preserve">
-    <value>radioEpicBig</value>
-  </data>
-  <data name="&gt;&gt;radioEpicBig.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;radioEpicBig.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;radioEpicBig.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;radioEpicMedium.Name" xml:space="preserve">
-    <value>radioEpicMedium</value>
-  </data>
-  <data name="&gt;&gt;radioEpicMedium.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;radioEpicMedium.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;radioEpicMedium.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;radioEpicSmall.Name" xml:space="preserve">
-    <value>radioEpicSmall</value>
-  </data>
-  <data name="&gt;&gt;radioEpicSmall.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;radioEpicSmall.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="radioPhaseCustom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 19</value>
   </data>
   <data name="&gt;&gt;radioEpicSmall.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>62, 79</value>
+  <data name="resource.ImageKey" xml:space="preserve">
+    <value />
   </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 138</value>
+  <data name="extendedSavePictures.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 15</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>93</value>
+  <data name="RadioFreq2500.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 15</value>
+  </data>
+  <data name="RadioFreq500.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 65</value>
+  </data>
+  <data name="resource.TextAlign1" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="resource.Anchor2" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
+  </data>
+  <data name="down.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 69</value>
+  </data>
+  <data name="radioEpicSmall.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioPhase10.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="resource.ImageAlign1" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;metroLabel1.Parent" xml:space="preserve">
+    <value>directionBox</value>
+  </data>
+  <data name="&gt;&gt;metroLabel3.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="resource.BackgroundImageLayout2" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Tile</value>
+  </data>
+  <data name="resource.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="radioPhase5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 19</value>
   </data>
   <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="resource.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="resource.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="resource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 2</value>
-  </data>
-  <data name="resource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 15</value>
-  </data>
-  <data name="resource.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="resource.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="textBox1.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 54</value>
-  </data>
-  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
-  </data>
-  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
-    <value>textBox1</value>
-  </data>
-  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="radioCustom.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioCustom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 31</value>
-  </data>
-  <data name="radioCustom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 15</value>
-  </data>
-  <data name="radioCustom.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="radioCustom.Text" xml:space="preserve">
-    <value>Свой параметр</value>
-  </data>
-  <data name="&gt;&gt;radioCustom.Name" xml:space="preserve">
-    <value>radioCustom</value>
-  </data>
-  <data name="&gt;&gt;radioCustom.Type" xml:space="preserve">
+  <data name="&gt;&gt;radioEpicMedium.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <data name="&gt;&gt;radioCustom.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="RadioFreqCustom.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;TurnSpreading.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="RadioFreqCustom.Text" xml:space="preserve">
+    <value>Свой параметр</value>
+  </data>
+  <data name="resource.AccessibleName2" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;right.Parent" xml:space="preserve">
+    <value>directionBox</value>
+  </data>
+  <data name="RadioFreq2500.Location" type="System.Drawing.Point, System.Drawing">
+    <value>58, 44</value>
+  </data>
+  <data name="RadioFreq500.Text" xml:space="preserve">
+    <value>500</value>
+  </data>
+  <data name="radioPhase10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 41</value>
+  </data>
+  <data name="&gt;&gt;metroTextBox1.Name" xml:space="preserve">
+    <value>metroTextBox1</value>
+  </data>
+  <data name="&gt;&gt;metroLabel2.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="resource.AutoSize2" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;metroTextBox2.Name" xml:space="preserve">
+    <value>metroTextBox2</value>
+  </data>
+  <data name="&gt;&gt;directionBox.Name" xml:space="preserve">
+    <value>directionBox</value>
+  </data>
+  <data name="&gt;&gt;down.Name" xml:space="preserve">
+    <value>down</value>
+  </data>
+  <data name="&gt;&gt;right.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;radioPhase2.Parent" xml:space="preserve">
+    <value>phasesSettingsBox</value>
+  </data>
+  <data name="&gt;&gt;metroLabel3.Name" xml:space="preserve">
+    <value>metroLabel3</value>
+  </data>
+  <data name="frequencyBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 170</value>
+  </data>
+  <data name="resource.TabIndex2" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioEpicSmall.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 15</value>
+  </data>
+  <data name="&gt;&gt;radioPhaseCustom.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="resource.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Tile</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="resource.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowOnly</value>
+  </data>
+  <data name="radioPhase2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="down.Text" xml:space="preserve">
+    <value>Вниз</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 19</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>279, 288</value>
+  </data>
+  <data name="&gt;&gt;frequencyBox.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;extendedSavePictures.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="RadioFreq1000.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>279, 138</value>
+  </data>
+  <data name="&gt;&gt;extendedSavePictures.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;RadioFreq10000.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;radioPhase5.Parent" xml:space="preserve">
+    <value>phasesSettingsBox</value>
+  </data>
+  <data name="radioPhase3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="resource.AccessibleName1" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.MaximumSize2" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="resource.MaximumSize1" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="&gt;&gt;RadioFreq10000.Name" xml:space="preserve">
+    <value>RadioFreq10000</value>
+  </data>
+  <data name="resource.Location1" type="System.Drawing.Point, System.Drawing">
+    <value>82, 2</value>
+  </data>
+  <data name="left.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 15</value>
+  </data>
+  <data name="RadioFreq10000.Text" xml:space="preserve">
+    <value>10000</value>
+  </data>
+  <data name="left.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 69</value>
+  </data>
+  <data name="&gt;&gt;TurnSpreading.Name" xml:space="preserve">
+    <value>TurnSpreading</value>
+  </data>
+  <data name="right.Text" xml:space="preserve">
+    <value>Вправо</value>
   </data>
   <data name="&gt;&gt;radioCustom.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="radioEpicRandom.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="resource.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Standard</value>
+  </data>
+  <data name="&gt;&gt;right.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="right.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="frequencyBox.TabIndex" type="System.Int32, mscorlib">
+    <value>96</value>
   </data>
   <data name="radioEpicRandom.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 100</value>
   </data>
-  <data name="radioEpicRandom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 15</value>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="radioEpicRandom.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 54</value>
+  </data>
+  <data name="metroLabel3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;RadioFreq5000.Name" xml:space="preserve">
+    <value>RadioFreq5000</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>346, 79</value>
+  </data>
+  <data name="&gt;&gt;RadioFreq500.Name" xml:space="preserve">
+    <value>RadioFreq500</value>
+  </data>
+  <data name="&gt;&gt;radioPhase3.Parent" xml:space="preserve">
+    <value>phasesSettingsBox</value>
+  </data>
+  <data name="TurnSpreading.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 42</value>
+  </data>
+  <data name="down.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="resource.ImeMode1" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="resource.Location2" type="System.Drawing.Point, System.Drawing">
+    <value>82, 2</value>
+  </data>
+  <data name="&gt;&gt;phasesSettingsBox.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;radioPhase2.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;RadioFreq500.Parent" xml:space="preserve">
+    <value>frequencyBox</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="RadioFreq5000.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="&gt;&gt;radioPhaseCustom.Parent" xml:space="preserve">
+    <value>phasesSettingsBox</value>
+  </data>
+  <data name="radioPhase3.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioCustom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 31</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;down.Parent" xml:space="preserve">
+    <value>directionBox</value>
+  </data>
+  <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 16</value>
+  </data>
+  <data name="extendedSavePictures.Text" xml:space="preserve">
+    <value>Поэтапное сохранение</value>
+  </data>
+  <data name="resource.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Направление распространения и частота </value>
   </data>
   <data name="radioEpicRandom.Text" xml:space="preserve">
     <value>Случайный</value>
   </data>
-  <data name="&gt;&gt;radioEpicRandom.Name" xml:space="preserve">
-    <value>radioEpicRandom</value>
+  <data name="&gt;&gt;RadioFreq1000.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;radioEpicRandom.Type" xml:space="preserve">
+  <data name="RadioFreqCustom.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;directionBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="resource.AccessibleName" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;RadioFreq10000.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <data name="&gt;&gt;radioEpicRandom.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="RadioFreqCustom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 15</value>
   </data>
-  <data name="&gt;&gt;radioEpicRandom.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;radioPhase10.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+  <data name="left.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;directionBox.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="resource.AutoSizeMode1" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowOnly</value>
+  </data>
+  <data name="&gt;&gt;SavePictures.Name" xml:space="preserve">
+    <value>SavePictures</value>
+  </data>
+  <data name="radioPhaseCustom.Text" xml:space="preserve">
+    <value>Свой параметр</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>MetroFramework.Forms.MetroForm, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="RadioFreqCustom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 44</value>
+  </data>
+  <data name="resource.TextAlign2" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;RadioFreq10000.Parent" xml:space="preserve">
+    <value>frequencyBox</value>
+  </data>
+  <data name="RadioFreq100.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Size2" type="System.Drawing.Size, System.Drawing">
+    <value>15, 15</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>279, 138</value>
+  </data>
+  <data name="radioPhase10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 15</value>
+  </data>
+  <data name="resource.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="RadioFreq1000.Text" xml:space="preserve">
+    <value>1000</value>
+  </data>
+  <data name="&gt;&gt;radioPhase10.Parent" xml:space="preserve">
+    <value>phasesSettingsBox</value>
+  </data>
+  <data name="resource.ImageKey1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="right.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;RadioFreqCustom.Name" xml:space="preserve">
+    <value>RadioFreqCustom</value>
+  </data>
+  <data name="radioPhase2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 15</value>
+  </data>
+  <data name="radioPhase5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioEpicMedium.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 15</value>
+  </data>
+  <data name="&gt;&gt;left.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="resource.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>Overlay</value>
+  </data>
+  <data name="&gt;&gt;radioEpicSmall.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;metroTextBox2.Parent" xml:space="preserve">
+    <value>phasesSettingsBox</value>
+  </data>
+  <data name="TurnSpreading.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 15</value>
+  </data>
+  <data name="left.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
     <value>64, 9</value>
   </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 19</value>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBox5</value>
   </data>
-  <data name="label12.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="resource.AccessibleDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>Размер эпицентра</value>
-  </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="radioEpicBig.AutoSize" type="System.Boolean, mscorlib">
+  <data name="RadioFreq100.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="metroLabel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="resource.Dock1" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>676, 419</value>
+  </data>
+  <data name="&gt;&gt;radioEpicSmall.Name" xml:space="preserve">
+    <value>radioEpicSmall</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>270, 19</value>
+  </data>
+  <data name="RadioFreq5000.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 15</value>
+  </data>
+  <data name="resource.ImageKey2" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;extendedSavePictures.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="RadioFreq1000.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="SavePictures.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 15</value>
+  </data>
+  <data name="up.Text" xml:space="preserve">
+    <value>Вверх</value>
+  </data>
+  <data name="right.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 46</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>95</value>
+  </data>
+  <data name="RadioFreq500.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
+  </data>
+  <data name="RadioFreq10000.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="resource.FlatStyle2" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Standard</value>
+  </data>
+  <data name="directionBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 54</value>
+  </data>
+  <data name="&gt;&gt;radioPhase5.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="RadioFreq100.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 44</value>
+  </data>
+  <data name="radioEpicRandom.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="down.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 15</value>
+  </data>
+  <data name="&gt;&gt;RadioFreq500.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;metroLabel3.Parent" xml:space="preserve">
+    <value>frequencyBox</value>
+  </data>
+  <data name="resource.AccessibleDescription2" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="radioEpicBig.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 77</value>
   </data>
-  <data name="radioEpicBig.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 15</value>
+  <data name="up.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="radioEpicBig.TabIndex" type="System.Int32, mscorlib">
+  <data name="RadioFreq500.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;radioPhase2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;down.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="resource.Anchor1" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
+  </data>
+  <data name="resource.TextImageRelation2" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>Overlay</value>
+  </data>
+  <data name="&gt;&gt;RadioFreqCustom.Parent" xml:space="preserve">
+    <value>frequencyBox</value>
+  </data>
+  <data name="radioPhase3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 15</value>
+  </data>
+  <data name="&gt;&gt;down.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="resource.Visible1" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="resource.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="metroTextBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 37</value>
+  </data>
+  <data name="metroLabel2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="resource.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;radioEpicRandom.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;RadioFreqCustom.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="resource.BackgroundImage2" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="radioEpicMedium.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="extendedSavePictures.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 48</value>
+  </data>
+  <data name="resource.BackgroundImage1" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;RadioFreq2500.Name" xml:space="preserve">
+    <value>RadioFreq2500</value>
+  </data>
+  <data name="frequencyBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 112</value>
+  </data>
+  <data name="&gt;&gt;up.Name" xml:space="preserve">
+    <value>up</value>
+  </data>
+  <data name="resource.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;radioPhase3.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="radioPhase10.Text" xml:space="preserve">
+    <value>10 этапов</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>62, 79</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="extendedSavePictures.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;up.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="RadioFreq10000.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="radioPhase10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="metroLabel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroTextBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="up.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 46</value>
+  </data>
+  <data name="&gt;&gt;RadioFreq2500.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;RadioFreq100.Parent" xml:space="preserve">
+    <value>frequencyBox</value>
+  </data>
+  <data name="radioEpicSmall.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>298, 373</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>97</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="resource.FlatStyle1" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Standard</value>
   </data>
   <data name="radioEpicBig.Text" xml:space="preserve">
     <value>Большой</value>
   </data>
-  <data name="&gt;&gt;radioEpicBig.Name" xml:space="preserve">
-    <value>radioEpicBig</value>
+  <data name="phasesSettingsBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 64</value>
   </data>
-  <data name="&gt;&gt;radioEpicBig.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <data name="&gt;&gt;RadioFreq2500.Parent" xml:space="preserve">
+    <value>frequencyBox</value>
+  </data>
+  <data name="&gt;&gt;phasesSettingsBox.Name" xml:space="preserve">
+    <value>phasesSettingsBox</value>
+  </data>
+  <data name="radioEpicBig.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;metroTextBox1.Parent" xml:space="preserve">
+    <value>frequencyBox</value>
+  </data>
+  <data name="SavePictures.Text" xml:space="preserve">
+    <value>Сохранять картинки в 1 этап</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="resource.ImeMode2" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="&gt;&gt;radioPhaseCustom.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;right.Name" xml:space="preserve">
+    <value>right</value>
+  </data>
+  <data name="resource.AccessibleDescription1" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="radioEpicSmall.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 31</value>
+  </data>
+  <data name="resource.Font1" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="RadioFreq5000.Location" type="System.Drawing.Point, System.Drawing">
+    <value>58, 66</value>
+  </data>
+  <data name="metroLabel1.Text" xml:space="preserve">
+    <value>Направление</value>
+  </data>
+  <data name="resource.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="radioPhaseCustom.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;frequencyBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;metroTextBox2.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
+    <value>textBox1</value>
+  </data>
+  <data name="&gt;&gt;up.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="resource.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 15</value>
+  </data>
+  <data name="directionBox.TabIndex" type="System.Int32, mscorlib">
+    <value>94</value>
+  </data>
+  <data name="&gt;&gt;radioEpicMedium.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;left.Name" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="RadioFreq100.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
   </data>
   <data name="&gt;&gt;radioEpicBig.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;radioEpicBig.ZOrder" xml:space="preserve">
+  <data name="resource.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;radioPhase5.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="resource.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="resource.Size1" type="System.Drawing.Size, System.Drawing">
+    <value>15, 15</value>
+  </data>
+  <data name="&gt;&gt;extendedSavePictures.Name" xml:space="preserve">
+    <value>extendedSavePictures</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="radioPhase3.Text" xml:space="preserve">
+    <value>3 этапа</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 9</value>
+  </data>
+  <data name="resource.Font2" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;radioPhase10.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;SavePictures.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="down.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="RadioFreq5000.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="radioPhase5.Text" xml:space="preserve">
+    <value>5 этапов</value>
+  </data>
+  <data name="RadioFreq100.Text" xml:space="preserve">
+    <value>100</value>
+  </data>
+  <data name="RadioFreq2500.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="radioEpicMedium.AutoSize" type="System.Boolean, mscorlib">
+  <data name="&gt;&gt;radioPhase10.Name" xml:space="preserve">
+    <value>radioPhase10</value>
+  </data>
+  <data name="&gt;&gt;radioPhase5.Name" xml:space="preserve">
+    <value>radioPhase5</value>
+  </data>
+  <data name="RadioFreq2500.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="radioEpicMedium.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 54</value>
   </data>
-  <data name="radioEpicMedium.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 15</value>
-  </data>
-  <data name="radioEpicMedium.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="radioEpicMedium.Text" xml:space="preserve">
-    <value>Средний</value>
-  </data>
-  <data name="&gt;&gt;radioEpicMedium.Name" xml:space="preserve">
-    <value>radioEpicMedium</value>
-  </data>
-  <data name="&gt;&gt;radioEpicMedium.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;radioEpicMedium.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;radioEpicMedium.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="radioEpicSmall.AutoSize" type="System.Boolean, mscorlib">
+  <data name="radioEpicRandom.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="radioEpicSmall.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 31</value>
-  </data>
-  <data name="radioEpicSmall.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 15</value>
-  </data>
-  <data name="radioEpicSmall.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="radioEpicSmall.Text" xml:space="preserve">
-    <value>Маленький</value>
-  </data>
-  <data name="&gt;&gt;radioEpicSmall.Name" xml:space="preserve">
-    <value>radioEpicSmall</value>
-  </data>
-  <data name="&gt;&gt;radioEpicSmall.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;radioEpicSmall.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;radioEpicSmall.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;metroLabel1.Name" xml:space="preserve">
-    <value>metroLabel1</value>
-  </data>
-  <data name="&gt;&gt;metroLabel1.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroLabel1.Parent" xml:space="preserve">
-    <value>directionBox</value>
-  </data>
-  <data name="&gt;&gt;metroLabel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;left.Name" xml:space="preserve">
-    <value>left</value>
-  </data>
-  <data name="&gt;&gt;left.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;left.Parent" xml:space="preserve">
-    <value>directionBox</value>
-  </data>
-  <data name="&gt;&gt;left.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;right.Name" xml:space="preserve">
-    <value>right</value>
-  </data>
-  <data name="&gt;&gt;right.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;right.Parent" xml:space="preserve">
-    <value>directionBox</value>
-  </data>
-  <data name="&gt;&gt;right.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;down.Name" xml:space="preserve">
-    <value>down</value>
-  </data>
-  <data name="&gt;&gt;down.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;down.Parent" xml:space="preserve">
-    <value>directionBox</value>
-  </data>
-  <data name="&gt;&gt;down.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;up.Name" xml:space="preserve">
-    <value>up</value>
-  </data>
-  <data name="&gt;&gt;up.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;up.Parent" xml:space="preserve">
-    <value>directionBox</value>
-  </data>
-  <data name="&gt;&gt;up.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="directionBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 54</value>
-  </data>
-  <data name="directionBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>254, 119</value>
-  </data>
-  <data name="directionBox.TabIndex" type="System.Int32, mscorlib">
-    <value>94</value>
-  </data>
-  <data name="&gt;&gt;directionBox.Name" xml:space="preserve">
-    <value>directionBox</value>
-  </data>
-  <data name="&gt;&gt;directionBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;directionBox.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;directionBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="metroLabel1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 16</value>
-  </data>
-  <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 19</value>
-  </data>
-  <data name="metroLabel1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="metroLabel1.Text" xml:space="preserve">
-    <value>Направление</value>
-  </data>
-  <data name="&gt;&gt;metroLabel1.Name" xml:space="preserve">
-    <value>metroLabel1</value>
-  </data>
-  <data name="&gt;&gt;metroLabel1.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroLabel1.Parent" xml:space="preserve">
-    <value>directionBox</value>
-  </data>
-  <data name="&gt;&gt;metroLabel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="left.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="left.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 69</value>
-  </data>
-  <data name="left.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 15</value>
-  </data>
-  <data name="left.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="left.Text" xml:space="preserve">
-    <value>Влево</value>
-  </data>
-  <data name="&gt;&gt;left.Name" xml:space="preserve">
-    <value>left</value>
-  </data>
-  <data name="&gt;&gt;left.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;left.Parent" xml:space="preserve">
-    <value>directionBox</value>
-  </data>
-  <data name="&gt;&gt;left.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="right.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="right.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 46</value>
-  </data>
-  <data name="right.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 15</value>
-  </data>
-  <data name="right.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="right.Text" xml:space="preserve">
-    <value>Вправо</value>
-  </data>
-  <data name="&gt;&gt;right.Name" xml:space="preserve">
-    <value>right</value>
-  </data>
-  <data name="&gt;&gt;right.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;right.Parent" xml:space="preserve">
-    <value>directionBox</value>
-  </data>
-  <data name="&gt;&gt;right.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="down.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="down.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 69</value>
-  </data>
-  <data name="down.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 15</value>
-  </data>
-  <data name="down.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="down.Text" xml:space="preserve">
-    <value>Вниз</value>
-  </data>
-  <data name="&gt;&gt;down.Name" xml:space="preserve">
-    <value>down</value>
-  </data>
-  <data name="&gt;&gt;down.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;down.Parent" xml:space="preserve">
-    <value>directionBox</value>
-  </data>
-  <data name="&gt;&gt;down.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="up.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="up.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 46</value>
-  </data>
-  <data name="up.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 15</value>
-  </data>
-  <data name="up.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="up.Text" xml:space="preserve">
-    <value>Вверх</value>
-  </data>
-  <data name="&gt;&gt;up.Name" xml:space="preserve">
-    <value>up</value>
-  </data>
-  <data name="&gt;&gt;up.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;up.Parent" xml:space="preserve">
-    <value>directionBox</value>
-  </data>
-  <data name="&gt;&gt;up.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 9</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 19</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Направление распространения и частота </value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>298, 373</value>
-  </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
-    <value>95</value>
-  </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Set</value>
-  </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
-  </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;metroTextBox1.Name" xml:space="preserve">
-    <value>metroTextBox1</value>
-  </data>
-  <data name="&gt;&gt;metroTextBox1.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroTextBox1.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;metroTextBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;RadioFreqCustom.Name" xml:space="preserve">
-    <value>RadioFreqCustom</value>
-  </data>
-  <data name="&gt;&gt;RadioFreqCustom.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;RadioFreqCustom.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;RadioFreqCustom.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq10000.Name" xml:space="preserve">
-    <value>RadioFreq10000</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq10000.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq10000.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq10000.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq5000.Name" xml:space="preserve">
-    <value>RadioFreq5000</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq5000.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq5000.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq5000.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq2500.Name" xml:space="preserve">
-    <value>RadioFreq2500</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq2500.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq2500.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq2500.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq1000.Name" xml:space="preserve">
-    <value>RadioFreq1000</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq1000.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq1000.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq1000.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq500.Name" xml:space="preserve">
-    <value>RadioFreq500</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq500.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq500.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq500.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq100.Name" xml:space="preserve">
-    <value>RadioFreq100</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq100.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq100.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq100.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;metroLabel3.Name" xml:space="preserve">
-    <value>metroLabel3</value>
-  </data>
-  <data name="&gt;&gt;metroLabel3.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroLabel3.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;metroLabel3.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="frequencyBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 170</value>
-  </data>
-  <data name="frequencyBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>254, 112</value>
-  </data>
-  <data name="frequencyBox.TabIndex" type="System.Int32, mscorlib">
-    <value>96</value>
-  </data>
-  <data name="&gt;&gt;frequencyBox.Name" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;frequencyBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;frequencyBox.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;frequencyBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="resource.Image1" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="resource.Location1" type="System.Drawing.Point, System.Drawing">
-    <value>82, 2</value>
-  </data>
-  <data name="resource.Size1" type="System.Drawing.Size, System.Drawing">
-    <value>15, 15</value>
-  </data>
-  <data name="resource.TabIndex1" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="resource.Visible1" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="metroTextBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 66</value>
-  </data>
-  <data name="metroTextBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
+  <data name="radioCustom.Text" xml:space="preserve">
+    <value>Свой параметр</value>
   </data>
   <data name="metroTextBox1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;metroTextBox1.Name" xml:space="preserve">
-    <value>metroTextBox1</value>
+  <data name="&gt;&gt;radioPhase3.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;metroTextBox1.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <data name="&gt;&gt;radioEpicMedium.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;metroTextBox1.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;metroTextBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="RadioFreqCustom.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RadioFreqCustom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 44</value>
-  </data>
-  <data name="RadioFreqCustom.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="radioPhaseCustom.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 15</value>
   </data>
-  <data name="RadioFreqCustom.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="RadioFreqCustom.Text" xml:space="preserve">
-    <value>Свой параметр</value>
-  </data>
-  <data name="&gt;&gt;RadioFreqCustom.Name" xml:space="preserve">
-    <value>RadioFreqCustom</value>
-  </data>
-  <data name="&gt;&gt;RadioFreqCustom.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;RadioFreqCustom.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;RadioFreqCustom.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="RadioFreq10000.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RadioFreq10000.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 86</value>
-  </data>
-  <data name="RadioFreq10000.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 15</value>
-  </data>
-  <data name="RadioFreq10000.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="RadioFreq10000.Text" xml:space="preserve">
-    <value>10000</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq10000.Name" xml:space="preserve">
-    <value>RadioFreq10000</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq10000.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq10000.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq10000.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="RadioFreq5000.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RadioFreq5000.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 66</value>
-  </data>
-  <data name="RadioFreq5000.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 15</value>
-  </data>
-  <data name="RadioFreq5000.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="up.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 15</value>
   </data>
   <data name="RadioFreq5000.Text" xml:space="preserve">
     <value>5000</value>
   </data>
-  <data name="&gt;&gt;RadioFreq5000.Name" xml:space="preserve">
-    <value>RadioFreq5000</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq5000.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
   <data name="&gt;&gt;RadioFreq5000.Parent" xml:space="preserve">
     <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq5000.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="RadioFreq2500.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RadioFreq2500.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 44</value>
-  </data>
-  <data name="RadioFreq2500.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 15</value>
-  </data>
-  <data name="RadioFreq2500.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="RadioFreq2500.Text" xml:space="preserve">
-    <value>2500</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq2500.Name" xml:space="preserve">
-    <value>RadioFreq2500</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq2500.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq2500.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq2500.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="RadioFreq1000.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="RadioFreq1000.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 86</value>
   </data>
-  <data name="RadioFreq1000.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 15</value>
-  </data>
-  <data name="RadioFreq1000.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="RadioFreq1000.Text" xml:space="preserve">
-    <value>1000</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq1000.Name" xml:space="preserve">
-    <value>RadioFreq1000</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq1000.Type" xml:space="preserve">
+  <data name="&gt;&gt;radioEpicBig.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <data name="&gt;&gt;RadioFreq1000.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq1000.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="RadioFreq500.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RadioFreq500.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 65</value>
-  </data>
-  <data name="RadioFreq500.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 15</value>
-  </data>
-  <data name="RadioFreq500.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="RadioFreq500.Text" xml:space="preserve">
-    <value>500</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq500.Name" xml:space="preserve">
-    <value>RadioFreq500</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq500.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq500.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq500.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="RadioFreq100.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RadioFreq100.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 44</value>
-  </data>
-  <data name="RadioFreq100.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 15</value>
-  </data>
-  <data name="RadioFreq100.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="RadioFreq100.Text" xml:space="preserve">
-    <value>100</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq100.Name" xml:space="preserve">
-    <value>RadioFreq100</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq100.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq100.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;RadioFreq100.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="metroLabel3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="metroLabel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 16</value>
-  </data>
-  <data name="metroLabel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 19</value>
-  </data>
-  <data name="metroLabel3.TabIndex" type="System.Int32, mscorlib">
+  <data name="metroLabel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="metroLabel3.Text" xml:space="preserve">
-    <value>Частота (в секундах)</value>
-  </data>
-  <data name="&gt;&gt;metroLabel3.Name" xml:space="preserve">
-    <value>metroLabel3</value>
-  </data>
-  <data name="&gt;&gt;metroLabel3.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroLabel3.Parent" xml:space="preserve">
-    <value>frequencyBox</value>
-  </data>
-  <data name="&gt;&gt;metroLabel3.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;metroTextBox2.Name" xml:space="preserve">
-    <value>metroTextBox2</value>
-  </data>
-  <data name="&gt;&gt;metroTextBox2.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroTextBox2.Parent" xml:space="preserve">
-    <value>phasesSettingsBox</value>
   </data>
   <data name="&gt;&gt;metroTextBox2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;radioPhaseCustom.Name" xml:space="preserve">
-    <value>radioPhaseCustom</value>
+  <data name="radioEpicBig.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 15</value>
   </data>
-  <data name="&gt;&gt;radioPhaseCustom.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <data name="radioEpicMedium.Text" xml:space="preserve">
+    <value>Средний</value>
   </data>
-  <data name="&gt;&gt;radioPhaseCustom.Parent" xml:space="preserve">
-    <value>phasesSettingsBox</value>
-  </data>
-  <data name="&gt;&gt;radioPhaseCustom.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;radioPhase10.Name" xml:space="preserve">
-    <value>radioPhase10</value>
-  </data>
-  <data name="&gt;&gt;radioPhase10.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;radioPhase10.Parent" xml:space="preserve">
-    <value>phasesSettingsBox</value>
-  </data>
-  <data name="&gt;&gt;radioPhase10.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;radioPhase5.Name" xml:space="preserve">
-    <value>radioPhase5</value>
-  </data>
-  <data name="&gt;&gt;radioPhase5.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;radioPhase5.Parent" xml:space="preserve">
-    <value>phasesSettingsBox</value>
-  </data>
-  <data name="&gt;&gt;radioPhase5.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;radioPhase3.Name" xml:space="preserve">
-    <value>radioPhase3</value>
+  <data name="radioCustom.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;radioPhase3.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <data name="metroLabel3.Text" xml:space="preserve">
+    <value>Частота (в секундах)</value>
   </data>
-  <data name="&gt;&gt;radioPhase3.Parent" xml:space="preserve">
-    <value>phasesSettingsBox</value>
+  <data name="RadioFreq1000.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 15</value>
   </data>
-  <data name="&gt;&gt;radioPhase3.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="TurnSpreading.Text" xml:space="preserve">
+    <value>Включить</value>
   </data>
-  <data name="&gt;&gt;radioPhase2.Name" xml:space="preserve">
-    <value>radioPhase2</value>
+  <data name="metroTextBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
   </data>
-  <data name="&gt;&gt;radioPhase2.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <data name="&gt;&gt;TurnSpreading.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <data name="&gt;&gt;radioPhase2.Parent" xml:space="preserve">
-    <value>phasesSettingsBox</value>
-  </data>
-  <data name="&gt;&gt;radioPhase2.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="phasesSettingsBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 64</value>
-  </data>
-  <data name="phasesSettingsBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>267, 68</value>
+  <data name="resource.ImageIndex1" type="System.Int32, mscorlib">
+    <value>-1</value>
   </data>
   <data name="phasesSettingsBox.TabIndex" type="System.Int32, mscorlib">
     <value>99</value>
   </data>
-  <data name="&gt;&gt;phasesSettingsBox.Name" xml:space="preserve">
-    <value>phasesSettingsBox</value>
-  </data>
-  <data name="&gt;&gt;phasesSettingsBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;phasesSettingsBox.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;phasesSettingsBox.ZOrder" xml:space="preserve">
+  <data name="up.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="extendedSavePictures.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="extendedSavePictures.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="extendedSavePictures.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 48</value>
-  </data>
-  <data name="extendedSavePictures.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 15</value>
-  </data>
-  <data name="extendedSavePictures.TabIndex" type="System.Int32, mscorlib">
-    <value>99</value>
-  </data>
-  <data name="extendedSavePictures.Text" xml:space="preserve">
-    <value>Поэтапное сохранение</value>
-  </data>
-  <data name="&gt;&gt;extendedSavePictures.Name" xml:space="preserve">
-    <value>extendedSavePictures</value>
-  </data>
-  <data name="&gt;&gt;extendedSavePictures.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;extendedSavePictures.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;extendedSavePictures.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="SavePictures.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="SavePictures.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 31</value>
-  </data>
-  <data name="SavePictures.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 15</value>
-  </data>
-  <data name="SavePictures.TabIndex" type="System.Int32, mscorlib">
-    <value>98</value>
-  </data>
-  <data name="SavePictures.Text" xml:space="preserve">
-    <value>Сохранять картинки в 1 этап</value>
-  </data>
-  <data name="&gt;&gt;SavePictures.Name" xml:space="preserve">
-    <value>SavePictures</value>
-  </data>
-  <data name="&gt;&gt;SavePictures.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;SavePictures.Parent" xml:space="preserve">
-    <value>groupBox4</value>
   </data>
   <data name="&gt;&gt;SavePictures.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="metroLabel2.AutoSize" type="System.Boolean, mscorlib">
+  <data name="&gt;&gt;radioPhase3.Name" xml:space="preserve">
+    <value>radioPhase3</value>
+  </data>
+  <data name="&gt;&gt;RadioFreq5000.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;radioPhaseCustom.Name" xml:space="preserve">
+    <value>radioPhaseCustom</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="radioPhase2.Text" xml:space="preserve">
+    <value>2 этапа</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="radioEpicBig.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;radioEpicRandom.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="RadioFreq500.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radioCustom.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;metroLabel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radioPhase5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 15</value>
+  </data>
+  <data name="radioEpicMedium.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>64, 9</value>
   </data>
-  <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 19</value>
-  </data>
-  <data name="metroLabel2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="metroLabel2.Text" xml:space="preserve">
-    <value>Сохранение </value>
-  </data>
-  <data name="&gt;&gt;metroLabel2.Name" xml:space="preserve">
-    <value>metroLabel2</value>
-  </data>
-  <data name="&gt;&gt;metroLabel2.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroLabel2.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;metroLabel2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>62, 229</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 138</value>
-  </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>97</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="resource.Image2" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="resource.Location2" type="System.Drawing.Point, System.Drawing">
-    <value>82, 2</value>
-  </data>
-  <data name="resource.Size2" type="System.Drawing.Size, System.Drawing">
-    <value>15, 15</value>
-  </data>
-  <data name="resource.TabIndex2" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="resource.Visible2" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="metroTextBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 37</value>
-  </data>
-  <data name="metroTextBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
-  </data>
-  <data name="metroTextBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;metroTextBox2.Name" xml:space="preserve">
-    <value>metroTextBox2</value>
-  </data>
-  <data name="&gt;&gt;metroTextBox2.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroTextBox2.Parent" xml:space="preserve">
-    <value>phasesSettingsBox</value>
-  </data>
-  <data name="&gt;&gt;metroTextBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="radioPhaseCustom.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioPhaseCustom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 19</value>
-  </data>
-  <data name="radioPhaseCustom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 15</value>
-  </data>
-  <data name="radioPhaseCustom.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;radioEpicBig.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="radioPhaseCustom.Text" xml:space="preserve">
-    <value>Свой параметр</value>
-  </data>
-  <data name="&gt;&gt;radioPhaseCustom.Name" xml:space="preserve">
-    <value>radioPhaseCustom</value>
-  </data>
-  <data name="&gt;&gt;radioPhaseCustom.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;radioPhaseCustom.Parent" xml:space="preserve">
-    <value>phasesSettingsBox</value>
-  </data>
-  <data name="&gt;&gt;radioPhaseCustom.ZOrder" xml:space="preserve">
+  <data name="resource.TabIndex1" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="radioPhase10.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;frequencyBox.Name" xml:space="preserve">
+    <value>frequencyBox</value>
   </data>
-  <data name="radioPhase10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 41</value>
-  </data>
-  <data name="radioPhase10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 15</value>
-  </data>
-  <data name="radioPhase10.TabIndex" type="System.Int32, mscorlib">
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="radioPhase10.Text" xml:space="preserve">
-    <value>10 этапов</value>
+  <data name="metroLabel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 16</value>
   </data>
-  <data name="&gt;&gt;radioPhase10.Name" xml:space="preserve">
-    <value>radioPhase10</value>
+  <data name="&gt;&gt;radioEpicBig.Name" xml:space="preserve">
+    <value>radioEpicBig</value>
   </data>
-  <data name="&gt;&gt;radioPhase10.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <data name="RadioFreq10000.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 15</value>
   </data>
-  <data name="&gt;&gt;radioPhase10.Parent" xml:space="preserve">
-    <value>phasesSettingsBox</value>
+  <data name="RadioFreq10000.Location" type="System.Drawing.Point, System.Drawing">
+    <value>58, 86</value>
   </data>
-  <data name="&gt;&gt;radioPhase10.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;SavePictures.Parent" xml:space="preserve">
+    <value>groupBox4</value>
   </data>
-  <data name="radioPhase5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioPhase5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 19</value>
-  </data>
-  <data name="radioPhase5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 15</value>
-  </data>
-  <data name="radioPhase5.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="radioPhase5.Text" xml:space="preserve">
-    <value>5 этапов</value>
-  </data>
-  <data name="&gt;&gt;radioPhase5.Name" xml:space="preserve">
-    <value>radioPhase5</value>
-  </data>
-  <data name="&gt;&gt;radioPhase5.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;radioPhase5.Parent" xml:space="preserve">
-    <value>phasesSettingsBox</value>
-  </data>
-  <data name="&gt;&gt;radioPhase5.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="radioPhase3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioPhase3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 41</value>
-  </data>
-  <data name="radioPhase3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 15</value>
-  </data>
-  <data name="radioPhase3.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="radioPhase3.Text" xml:space="preserve">
-    <value>3 этапа</value>
-  </data>
-  <data name="&gt;&gt;radioPhase3.Name" xml:space="preserve">
-    <value>radioPhase3</value>
-  </data>
-  <data name="&gt;&gt;radioPhase3.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;radioPhase3.Parent" xml:space="preserve">
-    <value>phasesSettingsBox</value>
-  </data>
-  <data name="&gt;&gt;radioPhase3.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="radioPhase2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioPhase2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
-  </data>
-  <data name="radioPhase2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 15</value>
-  </data>
-  <data name="radioPhase2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="radioPhase2.Text" xml:space="preserve">
-    <value>2 этапа</value>
-  </data>
-  <data name="&gt;&gt;radioPhase2.Name" xml:space="preserve">
-    <value>radioPhase2</value>
-  </data>
-  <data name="&gt;&gt;radioPhase2.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;radioPhase2.Parent" xml:space="preserve">
-    <value>phasesSettingsBox</value>
-  </data>
-  <data name="&gt;&gt;radioPhase2.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;TurnSpreading.Name" xml:space="preserve">
-    <value>TurnSpreading</value>
-  </data>
-  <data name="&gt;&gt;TurnSpreading.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;TurnSpreading.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;TurnSpreading.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>346, 79</value>
-  </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 288</value>
-  </data>
-  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
-    <value>98</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="TurnSpreading.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="TurnSpreading.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 42</value>
-  </data>
-  <data name="TurnSpreading.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 15</value>
+  <data name="&gt;&gt;RadioFreq1000.Name" xml:space="preserve">
+    <value>RadioFreq1000</value>
   </data>
   <data name="TurnSpreading.TabIndex" type="System.Int32, mscorlib">
     <value>97</value>
   </data>
-  <data name="TurnSpreading.Text" xml:space="preserve">
-    <value>Включить</value>
+  <data name="&gt;&gt;radioCustom.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <data name="&gt;&gt;TurnSpreading.Name" xml:space="preserve">
-    <value>TurnSpreading</value>
+  <data name="phasesSettingsBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>267, 68</value>
   </data>
-  <data name="&gt;&gt;TurnSpreading.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <data name="&gt;&gt;left.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;TurnSpreading.Parent" xml:space="preserve">
-    <value>groupBox5</value>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;TurnSpreading.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;RadioFreq100.Name" xml:space="preserve">
+    <value>RadioFreq100</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="resource.ImageIndex2" type="System.Int32, mscorlib">
+    <value>-1</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>676, 419</value>
+  <data name="&gt;&gt;RadioFreq100.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
-  <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>676, 419</value>
+  <data name="SavePictures.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 31</value>
   </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>676, 419</value>
+  <data name="&gt;&gt;radioEpicRandom.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Настройка эпицентров</value>
+  <data name="extendedSavePictures.TabIndex" type="System.Int32, mscorlib">
+    <value>99</value>
+  </data>
+  <data name="resource.Font" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="textBox1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;radioEpicSmall.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;radioPhase2.Name" xml:space="preserve">
+    <value>radioPhase2</value>
+  </data>
+  <data name="resource.BackgroundImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;left.Parent" xml:space="preserve">
+    <value>directionBox</value>
+  </data>
+  <data name="RadioFreq2500.Text" xml:space="preserve">
+    <value>2500</value>
+  </data>
+  <data name="metroLabel2.Text" xml:space="preserve">
+    <value>Сохранение </value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>EpicSettings</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>MetroFramework.Forms.MetroForm, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <data name="radioPhase3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 41</value>
   </data>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="radioPhaseCustom.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="resource.Location" type="System.Drawing.Point, System.Drawing">
+    <value>82, 2</value>
+  </data>
+  <data name="&gt;&gt;radioEpicRandom.Name" xml:space="preserve">
+    <value>radioEpicRandom</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;metroTextBox1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="resource.Image2" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="metroTextBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 66</value>
+  </data>
+  <data name="metroLabel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 19</value>
+  </data>
+  <data name="&gt;&gt;metroLabel1.Name" xml:space="preserve">
+    <value>metroLabel1</value>
+  </data>
+  <data name="&gt;&gt;RadioFreq100.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="radioPhase2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;phasesSettingsBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>676, 419</value>
+  </data>
+  <data name="TurnSpreading.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="resource.Image1" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 19</value>
+  </data>
+  <data name="resource.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="resource.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>62, 229</value>
+  </data>
+  <data name="radioPhase5.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Настройка эпицентров</value>
+  </data>
+  <data name="&gt;&gt;metroLabel2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="metroTextBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 20</value>
+  </data>
+  <data name="&gt;&gt;RadioFreqCustom.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;RadioFreq1000.Parent" xml:space="preserve">
+    <value>frequencyBox</value>
+  </data>
+  <data name="right.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 15</value>
+  </data>
+  <data name="resource.AutoSize1" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;frequencyBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioCustom.Name" xml:space="preserve">
+    <value>radioCustom</value>
+  </data>
+  <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 19</value>
+  </data>
+  <data name="radioEpicRandom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 15</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="resource.RightToLeft2" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="&gt;&gt;radioEpicMedium.Name" xml:space="preserve">
+    <value>radioEpicMedium</value>
+  </data>
+  <data name="&gt;&gt;metroLabel3.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;TurnSpreading.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>676, 419</value>
+  </data>
+  <data name="SavePictures.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="extendedSavePictures.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="resource.RightToLeft1" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="&gt;&gt;directionBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="radioCustom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 15</value>
+  </data>
+  <data name="metroLabel3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Размер эпицентра</value>
+  </data>
+  <data name="resource.ImageIndex" type="System.Int32, mscorlib">
+    <value>-1</value>
+  </data>
+  <data name="resource.Visible2" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;phasesSettingsBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;up.Parent" xml:space="preserve">
+    <value>directionBox</value>
+  </data>
+  <data name="left.Text" xml:space="preserve">
+    <value>Влево</value>
+  </data>
+  <data name="&gt;&gt;radioCustom.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;metroLabel1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;RadioFreq500.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="resource.BackgroundImageLayout1" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Tile</value>
+  </data>
+  <data name="resource.AutoSizeMode2" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowOnly</value>
+  </data>
+  <data name="SavePictures.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;metroLabel2.Name" xml:space="preserve">
+    <value>metroLabel2</value>
+  </data>
+  <data name="&gt;&gt;metroTextBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;RadioFreq1000.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;RadioFreq2500.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;RadioFreq5000.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="radioEpicSmall.Text" xml:space="preserve">
+    <value>Маленький</value>
+  </data>
+  <data name="directionBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 119</value>
+  </data>
+  <data name="resource.Dock2" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>en-US</value>
+  </metadata>
 </root>
