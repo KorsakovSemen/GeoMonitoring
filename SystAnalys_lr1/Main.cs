@@ -38,7 +38,8 @@ namespace SystAnalys_lr1
         public static int EpicPhaseSavingParam = 1;
         //
         string savepath;
-
+        //типы удаления
+        public static int delType;
         /// 
         public static bool SavePictures = false;
         ///
@@ -890,6 +891,34 @@ namespace SystAnalys_lr1
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            //if()
+                crossSettings = new CrossroadsSettings();
+                this.StyleManager.Clone(crossSettings);
+                crossSettings.ShowDialog();
+                if (firstCrossRoads != 0 && secondCrossRoads != 0)
+                {
+                    selectRoute.Enabled = false;
+                    deleteBus.Enabled = false;
+                    addBus.Enabled = false;
+                    selectButton.Enabled = true;
+                    selectRoute.Enabled = true;
+                    drawVertexButton.Enabled = true;
+                    drawEdgeButton.Enabled = true;
+                    deleteButton.Enabled = true;
+                    allBusSettings.Enabled = false;
+                    delAllBusesOnRoute.Enabled = false;
+                    label12.Visible = true;
+                    label12.Text = MainStrings.putTrafficLights1 + " " + firstCrossRoads.ToString();
+                    selected = new List<int>();
+                    stopPointButton.Enabled = true;
+                    addTraficLight.Enabled = false;
+                    selectRoute.Enabled = true;
+                }
+                sheet.Image = G.GetBitmap();
+                selected1 = -1;
+                DrawGrid();
+
+            
             G.clearSheet();
             G.drawALLGraph(V, E);
             if (changeRoute.Text == MainStrings.network)

@@ -100,6 +100,12 @@
     <Compile Include="Forms\CrossroadsSettings.Designer.cs">
       <DependentUpon>CrossroadsSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DeleteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DeleteForm.Designer.cs">
+      <DependentUpon>DeleteForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DisplayEpicenters.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CrossroadsSettings.resx">
       <DependentUpon>CrossroadsSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeleteForm.resx">
+      <DependentUpon>DeleteForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DisplayEpicenters.en-US.resx">
       <DependentUpon>DisplayEpicenters.cs</DependentUpon>
