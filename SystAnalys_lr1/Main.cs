@@ -745,6 +745,7 @@ namespace SystAnalys_lr1
             createCoordinates.Invoke(new DelBool((s) => createCoordinates.Enabled = s), true);
             launchBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), true);
             stopBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), true);
+            metroButton2.Invoke(new DelBool((s) => metroButton2.Enabled = s), true);
             toolStripMenu.Invoke((System.Action)(() =>
             {
                 saveButton.Enabled = true;
@@ -759,6 +760,7 @@ namespace SystAnalys_lr1
             createCoordinates.Invoke(new DelBool((s) => createCoordinates.Enabled = s), false);
             launchBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), false);
             stopBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), false);
+            metroButton2.Invoke(new DelBool((s) => metroButton2.Enabled = s), false);
             toolStripMenu.Invoke((System.Action)(() =>
             {
                 saveButton.Enabled = false;
@@ -1161,6 +1163,7 @@ namespace SystAnalys_lr1
                 createGridToolStripMenuItem.Enabled = true;
                 Matrix();
                 BringToFront();
+                timer2.Start();
                 MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
         }
@@ -1773,6 +1776,7 @@ namespace SystAnalys_lr1
                                 fileV.WriteLine(savepath.ToString());
                             }
                             BringToFront();
+                            timer2.Start();
                             MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         addRouteToolStripMenuItem.Enabled = true;
@@ -1834,6 +1838,7 @@ namespace SystAnalys_lr1
                                         fileV.WriteLine(savepath.ToString());
                                     }
                                     BringToFront();
+                                    timer2.Start();
                                     MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                                 }
                                 addRouteToolStripMenuItem.Enabled = true;
@@ -3634,6 +3639,7 @@ namespace SystAnalys_lr1
 
         private void clearButton_Click(object sender, EventArgs e)
         {
+            timer2.Stop();
             openEpicFormToolStripMenuItem.Enabled = false;
             addRouteToolStripMenuItem.Enabled = false;
             createGridToolStripMenuItem.Enabled = false;
@@ -3695,22 +3701,7 @@ namespace SystAnalys_lr1
             MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
-        //
-        private void metroButton1_Click_2(object sender, EventArgs e)
-        {
-            foreach (var bus in buses)
-            {
-                bus.PositionAt = 1;
-                bus.Stop();
-            }
-            CreateAllCoordinates();
-            BarabanAfterOpti();
-            foreach (var bus in buses)
-            {
 
-                bus.Start();
-            }
-        }
 
 
 
