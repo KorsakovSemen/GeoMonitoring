@@ -9,7 +9,7 @@ namespace SystAnalys_lr1.Forms
         public CrossroadsSettings()
         {
             InitializeComponent();
-            Xbutton.Checked = true;
+            //Xbutton.Checked = true;
             textBox3.Validated += textBox3_Validated;
             textBox4.Validated += textBox4_Validated;
             errorProvider3.SetIconAlignment(textBox3, ErrorIconAlignment.MiddleRight);
@@ -27,7 +27,7 @@ namespace SystAnalys_lr1.Forms
                 Main.firstCrossRoadsRedLight = int.Parse(textBox4.Text);
             else
                 errorProvider4.SetError(textBox4, "Заполните поле!");
-            if (textBox3.Text != "" && textBox4.Text != "")
+            if (textBox3.Text != "" && textBox4.Text != "" && (Xbutton.Checked == true || Tbutton.Checked == true))
                 Close();
         }
 
