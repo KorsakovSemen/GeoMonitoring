@@ -566,7 +566,7 @@ namespace SystAnalys_lr1
         //старый таймер
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if (TheGrid != null)
+            if (TheGrid != null && sheet.Image != null)
             {
                 sheet.Image = G.GetBitmap();
             }
@@ -1776,7 +1776,6 @@ namespace SystAnalys_lr1
                                 fileV.WriteLine(savepath.ToString());
                             }
                             BringToFront();
-                            timer2.Start();
                             MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
                         addRouteToolStripMenuItem.Enabled = true;
@@ -1793,6 +1792,7 @@ namespace SystAnalys_lr1
                     }
                 }
             }
+            timer2.Start();
             BringToFront();
         }
 
@@ -1838,7 +1838,6 @@ namespace SystAnalys_lr1
                                         fileV.WriteLine(savepath.ToString());
                                     }
                                     BringToFront();
-                                    timer2.Start();
                                     MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                                 }
                                 addRouteToolStripMenuItem.Enabled = true;
@@ -1896,6 +1895,7 @@ namespace SystAnalys_lr1
                     }
                 }
             }
+            timer2.Start();
             BringToFront();
             changeRoute.Text = MainStrings.network;
         }
