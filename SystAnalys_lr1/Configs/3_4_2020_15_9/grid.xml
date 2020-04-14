@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<Grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <left>0</left>
-  <up>0</up>
-  <right>0</right>
-  <down>0</down>
-  <gridWidth>80</gridWidth>
-  <gridHeight>40</gridHeight>
-</Grid>

@@ -28,103 +28,81 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeleteForm));
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.metroRadioButton4 = new MetroFramework.Controls.MetroRadioButton();
+            this.All = new MetroFramework.Controls.MetroRadioButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroRadioButton3 = new MetroFramework.Controls.MetroRadioButton();
-            this.metroRadioButton2 = new MetroFramework.Controls.MetroRadioButton();
-            this.metroRadioButton1 = new MetroFramework.Controls.MetroRadioButton();
+            this.BusStops = new MetroFramework.Controls.MetroRadioButton();
+            this.TrafficLights = new MetroFramework.Controls.MetroRadioButton();
+            this.VandE = new MetroFramework.Controls.MetroRadioButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroPanel1
             // 
-            this.metroPanel1.Controls.Add(this.metroRadioButton4);
+            resources.ApplyResources(this.metroPanel1, "metroPanel1");
+            this.metroPanel1.Controls.Add(this.All);
             this.metroPanel1.Controls.Add(this.metroLabel1);
-            this.metroPanel1.Controls.Add(this.metroRadioButton3);
-            this.metroPanel1.Controls.Add(this.metroRadioButton2);
-            this.metroPanel1.Controls.Add(this.metroRadioButton1);
+            this.metroPanel1.Controls.Add(this.BusStops);
+            this.metroPanel1.Controls.Add(this.TrafficLights);
+            this.metroPanel1.Controls.Add(this.VandE);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(131, 63);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(304, 176);
-            this.metroPanel1.TabIndex = 0;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
-            // metroRadioButton4
+            // All
             // 
-            this.metroRadioButton4.AutoSize = true;
-            this.metroRadioButton4.Location = new System.Drawing.Point(88, 144);
-            this.metroRadioButton4.Name = "metroRadioButton4";
-            this.metroRadioButton4.Size = new System.Drawing.Size(42, 15);
-            this.metroRadioButton4.TabIndex = 6;
-            this.metroRadioButton4.Text = "Все";
-            this.metroRadioButton4.UseSelectable = true;
+            resources.ApplyResources(this.All, "All");
+            this.All.Name = "All";
+            this.All.UseSelectable = true;
+            this.All.CheckedChanged += new System.EventHandler(this.All_CheckedChanged);
             // 
             // metroLabel1
             // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(103, 11);
+            resources.ApplyResources(this.metroLabel1, "metroLabel1");
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(102, 19);
-            this.metroLabel1.TabIndex = 5;
-            this.metroLabel1.Text = "Типы удалений";
             // 
-            // metroRadioButton3
+            // BusStops
             // 
-            this.metroRadioButton3.AutoSize = true;
-            this.metroRadioButton3.Location = new System.Drawing.Point(88, 112);
-            this.metroRadioButton3.Name = "metroRadioButton3";
-            this.metroRadioButton3.Size = new System.Drawing.Size(82, 15);
-            this.metroRadioButton3.TabIndex = 4;
-            this.metroRadioButton3.Text = "Остановки";
-            this.metroRadioButton3.UseSelectable = true;
+            resources.ApplyResources(this.BusStops, "BusStops");
+            this.BusStops.Name = "BusStops";
+            this.BusStops.UseSelectable = true;
+            this.BusStops.CheckedChanged += new System.EventHandler(this.BusStops_CheckedChanged);
             // 
-            // metroRadioButton2
+            // TrafficLights
             // 
-            this.metroRadioButton2.AutoSize = true;
-            this.metroRadioButton2.Location = new System.Drawing.Point(88, 79);
-            this.metroRadioButton2.Name = "metroRadioButton2";
-            this.metroRadioButton2.Size = new System.Drawing.Size(87, 15);
-            this.metroRadioButton2.TabIndex = 3;
-            this.metroRadioButton2.Text = "Светофоры";
-            this.metroRadioButton2.UseSelectable = true;
+            resources.ApplyResources(this.TrafficLights, "TrafficLights");
+            this.TrafficLights.Name = "TrafficLights";
+            this.TrafficLights.UseSelectable = true;
+            this.TrafficLights.CheckedChanged += new System.EventHandler(this.TrafficLights_CheckedChanged);
             // 
-            // metroRadioButton1
+            // VandE
             // 
-            this.metroRadioButton1.AutoSize = true;
-            this.metroRadioButton1.Location = new System.Drawing.Point(88, 48);
-            this.metroRadioButton1.Name = "metroRadioButton1";
-            this.metroRadioButton1.Size = new System.Drawing.Size(123, 15);
-            this.metroRadioButton1.TabIndex = 2;
-            this.metroRadioButton1.Text = "Вершины и ребра";
-            this.metroRadioButton1.UseSelectable = true;
-            this.metroRadioButton1.CheckedChanged += new System.EventHandler(this.metroRadioButton1_CheckedChanged);
+            resources.ApplyResources(this.VandE, "VandE");
+            this.VandE.Name = "VandE";
+            this.VandE.UseSelectable = true;
+            this.VandE.CheckedChanged += new System.EventHandler(this.metroRadioButton1_CheckedChanged);
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(234, 269);
+            resources.ApplyResources(this.metroButton1, "metroButton1");
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(102, 23);
-            this.metroButton1.TabIndex = 1;
-            this.metroButton1.Text = "Ok";
             this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // DeleteForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 315);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.metroPanel1);
             this.Name = "DeleteForm";
             this.Resizable = false;
-            this.Text = "Типы удаления";
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -134,11 +112,11 @@
         #endregion
 
         private MetroFramework.Controls.MetroPanel metroPanel1;
-        private MetroFramework.Controls.MetroRadioButton metroRadioButton4;
+        private MetroFramework.Controls.MetroRadioButton All;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroRadioButton metroRadioButton3;
-        private MetroFramework.Controls.MetroRadioButton metroRadioButton2;
-        private MetroFramework.Controls.MetroRadioButton metroRadioButton1;
+        private MetroFramework.Controls.MetroRadioButton BusStops;
+        private MetroFramework.Controls.MetroRadioButton TrafficLights;
+        private MetroFramework.Controls.MetroRadioButton VandE;
         private MetroFramework.Controls.MetroButton metroButton1;
     }
 }

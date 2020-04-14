@@ -81,6 +81,7 @@
             this.theme = new MetroFramework.Controls.MetroLabel();
             this.changeTheme = new MetroFramework.Controls.MetroComboBox();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.sheet = new System.Windows.Forms.PictureBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
@@ -97,13 +98,6 @@
             this.loadButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.msmMain = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.themes = new MetroFramework.Controls.MetroToggle();
-            this.config = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.hint = new MetroFramework.Controls.MetroLabel();
-            this.sheet = new System.Windows.Forms.PictureBox();
             this.selectButton = new System.Windows.Forms.ToolStripButton();
             this.drawVertexButton = new System.Windows.Forms.ToolStripButton();
             this.drawEdgeButton = new System.Windows.Forms.ToolStripButton();
@@ -117,6 +111,12 @@
             this.stopPointButton = new System.Windows.Forms.ToolStripButton();
             this.addTraficLight = new System.Windows.Forms.ToolStripButton();
             this.clearButton = new System.Windows.Forms.ToolStripButton();
+            this.msmMain = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.themes = new MetroFramework.Controls.MetroToggle();
+            this.config = new MetroFramework.Controls.MetroLabel();
+            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.hint = new MetroFramework.Controls.MetroLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -127,9 +127,9 @@
             this.panel7.SuspendLayout();
             this.allBusSettings.SuspendLayout();
             this.mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.toolStripMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -684,6 +684,14 @@
             this.mainPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.panel6_Scroll);
             this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
+            // sheet
+            // 
+            this.sheet.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.sheet, "sheet");
+            this.sheet.Name = "sheet";
+            this.sheet.TabStop = false;
+            this.sheet.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sheet_MouseClick_1);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -811,51 +819,6 @@
             resources.ApplyResources(this.loadFromToolStripMenuItem, "loadFromToolStripMenuItem");
             this.loadFromToolStripMenuItem.Click += new System.EventHandler(this.loadFromToolStripMenuItem_Click);
             // 
-            // msmMain
-            // 
-            this.msmMain.Owner = this;
-            // 
-            // themes
-            // 
-            resources.ApplyResources(this.themes, "themes");
-            this.themes.Name = "themes";
-            this.themes.UseSelectable = true;
-            this.themes.CheckedChanged += new System.EventHandler(this.themes_CheckedChanged);
-            // 
-            // config
-            // 
-            resources.ApplyResources(this.config, "config");
-            this.config.Name = "config";
-            // 
-            // metroComboBox1
-            // 
-            this.metroComboBox1.AutoCompleteCustomSource.AddRange(new string[] {
-            resources.GetString("metroComboBox1.AutoCompleteCustomSource"),
-            resources.GetString("metroComboBox1.AutoCompleteCustomSource1")});
-            this.metroComboBox1.FormattingEnabled = true;
-            resources.ApplyResources(this.metroComboBox1, "metroComboBox1");
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.UseSelectable = true;
-            this.metroComboBox1.SelectedIndexChanged += new System.EventHandler(this.metroComboBox1_SelectedIndexChanged);
-            // 
-            // metroLabel1
-            // 
-            resources.ApplyResources(this.metroLabel1, "metroLabel1");
-            this.metroLabel1.Name = "metroLabel1";
-            // 
-            // hint
-            // 
-            resources.ApplyResources(this.hint, "hint");
-            this.hint.Name = "hint";
-            // 
-            // sheet
-            // 
-            this.sheet.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.sheet, "sheet");
-            this.sheet.Name = "sheet";
-            this.sheet.TabStop = false;
-            this.sheet.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sheet_MouseClick_1);
-            // 
             // selectButton
             // 
             this.selectButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -931,7 +894,7 @@
             // delAllBusesOnRoute
             // 
             this.delAllBusesOnRoute.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.delAllBusesOnRoute.Image = global::SystAnalys_lr1.Properties.Resources.dump;
+            this.delAllBusesOnRoute.Image = global::SystAnalys_lr1.Properties.Resources.garbage;
             resources.ApplyResources(this.delAllBusesOnRoute, "delAllBusesOnRoute");
             this.delAllBusesOnRoute.Name = "delAllBusesOnRoute";
             this.delAllBusesOnRoute.Click += new System.EventHandler(this.delAllBusesOnRoute_Click);
@@ -959,6 +922,43 @@
             resources.ApplyResources(this.clearButton, "clearButton");
             this.clearButton.Name = "clearButton";
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            // 
+            // msmMain
+            // 
+            this.msmMain.Owner = this;
+            // 
+            // themes
+            // 
+            resources.ApplyResources(this.themes, "themes");
+            this.themes.Name = "themes";
+            this.themes.UseSelectable = true;
+            this.themes.CheckedChanged += new System.EventHandler(this.themes_CheckedChanged);
+            // 
+            // config
+            // 
+            resources.ApplyResources(this.config, "config");
+            this.config.Name = "config";
+            // 
+            // metroComboBox1
+            // 
+            this.metroComboBox1.AutoCompleteCustomSource.AddRange(new string[] {
+            resources.GetString("metroComboBox1.AutoCompleteCustomSource"),
+            resources.GetString("metroComboBox1.AutoCompleteCustomSource1")});
+            this.metroComboBox1.FormattingEnabled = true;
+            resources.ApplyResources(this.metroComboBox1, "metroComboBox1");
+            this.metroComboBox1.Name = "metroComboBox1";
+            this.metroComboBox1.UseSelectable = true;
+            this.metroComboBox1.SelectedIndexChanged += new System.EventHandler(this.metroComboBox1_SelectedIndexChanged);
+            // 
+            // metroLabel1
+            // 
+            resources.ApplyResources(this.metroLabel1, "metroLabel1");
+            this.metroLabel1.Name = "metroLabel1";
+            // 
+            // hint
+            // 
+            resources.ApplyResources(this.hint, "hint");
+            this.hint.Name = "hint";
             // 
             // Main
             // 
@@ -1002,10 +1002,10 @@
             this.allBusSettings.PerformLayout();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -70,6 +70,15 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Все.
+        /// </summary>
+        internal static string all {
+            get {
+                return ResourceManager.GetString("all", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Среднее:.
         /// </summary>
         internal static string average {
@@ -84,6 +93,15 @@ namespace SystAnalys_lr1.Strings {
         internal static string bus {
             get {
                 return ResourceManager.GetString("bus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Остановки.
+        /// </summary>
+        internal static string busStops {
+            get {
+                return ResourceManager.GetString("busStops", resourceCulture);
             }
         }
         
@@ -336,6 +354,24 @@ namespace SystAnalys_lr1.Strings {
         internal static string sensorsDown {
             get {
                 return ResourceManager.GetString("sensorsDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Светофоры.
+        /// </summary>
+        internal static string TrafficLights {
+            get {
+                return ResourceManager.GetString("TrafficLights", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вершины и ребра.
+        /// </summary>
+        internal static string VandE {
+            get {
+                return ResourceManager.GetString("VandE", resourceCulture);
             }
         }
     }

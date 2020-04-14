@@ -210,4 +210,16 @@
   <data name="sensorsDown" xml:space="preserve">
     <value>Percentage reduction in sensors</value>
   </data>
+  <data name="all" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="busStops" xml:space="preserve">
+    <value>Bus stops</value>
+  </data>
+  <data name="TrafficLights" xml:space="preserve">
+    <value>Traffic lights</value>
+  </data>
+  <data name="VandE" xml:space="preserve">
+    <value>Vertices and edges</value>
+  </data>
 </root>

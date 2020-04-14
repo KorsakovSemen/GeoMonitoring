@@ -210,4 +210,16 @@
   <data name="sensorsDown" xml:space="preserve">
     <value>Снижение кол-ва датчиков в процентах</value>
   </data>
+  <data name="all" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="busStops" xml:space="preserve">
+    <value>Остановки</value>
+  </data>
+  <data name="TrafficLights" xml:space="preserve">
+    <value>Светофоры</value>
+  </data>
+  <data name="VandE" xml:space="preserve">
+    <value>Вершины и ребра</value>
+  </data>
 </root>

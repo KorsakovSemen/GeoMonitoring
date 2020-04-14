@@ -174,6 +174,198 @@ namespace SystAnalys_lr1.Classes
                 }
             }
         }
+        public void deleteTF(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, DrawGraph G, SerializableDictionary<string, List<Edge>> routesEdgeE)
+        {
+            foreach (var tl in Main.traficLights)
+            {
+                if (Math.Pow((tl.x - e.X / Main.zoom), 2) + Math.Pow((tl.y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                {
+                    tl.Stop();
+                    Main.TraficLightsInGrids.Remove(tl.gridNum);
+                    Main.traficLights.Remove(tl);
+                    Main.flag = true;
+                    break;
+                }
+            }
+        }
+        public void deleteVE(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, DrawGraph G, SerializableDictionary<string, List<Edge>> routesEdgeE)
+        {
+            if (!Main.flag)
+            {
+                foreach (var routeV in Main.routes)
+                {
+                    for (int i = 0; i < routeV.Value.Count; i++)
+                    {
+                        if (Math.Pow((routeV.Value[i].X - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[i].Y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                        {
+                            //foreach(var routesEdge in routesEdgeE.Values)
+                            //{
+                            for (int j = 0; j < routesEdgeE[routeV.Key].Count; j++)
+                            {
+                                if ((routesEdgeE[routeV.Key][j].v1 == i) || (routesEdgeE[routeV.Key][j].v2 == i))
+                                {
+                                    routesEdgeE[routeV.Key].RemoveAt(j);
+                                    j--;
+                                }
+                                else
+                                {
+                                    if (routesEdgeE[routeV.Key][j].v1 > i) routesEdgeE[routeV.Key][j].v1--;
+                                    if (routesEdgeE[routeV.Key][j].v2 > i) routesEdgeE[routeV.Key][j].v2--;
+                                }
+                            }
+                            routeV.Value.RemoveAt(i);
+                            Main.flag = true;
+                            break;
+                            //}                       
+                        }
+
+                    }
+                }
+            }
+            //ищем, возможно было нажато ребро
+            if (!Main.flag)
+            {
+                try
+                {
+                    foreach (var routeV in Main.routes)
+                    {
+                        for (int j = 0; j < routeV.Value.Count; j++)
+                        {
+                            for (int i = 0; i < routesEdgeE[routeV.Key].Count; i++)
+                            {
+                                if (routesEdgeE[routeV.Key][i].v1 == routesEdgeE[routeV.Key][i].v2) //если это петля
+                                {
+                                    if ((Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].v1].X - G.R - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].v1].Y - G.R - e.Y / Main.zoom), 2) <= ((G.R + 2) * (G.R + 2))) &&
+                                        (Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].v1].X - G.R - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].v1].Y - G.R - e.Y / Main.zoom), 2) >= ((G.R - 2) * (G.R - 2))))
+                                    {
+                                        routesEdgeE[routeV.Key].RemoveAt(i);
+                                        Main.flag = true;
+                                        break;
+                                    }
+                                }
+                                else //не петля
+                                {
+                                    if (((e.X / Main.zoom - routeV.Value[routesEdgeE[routeV.Key][i].v1].X) * (routeV.Value[routesEdgeE[routeV.Key][i].v2].Y - routeV.Value[routesEdgeE[routeV.Key][i].v1].Y) / (routeV.Value[routesEdgeE[routeV.Key][i].v2].X - routeV.Value[routesEdgeE[routeV.Key][i].v1].X) + routeV.Value[routesEdgeE[routeV.Key][i].v1].Y) <= (e.Y / Main.zoom + 4) &&
+                                        ((e.X / Main.zoom - routeV.Value[routesEdgeE[routeV.Key][i].v1].X) * (routeV.Value[routesEdgeE[routeV.Key][i].v2].Y - routeV.Value[routesEdgeE[routeV.Key][i].v1].Y) / (routeV.Value[routesEdgeE[routeV.Key][i].v2].X - routeV.Value[routesEdgeE[routeV.Key][i].v1].X) + routeV.Value[routesEdgeE[routeV.Key][i].v1].Y) >= (e.Y / Main.zoom - 4))
+                                    {
+                                        if ((routeV.Value[routesEdgeE[routeV.Key][i].v1].X <= routeV.Value[routesEdgeE[routeV.Key][i].v2].X && routeV.Value[routesEdgeE[routeV.Key][i].v1].X <= e.X / Main.zoom && e.X / Main.zoom <= routeV.Value[routesEdgeE[routeV.Key][i].v2].X) ||
+                                            (routeV.Value[routesEdgeE[routeV.Key][i].v1].X >= routeV.Value[routesEdgeE[routeV.Key][i].v2].X && routeV.Value[routesEdgeE[routeV.Key][i].v1].X >= e.X / Main.zoom && e.X / Main.zoom >= routeV.Value[routesEdgeE[routeV.Key][i].v2].X))
+                                        {
+                                            routesEdgeE[routeV.Key].RemoveAt(i);
+                                            Main.flag = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+                catch
+                {
+
+                }
+
+            }
+
+            for (int i = 0; i < V.Count; i++)
+            {
+                if (Math.Pow((V[i].X - e.X / Main.zoom), 2) + Math.Pow((V[i].Y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                {
+                    for (int j = 0; j < E.Count; j++)
+                    {
+                        if ((E[j].v1 == i) || (E[j].v2 == i))
+                        {
+
+                            E.RemoveAt(j);
+                            j--;
+                        }
+                        else
+                        {
+                            if (E[j].v1 > i) E[j].v1--;
+                            if (E[j].v2 > i) E[j].v2--;
+                        }
+                    }
+                    V.RemoveAt(i);
+                    Main.flag = true;
+                    break;
+
+                }
+
+            }
+
+            //ищем, возможно было нажато ребро
+            if (!Main.flag)
+            {
+                for (int i = 0; i < E.Count; i++)
+                {
+                    if (E[i].v1 == E[i].v2) //если это петля
+                    {
+                        if ((Math.Pow((V[E[i].v1].X - G.R - e.X / Main.zoom), 2) + Math.Pow((V[E[i].v1].Y - G.R - e.Y / Main.zoom), 2) <= ((G.R + 2) * (G.R + 2))) &&
+                            (Math.Pow((V[E[i].v1].X - G.R - e.X / Main.zoom), 2) + Math.Pow((V[E[i].v1].Y - G.R - e.Y / Main.zoom), 2) >= ((G.R - 2) * (G.R - 2))))
+                        {
+                            E.RemoveAt(i);
+                            Main.flag = true;
+                            break;
+                        }
+                    }
+                    else //не петля
+                    {
+                        try
+                        {
+                            if (((e.X / Main.zoom - V[E[i].v1].X) * (V[E[i].v2].Y - V[E[i].v1].Y) / (V[E[i].v2].X - V[E[i].v1].X) + V[E[i].v1].Y) <= (e.Y / Main.zoom + 4) &&
+                                ((e.X / Main.zoom - V[E[i].v1].X) * (V[E[i].v2].Y - V[E[i].v1].Y) / (V[E[i].v2].X - V[E[i].v1].X) + V[E[i].v1].Y) >= (e.Y / Main.zoom - 4))
+                            {
+                                if ((V[E[i].v1].X <= V[E[i].v2].X && V[E[i].v1].X <= e.X / Main.zoom && e.X / Main.zoom <= V[E[i].v2].X) ||
+                                    (V[E[i].v1].X >= V[E[i].v2].X && V[E[i].v1].X >= e.X / Main.zoom && e.X / Main.zoom >= V[E[i].v2].X))
+                                {
+                                    E.RemoveAt(i);
+                                    Main.flag = true;
+                                    break;
+                                }
+                            }
+                        }
+                        catch
+                        {
+
+                        }
+                    }
+                }
+            }
+        }
+        public void deleteBS(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, DrawGraph G, SerializableDictionary<string, List<Edge>> routesEdgeE)
+        {
+            if (!Main.flag)
+            {
+                foreach (var sp in Main.allstopPoints)
+                {
+                    if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                    {
+                        Main.allstopPoints.Remove(sp);
+                        Main.flag = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!Main.flag)
+            {
+                foreach (var stop in Main.stopPoints)
+                {
+                    foreach (var sp in stop.Value)
+                    {
+                        if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                        {
+                            Main.stopPointsInGrids[stop.Key].Remove(sp.gridNum);
+                            stop.Value.Remove(sp);
+                            Main.flag = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
         public void delete(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, DrawGraph G, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
             //удалили ли что-нибудь по ЭТОМУ клику
@@ -220,7 +412,6 @@ namespace SystAnalys_lr1.Classes
                     }
                 }
             }
-
 
             if (!Main.flag)
             {

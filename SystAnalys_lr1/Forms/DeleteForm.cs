@@ -1,4 +1,5 @@
 ﻿using MetroFramework.Forms;
+using SystAnalys_lr1.Strings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,31 @@ namespace SystAnalys_lr1.Forms
 
         private void metroRadioButton1_CheckedChanged(object sender, EventArgs e)
         {
+            Main.delType = Main.deleteType.VertexAndEdge;
+            Main.globalDel = MainStrings.VandE;
+        }
 
+        private void TrafficLights_CheckedChanged(object sender, EventArgs e)
+        {
+            Main.delType = Main.deleteType.TrafficLight;
+            Main.globalDel = MainStrings.TrafficLights;
+        }
+
+        private void BusStops_CheckedChanged(object sender, EventArgs e)
+        {
+            Main.delType = Main.deleteType.BusStops;
+            Main.globalDel = MainStrings.busStops;
+        }
+
+        private void All_CheckedChanged(object sender, EventArgs e)
+        {
+            Main.delType = Main.deleteType.All;
+            Main.globalDel = MainStrings.all;
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
