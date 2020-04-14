@@ -1,4 +1,5 @@
-﻿using MetroFramework.Forms;
+﻿using MetroFramework;
+using MetroFramework.Forms;
 using SystAnalys_lr1.Strings;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,7 @@ namespace SystAnalys_lr1
 
         private void Matrix()
         {
+
             matrixGrid.Rows.Clear();
             matrixGrid.Refresh();
 
@@ -75,46 +77,53 @@ namespace SystAnalys_lr1
             }
 
             matrixGrid.Columns[parkSize].HeaderText = "Total";
-
-            for (int i = 0; i < busesPark.Count; ++i)
+            try
             {
-                if (busesPark[i].Count != 0)
+                for (int i = 0; i < busesPark.Count; ++i)
                 {
-                    matrixGrid.Rows[i].HeaderCell.Value = busesPark[i].First().route.ToString();
-                }
-            }
-
-            int total, res;
-            res = 0;
-            for (int i = 0; i < busesPark.Count; i++)
-            {
-                total = 0;
-                for (int j = 0; j < parkSize + 1; j++)
-                {
-                    if (j < busesPark[i].Count)
+                    if (busesPark[i].Count != 0)
                     {
-                        if (busesPark[i][j].tracker == true)
+                        matrixGrid.Rows[i].HeaderCell.Value = busesPark[i].Last().route.ToString();
+                    }
+                }
+
+                int total, res;
+                res = 0;
+                for (int i = 0; i < busesPark.Count; i++)
+                {
+                    total = 0;
+                    for (int j = 0; j < parkSize + 1; j++)
+                    {
+                        if (j < busesPark[i].Count)
                         {
-                            myArr[i, j] = 1;
-                            total++;
+                            if (busesPark[i][j].tracker == true)
+                            {
+                                myArr[i, j] = 1;
+                                total++;
+                            }
+                            else
+                            {
+                                myArr[i, j] = 0;
+                            }
+                            matrixGrid.Rows[i].Cells[j].Value = myArr[i, j];
                         }
                         else
                         {
-                            myArr[i, j] = 0;
+                            matrixGrid.Rows[i].Cells[j].Value = 0;
                         }
-                        matrixGrid.Rows[i].Cells[j].Value = myArr[i, j];
-                    }
-                    else
-                    {
-                        matrixGrid.Rows[i].Cells[j].Value = 0;
-                    }
-                    matrixGrid.Rows[i].Cells[parkSize].Value = total;
+                        matrixGrid.Rows[i].Cells[parkSize].Value = total;
 
+                    }
+                    res += total;
                 }
-                res += total;
+
+                label8.Text = MainStrings.matrixFirst + res.ToString() + " " + MainStrings.matrixSecond + (buses.Count - res).ToString() + " " + MainStrings.matrixThird + buses.Count.ToString();
+            }
+            catch
+            {
+                MetroMessageBox.Show(this, MainStrings.Matrix, MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-            label8.Text = MainStrings.matrixFirst + res.ToString() + " " + MainStrings.matrixSecond + (buses.Count - res).ToString() + " " + MainStrings.matrixThird + buses.Count.ToString();
         }
     }
 }

@@ -250,6 +250,15 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка создания матрицы.
+        /// </summary>
+        internal static string Matrix {
+            get {
+                return ResourceManager.GetString("Matrix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на С датчиками:.
         /// </summary>
         internal static string matrixFirst {

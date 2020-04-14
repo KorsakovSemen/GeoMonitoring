@@ -576,6 +576,10 @@ namespace SystAnalys_lr1
             {
                 sheet.Image = G.GetBitmap();
             }
+            //long totalMemory = GC.GetTotalMemory(false);
+
+            //GC.Collect();
+            //GC.WaitForPendingFinalizers();
         }
         private void panel6_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
@@ -1783,7 +1787,13 @@ namespace SystAnalys_lr1
             {
                 try
                 {
+                    Console.WriteLine("Memory used before collection:       {0:N0}",
+                       GC.GetTotalMemory(false));
                     LoadRoutes(savepath + @"\");
+                    // Collect all generations of memory.
+                    GC.Collect();
+                    Console.WriteLine("Memory used after full collection:   {0:N0}",
+                                      GC.GetTotalMemory(true));
                 }
                 catch (Exception exc)
                 {
@@ -2521,6 +2531,8 @@ namespace SystAnalys_lr1
                 loadingForm.loading.Value = 100;
                 loadingForm.close = true;
                 loadingForm.Close();
+
+                GC.Collect(GC.MaxGeneration);
             }
             catch (Exception exc)
             {
@@ -3273,7 +3285,8 @@ namespace SystAnalys_lr1
 
         private void delAllBusesOnRoute_Click(object sender, EventArgs e)
         {
-            var MBSave = MetroMessageBox.Show(this, MainStrings.deleteBus, MainStrings.delete, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var MBSave = MessageBox.Show(this, MainStrings.deleteBus, MainStrings.delete, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            Console.WriteLine(MBSave);
             if (MBSave == DialogResult.Yes)
             {
                 checkBuses();

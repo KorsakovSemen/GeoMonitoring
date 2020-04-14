@@ -216,6 +216,9 @@
   <data name="busStops" xml:space="preserve">
     <value>Остановки</value>
   </data>
+  <data name="Matrix" xml:space="preserve">
+    <value>Ошибка создания матрицы</value>
+  </data>
   <data name="TrafficLights" xml:space="preserve">
     <value>Светофоры</value>
   </data>

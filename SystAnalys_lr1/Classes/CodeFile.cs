@@ -390,6 +390,10 @@ namespace SystAnalys_lr1
             return MemberwiseClone();
         }
 
+        ~Bus()
+        {
+        }
+
         public Bus()
         { }
 
