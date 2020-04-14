@@ -121,6 +121,7 @@ namespace SystAnalys_lr1
         {
             Graphics.FromImage(bitmap).Clear(Color.Wheat);
             bitmap = new Bitmap(Main.globalMap);
+
             gr = Graphics.FromImage(bitmap);
 
         }
@@ -293,7 +294,7 @@ namespace SystAnalys_lr1
         Timer MovingTimer;
         public List<Epicenter> Epicenters { get; set; } = new List<Epicenter>();
         //сетка
-        private static List<GridPart> Rectangles;
+        public static List<GridPart> Rectangles;
         //для создания координат
         public double angle, x, y;
         //позиция автобуса
@@ -384,7 +385,14 @@ namespace SystAnalys_lr1
         {
             return Rectangles;
         }
+        public void ClearGrids()
+        {
+            Rectangles = new List<GridPart>();
+            Rectangles.TrimExcess();
+            Rectangles = null;
+            Rectangles.TrimExcess();
 
+        }
         public object Clone()
         {
             return MemberwiseClone();
