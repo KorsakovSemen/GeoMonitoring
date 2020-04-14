@@ -333,6 +333,30 @@
   <ItemGroup>
     <Folder Include="Results\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\criss-cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dump.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\network.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\traffic-light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\transportation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cursor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circle.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
