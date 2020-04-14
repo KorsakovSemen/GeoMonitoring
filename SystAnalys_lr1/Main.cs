@@ -1085,7 +1085,7 @@ namespace SystAnalys_lr1
 
         private void newModelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             OpenFileDialog fb = new OpenFileDialog
             {
                 FilterIndex = 1,
@@ -1143,7 +1143,7 @@ namespace SystAnalys_lr1
                 Ep = new DisplayEpicenters(this);
                 StyleManager.Clone(Ep);
                 Ep.Show();
-                         
+
                 openEpicFormToolStripMenuItem.Enabled = true;
                 addRouteToolStripMenuItem.Enabled = true;
                 createGridToolStripMenuItem.Enabled = true;
@@ -1747,6 +1747,9 @@ namespace SystAnalys_lr1
                     {
                         if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
                         {
+                            openEpicFormToolStripMenuItem.Enabled = true;
+                            addRouteToolStripMenuItem.Enabled = true;
+                            createGridToolStripMenuItem.Enabled = true;
                             foreach (var tl in traficLights)
                             {
                                 tl.Stop();
@@ -1764,8 +1767,7 @@ namespace SystAnalys_lr1
                             BringToFront();
                             MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
-                        addRouteToolStripMenuItem.Enabled = true;
-                        createGridToolStripMenuItem.Enabled = true;
+
                     }
                     catch (Exception exc)
                     {
@@ -1784,10 +1786,13 @@ namespace SystAnalys_lr1
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (savepath != null)
+            if (savepath != null && savepath != "")
             {
                 try
                 {
+                    openEpicFormToolStripMenuItem.Enabled = true;
+                    addRouteToolStripMenuItem.Enabled = true;
+                    createGridToolStripMenuItem.Enabled = true;
                     //
                     if (Ep != null)
                     {
@@ -1842,9 +1847,6 @@ namespace SystAnalys_lr1
                     StyleManager.Clone(Ep);
                     Ep.Show();
                     DrawGrid();
-                    openEpicFormToolStripMenuItem.Enabled = true;
-                    addRouteToolStripMenuItem.Enabled = true;
-                    createGridToolStripMenuItem.Enabled = true;
                     Matrix();
                     BringToFront();
                     timer2.Start();
@@ -1884,6 +1886,9 @@ namespace SystAnalys_lr1
                                     stopPoints.Clear();
                                     allstopPoints.Clear();
                                     LoadRoutes(dialog.SelectedPath + @"\");
+                                    openEpicFormToolStripMenuItem.Enabled = true;
+                                    addRouteToolStripMenuItem.Enabled = true;
+                                    createGridToolStripMenuItem.Enabled = true;
                                     savepath = dialog.SelectedPath;
                                     File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
                                     using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
@@ -1893,8 +1898,6 @@ namespace SystAnalys_lr1
                                     BringToFront();
                                     MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                                 }
-                                addRouteToolStripMenuItem.Enabled = true;
-                                createGridToolStripMenuItem.Enabled = true;
                             }
                         }
                     }
@@ -1933,14 +1936,15 @@ namespace SystAnalys_lr1
                             stopPoints.Clear();
                             allstopPoints.Clear();
                             LoadRoutes(dialog.SelectedPath + @"\");
+                            openEpicFormToolStripMenuItem.Enabled = true;
+                            addRouteToolStripMenuItem.Enabled = true;
+                            createGridToolStripMenuItem.Enabled = true;
                             savepath = dialog.SelectedPath;
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
                             using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
                             {
                                 fileV.WriteLine(savepath.ToString());
                             }
-                            addRouteToolStripMenuItem.Enabled = true;
-                            createGridToolStripMenuItem.Enabled = true;
                             BringToFront();
                             MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
@@ -3877,9 +3881,8 @@ namespace SystAnalys_lr1
             {
                 G.clearSheet();
                 G.clearSheet2();
-                globalMap = null;
+                //globalMap = null;
                 //DisplayEpicenters.EsheetPicture = null;
-
                 //sheet.Image = null;
                 G = new DrawGraph();
 
@@ -3913,14 +3916,14 @@ namespace SystAnalys_lr1
             BringToFront();
             Matrix();
             TheGrid = new List<GridPart>();
-           
+
             TheGrid.TrimExcess();
-        
+
             Bus.Rectangles = new List<GridPart>();
             Bus.Rectangles.TrimExcess();
-        
-            this.Refresh();
-            MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
+
+            Refresh();
+            // MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
 

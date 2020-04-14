@@ -363,6 +363,30 @@
   <ItemGroup>
     <None Include="Resources\garbage.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newcursor1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2020-04-14_17-42-30.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\line-chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rubbish.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\incineration.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
