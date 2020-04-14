@@ -387,6 +387,24 @@
   <ItemGroup>
     <None Include="Resources\incineration.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\line_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\traffic-light_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ripbus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newbus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circle1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_line__.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -289,7 +289,7 @@ namespace SystAnalys_lr1
         public static int ScrollX;
         public static int ScrollY;
         public int skip = 1;
-        public static string sImg = "../../Resources/bus.PNG";
+        public static string sImg = "../../Resources/newbus.PNG";
         //таймер для движения
         Timer MovingTimer;
         public List<Epicenter> Epicenters { get; set; } = new List<Epicenter>();

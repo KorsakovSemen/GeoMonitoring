@@ -19,7 +19,7 @@ namespace SystAnalys_lr1.Properties {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -203,6 +203,16 @@ namespace SystAnalys_lr1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap circle1 {
+            get {
+                object obj = ResourceManager.GetObject("circle1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap criss_cross {
             get {
                 object obj = ResourceManager.GetObject("criss-cross", resourceCulture);
@@ -363,6 +373,16 @@ namespace SystAnalys_lr1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap line_new {
+            get {
+                object obj = ResourceManager.GetObject("line_new", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Map {
             get {
                 object obj = ResourceManager.GetObject("Map", resourceCulture);
@@ -403,6 +423,26 @@ namespace SystAnalys_lr1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap new_line__ {
+            get {
+                object obj = ResourceManager.GetObject("new_line__", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap newbus {
+            get {
+                object obj = ResourceManager.GetObject("newbus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap newcursor {
             get {
                 object obj = ResourceManager.GetObject("newcursor", resourceCulture);
@@ -423,9 +463,9 @@ namespace SystAnalys_lr1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap photo_2020_04_14_17_42_30 {
+        internal static System.Drawing.Bitmap ripbus {
             get {
-                object obj = ResourceManager.GetObject("photo_2020-04-14_17-42-30", resourceCulture);
+                object obj = ResourceManager.GetObject("ripbus", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -486,6 +526,16 @@ namespace SystAnalys_lr1.Properties {
         internal static System.Drawing.Bitmap traffic_light {
             get {
                 object obj = ResourceManager.GetObject("traffic-light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap traffic_light_ {
+            get {
+                object obj = ResourceManager.GetObject("traffic-light_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

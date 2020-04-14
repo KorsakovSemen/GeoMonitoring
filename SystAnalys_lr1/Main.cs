@@ -3660,12 +3660,25 @@ namespace SystAnalys_lr1
                 msmMain.Theme = MetroFramework.MetroThemeStyle.Dark;
                 toolStripMenu.BackColor = Color.FromArgb(17, 17, 17);
                 toolStripMenu.ForeColor = Color.FromArgb(153, 153, 153);
+                selectButton.Image = new Bitmap(("../../Resources/newcursor_bt.png"));
+                drawVertexButton.Image = new Bitmap(("../../Resources/circle_bt.png"));
+                drawEdgeButton.Image = new Bitmap(("../../Resources/line_new_bt.png"));
+                selectRoute.Image = new Bitmap(("../../Resources/line-chart_bt.png"));
+                addTraficLight.Image = new Bitmap("../../Resources/traffic-light.png");
+
+
             }
             else
             {
                 msmMain.Theme = MetroFramework.MetroThemeStyle.Light;
                 toolStripMenu.BackColor = Color.FromArgb(255, 255, 255);
                 toolStripMenu.ForeColor = Color.FromArgb(0, 0, 0);
+                selectButton.Image = new Bitmap(("../../Resources/newcursor.png"));
+                drawVertexButton.Image = new Bitmap(("../../Resources/circle1.png"));
+                drawEdgeButton.Image = new Bitmap(("../../Resources/line_new.png"));
+                selectRoute.Image = new Bitmap(("../../Resources/line-chart.png"));
+                addTraficLight.Image = new Bitmap("../../Resources/traffic-light_.png");
+
             }
             using (StreamWriter fileV = new StreamWriter("../../SaveConfig/theme.txt"))
             {
