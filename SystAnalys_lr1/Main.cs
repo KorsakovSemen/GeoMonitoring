@@ -2950,6 +2950,7 @@ namespace SystAnalys_lr1
                                     using (Font arialFont = new Font("Segoe UI Black", 300))
                                     {
                                         graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(busPic.Width / 2, busPic.Width / 2));
+                                        graphics.Dispose();
                                     }
                                 }
                                 buses.Add(new Bus(busPic, pos, backsideCheck.Checked, changeRoute.Text, AllCoordinates[changeRoute.Text], true));
@@ -2962,6 +2963,7 @@ namespace SystAnalys_lr1
                                     using (Font arialFont = new Font("Segoe UI Black", 300))
                                     {
                                         graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(busPic.Width / 2, busPic.Width / 2));
+                                        graphics.Dispose();
                                     }
                                 }
                                 buses.Add(new Bus(busPic, pos, backsideCheck.Checked, changeRoute.Text, AllCoordinates[changeRoute.Text], false));
