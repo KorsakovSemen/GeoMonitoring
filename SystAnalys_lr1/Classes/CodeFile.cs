@@ -110,7 +110,7 @@ namespace SystAnalys_lr1
         {
             Graphics.FromImage(bitmap).Clear(Color.Wheat);
             bitmap = new Bitmap(Main.globalMap);
-
+            gr.Dispose();
             gr = Graphics.FromImage(bitmap);
 
         }
@@ -120,6 +120,7 @@ namespace SystAnalys_lr1
             /*Graphics.FromImage(bitmap).Clear(Color.Wheat); *//// ТУТ ЭКСЕПШН НА МОДЕЛИНГЕ   
             bitmap = new Bitmap(DisplayEpicenters.EsheetPicture);
             gr = null;
+          //  gr.Dispose();
             gr = (Graphics.FromImage(bitmap));
 
         }

@@ -1815,17 +1815,23 @@ namespace SystAnalys_lr1
                     addRouteToolStripMenuItem.Enabled = true;
                     createGridToolStripMenuItem.Enabled = true;
                     //
-                    if (Ep != null)
+                    if (!Ep.IsDisposed)
                     {
                         Ep.EG.clearSheet2();
+                        Ep.Dispose();
                         Ep.Close();
                     }
                     foreach (var bus in buses)
                     {
                         bus.Stop();
+                        bus.getCoordinates().Clear();
+                        bus.getCoordinates().TrimExcess();
+                        bus.GetMovingTimer().Dispose();
+                        bus.busPic.Dispose();
                         mainPanel.Controls.Remove(bus.busPic);
                     }
                     buses.Clear();
+
                     config.Text = MainStrings.config;
                     foreach (var tl in traficLights)
                     {
@@ -1862,9 +1868,9 @@ namespace SystAnalys_lr1
                     Bus.setGrid(TheGrid);
                   //  Bus.setAllCoordinates(AllCoordinates);
                     addInComboBox();
-                    Ep = new DisplayEpicenters(this);
-                    StyleManager.Clone(Ep);
-                    Ep.Show();
+                    //Ep = new DisplayEpicenters(this);
+                    //StyleManager.Clone(Ep);
+                    //Ep.Show();
                     DrawGrid();
                     Matrix();
                     BringToFront();
@@ -2541,6 +2547,7 @@ namespace SystAnalys_lr1
                         using (Font arialFont = new Font("Segoe UI Black", 300))
                         {
                             graphics.DrawString(x.route.ToString(), arialFont, Brushes.Black, new Point(x.busPic.Width / 2, x.busPic.Width / 2));
+                            graphics.Dispose();
                         }
                     }
                     x.skip = 5;
