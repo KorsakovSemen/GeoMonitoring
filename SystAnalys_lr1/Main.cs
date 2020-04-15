@@ -389,7 +389,7 @@ namespace SystAnalys_lr1
                 {
                     return EpicPhaseSavingParam;
                 }
-                
+
             }
 
             for (int j = PhaseSizeSelect(); j > 0; j--)
@@ -425,7 +425,7 @@ namespace SystAnalys_lr1
                         bus.skip -= 1;
                     if (bus.tracker == true)
                     {
-                        while (bus.TickCount_  > 0)
+                        while (bus.TickCount_ > 0)
                         {
                             bus.MoveWithoutGraphicsByGrids();
                             if (EpicSettings.TurnSpreadingSet == true)
@@ -478,7 +478,7 @@ namespace SystAnalys_lr1
                                         EpicFounded = true;
                                         if (EpicFounded == true)
                                         {
-                                            FoundTime = (T  - (bus.TickCount_ * j)) ;
+                                            FoundTime = (T - (bus.TickCount_ * j));
                                             if (small > FoundTime)
                                             {
                                                 small = FoundTime;
@@ -496,7 +496,7 @@ namespace SystAnalys_lr1
                         }
                     }
                 }
-              
+
                 if ((SavePictures == true) && (extendedSavePictures == true))
                 {
                     Directory.CreateDirectory(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + i.ToString());
@@ -525,7 +525,7 @@ namespace SystAnalys_lr1
                     }
                     i++;
                 }
-            
+
                 loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Value = s), loadingForm.loading.Value + 1);
             }
             if (small == old)
@@ -1159,7 +1159,7 @@ namespace SystAnalys_lr1
                 CreateGrid();
                 CreatePollutionInRoutes();
                 Bus.setGrid(TheGrid);
-               // Bus.setAllCoordinates(AllCoordinates);
+                // Bus.setAllCoordinates(AllCoordinates);
                 addInComboBox();
                 Ep = new DisplayEpicenters(this);
                 StyleManager.Clone(Ep);
@@ -1601,7 +1601,7 @@ namespace SystAnalys_lr1
                                     img.Save(path + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString() + "/" + i.ToString() + "_re" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                                 }
                             }
-                        
+
                         }
 
                         loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Value = s), loadingForm.loading.Value + 1);
@@ -1622,21 +1622,23 @@ namespace SystAnalys_lr1
                     if (total < 0 || count < ResultFromModeling.Count / 2)
                     {
                         mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
-                        percentMean.Add(cicl, null);
+                        if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
+                            percentMean.Add(withoutSensorsBuses.Last(), null);
                         mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none);
                     }
                     else
                     {
                         mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
                             + "\n" + MainStrings.procentSuc + " " + ResultFromModeling.Count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
-                        percentMean.Add(cicl, total / ResultFromModeling.Count);
+                        if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
+                            percentMean.Add(withoutSensorsBuses.Last(), total / ResultFromModeling.Count);
                         mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (Convert.ToDouble(total / ResultFromModeling.Count).ToString()));
                     }
 ;
-                    using (StreamWriter fileV = new StreamWriter(path + @"\" + cicl.ToString() + "0%" + ".txt"))
+                    using (StreamWriter fileV = new StreamWriter(path + @"\" + withoutSensorsBuses.Last() + "_buses" + ".txt"))
                     {
                         fileV.WriteLine(MainStrings.sensorsDown + ": " + (cicl * 10).ToString());
-                        fileV.WriteLine(MainStrings.countBuses + ": " + (cicl).ToString());
+                        fileV.WriteLine(MainStrings.countBuses + ": " + (withoutSensorsBuses.Last()).ToString());
                         fileV.WriteLine(MainStrings.numIter + ": " + optText.Text);
                         fileV.WriteLine(MainStrings.distance + ": " + speed.Text);
                         fileV.WriteLine(MainStrings.found + ": " + (from num in ResultFromModeling where (num != null) select num).Count());
@@ -1866,7 +1868,7 @@ namespace SystAnalys_lr1
                     CreateGrid();
                     CreatePollutionInRoutes();
                     Bus.setGrid(TheGrid);
-                  //  Bus.setAllCoordinates(AllCoordinates);
+                    //  Bus.setAllCoordinates(AllCoordinates);
                     addInComboBox();
                     //Ep = new DisplayEpicenters(this);
                     //StyleManager.Clone(Ep);
@@ -2607,7 +2609,7 @@ namespace SystAnalys_lr1
                 CreatePollutionInRoutes();
                 CreateOneRandomEpicenter(EpicSizeParam, null);
                 Bus.setGrid(TheGrid);
-              //  Bus.setAllCoordinates(AllCoordinates);
+                //  Bus.setAllCoordinates(AllCoordinates);
 
                 addInComboBox();
                 G.clearSheet();
