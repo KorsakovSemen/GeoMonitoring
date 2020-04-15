@@ -101,6 +101,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.metroPanel1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "DeleteForm";
             this.Resizable = false;
             this.metroPanel1.ResumeLayout(false);

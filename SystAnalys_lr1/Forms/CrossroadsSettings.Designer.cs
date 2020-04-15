@@ -61,7 +61,6 @@
             this.textBox3.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
             this.textBox3.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode")));
             this.textBox3.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location")));
-            this.textBox3.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin")));
             this.textBox3.CustomButton.Name = "";
             this.textBox3.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size")));
             this.textBox3.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -93,7 +92,6 @@
             this.textBox4.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
             this.textBox4.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode1")));
             this.textBox4.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location1")));
-            this.textBox4.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin1")));
             this.textBox4.CustomButton.Name = "";
             this.textBox4.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size1")));
             this.textBox4.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -142,12 +140,12 @@
             this.metroPanel1.Controls.Add(this.metroLabel1);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.HorizontalScrollbarSize = 8;
             resources.ApplyResources(this.metroPanel1, "metroPanel1");
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 10;
+            this.metroPanel1.VerticalScrollbarSize = 8;
             // 
             // Xbutton
             // 
@@ -181,6 +179,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CrossroadsSettings";
+            this.Resizable = false;
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider4)).EndInit();
             this.metroPanel1.ResumeLayout(false);
