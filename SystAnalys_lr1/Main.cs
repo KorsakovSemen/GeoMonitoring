@@ -1786,7 +1786,7 @@ namespace SystAnalys_lr1
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (savepath != null && savepath != "")
+            if (savepath != null || savepath != "")
             {
                 try
                 {
@@ -1824,12 +1824,9 @@ namespace SystAnalys_lr1
                     routesEdge.Clear();
                     changeRoute.Items.Clear();
                     AllCoordinates.Clear();
-                    //  allstopPoints.Clear();
-                    allstopPoints = new List<Vertex>();
-                    // stopPoints.Clear();
-                    stopPoints = new SerializableDictionary<string, List<Vertex>>();
-                    //traficLights.Clear();
-                    traficLights = new List<TraficLight>();
+                    allstopPoints.Clear();
+                    stopPoints.Clear();
+                    traficLights.Clear();
                     //  sheet.Image = Image.FromFile(fb.FileName);
                     saveImage = sheet.Image;
                     metroTrackBar1.Value = 1;
@@ -2520,9 +2517,9 @@ namespace SystAnalys_lr1
                     Bitmap bitmap = new Bitmap(Bus.sImg); //load the image file
                     using (Graphics graphics = Graphics.FromImage(bitmap))
                     {
-                        using (Font arialFont = new Font("Arial", 300))
+                        using (Font arialFont = new Font("Segoe UI Black", 300))
                         {
-                            graphics.DrawString(x.route.ToString(), arialFont, Brushes.Black, new Point(10, 10));
+                            graphics.DrawString(x.route.ToString(), arialFont, Brushes.Black, new Point(0, 10));
                         }
                     }
                     x.skip = 5;
@@ -2895,7 +2892,7 @@ namespace SystAnalys_lr1
                                 busPic.Size = new System.Drawing.Size(int.Parse(busSize.Text), int.Parse(busSize.Text));
                             else
                                 busPic.Size = new System.Drawing.Size(sizeBus, sizeBus);
-                            busPic.Image = new Bitmap("../../Resources/shkolnyy-avtobus.png");
+                            busPic.Image = new Bitmap("../../Resources/newbus.png");
                             busPic.SizeMode = PictureBoxSizeMode.StretchImage;
                             mainPanel.Controls.Add(busPic);
                             busPic.BringToFront();
@@ -2922,21 +2919,21 @@ namespace SystAnalys_lr1
                             {
                                 using (Graphics graphics = Graphics.FromImage(busPic.Image))
                                 {
-                                    using (Font arialFont = new Font("Arial", 300))
+                                    using (Font arialFont = new Font("Segoe UI Black", 300))
                                     {
-                                        graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(10, 10));
+                                        graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(0, 10));
                                     }
                                 }
                                 buses.Add(new Bus(busPic, pos, backsideCheck.Checked, changeRoute.Text, true));
                             }
                             else
                             {
-                                busPic.Image = MakeGray(new Bitmap("../../Resources/shkolnyy-avtobus.png"));
+                                busPic.Image = new Bitmap("../../Resources/bus.png");
                                 using (Graphics graphics = Graphics.FromImage(busPic.Image))
                                 {
-                                    using (Font arialFont = new Font("Arial", 300))
+                                    using (Font arialFont = new Font("Segoe UI Black", 300))
                                     {
-                                        graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(10, 10));
+                                        graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(0, 10));
                                     }
                                 }
                                 buses.Add(new Bus(busPic, pos, backsideCheck.Checked, changeRoute.Text, false));
@@ -3979,8 +3976,6 @@ namespace SystAnalys_lr1
                 f.ShowDialog();
             }
         }
-
-
 
 
     }
