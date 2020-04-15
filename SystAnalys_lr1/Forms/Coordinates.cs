@@ -27,6 +27,11 @@ namespace SystAnalys_lr1
             Bus.SetScrollY(mainPanel.AutoScrollPosition.Y);
 
 
+            foreach (var bus in buses)
+            {
+                bus.setAllCoordinates(AllCoordinates[bus.getRoute()]);
+            }
+
         }
         private async void AsyncCreateAllCoordinates()
         {
@@ -35,7 +40,7 @@ namespace SystAnalys_lr1
             {
 
                 CreateAllCoordinates();
-                Bus.AllCoordinates = AllCoordinates;
+                
 
 
             });
@@ -135,7 +140,14 @@ namespace SystAnalys_lr1
                 Bus.SetScrollY(mainPanel.AutoScrollPosition.Y);
      
             }
-           
+
+            foreach (var bus in buses)
+            {
+                bus.setAllCoordinates(AllCoordinates[bus.getRoute()]);
+            }
+
+
+
         }
 
     }

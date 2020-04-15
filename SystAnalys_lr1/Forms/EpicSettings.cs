@@ -297,7 +297,7 @@ namespace SystAnalys_lr1.Forms
         private int SetPhaseSavingSize()
         {
        
-            int PhasesSizearam = 0;
+            int PhasesSizeParam = 0;
             foreach (Control control in this.phasesSettingsBox.Controls)
             {
                 if (control is RadioButton)
@@ -308,30 +308,30 @@ namespace SystAnalys_lr1.Forms
                         switch (radio.Name.ToString())
                         {
                             case "radioPhase2":
-                                PhasesSizearam = 2;
+                                PhasesSizeParam = 2;
                                 Main.EpicPhaseSavingSave = "radioPhase2";
                                 break;
                             case "radioPhase3":
-                                PhasesSizearam = 3;
+                                PhasesSizeParam = 3;
                                 Main.EpicPhaseSavingSave = "radioPhase3";
                                 break;
                             case "radioPhase5":
-                                PhasesSizearam = 5;
+                                PhasesSizeParam = 5;
                                 Main.EpicPhaseSavingSave = "radioPhase5";
                                 break;
                             case "radioPhase10":
-                                PhasesSizearam = 10;
+                                PhasesSizeParam = 10;
                                 Main.EpicPhaseSavingSave = "radioPhase10";
                                 break;                      
-                            case "RadioFreqCustom":
-                                Main.EpicPhaseSavingSave = "RadioFreqCustom";
-                                if (int.TryParse(metroTextBox1.Text, out int T))
+                            case "radioPhaseCustom":
+                                Main.EpicPhaseSavingSave = "radioPhaseCustom";
+                                if (int.TryParse(metroTextBox2.Text, out int T))
                                 {
-                                    PhasesSizearam = int.Parse(metroTextBox1.Text);
+                                    PhasesSizeParam = int.Parse(metroTextBox2.Text);
                                 }
                                 else
                                 {
-                                    PhasesSizearam = 1;
+                                    PhasesSizeParam = 1;
                                 }
                                 break;
                         }
@@ -339,7 +339,7 @@ namespace SystAnalys_lr1.Forms
                     }
                 }
             }
-            return PhasesSizearam;
+            return PhasesSizeParam;
         }
 
 

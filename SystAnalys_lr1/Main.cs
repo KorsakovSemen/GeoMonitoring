@@ -374,10 +374,28 @@ namespace SystAnalys_lr1
             {
                 bus.Epicenters = epList;
             }
-            for (int j = EpicPhaseSavingParam; j > 0; j--)
+
+            //if(extendedSavePictures == false)
+            //{
+            //    EpicPhaseSavingParam = 1;
+            //}
+            int PhaseSizeSelect()
+            {
+                if (extendedSavePictures == false)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return EpicPhaseSavingParam;
+                }
+                
+            }
+
+            for (int j = PhaseSizeSelect(); j > 0; j--)
             {
                 ////
-                if (j == EpicPhaseSavingParam)
+                if (j == PhaseSizeSelect())
                 {
                     if ((SavePictures == true) && (extendedSavePictures == true))
                     {
@@ -402,12 +420,12 @@ namespace SystAnalys_lr1
                     bus.Stop();
                     //bus.Epicenters.Clear();
                     bus.Epicenters = epList;
-                    bus.TickCount_ = T / EpicPhaseSavingParam;
+                    bus.TickCount_ = T / PhaseSizeSelect();
                     if (bus.skip > 0)
                         bus.skip -= 1;
                     if (bus.tracker == true)
                     {
-                        while (bus.TickCount_ > 0)
+                        while (bus.TickCount_  > 0)
                         {
                             bus.MoveWithoutGraphicsByGrids();
                             if (EpicSettings.TurnSpreadingSet == true)
@@ -460,7 +478,7 @@ namespace SystAnalys_lr1
                                         EpicFounded = true;
                                         if (EpicFounded == true)
                                         {
-                                            FoundTime = (T / 2 - bus.TickCount_) / 5;
+                                            FoundTime = (T  - (bus.TickCount_ * j)) ;
                                             if (small > FoundTime)
                                             {
                                                 small = FoundTime;
@@ -478,7 +496,7 @@ namespace SystAnalys_lr1
                         }
                     }
                 }
-
+              
                 if ((SavePictures == true) && (extendedSavePictures == true))
                 {
                     Directory.CreateDirectory(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + i.ToString());
@@ -507,6 +525,8 @@ namespace SystAnalys_lr1
                     }
                     i++;
                 }
+            
+                loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Value = s), loadingForm.loading.Value + 1);
             }
             if (small == old)
                 ResultFromModeling.Add(null);
@@ -522,6 +542,7 @@ namespace SystAnalys_lr1
                     ResultFromModeling.Add(small * 25);
                 }
             }
+
         }
         delegate void DelBmp(Bitmap bmp);
         //отрисовать всю сетку
@@ -1138,7 +1159,7 @@ namespace SystAnalys_lr1
                 CreateGrid();
                 CreatePollutionInRoutes();
                 Bus.setGrid(TheGrid);
-                Bus.setAllCoordinates(AllCoordinates);
+               // Bus.setAllCoordinates(AllCoordinates);
                 addInComboBox();
                 Ep = new DisplayEpicenters(this);
                 StyleManager.Clone(Ep);
@@ -1580,7 +1601,7 @@ namespace SystAnalys_lr1
                                     img.Save(path + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString() + "/" + i.ToString() + "_re" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                                 }
                             }
-                            i++;
+                        
                         }
 
                         loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Value = s), loadingForm.loading.Value + 1);
@@ -1839,7 +1860,7 @@ namespace SystAnalys_lr1
                     CreateGrid();
                     CreatePollutionInRoutes();
                     Bus.setGrid(TheGrid);
-                    Bus.setAllCoordinates(AllCoordinates);
+                  //  Bus.setAllCoordinates(AllCoordinates);
                     addInComboBox();
                     Ep = new DisplayEpicenters(this);
                     StyleManager.Clone(Ep);
@@ -2579,7 +2600,7 @@ namespace SystAnalys_lr1
                 CreatePollutionInRoutes();
                 CreateOneRandomEpicenter(EpicSizeParam, null);
                 Bus.setGrid(TheGrid);
-                Bus.setAllCoordinates(AllCoordinates);
+              //  Bus.setAllCoordinates(AllCoordinates);
 
                 addInComboBox();
                 G.clearSheet();
@@ -2924,7 +2945,7 @@ namespace SystAnalys_lr1
                                         graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(busPic.Width / 2, busPic.Width / 2));
                                     }
                                 }
-                                buses.Add(new Bus(busPic, pos, backsideCheck.Checked, changeRoute.Text, true));
+                                buses.Add(new Bus(busPic, pos, backsideCheck.Checked, changeRoute.Text, AllCoordinates[changeRoute.Text], true));
                             }
                             else
                             {
@@ -2936,7 +2957,7 @@ namespace SystAnalys_lr1
                                         graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(busPic.Width / 2, busPic.Width / 2));
                                     }
                                 }
-                                buses.Add(new Bus(busPic, pos, backsideCheck.Checked, changeRoute.Text, false));
+                                buses.Add(new Bus(busPic, pos, backsideCheck.Checked, changeRoute.Text, AllCoordinates[changeRoute.Text], false));
                             };
                             buses.Last().Set();
                         }
@@ -3070,7 +3091,7 @@ namespace SystAnalys_lr1
 
                 DrawGrid();
                 CreateOneRouteCoordinates((changeRoute.Text));
-                Bus.AllCoordinates = AllCoordinates;
+                //Bus.AllCoordinates = AllCoordinates;
                 return;
             }
         }

@@ -297,7 +297,7 @@ namespace SystAnalys_lr1
         //текущий квадрат, в котором находится автобус
         private int? Locate = null;
         //все координаты для движения автобуса
-        static public SerializableDictionary<string, List<Point>> AllCoordinates;
+         public  List<Point> Coordinates;
         //для того, чтобы 1 раз прибавлять к OneGridFilling
         public int R = 7;
         //сколько автобусу нужно проехать в тиках
@@ -349,15 +349,15 @@ namespace SystAnalys_lr1
             oldZoom = (int)ZoomCoef;
         }
 
-        public static SerializableDictionary<string, List<Point>> getAllCoordinates()
+        public  List<Point> getCoordinates()
         {
-            return AllCoordinates;
+            return Coordinates;
         }
 
 
-        public static void setAllCoordinates(SerializableDictionary<string, List<Point>> A)
+        public  void setAllCoordinates( List<Point> A)
         {
-            AllCoordinates = A;
+            Coordinates = A;
         }
 
         public int? getLocate()
@@ -397,7 +397,7 @@ namespace SystAnalys_lr1
         public bool tracker { get; set; }
 
 
-        public Bus(PictureBox busPic, int PositionAt, bool Turn, string route, bool not)
+        public Bus(PictureBox busPic, int PositionAt, bool Turn, string route,List<Point> Coordinates, bool not)
         {
             tracker = not;
             oldSize = busPic.Size.Height;
@@ -410,6 +410,7 @@ namespace SystAnalys_lr1
             ScrollX = 0;
             ScrollY = 0;
             oldSize = busPic.Height;
+            this.Coordinates = Coordinates;
         }
         //движение без графики (для моделирования)
         public void ClearAroundEpic()
@@ -432,7 +433,7 @@ namespace SystAnalys_lr1
             {
                 if (TurnBack == false)
                 {
-                    if (PositionAt < AllCoordinates[route].IndexOf(AllCoordinates[route].Last()))
+                    if (PositionAt < Coordinates.IndexOf(Coordinates.Last()))
                     {
                         PositionAt++;
                     }
@@ -507,13 +508,13 @@ namespace SystAnalys_lr1
         public void AlignBus()
         {
 
-            if (PositionAt < AllCoordinates[route].Count)
+            if (PositionAt < Coordinates.Count)
             {
-                busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
+                busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((Coordinates[PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (Coordinates[PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
             }
             else
             {
-                busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((AllCoordinates[route][PositionAt - 1].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt - 1].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
+                busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((Coordinates[PositionAt - 1].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (Coordinates[PositionAt - 1].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
             }
 
         }
@@ -527,11 +528,10 @@ namespace SystAnalys_lr1
             {
                 if (InstaStop == false)
                 {
-                    if (AllCoordinates.ContainsKey(route))
-                    {
+                   
                         if (TurnBack == false)
                         {
-                            if (PositionAt < AllCoordinates[route].Count)
+                            if (PositionAt < Coordinates.Count)
                             {
                                 if (Main.buses.Count != 0)
                                 {
@@ -554,7 +554,7 @@ namespace SystAnalys_lr1
                                     {
                                         foreach (var sp in Main.stopPoints[route])
                                         {
-                                            if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - AllCoordinates[route][PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - AllCoordinates[route][PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
+                                            if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
                                             {
                                                 MovingTimer.Stop();
                                                 await Task.Delay(rnd.Next(0, 10000));
@@ -574,13 +574,13 @@ namespace SystAnalys_lr1
                                     {
                                         foreach (var sp in Main.traficLights)
                                         {
-                                            if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - AllCoordinates[route][PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - AllCoordinates[route][PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status != Status.RED)
+                                            if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status != Status.RED)
                                             {
                                                 skip = 100;
                                                 break;
                                             }
                                             else
-                                            if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - AllCoordinates[route][PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - AllCoordinates[route][PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status == Status.RED)
+                                            if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status == Status.RED)
                                             {
                                                 skip = 100;
                                                 MovingTimer.Stop();
@@ -596,7 +596,7 @@ namespace SystAnalys_lr1
                                     }
                                 }
 
-                                busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
+                                busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((Coordinates[PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (Coordinates[PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
                                 PositionAt++;
                             }
                             else
@@ -618,7 +618,7 @@ namespace SystAnalys_lr1
                         {
                             if (PositionAt > 0)
                             {
-                                if (PositionAt < AllCoordinates[route].Count)
+                                if (PositionAt < Coordinates.Count)
                                 {
                                     if (Main.buses.Count != 0)
                                     {
@@ -644,7 +644,7 @@ namespace SystAnalys_lr1
                                         {
                                             foreach (var sp in Main.stopPoints[route])
                                             {
-                                                if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - AllCoordinates[route][PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - AllCoordinates[route][PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
+                                                if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
                                                 {
                                                     MovingTimer.Stop();
                                                     await Task.Delay(rnd.Next(0, 10000));
@@ -664,12 +664,12 @@ namespace SystAnalys_lr1
                                         {
                                             foreach (var sp in Main.traficLights)
                                             {
-                                                if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - AllCoordinates[route][PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - AllCoordinates[route][PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef) && sp.status != Status.RED)
+                                                if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef) && sp.status != Status.RED)
                                                 {
                                                     skip = 100;
                                                     break;
                                                 }
-                                                if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - AllCoordinates[route][PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - AllCoordinates[route][PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef) && sp.status == Status.RED)
+                                                if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef) && sp.status == Status.RED)
                                                 {
                                                     skip = 100;
                                                     MovingTimer.Stop();
@@ -684,7 +684,7 @@ namespace SystAnalys_lr1
                                         }
                                     }
 
-                                    busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((AllCoordinates[route][PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (AllCoordinates[route][PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
+                                    busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((Coordinates[PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (Coordinates[PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
                                     PositionAt--;
                                 }
                             }
@@ -709,7 +709,7 @@ namespace SystAnalys_lr1
                     {
                         MovingTimer.Stop();
                     };
-                }
+                
             }
             catch { }
         }
@@ -730,8 +730,8 @@ namespace SystAnalys_lr1
                 foreach (var Sector in EpicList.GetEpicenterGrid())
                 {
                     foreach (var Square in Sector.Value)
-                        if ((PositionAt < AllCoordinates[route].Count))
-                            if (((AllCoordinates[route][PositionAt].X * ZoomCoef) >= Square.x * ZoomCoef) && ((AllCoordinates[route][PositionAt].X * ZoomCoef) <= Square.x * ZoomCoef + GridPart.width * ZoomCoef) && ((AllCoordinates[route][PositionAt].Y * ZoomCoef) >= Square.y * ZoomCoef) && ((AllCoordinates[route][PositionAt].Y * ZoomCoef) <= (Square.y * ZoomCoef + GridPart.height * ZoomCoef)))
+                        if ((PositionAt < Coordinates.Count))
+                            if (((Coordinates[PositionAt].X * ZoomCoef) >= Square.x * ZoomCoef) && ((Coordinates[PositionAt].X * ZoomCoef) <= Square.x * ZoomCoef + GridPart.width * ZoomCoef) && ((Coordinates[PositionAt].Y * ZoomCoef) >= Square.y * ZoomCoef) && ((Coordinates[PositionAt].Y * ZoomCoef) <= (Square.y * ZoomCoef + GridPart.height * ZoomCoef)))
                             {
                                 switch (Sector.Key)
                                 {
@@ -802,9 +802,9 @@ namespace SystAnalys_lr1
 
             for (int i = 0; i < Rectangles.Count; i++)
             {
-                if ((PositionAt < AllCoordinates[route].Count))
+                if ((PositionAt < Coordinates.Count))
 
-                    if (((AllCoordinates[route][PositionAt].X) > Rectangles[i].x) && ((AllCoordinates[route][PositionAt].X) < Rectangles[i].x + GridPart.width) && ((AllCoordinates[route][PositionAt].Y) > Rectangles[i].y) && ((AllCoordinates[route][PositionAt].Y) < (Rectangles[i].y + GridPart.height)))
+                    if (((Coordinates[PositionAt].X) > Rectangles[i].x) && ((Coordinates[PositionAt].X) < Rectangles[i].x + GridPart.width) && ((Coordinates[PositionAt].Y) > Rectangles[i].y) && ((Coordinates[PositionAt].Y) < (Rectangles[i].y + GridPart.height)))
                     {
                         Locate = i;
                     }
