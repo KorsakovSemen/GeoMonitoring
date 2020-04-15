@@ -1622,21 +1622,21 @@ namespace SystAnalys_lr1
                     if (total < 0 || count < ResultFromModeling.Count / 2)
                     {
                         mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
-                        percentMean.Add(withoutSensorsBuses.Last(), null);
+                        percentMean.Add(cicl, null);
                         mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none);
                     }
                     else
                     {
                         mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
                             + "\n" + MainStrings.procentSuc + " " + ResultFromModeling.Count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
-                        percentMean.Add(withoutSensorsBuses.Last(), total / ResultFromModeling.Count);
+                        percentMean.Add(cicl, total / ResultFromModeling.Count);
                         mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (Convert.ToDouble(total / ResultFromModeling.Count).ToString()));
                     }
 ;
                     using (StreamWriter fileV = new StreamWriter(path + @"\" + cicl.ToString() + "0%" + ".txt"))
                     {
                         fileV.WriteLine(MainStrings.sensorsDown + ": " + (cicl * 10).ToString());
-                        fileV.WriteLine(MainStrings.countBuses + ": " + (withoutSensorsBuses.Last()).ToString());
+                        fileV.WriteLine(MainStrings.countBuses + ": " + (cicl).ToString());
                         fileV.WriteLine(MainStrings.numIter + ": " + optText.Text);
                         fileV.WriteLine(MainStrings.distance + ": " + speed.Text);
                         fileV.WriteLine(MainStrings.found + ": " + (from num in ResultFromModeling where (num != null) select num).Count());
