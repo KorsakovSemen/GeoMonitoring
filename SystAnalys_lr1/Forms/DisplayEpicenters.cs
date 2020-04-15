@@ -79,7 +79,7 @@ namespace SystAnalys_lr1
             Esheet.SizeMode = MainForm.GetSheet().SizeMode;
             Esheet.Anchor = MainForm.GetSheet().Anchor;
             EG = new DrawGraph();
-            EG.setBitmap2(Esheet.Image);
+            EG.setBitmap2();
             ///
             //EZoomBar = MainForm.GetTrackBar();
             EZoomBar.StyleManager = MainForm.GetTrackBar().StyleManager;

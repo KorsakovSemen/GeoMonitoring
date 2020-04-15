@@ -29,8 +29,7 @@ namespace SystAnalys_lr1
         public override bool Equals(object obj)
         {
             if (obj == null) return false;
-            Vertex objAsPart = obj as Vertex;
-            if (objAsPart == null) return false;
+            if (!(obj is Vertex objAsPart)) return false;
             else return Equals(objAsPart);
         }
 
@@ -69,11 +68,8 @@ namespace SystAnalys_lr1
     {
         public Bitmap bitmap;
         readonly private Pen blackPen;
-        readonly private Pen redPen;
         readonly private Pen darkGoldPen;
         public Graphics gr;
-        readonly private Font fo;
-        readonly private Brush br;
         readonly private Color color;
         public int R = 3; //радиус окружности вершины
 
@@ -84,19 +80,12 @@ namespace SystAnalys_lr1
             {
                 Width = 1
             };
-            redPen = new Pen(Color.Red)
-            {
-                Width = 1
-            };
             darkGoldPen = new Pen(Color.MediumAquamarine)
             {
                 Width = 1
             };
-
-            Random random = new Random();
+            _ = new Random();
             color = Color.ForestGreen;//Color.FromArgb(random.Next(255), random.Next(255), random.Next(255));
-            fo = new Font("Arial", 15);
-            br = Brushes.Black;
         }
 
         public void setBitmap()
@@ -106,7 +95,7 @@ namespace SystAnalys_lr1
             gr = Graphics.FromImage(bitmap);
         }
         // для второй формы быстрофикс
-        public void setBitmap2(Image a)
+        public void setBitmap2()
         {
             bitmap = new Bitmap(Main.globalMap);
             gr = Graphics.FromImage(bitmap);
@@ -135,7 +124,7 @@ namespace SystAnalys_lr1
 
         }
         //
-        public void drawVertex(int x, int y, string number)
+        public void drawVertex(int x, int y)
         {
             gr.FillEllipse(Brushes.GreenYellow, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
             gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
@@ -203,8 +192,8 @@ namespace SystAnalys_lr1
             else
             {
                 gr.DrawLine(darkGoldPen, V1.X * Main.zoom, V1.Y * Main.zoom, V2.X * Main.zoom, V2.Y * Main.zoom);
-                drawVertex(V1.X * Main.zoom, V1.Y * Main.zoom, (E.v1 + 1).ToString());
-                drawVertex(V2.X * Main.zoom, V2.Y * Main.zoom, (E.v2 + 1).ToString());
+                drawVertex(V1.X * Main.zoom, V1.Y * Main.zoom);
+                drawVertex(V2.X * Main.zoom, V2.Y * Main.zoom);
             }
         }
 
@@ -245,7 +234,7 @@ namespace SystAnalys_lr1
                 if (rand != 0)
                     drawRouteVertex(V[i].X, V[i].Y);
                 else
-                    drawVertex(V[i].X, V[i].Y, (i + 1).ToString());
+                    drawVertex(V[i].X, V[i].Y);
             }
 
             foreach (var stopPoints in Main.allstopPoints)
@@ -508,7 +497,8 @@ namespace SystAnalys_lr1
         {
             await Task.Run(() => MoveWithGraphics());
         }
-        Random rnd = new Random();
+
+        readonly Random rnd = new Random();
         public bool skipTraffics = false;
         public int skipStops = 1;
         public int skipEnd = 5;
@@ -1397,9 +1387,10 @@ namespace SystAnalys_lr1
         public void CreateRandomEpicenter(int SizeParam, int? StartPos)
         {
             var rand = new Random();
-            EpicenterGrid = new SerializableDictionary<int, List<GridPart>>();
-
-            EpicenterGrid.Add(1, new List<GridPart>());
+            EpicenterGrid = new SerializableDictionary<int, List<GridPart>>
+            {
+                { 1, new List<GridPart>() }
+            };
             if (StartPos == null)
             {
                 EpicenterGrid[1].Add(new GridPart(TheGrid[rand.Next(TheGrid.IndexOf(TheGrid.First()), TheGrid.IndexOf(TheGrid.Last()))].x, TheGrid[rand.Next(TheGrid.IndexOf(TheGrid.First()), TheGrid.IndexOf(TheGrid.Last()))].y));

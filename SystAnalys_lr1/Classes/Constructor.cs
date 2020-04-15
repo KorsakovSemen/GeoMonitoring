@@ -84,7 +84,7 @@ namespace SystAnalys_lr1.Classes
         public void drawVertex(MouseEventArgs e, List<Vertex> V, DrawGraph G, PictureBox sheet)
         {
             V.Add(new Vertex(e.X / Main.zoom, e.Y / Main.zoom));
-            G.drawVertex(e.X / Main.zoom, e.Y / Main.zoom, V.Count.ToString());
+            G.drawVertex(e.X / Main.zoom, e.Y / Main.zoom);
             sheet.Image = G.GetBitmap();
             Main.DrawGrid();
 
