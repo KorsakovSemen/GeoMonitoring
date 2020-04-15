@@ -117,7 +117,8 @@ namespace SystAnalys_lr1
                     res += total;
                 }
 
-                label8.Text = MainStrings.matrixFirst + res.ToString() + " " + MainStrings.matrixSecond + (buses.Count - res).ToString() + " " + MainStrings.matrixThird + buses.Count.ToString();
+                label8.Text = MainStrings.matrixFirst + res.ToString() + " " + MainStrings.matrixSecond + (buses.Count - res).ToString();
+                metroLabel7.Text = MainStrings.matrixThird + buses.Count.ToString();
             }
             catch
             {

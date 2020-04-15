@@ -1827,6 +1827,7 @@ namespace SystAnalys_lr1
                     allstopPoints.Clear();
                     stopPoints.Clear();
                     traficLights.Clear();
+                    LoadRoutes(savepath + @"\");
                     //  sheet.Image = Image.FromFile(fb.FileName);
                     saveImage = sheet.Image;
                     metroTrackBar1.Value = 1;
@@ -1850,7 +1851,6 @@ namespace SystAnalys_lr1
                     //
                     Console.WriteLine("Memory used before collection:       {0:N0}",
                        GC.GetTotalMemory(false));
-                    LoadRoutes(savepath + @"\");
                     // Collect all generations of memory.
                     GC.Collect();
                     Console.WriteLine("Memory used after full collection:   {0:N0}",
