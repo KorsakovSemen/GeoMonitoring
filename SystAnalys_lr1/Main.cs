@@ -439,8 +439,7 @@ namespace SystAnalys_lr1
                                     ExpandTimer = 0;
                                 }
                             }
-                            if (TraficLightsInGrids.Contains(AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt])) //ошибка с выходом за пределы
-                                                                                                                     //тушто нужно "вот эту" разкоментить
+                            if (TraficLightsInGrids.Contains(AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt])) //ошибка с выходом за пределы тушто нужно "вот эту" разкоментить
                             {
                                 if (bus.skip == 0)
                                 {
@@ -1620,18 +1619,18 @@ namespace SystAnalys_lr1
 
                     if (total < 0 || count < ResultFromModeling.Count / 2)
                     {
-                        mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
+                     //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
                         if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
                             percentMean.Add(withoutSensorsBuses.Last(), null);
-                        mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none);
+                      //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none);
                     }
                     else
                     {
-                        mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
-                            + "\n" + MainStrings.procentSuc + " " + ResultFromModeling.Count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
+                      //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
+                      //      + "\n" + MainStrings.procentSuc + " " + ResultFromModeling.Count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
                         if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
                             percentMean.Add(withoutSensorsBuses.Last(), total / ResultFromModeling.Count);
-                        mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (Convert.ToDouble(total / ResultFromModeling.Count).ToString()));
+                     //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (Convert.ToDouble(total / ResultFromModeling.Count).ToString()));
                     }
 ;
                     using (StreamWriter fileV = new StreamWriter(path + @"\" + withoutSensorsBuses.Last() + "_buses" + ".txt"))
@@ -1651,7 +1650,7 @@ namespace SystAnalys_lr1
                             }
                             else
                             {
-                                fileV.WriteLine(i.ToString() + " : " + MainStrings.none);
+                                fileV.WriteLine(i.ToString() + " : " + MainStrings.notFound);
                             }
 
                         Console.WriteLine("Объект сериализован");
@@ -1668,13 +1667,12 @@ namespace SystAnalys_lr1
                 mean.Text = MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60).ToString()) + " " + MainStrings.minute + " - " + MainStrings.countSensors + ": " + GetKeyByValue(percentMean.Min(v => v.Value));
             else
             {
-                mean.Text = MainStrings.none;
+                mean.Text = MainStrings.average + " " + MainStrings.notFound;
             }
 
             using (StreamWriter fileV = new StreamWriter(path + "/Average.txt"))
             {
-                fileV.WriteLine(sum != 0 ? MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
-
+                fileV.WriteLine(sum != 0 ? MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + GetKeyByValue(percentMean.Min(v => v.Value)) : MainStrings.notFound);
             }
             Matrix();
             resMatrix();
@@ -1745,8 +1743,10 @@ namespace SystAnalys_lr1
             {
                 results.Rows[i].HeaderCell.Value = pm.Key.ToString();
                 if (pm.Value != 0)
-                    results.Rows[i].Cells[0].Value = pm.Value.ToString();
-                i += 1;
+                    results.Rows[i].Cells[0].Value = (pm.Value / 60).ToString();
+                else
+                    results.Rows[i].Cells[0].Value = MainStrings.notFound;
+              i += 1;
             }
         }
         public bool GetSavePictruesCheckBox()

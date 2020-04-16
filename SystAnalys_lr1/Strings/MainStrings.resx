@@ -231,4 +231,7 @@
   <data name="sec" xml:space="preserve">
     <value>сек</value>
   </data>
+  <data name="notFound" xml:space="preserve">
+    <value>Не найдено</value>
+  </data>
 </root>
