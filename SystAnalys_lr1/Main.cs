@@ -3381,7 +3381,7 @@ namespace SystAnalys_lr1
 
         private void delAllBusesOnRoute_Click(object sender, EventArgs e)
         {
-            var MBSave = MessageBox.Show(this, MainStrings.deleteBus, MainStrings.delete, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var MBSave = MetroMessageBox.Show(this, MainStrings.deleteBus, MainStrings.delete, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             Console.WriteLine(MBSave);
             if (MBSave == DialogResult.Yes)
             {
