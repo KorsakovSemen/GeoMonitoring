@@ -284,7 +284,7 @@ namespace SystAnalys_lr1
         Timer MovingTimer;
         public List<Epicenter> Epicenters { get; set; } = new List<Epicenter>();
         //сетка
-        public static List<GridPart> Rectangles;
+     
         //для создания координат
         public double angle, x, y;
         //позиция автобуса
@@ -366,23 +366,7 @@ namespace SystAnalys_lr1
             return Locate;
         }
 
-        public static void setGrid(List<GridPart> G)
-        {
-            Rectangles = G;
-        }
-
-        public List<GridPart> getGrids()
-        {
-            return Rectangles;
-        }
-        public void ClearGrids()
-        {
-            Rectangles = new List<GridPart>();
-            Rectangles.TrimExcess();
-            Rectangles = null;
-            Rectangles.TrimExcess();
-
-        }
+   
         public object Clone()
         {
             return MemberwiseClone();
@@ -766,7 +750,7 @@ namespace SystAnalys_lr1
                     foreach (var Square in Sector.Value)
                     {
 
-                        if (((Rectangles[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Rectangles[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
                         {
                             switch (Sector.Key)
                             {
@@ -801,11 +785,11 @@ namespace SystAnalys_lr1
         public void DetectRectangle2()
         {
 
-            for (int i = 0; i < Rectangles.Count; i++)
+            for (int i = 0; i < Main.TheGrid.Count; i++)
             {
                 if ((PositionAt < Coordinates.Count))
 
-                    if (((Coordinates[PositionAt].X) > Rectangles[i].x) && ((Coordinates[PositionAt].X) < Rectangles[i].x + GridPart.width) && ((Coordinates[PositionAt].Y) > Rectangles[i].y) && ((Coordinates[PositionAt].Y) < (Rectangles[i].y + GridPart.height)))
+                    if (((Coordinates[PositionAt].X) > Main.TheGrid[i].x) && ((Coordinates[PositionAt].X) < Main.TheGrid[i].x + GridPart.width) && ((Coordinates[PositionAt].Y) > Main.TheGrid[i].y) && ((Coordinates[PositionAt].Y) < (Main.TheGrid[i].y + GridPart.height)))
                     {
                         Locate = i;
                     }

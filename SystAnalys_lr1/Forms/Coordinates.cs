@@ -20,8 +20,8 @@ namespace SystAnalys_lr1
             {
                 AllCoordinates[i] = new List<Point>();
                 AllGridsInRoutes[i] = new List<int>();
-                AllCoordinates[i].AddRange(getPoints(routes[i],i));
-  
+                AllCoordinates[i].AddRange(getPoints(routes[i], i));
+
             }
             Bus.SetScrollX(mainPanel.AutoScrollPosition.X);
             Bus.SetScrollY(mainPanel.AutoScrollPosition.Y);
@@ -40,90 +40,84 @@ namespace SystAnalys_lr1
             {
 
                 CreateAllCoordinates();
-                
+
 
 
             });
 
         }
 
-        public List<Point> getPoints(List<Vertex> routeVertexes,string route)
+        public List<Point> getPoints(List<Vertex> routeVertexes, string route)
         {
             var points = new List<Point>();
             int RectCheckCount = 0;
-            int Locate=0;
-            int LastLocate=0;
-            for (int i = 0; i < routeVertexes.IndexOf(routeVertexes.Last()); i++)
+     
+            if (routeVertexes.Count > 1)
             {
-                Point p1 = new Point(routeVertexes[i].X, routeVertexes[i].Y);
-                Point p2 = new Point(routeVertexes[i + 1].X, routeVertexes[i + 1].Y);
-                int ydiff = p2.Y - p1.Y, xdiff = p2.X - p1.X;
-                double slope = (double)(p2.Y - p1.Y) / (p2.X - p1.X);
-                double x, y;
-                int quantity = (int)GetDistance(p1.X, p1.Y, p2.X, p2.Y);     
-                for (double j = 0; j < quantity; j++)
+                for (int i = 0; i < routeVertexes.Count-1; i++)
                 {
-                    y = slope == 0 ? 0 : ydiff * (j / quantity);
-                    x = slope == 0 ? xdiff * (j / quantity) : y / slope;
-                    points.Add(new Point((int)Math.Round(x) + p1.X, (int)Math.Round(y) + p1.Y));
-                    if (RectCheckCount == 10)
+                    Point p1 = new Point(routeVertexes[i].X, routeVertexes[i].Y);
+                    Point p2 = new Point(routeVertexes[i + 1].X, routeVertexes[i + 1].Y);
+                    int ydiff = p2.Y - p1.Y, xdiff = p2.X - p1.X;
+                    double slope = (double)(p2.Y - p1.Y) / (p2.X - p1.X);
+                    double x, y;
+                    int quantity = (int)GetDistance(p1.X, p1.Y, p2.X, p2.Y);
+                    for (double j = 0; j < quantity; j++)
                     {
-                        foreach (var gridpart in TheGrid)
+                        y = slope == 0 ? 0 : ydiff * (j / quantity);
+                        x = slope == 0 ? xdiff * (j / quantity) : y / slope;
+                        points.Add(new Point((int)Math.Round(x) + p1.X, (int)Math.Round(y) + p1.Y));
+                        if (RectCheckCount == 10)
                         {
-                            if ((points.Last().X > gridpart.x) && ((points.Last().X) < gridpart.x + GridPart.width) && ((points.Last().Y) > gridpart.y) && ((points.Last().Y) < (gridpart.y + GridPart.height)))
-                            {
-
-                                Locate = TheGrid.IndexOf(gridpart);
-                            }
+                            RectCheckCount = 0;
+                            getOneRouteGrids(points, route);
                         }
-                        for (int k = 0; k < TheGrid.Count; k++)
+                        else
                         {
-                            if (Locate == k)
-                            {
-                                if (LastLocate != Locate)
-                                {
-                                    AllGridsInRoutes[route].Add(k);
-                                   
-                                   LastLocate = Locate;
-                                }
-                            }
+                            RectCheckCount++;
                         }
-                        RectCheckCount=0;
-                    }
-                    else
-                    {
-                        RectCheckCount++;
-                    }
 
-                }
-                points.Add(p2);
-                foreach (var gridpart in TheGrid)
-                {
-                    if ((points.Last().X > gridpart.x) && ((points.Last().X) < gridpart.x + GridPart.width) && ((points.Last().Y) > gridpart.y) && ((points.Last().Y) < (gridpart.y + GridPart.height)))
-                    {
-
-                        Locate = TheGrid.IndexOf(gridpart);
                     }
-                }
-                for (int k = 0; k < TheGrid.Count; k++)
-                {
-                    if (Locate == k)
-                    {
-                        if (LastLocate != Locate)
-                        {
-                            AllGridsInRoutes[route].Add(k);
-                            Console.WriteLine(AllGridsInRoutes[route].Last().ToString());
-                            LastLocate = Locate;
-                        }
-                    }
+                    points.Add(p2);
+                    getOneRouteGrids(points, route);
                 }
             }
             return points;
         }
+        public void getOneRouteGrids(List<Point> points,string route)
+        {
+            int Locate = 0;
+            int LastLocate = 0;
+            foreach (var gridpart in TheGrid)
+            {
+                if ((points.Last().X > gridpart.x) && ((points.Last().X) < gridpart.x + GridPart.width) && ((points.Last().Y) > gridpart.y) && ((points.Last().Y) < (gridpart.y + GridPart.height)))
+                {
+
+                    Locate = TheGrid.IndexOf(gridpart);
+                }
+            }
+            for (int k = 0; k < TheGrid.Count; k++)
+            {
+                if (Locate == k)
+                {
+                    if (LastLocate != Locate)
+                    {
+                        AllGridsInRoutes[route].Add(k);
+
+                        LastLocate = Locate;
+                    }
+                }
+            }
+       
+        }
+
+    
+
+
         //функция, которая создает все координаты для всех маршрутов
         private void CreateAllCoordinates()
         {
-         
+
 
 
             AllCoordinates = new SerializableDictionary<string, List<Point>>();
@@ -134,11 +128,11 @@ namespace SystAnalys_lr1
                 AllGridsInRoutes.Add(routes.ElementAt(i).Key, new List<int>());
                 if (routes.ElementAt(i).Value.Count >= 2)
                 {
-                    AllCoordinates[AllCoordinates.ElementAt(i).Key].AddRange(getPoints(routes.ElementAt(i).Value, routes.ElementAt(i).Key));                 
+                    AllCoordinates[AllCoordinates.ElementAt(i).Key].AddRange(getPoints(routes.ElementAt(i).Value, routes.ElementAt(i).Key));
                 }
                 Bus.SetScrollX(mainPanel.AutoScrollPosition.X);
                 Bus.SetScrollY(mainPanel.AutoScrollPosition.Y);
-     
+
             }
 
             foreach (var bus in buses)

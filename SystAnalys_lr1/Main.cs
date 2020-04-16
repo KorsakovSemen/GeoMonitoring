@@ -56,7 +56,7 @@ namespace SystAnalys_lr1
         //Лист всех эпицентров
         List<Epicenter> Epics;
         //Лист, в котором хранится сетка
-        static List<GridPart> TheGrid;
+        static public List<GridPart> TheGrid;
         public static DrawGraph G;
         //Лист, в котором хранятся автобусы
         static public List<Bus> buses;
@@ -470,7 +470,7 @@ namespace SystAnalys_lr1
 
                             foreach (var Epic in bus.Epicenters)
                             {
-                                if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 2)
+                                if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 5)
                                 {
                                     if (EpicFounded == false)
                                     {
@@ -1157,7 +1157,7 @@ namespace SystAnalys_lr1
                 G.setBitmap();
                 CreateGrid();
                 CreatePollutionInRoutes();
-                Bus.setGrid(TheGrid);
+                //Bus.setGrid(TheGrid);
                 // Bus.setAllCoordinates(AllCoordinates);
                 addInComboBox();
                 Ep = new DisplayEpicenters(this);
@@ -1868,7 +1868,7 @@ namespace SystAnalys_lr1
                     G.setBitmap();
                     CreateGrid();
                     CreatePollutionInRoutes();
-                    Bus.setGrid(TheGrid);
+                  //  Bus.setGrid(TheGrid);
                     //  Bus.setAllCoordinates(AllCoordinates);
                     addInComboBox();
                     //Ep = new DisplayEpicenters(this);
@@ -2609,7 +2609,7 @@ namespace SystAnalys_lr1
                 CreateGrid();
                 CreatePollutionInRoutes();
                 CreateOneRandomEpicenter(EpicSizeParam, null);
-                Bus.setGrid(TheGrid);
+                //Bus.setGrid(TheGrid);
                 //  Bus.setAllCoordinates(AllCoordinates);
 
                 addInComboBox();
@@ -3962,8 +3962,7 @@ namespace SystAnalys_lr1
 
             TheGrid.TrimExcess();
 
-            Bus.Rectangles = new List<GridPart>();
-            Bus.Rectangles.TrimExcess();
+          
 
             Refresh();
             // MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
@@ -3987,14 +3986,22 @@ namespace SystAnalys_lr1
                 }
                 G.drawALLGraph(V, E);
                 CreateGrid();
+
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
                 if (!Ep.IsDisposed)
                 {
                     Ep.EDrawGrid();
                 }
-                CreatePollutionInRoutes();
+
+
+
+                //for (int i = 0; i < routes.Count; i++)
+                //{
+                //    getOneRouteGrids(AllCoordinates[routes.ElementAt(i).Key],routes.ElementAt(i).Key);
+                //}
                 CreateAllCoordinates();
+                CreatePollutionInRoutes();
             }
         }
 
