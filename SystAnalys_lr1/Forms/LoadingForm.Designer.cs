@@ -44,7 +44,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.loading);
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "LoadingForm";
             this.Resizable = false;
             this.TopMost = true;

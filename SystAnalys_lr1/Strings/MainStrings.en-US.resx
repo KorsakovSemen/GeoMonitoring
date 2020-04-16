@@ -199,7 +199,7 @@
     <value>Cycle</value>
   </data>
   <data name="distance" xml:space="preserve">
-    <value>With distance traveled</value>
+    <value>At T equal</value>
   </data>
   <data name="found" xml:space="preserve">
     <value>Found</value>
@@ -224,5 +224,14 @@
   </data>
   <data name="Matrix" xml:space="preserve">
     <value>Error creating matrix</value>
+  </data>
+  <data name="minute" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="sec" xml:space="preserve">
+    <value>сек</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
   </data>
 </root>

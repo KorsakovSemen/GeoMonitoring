@@ -187,7 +187,7 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на При пройденном расстоянии.
+        ///   Ищет локализованную строку, похожую на При T равном.
         /// </summary>
         internal static string distance {
             get {
@@ -286,6 +286,15 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на мин.
+        /// </summary>
+        internal static string minute {
+            get {
+                return ResourceManager.GetString("minute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Сеть.
         /// </summary>
         internal static string network {
@@ -354,6 +363,15 @@ namespace SystAnalys_lr1.Strings {
         internal static string putTrafficLights2 {
             get {
                 return ResourceManager.GetString("putTrafficLights2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на сек.
+        /// </summary>
+        internal static string sec {
+            get {
+                return ResourceManager.GetString("sec", resourceCulture);
             }
         }
         

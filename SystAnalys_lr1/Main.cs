@@ -471,7 +471,7 @@ namespace SystAnalys_lr1
 
                             foreach (var Epic in bus.Epicenters)
                             {
-                                if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 5)
+                                if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 2)
                                 {
                                     if (EpicFounded == false)
                                     {
@@ -526,7 +526,7 @@ namespace SystAnalys_lr1
                     i++;
                 }
 
-                loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Value = s), loadingForm.loading.Value + 1);
+                //loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Value = s), loadingForm.loading.Value + 1);
             }
             if (small == old)
                 ResultFromModeling.Add(null);
@@ -535,11 +535,11 @@ namespace SystAnalys_lr1
                 if (small == 0)
                 {
                     small += 1;
-                    ResultFromModeling.Add(small * 25);
+                    ResultFromModeling.Add(small * 20); // small в мин или секах
                 }
                 else
                 {
-                    ResultFromModeling.Add(small * 25);
+                    ResultFromModeling.Add(small * 20);
                 }
             }
 
@@ -550,7 +550,7 @@ namespace SystAnalys_lr1
         {
             for (int i = 0; i < TheGrid.Count; i++)
             {
-                TheGrid[i].DrawPart(G, Main.zoom);
+                TheGrid[i].DrawPart(G, zoom);
             }
             _instance.Invoke(new DelBmp((s) => _instance.sheet.Image = s), G.GetBitmap());
         }
@@ -1531,7 +1531,10 @@ namespace SystAnalys_lr1
             ));
             if (speed.Text != "" && int.TryParse(speed.Text, out int sp))
             {
-                T = int.Parse(speed.Text) / 20;
+                if (int.Parse(speed.Text) / 20 == 0)
+                    T = 1;
+                else
+                    T = int.Parse(speed.Text) / 20;
             }
             loadingForm.Show();
             int old = small;
@@ -1550,11 +1553,7 @@ namespace SystAnalys_lr1
                     offBuses(int.Parse(changeProcent.Text));
                 };
                 int ciclTotal = 5;
-                int totalW = 0;
-                if (T < 20)
-                    totalW = 1;
-                else
-                    totalW = T / 20;
+
                 loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Maximum = s), ciclTotal * int.Parse(optText.Text));
                 for (int cicl = 0; cicl < ciclTotal; cicl++)
                 {
@@ -1640,7 +1639,7 @@ namespace SystAnalys_lr1
                         fileV.WriteLine(MainStrings.sensorsDown + ": " + (cicl * 10).ToString());
                         fileV.WriteLine(MainStrings.countBuses + ": " + (withoutSensorsBuses.Last()).ToString());
                         fileV.WriteLine(MainStrings.numIter + ": " + optText.Text);
-                        fileV.WriteLine(MainStrings.distance + ": " + speed.Text);
+                        fileV.WriteLine(MainStrings.distance + ": " + speed.Text + " " + MainStrings.sec + " (" + (int.Parse(speed.Text) / 60 == 0 ? ">1" + MainStrings.minute : int.Parse(speed.Text) / 60 + " " + MainStrings.minute) + ")");
                         fileV.WriteLine(MainStrings.found + ": " + (from num in ResultFromModeling where (num != null) select num).Count());
                         fileV.WriteLine(MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
                             + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + (((ResultFromModeling.Count - count) * 100.00 / int.Parse(optText.Text))).ToString());
@@ -1648,7 +1647,7 @@ namespace SystAnalys_lr1
                         for (int i = 0; i < ResultFromModeling.Count; i++)
                             if (ResultFromModeling[i] != null)
                             {
-                                fileV.WriteLine(i.ToString() + " : " + ResultFromModeling[i].ToString());
+                                fileV.WriteLine(i.ToString() + " : " + (ResultFromModeling[i] / 60 == 0 ? (ResultFromModeling[i] + " " + MainStrings.sec).ToString() : (ResultFromModeling[i] / 60 + " " + MainStrings.minute + " " + ResultFromModeling[i] % 60 + " " + MainStrings.sec).ToString()));
                             }
                             else
                             {
@@ -1666,7 +1665,7 @@ namespace SystAnalys_lr1
             var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();
             var min = percentMean.Min(v => v.Value);
             if (res.Count != 0 && min != 0 && min != null)
-                mean.Text = MainStrings.average + " " + min + " - " + MainStrings.countSensors + ": " + GetKeyByValue(percentMean.Min(v => v.Value));
+                mean.Text = MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60).ToString()) + " " + MainStrings.minute + " - " + MainStrings.countSensors + ": " + GetKeyByValue(percentMean.Min(v => v.Value));
             else
             {
                 mean.Text = MainStrings.none;
@@ -1674,7 +1673,8 @@ namespace SystAnalys_lr1
 
             using (StreamWriter fileV = new StreamWriter(path + "/Average.txt"))
             {
-                fileV.WriteLine(sum != 0 ? MainStrings.average + " " + min + " - " + MainStrings.countSensors + ": " + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
+                fileV.WriteLine(sum != 0 ? MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + GetKeyByValue(percentMean.Min(v => v.Value)) : "Null");
+
             }
             Matrix();
             resMatrix();
@@ -1691,9 +1691,10 @@ namespace SystAnalys_lr1
             {
                 bus.Start();
             }
-            BringToFront();
             loadingForm.close = true;
             loadingForm.Close();
+            loadingForm.Dispose();
+            BringToFront();
             buttonOn();
             busesPark = busesparkreturn;
             buses = optimizeBuses;

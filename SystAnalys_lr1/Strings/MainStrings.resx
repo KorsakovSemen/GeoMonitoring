@@ -199,7 +199,7 @@
     <value>Цикл</value>
   </data>
   <data name="distance" xml:space="preserve">
-    <value>При пройденном расстоянии</value>
+    <value>При T равном</value>
   </data>
   <data name="found" xml:space="preserve">
     <value>Найдено</value>
@@ -224,5 +224,11 @@
   </data>
   <data name="VandE" xml:space="preserve">
     <value>Вершины и ребра</value>
+  </data>
+  <data name="minute" xml:space="preserve">
+    <value>мин</value>
+  </data>
+  <data name="sec" xml:space="preserve">
+    <value>сек</value>
   </data>
 </root>
