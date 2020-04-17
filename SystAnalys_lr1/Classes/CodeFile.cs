@@ -392,8 +392,6 @@ namespace SystAnalys_lr1
             this.PositionAt = PositionAt;
             TurnBack = Turn;
             this.route = route;
-            ScrollX = 0;
-            ScrollY = 0;
             oldSize = busPic.Height;
             this.Coordinates = Coordinates;
         }
