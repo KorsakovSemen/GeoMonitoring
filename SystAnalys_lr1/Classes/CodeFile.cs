@@ -283,6 +283,7 @@ namespace SystAnalys_lr1
         //таймер для движения
         Timer MovingTimer;
         public List<Epicenter> Epicenters { get; set; } = new List<Epicenter>();
+        int stopTime = 0;
         //сетка
 
         //для создания координат
@@ -522,18 +523,19 @@ namespace SystAnalys_lr1
                             {
                                 foreach (var sp in buses)
                                 {
-                                    //if(sp.busPic.Location.X - 5 == Coordinates[PositionAt].X )//&& sp.busPic.Location.Y - 5 == Coordinates[PositionAt].Y)
                                     if (Math.Pow((sp.busPic.Left - (busPic.Left / (int)ZoomCoef)), 2) + Math.Pow((sp.busPic.Top - (busPic.Top / (int)ZoomCoef)), 2) <= sp.R * sp.R && sp.MovingTimer.Enabled == false && sp.TurnBack == TurnBack)
-
-                                    // if (Math.Pow((double.Parse((sp.busPic.Left * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.busPic.Top * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <=  sp.R * (int)ZoomCoef * (sp.R * (int)ZoomCoef) && sp.MovingTimer.Enabled == false)// && sp.TurnBack == TurnBack)
                                     {
                                         Console.WriteLine("Turn false");
                                         MovingTimer.Stop();
+                                        stopTime = sp.stopTime;
+                                        await Task.Delay(sp.stopTime);
+                                        skip = 100;
+                                        skipStops = 25;
+                                        if (InstaStop == false)
+                                        {
+                                            MovingTimer.Start();
+                                        }
                                         break;
-                                    }
-                                    else
-                                    {
-                                        MovingTimer.Start();
                                     }
                                 }
                             }
@@ -546,7 +548,8 @@ namespace SystAnalys_lr1
                                         if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
                                         {
                                             MovingTimer.Stop();
-                                            await Task.Delay(rnd.Next(0, 10000));
+                                            stopTime = rnd.Next(0, 10000);
+                                            await Task.Delay(stopTime);
                                             skipStops = 50;
                                             if (InstaStop == false)
                                             {
@@ -573,7 +576,8 @@ namespace SystAnalys_lr1
                                         {
                                             skip = 100;
                                             MovingTimer.Stop();
-                                            await Task.Delay(sp.bal * 1000);
+                                            stopTime = sp.bal * 1000;
+                                            await Task.Delay(stopTime);
                                             if (InstaStop == false)
                                             {
                                                 MovingTimer.Start();
@@ -614,18 +618,20 @@ namespace SystAnalys_lr1
                                     foreach (var sp in Main.buses)
                                     {
                                         if (Math.Pow((sp.busPic.Left - (busPic.Left / (int)ZoomCoef)), 2) + Math.Pow((sp.busPic.Top - (busPic.Top / (int)ZoomCoef)), 2) <= sp.R * sp.R && sp.MovingTimer.Enabled == false && sp.TurnBack == TurnBack)
-                                        //if (Math.Pow((double.Parse((sp.busPic.Left * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) - Math.Pow((double.Parse(((sp.busPic.Top * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <=  sp.R * (int)ZoomCoef * (sp.R * (int)ZoomCoef) && sp.MovingTimer.Enabled == false)// && sp.TurnBack == TurnBack)
                                         {
-                                            Console.WriteLine("Turn true");
+                                            Console.WriteLine("Turn false");
                                             MovingTimer.Stop();
+                                            stopTime = sp.stopTime;
+                                            await Task.Delay(sp.stopTime);
+                                            skip = 100;
+                                            skipStops = 25;
+                                            if (InstaStop == false)
+                                            {
+                                                MovingTimer.Start();
+                                            }
                                             break;
                                         }
-                                        else
-                                        {
-                                            MovingTimer.Start();
-                                        }
                                     }
-
                                 }
                                 if (Main.stopPoints.Count != 0 && Main.stopPoints.ContainsKey(route))
                                 {
@@ -636,7 +642,8 @@ namespace SystAnalys_lr1
                                             if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
                                             {
                                                 MovingTimer.Stop();
-                                                await Task.Delay(rnd.Next(0, 10000));
+                                                stopTime = rnd.Next(0, 10000);
+                                                await Task.Delay(stopTime);
                                                 skipStops = 50;
                                                 if (InstaStop == false)
                                                 {
@@ -662,7 +669,8 @@ namespace SystAnalys_lr1
                                             {
                                                 skip = 100;
                                                 MovingTimer.Stop();
-                                                await Task.Delay(sp.bal * 1000);
+                                                stopTime = sp.bal * 1000;
+                                                await Task.Delay(stopTime);
                                                 if (InstaStop == false)
                                                 {
                                                     MovingTimer.Start();
@@ -807,15 +815,13 @@ namespace SystAnalys_lr1
         {
             MoveWithGraphics();
             if (skip != 0)
-            {
                 skip -= 1;
-            }
             if (skipStops != 0)
-            {
                 skipStops -= 1;
-            }
             if (skipEnd != 0)
                 skipEnd -= 1;
+            if (stopTime != 0)
+                stopTime -= 1;
         }
         public void Set()
         {
