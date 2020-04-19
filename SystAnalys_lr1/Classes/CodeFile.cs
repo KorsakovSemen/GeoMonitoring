@@ -125,6 +125,12 @@ namespace SystAnalys_lr1
 
         }
         //
+        public void drawBusMove(List<Bus> buses)
+        {
+
+
+
+        }
         public void drawVertex(int x, int y)
         {
             gr.FillEllipse(Brushes.GreenYellow, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
@@ -293,7 +299,7 @@ namespace SystAnalys_lr1
         //для обратного движения по маршруту
         public bool TurnBack;
         [XmlIgnore, JsonIgnore]
-        public PictureBox busPic;
+        public Image busPic;
         //номер маршрута, по которому будет ездить автобус
         public string route;
         //текущий квадрат, в котором находится автобус
@@ -333,21 +339,21 @@ namespace SystAnalys_lr1
         int oldZoom = (int)ZoomCoef;
         public void setBusSize()
         {
-            if (ZoomCoef < oldZoom)
-            {
-                if (ZoomCoef == 1)
-                    busPic.Size = new Size(Main.sizeBus, Main.sizeBus);
-                else
-                    busPic.Size = new Size(oldSize / (int)ZoomCoef, oldSize / (int)ZoomCoef);
-            }
-            else
-            {
-                if (ZoomCoef == 1)
-                    busPic.Size = new Size(Main.sizeBus, Main.sizeBus);
-                else
-                    busPic.Size = new Size(oldSize * (int)ZoomCoef, oldSize * (int)ZoomCoef);
+            //if (ZoomCoef < oldZoom)
+            //{
+            //    if (ZoomCoef == 1)
+            //        busPic.Size = new Size(Main.sizeBus, Main.sizeBus);
+            //    else
+            //        busPic.Size = new Size(oldSize / (int)ZoomCoef, oldSize / (int)ZoomCoef);
+            //}
+            //else
+            //{
+            //    if (ZoomCoef == 1)
+            //        busPic.Size = new Size(Main.sizeBus, Main.sizeBus);
+            //    else
+            //        busPic.Size = new Size(oldSize * (int)ZoomCoef, oldSize * (int)ZoomCoef);
 
-            }
+            //}
             oldZoom = (int)ZoomCoef;
         }
 
@@ -383,13 +389,13 @@ namespace SystAnalys_lr1
         public bool tracker { get; set; }
 
 
-        public Bus(PictureBox busPic, int PositionAt, bool Turn, string route, List<Point> Coordinates, bool not)
+        public Bus(Image busPic, int PositionAt, bool Turn, string route, List<Point> Coordinates, bool not)
         {
             tracker = not;
             oldSize = busPic.Size.Height;
             this.busPic = busPic;
-            x = busPic.Left;
-            y = busPic.Top;
+            //x = busPic.Left;
+            //y = busPic.Top;
             this.PositionAt = PositionAt;
             TurnBack = Turn;
             this.route = route;
@@ -480,7 +486,7 @@ namespace SystAnalys_lr1
         }
         public async void MoveWithGraphicsAsync()
         {
-            await Task.Run(() => MoveWithGraphics());
+            //await Task.Run(() => MoveWithGraphics());
         }
 
         readonly Random rnd = new Random();
@@ -492,224 +498,226 @@ namespace SystAnalys_lr1
         public void AlignBus()
         {
 
-            if (PositionAt < Coordinates.Count)
-            {
-                busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((Coordinates[PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (Coordinates[PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
-            }
-            else
-            {
-                busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((Coordinates[PositionAt - 1].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (Coordinates[PositionAt - 1].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
-            }
+            //if (PositionAt < Coordinates.Count)
+            //{
+            //    busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((Coordinates[PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (Coordinates[PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
+            //}
+            //else
+            //{
+            //    busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((Coordinates[PositionAt - 1].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (Coordinates[PositionAt - 1].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
+            //}
 
         }
         public Timer GetMovingTimer()
         {
             return MovingTimer;
         }
-        public async void MoveWithGraphics()
+        public void MoveWithGraphics(DrawGraph G)
         {
             Bus thisBus = new Bus(busPic, PositionAt, TurnBack, route, Coordinates, tracker);
             List<Bus> buses = Main.buses;
             buses.Remove(thisBus);
-            try
+
+            if (InstaStop == false)
             {
-                if (InstaStop == false)
+                if (TurnBack == false)
                 {
-                    if (TurnBack == false)
+                    if (PositionAt < Coordinates.Count )
                     {
-                        if (PositionAt < Coordinates.Count)
+                        if (Main.buses.Count != 0)
+                        {
+                            //foreach (var sp in buses)
+                            //{
+                            //    if (Math.Pow((sp.busPic.Left - (busPic.Left / (int)ZoomCoef)), 2) + Math.Pow((sp.busPic.Top - (busPic.Top / (int)ZoomCoef)), 2) <= sp.R * sp.R && sp.MovingTimer.Enabled == false && sp.TurnBack == TurnBack)
+                            //    {
+                            //        Console.WriteLine("Turn false");
+                            //        MovingTimer.Stop();
+                            //        stopTime = sp.stopTime;
+                            //        await Task.Delay(sp.stopTime);
+                            //        skip = 100;
+                            //        skipStops = 25;
+                            //        if (InstaStop == false)
+                            //        {
+                            //            MovingTimer.Start();
+                            //        }
+                            //        break;
+                            //    }
+                            //}
+                        }
+                        //if (Main.stopPoints.Count != 0 && Main.stopPoints.ContainsKey(route))
+                        //{
+                        //    if (skipStops == 0)
+                        //    {
+                        //        foreach (var sp in Main.stopPoints[route])
+                        //        {
+                        //            if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
+                        //            {
+                        //                MovingTimer.Stop();
+                        //                stopTime = rnd.Next(0, 10000);
+                        //                await Task.Delay(stopTime);
+                        //                skipStops = 50;
+                        //                if (InstaStop == false)
+                        //                {
+                        //                    MovingTimer.Start();
+                        //                }
+                        //                break;
+                        //            }
+                        //        }
+                        //    }
+                        //}
+                        //if (Main.traficLights.Count != 0)
+                        //{
+                        //    if (skip == 0)
+                        //    {
+                        //        foreach (var sp in Main.traficLights)
+                        //        {
+                        //            if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status != Status.RED)
+                        //            {
+                        //                skip = 100;
+                        //                break;
+                        //            }
+                        //            else
+                        //            if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status == Status.RED)
+                        //            {
+                        //                skip = 100;
+                        //                MovingTimer.Stop();
+                        //                stopTime = sp.bal * 1000;
+                        //                await Task.Delay(stopTime);
+                        //                if (InstaStop == false)
+                        //                {
+                        //                    MovingTimer.Start();
+                        //                }
+                        //                break;
+
+                        //            }
+                        //        }
+                        //    }
+                        //}
+
+                        // busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((Coordinates[PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (Coordinates[PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
+                        G.gr.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
+                        PositionAt++;
+                    }
+                    else
+                    {
+                        //if (skipEnd == 0)
+                        //{
+                        //    MovingTimer.Stop();
+                        //    await Task.Delay(rnd.Next(0, 10000));
+                        //}
+                        //if (InstaStop == false)
+                        //{
+                        //    MovingTimer.Start();
+                        //}
+                        TurnBack = true;
+                        PositionAt--;
+                    }
+                }
+                else
+                {
+                    if (PositionAt > 0)
+                    {
+                        if (PositionAt < Coordinates.Count )
                         {
                             if (Main.buses.Count != 0)
                             {
-                                foreach (var sp in buses)
-                                {
-                                    if (Math.Pow((sp.busPic.Left - (busPic.Left / (int)ZoomCoef)), 2) + Math.Pow((sp.busPic.Top - (busPic.Top / (int)ZoomCoef)), 2) <= sp.R * sp.R && sp.MovingTimer.Enabled == false && sp.TurnBack == TurnBack)
-                                    {
-                                        Console.WriteLine("Turn false");
-                                        MovingTimer.Stop();
-                                        stopTime = sp.stopTime;
-                                        await Task.Delay(sp.stopTime);
-                                        skip = 100;
-                                        skipStops = 25;
-                                        if (InstaStop == false)
-                                        {
-                                            MovingTimer.Start();
-                                        }
-                                        break;
-                                    }
-                                }
+                                //foreach (var sp in Main.buses)
+                                //{
+                                //    if (Math.Pow((sp.busPic.Left - (busPic.Left / (int)ZoomCoef)), 2) + Math.Pow((sp.busPic.Top - (busPic.Top / (int)ZoomCoef)), 2) <= sp.R * sp.R && sp.MovingTimer.Enabled == false && sp.TurnBack == TurnBack)
+                                //    {
+                                //        Console.WriteLine("Turn false");
+                                //        MovingTimer.Stop();
+                                //        stopTime = sp.stopTime;
+                                //        await Task.Delay(sp.stopTime);
+                                //        skip = 100;
+                                //        skipStops = 25;
+                                //        if (InstaStop == false)
+                                //        {
+                                //            MovingTimer.Start();
+                                //        }
+                                //        break;
+                                //    }
+                                //}
                             }
                             if (Main.stopPoints.Count != 0 && Main.stopPoints.ContainsKey(route))
                             {
-                                if (skipStops == 0)
-                                {
-                                    foreach (var sp in Main.stopPoints[route])
-                                    {
-                                        if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
-                                        {
-                                            MovingTimer.Stop();
-                                            stopTime = rnd.Next(0, 10000);
-                                            await Task.Delay(stopTime);
-                                            skipStops = 50;
-                                            if (InstaStop == false)
-                                            {
-                                                MovingTimer.Start();
-                                            }
-                                            break;
-                                        }
-                                    }
-                                }
+                                //if (skipStops == 0)
+                                //{
+                                //    foreach (var sp in Main.stopPoints[route])
+                                //    {
+                                //        if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
+                                //        {
+                                //            MovingTimer.Stop();
+                                //            stopTime = rnd.Next(0, 10000);
+                                //            await Task.Delay(stopTime);
+                                //            skipStops = 50;
+                                //            if (InstaStop == false)
+                                //            {
+                                //                MovingTimer.Start();
+                                //            }
+                                //            break;
+                                //        }
+                                //    }
+                                //}
                             }
-                            if (Main.traficLights.Count != 0)
-                            {
-                                if (skip == 0)
-                                {
-                                    foreach (var sp in Main.traficLights)
-                                    {
-                                        if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status != Status.RED)
-                                        {
-                                            skip = 100;
-                                            break;
-                                        }
-                                        else
-                                        if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status == Status.RED)
-                                        {
-                                            skip = 100;
-                                            MovingTimer.Stop();
-                                            stopTime = sp.bal * 1000;
-                                            await Task.Delay(stopTime);
-                                            if (InstaStop == false)
-                                            {
-                                                MovingTimer.Start();
-                                            }
-                                            break;
+                            //if (Main.traficLights.Count != 0)
+                            //{
+                            //    if (skip == 0)
+                            //    {
+                            //        foreach (var sp in Main.traficLights)
+                            //        {
+                            //            if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef) && sp.status != Status.RED)
+                            //            {
+                            //                skip = 100;
+                            //                break;
+                            //            }
+                            //            if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef) && sp.status == Status.RED)
+                            //            {
+                            //                skip = 100;
+                            //                MovingTimer.Stop();
+                            //                stopTime = sp.bal * 1000;
+                            //                await Task.Delay(stopTime);
+                            //                if (InstaStop == false)
+                            //                {
+                            //                  MovingTimer.Start();
+                            //                }
+                            //                break;
+                            //            }
+                            //        }
+                            //    }
+                            //}
 
-                                        }
-                                    }
-                                }
-                            }
 
-                            busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((Coordinates[PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (Coordinates[PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
-                            PositionAt++;
-                        }
-                        else
-                        {
-                            if (skipEnd == 0)
-                            {
-                                MovingTimer.Stop();
-                                await Task.Delay(rnd.Next(0, 10000));
-                            }
-                            if (InstaStop == false)
-                            {
-                                MovingTimer.Start();
-                            }
-                            TurnBack = true;
+                            G.gr.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
+                            // busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((Coordinates[PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (Coordinates[PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
                             PositionAt--;
                         }
                     }
                     else
                     {
-                        if (PositionAt > 0)
-                        {
-                            if (PositionAt < Coordinates.Count)
-                            {
-                                if (Main.buses.Count != 0)
-                                {
-                                    foreach (var sp in Main.buses)
-                                    {
-                                        if (Math.Pow((sp.busPic.Left - (busPic.Left / (int)ZoomCoef)), 2) + Math.Pow((sp.busPic.Top - (busPic.Top / (int)ZoomCoef)), 2) <= sp.R * sp.R && sp.MovingTimer.Enabled == false && sp.TurnBack == TurnBack)
-                                        {
-                                            Console.WriteLine("Turn false");
-                                            MovingTimer.Stop();
-                                            stopTime = sp.stopTime;
-                                            await Task.Delay(sp.stopTime);
-                                            skip = 100;
-                                            skipStops = 25;
-                                            if (InstaStop == false)
-                                            {
-                                                MovingTimer.Start();
-                                            }
-                                            break;
-                                        }
-                                    }
-                                }
-                                if (Main.stopPoints.Count != 0 && Main.stopPoints.ContainsKey(route))
-                                {
-                                    if (skipStops == 0)
-                                    {
-                                        foreach (var sp in Main.stopPoints[route])
-                                        {
-                                            if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
-                                            {
-                                                MovingTimer.Stop();
-                                                stopTime = rnd.Next(0, 10000);
-                                                await Task.Delay(stopTime);
-                                                skipStops = 50;
-                                                if (InstaStop == false)
-                                                {
-                                                    MovingTimer.Start();
-                                                }
-                                                break;
-                                            }
-                                        }
-                                    }
-                                }
-                                if (Main.traficLights.Count != 0)
-                                {
-                                    if (skip == 0)
-                                    {
-                                        foreach (var sp in Main.traficLights)
-                                        {
-                                            if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef) && sp.status != Status.RED)
-                                            {
-                                                skip = 100;
-                                                break;
-                                            }
-                                            if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef) && sp.status == Status.RED)
-                                            {
-                                                skip = 100;
-                                                MovingTimer.Stop();
-                                                stopTime = sp.bal * 1000;
-                                                await Task.Delay(stopTime);
-                                                if (InstaStop == false)
-                                                {
-                                                    MovingTimer.Start();
-                                                }
-                                                break;
-                                            }
-                                        }
-                                    }
-                                }
-
-                                busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((Coordinates[PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (Coordinates[PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
-                                PositionAt--;
-                            }
-                        }
-                        else
-                        {
-                            if (skipEnd == 0)
-                            {
-                                MovingTimer.Stop();
-                                await Task.Delay(rnd.Next(0, 10000));
-                            }
-                            if (InstaStop == false)
-                            {
-                                MovingTimer.Start();
-                            }
-                            TurnBack = false;
-                            PositionAt++;
-                        }
-
+                        //if (skipEnd == 0)
+                        //{
+                        //    MovingTimer.Stop();
+                        //    await Task.Delay(rnd.Next(0, 10000));
+                        //}
+                        //if (InstaStop == false)
+                        //{
+                        //    MovingTimer.Start();
+                        //}
+                        TurnBack = false;
+                        PositionAt++;
                     }
-                }
-                else
-                {
-                    MovingTimer.Stop();
-                };
 
+                }
             }
-            catch { }
+            else
+            {
+                MovingTimer.Stop();
+            };
+
+
         }
+
         public string getRoute()
         {
             return route;
@@ -813,44 +821,44 @@ namespace SystAnalys_lr1
 
         private void TimerMoveProcessor(object sender, EventArgs e)
         {
-            MoveWithGraphics();
-            if (skip != 0)
-                skip -= 1;
-            if (skipStops != 0)
-                skipStops -= 1;
-            if (skipEnd != 0)
-                skipEnd -= 1;
-            if (stopTime != 0)
-                stopTime -= 1;
+            //MoveWithGraphics();
+            //if (skip != 0)
+            //    skip -= 1;
+            //if (skipStops != 0)
+            //    skipStops -= 1;
+            //if (skipEnd != 0)
+            //    skipEnd -= 1;
+            //if (stopTime != 0)
+            //    stopTime -= 1;
         }
         public void Set()
         {
 
-            InstaStop = false;
-            MovingTimer = new Timer
-            {
-                Interval = 1
-            };
-            MovingTimer.Tick += new EventHandler(TimerMoveProcessor);
-            MovingTimer.Start();
+            //InstaStop = false;
+            //MovingTimer = new Timer
+            //{
+            //    Interval = 1
+            //};
+            //MovingTimer.Tick += new EventHandler(TimerMoveProcessor);
+            // MovingTimer.Start();
 
         }
         public void Start()
         {
-            if (MovingTimer != null)
-            {
-                MovingTimer.Start();
-                InstaStop = false;
-            }
+            //if (MovingTimer != null)
+            //{
+            //    MovingTimer.Start();
+            //    InstaStop = false;
+            //}
 
         }
         public void Stop()
         {
-            if (MovingTimer != null)
-            {
-                MovingTimer.Stop();
-                InstaStop = true;
-            }
+            //if (MovingTimer != null)
+            //{
+            //    MovingTimer.Stop();
+            //    InstaStop = true;
+            //}
 
         }
 
