@@ -525,7 +525,6 @@ namespace SystAnalys_lr1
                     i++;
                 }
 
-                //loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Value = s), loadingForm.loading.Value + 1);
             }
             if (small == old)
                 ResultFromModeling.Add(null);
@@ -589,17 +588,12 @@ namespace SystAnalys_lr1
             }
         }
 
-        //старый таймер
         private void timer2_Tick(object sender, EventArgs e)
         {
             if (TheGrid != null && sheet.Image != null)
             {
                 sheet.Image = G.GetBitmap();
             }
-            //long totalMemory = GC.GetTotalMemory(false);
-
-            //GC.Collect();
-            //GC.WaitForPendingFinalizers();
         }
         private void panel6_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
@@ -621,12 +615,10 @@ namespace SystAnalys_lr1
             g.ScaleTransform(10, 10);
         }
 
-
         public Panel GetMainPanel()
         {
-            return this.panel4;
+            return panel4;
         }
-
 
         private void button7_Click(object sender, EventArgs e)
         {
@@ -657,8 +649,6 @@ namespace SystAnalys_lr1
         {
             return mainPanel;
         }
-
-
 
 
         private void button3_Click(object sender, EventArgs e)
@@ -1029,7 +1019,6 @@ namespace SystAnalys_lr1
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
                     loadingForm.loading.Value = 60;
-                    // SaveRoutes(saveF, savepath + @"\");
 
                 }
                 else
@@ -1039,14 +1028,6 @@ namespace SystAnalys_lr1
                 }
                 if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
                 {
-                    //DirectoryInfo dirInfo = new DirectoryInfo(savepath);
-                    //foreach (FileInfo file in dirInfo.GetFiles())
-                    //{
-                    //    if (Path.GetExtension(file.FullName) != ".png")
-                    //    {
-                    //        file.Delete();
-                    //    }
-                    //}
                     loadingForm.Show();
                     loadingForm.loading.Value = 20;
                     foreach (var b in buses)
@@ -1157,8 +1138,6 @@ namespace SystAnalys_lr1
                 G.setBitmap();
                 CreateGrid();
                 CreatePollutionInRoutes();
-                //Bus.setGrid(TheGrid);
-                // Bus.setAllCoordinates(AllCoordinates);
                 addInComboBox();
                 Ep = new DisplayEpicenters(this);
                 StyleManager.Clone(Ep);
@@ -1222,7 +1201,6 @@ namespace SystAnalys_lr1
                     }
                     loadingForm.loading.Value = 50;
                     AllCoordinates[changeRoute.Text].Clear();
-                    //   SaveRoutes();
                     G.clearSheet();
                     G.drawALLGraph(V, E);
                     sheet.Image = G.GetBitmap();
@@ -1231,8 +1209,6 @@ namespace SystAnalys_lr1
                 }
                 if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
                 {
-                    //V.Clear();
-                    //E.Clear();
                     loadingForm.Show();
                     foreach (var b in buses)
                     {
@@ -1424,36 +1400,6 @@ namespace SystAnalys_lr1
             }
         }
 
-
-        public class AutoClosingMessageBox
-        {
-            System.Threading.Timer _timeoutTimer;
-            string _caption;
-            AutoClosingMessageBox(string text, string caption, int timeout)
-            {
-                _caption = caption;
-                _timeoutTimer = new System.Threading.Timer(OnTimerElapsed,
-                    null, timeout, System.Threading.Timeout.Infinite);
-                using (_timeoutTimer)
-                    MessageBox.Show(text, caption);
-            }
-            public static void Show(string text, string caption, int timeout)
-            {
-                new AutoClosingMessageBox(text, caption, timeout);
-            }
-            void OnTimerElapsed(object state)
-            {
-                IntPtr mbWnd = FindWindow("#32770", _caption); // lpClassName is #32770 for MessageBox
-                if (mbWnd != IntPtr.Zero)
-                    SendMessage(mbWnd, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
-                _timeoutTimer.Dispose();
-            }
-            const int WM_CLOSE = 0x0010;
-            [System.Runtime.InteropServices.DllImport("user32.dll", SetLastError = true)]
-            static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
-            [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
-            static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
-        }
         List<int> withoutSensorsBuses = new List<int>();
         private void offBuses(int proc = 0)
         {
@@ -1483,7 +1429,7 @@ namespace SystAnalys_lr1
                     tot += 1;
                 }
             };
-            countWithoutSensors -= countSensors;//(int)(buses.Count * 0.01 * proc);
+            countWithoutSensors -= countSensors;
             if (withoutSensorsBuses.Count == 4)
             {
                 countWithoutSensors = 1;
@@ -1538,7 +1484,6 @@ namespace SystAnalys_lr1
             loadingForm.Show();
             int old = small;
             var style = msmMain.Style;
-            //SavePictures.Enabled = false;
             if (msmMain.Style == (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf("Red")))
                 msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf("Yellow"));
             else
@@ -1858,7 +1803,6 @@ namespace SystAnalys_lr1
                     stopPoints.Clear();
                     traficLights.Clear();
                     LoadRoutes(savepath + @"\");
-                    //  sheet.Image = Image.FromFile(fb.FileName);
                     saveImage = sheet.Image;
                     metroTrackBar1.Value = 1;
                     wsheet = sheet.Width;
@@ -1868,12 +1812,7 @@ namespace SystAnalys_lr1
                     G.setBitmap();
                     CreateGrid();
                     CreatePollutionInRoutes();
-                  //  Bus.setGrid(TheGrid);
-                    //  Bus.setAllCoordinates(AllCoordinates);
                     addInComboBox();
-                    //Ep = new DisplayEpicenters(this);
-                    //StyleManager.Clone(Ep);
-                    //Ep.Show();
                     DrawGrid();
                     Matrix();
                     BringToFront();
@@ -1890,7 +1829,6 @@ namespace SystAnalys_lr1
                 {
                     try
                     {
-                        //MetroMessageBox.Show(this, MainStrings.chooseWay, MainStrings.acrossThePath, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         using (var dialog = new FolderBrowserDialog())
                         {
                             if (!Directory.Exists(savepath))
@@ -2023,48 +1961,7 @@ namespace SystAnalys_lr1
             selected = new List<int>();
             DrawGrid();
         }
-
-
-        List<SerializableDictionary<string, Edge>> routePointsEdge = new List<SerializableDictionary<string, Edge>>();
-        private void Routes(int num, List<Vertex> route, List<Edge> edges)
-        {
-            SerializableDictionary<int, Vertex> rp = new SerializableDictionary<int, Vertex>();
-            SerializableDictionary<int, Edge> ep = new SerializableDictionary<int, Edge>();
-            foreach (var v in route)
-            {
-                for (int i = 0; i < V.Count; i++)
-                {
-                    if (v.X == V[i].X && v.Y == V[i].Y)
-                    {
-                        rp[i] = v;
-                        break;
-                    };
-
-
-                }
-            };
-            routePoints.Add(rp);
-        }
-
-
-
-        private void Save_Click(object sender, EventArgs e)
-        {
-            SaveRoutes();
-        }
-
-        public byte[] imageToByteArray(System.Drawing.Image imageIn)
-        {
-            MemoryStream ms = new MemoryStream();
-            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
-            return ms.ToArray();
-        }
-        public Image byteArrayToImage(byte[] byteArrayIn)
-        {
-            MemoryStream ms = new MemoryStream(byteArrayIn);
-            Image returnImage = Image.FromStream(ms);
-            return returnImage;
-        }
+        
         string saveF = "xml";
         private void SaveRoutes(string saveFormat = "xml", string save = "../../Data/")
         {
@@ -2226,55 +2123,7 @@ namespace SystAnalys_lr1
                 }
 
             }
-        }
-
-        private Bitmap MakeGray(Bitmap bmp)
-        {
-            // Задаём формат Пикселя.
-            PixelFormat pxf = PixelFormat.Format24bppRgb;
-
-            // Получаем данные картинки.
-            Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
-            //Блокируем набор данных изображения в памяти
-            BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, pxf);
-
-            // Получаем адрес первой линии.
-            IntPtr ptr = bmpData.Scan0;
-
-            // Задаём массив из Byte и помещаем в него надор данных.
-            // int numBytes = bmp.Width * bmp.Height * 3; 
-            //На 3 умножаем - поскольку RGB цвет кодируется 3-мя байтами
-            //Либо используем вместо Width - Stride
-            int numBytes = bmpData.Stride * bmp.Height;
-            int widthBytes = bmpData.Stride;
-            byte[] rgbValues = new byte[numBytes];
-
-            // Копируем значения в массив.
-            Marshal.Copy(ptr, rgbValues, 0, numBytes);
-
-            // Перебираем пикселы по 3 байта на каждый и меняем значения
-            for (int counter = 0; counter < rgbValues.Length; counter += 3)
-            {
-
-                int value = rgbValues[counter] + rgbValues[counter + 1] + rgbValues[counter + 2];
-                byte color_b = 0;
-
-                color_b = Convert.ToByte(value / 3);
-
-
-                rgbValues[counter] = color_b;
-                rgbValues[counter + 1] = color_b;
-                rgbValues[counter + 2] = color_b;
-
-            }
-            // Копируем набор данных обратно в изображение
-            Marshal.Copy(rgbValues, 0, ptr, numBytes);
-
-            // Разблокируем набор данных изображения в памяти.
-            bmp.UnlockBits(bmpData);
-
-            return bmp;
-        }
+        }      
 
         private void Load_Click(object sender, EventArgs e)
         {
@@ -2449,8 +2298,10 @@ namespace SystAnalys_lr1
                     }
                 }
 
-                if (AllCoordinates.Count == 0)
-                    CreateAllCoordinates();
+                //if (AllCoordinates.Count != 0)
+                //{
+                //    CreateAllCoordinates();
+                //}
 
 
                 if (File.Exists(load + "traficLights.xml"))
@@ -2544,7 +2395,15 @@ namespace SystAnalys_lr1
                         Location = new System.Drawing.Point(int.Parse((x.x + mainPanel.AutoScrollPosition.X).ToString()), int.Parse((x.y + mainPanel.AutoScrollPosition.Y).ToString())),
                         Size = new System.Drawing.Size(15, 15)
                     };
-                    Bitmap bitmap = new Bitmap(Bus.sImg); //load the image file
+                    Bitmap bitmap;
+                    if (x.tracker != false)
+                    {
+                        bitmap = new Bitmap(Bus.sImg); //load the image file
+                    }
+                    else
+                    {
+                        bitmap = new Bitmap("../../Resources/bus.png"); 
+                    }
                     using (Graphics graphics = Graphics.FromImage(bitmap))
                     {
                         using (Font arialFont = new Font("Segoe UI Black", 300))
@@ -2557,10 +2416,6 @@ namespace SystAnalys_lr1
                     x.skipStops = 5;
                     x.skipEnd = 5;
                     x.busPic.Image = bitmap;
-                    if (x.tracker == false)
-                    {
-                        x.busPic.Image = MakeGray(bitmap);
-                    };
                     x.busPic.SizeMode = PictureBoxSizeMode.StretchImage;
                     mainPanel.Controls.Add(x.busPic);
                     x.busPic.BringToFront();
@@ -2604,13 +2459,12 @@ namespace SystAnalys_lr1
                     }
                     saveF = "json";
                 }
+
                 loadingForm.loading.Value = 90;
                 openEpicFormToolStripMenuItem.Enabled = true;
                 CreateGrid();
                 CreatePollutionInRoutes();
                 CreateOneRandomEpicenter(EpicSizeParam, null);
-                //Bus.setGrid(TheGrid);
-                //  Bus.setAllCoordinates(AllCoordinates);
 
                 addInComboBox();
                 G.clearSheet();
@@ -3069,16 +2923,6 @@ namespace SystAnalys_lr1
                             }
                         }
                     }
-                    //if (e.Button == MouseButtons.Right)
-                    //{
-                    //    if ((selected1 != -1) &&
-                    //        (Math.Pow((routeV[selected1].x - e.X), 2) + Math.Pow((routeV[selected1].y - e.Y), 2) <= G.R * G.R))
-                    //    {
-                    //        G.drawVertex(routeV[selected1].x, routeV[selected1].y, (selected1 + 1).ToString());
-                    //        selected1 = -1;
-                    //        sheet.Image = G.GetBitmap();
-                    //    }
-                    //}
                 }
                 //нажата кнопка "удалить элемент"
                 if (deleteButton.Enabled == false)
@@ -3471,7 +3315,6 @@ namespace SystAnalys_lr1
         }
 
 
-
         private void jSONToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string path = savepath;
@@ -3798,10 +3641,6 @@ namespace SystAnalys_lr1
             }
         }
 
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
-
-        }
         private void ZoomHelper()
         {
             sheet.Image = ResizeBitmap(new Bitmap(saveImage), wsheet * metroTrackBar1.Value, hsheet * metroTrackBar1.Value);
@@ -3924,9 +3763,6 @@ namespace SystAnalys_lr1
             {
                 G.clearSheet();
                 G.clearSheet2();
-                //globalMap = null;
-                //DisplayEpicenters.EsheetPicture = null;
-                //sheet.Image = null;
                 G = new DrawGraph();
 
 
@@ -3960,12 +3796,9 @@ namespace SystAnalys_lr1
             Matrix();
             TheGrid = new List<GridPart>();
 
-            TheGrid.TrimExcess();
-
-          
+            TheGrid.TrimExcess();                      
 
             Refresh();
-            // MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
 
@@ -3994,12 +3827,6 @@ namespace SystAnalys_lr1
                     Ep.EDrawGrid();
                 }
 
-
-
-                //for (int i = 0; i < routes.Count; i++)
-                //{
-                //    getOneRouteGrids(AllCoordinates[routes.ElementAt(i).Key],routes.ElementAt(i).Key);
-                //}
                 CreateAllCoordinates();
                 CreatePollutionInRoutes();
             }

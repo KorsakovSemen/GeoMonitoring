@@ -35,16 +35,10 @@ namespace SystAnalys_lr1
         }
         private async void AsyncCreateAllCoordinates()
         {
-
             await Task.Run(() =>
             {
-
                 CreateAllCoordinates();
-
-
-
             });
-
         }
 
         public List<Point> getPoints(List<Vertex> routeVertexes, string route)

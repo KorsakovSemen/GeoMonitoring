@@ -234,24 +234,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cursor-game-01.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cursor.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\vertex.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\edge.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\deleteAll.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\delete.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\smezh.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -264,71 +246,11 @@
     <None Include="Resources\cycle.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\shkolnyy-avtobus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\shkolnyy-avtobus1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\shkolnyy-avtobus2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Map.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\62.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\23.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\72.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\43.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\71.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\107.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\20.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\xxx.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\map2.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\del.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\w450h4001385925290Delete.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\grid.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\99e4d3f57fb77729bbc061fbf3490f69.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\0032_h_stop-logo_14.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\be8183118c5eb3a97558d6ea6e648d8d.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\oAexz.png" />
@@ -340,34 +262,13 @@
     <None Include="Resources\criss-cross.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\dump.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\line.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\network.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\traffic-light.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\transportation.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cursor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\circle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\garbage.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\newcursor1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\photo_2020-04-14_17-42-30.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\minus.png" />

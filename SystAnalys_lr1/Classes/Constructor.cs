@@ -21,10 +21,6 @@ namespace SystAnalys_lr1.Classes
             await Task.Run(() => drawEdge(e, V, E, G, sheet, n));
         }
 
-        public async void asDrawEdgeRoute(MouseEventArgs e, List<Vertex> V, List<Edge> E, DrawGraph G, PictureBox sheet, int n)
-        {
-            await Task.Run(() => drawEdgeRoute(e, V, E, G, sheet, n));
-        }
 
         public async void asDelete(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, DrawGraph G, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
@@ -80,7 +76,6 @@ namespace SystAnalys_lr1.Classes
         }
 
 
-
         public void drawVertex(MouseEventArgs e, List<Vertex> V, DrawGraph G, PictureBox sheet)
         {
             V.Add(new Vertex(e.X / Main.zoom, e.Y / Main.zoom));
@@ -125,55 +120,6 @@ namespace SystAnalys_lr1.Classes
             }
         }
 
-        public void drawEdgeRoute(MouseEventArgs e, List<Vertex> V, List<Edge> E, DrawGraph G, PictureBox sheet, int n)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                for (int i = 0; i < V.Count; i++)
-                {
-                    if (Math.Pow((V[i].X - e.X / Main.zoom), 2) + Math.Pow((V[i].Y - e.Y / Main.zoom), 2) <= G.R * G.R)
-                    {
-                        if (Main.selected1 == -1)
-                        {
-                            G.drawSelectedVertex(V[i].X, V[i].Y);
-                            Main.selected1 = i;
-                            sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
-                            break;
-                        }
-                        if (Main.selected2 == -1)
-                        {
-                            G.drawSelectedVertex(V[i].X, V[i].Y);
-                            Main.selected2 = i;
-                            E.Add(new Edge(V.Count - 2, V.Count - 1));
-                            G.drawSelectedVertex(V[i].X, V[i].Y);
-                            Main.selected2 = i;
-                            E.Add(new Edge(Main.selected1, Main.selected2));
-                            for (var j = 0; j < Main.E.Count; i++)
-                            {
-                                foreach (var z in Main.edgePoints[n])
-                                {
-                                    if (Main.E[j].v1 == z.v1 && Main.E[j].v2 == z.v2)
-                                    {
-                                        G.drawEdge(V[Main.selected1], V[Main.selected2], E[E.Count - 1], n);
-                                        sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
-                                        Main.selected1 = -1;
-                                        Main.selected2 = -1;
-                                        break;
-                                    }
-                                }
-                            };
-                            E.Remove(E.Last());
-                            G.clearSheet();
-                            Main.DrawGrid();
-                            sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
-                            Main.selected1 = -1;
-                            Main.selected2 = -1;
-                            break;
-                        }
-                    }
-                }
-            }
-        }
         public void deleteTF(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, DrawGraph G, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
             foreach (var tl in Main.traficLights)
