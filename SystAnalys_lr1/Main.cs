@@ -2782,21 +2782,21 @@ namespace SystAnalys_lr1
 
                         int pos = 0;
 
-                        //if (e.Button == MouseButtons.Left)
-                        //{
-                        //    double min = Math.Pow((AllCoordinates[changeRoute.Text].Last().X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text].Last().Y - e.Y / zoom), 2);
-                        //    for (int i = 0; i < AllCoordinates[changeRoute.Text].Count; i++)
-                        //    {
-                        //        if (Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2) <= G.R * G.R * 500)
-                        //        {
-                        //            if ((Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2) < min))
-                        //            {
-                        //                min = Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2);
-                        //                pos = i;
-                        //            }
-                        //        }
-                        //    }
-                        //}
+                        if (e.Button == MouseButtons.Left)
+                        {
+                            double min = Math.Pow((AllCoordinates[changeRoute.Text].Last().X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text].Last().Y - e.Y / zoom), 2);
+                            for (int i = 0; i < AllCoordinates[changeRoute.Text].Count; i++)
+                            {
+                                if (Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2) <= G.R * G.R * 500)
+                                {
+                                    if ((Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2) < min))
+                                    {
+                                        min = Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2);
+                                        pos = i;
+                                    }
+                                }
+                            }
+                        }
 
                         if (trackerCheck.Checked == true)
                         {
@@ -2840,13 +2840,13 @@ namespace SystAnalys_lr1
                         double min = Math.Pow((sheet.Image.Width - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((sheet.Image.Height - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2);
                         for (int i = 0; i < buses.Count; i++)
                         {
-                            //if (Math.Pow((buses[i].busPic.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].busPic.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) <= buses[i].R * buses[i].R * 500)
+                            if (Math.Pow((buses[i].Coordinates[buses[i].PositionAt].X - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].Coordinates[buses[i].PositionAt].Y - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) <= buses[i].R * buses[i].R * 500)
                             {
                                 if (buses[i].route == changeRoute.Text)
                                 {
-                                    // if (Math.Pow((buses[i].busPic.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].busPic.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) < min)
+                                    if (Math.Pow((buses[i].Coordinates[buses[i].PositionAt].X - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].Coordinates[buses[i].PositionAt].Y - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) < min)
                                     {
-                                        //  min = Math.Pow((buses[i].busPic.Left - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].busPic.Top - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2);
+                                        min = Math.Pow((buses[i].Coordinates[buses[i].PositionAt].X - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].Coordinates[buses[i].PositionAt].Y - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2);
                                         pos = i;
                                     }
 
@@ -2856,7 +2856,7 @@ namespace SystAnalys_lr1
                         if (pos != null)
                         {
                             buses[int.Parse(pos.ToString())].Stop();
-                            // mainPanel.Controls.Remove(buses[int.Parse(pos.ToString())].busPic);
+                            //mainPanel.Controls.Remove(buses[int.Parse(pos.ToString())].busPic);
                             buses.Remove(buses[int.Parse(pos.ToString())]);
                         }
                         G.clearSheet();
@@ -3679,11 +3679,6 @@ namespace SystAnalys_lr1
 
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
-                Console.WriteLine("Done");
-                foreach (var bus in buses)
-                {
-                    bus.AlignBus();
-                }
             }
             //}
             //catch//(OutOfMemoryException ex)
