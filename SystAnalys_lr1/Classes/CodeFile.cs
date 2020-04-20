@@ -4,6 +4,7 @@ using SystAnalys_lr1.Strings;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -280,18 +281,18 @@ namespace SystAnalys_lr1
 
     }
 
+
     public class Bus : ICloneable
     {
         public static int ScrollX;
         public static int ScrollY;
         public int skip = 1;
-        public static string sImg = "../../Resources/newbus.PNG";
+        public static string busImg = "../../Resources/newbus.PNG";
+        public static string offBusImg = "../../Resources/bus.PNG";
         //таймер для движения
-        Timer MovingTimer;
         public List<Epicenter> Epicenters { get; set; } = new List<Epicenter>();
         int stopTime = 0;
         //сетка
-
         //для создания координат
         public double angle, x, y;
         //позиция автобуса
@@ -508,10 +509,6 @@ namespace SystAnalys_lr1
             //}
 
         }
-        public Timer GetMovingTimer()
-        {
-            return MovingTimer;
-        }
         public void MoveWithGraphics(DrawGraph G)
         {
             Bus thisBus = new Bus(busPic, PositionAt, TurnBack, route, Coordinates, tracker);
@@ -712,7 +709,7 @@ namespace SystAnalys_lr1
             }
             else
             {
-                MovingTimer.Stop();
+                //MovingTimer.Stop();
             };
 
 
@@ -817,50 +814,6 @@ namespace SystAnalys_lr1
 
         }
 
-
-
-        private void TimerMoveProcessor(object sender, EventArgs e)
-        {
-            //MoveWithGraphics();
-            //if (skip != 0)
-            //    skip -= 1;
-            //if (skipStops != 0)
-            //    skipStops -= 1;
-            //if (skipEnd != 0)
-            //    skipEnd -= 1;
-            //if (stopTime != 0)
-            //    stopTime -= 1;
-        }
-        public void Set()
-        {
-
-            //InstaStop = false;
-            //MovingTimer = new Timer
-            //{
-            //    Interval = 1
-            //};
-            //MovingTimer.Tick += new EventHandler(TimerMoveProcessor);
-            // MovingTimer.Start();
-
-        }
-        public void Start()
-        {
-            //if (MovingTimer != null)
-            //{
-            //    MovingTimer.Start();
-            //    InstaStop = false;
-            //}
-
-        }
-        public void Stop()
-        {
-            //if (MovingTimer != null)
-            //{
-            //    MovingTimer.Stop();
-            //    InstaStop = true;
-            //}
-
-        }
 
 
     }
