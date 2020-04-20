@@ -112,8 +112,6 @@ namespace SystAnalys_lr1
         private void CreateAllCoordinates()
         {
 
-
-
             AllCoordinates = new SerializableDictionary<string, List<Point>>();
             AllGridsInRoutes = new SerializableDictionary<string, List<int>>();
             for (int i = 0; i < routes.Count; i++)

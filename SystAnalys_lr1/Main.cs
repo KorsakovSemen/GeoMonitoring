@@ -2245,8 +2245,6 @@ namespace SystAnalys_lr1
                 loadingForm.loading.Value = 30;
 
 
-
-
                 if (File.Exists(load + "traficLights.xml"))
                 {
                     XmlSerializer tl = new XmlSerializer(typeof(List<TraficLight>));
@@ -2348,7 +2346,6 @@ namespace SystAnalys_lr1
                         bitmap = new Bitmap(original, new Size(15, 15));
 
                     }
-
                    
 
                     x.busPic = bitmap;
@@ -2356,10 +2353,6 @@ namespace SystAnalys_lr1
                     x.skip = 5;
                     x.skipStops = 5;
                     x.skipEnd = 5;
-                    //x.busPic.SizeMode = PictureBoxSizeMode.StretchImage;
-                    //mainPanel.Controls.Add(x.busPic);
-                    //x.busPic.BringToFront();
-                    //x.Set();
 
                 }
 
@@ -2428,10 +2421,6 @@ namespace SystAnalys_lr1
                     }
                 }
                 // loadingForm.loading.Value = 50;
-                //if (AllCoordinates.Count != 0)
-                //{
-                //    CreateAllCoordinates();
-                //}
                 loadingForm.loading.Value = 90;
                 openEpicFormToolStripMenuItem.Enabled = true;
                 CreateGrid();
@@ -2452,6 +2441,10 @@ namespace SystAnalys_lr1
                 loadingForm.close = true;
                 loadingForm.Close();
 
+                if (AllCoordinates.Count != 0)
+                {
+                    CreateAllCoordinates();
+                }
                 GC.Collect(GC.MaxGeneration);
             }
             catch (Exception exc)
