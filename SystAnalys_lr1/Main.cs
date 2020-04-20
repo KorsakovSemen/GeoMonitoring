@@ -3700,7 +3700,7 @@ namespace SystAnalys_lr1
             }
             foreach (var bus in buses)
             {
-                bus.MoveWithGraphics(G);
+                bus.MoveWithGraphicsAsync(G);
             }
 
             if (TheGrid != null && sheet.Image != null)
