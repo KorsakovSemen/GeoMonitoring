@@ -136,7 +136,7 @@
     <value>Delete</value>
   </data>
   <data name="deleteGraph" xml:space="preserve">
-    <value>Are you sure you want to completely remove the graph/route?</value>
+    <value>Are you sure you want to remove the graph/route?</value>
   </data>
   <data name="done" xml:space="preserve">
     <value>Done</value>

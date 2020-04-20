@@ -2346,7 +2346,7 @@ namespace SystAnalys_lr1
                         bitmap = new Bitmap(original, new Size(15, 15));
 
                     }
-                   
+
 
                     x.busPic = bitmap;
 
@@ -2691,6 +2691,7 @@ namespace SystAnalys_lr1
                 }
                 if (selectRoute.Enabled == false)
                 {
+                    bool select = true;
                     for (int i = 0; i < V.Count; i++)
                     {
                         if (Math.Pow((V[i].X - e.X / zoom), 2) + Math.Pow((V[i].Y - e.Y / zoom), 2) <= G.R * G.R)
@@ -2717,10 +2718,23 @@ namespace SystAnalys_lr1
                                         G.drawALLGraph(routeV, routesEdge[changeRoute.Text], 1);
                                         sheet.Image = G.GetBitmap();
                                         DrawGrid();
+                                        select = true;
                                         G.drawSelectedVertex(V[i].X, V[i].Y);
                                         break;
                                     }
+                                    select = false;
                                 }
+                                if (!select)
+                                {
+                                    G.clearSheet();
+                                    G.drawALLGraph(V, E);
+                                    G.drawALLGraph(routeV, routesEdge[changeRoute.Text], 1);
+                                    sheet.Image = G.GetBitmap();
+                                    DrawGrid();
+                                }
+                                if (routeV.Contains(new Vertex(V[i].X, V[i].Y)))
+                                    G.drawSelectedVertex(V[i].X, V[i].Y);
+
                             }
                             selected[0] = selected[1];
                             selected.Remove(selected[1]);
@@ -2736,21 +2750,6 @@ namespace SystAnalys_lr1
 
                     if (AllCoordinates[changeRoute.Text].Count != 0)
                     {
-                        //if (buses.Count != 0)
-                        //    sizeBus = buses.Last().busPic.Width;
-                        //PictureBox busPic = new PictureBox
-                        //{
-                        //    Location = new System.Drawing.Point(e.X + mainPanel.AutoScrollPosition.X, e.Y + mainPanel.AutoScrollPosition.Y)
-                        //};
-                        //if (busSize.Text != "")
-                        //    busPic.Size = new System.Drawing.Size(int.Parse(busSize.Text), int.Parse(busSize.Text));
-                        //else
-                        //    busPic.Size = new System.Drawing.Size(sizeBus, sizeBus);
-                        //busPic.Image = new Bitmap("../../Resources/newbus.png");
-                        //busPic.SizeMode = PictureBoxSizeMode.StretchImage;
-                        //mainPanel.Controls.Add(busPic);
-                        //busPic.BringToFront();
-
                         int pos = 0;
 
                         if (e.Button == MouseButtons.Left)

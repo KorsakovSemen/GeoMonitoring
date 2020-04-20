@@ -136,7 +136,7 @@
     <value>Удаление</value>
   </data>
   <data name="deleteGraph" xml:space="preserve">
-    <value>Вы действительно хотите полностью удалить граф/маршрут? (произойдет удаление файлов из конфигурации)</value>
+    <value>Вы действительно хотите удалить граф/маршрут? </value>
   </data>
   <data name="done" xml:space="preserve">
     <value>Готово</value>
