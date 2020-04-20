@@ -532,23 +532,18 @@ namespace SystAnalys_lr1
 
                         if (Main.buses.Count != 0)
                         {
-                            //foreach (var sp in buses)
-                            //{
-                            //    if (Math.Pow((sp.busPic.Left - (busPic.Left / (int)ZoomCoef)), 2) + Math.Pow((sp.busPic.Top - (busPic.Top / (int)ZoomCoef)), 2) <= sp.R * sp.R && sp.MovingTimer.Enabled == false && sp.TurnBack == TurnBack)
-                            //    {
-                            //        Console.WriteLine("Turn false");
-                            //        MovingTimer.Stop();
-                            //        stopTime = sp.stopTime;
-                            //        await Task.Delay(sp.stopTime);
-                            //        skip = 100;
-                            //        skipStops = 25;
-                            //        if (InstaStop == false)
-                            //        {
-                            //            MovingTimer.Start();
-                            //        }
-                            //        break;
-                            //    }
-                            //}
+                            foreach (var sp in buses)
+                            {
+                                if (Math.Pow((sp.Coordinates[sp.PositionAt].X - (Coordinates[PositionAt].X / (int)ZoomCoef)), 2) + Math.Pow((sp.Coordinates[sp.PositionAt].Y - (Coordinates[PositionAt].Y / (int)ZoomCoef)), 2) <= sp.R * sp.R && sp.pro100peremennaya != 0 && sp.TurnBack == TurnBack)
+                                {
+                                    Console.WriteLine("Turn false");
+                                    stopTime = sp.stopTime;
+                                    pro100peremennaya = stopTime;
+                                    skip = 100;
+                                    skipStops = 25;
+                                    break;
+                                }
+                            }
                         }
                         //if (Main.stopPoints.Count != 0 && Main.stopPoints.ContainsKey(route))
                         //{
