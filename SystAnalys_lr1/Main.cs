@@ -288,14 +288,6 @@ namespace SystAnalys_lr1
             mainPanel.MaximumSize = new System.Drawing.Size(sheet.Width, sheet.Height);
             mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             mainPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(panel6_MouseWheel);
-            //if (buses.Count != 0)
-            //{
-            //    sizeBus = buses.Last().busPic.Width;
-            //}
-            //else
-            //{
-            //    sizeBus = 15;
-            //}
             countWithoutSensors = buses.Count;
             Matrix();
             hint.Visible = false;
