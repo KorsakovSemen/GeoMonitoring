@@ -30,6 +30,19 @@ namespace SystAnalys_lr1
             VertexAndEdge,
             All
         }
+
+
+
+
+        //
+        PictureBox AnimationBox;
+        //
+        Graphics AnimationGraphics;
+        //
+        Bitmap AnimationBitmap;
+        // 
+
+
         public static deleteType delType;
         int tracbarX, tracbarY;
         public static string selectedRoute;
@@ -291,6 +304,23 @@ namespace SystAnalys_lr1
             countWithoutSensors = buses.Count;
             Matrix();
             hint.Visible = false;
+
+
+
+            //
+            AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
+            AnimationBitmap.MakeTransparent();
+            AnimationBox = new PictureBox();
+            AnimationBox.Image = AnimationBitmap;
+            AnimationGraphics = Graphics.FromImage(AnimationBitmap);
+            sheet.Controls.Add(AnimationBox);
+            AnimationBox.SizeMode = sheet.SizeMode;
+            AnimationBox.Location = new Point(0, 0);
+            AnimationBox.BackColor = Color.Transparent;
+            AnimationBox.Size = sheet.Size;
+            AnimationBox.MouseClick += sheet_MouseClick_1;
+            //
+
         }
         //функция возвращает массив координат маршрутов (для 2 формы)
         public SerializableDictionary<string, List<Point>> GetAllCoordinates()
@@ -2117,7 +2147,7 @@ namespace SystAnalys_lr1
                 metroTrackBar1.Value = 1;
                 wsheet = sheet.Width;
                 hsheet = sheet.Height;
-                ZoomHelper();
+                //ZoomHelper();
                 loadingForm = new LoadingForm
                 {
                     close = false
@@ -2286,7 +2316,7 @@ namespace SystAnalys_lr1
                         buses = JsonConvert.DeserializeObject<List<Bus>>(reader.ReadToEnd());
                     }
                 }
-
+                
                 XmlSerializer deserializerAllBuses = new XmlSerializer(typeof(List<Bus>));
                 if (File.Exists(load + "Buses.xml"))
                 {
@@ -2347,7 +2377,9 @@ namespace SystAnalys_lr1
                     x.skipEnd = 5;
 
                 }
-
+                //
+                timer1.Start();
+                //
                 XmlSerializer ver = new XmlSerializer(typeof(List<Vertex>));
                 XmlSerializer ed = new XmlSerializer(typeof(List<Edge>));
 
@@ -3537,7 +3569,7 @@ namespace SystAnalys_lr1
 
         private void launchBuses_Click(object sender, EventArgs e)
         {
-            BarabanAfterOpti();
+            //BarabanAfterOpti();
             //foreach (var bus in buses)
             //{
 
@@ -3597,6 +3629,7 @@ namespace SystAnalys_lr1
         private void ZoomHelper()
         {
             sheet.Image = ResizeBitmap(new Bitmap(saveImage), wsheet * metroTrackBar1.Value, hsheet * metroTrackBar1.Value);
+            //AnimationBox.Image = ResizeBitmap(new Bitmap(AnimationBitmap), wsheet * metroTrackBar1.Value, hsheet * metroTrackBar1.Value);
             globalMap = sheet.Image;
             mainPanel.AutoScrollPosition = new Point(scrollX * metroTrackBar1.Value, scrollY * metroTrackBar1.Value);
             scrollX = mainPanel.AutoScrollPosition.X;
@@ -3631,6 +3664,25 @@ namespace SystAnalys_lr1
 
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
+                //AnimationBitmap.Size = sheet.Size;
+                //nimationBox.Size = sheet.Size;
+
+                //
+                if (timer1.Enabled == false)
+                {
+                    AnimationBitmap.Dispose();
+                    AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
+                    AnimationBitmap.MakeTransparent();
+                    AnimationGraphics.Dispose();
+                    AnimationGraphics = Graphics.FromImage(AnimationBitmap);
+                    foreach (var bus in buses)
+                    {
+
+                        AnimationGraphics.DrawImage(bus.busPic, bus.Coordinates[bus.PositionAt].X * metroTrackBar1.Value - bus.busPic.Width / 2, bus.Coordinates[bus.PositionAt].Y * metroTrackBar1.Value - bus.busPic.Height / 2);
+                    }
+                    AnimationBox.Image = AnimationBitmap;
+                }
+                //
             }
             //}
             //catch//(OutOfMemoryException ex)
@@ -3682,24 +3734,29 @@ namespace SystAnalys_lr1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            G.clearSheet();
-            DrawGrid();
-            G.drawALLGraph(V, E);
-
-            if (changeRoute.SelectedIndex > 1)
-            {
-                G.drawALLGraph(routes[(changeRoute.Text)], routesEdge[(changeRoute.Text)], 1);
-            }
+            //G.clearSheet();
+            //DrawGrid();
+            //G.drawALLGraph(V, E);
+            AnimationBitmap.Dispose();
+            AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
+            AnimationBitmap.MakeTransparent();
+            // AnimationBox.Image = AnimationBitmap;
+            AnimationGraphics.Dispose();
+            AnimationGraphics = Graphics.FromImage(AnimationBitmap);
+            //if (changeRoute.SelectedIndex > 1)
+            //{
+            //    G.drawALLGraph(routes[(changeRoute.Text)], routesEdge[(changeRoute.Text)], 1);
+            //}
             foreach (var bus in buses)
             {
-                bus.MoveWithGraphicsAsync(G);
+                bus.MoveWithGraphicsAsync(AnimationGraphics);
             }
-
-            if (TheGrid != null && sheet.Image != null)
-            {
-                sheet.Image = G.GetBitmap();
-            }
-
+            // AnimationBox.Refresh();
+            //if (TheGrid != null && sheet.Image != null)
+            //{
+            //    sheet.Image = G.GetBitmap();
+            //}
+            AnimationBox.Image = AnimationBitmap;
         }
 
         private void metroButton1_Click(object sender, EventArgs e)

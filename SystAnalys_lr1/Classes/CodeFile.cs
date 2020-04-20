@@ -109,7 +109,7 @@ namespace SystAnalys_lr1
 
         public void clearSheet()
         {
-            Graphics.FromImage(bitmap).Clear(Color.Wheat);
+          //  Graphics.FromImage(bitmap).Clear(Color.Wheat);
             bitmap = new Bitmap(Main.globalMap);
             gr.Dispose();
             gr = Graphics.FromImage(bitmap);
@@ -518,7 +518,7 @@ namespace SystAnalys_lr1
             if (stopTime != 0)
                 stopTime -= 1;
         }
-        public async Task MoveWithGraphicsAsync(DrawGraph G)
+        public async Task MoveWithGraphicsAsync(Graphics G)
         {
             Bus thisBus = new Bus(busPic, PositionAt, TurnBack, route, Coordinates, tracker);
             List<Bus> buses = Main.buses;
@@ -527,7 +527,7 @@ namespace SystAnalys_lr1
             {
                 if (TurnBack == false)
                 {
-                    if (PositionAt < Coordinates.Count)
+                    if (PositionAt < Coordinates.Count-1)
                     {
 
                         if (Main.buses.Count != 0)
@@ -591,7 +591,7 @@ namespace SystAnalys_lr1
                         }
 
                         // busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((Coordinates[PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (Coordinates[PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
-                        G.gr.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
+                        G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
                         stopDown();
                         PositionAt++;
                     }
@@ -686,7 +686,7 @@ namespace SystAnalys_lr1
                             //}
 
 
-                            G.gr.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
+                            G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
                             stopDown();
                             // busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((Coordinates[PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (Coordinates[PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
                             PositionAt--;
@@ -713,7 +713,7 @@ namespace SystAnalys_lr1
             else
             {
                 pro100peremennaya -= 1;
-                G.gr.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
+                G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
             }
 
         }
