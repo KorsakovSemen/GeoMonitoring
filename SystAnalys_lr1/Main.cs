@@ -2316,7 +2316,7 @@ namespace SystAnalys_lr1
                         buses = JsonConvert.DeserializeObject<List<Bus>>(reader.ReadToEnd());
                     }
                 }
-                
+
                 XmlSerializer deserializerAllBuses = new XmlSerializer(typeof(List<Bus>));
                 if (File.Exists(load + "Buses.xml"))
                 {
@@ -2330,47 +2330,100 @@ namespace SystAnalys_lr1
                 {
                     tl.Start();
                 }
-
-
+                Image num;
+                Bitmap original = new Bitmap(1, 1);
                 foreach (var x in buses)
                 {
-                    //x.busPic = new PictureBox
-                    //{
-                    //    Location = new System.Drawing.Point(int.Parse((x.x + mainPanel.AutoScrollPosition.X).ToString()), int.Parse((x.y + mainPanel.AutoScrollPosition.Y).ToString())),
-                    //    Size = new System.Drawing.Size(15, 15)
-                    //};
 
-                    Bitmap bitmap;
+                    //Image img1 = Image.FromFile(Bus.busImg);
+                    //Image img2 = Image.FromFile(Bus.busImg);
+
+                    //img1 = new Bitmap(img1, new Size(15, 15));
+                    //img2 = new Bitmap(img2, new Size(15, 15));
+
+                    //Bitmap res = new Bitmap(Math.Max(img1.Width, img1.Width), Math.Max(img1.Height, img2.Height) * 2);
+
+                    //Graphics g = Graphics.FromImage(res);
+                    //g.DrawImage(img1, 0, 0);
+                    //using (Font arialFont = new Font("Segoe UI Black", 300))
+                    //{
+                    //    g.DrawString(x.route.ToString(), arialFont, Brushes.Black, new Point(0, img1.Height));
+                    //}
+                    //g.DrawImage(img2, 0, img1.Height);
+
+
                     if (x.tracker == true)
                     {
-                        Bitmap original = new Bitmap(Bus.busImg); //load the image file
-                        using (Graphics graphics = Graphics.FromImage(original))
+                        Rectangle rect = new Rectangle(0, 0, 200, 100);
+                        x.busPic = new Bitmap(Bus.busImg);
+                        x.busPic = new Bitmap(x.busPic, new Size(15, 15));
+                        num = new Bitmap(x.busPic.Height, x.busPic.Width);
+                        using (Graphics gr = Graphics.FromImage(num))
                         {
-                            using (Font arialFont = new Font("Segoe UI Black", 300))
-                            {
-                                graphics.DrawString(x.route.ToString(), arialFont, Brushes.Black, new Point(0, 0));
-                                graphics.Dispose();
+                            using (Font font = new Font("Arial", 10))
+                            {  
+                                // Заливаем фон нужным цветом.
+                                gr.FillRectangle(Brushes.Transparent, rect);
+
+                                // Выводим текст.
+                                gr.DrawString(
+                                    x.route.ToString(),
+                                    font,
+                                    Brushes.Black, // цвет текста
+                                    rect, // текст будет вписан в указанный прямоугольник
+                                    StringFormat.GenericTypographic
+                                    );
                             }
                         }
-                        bitmap = new Bitmap(original, new Size(15, 15));
+
+                        original = new Bitmap(Math.Max(x.busPic.Width, num.Width), Math.Max(x.busPic.Height, num.Height) * 2); //load the image file
+                        using (Graphics graphics = Graphics.FromImage(original))
+                        {
+
+                            graphics.DrawImage(x.busPic, 0, 0);
+                            graphics.DrawImage(num, 0, 15);
+                            graphics.Dispose();
+
+                        }
+                        //  bitmap = new Bitmap(original, new Size(15, 15));
                     }
                     else
                     {
-                        Bitmap original = new Bitmap(Bus.offBusImg);
-                        using (Graphics graphics = Graphics.FromImage(original))
+                        Rectangle rect = new Rectangle(0, 0, 200, 100);
+                        x.busPic = new Bitmap(Bus.offBusImg);
+                        x.busPic = new Bitmap(x.busPic, new Size(15, 15));
+                        num = new Bitmap(x.busPic.Height, x.busPic.Width);
+                        using (Graphics gr = Graphics.FromImage(num))
                         {
-                            using (Font arialFont = new Font("Segoe UI Black", 300))
+                            using (Font font = new Font("Arial", 10))
                             {
-                                graphics.DrawString(x.route.ToString(), arialFont, Brushes.Black, new Point(0, 0));
-                                graphics.Dispose();
+                                // Заливаем фон нужным цветом.
+                                gr.FillRectangle(Brushes.Transparent, rect);
+
+                                // Выводим текст.
+                                gr.DrawString(
+                                    x.route.ToString(),
+                                    font,
+                                    Brushes.Black, // цвет текста
+                                    rect, // текст будет вписан в указанный прямоугольник
+                                    StringFormat.GenericTypographic
+                                    );
                             }
                         }
-                        bitmap = new Bitmap(original, new Size(15, 15));
 
+                        original = new Bitmap(Math.Max(x.busPic.Width, num.Width), Math.Max(x.busPic.Height, num.Height) * 2); //load the image file
+                        using (Graphics graphics = Graphics.FromImage(original))
+                        {
+
+                            graphics.DrawImage(x.busPic, 0, 0);
+                            graphics.DrawImage(num, 0, 15);
+                            graphics.Dispose();
+
+                        }
                     }
 
 
-                    x.busPic = bitmap;
+                    x.busPic = original;//res;// new Bitmap(res, new Size(1000, 1000));
 
                     x.skip = 5;
                     x.skipStops = 5;
@@ -2794,31 +2847,73 @@ namespace SystAnalys_lr1
 
                         if (trackerCheck.Checked == true)
                         {
-                            Bitmap original = (Bitmap)Image.FromFile(Bus.busImg);
-                            using (Graphics graphics = Graphics.FromImage(original))
+                            Rectangle rect = new Rectangle(0, 0, 200, 100);
+                            Bitmap busPic = new Bitmap(Bus.busImg);
+                            busPic = new Bitmap(busPic, new Size(15, 15));
+                            Bitmap num = new Bitmap(busPic.Height, busPic.Width);
+                            using (Graphics gr = Graphics.FromImage(num))
                             {
-                                using (Font arialFont = new Font("Segoe UI Black", 300))
+                                using (Font font = new Font("Arial", 10))
                                 {
-                                    graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(0, 0));
-                                    graphics.Dispose();
+                                    // Заливаем фон нужным цветом.
+                                    gr.FillRectangle(Brushes.Transparent, rect);
+
+                                    // Выводим текст.
+                                    gr.DrawString(
+                                        changeRoute.Text,
+                                        font,
+                                        Brushes.Black, // цвет текста
+                                        rect, // текст будет вписан в указанный прямоугольник
+                                        StringFormat.GenericTypographic
+                                        );
                                 }
                             }
-                            Bitmap resized = new Bitmap(original, new Size(15, 15));
-                            buses.Add(new Bus(resized, pos, backsideCheck.Checked, changeRoute.Text, AllCoordinates[changeRoute.Text], true));
+
+                            Bitmap original = new Bitmap(Math.Max(busPic.Width, num.Width), Math.Max(busPic.Height, num.Height) * 2); //load the image file
+                            using (Graphics graphics = Graphics.FromImage(original))
+                            {
+
+                                graphics.DrawImage(busPic, 0, 0);
+                                graphics.DrawImage(num, 0, 15);
+                                graphics.Dispose();
+
+                            }
+                            buses.Add(new Bus(original, pos, backsideCheck.Checked, changeRoute.Text, AllCoordinates[changeRoute.Text], true));
                         }
                         else
                         {
-                            Bitmap original = (Bitmap)Image.FromFile(Bus.offBusImg);
-                            using (Graphics graphics = Graphics.FromImage(original))
+                            Rectangle rect = new Rectangle(0, 0, 200, 100);
+                            Bitmap busPic = new Bitmap(Bus.offBusImg);
+                            busPic = new Bitmap(busPic, new Size(15, 15));
+                            Bitmap num = new Bitmap(busPic.Height, busPic.Width);
+                            using (Graphics gr = Graphics.FromImage(num))
                             {
-                                using (Font arialFont = new Font("Segoe UI Black", 300))
+                                using (Font font = new Font("Arial", 10))
                                 {
-                                    graphics.DrawString(changeRoute.Text, arialFont, Brushes.Black, new Point(0, 0));
-                                    graphics.Dispose();
+                                    // Заливаем фон нужным цветом.
+                                    gr.FillRectangle(Brushes.Transparent, rect);
+
+                                    // Выводим текст.
+                                    gr.DrawString(
+                                        changeRoute.Text,
+                                        font,
+                                        Brushes.Black, // цвет текста
+                                        rect, // текст будет вписан в указанный прямоугольник
+                                        StringFormat.GenericTypographic
+                                        );
                                 }
                             }
-                            Bitmap resized = new Bitmap(original, new Size(15, 15));
-                            buses.Add(new Bus(resized, pos, backsideCheck.Checked, changeRoute.Text, AllCoordinates[changeRoute.Text], false));
+
+                            Bitmap original = new Bitmap(Math.Max(busPic.Width, num.Width), Math.Max(busPic.Height, num.Height) * 2); //load the image file
+                            using (Graphics graphics = Graphics.FromImage(original))
+                            {
+
+                                graphics.DrawImage(busPic, 0, 0);
+                                graphics.DrawImage(num, 0, 15);
+                                graphics.Dispose();
+
+                            }
+                            buses.Add(new Bus(original, pos, backsideCheck.Checked, changeRoute.Text, AllCoordinates[changeRoute.Text], false));
                         };
                     }
 
