@@ -1603,23 +1603,16 @@ namespace SystAnalys_lr1
 
             using (StreamWriter fileV = new StreamWriter(path + "/Average.txt"))
             {
-                fileV.WriteLine(sum != 0 ? MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + GetKeyByValue(percentMean.Min(v => v.Value)) : MainStrings.notFound);
+                fileV.WriteLine(mean.Text != MainStrings.average + " " + MainStrings.notFound ? MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + GetKeyByValue(percentMean.Min(v => v.Value)) : MainStrings.notFound);
             }
             Matrix();
             resMatrix();
-
             msmMain.Style = style;
-            //SavePictures.Enabled = true;
             if (!Ep.IsDisposed)
             {
                 Ep.Show();
-                //SavePictures.Enabled = true;
             }
             BarabanAfterOpti();
-            //foreach (var bus in buses)
-            //{
-            //    bus.Start();
-            //}
             timer1.Start();
             loadingForm.close = true;
             loadingForm.Close();
