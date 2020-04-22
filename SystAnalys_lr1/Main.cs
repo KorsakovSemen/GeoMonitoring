@@ -2764,7 +2764,7 @@ namespace SystAnalys_lr1
                 //нажата кнопка "выбрать вершину", ищем степень вершины
                 if (selectButton.Enabled == false)
                 {
-                    c.asSelect(e, routeV, routesEdge[changeRoute.Text], G, sheet, 1);
+                    c.Select(e, routeV, routesEdge[changeRoute.Text], G, sheet, 1);
                 }
                 if (selectRoute.Enabled == false)
                 {
