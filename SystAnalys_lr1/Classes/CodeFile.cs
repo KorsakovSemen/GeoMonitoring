@@ -1248,6 +1248,134 @@ namespace SystAnalys_lr1
 
             }
         }
+        ////////
+        public void EpicMoving(List<string> Parameters)
+        {
+            for (int i = 2; i < EpicenterGrid.Count + 1; i++)
+            {
+
+                EpicenterGrid[i].Clear();
+
+            }
+
+            //EpicenterGrid[1].RemoveAt(EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()));
+        
+            List<Point> ForRemove = new List<Point>();
+            foreach (var gridPart in EpicenterGrid[1])
+            {
+                gridPart.IsMovedAway = false;
+                foreach (var item in Parameters)
+                {
+                    if (gridPart.IsMovedAway == false)
+                        switch (item)
+                        {
+
+                            case "right":
+                                gridPart.x = gridPart.x + GridPart.width;
+                                if (!(gridPart.x <= TheGrid.Last().x))
+                                {
+                                    gridPart.IsMovedAway = true;
+                                    ForRemove.Add(new Point(gridPart.x, gridPart.y));
+                                }
+                                break;
+                            //case "right-down":
+                            //    break;
+                            //case "right-up":
+                            //    break;
+                            case "down":
+                                gridPart.y = gridPart.y + GridPart.height;
+                                if (!(gridPart.y <= TheGrid.Last().y))
+                                {
+                                    gridPart.IsMovedAway = true;
+                                    ForRemove.Add(new Point(gridPart.x, gridPart.y));
+                                }
+                                break;
+                            case "up":
+                                gridPart.y -= GridPart.height;
+                                if (!(gridPart.y >= TheGrid.First().y))
+                                {
+                                    gridPart.IsMovedAway = true;
+                                    ForRemove.Add(new Point(gridPart.x, gridPart.y));
+                                }
+
+                                break;
+                            case "left":
+                                gridPart.x = gridPart.x - GridPart.width;
+                                if (!((gridPart.x >= TheGrid.First().x)))
+                                {
+                                    gridPart.IsMovedAway = true;
+                                    ForRemove.Add(new Point(gridPart.x, gridPart.y));
+                                }
+                                break;
+                            //case "left-down":
+                            //    break;
+                            //case "left-up":
+                            //    break;
+                            default:
+                                break;
+                        }
+                }
+
+            }
+
+            foreach (var OutMovedGrid in ForRemove)
+            {
+                int IndexOfOutMovedGrid = 0;
+                foreach (var gridPart in EpicenterGrid[1])
+                {
+                    if ((gridPart.x == OutMovedGrid.X) && (gridPart.y == OutMovedGrid.Y))
+                    {
+                        IndexOfOutMovedGrid = EpicenterGrid[1].IndexOf(gridPart);
+                    }
+
+                }
+                EpicenterGrid[1].RemoveAt(IndexOfOutMovedGrid);
+
+            }
+
+
+
+            List<string> Parameter = new List<string>();
+            //
+            for (int i = 2; i < 4; i++)
+            {
+
+                // EpicenterGrid.Add(i, new List<GridPart>());
+                List<GridPart> fillEpicenter = new List<GridPart>();
+                foreach (var item in EpicenterGrid[i - 1])
+                {
+                    fillEpicenter.Add(new GridPart(item.x, item.y));
+                }
+                foreach (var itwms in fillEpicenter)
+                {
+                    Parameter = new List<string>();
+                    Parameter = EpicenterGenerator(itwms, Parameter);
+                    if (Parameter.Count > 0)
+                        foreach (var items in Parameter)
+                        {
+                            Creater(items, itwms, i);
+                        }
+                }
+                fillEpicenter = new List<GridPart>();
+                foreach (var item in EpicenterGrid[i])
+                {
+                    fillEpicenter.Add(new GridPart(item.x, item.y));
+                }
+                foreach (var itwms in fillEpicenter)
+                {
+                    Parameter = new List<string>();
+                    Parameter = EpicenterGenerator(itwms, Parameter);
+                    if (Parameter.Count > 0)
+                        foreach (var items in Parameter)
+                        {
+                            Creater(items, itwms, i);
+                        }
+                }
+
+            }
+            ///
+        }
+        ///
         public void ExpandEpic(List<string> Parameters)
         {
             for (int i = 2; i < EpicenterGrid.Count + 1; i++)
@@ -1382,9 +1510,10 @@ namespace SystAnalys_lr1
         }
         public List<string> EpicenterGenerator(GridPart EpicPart, List<string> Parameter)
         {
+            bool net = false;
             if (EpicPart.x < TheGrid.Last().x)
             {
-                bool net = false;
+                net = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
@@ -1402,7 +1531,7 @@ namespace SystAnalys_lr1
             }
             if ((EpicPart.x < TheGrid.Last().x) && (EpicPart.y < TheGrid.Last().y))
             {
-                bool net = false;
+                net = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
@@ -1420,7 +1549,7 @@ namespace SystAnalys_lr1
             }
             if ((EpicPart.x < TheGrid.Last().x) && (EpicPart.y > TheGrid.First().y))
             {
-                bool net = false;
+                net = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
@@ -1438,7 +1567,7 @@ namespace SystAnalys_lr1
             }
             if (EpicPart.y < TheGrid.Last().y)
             {
-                bool net = false;
+                net = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
@@ -1456,7 +1585,7 @@ namespace SystAnalys_lr1
 
             if (EpicPart.y > TheGrid.First().y)
             {
-                bool net = false;
+                net = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
@@ -1473,7 +1602,7 @@ namespace SystAnalys_lr1
             }
             if (EpicPart.x > TheGrid.First().x)
             {
-                bool net = false;
+                net = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
@@ -1490,7 +1619,7 @@ namespace SystAnalys_lr1
             }
             if ((EpicPart.x > TheGrid.First().x) && (EpicPart.y > TheGrid.First().y))
             {
-                bool net = false;
+                net = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
@@ -1508,7 +1637,7 @@ namespace SystAnalys_lr1
             }
             if ((EpicPart.x > TheGrid.First().x) && (EpicPart.y < TheGrid.Last().y))
             {
-                bool net = false;
+                net = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
@@ -1522,6 +1651,7 @@ namespace SystAnalys_lr1
                 {
                     Parameter.Add("left-down");
                 }
+
             }
             return Parameter;
         }
@@ -1681,6 +1811,7 @@ namespace SystAnalys_lr1
         public int x, y;
         public int status { get; set; }
         public bool check { get; set; } = false;
+        public bool IsMovedAway { get; set; } = false;
         public static int width { get; set; } = 1;
         public static int height { get; set; } = 1;
         public GridPart(int x, int y)

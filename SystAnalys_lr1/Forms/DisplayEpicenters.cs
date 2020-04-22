@@ -3,7 +3,7 @@ using MetroFramework.Forms;
 using SystAnalys_lr1.Forms;
 using SystAnalys_lr1.Strings;
 using System;
-
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
@@ -330,6 +330,16 @@ namespace SystAnalys_lr1
             FormOpen = false;
             Main.SavePictures = false;
             Main.extendedSavePictures = false;
+        }
+
+        private void metroButton2_Click_1(object sender, EventArgs e)
+        {
+            List<string>  ssss = new List<string>();
+            //ssss.Add("up");
+            ssss.Add("right");
+             ssss.Add("down");
+            MainForm.GetEpicenters().First().EpicMoving(ssss);
+            EDrawEpics(MainForm.GetEpicenters());
         }
     }
 }

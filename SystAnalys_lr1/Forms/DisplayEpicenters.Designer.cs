@@ -38,12 +38,14 @@
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.button11 = new MetroFramework.Controls.MetroButton();
             this.label2 = new MetroFramework.Controls.MetroLabel();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel1.Controls.Add(this.metroButton2);
             this.panel1.Controls.Add(this.metroLabel2);
             this.panel1.Controls.Add(this.metroLabel1);
             this.panel1.Controls.Add(this.ERouts);
@@ -95,6 +97,13 @@
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
+            // metroButton2
+            // 
+            resources.ApplyResources(this.metroButton2, "metroButton2");
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.UseSelectable = true;
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click_1);
+            // 
             // DisplayEpicenters
             // 
             resources.ApplyResources(this, "$this");
@@ -119,5 +128,6 @@
         private MetroFramework.Controls.MetroComboBox ERouts;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroButton metroButton2;
     }
 }

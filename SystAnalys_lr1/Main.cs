@@ -2136,7 +2136,7 @@ namespace SystAnalys_lr1
                 metroTrackBar1.Value = 1;
                 wsheet = sheet.Width;
                 hsheet = sheet.Height;
-                //ZoomHelper(); //дроп ошибки если загружать конфиг в первый раз
+               //ZoomHelper(); //дроп ошибки если загружать конфиг в первый раз
                 loadingForm = new LoadingForm
                 {
                     close = false
