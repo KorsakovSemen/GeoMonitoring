@@ -32,8 +32,6 @@ namespace SystAnalys_lr1
         }
 
 
-
-
         //
         PictureBox AnimationBox;
         //
@@ -1135,7 +1133,6 @@ namespace SystAnalys_lr1
                 wsheet = sheet.Width;
                 hsheet = sheet.Height;
                 globalMap = sheet.Image;
-                saveImage = sheet.Image;
                 G.setBitmap();
                 CreateGrid();
                 CreatePollutionInRoutes();
@@ -1786,7 +1783,6 @@ namespace SystAnalys_lr1
                     wsheet = sheet.Width;
                     hsheet = sheet.Height;
                     globalMap = sheet.Image;
-                    saveImage = sheet.Image;
                     G.setBitmap();
                     CreateGrid();
                     CreatePollutionInRoutes();
@@ -2140,7 +2136,7 @@ namespace SystAnalys_lr1
                 metroTrackBar1.Value = 1;
                 wsheet = sheet.Width;
                 hsheet = sheet.Height;
-                //ZoomHelper();
+                ZoomHelper();
                 loadingForm = new LoadingForm
                 {
                     close = false
@@ -2327,23 +2323,6 @@ namespace SystAnalys_lr1
                 Bitmap original = new Bitmap(1, 1);
                 foreach (var x in buses)
                 {
-
-                    //Image img1 = Image.FromFile(Bus.busImg);
-                    //Image img2 = Image.FromFile(Bus.busImg);
-
-                    //img1 = new Bitmap(img1, new Size(15, 15));
-                    //img2 = new Bitmap(img2, new Size(15, 15));
-
-                    //Bitmap res = new Bitmap(Math.Max(img1.Width, img1.Width), Math.Max(img1.Height, img2.Height) * 2);
-
-                    //Graphics g = Graphics.FromImage(res);
-                    //g.DrawImage(img1, 0, 0);
-                    //using (Font arialFont = new Font("Segoe UI Black", 300))
-                    //{
-                    //    g.DrawString(x.route.ToString(), arialFont, Brushes.Black, new Point(0, img1.Height));
-                    //}
-                    //g.DrawImage(img2, 0, img1.Height);
-
 
                     if (x.tracker == true)
                     {
@@ -3716,7 +3695,7 @@ namespace SystAnalys_lr1
 
         private void ZoomHelper()
         {
-            sheet.Image = ResizeBitmap(new Bitmap(saveImage), wsheet * metroTrackBar1.Value, hsheet * metroTrackBar1.Value);
+            sheet.Image = ResizeBitmap(new Bitmap(Image.FromFile(savepath + "/Map.png")), wsheet * metroTrackBar1.Value, hsheet * metroTrackBar1.Value);
             //AnimationBox.Image = ResizeBitmap(new Bitmap(AnimationBitmap), wsheet * metroTrackBar1.Value, hsheet * metroTrackBar1.Value);
             globalMap = sheet.Image;
             mainPanel.AutoScrollPosition = new Point(scrollX * metroTrackBar1.Value, scrollY * metroTrackBar1.Value);
@@ -3749,13 +3728,7 @@ namespace SystAnalys_lr1
                 {
                     G.drawALLGraph(V, E);
                 }
-
-                sheet.Image = G.GetBitmap();
-                DrawGrid();
-                //AnimationBitmap.Size = sheet.Size;
-                //nimationBox.Size = sheet.Size;
-
-                //
+                
                 if (timer1.Enabled == false)
                 {
                     AnimationBitmap.Dispose();
@@ -3770,7 +3743,12 @@ namespace SystAnalys_lr1
                     }
                     AnimationBox.Image = AnimationBitmap;
                 }
-                //
+
+                sheet.Image = G.GetBitmap();
+               // CreateGrid();
+                DrawGrid();
+
+
             }
             //}
             //catch//(OutOfMemoryException ex)
