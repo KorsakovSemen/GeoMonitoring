@@ -3800,34 +3800,21 @@ namespace SystAnalys_lr1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //G.clearSheet();
-            //DrawGrid();
-            //G.drawALLGraph(V, E);
             AnimationBitmap.Dispose();
             AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
             AnimationBitmap.MakeTransparent();
-            // AnimationBox.Image = AnimationBitmap;
             AnimationGraphics.Dispose();
             AnimationGraphics = Graphics.FromImage(AnimationBitmap);
-            //if (changeRoute.SelectedIndex > 1)
-            //{
-            //    G.drawALLGraph(routes[(changeRoute.Text)], routesEdge[(changeRoute.Text)], 1);
-            //}
             foreach (var bus in buses)
             {
-                bus.MoveWithGraphicsAsync(AnimationGraphics);
+                bus.MoveWithGraphics(AnimationGraphics);
             }
-            // AnimationBox.Refresh();
-            //if (TheGrid != null && sheet.Image != null)
-            //{
-            //    sheet.Image = G.GetBitmap();
-            //}
             AnimationBox.Image = AnimationBitmap;
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            timer1.Interval = 10;
+            timer1.Interval = 1000;
             timer1.Start();
         }
 
