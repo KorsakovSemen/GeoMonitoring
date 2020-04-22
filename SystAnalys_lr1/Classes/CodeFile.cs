@@ -109,7 +109,7 @@ namespace SystAnalys_lr1
 
         public void clearSheet()
         {
-            //  Graphics.FromImage(bitmap).Clear(Color.Wheat);
+            Graphics.FromImage(bitmap).Clear(Color.White);
             bitmap = new Bitmap(Main.globalMap);
             gr.Dispose();
             gr = Graphics.FromImage(bitmap);

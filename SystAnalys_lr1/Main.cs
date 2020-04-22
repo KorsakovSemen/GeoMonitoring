@@ -2136,7 +2136,7 @@ namespace SystAnalys_lr1
                 metroTrackBar1.Value = 1;
                 wsheet = sheet.Width;
                 hsheet = sheet.Height;
-                ZoomHelper();
+                //ZoomHelper(); //дроп ошибки если загружать конфиг в первый раз
                 loadingForm = new LoadingForm
                 {
                     close = false
@@ -3823,7 +3823,7 @@ namespace SystAnalys_lr1
             openEpicFormToolStripMenuItem.Enabled = false;
             addRouteToolStripMenuItem.Enabled = false;
             createGridToolStripMenuItem.Enabled = false;
-            savepath = null;
+           // savepath = null; //мб лучше это оствить при клире
             if (Ep != null)
             {
                 Ep.EG.clearSheet2();
@@ -3844,7 +3844,7 @@ namespace SystAnalys_lr1
                 G.clearSheet();
                 G.clearSheet2();
                 G = new DrawGraph();
-
+                globalMap.Dispose();
 
             }
             routes.Clear();
@@ -3875,9 +3875,12 @@ namespace SystAnalys_lr1
             BringToFront();
             Matrix();
             TheGrid = new List<GridPart>();
-
+            timer1.Stop();
+            timer1.Dispose();
             TheGrid.TrimExcess();
-
+            AnimationBox.Image = null;
+            AnimationGraphics.Dispose();
+            AnimationBitmap.Dispose();
             Refresh();
         }
 
