@@ -2710,20 +2710,24 @@ namespace SystAnalys_lr1
                             {
                                 if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.width * zoom) && (e.Y < gridPart.y * zoom + GridPart.height * zoom)))
                                 {
-                                    if (stopPoints.ContainsKey(changeRoute.Text))
+                                    if (!stopPoints[changeRoute.Text].Contains(new Vertex(sp.X, sp.Y)))
                                     {
-                                        stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
-                                        stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
-                                      //  stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart)); //дроп ошибки
+                                        if (stopPoints.ContainsKey(changeRoute.Text) && stopPointsInGrids.ContainsKey(changeRoute.Text))
+                                        {
+                                            stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
+                                            stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
+                                            stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart)); //дроп ошибки
+                                        }
+                                        else
+                                        {
+                                            stopPoints.Add(changeRoute.Text, new List<Vertex>());
+                                            stopPointsInGrids.Add(changeRoute.Text, new List<int>());
+                                            stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
+                                            stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
+                                            stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart));
+                                        }
                                     }
-                                    else
-                                    {
-                                        stopPoints.Add(changeRoute.Text, new List<Vertex>());
-                                        stopPointsInGrids.Add(changeRoute.Text, new List<int>());
-                                        stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
-                                        stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
-                                        stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart));
-                                    }
+                                    
                                     G.drawStopRouteVertex(sp.X, sp.Y);
                                     sheet.Image = G.GetBitmap();
                                     DrawGrid();
