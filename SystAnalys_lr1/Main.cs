@@ -1557,7 +1557,7 @@ namespace SystAnalys_lr1
                         //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
                         //      + "\n" + MainStrings.procentSuc + " " + ResultFromModeling.Count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
                         if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
-                            percentMean.Add(withoutSensorsBuses.Last(), total / ResultFromModeling.Count);
+                            percentMean.Add(withoutSensorsBuses.Last(), total / count);
                         //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (Convert.ToDouble(total / ResultFromModeling.Count).ToString()));
                     }
 ;
@@ -1592,7 +1592,7 @@ namespace SystAnalys_lr1
             var result = percentMean.Where(s => s.Value.Equals(min)).Select(s => s.Key).ToList();
             result.Sort();
             if (res.Count != 0 && min != 0 && min != null)
-                mean.Text = MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " " + " - " + MainStrings.countSensors + ": " + result[0];//percentMean.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+                mean.Text = MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " " + " - " + MainStrings.countSensors + ": " + result[0];
             else
             {
                 mean.Text = MainStrings.average + " " + MainStrings.notFound;
