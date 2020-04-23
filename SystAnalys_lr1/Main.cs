@@ -1730,7 +1730,6 @@ namespace SystAnalys_lr1
             }
             BringToFront();
         }
-
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (savepath != null || savepath != "")
@@ -2004,8 +2003,15 @@ namespace SystAnalys_lr1
                     loadingForm.loading.Value = 70;
                     File.Delete(save + "StopPoints.xml");
                     using (FileStream fileV = new FileStream(save + "StopPoints.xml", FileMode.OpenOrCreate))
-                    {
+                    {                        
                         Ver.Serialize(fileV, stopPoints);
+                        Console.WriteLine("Объект сериализован");
+                    }
+                    File.Delete(save + "allStopPoints.xml");
+                    using (FileStream fileV = new FileStream(save + "allStopPoints.xml", FileMode.OpenOrCreate))
+                    {
+                        XmlSerializer V = new XmlSerializer(typeof(List<Vertex>));
+                        V.Serialize(fileV, allstopPoints);
                         Console.WriteLine("Объект сериализован");
                     }
                     loadingForm.loading.Value = 80;
@@ -2067,6 +2073,8 @@ namespace SystAnalys_lr1
                     loadingForm.loading.Value = 70;
                     json = JsonConvert.SerializeObject(stopPoints);
                     File.WriteAllText(save + "StopPoints.json", json);
+                    json = JsonConvert.SerializeObject(allstopPoints);
+                    File.WriteAllText(save + "allStopPoints.json", json);
                     loadingForm.loading.Value = 80;
                     json = JsonConvert.SerializeObject(routes);
                     File.WriteAllText(save + "vertexRoutes.json", json);
@@ -2137,7 +2145,7 @@ namespace SystAnalys_lr1
                 metroTrackBar1.Value = 1;
                 wsheet = sheet.Width;
                 hsheet = sheet.Height;
-               //ZoomHelper(); //дроп ошибки если загружать конфиг в первый раз
+                //ZoomHelper(); //дроп ошибки если загружать конфиг в первый раз
                 loadingForm = new LoadingForm
                 {
                     close = false
@@ -2231,6 +2239,16 @@ namespace SystAnalys_lr1
                     }
                 }
 
+                if (File.Exists(load + "allStopPoints.xml"))
+                {
+                    using (StreamReader reader = new StreamReader(load + "allStopPoints.xml"))
+                    {
+                        XmlSerializer deserializerV = new XmlSerializer(typeof(List<Vertex>));
+                        allstopPoints = (List<Vertex>)deserializerV.Deserialize(reader);
+                       
+                    }
+                }
+
                 if (File.Exists(load + "StopPoints.json"))
                 {
                     using (StreamReader reader = new StreamReader(load + "StopPoints.json"))
@@ -2252,8 +2270,18 @@ namespace SystAnalys_lr1
                             }
 
                         }
+
                     }
                 }
+
+                if (File.Exists(load + "allStopPoints.json"))
+                {
+                    using (StreamReader reader = new StreamReader(load + "allStopPoints.json"))
+                    {
+                        allstopPoints = JsonConvert.DeserializeObject<List<Vertex>>(File.ReadAllText(load + "allStopPoints.json"));
+                    }
+                }
+
                 loadingForm.loading.Value = 30;
 
 
@@ -2334,7 +2362,7 @@ namespace SystAnalys_lr1
                         using (Graphics gr = Graphics.FromImage(num))
                         {
                             using (Font font = new Font("Arial", 10))
-                            {  
+                            {
                                 // Заливаем фон нужным цветом.
                                 gr.FillRectangle(Brushes.Transparent, rect);
 
@@ -2710,27 +2738,55 @@ namespace SystAnalys_lr1
                             {
                                 if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.width * zoom) && (e.Y < gridPart.y * zoom + GridPart.height * zoom)))
                                 {
-                                    if (!stopPoints[changeRoute.Text].Contains(new Vertex(sp.X, sp.Y)))
+                                    if (stopPoints.ContainsKey(changeRoute.Text))
                                     {
-                                        if (stopPoints.ContainsKey(changeRoute.Text) && stopPointsInGrids.ContainsKey(changeRoute.Text))
+                                        if (!stopPoints[changeRoute.Text].Contains(new Vertex(sp.X, sp.Y)))
                                         {
-                                            stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
-                                            stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
-                                            stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart)); //дроп ошибки
+                                            if (stopPoints.ContainsKey(changeRoute.Text))
+                                            {
+                                                stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
+                                                stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
+                                                if (stopPointsInGrids.ContainsKey(changeRoute.Text))
+                                                    stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart)); //дроп ошибки
+                                                else
+                                                {
+                                                    stopPointsInGrids.Add(changeRoute.Text, new List<int>());
+                                                    stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart));
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                stopPoints.Add(changeRoute.Text, new List<Vertex>());
+                                                stopPointsInGrids.Add(changeRoute.Text, new List<int>());
+                                                stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
+                                                stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
+                                                stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart));
+                                            }
                                         }
-                                        else
-                                        {
-                                            stopPoints.Add(changeRoute.Text, new List<Vertex>());
-                                            stopPointsInGrids.Add(changeRoute.Text, new List<int>());
-                                            stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
-                                            stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
-                                            stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart));
-                                        }
+
+                                        G.drawStopRouteVertex(sp.X, sp.Y);
+                                        sheet.Image = G.GetBitmap();
+                                        DrawGrid();
                                     }
-                                    
-                                    G.drawStopRouteVertex(sp.X, sp.Y);
-                                    sheet.Image = G.GetBitmap();
-                                    DrawGrid();
+                                    else
+                                    {
+                                        stopPoints.Add(changeRoute.Text, new List<Vertex>());
+                                        stopPointsInGrids.Add(changeRoute.Text, new List<int>());
+                                        if (!stopPoints[changeRoute.Text].Contains(new Vertex(sp.X, sp.Y)))
+                                        {
+                                            if (stopPoints.ContainsKey(changeRoute.Text) && stopPointsInGrids.ContainsKey(changeRoute.Text))
+                                            {
+                                                stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
+                                                stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
+                                                stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart)); //дроп ошибки
+                                            }
+                                        }
+
+                                        G.drawStopRouteVertex(sp.X, sp.Y);
+                                        sheet.Image = G.GetBitmap();
+                                        DrawGrid();
+                                    }
                                     break;
                                 }
                             }
@@ -2801,97 +2857,103 @@ namespace SystAnalys_lr1
                 //нажата кнопка addBus
                 if (addBus.Enabled == false)
                 {
-
-                    if (AllCoordinates[changeRoute.Text].Count != 0)
+                    try
                     {
-                        int pos = 0;
-
-                        if (e.Button == MouseButtons.Left)
+                        if (AllCoordinates[changeRoute.Text].Count != 0)
                         {
-                            double min = Math.Pow((AllCoordinates[changeRoute.Text].Last().X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text].Last().Y - e.Y / zoom), 2);
-                            for (int i = 0; i < AllCoordinates[changeRoute.Text].Count; i++)
+                            int pos = 0;
+
+                            if (e.Button == MouseButtons.Left)
                             {
-                                if (Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2) <= G.R * G.R * 500)
+                                double min = Math.Pow((AllCoordinates[changeRoute.Text].Last().X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text].Last().Y - e.Y / zoom), 2);
+                                for (int i = 0; i < AllCoordinates[changeRoute.Text].Count; i++)
                                 {
-                                    if ((Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2) < min))
+                                    if (Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2) <= G.R * G.R * 500)
                                     {
-                                        min = Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2);
-                                        pos = i;
+                                        if ((Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2) < min))
+                                        {
+                                            min = Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2);
+                                            pos = i;
+                                        }
                                     }
                                 }
                             }
-                        }
 
-                        if (trackerCheck.Checked == true)
-                        {
-                            Rectangle rect = new Rectangle(0, 0, 200, 100);
-                            Bitmap busPic = new Bitmap(Bus.busImg);
-                            busPic = new Bitmap(busPic, new Size(15, 15));
-                            Bitmap num = new Bitmap(busPic.Height, busPic.Width);
-                            using (Graphics gr = Graphics.FromImage(num))
+                            if (trackerCheck.Checked == true)
                             {
-                                using (Font font = new Font("Arial", 10))
+                                Rectangle rect = new Rectangle(0, 0, 200, 100);
+                                Bitmap busPic = new Bitmap(Bus.busImg);
+                                busPic = new Bitmap(busPic, new Size(15, 15));
+                                Bitmap num = new Bitmap(busPic.Height, busPic.Width);
+                                using (Graphics gr = Graphics.FromImage(num))
                                 {
-                                    // Заливаем фон нужным цветом.
-                                    gr.FillRectangle(Brushes.Transparent, rect);
+                                    using (Font font = new Font("Arial", 10))
+                                    {
+                                        // Заливаем фон нужным цветом.
+                                        gr.FillRectangle(Brushes.Transparent, rect);
 
-                                    // Выводим текст.
-                                    gr.DrawString(
-                                        changeRoute.Text,
-                                        font,
-                                        Brushes.Black, // цвет текста
-                                        rect, // текст будет вписан в указанный прямоугольник
-                                        StringFormat.GenericTypographic
-                                        );
+                                        // Выводим текст.
+                                        gr.DrawString(
+                                            changeRoute.Text,
+                                            font,
+                                            Brushes.Black, // цвет текста
+                                            rect, // текст будет вписан в указанный прямоугольник
+                                            StringFormat.GenericTypographic
+                                            );
+                                    }
                                 }
-                            }
 
-                            Bitmap original = new Bitmap(Math.Max(busPic.Width, num.Width), Math.Max(busPic.Height, num.Height) * 2); //load the image file
-                            using (Graphics graphics = Graphics.FromImage(original))
-                            {
-
-                                graphics.DrawImage(busPic, 0, 0);
-                                graphics.DrawImage(num, 0, 15);
-                                graphics.Dispose();
-
-                            }
-                            buses.Add(new Bus(original, pos, backsideCheck.Checked, changeRoute.Text, AllCoordinates[changeRoute.Text], true));
-                        }
-                        else
-                        {
-                            Rectangle rect = new Rectangle(0, 0, 200, 100);
-                            Bitmap busPic = new Bitmap(Bus.offBusImg);
-                            busPic = new Bitmap(busPic, new Size(15, 15));
-                            Bitmap num = new Bitmap(busPic.Height, busPic.Width);
-                            using (Graphics gr = Graphics.FromImage(num))
-                            {
-                                using (Font font = new Font("Arial", 10))
+                                Bitmap original = new Bitmap(Math.Max(busPic.Width, num.Width), Math.Max(busPic.Height, num.Height) * 2); //load the image file
+                                using (Graphics graphics = Graphics.FromImage(original))
                                 {
-                                    // Заливаем фон нужным цветом.
-                                    gr.FillRectangle(Brushes.Transparent, rect);
 
-                                    // Выводим текст.
-                                    gr.DrawString(
-                                        changeRoute.Text,
-                                        font,
-                                        Brushes.Black, // цвет текста
-                                        rect, // текст будет вписан в указанный прямоугольник
-                                        StringFormat.GenericTypographic
-                                        );
+                                    graphics.DrawImage(busPic, 0, 0);
+                                    graphics.DrawImage(num, 0, 15);
+                                    graphics.Dispose();
+
                                 }
+                                buses.Add(new Bus(original, pos, backsideCheck.Checked, changeRoute.Text, AllCoordinates[changeRoute.Text], true));
                             }
-
-                            Bitmap original = new Bitmap(Math.Max(busPic.Width, num.Width), Math.Max(busPic.Height, num.Height) * 2); //load the image file
-                            using (Graphics graphics = Graphics.FromImage(original))
+                            else
                             {
+                                Rectangle rect = new Rectangle(0, 0, 200, 100);
+                                Bitmap busPic = new Bitmap(Bus.offBusImg);
+                                busPic = new Bitmap(busPic, new Size(15, 15));
+                                Bitmap num = new Bitmap(busPic.Height, busPic.Width);
+                                using (Graphics gr = Graphics.FromImage(num))
+                                {
+                                    using (Font font = new Font("Arial", 10))
+                                    {
+                                        // Заливаем фон нужным цветом.
+                                        gr.FillRectangle(Brushes.Transparent, rect);
 
-                                graphics.DrawImage(busPic, 0, 0);
-                                graphics.DrawImage(num, 0, 15);
-                                graphics.Dispose();
+                                        // Выводим текст.
+                                        gr.DrawString(
+                                            changeRoute.Text,
+                                            font,
+                                            Brushes.Black, // цвет текста
+                                            rect, // текст будет вписан в указанный прямоугольник
+                                            StringFormat.GenericTypographic
+                                            );
+                                    }
+                                }
 
-                            }
-                            buses.Add(new Bus(original, pos, backsideCheck.Checked, changeRoute.Text, AllCoordinates[changeRoute.Text], false));
-                        };
+                                Bitmap original = new Bitmap(Math.Max(busPic.Width, num.Width), Math.Max(busPic.Height, num.Height) * 2); //load the image file
+                                using (Graphics graphics = Graphics.FromImage(original))
+                                {
+
+                                    graphics.DrawImage(busPic, 0, 0);
+                                    graphics.DrawImage(num, 0, 15);
+                                    graphics.Dispose();
+
+                                }
+                                buses.Add(new Bus(original, pos, backsideCheck.Checked, changeRoute.Text, AllCoordinates[changeRoute.Text], false));
+                            };
+                        }
+                    }
+                    catch
+                    {
+                        MetroMessageBox.Show(this, MainStrings.error);
                     }
 
 
@@ -3732,7 +3794,7 @@ namespace SystAnalys_lr1
                 {
                     G.drawALLGraph(V, E);
                 }
-                
+
                 if (timer1.Enabled == false)
                 {
                     AnimationBitmap.Dispose();
@@ -3749,7 +3811,7 @@ namespace SystAnalys_lr1
                 }
 
                 sheet.Image = G.GetBitmap();
-               // CreateGrid();
+                // CreateGrid();
                 DrawGrid();
 
 
@@ -3827,7 +3889,7 @@ namespace SystAnalys_lr1
             openEpicFormToolStripMenuItem.Enabled = false;
             addRouteToolStripMenuItem.Enabled = false;
             createGridToolStripMenuItem.Enabled = false;
-           // savepath = null; //мб лучше это оствить при клире
+            // savepath = null; //мб лучше это оствить при клире
             if (Ep != null)
             {
                 Ep.EG.clearSheet2();

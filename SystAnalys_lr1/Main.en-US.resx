@@ -404,13 +404,13 @@
     <value>File</value>
   </data>
   <data name="loadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="loadToolStripMenuItem.Text" xml:space="preserve">
     <value>Load</value>
   </data>
   <data name="loadFromToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="loadFromToolStripMenuItem.Text" xml:space="preserve">
     <value>Load from...</value>
