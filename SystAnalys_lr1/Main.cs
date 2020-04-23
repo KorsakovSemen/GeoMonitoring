@@ -1038,6 +1038,7 @@ namespace SystAnalys_lr1
                 }
                 if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
                 {
+                    loadingForm = new LoadingForm();
                     loadingForm.Show();
                     loadingForm.loading.Value = 20;
                     foreach (var b in buses)
@@ -2570,13 +2571,13 @@ namespace SystAnalys_lr1
             {
                 if (selectRoute.Enabled == false)
                 {
-
+                    if (!V.Contains(new Vertex(e.X, e.Y)))
+                    {
+                        c.drawVertex(e, V, G, sheet);
+                    }
                     for (int i = 0; i < V.Count; i++)
                     {
-                        if (!V.Contains(new Vertex(e.X, e.Y))) 
-                        {
-                            c.drawVertex(e, V, G, sheet);
-                        }
+                       
                         if (Math.Pow((V[i].X - e.X / zoom), 2) + Math.Pow((V[i].Y - e.Y / zoom), 2) <= G.R * G.R)
                         {
                             if (selected.Count == 0)
