@@ -1568,7 +1568,7 @@ namespace SystAnalys_lr1
                         fileV.WriteLine(MainStrings.numIter + ": " + optText.Text);
                         fileV.WriteLine(MainStrings.distance + ": " + speed.Text + " " + MainStrings.sec + " (" + (int.Parse(speed.Text) / 60 == 0 ? ">1" + MainStrings.minute : int.Parse(speed.Text) / 60 + " " + MainStrings.minute) + ")");
                         fileV.WriteLine(MainStrings.found + ": " + (from num in ResultFromModeling where (num != null) select num).Count());
-                        fileV.WriteLine(MainStrings.average + " " + (total / ResultFromModeling.Count / 60 == 0 ? (total / ResultFromModeling.Count + " " + MainStrings.sec).ToString() : (total / ResultFromModeling.Count / 60 + " " + MainStrings.minute + " " + total / ResultFromModeling.Count % 60 + " " + MainStrings.sec).ToString())
+                        fileV.WriteLine(MainStrings.average + " " + (total / count / 60 == 0 ? (total / count + " " + MainStrings.sec).ToString() : (total / count / 60 + " " + MainStrings.minute + " " + total / count % 60 + " " + MainStrings.sec).ToString())
                             + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + (((ResultFromModeling.Count - count) * 100.00 / int.Parse(optText.Text))).ToString());
                         fileV.WriteLine(MainStrings.cycle + " " + cicl.ToString());
                         for (int i = 0; i < ResultFromModeling.Count; i++)
