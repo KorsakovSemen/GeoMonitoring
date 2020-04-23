@@ -280,15 +280,16 @@ namespace SystAnalys_lr1
                     // асинхронное чтение файла
                     fstream.Read(array, 0, array.Length);
                     text = System.Text.Encoding.Default.GetString(array).Replace(Environment.NewLine, "");
-                    msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf(text));
+                    msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(text);
                     Console.WriteLine($"Текст из файла: {savepath}");
 
                 }
-                changeTheme.Text = text;
+                changeTheme.SelectedIndex = Convert.ToInt32(text);
+                //       changeTheme.Text = text;
             }
             else
             {
-                File.Create("../../SaveConfig/style.txt");
+                File.Create("../../SaveConfig/style_text.txt");
             }
             if (sheet.Image == null)
             {
@@ -3621,12 +3622,11 @@ namespace SystAnalys_lr1
 
         private void changeTheme_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf(changeTheme.Text));
             StyleManager.Clone(Ep);
             using (StreamWriter fileV = new StreamWriter("../../SaveConfig/style.txt"))
             {
-                fileV.WriteLine(msmMain.Style);
+                fileV.WriteLine(Convert.ToInt32(changeTheme.Items.IndexOf(changeTheme.Text)));
             }
             if (Ep != null)
             {
