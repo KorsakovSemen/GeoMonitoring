@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<ArrayOfTraficLight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TraficLight>
+    <x>398</x>
+    <y>157</y>
+    <tick>11</tick>
+    <greenTime>10</greenTime>
+    <redTime>10</redTime>
+    <yellowTime>2</yellowTime>
+    <gridNum>416</gridNum>
+    <bal>1</bal>
+    <status>2</status>
+  </TraficLight>
+  <TraficLight>
+    <x>358</x>
+    <y>121</y>
+    <tick>23</tick>
+    <greenTime>10</greenTime>
+    <redTime>10</redTime>
+    <yellowTime>2</yellowTime>
+    <gridNum>334</gridNum>
+    <bal>1</bal>
+    <status>2</status>
+  </TraficLight>
+  <TraficLight>
+    <x>393</x>
+    <y>125</y>
+    <tick>23</tick>
+    <greenTime>10</greenTime>
+    <redTime>10</redTime>
+    <yellowTime>2</yellowTime>
+    <gridNum>336</gridNum>
+    <bal>1</bal>
+    <status>2</status>
+  </TraficLight>
+</ArrayOfTraficLight>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<ArrayOfVertex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Vertex>
+    <gridNum>0</gridNum>
+    <X>369</X>
+    <Y>177</Y>
+  </Vertex>
+  <Vertex>
+    <gridNum>0</gridNum>
+    <X>293</X>
+    <Y>192</Y>
+  </Vertex>
+  <Vertex>
+    <gridNum>0</gridNum>
+    <X>341</X>
+    <Y>215</Y>
+  </Vertex>
+  <Vertex>
+    <gridNum>0</gridNum>
+    <X>251</X>
+    <Y>98</Y>
+  </Vertex>
+  <Vertex>
+    <gridNum>0</gridNum>
+    <X>297</X>
+    <Y>138</Y>
+  </Vertex>
+</ArrayOfVertex>

@@ -2003,7 +2003,7 @@ namespace SystAnalys_lr1
                     loadingForm.loading.Value = 70;
                     File.Delete(save + "StopPoints.xml");
                     using (FileStream fileV = new FileStream(save + "StopPoints.xml", FileMode.OpenOrCreate))
-                    {                        
+                    {
                         Ver.Serialize(fileV, stopPoints);
                         Console.WriteLine("Объект сериализован");
                     }
@@ -2245,7 +2245,7 @@ namespace SystAnalys_lr1
                     {
                         XmlSerializer deserializerV = new XmlSerializer(typeof(List<Vertex>));
                         allstopPoints = (List<Vertex>)deserializerV.Deserialize(reader);
-                       
+
                     }
                 }
 
@@ -2562,8 +2562,13 @@ namespace SystAnalys_lr1
             {
                 if (selectRoute.Enabled == false)
                 {
+
                     for (int i = 0; i < V.Count; i++)
                     {
+                        if (!V.Contains(new Vertex(e.X, e.Y))) 
+                        {
+                            c.drawVertex(e, V, G, sheet);
+                        }
                         if (Math.Pow((V[i].X - e.X / zoom), 2) + Math.Pow((V[i].Y - e.Y / zoom), 2) <= G.R * G.R)
                         {
                             if (selected.Count == 0)
@@ -2738,55 +2743,42 @@ namespace SystAnalys_lr1
                             {
                                 if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.width * zoom) && (e.Y < gridPart.y * zoom + GridPart.height * zoom)))
                                 {
-                                    if (stopPoints.ContainsKey(changeRoute.Text))
-                                    {
-                                        if (!stopPoints[changeRoute.Text].Contains(new Vertex(sp.X, sp.Y)))
-                                        {
-                                            if (stopPoints.ContainsKey(changeRoute.Text))
-                                            {
-                                                stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
-                                                stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
-                                                if (stopPointsInGrids.ContainsKey(changeRoute.Text))
-                                                    stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart)); //дроп ошибки
-                                                else
-                                                {
-                                                    stopPointsInGrids.Add(changeRoute.Text, new List<int>());
-                                                    stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart));
-                                                }
 
-                                            }
+                                    if (!stopPoints[changeRoute.Text].Contains(new Vertex(sp.X, sp.Y)))
+                                    {
+                                        if (stopPoints.ContainsKey(changeRoute.Text))
+                                        {
+                                            stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
+                                            stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
+                                            if (stopPointsInGrids.ContainsKey(changeRoute.Text))
+                                                stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart)); //дроп ошибки
                                             else
                                             {
-                                                stopPoints.Add(changeRoute.Text, new List<Vertex>());
                                                 stopPointsInGrids.Add(changeRoute.Text, new List<int>());
-                                                stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
-                                                stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
                                                 stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart));
                                             }
-                                        }
 
-                                        G.drawStopRouteVertex(sp.X, sp.Y);
-                                        sheet.Image = G.GetBitmap();
-                                        DrawGrid();
-                                    }
-                                    else
-                                    {
-                                        stopPoints.Add(changeRoute.Text, new List<Vertex>());
-                                        stopPointsInGrids.Add(changeRoute.Text, new List<int>());
-                                        if (!stopPoints[changeRoute.Text].Contains(new Vertex(sp.X, sp.Y)))
+                                        }
+                                        else
                                         {
-                                            if (stopPoints.ContainsKey(changeRoute.Text) && stopPointsInGrids.ContainsKey(changeRoute.Text))
+                                            stopPoints.Add(changeRoute.Text, new List<Vertex>());
+                                            stopPointsInGrids.Add(changeRoute.Text, new List<int>());
+                                            if (!stopPoints[changeRoute.Text].Contains(new Vertex(sp.X, sp.Y)))
                                             {
-                                                stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
-                                                stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
-                                                stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart)); //дроп ошибки
+                                                if (stopPoints.ContainsKey(changeRoute.Text) && stopPointsInGrids.ContainsKey(changeRoute.Text))
+                                                {
+                                                    stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
+                                                    stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
+                                                    stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart)); //дроп ошибки
+                                                }
                                             }
                                         }
-
-                                        G.drawStopRouteVertex(sp.X, sp.Y);
-                                        sheet.Image = G.GetBitmap();
-                                        DrawGrid();
                                     }
+
+                                    G.drawStopRouteVertex(sp.X, sp.Y);
+                                    sheet.Image = G.GetBitmap();
+                                    DrawGrid();
+
                                     break;
                                 }
                             }
