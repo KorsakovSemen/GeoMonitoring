@@ -1454,7 +1454,6 @@ namespace SystAnalys_lr1
             percentMean = new SerializableDictionary<int, int?>();
 
             Directory.CreateDirectory(path);
-            int? sum = null;
             List<Bus> optimizeBuses = new List<Bus>();
             buses.ForEach((b) => optimizeBuses.Add(
                 (Bus)b.Clone()
@@ -1537,7 +1536,6 @@ namespace SystAnalys_lr1
                     }
 
                     int total = ResultFromModeling.Sum(x => Convert.ToInt32(x));
-                    sum = total;
                     int count = 0;
                     foreach (var m in ResultFromModeling)
                     {
@@ -1616,8 +1614,8 @@ namespace SystAnalys_lr1
             loadingForm.close = true;
             loadingForm.Close();
             loadingForm.Dispose();
-            MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
             BringToFront();
+            MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
             buttonOn();
             busesPark = busesparkreturn;
             buses = optimizeBuses;
