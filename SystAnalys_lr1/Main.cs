@@ -2714,7 +2714,7 @@ namespace SystAnalys_lr1
                                     {
                                         stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
                                         stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
-                                        stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart));
+                                      //  stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart)); //дроп ошибки
                                     }
                                     else
                                     {
