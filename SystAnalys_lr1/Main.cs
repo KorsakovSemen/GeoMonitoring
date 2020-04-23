@@ -1101,7 +1101,7 @@ namespace SystAnalys_lr1
                 savepath = null;
                 if (Ep != null)
                 {
-                    Ep.EG.clearSheet2();
+                    Ep.EG = new DrawGraph();
                     Ep.Close();
                 }
                 buses.Clear();
@@ -1114,6 +1114,7 @@ namespace SystAnalys_lr1
                 stopPointsInGrids.Clear();
                 V.Clear();
                 E.Clear();
+                G.bitmap = null;
                 if (G.bitmap != null)
                 {
                     ZoomHelper();
