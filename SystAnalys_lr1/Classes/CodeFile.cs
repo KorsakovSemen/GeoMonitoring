@@ -676,7 +676,7 @@ namespace SystAnalys_lr1
                             TurnBack = false;
                             PositionAt++;
                         }
-                        
+
                     }
 
                 }
@@ -795,7 +795,8 @@ namespace SystAnalys_lr1
     {
         public System.Threading.Mutex mutex = new System.Threading.Mutex();
         public SerializableDictionary<int, List<GridPart>> EpicenterGrid { get; set; }
-        public List<int> EpicenterGrid2 { get; set; }
+        // public List<int> EpicenterGrid2 { get; set; }
+        public Point StartPositon;
         public SerializableDictionary<int, List<GridPart>> getEpicenterGrid()
         {
             return EpicenterGrid;
@@ -1263,7 +1264,7 @@ namespace SystAnalys_lr1
             }
 
             //EpicenterGrid[1].RemoveAt(EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()));
-        
+
             List<Point> ForRemove = new List<Point>();
             foreach (var gridPart in EpicenterGrid[1])
             {
@@ -1379,7 +1380,8 @@ namespace SystAnalys_lr1
             }
             ///
         }
-        ///
+        //
+        List<int> NewExpandCount = new List<int>();
         public void ExpandEpic(List<string> Parameters)
         {
             for (int i = 2; i < EpicenterGrid.Count + 1; i++)
@@ -1387,21 +1389,55 @@ namespace SystAnalys_lr1
                 EpicenterGrid[i].Clear();
             }
             var rand = new Random();
-            for (int i = 0; i < rand.Next(5, 10); i++)
+
+            for (int i = 0; i < 3; i++)
             {
                 List<string> Parameter = new List<string>();
-
-                GridPart StarterEpicPart = EpicenterGrid[1][rand.Next(EpicenterGrid[1].IndexOf(EpicenterGrid[1].First()), EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()))];
-
+                //GridPart StarterEpicPart = EpicenterGrid[1][rand.Next(EpicenterGrid[1].IndexOf(EpicenterGrid[1].First()), EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()))];
+                GridPart StarterEpicPart = new GridPart(StartPositon.X, StartPositon.Y);
                 Parameter = EpicenterGenerator(StarterEpicPart, Parameter);
                 if (Parameter.Count > 0)
                 {
-
+                    NewExpandCount.Clear();
                     foreach (var item in Parameter)
                     {
-                        if (Parameters.Contains(item))
-                            Creater(item, StarterEpicPart, 1);
+                        //if (Parameters.Contains(item))
+                        Creater(item, StarterEpicPart, 1);
+                        NewExpandCount.Add(EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()));
                     }
+                }
+                else
+                {
+                    if (NewExpandCount.Any())
+                    {
+                        StarterEpicPart = EpicenterGrid[1][rand.Next(NewExpandCount.First(), NewExpandCount.Last())];
+                        Parameter = EpicenterGenerator(StarterEpicPart, Parameter);
+                        foreach (var item in Parameter)
+                        {
+                            //if (Parameters.Contains(item))
+                            Creater(item, StarterEpicPart, 1);
+                            NewExpandCount.Add(EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()));
+                        }
+                    }
+                    else
+                    {
+                        StarterEpicPart = EpicenterGrid[1][rand.Next(EpicenterGrid[1].Count / 8, EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()))];
+                        Parameter = EpicenterGenerator(StarterEpicPart, Parameter);
+                        foreach (var item in Parameter)
+                        {
+                            //if (Parameters.Contains(item))
+                            Creater(item, StarterEpicPart, 1);
+                          //  NewExpandCount.Add(EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()));
+                        }
+
+                    }
+
+
+
+
+                    //if ((StarterEpicPart.x== StartPositon.X)&&(StarterEpicPart.y == StartPositon.Y))
+                    //{
+                    //}               
                 }
             }
             ////
@@ -1452,11 +1488,12 @@ namespace SystAnalys_lr1
             if (StartPos == null)
             {
                 EpicenterGrid[1].Add(new GridPart(TheGrid[rand.Next(TheGrid.IndexOf(TheGrid.First()), TheGrid.IndexOf(TheGrid.Last()))].x, TheGrid[rand.Next(TheGrid.IndexOf(TheGrid.First()), TheGrid.IndexOf(TheGrid.Last()))].y));
+                StartPositon = new Point(EpicenterGrid[1].First().x, EpicenterGrid[1].First().y);
             }
             else
             {
                 EpicenterGrid[1].Add(new GridPart(TheGrid[(int)StartPos].x, TheGrid[(int)StartPos].y));
-
+                StartPositon = new Point(EpicenterGrid[1].First().x, EpicenterGrid[1].First().y);
             }
             while (EpicenterGrid[1].Count < SizeParam)
             {

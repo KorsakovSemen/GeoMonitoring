@@ -337,8 +337,24 @@ namespace SystAnalys_lr1
             List<string>  ssss = new List<string>();
             //ssss.Add("up");
             ssss.Add("right");
-             ssss.Add("down");
+        //     ssss.Add("down");
             MainForm.GetEpicenters().First().EpicMoving(ssss);
+            //MainForm.GetEpicenters().First().EpicMoving(ssss);
+            //MainForm.GetEpicenters().First().EpicMoving(ssss);
+            //MainForm.GetEpicenters().First().ExpandEpic(ssss);
+            EDrawEpics(MainForm.GetEpicenters());
+        }
+
+        private void metroButton3_Click(object sender, EventArgs e)
+        {
+            List<string> ssss = new List<string>();
+            //ssss.Add("up");
+            ssss.Add("right");
+            ssss.Add("down");
+            //MainForm.GetEpicenters().First().EpicMoving(ssss);
+            //MainForm.GetEpicenters().First().EpicMoving(ssss);
+            //MainForm.GetEpicenters().First().EpicMoving(ssss);
+            MainForm.GetEpicenters().First().ExpandEpic(ssss);
             EDrawEpics(MainForm.GetEpicenters());
         }
     }
