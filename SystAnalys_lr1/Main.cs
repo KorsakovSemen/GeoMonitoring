@@ -1568,7 +1568,7 @@ namespace SystAnalys_lr1
                         fileV.WriteLine(MainStrings.numIter + ": " + optText.Text);
                         fileV.WriteLine(MainStrings.distance + ": " + speed.Text + " " + MainStrings.sec + " (" + (int.Parse(speed.Text) / 60 == 0 ? ">1" + MainStrings.minute : int.Parse(speed.Text) / 60 + " " + MainStrings.minute) + ")");
                         fileV.WriteLine(MainStrings.found + ": " + (from num in ResultFromModeling where (num != null) select num).Count());
-                        fileV.WriteLine(MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
+                        fileV.WriteLine(MainStrings.average + " " + (total / ResultFromModeling.Count / 60 == 0 ? (total / ResultFromModeling.Count + " " + MainStrings.sec).ToString() : (total / ResultFromModeling.Count / 60 + " " + MainStrings.minute + " " + total / ResultFromModeling.Count % 60 + " " + MainStrings.sec).ToString())
                             + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + (((ResultFromModeling.Count - count) * 100.00 / int.Parse(optText.Text))).ToString());
                         fileV.WriteLine(MainStrings.cycle + " " + cicl.ToString());
                         for (int i = 0; i < ResultFromModeling.Count; i++)
@@ -1585,14 +1585,14 @@ namespace SystAnalys_lr1
                     }
                     ResultFromModeling = new List<int?>();
                 }
-                //busesPark = busesparkreturn; //невозможно взяимодействовать с басами после опти из-за этой строчки
 
-                MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
             });
             var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();
             var min = percentMean.Min(v => v.Value);
+            var result = percentMean.Where(s => s.Value.Equals(min)).Select(s => s.Key).ToList();
+            result.Sort();
             if (res.Count != 0 && min != 0 && min != null)
-                mean.Text = MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60).ToString()) + " " + MainStrings.minute + " - " + MainStrings.countSensors + ": " + GetKeyByValue(percentMean.Min(v => v.Value));
+                mean.Text = MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " " + " - " + MainStrings.countSensors + ": " + result[0];//percentMean.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
             else
             {
                 mean.Text = MainStrings.average + " " + MainStrings.notFound;
@@ -1600,7 +1600,7 @@ namespace SystAnalys_lr1
 
             using (StreamWriter fileV = new StreamWriter(path + "/Average.txt"))
             {
-                fileV.WriteLine(mean.Text != MainStrings.average + " " + MainStrings.notFound ? MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + GetKeyByValue(percentMean.Min(v => v.Value)) : MainStrings.notFound);
+                fileV.WriteLine(mean.Text != MainStrings.average + " " + MainStrings.notFound ? MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + result[0] : MainStrings.notFound);
             }
             Matrix();
             resMatrix();
@@ -1614,6 +1614,7 @@ namespace SystAnalys_lr1
             loadingForm.close = true;
             loadingForm.Close();
             loadingForm.Dispose();
+            MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
             BringToFront();
             buttonOn();
             busesPark = busesparkreturn;
