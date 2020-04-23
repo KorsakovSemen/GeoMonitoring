@@ -795,7 +795,6 @@ namespace SystAnalys_lr1
     {
         public System.Threading.Mutex mutex = new System.Threading.Mutex();
         public SerializableDictionary<int, List<GridPart>> EpicenterGrid { get; set; }
-        // public List<int> EpicenterGrid2 { get; set; }
         public Point StartPositon;
         public SerializableDictionary<int, List<GridPart>> getEpicenterGrid()
         {

@@ -1148,6 +1148,8 @@ namespace SystAnalys_lr1
                 createGridToolStripMenuItem.Enabled = true;
                 Matrix();
                 BringToFront();
+                timer1.Dispose();
+                timer1.Start();
                 MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
         }
@@ -1701,10 +1703,14 @@ namespace SystAnalys_lr1
                             foreach (var tl in traficLights)
                             {
                                 tl.Stop();
+                                tl.TimerLight.Dispose();
                             }
+                            traficLights.Clear();
+                            traficLights.TrimExcess();
                             TraficLightsInGrids.Clear();
-                            stopPoints.Clear();
+                            stopPoints.Clear();                         
                             allstopPoints.Clear();
+                            allstopPoints.TrimExcess();
                             LoadRoutes(dialog.SelectedPath + @"\");
                             savepath = dialog.SelectedPath;
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
@@ -1759,6 +1765,7 @@ namespace SystAnalys_lr1
                     foreach (var tl in traficLights)
                     {
                         tl.Stop();
+                        tl.TimerLight.Dispose();
                     }
                     TraficLightsInGrids.Clear();
                     stopPointsInGrids.Clear();
@@ -1777,6 +1784,7 @@ namespace SystAnalys_lr1
                     allstopPoints.Clear();
                     stopPoints.Clear();
                     traficLights.Clear();
+                    traficLights.TrimExcess();
                     LoadRoutes(savepath + @"\");
                     saveImage = sheet.Image;
                     metroTrackBar1.Value = 1;
@@ -3878,6 +3886,7 @@ namespace SystAnalys_lr1
 
         private void clearButton_Click(object sender, EventArgs e)
         {
+           
             openEpicFormToolStripMenuItem.Enabled = false;
             addRouteToolStripMenuItem.Enabled = false;
             createGridToolStripMenuItem.Enabled = false;
@@ -3888,10 +3897,12 @@ namespace SystAnalys_lr1
                 Ep.Close();
             }
             buses.Clear();
+            buses.TrimExcess();
             config.Text = MainStrings.config;
             foreach (var tl in traficLights)
             {
                 tl.Stop();
+                tl.TimerLight.Dispose();
             }
             TraficLightsInGrids.Clear();
             stopPointsInGrids.Clear();
@@ -3915,6 +3926,7 @@ namespace SystAnalys_lr1
             allstopPoints.Clear();
             stopPoints.Clear();
             traficLights.Clear();
+            traficLights.TrimExcess();
             metroTrackBar1.Value = 1;
             deleteBus.Enabled = false;
             allBusSettings.Enabled = false;
@@ -3933,9 +3945,9 @@ namespace SystAnalys_lr1
             BringToFront();
             Matrix();
             TheGrid = new List<GridPart>();
-            timer1.Stop();
-            timer1.Dispose();
             TheGrid.TrimExcess();
+            timer1.Stop();
+            timer1.Dispose();          
             AnimationBox.Image = null;
             AnimationGraphics.Dispose();
             AnimationBitmap.Dispose();
