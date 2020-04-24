@@ -488,7 +488,7 @@ namespace SystAnalys_lr1
 
                             foreach (var Epic in bus.Epicenters)
                             {
-                                if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 5)
+                                if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 4)
                                 {
                                     if (EpicFounded == false)
                                     {
@@ -1468,13 +1468,18 @@ namespace SystAnalys_lr1
                 else
                     T = int.Parse(speed.Text) / 20;
             }
-            loadingForm.Show();
             int old = small;
             var style = msmMain.Style;
-            if (msmMain.Style == (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf("Red")))
-                msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf("Yellow"));
+            if (msmMain.Style == (MetroFramework.MetroColorStyle)Convert.ToInt32(13))
+                msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(14);
             else
-                msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf("Red"));
+                msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(13);
+            loadingForm.Show();
+            StyleManager.Clone(Ep);
+            if (Ep != null)
+            {
+                Ep.Refresh();
+            }
             var busesparkreturn = busesPark;
 
             await Task.Run(() =>
@@ -1571,8 +1576,15 @@ namespace SystAnalys_lr1
                         fileV.WriteLine(MainStrings.numIter + ": " + optText.Text);
                         fileV.WriteLine(MainStrings.distance + ": " + speed.Text + " " + MainStrings.sec + " (" + (int.Parse(speed.Text) / 60 == 0 ? ">1" + MainStrings.minute : int.Parse(speed.Text) / 60 + " " + MainStrings.minute) + ")");
                         fileV.WriteLine(MainStrings.found + ": " + (from num in ResultFromModeling where (num != null) select num).Count());
-                        fileV.WriteLine(MainStrings.average + " " + (total / count / 60 == 0 ? (total / count + " " + MainStrings.sec).ToString() : (total / count / 60 + " " + MainStrings.minute + " " + total / count % 60 + " " + MainStrings.sec).ToString())
-                            + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + (((ResultFromModeling.Count - count) * 100.00 / int.Parse(optText.Text))).ToString());
+                        if (count == 0)
+                        {
+                            fileV.WriteLine(MainStrings.none);
+                        }
+                        else
+                        {
+                            fileV.WriteLine(MainStrings.average + " " + (total / count / 60 == 0 ? (total / count + " " + MainStrings.sec).ToString() : (total / count / 60 + " " + MainStrings.minute + " " + total / count % 60 + " " + MainStrings.sec).ToString())
+                                + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + (((ResultFromModeling.Count - count) * 100.00 / int.Parse(optText.Text))).ToString());
+                        }
                         fileV.WriteLine(MainStrings.cycle + " " + cicl.ToString());
                         for (int i = 0; i < ResultFromModeling.Count; i++)
                             if (ResultFromModeling[i] != null)
@@ -1608,17 +1620,17 @@ namespace SystAnalys_lr1
             Matrix();
             resMatrix();
             msmMain.Style = style;
+            loadingForm.close = true;
+            loadingForm.Close();
+            loadingForm.Dispose();
+            MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
+            BringToFront();
             if (!Ep.IsDisposed)
             {
                 Ep.Show();
             }
             BarabanAfterOpti();
-            timer1.Start();
-            loadingForm.close = true;
-            loadingForm.Close();
-            loadingForm.Dispose();
-            BringToFront();
-            MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
+            timer1.Start();            
             buttonOn();
             busesPark = busesparkreturn;
             buses = optimizeBuses;
