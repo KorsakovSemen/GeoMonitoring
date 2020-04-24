@@ -570,14 +570,22 @@ namespace SystAnalys_lr1
                                 {
                                     if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status != Status.RED)
                                     {
-                                        skip = 200;
+                                        skip = 300;
                                         break;
                                     }
                                     else
                                     if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status == Status.RED)
                                     {
-                                        skip = sp.bal * 40 + 50;
-                                        checkStop = (sp.bal * 40);
+                                        if (sp.bal == 0)
+                                        {
+                                            skip = (sp.bal + 2) * 30 + 50;
+                                            checkStop = 80;
+                                        }
+                                        else
+                                        {
+                                            skip = (sp.bal + 2) * 30 + 50;
+                                            checkStop = ((sp.bal + 2) * 30);
+                                        }
                                         break;
 
                                     }
@@ -652,8 +660,16 @@ namespace SystAnalys_lr1
                                         else
                                         if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status == Status.RED)
                                         {
-                                            skip = sp.bal * 40 + 50;
-                                            checkStop = (sp.bal * 40);
+                                            if (sp.bal == 0)
+                                            {
+                                                skip = (sp.bal + 2) * 30 + 50;
+                                                checkStop = 80;
+                                            }
+                                            else
+                                            {
+                                                skip = (sp.bal + 2) * 30 + 50;
+                                                checkStop = ((sp.bal + 2) * 30);
+                                            }
                                             break;
                                         }
                                     }
@@ -793,7 +809,6 @@ namespace SystAnalys_lr1
     }
     public class Epicenter : ICloneable
     {
-        public System.Threading.Mutex mutex = new System.Threading.Mutex();
         public SerializableDictionary<int, List<GridPart>> EpicenterGrid { get; set; }
         public Point StartPositon;
         public SerializableDictionary<int, List<GridPart>> getEpicenterGrid()
