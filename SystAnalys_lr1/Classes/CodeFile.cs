@@ -507,7 +507,7 @@ namespace SystAnalys_lr1
 
         }
         int checkStop = 0;
-
+        int checkStoppedBus = 0;
         private void stopDown()
         {
             if (skip != 0)
@@ -518,6 +518,8 @@ namespace SystAnalys_lr1
                 skipEnd -= 1;
             if (checkStop != 0)
                 checkStop -= 1;
+            if (checkStoppedBus != 0)
+                checkStoppedBus -= 1;
         }
         public async Task MoveWithGraphics(Graphics G)
         {
@@ -547,6 +549,23 @@ namespace SystAnalys_lr1
                         //        }
                         //    }
                         //}
+                        if (checkStoppedBus == 0)
+                        {
+                            if (Main.buses.Count != 0)
+                            {
+                                foreach (var sp in buses)
+                                {
+                                    if (Math.Pow((sp.Coordinates[sp.PositionAt].X * (int)ZoomCoef - (Coordinates[PositionAt].X * (int)ZoomCoef)), 2) + Math.Pow((sp.Coordinates[sp.PositionAt].Y * (int)ZoomCoef - (Coordinates[PositionAt].Y * (int)ZoomCoef)), 2) <= sp.R * sp.R && sp.checkStop != 0 && sp.TurnBack == TurnBack)
+                                    {
+                                        Console.WriteLine("Turn false");
+                                        checkStop = sp.checkStop;
+                                        skip = 300;
+                                        skipStops = 250;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
                         if (Main.stopPoints.Count != 0 && Main.stopPoints.ContainsKey(route))
                         {
                             if (skipStops == 0)
@@ -557,6 +576,7 @@ namespace SystAnalys_lr1
                                     {
                                         checkStop = rnd.Next(0, 200);
                                         skipStops = 250;
+                                        checkStoppedBus = 100;
                                         break;
                                     }
                                 }
@@ -571,6 +591,7 @@ namespace SystAnalys_lr1
                                     if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status != Status.RED)
                                     {
                                         skip = 300;
+                                        checkStoppedBus = 100;
                                         break;
                                     }
                                     else
@@ -578,14 +599,15 @@ namespace SystAnalys_lr1
                                     {
                                         if (sp.bal == 0)
                                         {
-                                            skip = (sp.bal + 2) * 30 + 50;
+                                            skip = (sp.bal + 2) * 30 + 100;
                                             checkStop = 80;
                                         }
                                         else
                                         {
-                                            skip = (sp.bal + 2) * 30 + 50;
+                                            skip = (sp.bal + 2) * 30 + 100;
                                             checkStop = ((sp.bal + 2) * 30);
                                         }
+                                        checkStoppedBus = 100;
                                         break;
 
                                     }
@@ -616,21 +638,24 @@ namespace SystAnalys_lr1
                         {
                             //if (skipStops == 0)
                             //{
-                            //    if (Main.buses.Count != 0)
-                            //    {
-                            //        foreach (var sp in buses)
-                            //        {
-                            //            if (Math.Pow((sp.Coordinates[sp.PositionAt].X - (Coordinates[PositionAt].X / (int)ZoomCoef)), 2) + Math.Pow((sp.Coordinates[sp.PositionAt].Y - (Coordinates[PositionAt].Y / (int)ZoomCoef)), 2) <= sp.R * sp.R && sp.checkStop != 0 && sp.TurnBack == TurnBack)
-                            //            {
-                            //                Console.WriteLine("Turn false");
-                            //                checkStop = sp.checkStop;
-                            //                skip = 200;
-                            //                skipStops = 50;
-                            //                break;
-                            //            }
-                            //        }
-                            //    }
-                            //}
+                            if (checkStoppedBus == 0)
+                            {
+                                if (Main.buses.Count != 0)
+                                {
+                                    foreach (var sp in buses)
+                                    {
+                                        if (Math.Pow((sp.Coordinates[sp.PositionAt].X * (int)ZoomCoef - (Coordinates[PositionAt].X * (int)ZoomCoef)), 2) + Math.Pow((sp.Coordinates[sp.PositionAt].Y * (int)ZoomCoef - (Coordinates[PositionAt].Y * (int)ZoomCoef)), 2) <= sp.R * sp.R && sp.checkStop != 0 && sp.TurnBack == TurnBack)
+                                        {
+                                            Console.WriteLine("Turn true");
+                                            checkStop = sp.checkStop;
+                                            skip = 300;
+                                            skipStops = 250;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            // }
                             if (Main.stopPoints.Count != 0 && Main.stopPoints.ContainsKey(route))
                             {
                                 if (skipStops == 0)
@@ -641,6 +666,7 @@ namespace SystAnalys_lr1
                                         {
                                             checkStop = rnd.Next(0, 200);
                                             skipStops = 250;
+                                            checkStoppedBus = 100;
                                             break;
                                         }
                                     }
@@ -654,7 +680,8 @@ namespace SystAnalys_lr1
                                     {
                                         if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status != Status.RED)
                                         {
-                                            skip = 200;
+                                            skip = 300;
+                                            checkStoppedBus = 100;
                                             break;
                                         }
                                         else
@@ -662,14 +689,15 @@ namespace SystAnalys_lr1
                                         {
                                             if (sp.bal == 0)
                                             {
-                                                skip = (sp.bal + 2) * 30 + 50;
+                                                skip = (sp.bal + 2) * 30 + 100;
                                                 checkStop = 80;
                                             }
                                             else
                                             {
-                                                skip = (sp.bal + 2) * 30 + 50;
+                                                skip = (sp.bal + 2) * 30 + 100;
                                                 checkStop = ((sp.bal + 2) * 30);
                                             }
+                                            checkStoppedBus = 100;
                                             break;
                                         }
                                     }
@@ -1441,7 +1469,7 @@ namespace SystAnalys_lr1
                         {
                             //if (Parameters.Contains(item))
                             Creater(item, StarterEpicPart, 1);
-                          //  NewExpandCount.Add(EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()));
+                            //  NewExpandCount.Add(EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()));
                         }
 
                     }
