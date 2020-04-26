@@ -559,8 +559,8 @@ namespace SystAnalys_lr1
                                     {
                                         Console.WriteLine("Turn false");
                                         checkStop = sp.checkStop;
-                                        skip = 300;
-                                        skipStops = 250;
+                                        skip = 100;
+                                        skipStops = 50;
                                         break;
                                     }
                                 }
@@ -575,7 +575,7 @@ namespace SystAnalys_lr1
                                     if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
                                     {
                                         checkStop = rnd.Next(0, 200);
-                                        skipStops = 250;
+                                        skipStops = 50;
                                         checkStoppedBus = 100;
                                         break;
                                     }
@@ -590,7 +590,7 @@ namespace SystAnalys_lr1
                                 {
                                     if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status != Status.RED)
                                     {
-                                        skip = 300;
+                                        skip = 100;
                                         checkStoppedBus = 100;
                                         break;
                                     }
@@ -648,8 +648,8 @@ namespace SystAnalys_lr1
                                         {
                                             Console.WriteLine("Turn true");
                                             checkStop = sp.checkStop;
-                                            skip = 300;
-                                            skipStops = 250;
+                                            skip = 100;
+                                            skipStops = 50;
                                             break;
                                         }
                                     }
@@ -665,7 +665,7 @@ namespace SystAnalys_lr1
                                         if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
                                         {
                                             checkStop = rnd.Next(0, 200);
-                                            skipStops = 250;
+                                            skipStops = 50;
                                             checkStoppedBus = 100;
                                             break;
                                         }
@@ -680,7 +680,7 @@ namespace SystAnalys_lr1
                                     {
                                         if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status != Status.RED)
                                         {
-                                            skip = 300;
+                                            skip = 100;
                                             checkStoppedBus = 100;
                                             break;
                                         }
