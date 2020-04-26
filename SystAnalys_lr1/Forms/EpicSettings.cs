@@ -14,6 +14,7 @@ namespace SystAnalys_lr1.Forms
     public partial class EpicSettings : MetroForm
     {
 
+        public static bool TurnMovingSet = false;
         public static bool TurnSpreadingSet = false;
         public EpicSettings()
         {
@@ -38,9 +39,9 @@ namespace SystAnalys_lr1.Forms
             {
                 phasesSettingsBox.Enabled = false;
             }
-            TurnSpreading.Checked = TurnSpreadingSet;
+            TurnMoving.Checked = TurnMovingSet;
             //
-            if (TurnSpreading.Checked == true)
+            if (TurnMoving.Checked == true)
             {
              
                 directionBox.Enabled = true;
@@ -52,6 +53,19 @@ namespace SystAnalys_lr1.Forms
                 frequencyBox.Enabled = false;
             }
             ///
+            TurnSpreading.Checked = TurnSpreadingSet;
+            if (TurnSpreading.Checked == true)
+            {
+              //  TurnSpreadingSet = true;
+                SpredFreq.Enabled = true;
+            }
+            else
+            {
+               // TurnSpreadingSet = false;
+                SpredFreq.Enabled = false;
+            }
+            //
+
             switch (Main.EpicPhaseSavingSave)
             {
                 case "radioPhase2":
@@ -92,7 +106,7 @@ namespace SystAnalys_lr1.Forms
                     break;
             }
             //
-            switch (Main.EpicFreqSpreadSave)
+            switch (Main.EpicFreqMovingSave)
             {
                 case "RadioFreq100":
                     RadioFreq100.Checked = true;
@@ -117,13 +131,14 @@ namespace SystAnalys_lr1.Forms
                     break;
                 case "RadioFreqCustom":
                     RadioFreqCustom.Checked = true;
-                    metroTextBox1.Text = Main.EpicFreqSpreadParam.ToString();
+                    metroTextBox1.Text = Main.EpicFreqMovingParam.ToString();
                     break;
             }
             //
-            if (Main.ExpandEpicParamet.Any())
+
+            if (Main.MovingEpicParamet.Any())
             {
-                foreach (var item in Main.ExpandEpicParamet)
+                foreach (var item in Main.MovingEpicParamet)
                 {
                     switch (item)
                     {
@@ -145,6 +160,36 @@ namespace SystAnalys_lr1.Forms
                     }
                 }
             }
+            //
+            switch (Main.EpicFreqSpreadingSave)
+            {
+                case "RadioFreqSpred100":
+                    RadioFreqSpred100.Checked = true;
+                    break;
+                case "RadioFreqSpred500":
+                    RadioFreqSpred500.Checked = true;
+                    break;
+                case "RadioFreqSpred1000":
+                    RadioFreqSpred1000.Checked = true;
+                    break;
+                case "RadioFreqSpred2500":
+                    RadioFreqSpred2500.Checked = true;
+                    break;
+                case "RadioFreqSpred5000":
+                    RadioFreqSpred5000.Checked = true;
+                    break;
+                case "RadioFreqSpred10000":
+                    RadioFreqSpred10000.Checked = true;
+                    break;
+                case "RadioFreqSpredRandom":
+                    //  RadioFreqRandom.Checked = true;
+                    break;
+                case "RadioFreqSpredCustom":
+                    RadioFreqSpredCustom.Checked = true;
+                    metroTextBox3.Text = Main.EpicFreqMovingParam.ToString();
+                    break;
+            }
+            //
 
         }
 
@@ -181,8 +226,9 @@ namespace SystAnalys_lr1.Forms
         {
             Main.EpicPhaseSavingParam = SetPhaseSavingSize();
             Main.EpicSizeParam = SetEpicSize();
-            Main.EpicFreqSpreadParam = SetFreqSpreadSize();
-            Main.ExpandEpicParamet = SetExpandParam();
+            Main.EpicFreqMovingParam = SetFreqMovingSize();
+            Main.EpicFreqSpreadingParam = SetFreqSpreadingSize();
+            Main.MovingEpicParamet = SetExpandParam();
             Main.SavePictures = SavePictures.Checked;
             Main.extendedSavePictures = extendedSavePictures.Checked;
             this.Close();
@@ -235,7 +281,7 @@ namespace SystAnalys_lr1.Forms
             return EpicSizeParam;
         }
         /// 
-        private int SetFreqSpreadSize()
+        private int SetFreqMovingSize()
         {
             var rand = new Random();
             int FreqSpreadParam = 0;
@@ -250,34 +296,34 @@ namespace SystAnalys_lr1.Forms
                         {
                             case "RadioFreq100":
                                 FreqSpreadParam = 100;
-                                Main.EpicFreqSpreadSave = "RadioFreq100";
+                                Main.EpicFreqMovingSave = "RadioFreq100";
                                 break;
                             case "RadioFreq500":
                                 FreqSpreadParam = 500;
-                                Main.EpicFreqSpreadSave = "RadioFreq500";
+                                Main.EpicFreqMovingSave = "RadioFreq500";
                                 break;
                             case "RadioFreq1000":
                                 FreqSpreadParam = 1000;
-                                Main.EpicFreqSpreadSave = "RadioFreq1000";
+                                Main.EpicFreqMovingSave = "RadioFreq1000";
                                 break;
                             case "RadioFreq2500":
                                 FreqSpreadParam = 2500;
-                                Main.EpicFreqSpreadSave = "RadioFreq2500";
+                                Main.EpicFreqMovingSave = "RadioFreq2500";
                                 break;
                             case "RadioFreq5000":
                                 FreqSpreadParam = 5000;
-                                Main.EpicFreqSpreadSave = "RadioFreq5000";
+                                Main.EpicFreqMovingSave = "RadioFreq5000";
                                 break;
                             case "RadioFreq10000":
                                 FreqSpreadParam = 10000;
-                                Main.EpicFreqSpreadSave = "RadioFreq10000";
+                                Main.EpicFreqMovingSave = "RadioFreq10000";
                                 break;
                             case "RadioFreqRandom":
                                 //FreqSpreadParam = rand.Next(8, 100);
-                                Main.EpicFreqSpreadSave = "RadioFreqRandom";
+                                Main.EpicFreqMovingSave = "RadioFreqRandom";
                                 break;
                             case "RadioFreqCustom":
-                                Main.EpicFreqSpreadSave = "RadioFreqCustom";
+                                Main.EpicFreqMovingSave = "RadioFreqCustom";
                                 if (int.TryParse(metroTextBox1.Text, out int T))
                                 {
                                     FreqSpreadParam = int.Parse(metroTextBox1.Text);
@@ -294,6 +340,68 @@ namespace SystAnalys_lr1.Forms
             }
             return FreqSpreadParam;
         }
+
+        //
+        private int SetFreqSpreadingSize()
+        {
+            var rand = new Random();
+            int FreqSpreadParam = 0;
+            foreach (Control control in this.SpredFreq.Controls)
+            {
+                if (control is RadioButton)
+                {
+                    RadioButton radio = control as RadioButton;
+                    if (radio.Checked)
+                    {
+                        switch (radio.Name.ToString())
+                        {
+                            case "RadioFreqSpred100":
+                                FreqSpreadParam = 100;
+                                Main.EpicFreqSpreadingSave = "RadioFreqSpred100";
+                                break;
+                            case "RadioFreqSpred500":
+                                FreqSpreadParam = 500;
+                                Main.EpicFreqSpreadingSave = "RadioFreqSpred500";
+                                break;
+                            case "RadioFreqSpred1000":
+                                FreqSpreadParam = 1000;
+                                Main.EpicFreqSpreadingSave = "RadioFreqSpred1000";
+                                break;
+                            case "RadioFreqSpred2500":
+                                FreqSpreadParam = 2500;
+                                Main.EpicFreqSpreadingSave = "RadioFreqSpred2500";
+                                break;
+                            case "RadioFreqSpred5000":
+                                FreqSpreadParam = 5000;
+                                Main.EpicFreqSpreadingSave = "RadioFreqSpred5000";
+                                break;
+                            case "RadioFreqSpred10000":
+                                FreqSpreadParam = 10000;
+                                Main.EpicFreqSpreadingSave = "RadioFreqSpred10000";
+                                break;
+                            case "RadioFreqSpredRandom":
+                                //FreqSpreadParam = rand.Next(8, 100);
+                                Main.EpicFreqSpreadingSave = "RadioFreqSpredRandom";
+                                break;
+                            case "RadioFreqSpredCustom":
+                                Main.EpicFreqSpreadingSave = "RadioFreqSpredCustom";
+                                if (int.TryParse(metroTextBox3.Text, out int T))
+                                {
+                                    FreqSpreadParam = int.Parse(metroTextBox1.Text);
+                                }
+                                else
+                                {
+                                    FreqSpreadParam = rand.Next(8, 100);
+                                }
+                                break;
+                        }
+                        break;
+                    }
+                }
+            }
+            return FreqSpreadParam;
+        }
+        //
         private int SetPhaseSavingSize()
         {
        
@@ -385,15 +493,15 @@ namespace SystAnalys_lr1.Forms
 
         private void TurnSpreading_CheckedChanged(object sender, EventArgs e)
         {
-            if (TurnSpreading.Checked == true)
+            if (TurnMoving.Checked == true)
             {
-                TurnSpreadingSet = true;
+                TurnMovingSet = true;
                 directionBox.Enabled = true;
                 frequencyBox.Enabled = true;
             }
             else
             {
-                TurnSpreadingSet = false;
+                TurnMovingSet = false;
                 directionBox.Enabled = false;
                 frequencyBox.Enabled = false;
             }
@@ -427,6 +535,25 @@ namespace SystAnalys_lr1.Forms
             }
         }
 
-       
+        private void EpicSettings_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (TurnSpreading.Checked == true)
+            {
+                TurnSpreadingSet = true;
+                SpredFreq.Enabled = true;
+
+            }
+            else
+            {
+                TurnSpreadingSet = false;
+                SpredFreq.Enabled = false;
+
+            }
+        }
     }
 }

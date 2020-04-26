@@ -347,15 +347,15 @@ namespace SystAnalys_lr1
 
         private void metroButton3_Click(object sender, EventArgs e)
         {
-            List<string> ssss = new List<string>();
-            //ssss.Add("up");
-            ssss.Add("right");
-            ssss.Add("down");
-            //MainForm.GetEpicenters().First().EpicMoving(ssss);
-            //MainForm.GetEpicenters().First().EpicMoving(ssss);
-            //MainForm.GetEpicenters().First().EpicMoving(ssss);
-            MainForm.GetEpicenters().First().ExpandEpic(ssss);
+        
+     
+            MainForm.GetEpicenters().First().ExpandEpic();
             EDrawEpics(MainForm.GetEpicenters());
+        }
+
+        private void metroButton4_Click(object sender, EventArgs e)
+        {
+            MainForm.CreateOneRandomEpicenter(Main.EpicSizeParam,null);
         }
     }
 }

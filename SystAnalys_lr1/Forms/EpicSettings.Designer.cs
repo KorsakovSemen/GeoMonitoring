@@ -67,13 +67,28 @@
             this.SavePictures = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.TurnMoving = new MetroFramework.Controls.MetroCheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TurnSpreading = new MetroFramework.Controls.MetroCheckBox();
+            this.SpredFreq = new System.Windows.Forms.GroupBox();
+            this.metroTextBox3 = new MetroFramework.Controls.MetroTextBox();
+            this.RadioFreqSpredCustom = new MetroFramework.Controls.MetroRadioButton();
+            this.RadioFreqSpred10000 = new MetroFramework.Controls.MetroRadioButton();
+            this.RadioFreqSpred5000 = new MetroFramework.Controls.MetroRadioButton();
+            this.RadioFreqSpred2500 = new MetroFramework.Controls.MetroRadioButton();
+            this.RadioFreqSpred1000 = new MetroFramework.Controls.MetroRadioButton();
+            this.RadioFreqSpred500 = new MetroFramework.Controls.MetroRadioButton();
+            this.RadioFreqSpred100 = new MetroFramework.Controls.MetroRadioButton();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.groupBox2.SuspendLayout();
             this.directionBox.SuspendLayout();
             this.frequencyBox.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.phasesSettingsBox.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.SpredFreq.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -409,7 +424,7 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.TurnSpreading);
+            this.groupBox5.Controls.Add(this.TurnMoving);
             this.groupBox5.Controls.Add(this.directionBox);
             this.groupBox5.Controls.Add(this.frequencyBox);
             this.groupBox5.Controls.Add(this.label1);
@@ -417,17 +432,130 @@
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
+            // TurnMoving
+            // 
+            resources.ApplyResources(this.TurnMoving, "TurnMoving");
+            this.TurnMoving.Name = "TurnMoving";
+            this.TurnMoving.UseSelectable = true;
+            this.TurnMoving.CheckedChanged += new System.EventHandler(this.TurnSpreading_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.TurnSpreading);
+            this.groupBox1.Controls.Add(this.SpredFreq);
+            this.groupBox1.Controls.Add(this.metroLabel6);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
             // TurnSpreading
             // 
             resources.ApplyResources(this.TurnSpreading, "TurnSpreading");
             this.TurnSpreading.Name = "TurnSpreading";
             this.TurnSpreading.UseSelectable = true;
-            this.TurnSpreading.CheckedChanged += new System.EventHandler(this.TurnSpreading_CheckedChanged);
+            this.TurnSpreading.CheckedChanged += new System.EventHandler(this.metroCheckBox1_CheckedChanged);
+            // 
+            // SpredFreq
+            // 
+            this.SpredFreq.Controls.Add(this.metroTextBox3);
+            this.SpredFreq.Controls.Add(this.RadioFreqSpredCustom);
+            this.SpredFreq.Controls.Add(this.RadioFreqSpred10000);
+            this.SpredFreq.Controls.Add(this.RadioFreqSpred5000);
+            this.SpredFreq.Controls.Add(this.RadioFreqSpred2500);
+            this.SpredFreq.Controls.Add(this.RadioFreqSpred1000);
+            this.SpredFreq.Controls.Add(this.RadioFreqSpred500);
+            this.SpredFreq.Controls.Add(this.RadioFreqSpred100);
+            this.SpredFreq.Controls.Add(this.metroLabel5);
+            resources.ApplyResources(this.SpredFreq, "SpredFreq");
+            this.SpredFreq.Name = "SpredFreq";
+            this.SpredFreq.TabStop = false;
+            // 
+            // metroTextBox3
+            // 
+            // 
+            // 
+            // 
+            this.metroTextBox3.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            this.metroTextBox3.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode3")));
+            this.metroTextBox3.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location3")));
+            this.metroTextBox3.CustomButton.Name = "";
+            this.metroTextBox3.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size3")));
+            this.metroTextBox3.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBox3.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex3")));
+            this.metroTextBox3.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBox3.CustomButton.UseSelectable = true;
+            this.metroTextBox3.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible3")));
+            this.metroTextBox3.Lines = new string[0];
+            resources.ApplyResources(this.metroTextBox3, "metroTextBox3");
+            this.metroTextBox3.MaxLength = 9;
+            this.metroTextBox3.Name = "metroTextBox3";
+            this.metroTextBox3.PasswordChar = '\0';
+            this.metroTextBox3.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBox3.SelectedText = "";
+            this.metroTextBox3.SelectionLength = 0;
+            this.metroTextBox3.SelectionStart = 0;
+            this.metroTextBox3.ShortcutsEnabled = true;
+            this.metroTextBox3.UseSelectable = true;
+            this.metroTextBox3.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBox3.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // RadioFreqSpredCustom
+            // 
+            resources.ApplyResources(this.RadioFreqSpredCustom, "RadioFreqSpredCustom");
+            this.RadioFreqSpredCustom.Name = "RadioFreqSpredCustom";
+            this.RadioFreqSpredCustom.UseSelectable = true;
+            // 
+            // RadioFreqSpred10000
+            // 
+            resources.ApplyResources(this.RadioFreqSpred10000, "RadioFreqSpred10000");
+            this.RadioFreqSpred10000.Name = "RadioFreqSpred10000";
+            this.RadioFreqSpred10000.UseSelectable = true;
+            // 
+            // RadioFreqSpred5000
+            // 
+            resources.ApplyResources(this.RadioFreqSpred5000, "RadioFreqSpred5000");
+            this.RadioFreqSpred5000.Name = "RadioFreqSpred5000";
+            this.RadioFreqSpred5000.UseSelectable = true;
+            // 
+            // RadioFreqSpred2500
+            // 
+            resources.ApplyResources(this.RadioFreqSpred2500, "RadioFreqSpred2500");
+            this.RadioFreqSpred2500.Name = "RadioFreqSpred2500";
+            this.RadioFreqSpred2500.UseSelectable = true;
+            // 
+            // RadioFreqSpred1000
+            // 
+            resources.ApplyResources(this.RadioFreqSpred1000, "RadioFreqSpred1000");
+            this.RadioFreqSpred1000.Name = "RadioFreqSpred1000";
+            this.RadioFreqSpred1000.UseSelectable = true;
+            // 
+            // RadioFreqSpred500
+            // 
+            resources.ApplyResources(this.RadioFreqSpred500, "RadioFreqSpred500");
+            this.RadioFreqSpred500.Name = "RadioFreqSpred500";
+            this.RadioFreqSpred500.UseSelectable = true;
+            // 
+            // RadioFreqSpred100
+            // 
+            resources.ApplyResources(this.RadioFreqSpred100, "RadioFreqSpred100");
+            this.RadioFreqSpred100.Name = "RadioFreqSpred100";
+            this.RadioFreqSpred100.UseSelectable = true;
+            // 
+            // metroLabel5
+            // 
+            resources.ApplyResources(this.metroLabel5, "metroLabel5");
+            this.metroLabel5.Name = "metroLabel5";
+            // 
+            // metroLabel6
+            // 
+            resources.ApplyResources(this.metroLabel6, "metroLabel6");
+            this.metroLabel6.Name = "metroLabel6";
             // 
             // EpicSettings
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox4);
@@ -435,6 +563,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EpicSettings";
+            this.Load += new System.EventHandler(this.EpicSettings_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.directionBox.ResumeLayout(false);
@@ -447,6 +576,10 @@
             this.phasesSettingsBox.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.SpredFreq.ResumeLayout(false);
+            this.SpredFreq.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -476,7 +609,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private MetroFramework.Controls.MetroCheckBox extendedSavePictures;
         private MetroFramework.Controls.MetroCheckBox SavePictures;
-        private MetroFramework.Controls.MetroCheckBox TurnSpreading;
+        private MetroFramework.Controls.MetroCheckBox TurnMoving;
         private MetroFramework.Controls.MetroTextBox metroTextBox1;
         private MetroFramework.Controls.MetroRadioButton RadioFreqCustom;
         private MetroFramework.Controls.MetroRadioButton RadioFreq10000;
@@ -492,5 +625,18 @@
         private MetroFramework.Controls.MetroRadioButton radioPhase5;
         private MetroFramework.Controls.MetroRadioButton radioPhase3;
         private MetroFramework.Controls.MetroRadioButton radioPhase2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private MetroFramework.Controls.MetroCheckBox TurnSpreading;
+        private System.Windows.Forms.GroupBox SpredFreq;
+        private MetroFramework.Controls.MetroTextBox metroTextBox3;
+        private MetroFramework.Controls.MetroRadioButton RadioFreqSpredCustom;
+        private MetroFramework.Controls.MetroRadioButton RadioFreqSpred10000;
+        private MetroFramework.Controls.MetroRadioButton RadioFreqSpred5000;
+        private MetroFramework.Controls.MetroRadioButton RadioFreqSpred2500;
+        private MetroFramework.Controls.MetroRadioButton RadioFreqSpred1000;
+        private MetroFramework.Controls.MetroRadioButton RadioFreqSpred500;
+        private MetroFramework.Controls.MetroRadioButton RadioFreqSpred100;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
     }
 }

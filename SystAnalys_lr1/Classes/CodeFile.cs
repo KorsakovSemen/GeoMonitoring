@@ -1424,7 +1424,7 @@ namespace SystAnalys_lr1
         }
         //
         List<int> NewExpandCount = new List<int>();
-        public void ExpandEpic(List<string> Parameters)
+        public void ExpandEpic()
         {
             for (int i = 2; i < EpicenterGrid.Count + 1; i++)
             {

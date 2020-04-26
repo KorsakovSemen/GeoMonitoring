@@ -51,8 +51,13 @@ namespace SystAnalys_lr1
         public static int secondCrossRoads = 0;
         public static string EpicSizeParamSave = "radioEpicMedium";
         //
-        public static string EpicFreqSpreadSave = null;
-        public static int EpicFreqSpreadParam = 0;
+        public static List<string> MovingEpicParamet;
+        //
+        public static string EpicFreqMovingSave = null;
+        public static int EpicFreqMovingParam = 0;
+        //
+        public static string EpicFreqSpreadingSave = null;
+        public static int EpicFreqSpreadingParam = 0;
         //
         public static string EpicPhaseSavingSave = null;
         public static int EpicPhaseSavingParam = 1;
@@ -147,7 +152,7 @@ namespace SystAnalys_lr1
             InitializeComponent();
             tracbarX = metroTrackBar1.Location.X;
             tracbarY = metroTrackBar1.Location.Y;
-            ExpandEpicParamet = new List<string>();
+            MovingEpicParamet = new List<string>();
             g = new Grid(0, 0, 0, 0, 80, 40);
             routePoints = new List<SerializableDictionary<int, Vertex>>();
             edgePoints = new SerializableDictionary<int, List<Edge>>();
@@ -355,9 +360,16 @@ namespace SystAnalys_lr1
         int small = 10000;
         private void ExpandEpics(List<Epicenter> Epics)
         {
-            if (ExpandEpicParamet.Count > 0)
+            //if (MovingEpicParamet.Count > 0)
+            //{
+            Epics.First().ExpandEpic();
+            //}
+        }
+        private void MoveEpics(List<Epicenter> Epics)
+        {
+            if (MovingEpicParamet.Count > 0)
             {
-                Epics.First().ExpandEpic(ExpandEpicParamet);
+                Epics.First().EpicMoving(MovingEpicParamet);
             }
         }
         int T;
@@ -370,10 +382,12 @@ namespace SystAnalys_lr1
             buses.ForEach((b) => cqBus.Enqueue((Bus)b.Clone()));
             foreach (var EpicList in Epics)
             {
+
                 epList.Add(new Epicenter(TheGrid));
                 foreach (var Sector in EpicList.GetEpicenterGrid())
                 {
                     epList[i].EpicenterGrid.Add(Sector.Key, new List<GridPart>());
+                    epList[i].StartPositon = EpicList.StartPositon;
                     foreach (var Square in Sector.Value)
                     {
                         epList[i].EpicenterGrid[Sector.Key].Add(new GridPart(Square.x, Square.y));
@@ -388,6 +402,7 @@ namespace SystAnalys_lr1
             int FoundTime = small + 1;
             bool EpicFounded = false;
             int ExpandTimer = 0;
+            int MovingTimer = 0;
             Epics = epList;
             i = 1;
             foreach (var bus in buses)
@@ -395,10 +410,6 @@ namespace SystAnalys_lr1
                 bus.Epicenters = epList;
             }
 
-            //if(extendedSavePictures == false)
-            //{
-            //    EpicPhaseSavingParam = 1;
-            //}
             int PhaseSizeSelect()
             {
                 if (extendedSavePictures == false)
@@ -437,7 +448,7 @@ namespace SystAnalys_lr1
 
                 foreach (var bus in cqBus)
                 {
-                    //bus.Epicenters.Clear();
+                    //  bus.Epicenters.Clear();
                     bus.Epicenters = epList;
                     bus.TickCount_ = T / PhaseSizeSelect();
                     if (bus.skip > 0)
@@ -447,9 +458,20 @@ namespace SystAnalys_lr1
                         while (bus.TickCount_ > 0)
                         {
                             bus.MoveWithoutGraphicsByGrids();
+                            if (EpicSettings.TurnMovingSet == true)
+                            {
+                                if (MovingTimer >= ((EpicFreqMovingParam / 20) * cqBus.Count))
+                                {
+                                    lock (epList)
+                                    {
+                                        MoveEpics(epList);
+                                    }
+                                    MovingTimer = 0;
+                                }
+                            }
                             if (EpicSettings.TurnSpreadingSet == true)
                             {
-                                if (ExpandTimer == ((EpicFreqSpreadParam / T) * cqBus.Count))
+                                if (ExpandTimer >= ((EpicFreqSpreadingParam / 20) * cqBus.Count))
                                 {
                                     lock (epList)
                                     {
@@ -510,7 +532,10 @@ namespace SystAnalys_lr1
                             {
                                 ExpandTimer++;
                             }
-
+                            if (EpicSettings.TurnMovingSet == true)
+                            {
+                                MovingTimer++;
+                            }
                         }
                     }
                 }
@@ -1256,7 +1281,7 @@ namespace SystAnalys_lr1
                             sheet.Image = G.GetBitmap();
                             DrawGrid();
                             loadingForm.loading.Value = 50;
-                        }                    
+                        }
                         break;
                     case deleteType.TrafficLight:
                         if (MBSave == DialogResult.Yes)
@@ -1275,7 +1300,7 @@ namespace SystAnalys_lr1
                         }
                         break;
                 }
-            
+
             }
             if (changeRoute.Text == MainStrings.network)
             {
@@ -1607,22 +1632,22 @@ namespace SystAnalys_lr1
                         }
                     }
 
-                    if (total < 0 || count < ResultFromModeling.Count / 2)
-                    {
-                        //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
-                        if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
-                            percentMean.Add(withoutSensorsBuses.Last(), null);
-                        //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none);
-                    }
-                    else
-                    {
-                        //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
-                        //      + "\n" + MainStrings.procentSuc + " " + ResultFromModeling.Count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
-                        if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
-                            percentMean.Add(withoutSensorsBuses.Last(), total / count);
-                        //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (Convert.ToDouble(total / ResultFromModeling.Count).ToString()));
-                    }
-;
+                    //                    if (total < 0 || count < ResultFromModeling.Count / 2)
+                    //                    {
+                    //                        //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
+                    //                        if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
+                    //                            percentMean.Add(withoutSensorsBuses.Last(), null);
+                    //                        //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none);
+                    //                    }
+                    //                    else
+                    //                    {
+                    //                        //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
+                    //                        //      + "\n" + MainStrings.procentSuc + " " + ResultFromModeling.Count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
+                    //                        if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
+                    //                            percentMean.Add(withoutSensorsBuses.Last(), total / count);
+                    //                        //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (Convert.ToDouble(total / ResultFromModeling.Count).ToString()));
+                    //                    }
+                    //;
                     using (StreamWriter fileV = new StreamWriter(path + @"\" + withoutSensorsBuses.Last() + "_buses" + ".txt"))
                     {
                         fileV.WriteLine(MainStrings.sensorsDown + ": " + (cicl * 10).ToString());
@@ -1685,14 +1710,14 @@ namespace SystAnalys_lr1
                 Ep.Show();
             }
             BarabanAfterOpti();
-            timer1.Start();            
+            timer1.Start();
             buttonOn();
             busesPark = busesparkreturn;
             buses = optimizeBuses;
         }
 
         public static int EpicSizeParam = 25;
-        public static List<string> ExpandEpicParamet;
+
         private void optimize_Click(object sender, EventArgs e)
         {
             if (optText.Text != "" && speed.Text != "" && buses.Count != 0 && int.Parse(optText.Text) > 0 && int.Parse(speed.Text) > 0 && buses != null)
@@ -1745,24 +1770,24 @@ namespace SystAnalys_lr1
         }
         public void resChart()
         {
-            //string[] labels = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
+            ////string[] labels = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
+            ////int i = 0;
+            ////for (double y = 0.1; y < 1; y += 0.1)
+            ////{
+            ////    chart1.Series[0].Points.AddY(y);
+            ////    chart1.ChartAreas[0].AxisX.CustomLabels.Add(new CustomLabel(i, i + 2, labels[i], 0, LabelMarkStyle.LineSideMark));
+            ////    i++;
+            ////}
             //int i = 0;
-            //for (double y = 0.1; y < 1; y += 0.1)
+            //chart1.Series.Clear();
+            //foreach (var pm in percentMean)
             //{
-            //    chart1.Series[0].Points.AddY(y);
-            //    chart1.ChartAreas[0].AxisX.CustomLabels.Add(new CustomLabel(i, i + 2, labels[i], 0, LabelMarkStyle.LineSideMark));
-            //    i++;
+            //    i += 1;
+            //    if (pm.Value != 0)
+            //        chart1.Series[0].Points.AddY(pm.Value / 60 != 0 ? (double) pm.Value / 60 : (double) pm.Value);
+            //    else
+            //        chart1.Series[0].Points.AddY(0);
             //}
-            int i = 0;
-            chart1.Series.Clear();
-            foreach (var pm in percentMean)
-            {
-                i += 1;
-                if (pm.Value != 0)
-                    chart1.Series[0].Points.AddY(pm.Value / 60 != 0 ? (double) pm.Value / 60 : (double) pm.Value);
-                else
-                    chart1.Series[0].Points.AddY(0);
-            }
         }
         public bool GetSavePictruesCheckBox()
         {
@@ -1797,7 +1822,7 @@ namespace SystAnalys_lr1
                             traficLights.Clear();
                             traficLights.TrimExcess();
                             TraficLightsInGrids.Clear();
-                            stopPoints.Clear();                         
+                            stopPoints.Clear();
                             allstopPoints.Clear();
                             allstopPoints.TrimExcess();
                             LoadRoutes(dialog.SelectedPath + @"\");
@@ -2665,7 +2690,7 @@ namespace SystAnalys_lr1
                     }
                     for (int i = 0; i < V.Count; i++)
                     {
-                       
+
                         if (Math.Pow((V[i].X - e.X / zoom), 2) + Math.Pow((V[i].Y - e.Y / zoom), 2) <= G.R * G.R)
                         {
                             if (selected.Count == 0)
@@ -3980,7 +4005,7 @@ namespace SystAnalys_lr1
 
         private void clearButton_Click(object sender, EventArgs e)
         {
-           
+
             openEpicFormToolStripMenuItem.Enabled = false;
             addRouteToolStripMenuItem.Enabled = false;
             createGridToolStripMenuItem.Enabled = false;
@@ -4041,7 +4066,7 @@ namespace SystAnalys_lr1
             TheGrid = new List<GridPart>();
             TheGrid.TrimExcess();
             timer1.Stop();
-            timer1.Dispose();          
+            timer1.Dispose();
             AnimationBox.Image = null;
             AnimationGraphics.Dispose();
             AnimationBitmap.Dispose();
