@@ -17,6 +17,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml.Serialization;
 
 namespace SystAnalys_lr1
@@ -1672,6 +1673,7 @@ namespace SystAnalys_lr1
             }
             Matrix();
             resMatrix();
+            resChart();
             msmMain.Style = style;
             loadingForm.close = true;
             loadingForm.Close();
@@ -1739,6 +1741,27 @@ namespace SystAnalys_lr1
                 else
                     results.Rows[i].Cells[0].Value = MainStrings.notFound;
                 i += 1;
+            }
+        }
+        public void resChart()
+        {
+            //string[] labels = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
+            //int i = 0;
+            //for (double y = 0.1; y < 1; y += 0.1)
+            //{
+            //    chart1.Series[0].Points.AddY(y);
+            //    chart1.ChartAreas[0].AxisX.CustomLabels.Add(new CustomLabel(i, i + 2, labels[i], 0, LabelMarkStyle.LineSideMark));
+            //    i++;
+            //}
+            int i = 0;
+            chart1.Series.Clear();
+            foreach (var pm in percentMean)
+            {
+                i += 1;
+                if (pm.Value != 0)
+                    chart1.Series[0].Points.AddY(pm.Value / 60 != 0 ? (double) pm.Value / 60 : (double) pm.Value);
+                else
+                    chart1.Series[0].Points.AddY(0);
             }
         }
         public bool GetSavePictruesCheckBox()
@@ -3948,6 +3971,11 @@ namespace SystAnalys_lr1
         {
             timer1.Interval = 1000;
             timer1.Start();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void clearButton_Click(object sender, EventArgs e)
