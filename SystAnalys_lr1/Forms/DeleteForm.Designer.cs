@@ -114,11 +114,11 @@
         #endregion
 
         private MetroFramework.Controls.MetroPanel metroPanel1;
-        private MetroFramework.Controls.MetroRadioButton All;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroRadioButton BusStops;
         private MetroFramework.Controls.MetroRadioButton TrafficLights;
-        private MetroFramework.Controls.MetroRadioButton VandE;
         private MetroFramework.Controls.MetroButton metroButton1;
+        public MetroFramework.Controls.MetroRadioButton VandE;
+        public MetroFramework.Controls.MetroRadioButton All;
     }
 }

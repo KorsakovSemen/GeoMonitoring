@@ -127,7 +127,7 @@
     <value>Choose a different path to configure</value>
   </data>
   <data name="clearGraph" xml:space="preserve">
-    <value>Are you sure you want to clear the graph/route?</value>
+    <value>Are you sure you want to clear the graph/route/traffic lights/stops?</value>
   </data>
   <data name="config" xml:space="preserve">
     <value>Configuration:</value>
@@ -231,8 +231,8 @@
   <data name="sec" xml:space="preserve">
     <value>сек</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value />
+  <data name="graphClear" xml:space="preserve">
+    <value>Route/graph</value>
   </data>
   <data name="notFound" xml:space="preserve">
     <value>Not found</value>

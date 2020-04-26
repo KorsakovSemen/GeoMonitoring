@@ -560,7 +560,7 @@ namespace SystAnalys_lr1
                                         Console.WriteLine("Turn false");
                                         checkStop = sp.checkStop;
                                         skip = 100;
-                                        skipStops = 50;
+                                        skipStops = rnd.Next(0, 50);
                                         break;
                                     }
                                 }
@@ -575,7 +575,7 @@ namespace SystAnalys_lr1
                                     if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
                                     {
                                         checkStop = rnd.Next(0, 200);
-                                        skipStops = 50;
+                                        skipStops = 250 - checkStop;
                                         checkStoppedBus = 100;
                                         break;
                                     }
@@ -649,7 +649,7 @@ namespace SystAnalys_lr1
                                             Console.WriteLine("Turn true");
                                             checkStop = sp.checkStop;
                                             skip = 100;
-                                            skipStops = 50;
+                                            skipStops = rnd.Next(200, 250);
                                             break;
                                         }
                                     }
@@ -665,7 +665,7 @@ namespace SystAnalys_lr1
                                         if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
                                         {
                                             checkStop = rnd.Next(0, 200);
-                                            skipStops = 50;
+                                            skipStops = 250 - checkStop;
                                             checkStoppedBus = 100;
                                             break;
                                         }

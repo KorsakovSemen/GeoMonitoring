@@ -127,7 +127,7 @@
     <value>Выберите другой путь для конфигурации</value>
   </data>
   <data name="clearGraph" xml:space="preserve">
-    <value>Вы действительно хотите очистить граф/маршрут?</value>
+    <value>Вы действительно хотите очистить граф/маршрут/светофоры/остановки?</value>
   </data>
   <data name="config" xml:space="preserve">
     <value>Конфигурация:</value>
@@ -233,5 +233,8 @@
   </data>
   <data name="notFound" xml:space="preserve">
     <value>Не найдено</value>
+  </data>
+  <data name="graphClear" xml:space="preserve">
+    <value>Маршрут/граф</value>
   </data>
 </root>

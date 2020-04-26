@@ -115,7 +115,7 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Вы действительно хотите очистить граф/маршрут?.
+        ///   Ищет локализованную строку, похожую на Вы действительно хотите очистить граф/маршрут/светофоры/остановки?.
         /// </summary>
         internal static string clearGraph {
             get {
@@ -228,6 +228,15 @@ namespace SystAnalys_lr1.Strings {
         internal static string found {
             get {
                 return ResourceManager.GetString("found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Маршрут/граф.
+        /// </summary>
+        internal static string graphClear {
+            get {
+                return ResourceManager.GetString("graphClear", resourceCulture);
             }
         }
         

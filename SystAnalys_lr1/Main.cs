@@ -1166,6 +1166,11 @@ namespace SystAnalys_lr1
 
         private void deleteALLButton_Click(object sender, EventArgs e)
         {
+            DeleteForm df = new DeleteForm();
+            StyleManager.Clone(df);
+            df.VandE.Visible = false;
+            df.All.Text = MainStrings.graphClear;
+            df.ShowDialog();
             LoadingForm loadingForm = new LoadingForm();
             loadingForm.loading.Value = 0;
             loadingForm.loading.Maximum = 100;
@@ -1180,48 +1185,96 @@ namespace SystAnalys_lr1
             var MBSave = MetroMessageBox.Show(this, message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (routes != null || routesEdge != null || E != null || V != null || buses != null)
             {
-                if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
+                switch (delType)
                 {
-                    loadingForm.Show();
-                    routes[changeRoute.Text].Clear();
-                    routesEdge[changeRoute.Text].Clear();
-                    loadingForm.loading.Value = 20;
-                    List<Bus> busTest = new List<Bus>();
-                    foreach (var b in buses)
-                    {
-                        if (b.route == changeRoute.Text)
+                    case deleteType.All:
+                        if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
                         {
-                            //  mainPanel.Controls.Remove(b.busPic);
-                            busTest.Add(b);
-                        };
-                    };
-                    loadingForm.loading.Value = 40;
-                    foreach (var b in busTest)
-                    {
-                        buses.Remove(b);
-                    }
-                    loadingForm.loading.Value = 50;
-                    AllCoordinates[changeRoute.Text].Clear();
-                    G.clearSheet();
-                    G.drawALLGraph(V, E);
-                    sheet.Image = G.GetBitmap();
-                    DrawGrid();
+                            loadingForm.Show();
+                            routes[changeRoute.Text].Clear();
+                            routesEdge[changeRoute.Text].Clear();
+                            loadingForm.loading.Value = 20;
+                            List<Bus> busTest = new List<Bus>();
+                            foreach (var b in buses)
+                            {
+                                if (b.route == changeRoute.Text)
+                                {
+                                    busTest.Add(b);
+                                };
+                            };
+                            loadingForm.loading.Value = 40;
+                            foreach (var b in busTest)
+                            {
+                                buses.Remove(b);
+                            }
+                            loadingForm.loading.Value = 50;
+                            AllCoordinates[changeRoute.Text].Clear();
+                            G.clearSheet();
+                            G.drawALLGraph(V, E);
+                            sheet.Image = G.GetBitmap();
+                            DrawGrid();
 
+                        }
+                        if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
+                        {
+                            loadingForm.Show();
+                            loadingForm.loading.Value = 20;
+                            buses.Clear();
+                            routes.Keys.ToList().ForEach(x => routes[x] = new List<Vertex>());
+                            routesEdge.Keys.ToList().ForEach(x => routesEdge[x] = new List<Edge>());
+                            loadingForm.loading.Value = 40;
+                            AllCoordinates.Clear();
+                            G.clearSheet();
+                            sheet.Image = G.GetBitmap();
+                            DrawGrid();
+                            loadingForm.loading.Value = 50;
+                        };
+                        break;
+                    case deleteType.BusStops:
+                        if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
+                        {
+                            loadingForm.Show();
+                            loadingForm.loading.Value = 20;
+                            stopPoints[changeRoute.Text].Clear();
+                            stopPointsInGrids[changeRoute.Text].Clear();
+                            loadingForm.loading.Value = 40;
+                            G.clearSheet();
+                            sheet.Image = G.GetBitmap();
+                            DrawGrid();
+                            loadingForm.loading.Value = 50;
+                        }
+                        if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
+                        {
+                            loadingForm.Show();
+                            loadingForm.loading.Value = 20;
+                            allstopPoints.Clear();
+                            stopPoints.Clear();
+                            stopPointsInGrids.Clear();
+                            loadingForm.loading.Value = 40;
+                            G.clearSheet();
+                            sheet.Image = G.GetBitmap();
+                            DrawGrid();
+                            loadingForm.loading.Value = 50;
+                        }                    
+                        break;
+                    case deleteType.TrafficLight:
+                        if (MBSave == DialogResult.Yes)
+                        {
+                            loadingForm.Show();
+                            loadingForm.loading.Value = 20;
+                            foreach (var tf in traficLights)
+                                tf.Stop();
+                            traficLights.Clear();
+                            TraficLightsInGrids.Clear();
+                            loadingForm.loading.Value = 40;
+                            G.clearSheet();
+                            sheet.Image = G.GetBitmap();
+                            DrawGrid();
+                            loadingForm.loading.Value = 50;
+                        }
+                        break;
                 }
-                if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
-                {
-                    loadingForm.Show();
-                    loadingForm.loading.Value = 20;
-                    buses.Clear();
-                    routes.Keys.ToList().ForEach(x => routes[x] = new List<Vertex>());
-                    routesEdge.Keys.ToList().ForEach(x => routesEdge[x] = new List<Edge>());
-                    loadingForm.loading.Value = 40;
-                    AllCoordinates.Clear();
-                    G.clearSheet();
-                    sheet.Image = G.GetBitmap();
-                    DrawGrid();
-                    loadingForm.loading.Value = 50;
-                };
+            
             }
             if (changeRoute.Text == MainStrings.network)
             {
