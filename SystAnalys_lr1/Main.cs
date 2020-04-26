@@ -1751,7 +1751,7 @@ namespace SystAnalys_lr1
         }
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (savepath != null || savepath != "")
+            if (savepath != null)
             {
                 try
                 {
@@ -3903,7 +3903,7 @@ namespace SystAnalys_lr1
             openEpicFormToolStripMenuItem.Enabled = false;
             addRouteToolStripMenuItem.Enabled = false;
             createGridToolStripMenuItem.Enabled = false;
-            // savepath = null; //мб лучше это оствить при клире
+            savepath = null; //мб лучше это оствить при клире
             if (Ep != null)
             {
                 Ep.EG.clearSheet2();
