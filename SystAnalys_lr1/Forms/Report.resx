@@ -117,127 +117,48 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="acrossThePath" xml:space="preserve">
-    <value>Через путь</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>83, 85</value>
   </data>
-  <data name="average" xml:space="preserve">
-    <value>Среднее:</value>
+  <data name="ch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>656, 300</value>
   </data>
-  <data name="chooseWay" xml:space="preserve">
-    <value>Выберите другой путь для конфигурации</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ch.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="clearGraph" xml:space="preserve">
-    <value>Вы действительно хотите очистить граф/маршрут/светофоры/остановки?</value>
+  <data name="ch.Text" xml:space="preserve">
+    <value>chart1</value>
   </data>
-  <data name="config" xml:space="preserve">
-    <value>Конфигурация:</value>
+  <data name="&gt;&gt;ch.Name" xml:space="preserve">
+    <value>ch</value>
   </data>
-  <data name="delete" xml:space="preserve">
-    <value>Удаление</value>
+  <data name="&gt;&gt;ch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataVisualization.Charting.Chart, System.Windows.Forms.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</value>
   </data>
-  <data name="deleteGraph" xml:space="preserve">
-    <value>Вы действительно хотите удалить граф/маршрут? </value>
+  <data name="&gt;&gt;ch.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="done" xml:space="preserve">
-    <value>Готово</value>
+  <data name="&gt;&gt;ch.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="error" xml:space="preserve">
-    <value>Ошибка</value>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
-  <data name="loading" xml:space="preserve">
-    <value>Загрузка...</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 450</value>
   </data>
-  <data name="matrixFirst" xml:space="preserve">
-    <value>С датчиками:</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Отчет</value>
   </data>
-  <data name="matrixSecond" xml:space="preserve">
-    <value>Без:</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Report</value>
   </data>
-  <data name="matrixThird" xml:space="preserve">
-    <value>Всего:</value>
-  </data>
-  <data name="network" xml:space="preserve">
-    <value>Сеть</value>
-  </data>
-  <data name="none" xml:space="preserve">
-    <value>Ничего</value>
-  </data>
-  <data name="noPic" xml:space="preserve">
-    <value>В папке отсутствует изображение</value>
-  </data>
-  <data name="procentFailed" xml:space="preserve">
-    <value>Процент неудач:</value>
-  </data>
-  <data name="procentSuc" xml:space="preserve">
-    <value>Процент успеха:</value>
-  </data>
-  <data name="putTrafficLights1" xml:space="preserve">
-    <value>(1)Осталось поставить светофоров</value>
-  </data>
-  <data name="putTrafficLights2" xml:space="preserve">
-    <value>(2)Осталось поставить светофоров</value>
-  </data>
-  <data name="hint" xml:space="preserve">
-    <value>Перезагрузите программу для смены языка</value>
-  </data>
-  <data name="deleteBus" xml:space="preserve">
-    <value>Вы действительно хотите удалить все автобусы маршрута/сети?</value>
-  </data>
-  <data name="bus" xml:space="preserve">
-    <value>Должно быть больше 2 ребер</value>
-  </data>
-  <data name="errorPath" xml:space="preserve">
-    <value>Неверный путь к файлу</value>
-  </data>
-  <data name="countBuses" xml:space="preserve">
-    <value>Кол-во автобусов</value>
-  </data>
-  <data name="countSensors" xml:space="preserve">
-    <value>Кол-во датчиков</value>
-  </data>
-  <data name="cycle" xml:space="preserve">
-    <value>Цикл</value>
-  </data>
-  <data name="distance" xml:space="preserve">
-    <value>При T равном</value>
-  </data>
-  <data name="found" xml:space="preserve">
-    <value>Найдено</value>
-  </data>
-  <data name="numIter" xml:space="preserve">
-    <value>Кол-во итераций</value>
-  </data>
-  <data name="sensorsDown" xml:space="preserve">
-    <value>Снижение кол-ва датчиков в процентах</value>
-  </data>
-  <data name="all" xml:space="preserve">
-    <value>Все</value>
-  </data>
-  <data name="busStops" xml:space="preserve">
-    <value>Остановки</value>
-  </data>
-  <data name="Matrix" xml:space="preserve">
-    <value>Ошибка создания матрицы</value>
-  </data>
-  <data name="TrafficLights" xml:space="preserve">
-    <value>Светофоры</value>
-  </data>
-  <data name="VandE" xml:space="preserve">
-    <value>Вершины и ребра</value>
-  </data>
-  <data name="minute" xml:space="preserve">
-    <value>мин</value>
-  </data>
-  <data name="sec" xml:space="preserve">
-    <value>сек</value>
-  </data>
-  <data name="notFound" xml:space="preserve">
-    <value>Не найдено</value>
-  </data>
-  <data name="graphClear" xml:space="preserve">
-    <value>Маршрут/граф</value>
-  </data>
-  <data name="chart" xml:space="preserve">
-    <value>График</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>MetroFramework.Forms.MetroForm, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
 </root>

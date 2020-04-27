@@ -32,7 +32,6 @@ namespace SystAnalys_lr1
             All
         }
 
-
         //
         PictureBox AnimationBox;
         //
@@ -1519,11 +1518,12 @@ namespace SystAnalys_lr1
         }
 
         LoadingForm loadingForm = new LoadingForm();
+        string path;
         private async void Opt()
         {
             loadingForm = new LoadingForm();
             buttonOff();
-            string path = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute);
+            path = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute);
             if (SavePictures == true)
             {
                 Ep.Hide();
@@ -1644,7 +1644,12 @@ namespace SystAnalys_lr1
                         //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
                         //      + "\n" + MainStrings.procentSuc + " " + ResultFromModeling.Count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
                         if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
-                            percentMean.Add(withoutSensorsBuses.Last(), total / count);
+                        {
+                            if (count != 0)
+                                percentMean.Add(withoutSensorsBuses.Last(), total / count);
+                            else
+                                percentMean.Add(withoutSensorsBuses.Last(), -1);
+                        }
                         //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (Convert.ToDouble(total / ResultFromModeling.Count).ToString()));
                     }
                     ;
@@ -1698,7 +1703,6 @@ namespace SystAnalys_lr1
             }
             Matrix();
             resMatrix();
-            resChart();
             msmMain.Style = style;
             loadingForm.close = true;
             loadingForm.Close();
@@ -1714,6 +1718,10 @@ namespace SystAnalys_lr1
             buttonOn();
             busesPark = busesparkreturn;
             buses = optimizeBuses;
+
+
+            resChart();
+            
         }
 
         public static int EpicSizeParam = 25;
@@ -1770,24 +1778,26 @@ namespace SystAnalys_lr1
         }
         public void resChart()
         {
-            ////string[] labels = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
-            ////int i = 0;
-            ////for (double y = 0.1; y < 1; y += 0.1)
-            ////{
-            ////    chart1.Series[0].Points.AddY(y);
-            ////    chart1.ChartAreas[0].AxisX.CustomLabels.Add(new CustomLabel(i, i + 2, labels[i], 0, LabelMarkStyle.LineSideMark));
-            ////    i++;
-            ////}
-            //int i = 0;
-            //chart1.Series.Clear();
-            //foreach (var pm in percentMean)
-            //{
-            //    i += 1;
-            //    if (pm.Value != 0)
-            //        chart1.Series[0].Points.AddY(pm.Value / 60 != 0 ? (double) pm.Value / 60 : (double) pm.Value);
-            //    else
-            //        chart1.Series[0].Points.AddY(0);
-            //}
+            Report r = new Report();
+            int i = 0;
+            r.ch.Series[0].Points.Clear();
+            foreach (var pm in percentMean)
+            {
+                if(pm.Value == null)
+                {
+                    r.ch.Series[0].Points.AddY(0);
+                }
+                else
+                {
+                    r.ch.Series[0].Points.AddY(pm.Value / 60 != 0 ? (double) pm.Value / 60 : (double) pm.Value);
+                }
+                r.ch.ChartAreas[0].AxisX.CustomLabels.Add(new CustomLabel(i, i + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
+                i++;
+            }
+            r.ch.SaveImage(path + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            r.Show();
+
         }
         public bool GetSavePictruesCheckBox()
         {
@@ -2920,10 +2930,6 @@ namespace SystAnalys_lr1
                                 {
                                     if (routeV[routesEdge[changeRoute.Text].Last().v2].X == V[i].X && routeV[routesEdge[changeRoute.Text].Last().v2].Y == V[i].Y)
                                     {
-                                        if (!routeV.Contains(new Vertex(V[i].X, V[i].Y)))
-                                        {
-                                            routeV.Add(new Vertex(V[i].X, V[i].Y));
-                                        }
                                         selected.Add(i);
                                         G.drawSelectedVertex(V[i].X, V[i].Y);
                                     }
@@ -3131,12 +3137,7 @@ namespace SystAnalys_lr1
                                     {
                                         if (routeV[routesEdge[changeRoute.Text].Last().v2].X == V[i].X && routeV[routesEdge[changeRoute.Text].Last().v2].Y == V[i].Y)
                                         {
-                                            if (!routeV.Contains(new Vertex(V[i].X, V[i].Y)))
-                                            {
-                                                routeV.Add(new Vertex(V[i].X, V[i].Y));
-                                            }
                                             selected1 = i;
-
                                             G.drawSelectedVertex(V[i].X, V[i].Y);
                                         }
                                     }

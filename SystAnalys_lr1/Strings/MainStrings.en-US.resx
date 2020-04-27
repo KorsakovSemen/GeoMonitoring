@@ -237,4 +237,7 @@
   <data name="notFound" xml:space="preserve">
     <value>Not found</value>
   </data>
+  <data name="chart" xml:space="preserve">
+    <value>Chart</value>
+  </data>
 </root>

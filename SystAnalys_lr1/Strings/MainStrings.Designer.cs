@@ -106,6 +106,15 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на График.
+        /// </summary>
+        internal static string chart {
+            get {
+                return ResourceManager.GetString("chart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Выберите другой путь для конфигурации.
         /// </summary>
         internal static string chooseWay {
