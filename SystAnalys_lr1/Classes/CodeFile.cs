@@ -531,7 +531,7 @@ namespace SystAnalys_lr1
                 if (TurnBack == false)
                 {
                     if (PositionAt < Coordinates.Count - 1)
-                    {                        
+                    {
                         if (checkStoppedBus == 0)
                         {
                             if (Main.buses.Count != 0)
@@ -1356,11 +1356,17 @@ namespace SystAnalys_lr1
                     if ((gridPart.x == OutMovedGrid.X) && (gridPart.y == OutMovedGrid.Y))
                     {
                         IndexOfOutMovedGrid = EpicenterGrid[1].IndexOf(gridPart);
+                        if (NewExpandCount.Any())
+                        {
+                            NewExpandCount.Remove(NewExpandCount.Last());
+                        }
+
+                        break;
                     }
 
                 }
                 EpicenterGrid[1].RemoveAt(IndexOfOutMovedGrid);
-
+                //NewExpandCount.Remove(IndexOfOutMovedGrid);
             }
 
 
@@ -1406,7 +1412,7 @@ namespace SystAnalys_lr1
             ///
         }
         //
-        List<int> NewExpandCount = new List<int>();
+        public List<int> NewExpandCount { get; set; } = new List<int>();
         public void ExpandEpic()
         {
             for (int i = 2; i < EpicenterGrid.Count + 1; i++)

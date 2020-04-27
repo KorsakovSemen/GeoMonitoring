@@ -387,6 +387,7 @@ namespace SystAnalys_lr1
                 {
                     epList[i].EpicenterGrid.Add(Sector.Key, new List<GridPart>());
                     epList[i].StartPositon = EpicList.StartPositon;
+                    epList[i].NewExpandCount = new List<int>();
                     foreach (var Square in Sector.Value)
                     {
                         epList[i].EpicenterGrid[Sector.Key].Add(new GridPart(Square.x, Square.y));
@@ -394,7 +395,6 @@ namespace SystAnalys_lr1
                 }
                 i++;
             }
-
             CreatePollutionInRoutes();
             int small = 10000;
             int old = small;
@@ -402,13 +402,7 @@ namespace SystAnalys_lr1
             bool EpicFounded = false;
             int ExpandTimer = 0;
             int MovingTimer = 0;
-            Epics = epList;
             i = 1;
-            foreach (var bus in buses)
-            {
-                bus.Epicenters = epList;
-            }
-
             int PhaseSizeSelect()
             {
                 if (extendedSavePictures == false)
@@ -1519,7 +1513,7 @@ namespace SystAnalys_lr1
 
         LoadingForm loadingForm = new LoadingForm();
         string path;
-        private async void Opt()
+        private  async void Opt()
         {
             loadingForm = new LoadingForm();
             buttonOff();
@@ -3821,7 +3815,7 @@ namespace SystAnalys_lr1
                 toolStripMenu.ForeColor = Color.FromArgb(0, 0, 0);
                 selectButton.Image = new Bitmap(("../../Resources/newcursor.png"));
                 drawVertexButton.Image = new Bitmap(("../../Resources/circle1.png"));
-                drawEdgeButton.Image = new Bitmap(("../../Resources/line_new.png"));
+                drawEdgeButton.Image = new Bitmap(("../../Resources/new_line__.png"));
                 selectRoute.Image = new Bitmap(("../../Resources/line-chart.png"));
                 addTraficLight.Image = new Bitmap("../../Resources/traffic-light_.png");
 
@@ -3964,8 +3958,9 @@ namespace SystAnalys_lr1
                         AnimationGraphics.DrawImage(bus.busPic, bus.Coordinates[bus.PositionAt].X * metroTrackBar1.Value - bus.busPic.Width / 2, bus.Coordinates[bus.PositionAt].Y * metroTrackBar1.Value - bus.busPic.Height / 2);
                     }
                     AnimationBox.Image = AnimationBitmap;
+                    //AnimationBox.Update();
                 }
-
+               // AnimationBox.Update();
                 sheet.Image = G.GetBitmap();
                 // CreateGrid();
                 DrawGrid();
@@ -4022,16 +4017,17 @@ namespace SystAnalys_lr1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            AnimationBitmap.Dispose();
+            //AnimationBitmap.Dispose();
             AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
             AnimationBitmap.MakeTransparent();
-            AnimationGraphics.Dispose();
+           // AnimationGraphics.Dispose();
             AnimationGraphics = Graphics.FromImage(AnimationBitmap);
             foreach (var bus in buses)
             {
                 bus.MoveWithGraphics(AnimationGraphics);
             }
             AnimationBox.Image = AnimationBitmap;
+          //  AnimationBox.Update();
         }
 
         private void metroButton1_Click(object sender, EventArgs e)

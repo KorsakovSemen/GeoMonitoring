@@ -1027,7 +1027,7 @@
     <value>8, 11</value>
   </data>
   <data name="trackerCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 15</value>
+    <value>62, 15</value>
   </data>
   <data name="trackerCheck.TabIndex" type="System.Int32, mscorlib">
     <value>101</value>
