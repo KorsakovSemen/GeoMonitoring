@@ -33,6 +33,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Report));
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ch = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.ch)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,15 +45,24 @@
             this.ch.Legends.Add(legend1);
             resources.ApplyResources(this.ch, "ch");
             this.ch.Name = "ch";
+            this.ch.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.ch.Series.Add(series1);
             // 
+            // metroButton1
+            // 
+            resources.ApplyResources(this.metroButton1, "metroButton1");
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            // 
             // Report
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.ch);
             this.MaximizeBox = false;
             this.Name = "Report";
@@ -65,5 +75,6 @@
         #endregion
 
         public System.Windows.Forms.DataVisualization.Charting.Chart ch;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }

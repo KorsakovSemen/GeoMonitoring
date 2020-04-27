@@ -141,6 +141,30 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ch.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="metroButton1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>336, 404</value>
+  </data>
+  <data name="metroButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 23</value>
+  </data>
+  <data name="metroButton1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="metroButton1.Text" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="&gt;&gt;metroButton1.Name" xml:space="preserve">
+    <value>metroButton1</value>
+  </data>
+  <data name="&gt;&gt;metroButton1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroButton1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;metroButton1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

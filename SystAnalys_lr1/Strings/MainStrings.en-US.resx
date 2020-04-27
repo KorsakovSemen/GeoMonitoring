@@ -240,4 +240,7 @@
   <data name="chart" xml:space="preserve">
     <value>Chart</value>
   </data>
+  <data name="report" xml:space="preserve">
+    <value>Report</value>
+  </data>
 </root>

@@ -1758,7 +1758,6 @@ namespace SystAnalys_lr1
                 }
 
             }
-
         }
         public void resMatrix()
         {
@@ -1776,28 +1775,41 @@ namespace SystAnalys_lr1
                 i += 1;
             }
         }
+        Report r = new Report();
+        int rCount = 0;
+        int iCh = 0;
         public void resChart()
         {
-            Report r = new Report();
-            int i = 0;
-            r.ch.Series[0].Points.Clear();
+            int iCh = 0;
+            StyleManager.Clone(r);
+            if (rCount == 0)
+                r.ch.Titles.Add(MainStrings.report);
+            if(rCount != 0)
+                r.ch.Series.Add(rCount.ToString());
+            r.ch.Series[rCount].LegendText = rCount.ToString();
             foreach (var pm in percentMean)
             {
                 if(pm.Value == null)
                 {
-                    r.ch.Series[0].Points.AddY(0);
+                    r.ch.Series[rCount].Points.AddY(0);
                 }
                 else
                 {
-                    r.ch.Series[0].Points.AddY(pm.Value / 60 != 0 ? (double) pm.Value / 60 : (double) pm.Value);
+                    r.ch.Series[rCount].Points.AddY(pm.Value / 60 != 0 ? (double) pm.Value / 60 : (double) pm.Value);
                 }
-                r.ch.ChartAreas[0].AxisX.CustomLabels.Add(new CustomLabel(i, i + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
-                i++;
+                if (rCount == 0)
+                    r.ch.ChartAreas[rCount].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
+                //else
+                //    r.ch.ChartAreas[rCount].AxisX.CustomLabels[iCh] = new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark);
+                //else
+                //    foreach (var label in r.ch.ChartAreas[0].AxisX.CustomLabels)
+                //        if(label.ToString() != pm.Key.ToString())
+                //            r.ch.ChartAreas[rCount].AxisX.CustomLabels.Add(new CustomLabel(r.ch.ChartAreas[0].AxisX.CustomLabels.Count, r.ch.ChartAreas[0].AxisX.CustomLabels.Count + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
+                iCh++;
             }
             r.ch.SaveImage(path + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
-
             r.Show();
-
+            rCount += 1;
         }
         public bool GetSavePictruesCheckBox()
         {
@@ -4031,6 +4043,11 @@ namespace SystAnalys_lr1
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void reportTool_Click(object sender, EventArgs e)
+        {
+            r.Show();
         }
 
         private void clearButton_Click(object sender, EventArgs e)

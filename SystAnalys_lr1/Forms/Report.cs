@@ -17,5 +17,13 @@ namespace SystAnalys_lr1.Forms
         {
             InitializeComponent();
         }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            foreach (var series in ch.Series)
+            {
+                series.Points.Clear();
+            }
+        }
     }
 }

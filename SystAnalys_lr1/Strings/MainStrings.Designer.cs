@@ -394,6 +394,15 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Отчет.
+        /// </summary>
+        internal static string report {
+            get {
+                return ResourceManager.GetString("report", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на сек.
         /// </summary>
         internal static string sec {
