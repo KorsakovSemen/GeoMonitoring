@@ -1632,22 +1632,22 @@ namespace SystAnalys_lr1
                         }
                     }
 
-                    //                    if (total < 0 || count < ResultFromModeling.Count / 2)
-                    //                    {
-                    //                        //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
-                    //                        if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
-                    //                            percentMean.Add(withoutSensorsBuses.Last(), null);
-                    //                        //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none);
-                    //                    }
-                    //                    else
-                    //                    {
-                    //                        //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
-                    //                        //      + "\n" + MainStrings.procentSuc + " " + ResultFromModeling.Count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
-                    //                        if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
-                    //                            percentMean.Add(withoutSensorsBuses.Last(), total / count);
-                    //                        //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (Convert.ToDouble(total / ResultFromModeling.Count).ToString()));
-                    //                    }
-                    //;
+                    if (total < 0 || count < ResultFromModeling.Count / 2)
+                    {
+                        //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
+                        if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
+                            percentMean.Add(withoutSensorsBuses.Last(), null);
+                        //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none);
+                    }
+                    else
+                    {
+                        //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
+                        //      + "\n" + MainStrings.procentSuc + " " + ResultFromModeling.Count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
+                        if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
+                            percentMean.Add(withoutSensorsBuses.Last(), total / count);
+                        //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (Convert.ToDouble(total / ResultFromModeling.Count).ToString()));
+                    }
+                    ;
                     using (StreamWriter fileV = new StreamWriter(path + @"\" + withoutSensorsBuses.Last() + "_buses" + ".txt"))
                     {
                         fileV.WriteLine(MainStrings.sensorsDown + ": " + (cicl * 10).ToString());
@@ -2769,17 +2769,11 @@ namespace SystAnalys_lr1
                     if (firstCrossRoads <= 0 && secondCrossRoads <= 0)
                     {
                         label12.Visible = false;
-                        ///loading.Enabled = true;
-                        //loading.Value = 0;
-                        //loading.Maximum = traficLights.Count;
                         traficLights.ForEach((tl) =>
                         {
-                            //loading.Value += 1;
                             tl.Set();
                             tl.Start();
                         });
-                        //AsyncCreateAllCoordinates()();
-                        //loading.Enabled = false;
                         selectedRoute = null;
                         selectRoute.Enabled = true;
                         deleteBus.Enabled = true;
@@ -2922,10 +2916,27 @@ namespace SystAnalys_lr1
                         {
                             if (selected.Count == 0)
                             {
-                                selected.Add(i);
-                                if (!routeV.Contains(new Vertex(V[i].X, V[i].Y)))
-                                    routeV.Add(new Vertex(V[i].X, V[i].Y));
-                                G.drawSelectedVertex(V[i].X, V[i].Y);
+                                if (routesEdge[changeRoute.Text].Count != 0)
+                                {
+                                    if (routeV[routesEdge[changeRoute.Text].Last().v2].X == V[i].X && routeV[routesEdge[changeRoute.Text].Last().v2].Y == V[i].Y)
+                                    {
+                                        if (!routeV.Contains(new Vertex(V[i].X, V[i].Y)))
+                                        {
+                                            routeV.Add(new Vertex(V[i].X, V[i].Y));
+                                        }
+                                        selected.Add(i);
+                                        G.drawSelectedVertex(V[i].X, V[i].Y);
+                                    }
+                                }
+                                else
+                                {
+                                    if (!routeV.Contains(new Vertex(V[i].X, V[i].Y)))
+                                    {
+                                        routeV.Add(new Vertex(V[i].X, V[i].Y));
+                                    }
+                                    selected.Add(i);
+                                    G.drawSelectedVertex(V[i].X, V[i].Y);
+                                }
                                 break;
                             }
                             else
@@ -3116,11 +3127,29 @@ namespace SystAnalys_lr1
                             {
                                 if (selected1 == -1)
                                 {
-                                    G.drawSelectedVertex(V[i].X, V[i].Y);
-                                    if (!routeV.Contains(new Vertex(V[i].X, V[i].Y)))
-                                        routeV.Add(new Vertex(V[i].X, V[i].Y));
-                                    selected1 = i;
-                                    sheet.Image = G.GetBitmap();
+                                    if (routesEdge[changeRoute.Text].Count != 0)
+                                    {
+                                        if (routeV[routesEdge[changeRoute.Text].Last().v2].X == V[i].X && routeV[routesEdge[changeRoute.Text].Last().v2].Y == V[i].Y)
+                                        {
+                                            if (!routeV.Contains(new Vertex(V[i].X, V[i].Y)))
+                                            {
+                                                routeV.Add(new Vertex(V[i].X, V[i].Y));
+                                            }
+                                            selected1 = i;
+
+                                            G.drawSelectedVertex(V[i].X, V[i].Y);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (!routeV.Contains(new Vertex(V[i].X, V[i].Y)))
+                                        {
+                                            routeV.Add(new Vertex(V[i].X, V[i].Y));
+                                        }
+                                        selected1 = i;
+
+                                        G.drawSelectedVertex(V[i].X, V[i].Y);
+                                    }
                                     break;
                                 }
                                 if (selected2 == -1)

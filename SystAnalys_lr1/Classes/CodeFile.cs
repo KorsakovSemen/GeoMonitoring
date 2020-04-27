@@ -531,24 +531,7 @@ namespace SystAnalys_lr1
                 if (TurnBack == false)
                 {
                     if (PositionAt < Coordinates.Count - 1)
-                    {
-                        //if (skipStops == 0)
-                        //{
-                        //    if (Main.buses.Count != 0)
-                        //    {
-                        //        foreach (var sp in buses)
-                        //        {
-                        //            if (Math.Pow((sp.Coordinates[sp.PositionAt].X - (Coordinates[PositionAt].X / (int)ZoomCoef)), 2) + Math.Pow((sp.Coordinates[sp.PositionAt].Y - (Coordinates[PositionAt].Y / (int)ZoomCoef)), 2) <= sp.R * sp.R && sp.checkStop != 0 && sp.TurnBack == TurnBack)
-                        //            {
-                        //                Console.WriteLine("Turn false");
-                        //                checkStop = sp.checkStop;
-                        //                skip = 500;
-                        //                skipStops = 50;
-                        //                break;
-                        //            }
-                        //        }
-                        //    }
-                        //}
+                    {                        
                         if (checkStoppedBus == 0)
                         {
                             if (Main.buses.Count != 0)
@@ -576,7 +559,7 @@ namespace SystAnalys_lr1
                                     {
                                         checkStop = rnd.Next(0, 200);
                                         skipStops = 250 - checkStop;
-                                        checkStoppedBus = 100;
+                                        checkStoppedBus = checkStop + 100;
                                         break;
                                     }
                                 }
@@ -666,7 +649,7 @@ namespace SystAnalys_lr1
                                         {
                                             checkStop = rnd.Next(0, 200);
                                             skipStops = 250 - checkStop;
-                                            checkStoppedBus = 100;
+                                            checkStoppedBus = checkStop + 100;
                                             break;
                                         }
                                     }

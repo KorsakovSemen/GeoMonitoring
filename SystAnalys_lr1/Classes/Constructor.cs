@@ -94,7 +94,7 @@ namespace SystAnalys_lr1.Classes
                     if (Math.Pow((V[i].X - e.X / Main.zoom), 2) + Math.Pow((V[i].Y - e.Y / Main.zoom), 2) <= G.R * G.R)
                     {
                         if (Main.selected1 == -1)
-                        {
+                        {                            
                             G.drawSelectedVertex(V[i].X, V[i].Y);
                             Main.selected1 = i;
                             sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
