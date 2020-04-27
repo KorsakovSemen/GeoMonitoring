@@ -308,6 +308,7 @@ namespace SystAnalys_lr1
             countWithoutSensors = buses.Count;
             Matrix();
             hint.Visible = false;
+            r.ch.Titles.Add(MainStrings.report);
 
 
 
@@ -1713,7 +1714,7 @@ namespace SystAnalys_lr1
             busesPark = busesparkreturn;
             buses = optimizeBuses;
 
-
+            
             resChart();
             
         }
@@ -1772,38 +1773,68 @@ namespace SystAnalys_lr1
         Report r = new Report();
         int rCount = 0;
         int iCh = 0;
+        int oldChart;
         public void resChart()
         {
-            int iCh = 0;
-            StyleManager.Clone(r);
-            if (rCount == 0)
-                r.ch.Titles.Add(MainStrings.report);
-            if(rCount != 0)
-                r.ch.Series.Add(rCount.ToString());
-            r.ch.Series[rCount].LegendText = rCount.ToString();
-            foreach (var pm in percentMean)
+            if(oldChart == (int)percentMean.Keys.Sum())
             {
-                if(pm.Value == null)
+                int iCh = 0;
+                StyleManager.Clone(r);
+                if (rCount != 0)
+                    r.ch.Series.Add(rCount.ToString());
+                r.ch.Series[rCount].LegendText = rCount.ToString();
+                foreach (var pm in percentMean)
                 {
-                    r.ch.Series[rCount].Points.AddY(0);
+                    if (pm.Value == null)
+                    {
+                        r.ch.Series[rCount].Points.AddY(0);
+                    }
+                    else
+                    {
+                        r.ch.Series[rCount].Points.AddY(pm.Value / 60 != 0 ? (double)pm.Value / 60 : (double)pm.Value);
+                    }
+                    if (rCount == 0)
+                        r.ch.ChartAreas[rCount].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
+                    iCh++;
                 }
-                else
-                {
-                    r.ch.Series[rCount].Points.AddY(pm.Value / 60 != 0 ? (double) pm.Value / 60 : (double) pm.Value);
-                }
-                if (rCount == 0)
-                    r.ch.ChartAreas[rCount].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
-                //else
-                //    r.ch.ChartAreas[rCount].AxisX.CustomLabels[iCh] = new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark);
-                //else
-                //    foreach (var label in r.ch.ChartAreas[0].AxisX.CustomLabels)
-                //        if(label.ToString() != pm.Key.ToString())
-                //            r.ch.ChartAreas[rCount].AxisX.CustomLabels.Add(new CustomLabel(r.ch.ChartAreas[0].AxisX.CustomLabels.Count, r.ch.ChartAreas[0].AxisX.CustomLabels.Count + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
-                iCh++;
+                r.ch.SaveImage(path + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                r.Show();
+                rCount += 1;
             }
-            r.ch.SaveImage(path + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            r.Show();
-            rCount += 1;
+            else
+            {
+                r.ch.Legends.Clear();
+                rCount = 0;
+                // r.ch.Series[rCount].LegendText = rCount.ToString();
+                foreach (var series in r.ch.Series)
+                {
+                    series.Points.Clear();
+                }
+                oldChart = (int)percentMean.Keys.Sum();
+                int iCh = 0;
+                StyleManager.Clone(r);
+                if (rCount != 0)
+                    r.ch.Series.Add(rCount.ToString());
+                r.ch.Series[rCount].LegendText = rCount.ToString();
+                foreach (var pm in percentMean)
+                {
+                    if (pm.Value == null)
+                    {
+                        r.ch.Series[rCount].Points.AddY(0);
+                    }
+                    else
+                    {
+                        r.ch.Series[rCount].Points.AddY(pm.Value / 60 != 0 ? (double)pm.Value / 60 : (double)pm.Value);
+                    }
+                    if (rCount == 0)
+                        r.ch.ChartAreas[rCount].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
+                    iCh++;
+                }
+                r.ch.SaveImage(path + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                r.Show();
+                rCount += 1;
+            }
+          
         }
         public bool GetSavePictruesCheckBox()
         {
