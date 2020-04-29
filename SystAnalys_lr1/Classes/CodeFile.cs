@@ -125,13 +125,7 @@ namespace SystAnalys_lr1
             gr = (Graphics.FromImage(bitmap));
 
         }
-        //
-        public void drawBusMove(List<Bus> buses)
-        {
 
-
-
-        }
         public void drawVertex(int x, int y)
         {
             gr.FillEllipse(Brushes.GreenYellow, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
@@ -195,7 +189,7 @@ namespace SystAnalys_lr1
 
             if (E.v1 == E.v2)
             {
-                gr.DrawArc(pen, (V1.X - 2 * R) * Main.zoom, (V1.Y - 2 * R) * Main.zoom, 2 * R, 2 * R, 90, 270);
+                gr.DrawArc(pen, (V1.X - 2 * R) * Main.zoom, (V1.Y - 2 * R) * Main.zoom, 2 * R * Main.zoom, 2 * R * Main.zoom, 90, 270);
             }
             else
             {
@@ -225,7 +219,7 @@ namespace SystAnalys_lr1
             {
                 if (E[i].v1 == E[i].v2)
                 {
-                    gr.DrawArc(pen, V[E[i].v1].X - 2 * R * Main.zoom, V[E[i].v1].Y - 2 * R * Main.zoom, 2 * R * Main.zoom, 2 * R * Main.zoom, 90, 270);
+                    gr.DrawArc(pen, (V[E[i].v1].X - 2 * R) * Main.zoom, (V[E[i].v1].Y - 2 * R) * Main.zoom, 2 * R * Main.zoom, 2 * R * Main.zoom, 90, 270);
                 }
                 else
                 {
