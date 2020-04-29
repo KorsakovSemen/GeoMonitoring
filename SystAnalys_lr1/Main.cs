@@ -1804,36 +1804,40 @@ namespace SystAnalys_lr1
             }
             else
             {
-                r.ch.Legends.Clear();
-                rCount = 0;
-                // r.ch.Series[rCount].LegendText = rCount.ToString();
-                foreach (var series in r.ch.Series)
+                try
                 {
-                    series.Points.Clear();
-                }
-                oldChart = (int)percentMean.Keys.Sum();
-                int iCh = 0;
-                StyleManager.Clone(r);
-                if (rCount != 0)
-                    r.ch.Series.Add(rCount.ToString());
-                r.ch.Series[rCount].LegendText = rCount.ToString();
-                foreach (var pm in percentMean)
-                {
-                    if (pm.Value == null)
+                    r.ch.Legends.Clear();
+                    rCount = 0;
+                    // r.ch.Series[rCount].LegendText = rCount.ToString();
+                    foreach (var series in r.ch.Series)
                     {
-                        r.ch.Series[rCount].Points.AddY(0);
+                        series.Points.Clear();
                     }
-                    else
+                    oldChart = (int)percentMean.Keys.Sum();
+                    int iCh = 0;
+                    StyleManager.Clone(r);
+                    if (rCount != 0)
+                        r.ch.Series.Add(rCount.ToString());
+                    r.ch.Series[rCount].LegendText = rCount.ToString();
+                    foreach (var pm in percentMean)
                     {
-                        r.ch.Series[rCount].Points.AddY(pm.Value / 60 != 0 ? (double)pm.Value / 60 : (double)pm.Value);
+                        if (pm.Value == null)
+                        {
+                            r.ch.Series[rCount].Points.AddY(0);
+                        }
+                        else
+                        {
+                            r.ch.Series[rCount].Points.AddY(pm.Value / 60 != 0 ? (double)pm.Value / 60 : (double)pm.Value);
+                        }
+                        if (rCount == 0)
+                            r.ch.ChartAreas[rCount].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
+                        iCh++;
                     }
-                    if (rCount == 0)
-                        r.ch.ChartAreas[rCount].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
-                    iCh++;
+                    r.ch.SaveImage(path + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    r.Show();
+                    rCount += 1;
                 }
-                r.ch.SaveImage(path + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                r.Show();
-                rCount += 1;
+                catch { }
             }
           
         }
