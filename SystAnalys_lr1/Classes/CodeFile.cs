@@ -515,6 +515,21 @@ namespace SystAnalys_lr1
             {
                 if (TurnBack == false)
                 {
+                    //for (int i = 0; i < Main.routesEdge[thisBus.route].Count; i++)
+                    //{
+                    //    if(Main.routesEdge[thisBus.route][i].v1 != Main.routesEdge[thisBus.route][i + 1].v1 + 1)
+                    //    {
+                    //        stopDown();
+                    //        skipEnd = rnd.Next(0, 200);
+                    //        G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
+                    //        if (skipEnd == 0)
+                    //        {
+                    //            TurnBack = true;
+                    //            PositionAt--;
+                    //        }
+                    //        break;
+                    //    }
+                    //}
                     if (PositionAt < Coordinates.Count - 1)
                     {
                         if (checkStoppedBus == 0)
@@ -602,6 +617,21 @@ namespace SystAnalys_lr1
                 {
                     if (PositionAt > 0)
                     {
+                        //for (int i = Main.routesEdge[thisBus.route].Count; i > 1; i--)
+                        //{
+                        //    if (Main.routesEdge[thisBus.route][i].v1 != Main.routesEdge[thisBus.route][i - 1].v1 - 1)
+                        //    {
+                        //        stopDown();
+                        //        skipEnd = rnd.Next(0, 200);
+                        //        G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
+                        //        if (skipEnd == 0)
+                        //        {
+                        //            TurnBack = false;
+                        //            PositionAt++;
+                        //        }
+                        //        break;
+                        //    }
+                        //}
                         if (PositionAt < Coordinates.Count)
                         {
                             //if (skipStops == 0)
@@ -671,7 +701,6 @@ namespace SystAnalys_lr1
                                     }
                                 }
                             }
-
 
                             G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
                             stopDown();
