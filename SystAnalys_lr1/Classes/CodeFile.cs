@@ -339,22 +339,7 @@ namespace SystAnalys_lr1
 
         int oldZoom = (int)ZoomCoef;
         public void setBusSize()
-        {
-            //if (ZoomCoef < oldZoom)
-            //{
-            //    if (ZoomCoef == 1)
-            //        busPic.Size = new Size(Main.sizeBus, Main.sizeBus);
-            //    else
-            //        busPic.Size = new Size(oldSize / (int)ZoomCoef, oldSize / (int)ZoomCoef);
-            //}
-            //else
-            //{
-            //    if (ZoomCoef == 1)
-            //        busPic.Size = new Size(Main.sizeBus, Main.sizeBus);
-            //    else
-            //        busPic.Size = new Size(oldSize * (int)ZoomCoef, oldSize * (int)ZoomCoef);
-
-            //}
+        {           
             oldZoom = (int)ZoomCoef;
         }
 

@@ -309,6 +309,7 @@ namespace SystAnalys_lr1
             Matrix();
             hint.Visible = false;
             r.ch.Titles.Add(MainStrings.report);
+            r.ch.Series[rCount].LegendText = "1";
 
 
 
@@ -2727,7 +2728,7 @@ namespace SystAnalys_lr1
         public static bool flag = false;
         private void sheet_MouseClick_1(object sender, MouseEventArgs e)
         {
-            if (changeRoute.Text == MainStrings.network)
+             if (changeRoute.Text == MainStrings.network)
             {
                 if (selectRoute.Enabled == false)
                 {
