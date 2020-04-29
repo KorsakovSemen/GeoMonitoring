@@ -1515,7 +1515,7 @@ namespace SystAnalys_lr1
 
         LoadingForm loadingForm = new LoadingForm();
         string path;
-        private  async void Opt()
+        private async void Opt()
         {
             loadingForm = new LoadingForm();
             buttonOff();
@@ -1715,9 +1715,9 @@ namespace SystAnalys_lr1
             busesPark = busesparkreturn;
             buses = optimizeBuses;
 
-            
+
             resChart();
-            
+
         }
 
         public static int EpicSizeParam = 25;
@@ -1777,7 +1777,7 @@ namespace SystAnalys_lr1
         int oldChart;
         public void resChart()
         {
-            if(oldChart == (int)percentMean.Keys.Sum())
+            if (oldChart == (int)percentMean.Keys.Sum())
             {
                 int iCh = 0;
                 StyleManager.Clone(r);
@@ -1839,7 +1839,7 @@ namespace SystAnalys_lr1
                 }
                 catch { }
             }
-          
+
         }
         public bool GetSavePictruesCheckBox()
         {
@@ -2729,20 +2729,40 @@ namespace SystAnalys_lr1
         Constructor c = new Constructor();
 
         static public int refreshLights = 0;
+
         public static bool flag = false;
+
+        private async void asyncCheckV(MouseEventArgs e, bool check)
+        {
+            await Task.Run(() => checkV(e, check));
+        }
+
+        private void checkV(MouseEventArgs e, bool check)
+        {
+            for (int i = 0; i < V.Count; i++)
+            {
+                if (Math.Pow((V[i].X - e.X / zoom), 2) + Math.Pow((V[i].Y - e.Y / zoom), 2) <= G.R * G.R)
+                {
+                    check = true;
+                }
+            }
+        }
+
         private void sheet_MouseClick_1(object sender, MouseEventArgs e)
         {
-             if (changeRoute.Text == MainStrings.network)
+            if (changeRoute.Text == MainStrings.network)
             {
                 if (selectRoute.Enabled == false)
                 {
-                    if (!V.Contains(new Vertex(e.X, e.Y)))
+                    bool check = false;
+                    asyncCheckV(e, check);
+                    if (!check)
                     {
                         c.drawVertex(e, V, G, sheet);
                     }
+
                     for (int i = 0; i < V.Count; i++)
                     {
-
                         if (Math.Pow((V[i].X - e.X / zoom), 2) + Math.Pow((V[i].Y - e.Y / zoom), 2) <= G.R * G.R)
                         {
                             if (selected.Count == 0)
@@ -2769,6 +2789,7 @@ namespace SystAnalys_lr1
 
                         }
                     }
+
                 }
                 if (addTraficLight.Enabled == false)
                 {
@@ -3947,7 +3968,7 @@ namespace SystAnalys_lr1
 
         private void ZoomHelper()
         {
-            sheet.Image = ResizeBitmap(new Bitmap(Image.FromFile(savepath + "/Map.png")), wsheet * metroTrackBar1.Value, hsheet * metroTrackBar1.Value);
+            sheet.Image = ResizeBitmap(new Bitmap(saveImage), wsheet * metroTrackBar1.Value, hsheet * metroTrackBar1.Value);
             //AnimationBox.Image = ResizeBitmap(new Bitmap(AnimationBitmap), wsheet * metroTrackBar1.Value, hsheet * metroTrackBar1.Value);
             globalMap = sheet.Image;
             mainPanel.AutoScrollPosition = new Point(scrollX * metroTrackBar1.Value, scrollY * metroTrackBar1.Value);
@@ -3996,7 +4017,7 @@ namespace SystAnalys_lr1
                     AnimationBox.Image = AnimationBitmap;
                     //AnimationBox.Update();
                 }
-               // AnimationBox.Update();
+                // AnimationBox.Update();
                 sheet.Image = G.GetBitmap();
                 // CreateGrid();
                 DrawGrid();
@@ -4056,14 +4077,14 @@ namespace SystAnalys_lr1
             //AnimationBitmap.Dispose();
             AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
             AnimationBitmap.MakeTransparent();
-           // AnimationGraphics.Dispose();
+            // AnimationGraphics.Dispose();
             AnimationGraphics = Graphics.FromImage(AnimationBitmap);
             foreach (var bus in buses)
             {
                 bus.MoveWithGraphics(AnimationGraphics);
             }
             AnimationBox.Image = AnimationBitmap;
-          //  AnimationBox.Update();
+            //  AnimationBox.Update();
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -4089,6 +4110,7 @@ namespace SystAnalys_lr1
             addRouteToolStripMenuItem.Enabled = false;
             createGridToolStripMenuItem.Enabled = false;
             savepath = null; //мб лучше это оствить при клире
+            sheet.Image = null;
             if (Ep != null)
             {
                 Ep.EG.clearSheet2();
