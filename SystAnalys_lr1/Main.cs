@@ -445,12 +445,13 @@ namespace SystAnalys_lr1
                 {
                     //  bus.Epicenters.Clear();
                     bus.Epicenters = epList;
-                    bus.TickCount_ = T / PhaseSizeSelect();
+                  //  bus.TickCount_ = T / PhaseSizeSelect();
+                    bus.TickCount_ = 0;
                     if (bus.skip > 0)
                         bus.skip -= 1;
                     if (bus.tracker == true)
                     {
-                        while (bus.TickCount_ > 0)
+                        while (bus.TickCount_ < (T / PhaseSizeSelect()*i))
                         {
                             bus.MoveWithoutGraphicsByGrids();
                             if (EpicSettings.TurnMovingSet == true)
@@ -513,7 +514,8 @@ namespace SystAnalys_lr1
                                         EpicFounded = true;
                                         if (EpicFounded == true)
                                         {
-                                            FoundTime = (T - (bus.TickCount_ * j));
+                                          //  FoundTime = (T - (bus.TickCount_ * j));
+                                            FoundTime = bus.TickCount_ ;
                                             if (small > FoundTime)
                                             {
                                                 small = FoundTime;
@@ -522,7 +524,8 @@ namespace SystAnalys_lr1
                                     }
                                 }
                             }
-                            bus.TickCount_--;
+                          //  bus.TickCount_--;
+                            bus.TickCount_++;
                             if (EpicSettings.TurnSpreadingSet == true)
                             {
                                 ExpandTimer++;
