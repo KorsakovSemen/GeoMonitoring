@@ -2886,7 +2886,7 @@ namespace SystAnalys_lr1
                 }
                 if (selectButton.Enabled == false)
                 {
-                    c.asSelect(e, V, E, G, sheet, 0);
+                    c.Select(e, V, E, G, sheet, 0);
                 }
                 //нажата кнопка "рисовать вершину"
                 if (drawVertexButton.Enabled == false)

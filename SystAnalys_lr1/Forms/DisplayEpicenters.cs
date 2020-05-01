@@ -31,7 +31,7 @@ namespace SystAnalys_lr1
 
         private MetroTrackBar EZoomBar = new MetroTrackBar();
         public PictureBox Esheet = new PictureBox();
-        private Panel MapPanel = new Panel();
+        private MetroFramework.Controls.MetroPanel MapPanel = new MetroFramework.Controls.MetroPanel();
  
 
         private void DisplayEpicenters_Load(object sender, EventArgs e)
@@ -75,6 +75,7 @@ namespace SystAnalys_lr1
             EsheetPicture = Main.globalMap;
             wsheet = Esheet.Width;
             hsheet = Esheet.Height;
+            Esheet.Location = MainForm.GetSheet().Location;
             Esheet.AutoSize = MainForm.GetSheet().AutoSize;
             Esheet.SizeMode = MainForm.GetSheet().SizeMode;
             Esheet.Anchor = MainForm.GetSheet().Anchor;
