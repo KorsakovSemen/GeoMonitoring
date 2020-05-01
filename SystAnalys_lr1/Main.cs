@@ -405,7 +405,7 @@ namespace SystAnalys_lr1
             int small = 10000;
             int old = small;
             int FoundTime = small + 1;
-            bool EpicFounded = false;
+         
             int ExpandTimer = 0;
             int MovingTimer = 0;
             i = 1;
@@ -421,7 +421,12 @@ namespace SystAnalys_lr1
                 }
 
             }
-
+            foreach (var bus in cqBus)
+            {
+                bus.AllTickCount = 0;
+           
+            }
+            bool EpicFounded = false;
             for (int j = PhaseSizeSelect(); j > 0; j--)
             {
                 ////
@@ -447,15 +452,15 @@ namespace SystAnalys_lr1
 
                 foreach (var bus in cqBus)
                 {
-                    //  bus.Epicenters.Clear();
+             
                     bus.Epicenters = epList;
-                    //  bus.TickCount_ = T / PhaseSizeSelect();
+           
                     bus.TickCount_ = 0;
                     if (bus.skip > 0)
                         bus.skip -= 1;
                     if (bus.tracker == true)
                     {
-                        while (bus.TickCount_ < (T / PhaseSizeSelect() * i))
+                        while (bus.TickCount_ < (T / PhaseSizeSelect()))
                         {
                             bus.MoveWithoutGraphicsByGrids();
                             if (EpicSettings.TurnMovingSet == true)
@@ -493,7 +498,8 @@ namespace SystAnalys_lr1
                                         }
                                         if (sp.status == Status.RED)
                                         {
-                                            bus.TickCount_ = bus.TickCount_ - sp.bal;
+                                            bus.TickCount_ = bus.TickCount_ + sp.bal;
+                                            bus.AllTickCount = bus.AllTickCount + sp.bal;
                                             bus.skip = sp.greenTime;
                                             break;
 
@@ -504,7 +510,9 @@ namespace SystAnalys_lr1
 
                             if ((stopPointsInGrids.ContainsKey(bus.getRoute())) && (stopPointsInGrids[bus.getRoute()].Contains(AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt])))
                             {
-                                bus.TickCount_ = bus.TickCount_ - rnd.Next(0, 3);
+                                int timeboost = rnd.Next(0, 3);
+                                bus.TickCount_ = bus.TickCount_ + timeboost;
+                                bus.AllTickCount = bus.AllTickCount + timeboost;
                             }
 
                             PollutionInRoutes[bus.getRoute()][AllGridsInRoutes[bus.getRoute()][(int)bus.PositionAt]].status = bus.DetectEpicenterByGrid(); // ошибка
@@ -519,7 +527,7 @@ namespace SystAnalys_lr1
                                         if (EpicFounded == true)
                                         {
                                             //  FoundTime = (T - (bus.TickCount_ * j));
-                                            FoundTime = bus.TickCount_;
+                                            FoundTime = bus.AllTickCount;
                                             if (small > FoundTime)
                                             {
                                                 small = FoundTime;
@@ -531,6 +539,7 @@ namespace SystAnalys_lr1
                             }
                             //  bus.TickCount_--;
                             bus.TickCount_++;
+                            bus.AllTickCount++;
                             if (EpicSettings.TurnSpreadingSet == true)
                             {
                                 ExpandTimer++;

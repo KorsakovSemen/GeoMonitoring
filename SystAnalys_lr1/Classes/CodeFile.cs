@@ -294,6 +294,7 @@ namespace SystAnalys_lr1
         //для обратного движения по маршруту
         public bool TurnBack;
         [XmlIgnore, JsonIgnore]
+
         public Image busPic;
         //номер маршрута, по которому будет ездить автобус
         public string route;
@@ -305,6 +306,8 @@ namespace SystAnalys_lr1
         public int R = 7;
         //сколько автобусу нужно проехать в тиках
         public int TickCount_ { get; set; }
+        //все время, которое проехал автобус
+        public int AllTickCount { get; set; }
         //за сколько времени автобус нашел эпицентр
         public static int FoundTime { get; set; }
         //проверка нашел ли автобус эпицентр
