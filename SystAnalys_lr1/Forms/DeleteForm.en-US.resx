@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="All.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 50</value>
+  </data>
   <data name="All.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 15</value>
   </data>
@@ -130,14 +133,23 @@
   <data name="metroLabel1.Text" xml:space="preserve">
     <value>Deletion Types</value>
   </data>
+  <data name="BusStops.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 144</value>
+  </data>
   <data name="BusStops.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 15</value>
   </data>
   <data name="BusStops.Text" xml:space="preserve">
     <value>Bus stops</value>
   </data>
+  <data name="TrafficLights.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 111</value>
+  </data>
   <data name="TrafficLights.Text" xml:space="preserve">
     <value>Traffic lights</value>
+  </data>
+  <data name="VandE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 80</value>
   </data>
   <data name="VandE.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 15</value>

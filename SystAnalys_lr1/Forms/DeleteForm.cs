@@ -45,6 +45,7 @@ namespace SystAnalys_lr1.Forms
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
+            Main.yes = true;
             Close();
         }
     }
