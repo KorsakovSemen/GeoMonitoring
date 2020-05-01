@@ -449,13 +449,13 @@ namespace SystAnalys_lr1
                 {
                     //  bus.Epicenters.Clear();
                     bus.Epicenters = epList;
-                  //  bus.TickCount_ = T / PhaseSizeSelect();
+                    //  bus.TickCount_ = T / PhaseSizeSelect();
                     bus.TickCount_ = 0;
                     if (bus.skip > 0)
                         bus.skip -= 1;
                     if (bus.tracker == true)
                     {
-                        while (bus.TickCount_ < (T / PhaseSizeSelect()*i))
+                        while (bus.TickCount_ < (T / PhaseSizeSelect() * i))
                         {
                             bus.MoveWithoutGraphicsByGrids();
                             if (EpicSettings.TurnMovingSet == true)
@@ -518,8 +518,8 @@ namespace SystAnalys_lr1
                                         EpicFounded = true;
                                         if (EpicFounded == true)
                                         {
-                                          //  FoundTime = (T - (bus.TickCount_ * j));
-                                            FoundTime = bus.TickCount_ ;
+                                            //  FoundTime = (T - (bus.TickCount_ * j));
+                                            FoundTime = bus.TickCount_;
                                             if (small > FoundTime)
                                             {
                                                 small = FoundTime;
@@ -529,7 +529,7 @@ namespace SystAnalys_lr1
                                     break;
                                 }
                             }
-                          //  bus.TickCount_--;
+                            //  bus.TickCount_--;
                             bus.TickCount_++;
                             if (EpicSettings.TurnSpreadingSet == true)
                             {
@@ -1522,24 +1522,24 @@ namespace SystAnalys_lr1
         }
 
         LoadingForm loadingForm = new LoadingForm();
-        string path;
+        string pathOpt;
         private async void Opt()
         {
             loadingForm = new LoadingForm();
             buttonOff();
-            path = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute);
+            pathOpt = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}_{5}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+            Directory.CreateDirectory(pathOpt);
+
             if (SavePictures == true)
             {
                 Ep.Hide();
-
-                Directory.CreateDirectory(path + "/Epics");
+                Directory.CreateDirectory(pathOpt + "/Epics");
             }
             loadingForm.Theme = msmMain.Theme;
             loadingForm.Style = msmMain.Style;
             Matrix();
             percentMean = new SerializableDictionary<int, int?>();
 
-            Directory.CreateDirectory(path);
             List<Bus> optimizeBuses = new List<Bus>();
             buses.ForEach((b) => optimizeBuses.Add(
                 (Bus)b.Clone()
@@ -1583,16 +1583,16 @@ namespace SystAnalys_lr1
                     Baraban();
                     if (SavePictures == true)
                     {
-                        Directory.CreateDirectory(path + "/Epics" + "/" + (cicl + 1).ToString());
+                        Directory.CreateDirectory(pathOpt + "/Epics" + "/" + (cicl + 1).ToString());
                     }
                     for (int i = 0; i < int.Parse(optText.Text); i++)
                     {
                         if (SavePictures == true)
                         {
-                            Directory.CreateDirectory(path + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString());
+                            Directory.CreateDirectory(pathOpt + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString());
                         }
                         CreateOneRandomEpicenter(EpicSizeParam, null);
-                        Modeling(path, cicl, i);
+                        Modeling(pathOpt, cicl, i);
                         if ((SavePictures == true) && (!extendedSavePictures == true))
                         {
 
@@ -1604,7 +1604,7 @@ namespace SystAnalys_lr1
                             {
                                 using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
                                 {
-                                    img.Save(path + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString() + "/" + i.ToString() + "_nat" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                                    img.Save(pathOpt + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString() + "/" + i.ToString() + "_nat" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                                 }
                             }
 
@@ -1616,7 +1616,7 @@ namespace SystAnalys_lr1
                             {
                                 using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
                                 {
-                                    img.Save(path + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString() + "/" + i.ToString() + "_re" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                                    img.Save(pathOpt + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString() + "/" + i.ToString() + "_re" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                                 }
                             }
 
@@ -1657,7 +1657,7 @@ namespace SystAnalys_lr1
                         //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (Convert.ToDouble(total / ResultFromModeling.Count).ToString()));
                     }
                     ;
-                    using (StreamWriter fileV = new StreamWriter(path + @"\" + withoutSensorsBuses.Last() + "_buses" + ".txt"))
+                    using (StreamWriter fileV = new StreamWriter(pathOpt + @"\" + withoutSensorsBuses.Last() + "_buses" + ".txt"))
                     {
                         fileV.WriteLine(MainStrings.sensorsDown + ": " + (cicl * 10).ToString());
                         fileV.WriteLine(MainStrings.countBuses + ": " + (withoutSensorsBuses.Last()).ToString());
@@ -1701,7 +1701,7 @@ namespace SystAnalys_lr1
                 mean.Text = MainStrings.average + " " + MainStrings.notFound;
             }
 
-            using (StreamWriter fileV = new StreamWriter(path + "/Average.txt"))
+            using (StreamWriter fileV = new StreamWriter(pathOpt + "/Average.txt"))
             {
                 fileV.WriteLine(mean.Text != MainStrings.average + " " + MainStrings.notFound ? MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + result[0] : MainStrings.notFound);
             }
@@ -1802,7 +1802,7 @@ namespace SystAnalys_lr1
                         r.ch.ChartAreas[rCount].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
                     iCh++;
                 }
-                r.ch.SaveImage(path + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                r.ch.SaveImage(pathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                 r.Show();
                 r.BringToFront();
 
@@ -1839,7 +1839,7 @@ namespace SystAnalys_lr1
                             r.ch.ChartAreas[rCount].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
                         iCh++;
                     }
-                    r.ch.SaveImage(path + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    r.ch.SaveImage(pathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                     r.Show();
                     r.BringToFront();
 
