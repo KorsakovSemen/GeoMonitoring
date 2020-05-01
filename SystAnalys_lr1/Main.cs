@@ -123,6 +123,10 @@ namespace SystAnalys_lr1
         int hsheet;
         static public Image globalMap;
         static public int zoom, scrollX, scrollY;
+        Report r = new Report();
+        int rCount = 0;
+        int iCh = 0;
+        int oldChart;
 
         private void addInComboBox()
         {
@@ -522,6 +526,7 @@ namespace SystAnalys_lr1
                                             }
                                         }
                                     }
+                                    break;
                                 }
                             }
                           //  bus.TickCount_--;
@@ -1774,10 +1779,6 @@ namespace SystAnalys_lr1
                 i += 1;
             }
         }
-        Report r = new Report();
-        int rCount = 0;
-        int iCh = 0;
-        int oldChart;
         public void resChart()
         {
             if (oldChart == (int)percentMean.Keys.Sum())
@@ -1803,6 +1804,8 @@ namespace SystAnalys_lr1
                 }
                 r.ch.SaveImage(path + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                 r.Show();
+                r.BringToFront();
+
                 rCount += 1;
             }
             else
@@ -1838,6 +1841,8 @@ namespace SystAnalys_lr1
                     }
                     r.ch.SaveImage(path + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                     r.Show();
+                    r.BringToFront();
+
                     rCount += 1;
                 }
                 catch { }
@@ -4104,6 +4109,7 @@ namespace SystAnalys_lr1
         private void reportTool_Click(object sender, EventArgs e)
         {
             r.Show();
+            r.BringToFront();
         }
 
         private void clearButton_Click(object sender, EventArgs e)

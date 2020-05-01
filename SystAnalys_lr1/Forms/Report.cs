@@ -25,5 +25,11 @@ namespace SystAnalys_lr1.Forms
                 series.Points.Clear();
             }
         }
+
+        private void Report_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
+        }
     }
 }

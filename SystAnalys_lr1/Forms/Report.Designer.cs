@@ -67,6 +67,7 @@
             this.MaximizeBox = false;
             this.Name = "Report";
             this.Resizable = false;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Report_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.ch)).EndInit();
             this.ResumeLayout(false);
 
