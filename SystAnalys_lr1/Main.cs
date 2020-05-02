@@ -451,8 +451,7 @@ namespace SystAnalys_lr1
                 ////
 
                 foreach (var bus in cqBus)
-                {
-             
+                {             
                     bus.Epicenters = epList;
            
                     bus.TickCount_ = 0;
@@ -519,7 +518,7 @@ namespace SystAnalys_lr1
 
                             foreach (var Epic in bus.Epicenters)
                             {
-                                if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 4)
+                                if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 2)
                                 {
                                     if (EpicFounded == false)
                                     {

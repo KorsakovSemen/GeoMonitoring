@@ -744,7 +744,7 @@ namespace SystAnalys_lr1
                 foreach (var Sector in EpicList.GetEpicenterGrid())
                 {
                     foreach (var Square in Sector.Value)
-                        if ((PositionAt < Coordinates.Count))
+                        if ((PositionAt < Coordinates.Count))           
                             if (((Coordinates[PositionAt].X * ZoomCoef) >= Square.x * ZoomCoef) && ((Coordinates[PositionAt].X * ZoomCoef) <= Square.x * ZoomCoef + GridPart.width * ZoomCoef) && ((Coordinates[PositionAt].Y * ZoomCoef) >= Square.y * ZoomCoef) && ((Coordinates[PositionAt].Y * ZoomCoef) <= (Square.y * ZoomCoef + GridPart.height * ZoomCoef)))
                             {
                                 switch (Sector.Key)
@@ -778,8 +778,10 @@ namespace SystAnalys_lr1
                 {
                     foreach (var Square in Sector.Value)
                     {
+                        //ПОПЫТКА СДЕЛАТЬ РАДИУС
+                        //if (Math.Pow((double.Parse((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - Square.x).ToString())), 2) + Math.Pow((double.Parse(((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - Square.y)).ToString())), 2) <= Main.G.R * Main.G.R)
 
-                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
+                            if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
                         {
                             switch (Sector.Key)
                             {
