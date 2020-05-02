@@ -1750,10 +1750,10 @@ namespace SystAnalys_lr1
             Matrix();
             resMatrix();
             msmMain.Style = style;
+           // MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
             loadingForm.close = true;
             loadingForm.Close();
             loadingForm.Dispose();
-            //MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
             BringToFront();
             if (!Ep.IsDisposed)
             {
@@ -1845,6 +1845,7 @@ namespace SystAnalys_lr1
                     iCh++;
                 }
                 r.ch.SaveImage(pathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                r.TopMost = true;
                 r.Show();
                 r.BringToFront();
 
@@ -1882,6 +1883,7 @@ namespace SystAnalys_lr1
                         iCh++;
                     }
                     r.ch.SaveImage(pathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    r.TopMost = true;
                     r.Show();
                     r.BringToFront();
 
