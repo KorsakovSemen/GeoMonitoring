@@ -336,7 +336,7 @@ namespace SystAnalys_lr1
 
         int oldZoom = (int)ZoomCoef;
         public void setBusSize()
-        {           
+        {
             oldZoom = (int)ZoomCoef;
         }
 
@@ -744,7 +744,7 @@ namespace SystAnalys_lr1
                 foreach (var Sector in EpicList.GetEpicenterGrid())
                 {
                     foreach (var Square in Sector.Value)
-                        if ((PositionAt < Coordinates.Count))           
+                        if ((PositionAt < Coordinates.Count))
                             if (((Coordinates[PositionAt].X * ZoomCoef) >= Square.x * ZoomCoef) && ((Coordinates[PositionAt].X * ZoomCoef) <= Square.x * ZoomCoef + GridPart.width * ZoomCoef) && ((Coordinates[PositionAt].Y * ZoomCoef) >= Square.y * ZoomCoef) && ((Coordinates[PositionAt].Y * ZoomCoef) <= (Square.y * ZoomCoef + GridPart.height * ZoomCoef)))
                             {
                                 switch (Sector.Key)
@@ -779,28 +779,48 @@ namespace SystAnalys_lr1
                     foreach (var Square in Sector.Value)
                     {
                         //ПОПЫТКА СДЕЛАТЬ РАДИУС
-                        //if (Math.Pow((double.Parse((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - Square.x).ToString())), 2) + Math.Pow((double.Parse(((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - Square.y)).ToString())), 2) <= Main.G.R * Main.G.R)
+                        // if (Math.Pow((double.Parse((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - Square.x).ToString())), 2) + Math.Pow((double.Parse(((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - Square.y)).ToString())), 2) <= Main.G.R * Main.G.R)
 
-                            if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
                         {
-                            switch (Sector.Key)
-                            {
-                                case 1:
-                                    if (Square.check == false)
-                                    {
-                                        Square.check = true;
-                                        EpicList.DetectCount++;
-                                    }
-                                    return 3;
-                                case 2:
-                                    return 2;
-                                case 3:
-                                    return 1;
+                            return CheckEpic(Sector, Square, EpicList);
 
-                                default:
-                                    return 0;
-
-                            }
+                        }
+                        //
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
+                        {
+                            return CheckEpic(Sector, Square, EpicList);
+                        }
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
+                        {
+                            return CheckEpic(Sector, Square, EpicList);
+                        }
+                        //
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.height == Square.y)))
+                        {
+                            return CheckEpic(Sector, Square, EpicList);
+                        }
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.height == Square.y)))
+                        {
+                            return CheckEpic(Sector, Square, EpicList);
+                        }
+                        //
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.height == Square.y)))
+                        {
+                            return CheckEpic(Sector, Square, EpicList);
+                        }
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.height == Square.y)))
+                        {
+                            return CheckEpic(Sector, Square, EpicList);
+                        }
+                        //
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.height == Square.y)))
+                        {
+                            return CheckEpic(Sector, Square, EpicList);
+                        }
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.height == Square.y)))
+                        {
+                            return CheckEpic(Sector, Square, EpicList);
                         }
                     }
                 }
@@ -808,6 +828,29 @@ namespace SystAnalys_lr1
 
             return 0;
         }
+        private int CheckEpic (KeyValuePair<int,List<GridPart>> Sector,GridPart Square,Epicenter EpicList)
+        {
+            switch (Sector.Key)
+            {
+                case 1:
+                    if (Square.check == false)
+                    {
+                        Square.check = true;
+                        EpicList.DetectCount++;
+                    }
+                    return 3;
+                case 2:
+                    return 2;
+                case 3:
+                    return 1;
+
+                default:
+                    return 0;
+
+            }
+        }
+
+
         public async Task asyncDetectRectangle2()
         {
             await Task.Run(() => DetectRectangle2());
