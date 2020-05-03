@@ -94,7 +94,7 @@ namespace SystAnalys_lr1.Classes
                     if (Math.Pow((V[i].X - e.X / Main.zoom), 2) + Math.Pow((V[i].Y - e.Y / Main.zoom), 2) <= G.R * G.R)
                     {
                         if (Main.selected1 == -1)
-                        {                            
+                        {
                             G.drawSelectedVertex(V[i].X, V[i].Y);
                             Main.selected1 = i;
                             sheet.Invoke(new Del((s) => sheet.Image = s), G.GetBitmap());
@@ -282,35 +282,32 @@ namespace SystAnalys_lr1.Classes
         }
         public void deleteBS(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, DrawGraph G, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
-            if (!Main.flag)
+
+            foreach (var sp in Main.allstopPoints)
             {
-                foreach (var sp in Main.allstopPoints)
+                if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= G.R * G.R)
+                {
+                    Main.allstopPoints.Remove(sp);
+                    Main.flag = true;
+                    break;
+                }
+            }
+
+
+            foreach (var stop in Main.stopPoints)
+            {
+                foreach (var sp in stop.Value)
                 {
                     if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= G.R * G.R)
                     {
-                        Main.allstopPoints.Remove(sp);
+                        Main.stopPointsInGrids[stop.Key].Remove(sp.gridNum);
+                        stop.Value.Remove(sp);
                         Main.flag = true;
                         break;
                     }
                 }
             }
 
-            if (!Main.flag)
-            {
-                foreach (var stop in Main.stopPoints)
-                {
-                    foreach (var sp in stop.Value)
-                    {
-                        if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= G.R * G.R)
-                        {
-                            Main.stopPointsInGrids[stop.Key].Remove(sp.gridNum);
-                            stop.Value.Remove(sp);
-                            Main.flag = true;
-                            break;
-                        }
-                    }
-                }
-            }
         }
         public void delete(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, DrawGraph G, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
@@ -330,7 +327,8 @@ namespace SystAnalys_lr1.Classes
                 }
             }
 
-            if (!Main.flag) {
+            if (!Main.flag)
+            {
                 foreach (var sp in Main.allstopPoints)
                 {
                     if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= G.R * G.R)
@@ -342,22 +340,21 @@ namespace SystAnalys_lr1.Classes
                 }
             }
 
-            if (!Main.flag)
+
+            foreach (var stop in Main.stopPoints)
             {
-                foreach (var stop in Main.stopPoints)
+                foreach (var sp in stop.Value)
                 {
-                    foreach (var sp in stop.Value)
+                    if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= G.R * G.R)
                     {
-                        if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= G.R * G.R)
-                        {
-                            Main.stopPointsInGrids[stop.Key].Remove(sp.gridNum);
-                            stop.Value.Remove(sp);
-                            Main.flag = true;
-                            break;
-                        }
+                        Main.stopPointsInGrids[stop.Key].Remove(sp.gridNum);
+                        stop.Value.Remove(sp);
+                        Main.flag = true;
+                        break;
                     }
                 }
             }
+
 
             if (!Main.flag)
             {
@@ -483,7 +480,7 @@ namespace SystAnalys_lr1.Classes
                     {
                         try
                         {
-                            if (((e.X / Main.zoom - V[E[i].v1].X) * (V[E[i].v2].Y - V[E[i].v1].Y) / (V[E[i].v2].X - V[E[i].v1].X) + V[E[i].v1].Y ) <= (e.Y / Main.zoom + 4) &&
+                            if (((e.X / Main.zoom - V[E[i].v1].X) * (V[E[i].v2].Y - V[E[i].v1].Y) / (V[E[i].v2].X - V[E[i].v1].X) + V[E[i].v1].Y) <= (e.Y / Main.zoom + 4) &&
                                 ((e.X / Main.zoom - V[E[i].v1].X) * (V[E[i].v2].Y - V[E[i].v1].Y) / (V[E[i].v2].X - V[E[i].v1].X) + V[E[i].v1].Y) >= (e.Y / Main.zoom - 4))
                             {
                                 if ((V[E[i].v1].X <= V[E[i].v2].X && V[E[i].v1].X <= e.X / Main.zoom && e.X / Main.zoom <= V[E[i].v2].X) ||

@@ -1594,7 +1594,7 @@
     <value>True</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>479, 63</value>
+    <value>401, 63</value>
   </data>
   <data name="label12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1806,6 +1806,33 @@
   <metadata name="toolStripMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>601, 19</value>
   </metadata>
+  <data name="toolStripMenu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 60</value>
+  </data>
+  <data name="toolStripMenu.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="toolStripMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1414, 27</value>
+  </data>
+  <data name="toolStripMenu.TabIndex" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="toolStripMenu.Text" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenu.Name" xml:space="preserve">
+    <value>toolStripMenu</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenu.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenu.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
   <data name="saveButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -1815,6 +1842,60 @@
   <data name="saveButton.Text" xml:space="preserve">
     <value>Файл</value>
   </data>
+  <data name="createModelToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="createModelToolStripMenuItem.Text" xml:space="preserve">
+    <value>Создать модель</value>
+  </data>
+  <data name="openEpicFormToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="openEpicFormToolStripMenuItem.Text" xml:space="preserve">
+    <value>Открыть 2-ю форму</value>
+  </data>
+  <data name="addRouteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="addRouteToolStripMenuItem.Text" xml:space="preserve">
+    <value>Добавить маршрут</value>
+  </data>
+  <data name="createGridToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="createGridToolStripMenuItem.Text" xml:space="preserve">
+    <value>Настройка сетки</value>
+  </data>
+  <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="saveToolStripMenuItem.Text" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="saveInToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="saveInToolStripMenuItem.Text" xml:space="preserve">
+    <value>Сохранить в...</value>
+  </data>
+  <data name="jSONToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 22</value>
+  </data>
+  <data name="jSONToolStripMenuItem.Text" xml:space="preserve">
+    <value>JSON</value>
+  </data>
+  <data name="xMLToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 22</value>
+  </data>
+  <data name="xMLToolStripMenuItem.Text" xml:space="preserve">
+    <value>XML</value>
+  </data>
+  <data name="runTrafficLightsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 22</value>
+  </data>
+  <data name="runTrafficLightsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Запустить светофоры</value>
+  </data>
   <data name="loadButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -1823,6 +1904,18 @@
   </data>
   <data name="loadButton.Text" xml:space="preserve">
     <value>Загрузка</value>
+  </data>
+  <data name="loadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="loadToolStripMenuItem.Text" xml:space="preserve">
+    <value>Загрузить</value>
+  </data>
+  <data name="loadFromToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="loadFromToolStripMenuItem.Text" xml:space="preserve">
+    <value>Загрузить из...</value>
   </data>
   <data name="reportTool.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1898,99 +1991,6 @@
   </data>
   <data name="clearButton.Text" xml:space="preserve">
     <value>Очистить</value>
-  </data>
-  <data name="toolStripMenu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 60</value>
-  </data>
-  <data name="toolStripMenu.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="toolStripMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1414, 27</value>
-  </data>
-  <data name="toolStripMenu.TabIndex" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <data name="toolStripMenu.Text" xml:space="preserve">
-    <value>toolStrip1</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenu.Name" xml:space="preserve">
-    <value>toolStripMenu</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenu.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenu.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="createModelToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
-  <data name="createModelToolStripMenuItem.Text" xml:space="preserve">
-    <value>Создать модель</value>
-  </data>
-  <data name="openEpicFormToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
-  <data name="openEpicFormToolStripMenuItem.Text" xml:space="preserve">
-    <value>Открыть 2-ю форму</value>
-  </data>
-  <data name="addRouteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
-  <data name="addRouteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Добавить маршрут</value>
-  </data>
-  <data name="createGridToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
-  <data name="createGridToolStripMenuItem.Text" xml:space="preserve">
-    <value>Настройка сетки</value>
-  </data>
-  <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
-  <data name="saveToolStripMenuItem.Text" xml:space="preserve">
-    <value>Сохранить</value>
-  </data>
-  <data name="saveInToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
-  <data name="saveInToolStripMenuItem.Text" xml:space="preserve">
-    <value>Сохранить в...</value>
-  </data>
-  <data name="jSONToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 22</value>
-  </data>
-  <data name="jSONToolStripMenuItem.Text" xml:space="preserve">
-    <value>JSON</value>
-  </data>
-  <data name="xMLToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 22</value>
-  </data>
-  <data name="xMLToolStripMenuItem.Text" xml:space="preserve">
-    <value>XML</value>
-  </data>
-  <data name="runTrafficLightsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
-  <data name="runTrafficLightsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Запустить светофоры</value>
-  </data>
-  <data name="loadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="loadToolStripMenuItem.Text" xml:space="preserve">
-    <value>Загрузить</value>
-  </data>
-  <data name="loadFromToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="loadFromToolStripMenuItem.Text" xml:space="preserve">
-    <value>Загрузить из...</value>
   </data>
   <metadata name="msmMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>279, 20</value>
@@ -2358,6 +2358,24 @@
   <data name="&gt;&gt;timer1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;deleteBus.Name" xml:space="preserve">
+    <value>deleteBus</value>
+  </data>
+  <data name="&gt;&gt;deleteBus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;deleteRoute.Name" xml:space="preserve">
+    <value>deleteRoute</value>
+  </data>
+  <data name="&gt;&gt;deleteRoute.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;delAllBusesOnRoute.Name" xml:space="preserve">
+    <value>delAllBusesOnRoute</value>
+  </data>
+  <data name="&gt;&gt;delAllBusesOnRoute.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Main</value>
   </data>
@@ -2367,4 +2385,85 @@
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>731, 19</value>
   </metadata>
+  <data name="deleteBus.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="deleteBus.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="deleteBus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="deleteBus.Text" xml:space="preserve">
+    <value>toolStripButton1</value>
+  </data>
+  <data name="deleteBus.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="deleteRoute.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="deleteRoute.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="deleteRoute.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="deleteRoute.Text" xml:space="preserve">
+    <value>toolStripButton2</value>
+  </data>
+  <data name="deleteRoute.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="delAllBusesOnRoute.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="delAllBusesOnRoute.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="delAllBusesOnRoute.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="delAllBusesOnRoute.Text" xml:space="preserve">
+    <value>toolStripButton3</value>
+  </data>
+  <data name="delAllBusesOnRoute.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
 </root>
