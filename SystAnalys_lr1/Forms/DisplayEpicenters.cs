@@ -75,7 +75,7 @@ namespace SystAnalys_lr1
             EsheetPicture = Main.globalMap;
             wsheet = Esheet.Width;
             hsheet = Esheet.Height;
-            Esheet.Location = MainForm.GetSheet().Location;
+            //Esheet.Location = new Point(0, 0);
             Esheet.AutoSize = MainForm.GetSheet().AutoSize;
             Esheet.SizeMode = MainForm.GetSheet().SizeMode;
             Esheet.Anchor = MainForm.GetSheet().Anchor;

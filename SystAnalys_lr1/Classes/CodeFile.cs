@@ -777,14 +777,10 @@ namespace SystAnalys_lr1
                 foreach (var Sector in EpicList.GetEpicenterGrid())
                 {
                     foreach (var Square in Sector.Value)
-                    {
-                        //ПОПЫТКА СДЕЛАТЬ РАДИУС
-                        // if (Math.Pow((double.Parse((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - Square.x).ToString())), 2) + Math.Pow((double.Parse(((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - Square.y)).ToString())), 2) <= Main.G.R * Main.G.R)
-
+                    {                        
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
                         {
                             return CheckEpic(Sector, Square, EpicList);
-
                         }
                         //
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
