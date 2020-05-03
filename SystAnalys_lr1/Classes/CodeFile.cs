@@ -778,43 +778,45 @@ namespace SystAnalys_lr1
                 {
                     foreach (var Square in Sector.Value)
                     {                        
-                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
-                        {
-                            return CheckEpic(Sector, Square, EpicList);
-                        }
-                        //
+                       
+                        
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
                         {
-                            return CheckEpic(Sector, Square, EpicList);
+                            CheckEpic(Sector, Square, EpicList);
                         }
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
                         {
-                            return CheckEpic(Sector, Square, EpicList);
+                            CheckEpic(Sector, Square, EpicList);
                         }
                         //
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.height == Square.y)))
                         {
-                            return CheckEpic(Sector, Square, EpicList);
+                             CheckEpic(Sector, Square, EpicList);
                         }
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.height == Square.y)))
                         {
-                            return CheckEpic(Sector, Square, EpicList);
+                            CheckEpic(Sector, Square, EpicList);
                         }
                         //
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.height == Square.y)))
                         {
-                            return CheckEpic(Sector, Square, EpicList);
+                            CheckEpic(Sector, Square, EpicList);
                         }
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.height == Square.y)))
                         {
-                            return CheckEpic(Sector, Square, EpicList);
+                            CheckEpic(Sector, Square, EpicList);
                         }
                         //
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.height == Square.y)))
                         {
-                            return CheckEpic(Sector, Square, EpicList);
+                            CheckEpic(Sector, Square, EpicList);
                         }
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.height == Square.y)))
+                        {
+                            CheckEpic(Sector, Square, EpicList);
+                        }
+                        ////////
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
                         {
                             return CheckEpic(Sector, Square, EpicList);
                         }
