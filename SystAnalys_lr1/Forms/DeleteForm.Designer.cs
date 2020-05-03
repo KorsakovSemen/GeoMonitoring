@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeleteForm));
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.theBuses = new MetroFramework.Controls.MetroRadioButton();
             this.All = new MetroFramework.Controls.MetroRadioButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.BusStops = new MetroFramework.Controls.MetroRadioButton();
@@ -41,7 +42,7 @@
             // 
             // metroPanel1
             // 
-            resources.ApplyResources(this.metroPanel1, "metroPanel1");
+            this.metroPanel1.Controls.Add(this.theBuses);
             this.metroPanel1.Controls.Add(this.All);
             this.metroPanel1.Controls.Add(this.metroLabel1);
             this.metroPanel1.Controls.Add(this.BusStops);
@@ -50,10 +51,18 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
+            resources.ApplyResources(this.metroPanel1, "metroPanel1");
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // theBuses
+            // 
+            resources.ApplyResources(this.theBuses, "theBuses");
+            this.theBuses.Name = "theBuses";
+            this.theBuses.UseSelectable = true;
+            this.theBuses.CheckedChanged += new System.EventHandler(this.theBuses_CheckedChanged);
             // 
             // All
             // 
@@ -105,6 +114,7 @@
             this.MinimizeBox = false;
             this.Name = "DeleteForm";
             this.Resizable = false;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DeleteForm_FormClosing);
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -120,5 +130,6 @@
         private MetroFramework.Controls.MetroButton metroButton1;
         public MetroFramework.Controls.MetroRadioButton VandE;
         public MetroFramework.Controls.MetroRadioButton All;
+        public MetroFramework.Controls.MetroRadioButton theBuses;
     }
 }

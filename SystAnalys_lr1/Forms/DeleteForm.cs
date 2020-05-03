@@ -48,5 +48,20 @@ namespace SystAnalys_lr1.Forms
             Main.yes = true;
             Close();
         }
+
+        private void theBuses_CheckedChanged(object sender, EventArgs e)
+        {
+            Main.delType = Main.deleteType.TheBuses;
+            Main.globalDel = MainStrings.theBuses;
+        }
+
+        private void DeleteForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!Main.yes)
+            {
+                Main.delType = Main.deleteType.None;
+                Main.globalDel = "";
+            }            
+        }
     }
 }

@@ -421,6 +421,15 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Автобусы.
+        /// </summary>
+        internal static string theBuses {
+            get {
+                return ResourceManager.GetString("theBuses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Светофоры.
         /// </summary>
         internal static string TrafficLights {

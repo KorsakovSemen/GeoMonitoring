@@ -68,14 +68,12 @@ namespace SystAnalys_lr1
             this.MapPanel.Controls.Add(Esheet);
             Esheet.Dock = MainForm.GetSheet().Dock;
 
-            //Esheet.Location = new Point(MainForm.GetSheet().Location.X, MainForm.GetSheet().Location.Y - MainForm.GetmainToolStrip().Height);
-            Esheet.Location = new Point(panel1.Width, 0);
+            Esheet.Location = new Point(panel1.Width, 1);
             Esheet.Size = MainForm.GetSheet().Size;
             Esheet.Image = Main.globalMap;
             EsheetPicture = Main.globalMap;
             wsheet = Esheet.Width;
             hsheet = Esheet.Height;
-            //Esheet.Location = new Point(0, 0);
             Esheet.AutoSize = MainForm.GetSheet().AutoSize;
             Esheet.SizeMode = MainForm.GetSheet().SizeMode;
             Esheet.Anchor = MainForm.GetSheet().Anchor;

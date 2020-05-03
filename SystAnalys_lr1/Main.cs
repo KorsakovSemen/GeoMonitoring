@@ -26,10 +26,12 @@ namespace SystAnalys_lr1
     {
         public enum deleteType
         {
+            None,
             TrafficLight,
             BusStops,
             VertexAndEdge,
-            All
+            All,
+            TheBuses
         }
 
         //
@@ -405,7 +407,7 @@ namespace SystAnalys_lr1
             int small = 10000;
             int old = small;
             int FoundTime = small + 1;
-         
+
             int ExpandTimer = 0;
             int MovingTimer = 0;
             i = 1;
@@ -424,7 +426,7 @@ namespace SystAnalys_lr1
             foreach (var bus in cqBus)
             {
                 bus.AllTickCount = 0;
-           
+
             }
             bool EpicFounded = false;
             for (int j = PhaseSizeSelect(); j > 0; j--)
@@ -451,9 +453,9 @@ namespace SystAnalys_lr1
                 ////
 
                 foreach (var bus in cqBus)
-                {             
+                {
                     bus.Epicenters = epList;
-           
+
                     bus.TickCount_ = 0;
                     if (bus.skip > 0)
                         bus.skip -= 1;
@@ -848,8 +850,7 @@ namespace SystAnalys_lr1
             }));
 
         }
-
-        private void deleteBus_Click(object sender, EventArgs e)
+        private void delBus()
         {
             deleteBus.Enabled = false;
             addBus.Enabled = true;
@@ -870,6 +871,11 @@ namespace SystAnalys_lr1
             label12.Visible = false;
             DrawGrid();
             checkBusesOnRoute();
+        }
+
+        private void deleteBus_Click(object sender, EventArgs e)
+        {
+
         }
 
         public static Image ResizeBitmap(Image sourceBMP, int width, int height)
@@ -961,12 +967,12 @@ namespace SystAnalys_lr1
         static public string globalDel = "All";
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            //if()
+            yes = false;
             DeleteForm df = new DeleteForm();
             StyleManager.Clone(df);
-            df.ShowDialog();
             if (changeRoute.Text == MainStrings.network)
             {
+                df.theBuses.Enabled = false;
                 allBusSettings.Enabled = false;
                 addBus.Enabled = false;
                 deleteBus.Enabled = false;
@@ -979,6 +985,7 @@ namespace SystAnalys_lr1
             };
             if (changeRoute.SelectedIndex > 1)
             {
+                df.theBuses.Enabled = true;
                 allBusSettings.Enabled = false;
                 addBus.Enabled = true;
                 deleteBus.Enabled = true;
@@ -990,6 +997,7 @@ namespace SystAnalys_lr1
                 G.drawALLGraph(routes[(changeRoute.Text)], routesEdge[(changeRoute.Text)], 1);
                 checkBusesOnRoute();
             }
+            df.ShowDialog();
             label12.Text = globalDel;
             label12.Visible = true;
             selected = new List<int>();
@@ -997,6 +1005,9 @@ namespace SystAnalys_lr1
             stopPointButton.Enabled = true;
             sheet.Image = G.GetBitmap();
             DrawGrid();
+            if (delType == deleteType.None)
+                deleteButton.Enabled = true;
+
         }
 
 
@@ -1068,7 +1079,6 @@ namespace SystAnalys_lr1
                         sheet.Image = G.GetBitmap();
                         DrawGrid();
                         loadingForm.loading.Value = 60;
-
                     }
                     else
                     {
@@ -1080,10 +1090,6 @@ namespace SystAnalys_lr1
                         loadingForm = new LoadingForm();
                         loadingForm.Show();
                         loadingForm.loading.Value = 20;
-                        foreach (var b in buses)
-                        {
-                            // mainPanel.Controls.Remove(b.busPic);
-                        }
                         buses.Clear();
                         addBus.Enabled = false;
                         deleteBus.Enabled = false;
@@ -1240,99 +1246,107 @@ namespace SystAnalys_lr1
                     MBSave = MetroMessageBox.Show(this, message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 else
                     return;
-                if (routes != null || routesEdge != null || E != null || V != null || buses != null)
+                switch (delType)
                 {
-                    switch (delType)
-                    {
-                        case deleteType.All:
-                            if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
+                    case deleteType.All:
+                        if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
+                        {
+                            loadingForm.Show();
+                            routes[changeRoute.Text].Clear();
+                            routesEdge[changeRoute.Text].Clear();
+                            loadingForm.loading.Value = 20;
+                            List<Bus> busTest = new List<Bus>();
+                            foreach (var b in buses)
                             {
-                                loadingForm.Show();
-                                routes[changeRoute.Text].Clear();
-                                routesEdge[changeRoute.Text].Clear();
-                                loadingForm.loading.Value = 20;
-                                List<Bus> busTest = new List<Bus>();
-                                foreach (var b in buses)
+                                if (b.route == changeRoute.Text)
                                 {
-                                    if (b.route == changeRoute.Text)
-                                    {
-                                        busTest.Add(b);
-                                    };
+                                    busTest.Add(b);
                                 };
-                                loadingForm.loading.Value = 40;
-                                foreach (var b in busTest)
-                                {
-                                    buses.Remove(b);
-                                }
-                                loadingForm.loading.Value = 50;
-                                AllCoordinates[changeRoute.Text].Clear();
-                                G.clearSheet();
-                                G.drawALLGraph(V, E);
-                                sheet.Image = G.GetBitmap();
-                                DrawGrid();
-
-                            }
-                            if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
-                            {
-                                loadingForm.Show();
-                                loadingForm.loading.Value = 20;
-                                buses.Clear();
-                                routes.Keys.ToList().ForEach(x => routes[x] = new List<Vertex>());
-                                routesEdge.Keys.ToList().ForEach(x => routesEdge[x] = new List<Edge>());
-                                loadingForm.loading.Value = 40;
-                                AllCoordinates.Clear();
-                                G.clearSheet();
-                                sheet.Image = G.GetBitmap();
-                                DrawGrid();
-                                loadingForm.loading.Value = 50;
                             };
-                            break;
-                        case deleteType.BusStops:
-                            if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
+                            loadingForm.loading.Value = 40;
+                            foreach (var b in busTest)
                             {
-                                loadingForm.Show();
-                                loadingForm.loading.Value = 20;
-                                stopPoints[changeRoute.Text].Clear();
-                                stopPointsInGrids[changeRoute.Text].Clear();
-                                loadingForm.loading.Value = 40;
-                                G.clearSheet();
-                                sheet.Image = G.GetBitmap();
-                                DrawGrid();
-                                loadingForm.loading.Value = 50;
+                                buses.Remove(b);
                             }
-                            if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
-                            {
-                                loadingForm.Show();
-                                loadingForm.loading.Value = 20;
-                                allstopPoints.Clear();
-                                stopPoints.Clear();
-                                stopPointsInGrids.Clear();
-                                loadingForm.loading.Value = 40;
-                                G.clearSheet();
-                                sheet.Image = G.GetBitmap();
-                                DrawGrid();
-                                loadingForm.loading.Value = 50;
-                            }
-                            break;
-                        case deleteType.TrafficLight:
-                            if (MBSave == DialogResult.Yes)
-                            {
-                                loadingForm.Show();
-                                loadingForm.loading.Value = 20;
-                                foreach (var tf in traficLights)
-                                    tf.Stop();
-                                traficLights.Clear();
-                                TraficLightsInGrids.Clear();
-                                loadingForm.loading.Value = 40;
-                                G.clearSheet();
-                                sheet.Image = G.GetBitmap();
-                                DrawGrid();
-                                loadingForm.loading.Value = 50;
-                            }
-                            break;
-                    }
+                            loadingForm.loading.Value = 50;
+                            AllCoordinates[changeRoute.Text].Clear();
+                            G.clearSheet();
+                            G.drawALLGraph(V, E);
+                            sheet.Image = G.GetBitmap();
+                            DrawGrid();
 
+                        }
+                        if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
+                        {
+                            loadingForm.Show();
+                            loadingForm.loading.Value = 20;
+                            buses.Clear();
+                            routes.Keys.ToList().ForEach(x => routes[x] = new List<Vertex>());
+                            routesEdge.Keys.ToList().ForEach(x => routesEdge[x] = new List<Edge>());
+                            loadingForm.loading.Value = 40;
+                            AllCoordinates.Clear();
+                            G.clearSheet();
+                            sheet.Image = G.GetBitmap();
+                            DrawGrid();
+                            loadingForm.loading.Value = 50;
+                        };
+                        break;
+                    case deleteType.BusStops:
+                        if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
+                        {
+                            loadingForm.Show();
+                            loadingForm.loading.Value = 20;
+                            stopPoints[changeRoute.Text].Clear();
+                            stopPointsInGrids[changeRoute.Text].Clear();
+                            loadingForm.loading.Value = 40;
+                            G.clearSheet();
+                            sheet.Image = G.GetBitmap();
+                            DrawGrid();
+                            loadingForm.loading.Value = 50;
+                        }
+                        if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
+                        {
+                            loadingForm.Show();
+                            loadingForm.loading.Value = 20;
+                            allstopPoints.Clear();
+                            stopPoints.Clear();
+                            stopPointsInGrids.Clear();
+                            loadingForm.loading.Value = 40;
+                            G.clearSheet();
+                            sheet.Image = G.GetBitmap();
+                            DrawGrid();
+                            loadingForm.loading.Value = 50;
+                        }
+                        break;
+                    case deleteType.TrafficLight:
+                        if (MBSave == DialogResult.Yes)
+                        {
+                            loadingForm.Show();
+                            loadingForm.loading.Value = 20;
+                            foreach (var tf in traficLights)
+                                tf.Stop();
+                            traficLights.Clear();
+                            TraficLightsInGrids.Clear();
+                            loadingForm.loading.Value = 40;
+                            G.clearSheet();
+                            sheet.Image = G.GetBitmap();
+                            DrawGrid();
+                            loadingForm.loading.Value = 50;
+                        }
+                        break;
+                    case deleteType.TheBuses:
+                        if (MBSave == DialogResult.Yes)
+                        {
+                            loadingForm.Show();
+                            loadingForm.loading.Value = 20;
+                            delAllBus();
+                            loadingForm.loading.Value = 40;
+                            loadingForm.loading.Value = 50;
+                        }
+                        break;
                 }
+
+
                 if (changeRoute.Text == MainStrings.network)
                 {
                     deleteBus.Enabled = false;
@@ -1749,7 +1763,7 @@ namespace SystAnalys_lr1
             Matrix();
             resMatrix();
             msmMain.Style = style;
-           // MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
+            // MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
             loadingForm.close = true;
             loadingForm.Close();
             loadingForm.Dispose();
@@ -3322,6 +3336,9 @@ namespace SystAnalys_lr1
                         case deleteType.VertexAndEdge:
                             deleteVandE(e, routeV);
                             break;
+                        case deleteType.TheBuses:
+                            delBus();
+                            break;
                     }
                 }
                 //   
@@ -3603,71 +3620,69 @@ namespace SystAnalys_lr1
             delAllBusesOnRoute.Enabled = true;
             stopPointButton.Enabled = false;
         }
-
-        private void delAllBusesOnRoute_Click(object sender, EventArgs e)
+        private void delAllBus()
         {
-            var MBSave = MetroMessageBox.Show(this, MainStrings.deleteBus, MainStrings.delete, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            Console.WriteLine(MBSave);
-            if (MBSave == DialogResult.Yes)
+            checkBuses();
+            if (changeRoute.Text == MainStrings.network)
             {
-                checkBuses();
-                if (changeRoute.Text == MainStrings.network)
+                selectRoute.Enabled = false;
+                deleteBus.Enabled = false;
+                addBus.Enabled = false;
+                selectButton.Enabled = true;
+                selectRoute.Enabled = true;
+                drawVertexButton.Enabled = true;
+                drawEdgeButton.Enabled = true;
+                deleteButton.Enabled = true;
+                selectRoute.Enabled = true;
+                allBusSettings.Enabled = false;
+                stopPointButton.Enabled = true;
+                addTraficLight.Enabled = true;
+                buses.Clear();
+                delAllBusesOnRoute.Enabled = false;
+            };
+            checkBusesOnRoute();
+            if (changeRoute.SelectedIndex > 1)
+            {
+                selectRoute.Enabled = true;
+                deleteBus.Enabled = true;
+                addBus.Enabled = true;
+                selectButton.Enabled = true;
+                drawVertexButton.Enabled = false;
+                drawEdgeButton.Enabled = true;
+                deleteButton.Enabled = true;
+                selectRoute.Enabled = true;
+                allBusSettings.Enabled = false;
+                stopPointButton.Enabled = true;
+                List<Bus> b = new List<Bus>();
+                foreach (var bus in buses)
                 {
-                    selectRoute.Enabled = false;
-                    deleteBus.Enabled = false;
-                    addBus.Enabled = false;
-                    selectButton.Enabled = true;
-                    selectRoute.Enabled = true;
-                    drawVertexButton.Enabled = true;
-                    drawEdgeButton.Enabled = true;
-                    deleteButton.Enabled = true;
-                    selectRoute.Enabled = true;
-                    allBusSettings.Enabled = false;
-                    stopPointButton.Enabled = true;
-                    addTraficLight.Enabled = true;
-                    buses.Clear();
-                    delAllBusesOnRoute.Enabled = false;
-                };
-                checkBusesOnRoute();
-                if (changeRoute.SelectedIndex > 1)
-                {
-                    selectRoute.Enabled = true;
-                    deleteBus.Enabled = true;
-                    addBus.Enabled = true;
-                    selectButton.Enabled = true;
-                    drawVertexButton.Enabled = false;
-                    drawEdgeButton.Enabled = true;
-                    deleteButton.Enabled = true;
-                    selectRoute.Enabled = true;
-                    allBusSettings.Enabled = false;
-                    stopPointButton.Enabled = true;
-                    List<Bus> b = new List<Bus>();
-                    foreach (var bus in buses)
+                    if (bus.route == (changeRoute.Text))
                     {
-                        if (bus.route == (changeRoute.Text))
+                        b.Add(bus);
+                    }
+                }
+                Parallel.ForEach(b, (bus) =>
+                {
+                    foreach (var B in buses)
+                    {
+                        if (B == bus)
                         {
-                            //  mainPanel.Controls.Remove(bus.busPic);
-                            b.Add(bus);
+                            buses.Remove(bus);
+                            break;
                         }
                     }
-                    Parallel.ForEach(b, (bus) =>
-                    {
-                        foreach (var B in buses)
-                        {
-                            if (B == bus)
-                            {
-                                buses.Remove(bus);
-                                break;
-                            }
-                        }
-                    });
-                    b.Clear();
-                    delAllBusesOnRoute.Enabled = true;
+                });
+                b.Clear();
+                delAllBusesOnRoute.Enabled = true;
 
-                }
-                label12.Visible = false;
-                selected = new List<int>();
             }
+            label12.Visible = false;
+            selected = new List<int>();
+
+        }
+        private void delAllBusesOnRoute_Click(object sender, EventArgs e)
+        {
+
 
         }
         private void checkBuses()

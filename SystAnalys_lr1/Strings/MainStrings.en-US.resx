@@ -243,4 +243,7 @@
   <data name="report" xml:space="preserve">
     <value>Report</value>
   </data>
+  <data name="theBuses" xml:space="preserve">
+    <value>The buses</value>
+  </data>
 </root>
