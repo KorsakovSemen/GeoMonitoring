@@ -34,14 +34,9 @@ namespace SystAnalys_lr1
             TheBuses
         }
 
-        //
         PictureBox AnimationBox;
-        //
         Graphics AnimationGraphics;
-        //
         Bitmap AnimationBitmap;
-        // 
-
 
         public static deleteType delType;
         int tracbarX, tracbarY;
@@ -51,25 +46,24 @@ namespace SystAnalys_lr1
         public static int firstCrossRoadsRedLight = 0;
         public static int secondCrossRoads = 0;
         public static string EpicSizeParamSave = "radioEpicMedium";
-        //
+        
         public static List<string> MovingEpicParamet;
-        //
+        
         public static string EpicFreqMovingSave = null;
         public static int EpicFreqMovingParam = 0;
-        //
+        
         public static string EpicFreqSpreadingSave = null;
         public static int EpicFreqSpreadingParam = 0;
-        //
+        
         public static string EpicPhaseSavingSave = null;
         public static int EpicPhaseSavingParam = 1;
-        //
+        
         string savepath;
-        /// 
-        public static bool SavePictures = false;
-        ///
-        ///
+       
+        public static bool SavePictures = false;        
+        
         public static bool extendedSavePictures = false;
-        ///
+        
         public static Grid g;
         //Лист всех эпицентров
         List<Epicenter> Epics;
@@ -125,9 +119,13 @@ namespace SystAnalys_lr1
         int hsheet;
         static public Image globalMap;
         static public int zoom, scrollX, scrollY;
-        Report r = new Report();
-        int rCount = 0;
-        int iCh = 0;
+        Report r;
+
+        int T;
+        List<int?> ResultFromModeling = new List<int?>();
+
+        int rCount;
+        int iCh;
         int oldChart;
 
         private void addInComboBox()
@@ -142,22 +140,14 @@ namespace SystAnalys_lr1
             changeRoute.Text = MainStrings.network;
         }
 
-        private static Main _instance;
-
-        public Main()
+        private void InitializeElements()
         {
-            // Если в настройках есть язык, устанавлияем его для текущего потока, в котором выполняется приложение.
-            if (!string.IsNullOrEmpty(Properties.Settings.Default.Language))
-            {
-                // ВАЖНО: Устанавливать язык нужно до создания элементов формы!
-                // Это можно сделать глобально, в рамках приложения в классе Program (см. файл Program.cs).
-                System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
-                System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
-            }
-            InitializeComponent();
             tracbarX = metroTrackBar1.Location.X;
             tracbarY = metroTrackBar1.Location.Y;
             MovingEpicParamet = new List<string>();
+            r =  new Report();
+            iCh = 0;
+            rCount = 0;
             g = new Grid(0, 0, 0, 0, 80, 40);
             routePoints = new List<SerializableDictionary<int, Vertex>>();
             edgePoints = new SerializableDictionary<int, List<Edge>>();
@@ -196,6 +186,10 @@ namespace SystAnalys_lr1
             traficLights = new List<TraficLight>();
             routes = new SerializableDictionary<string, List<Vertex>>();
             buses = new List<Bus>();
+        }
+
+        private void LoadSettings()
+        {
             if (File.Exists("../../SaveConfig/save.txt"))
             {
                 using (FileStream fstream = File.OpenRead("../../SaveConfig/save.txt"))
@@ -308,6 +302,7 @@ namespace SystAnalys_lr1
                 openEpicFormToolStripMenuItem.Enabled = false;
                 createGridToolStripMenuItem.Enabled = false;
             }
+
             mainPanel.MaximumSize = new System.Drawing.Size(sheet.Width, sheet.Height);
             mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             mainPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(panel6_MouseWheel);
@@ -316,10 +311,11 @@ namespace SystAnalys_lr1
             hint.Visible = false;
             r.ch.Titles.Add(MainStrings.report);
             r.ch.Series[rCount].LegendText = "1";
+        }
 
+        public void AnimationSettings()
+        {
 
-
-            //
             AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
             AnimationBitmap.MakeTransparent();
             AnimationBox = new PictureBox();
@@ -331,7 +327,26 @@ namespace SystAnalys_lr1
             AnimationBox.BackColor = Color.Transparent;
             AnimationBox.Size = sheet.Size;
             AnimationBox.MouseClick += sheet_MouseClick_1;
-            //
+        }
+
+        private static Main _instance;
+
+        public Main()
+        {
+            // Если в настройках есть язык, устанавлияем его для текущего потока, в котором выполняется приложение.
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.Language))
+            {
+                // ВАЖНО: Устанавливать язык нужно до создания элементов формы!
+                // Это можно сделать глобально, в рамках приложения в классе Program (см. файл Program.cs).
+                System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
+                System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
+            }
+
+            InitializeComponent();
+            InitializeElements();
+            LoadSettings();
+            AnimationSettings();
+
 
         }
         //функция возвращает массив координат маршрутов (для 2 формы)
@@ -367,10 +382,7 @@ namespace SystAnalys_lr1
         int small = 10000;
         private void ExpandEpics(List<Epicenter> Epics)
         {
-            //if (MovingEpicParamet.Count > 0)
-            //{
             Epics.First().ExpandEpic();
-            //}
         }
         private void MoveEpics(List<Epicenter> Epics)
         {
@@ -379,8 +391,6 @@ namespace SystAnalys_lr1
                 Epics.First().EpicMoving(MovingEpicParamet);
             }
         }
-        int T;
-        List<int?> ResultFromModeling = new List<int?>();
         private void Modeling(string SavePath, int Cicle, int ModelNum)
         {
             List<Epicenter> epList = new List<Epicenter>();
@@ -600,15 +610,6 @@ namespace SystAnalys_lr1
 
         }
         delegate void DelBmp(Bitmap bmp);
-        //отрисовать всю сетку
-        static public void DrawGrid()
-        {
-            for (int i = 0; i < TheGrid.Count; i++)
-            {
-                TheGrid[i].DrawPart(G, zoom);
-            }
-            _instance.Invoke(new DelBmp((s) => _instance.sheet.Image = s), G.GetBitmap());
-        }
         //функция создает 1 случайный эпицентр в пределах сетки
         public void CreateOneRandomEpicenter(int EpicSizeParam, int? StartPos)
         {
@@ -750,7 +751,6 @@ namespace SystAnalys_lr1
                 G.drawStopPoints();
                 sheet.Image = G.GetBitmap();
                 label12.Visible = false;
-                //DrawGrid();
                 selected = new List<int>();
                 return;
             };

@@ -12,6 +12,17 @@ namespace SystAnalys_lr1
 {
     public partial class Main : MetroForm
     {
+
+        //отрисовать всю сетку
+        static public void DrawGrid()
+        {
+            for (int i = 0; i < TheGrid.Count; i++)
+            {
+                TheGrid[i].DrawPart(G, zoom);
+            }
+            _instance.Invoke(new DelBmp((s) => _instance.sheet.Image = s), G.GetBitmap());
+        }
+
         public class Grid
         {
             public Grid() { }
