@@ -2900,16 +2900,7 @@ namespace SystAnalys_lr1
                 }
                 if (stopPointButton.Enabled == false)
                 {
-                    foreach (var gridPart in GetTheGrid())
-                    {
-                        if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.Width * zoom) && (e.Y < gridPart.y * zoom + GridPart.Height * zoom)))
-                        {
-                            allstopPoints.Add(new Vertex(e.X / zoom, e.Y / zoom));
-                            G.DrawStopVertex(e.X / zoom, e.Y / zoom);
-                            sheet.Image = G.GetBitmap();
-                            DrawGrid();
-                        }
-                    }
+                    c.AddStopPoints(e, allstopPoints, sheet, G, GetTheGrid());
                 }
                 if (selectButton.Enabled == false)
                 {

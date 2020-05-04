@@ -39,7 +39,20 @@ namespace SystAnalys_lr1.Classes
             await Task.Run(() => deleteRoute(e, routeV, routesEdge, sheet, G));
 
         }
-
+        public void AddStopPoints(MouseEventArgs e, List<Vertex> allstopPoints, PictureBox sheet, DrawGraph G, List<GridPart> gridParts)
+        {
+            foreach (var gridPart in gridParts)
+            {
+                if (((e.X > gridPart.x * Main.zoom) && (e.Y > gridPart.y * Main.zoom)) && ((e.X < gridPart.x * Main.zoom + GridPart.Width * Main.zoom) && (e.Y < gridPart.y * Main.zoom + GridPart.Height * Main.zoom)))
+                {
+                    allstopPoints.Add(new Vertex(e.X / Main.zoom, e.Y / Main.zoom));
+                    G.DrawStopVertex(e.X / Main.zoom, e.Y / Main.zoom);
+                    sheet.Image = G.GetBitmap();
+                    Main.DrawGrid();
+                    break;
+                }
+            }
+        }
         public void SelectRoute(MouseEventArgs e, List<Vertex> V, List<Edge> E, DrawGraph G, PictureBox sheet, Constructor c, List<int> selected, bool check)
         {
             if (!check)
