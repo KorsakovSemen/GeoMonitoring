@@ -47,8 +47,8 @@ namespace SystAnalys_lr1
         //создать сетку
         public void CreateGrid()
         {
-            GridPart.height = sheet.Height / g.gridHeight;
-            GridPart.width =  sheet.Width / g.gridWidth;
+            GridPart.Height = sheet.Height / g.gridHeight;
+            GridPart.Width =  sheet.Width / g.gridWidth;
             TheGrid = new List<GridPart>();
             for (int i = g.left; i < sheet.Height - g.right; i += sheet.Height / g.gridHeight)
             {

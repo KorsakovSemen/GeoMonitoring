@@ -19,7 +19,7 @@ namespace SystAnalys_lr1
             {
                 for (int j = 0; j < buses.Count - i - 1; j++)
                 {
-                    if (buses[j + 1].route == buses[j].route && buses[j + 1].tracker == true && buses[j].tracker == false)
+                    if (buses[j + 1].route == buses[j].route && buses[j + 1].Tracker == true && buses[j].Tracker == false)
                     {
                         temp = buses[j + 1];
                         buses[j + 1] = buses[j];
@@ -98,7 +98,7 @@ namespace SystAnalys_lr1
                         {
                             if (j < busesPark[i].Count)
                             {
-                                if (busesPark[i][j].tracker == true)
+                                if (busesPark[i][j].Tracker == true)
                                 {
                                     myArr[i, j] = 1;
                                     total++;

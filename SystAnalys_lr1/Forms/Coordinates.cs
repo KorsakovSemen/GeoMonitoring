@@ -29,7 +29,7 @@ namespace SystAnalys_lr1
 
             foreach (var bus in buses)
             {
-                bus.setAllCoordinates(AllCoordinates[bus.getRoute()]);
+                bus.SetAllCoordinates(AllCoordinates[bus.GetRoute()]);
             }
 
         }
@@ -84,7 +84,7 @@ namespace SystAnalys_lr1
             int LastLocate = 0;
             foreach (var gridpart in TheGrid)
             {
-                if ((points.Last().X > gridpart.x) && ((points.Last().X) < gridpart.x + GridPart.width) && ((points.Last().Y) > gridpart.y) && ((points.Last().Y) < (gridpart.y + GridPart.height)))
+                if ((points.Last().X > gridpart.x) && ((points.Last().X) < gridpart.x + GridPart.Width) && ((points.Last().Y) > gridpart.y) && ((points.Last().Y) < (gridpart.y + GridPart.Height)))
                 {
 
                     Locate = TheGrid.IndexOf(gridpart);
@@ -129,7 +129,7 @@ namespace SystAnalys_lr1
 
             foreach (var bus in buses)
             {
-                bus.setAllCoordinates(AllCoordinates[bus.getRoute()]);
+                bus.SetAllCoordinates(AllCoordinates[bus.GetRoute()]);
             }
 
 

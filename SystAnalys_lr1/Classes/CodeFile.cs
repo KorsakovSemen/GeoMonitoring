@@ -52,16 +52,16 @@ namespace SystAnalys_lr1
 
     public class Edge
     {
-        public int v1 { get; set; }
-        public int v2 { get; set; }
+        public int V1 { get; set; }
+        public int V2 { get; set; }
 
         public Edge()
         { }
 
         public Edge(int v1, int v2)
         {
-            this.v1 = v1;
-            this.v2 = v2;
+            this.V1 = v1;
+            this.V2 = v2;
         }
     }
 
@@ -89,14 +89,14 @@ namespace SystAnalys_lr1
             color = Color.ForestGreen;//Color.FromArgb(random.Next(255), random.Next(255), random.Next(255));
         }
 
-        public void setBitmap()
+        public void SetBitmap()
         {
             //эксепшн при загрузке левой директоории
             bitmap = new Bitmap(Main.globalMap);
             gr = Graphics.FromImage(bitmap);
         }
         // для второй формы быстрофикс
-        public void setBitmap2()
+        public void SetBitmap2()
         {
             bitmap = new Bitmap(Main.globalMap);
             gr = Graphics.FromImage(bitmap);
@@ -107,7 +107,7 @@ namespace SystAnalys_lr1
             return bitmap;
         }
 
-        public void clearSheet()
+        public void ClearSheet()
         {
             Graphics.FromImage(bitmap).Clear(Color.White);
             bitmap = new Bitmap(Main.globalMap);
@@ -116,7 +116,7 @@ namespace SystAnalys_lr1
 
         }
         //для второй формы
-        public void clearSheet2()
+        public void ClearSheet2()
         {
             /*Graphics.FromImage(bitmap).Clear(Color.Wheat); *//// ТУТ ЭКСЕПШН НА МОДЕЛИНГЕ   
             bitmap = new Bitmap(DisplayEpicenters.EsheetPicture);
@@ -126,52 +126,52 @@ namespace SystAnalys_lr1
 
         }
 
-        public void drawVertex(int x, int y)
+        public void DrawVertex(int x, int y)
         {
             gr.FillEllipse(Brushes.GreenYellow, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
             gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
 
-        public void drawSelectedVertex(int x, int y)
+        public void DrawSelectedVertex(int x, int y)
         {
             gr.FillEllipse(Brushes.Red, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
             gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
 
-        public void drawSelectedStopVertex(int x, int y)
+        public void DrawSelectedStopVertex(int x, int y)
         {
             gr.FillEllipse(Brushes.HotPink, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
             gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
 
-        public void drawRouteVertex(int x, int y)
+        public void DrawRouteVertex(int x, int y)
         {
             gr.FillEllipse(Brushes.AliceBlue, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
             gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
-        public void drawYellowVertex(int x, int y)
+        public void DrawYellowVertex(int x, int y)
         {
             gr.FillEllipse(Brushes.Yellow, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
             gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
-        public void drawGreenVertex(int x, int y)
+        public void DrawGreenVertex(int x, int y)
         {
             gr.FillEllipse(Brushes.ForestGreen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
             gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
-        public void drawStopVertex(int x, int y)
+        public void DrawStopVertex(int x, int y)
         {
-            gr.FillEllipse(Brushes.Orange, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            gr.FillEllipse(Brushes.OrangeRed, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
             gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
 
-        public void drawStopRouteVertex(int x, int y)
+        public void DrawStopRouteVertex(int x, int y)
         {
-            gr.FillEllipse(Brushes.Blue, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            gr.FillEllipse(Brushes.SkyBlue, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
             gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
 
-        public void drawEdge(Vertex V1, Vertex V2, Edge E, int rand = 0)
+        public void DrawEdge(Vertex V1, Vertex V2, Edge E, int rand = 0)
         {
             Pen pen;
             if (rand != 0)
@@ -187,19 +187,19 @@ namespace SystAnalys_lr1
                 pen.Width = 2 * Main.zoom;
             };
 
-            if (E.v1 == E.v2)
+            if (E.V1 == E.V2)
             {
                 gr.DrawArc(pen, (V1.X - 2 * R) * Main.zoom, (V1.Y - 2 * R) * Main.zoom, 2 * R * Main.zoom, 2 * R * Main.zoom, 90, 270);
             }
             else
             {
                 gr.DrawLine(darkGoldPen, V1.X * Main.zoom, V1.Y * Main.zoom, V2.X * Main.zoom, V2.Y * Main.zoom);
-                drawVertex(V1.X * Main.zoom, V1.Y * Main.zoom);
-                drawVertex(V2.X * Main.zoom, V2.Y * Main.zoom);
+                DrawVertex(V1.X * Main.zoom, V1.Y * Main.zoom);
+                DrawVertex(V2.X * Main.zoom, V2.Y * Main.zoom);
             }
         }
 
-        public void drawALLGraph(List<Vertex> V, List<Edge> E, int rand = 0)
+        public void DrawALLGraph(List<Vertex> V, List<Edge> E, int rand = 0)
         {
             Pen pen;
             if (rand != 0)
@@ -217,51 +217,52 @@ namespace SystAnalys_lr1
             //рисуем ребра
             for (int i = 0; i < E.Count; i++)
             {
-                if (E[i].v1 == E[i].v2)
+                if (E[i].V1 == E[i].V2)
                 {
-                    gr.DrawArc(pen, (V[E[i].v1].X - 2 * R) * Main.zoom, (V[E[i].v1].Y - 2 * R) * Main.zoom, 2 * R * Main.zoom, 2 * R * Main.zoom, 90, 270);
+                    gr.DrawArc(pen, (V[E[i].V1].X - 2 * R) * Main.zoom, (V[E[i].V1].Y - 2 * R) * Main.zoom, 2 * R * Main.zoom, 2 * R * Main.zoom, 90, 270);
                 }
                 else
                 {
                     //проблема с отрисовкой
-                    if (E[i].v1 < V.Count && E[i].v2 < V.Count)
+                    if (E[i].V1 < V.Count && E[i].V2 < V.Count)
                     {
-                        gr.DrawLine(pen, V[E[i].v1].X * Main.zoom, V[E[i].v1].Y * Main.zoom, V[E[i].v2].X * Main.zoom, V[E[i].v2].Y * Main.zoom);
+                        gr.DrawLine(pen, V[E[i].V1].X * Main.zoom, V[E[i].V1].Y * Main.zoom, V[E[i].V2].X * Main.zoom, V[E[i].V2].Y * Main.zoom);
                     }
                 }
             }
+            DrawStopPoints();
             //рисуем вершины
             for (int i = 0; i < V.Count; i++)
             {
                 if (rand != 0)
-                    drawRouteVertex(V[i].X, V[i].Y);
+                    DrawRouteVertex(V[i].X, V[i].Y);
                 else
-                    drawVertex(V[i].X, V[i].Y);
+                    DrawVertex(V[i].X, V[i].Y);
             }         
 
             foreach (var tl in Main.traficLights)
             {
-                if (tl.status == Status.GREEN)
+                if (tl.Status == Status.GREEN)
                 {
-                    Main.G.drawGreenVertex(tl.x, tl.y);
+                    Main.G.DrawGreenVertex(tl.x, tl.y);
                 }
-                else if (tl.status == Status.YELLOW)
+                else if (tl.Status == Status.YELLOW)
                 {
-                    Main.G.drawStopVertex(tl.x, tl.y);
+                    Main.G.DrawYellowVertex(tl.x, tl.y);
                 }
-                else if (tl.status == Status.RED)
+                else if (tl.Status == Status.RED)
                 {
-                    Main.G.drawSelectedVertex(tl.x, tl.y);
+                    Main.G.DrawSelectedVertex(tl.x, tl.y);
                 }
             }
 
         }
 
-        public void drawStopPoints()
+        public void DrawStopPoints()
         {
             foreach (var stopPoints in Main.allstopPoints)
             {
-                drawStopVertex(stopPoints.X, stopPoints.Y);
+                DrawStopVertex(stopPoints.X, stopPoints.Y);
             }
             if (Main.selectedRoute != null)
             {
@@ -269,7 +270,7 @@ namespace SystAnalys_lr1
                 {
                     foreach (var stopPoints in Main.stopPoints[Main.selectedRoute])
                     {
-                        drawStopRouteVertex(stopPoints.X, stopPoints.Y);
+                        DrawStopRouteVertex(stopPoints.X, stopPoints.Y);
                     }
                 }
             }
@@ -287,7 +288,8 @@ namespace SystAnalys_lr1
         public static string offBusImg = "../../Resources/bus.PNG";
         //таймер для движения
         public List<Epicenter> Epicenters { get; set; } = new List<Epicenter>();
-        int stopTime = 0;
+
+        readonly int stopTime = 0;
         //сетка
         //для создания координат
         public double angle, x, y;
@@ -316,7 +318,7 @@ namespace SystAnalys_lr1
         public bool EpicFounded { get; set; }
         public int oldSize;
         static public int? ZoomCoef { get; set; } = 1;
-        static public int small { get; set; } = 1000;
+        static public int Small { get; set; } = 1000;
         //не позволит басу двигаться на светофорах когда он должен стоять
         public static bool InstaStop { get; set; } = false;
         public static void SetScrollX(int x)
@@ -337,23 +339,23 @@ namespace SystAnalys_lr1
         }
 
         int oldZoom = (int)ZoomCoef;
-        public void setBusSize()
+        public void SetBusSize()
         {
             oldZoom = (int)ZoomCoef;
         }
 
-        public List<Point> getCoordinates()
+        public List<Point> GetCoordinates()
         {
             return Coordinates;
         }
 
 
-        public void setAllCoordinates(List<Point> A)
+        public void SetAllCoordinates(List<Point> A)
         {
             Coordinates = A;
         }
 
-        public int? getLocate()
+        public int? GetLocate()
         {
             return Locate;
         }
@@ -371,12 +373,12 @@ namespace SystAnalys_lr1
         public Bus()
         { }
 
-        public bool tracker { get; set; }
+        public bool Tracker { get; set; }
 
 
         public Bus(Image busPic, int PositionAt, bool Turn, string route, List<Point> Coordinates, bool not)
         {
-            tracker = not;
+            Tracker = not;
             oldSize = busPic.Size.Height;
             this.busPic = busPic;
             this.PositionAt = PositionAt;
@@ -396,13 +398,13 @@ namespace SystAnalys_lr1
                 }
             }
         }
-        public async Task asMoveWithoutGraphics()
+        public async Task AsMoveWithoutGraphics()
         {
             await Task.Run(() => MoveWithoutGraphics());
         }
         public void MoveWithoutGraphics()
         {
-            if (tracker == true)
+            if (Tracker == true)
             {
                 if (TurnBack == false)
                 {
@@ -434,7 +436,7 @@ namespace SystAnalys_lr1
         }
         public void MoveWithoutGraphicsByGrids()
         {
-            if (tracker == true)
+            if (Tracker == true)
             {
                 if (TurnBack == false)
                 {
@@ -466,10 +468,6 @@ namespace SystAnalys_lr1
                 }
             }
         }
-        public async void MoveWithGraphicsAsync()
-        {
-            //await Task.Run(() => MoveWithGraphics());
-        }
 
         readonly Random rnd = new Random();
         public bool skipTraffics = false;
@@ -480,19 +478,10 @@ namespace SystAnalys_lr1
         public void AlignBus()
         {
 
-            //if (PositionAt < Coordinates.Count)
-            //{
-            //    busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((Coordinates[PositionAt].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (Coordinates[PositionAt].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
-            //}
-            //else
-            //{
-            //    busPic.Invoke(new Dpoint((pos) => busPic.Location = pos), new Point((Coordinates[PositionAt - 1].X * (int)ZoomCoef) + ScrollX - busPic.Width / 2, (Coordinates[PositionAt - 1].Y * (int)ZoomCoef) + ScrollY - busPic.Height / 2));
-            //}
-
         }
         int checkStop = 0;
         int checkStoppedBus = 0;
-        private void stopDown()
+        private void StopDown()
         {
             if (skip != 0)
                 skip -= 1;
@@ -505,30 +494,15 @@ namespace SystAnalys_lr1
             if (checkStoppedBus != 0)
                 checkStoppedBus -= 1;
         }
-        public async Task MoveWithGraphics(Graphics G)
+        public void MoveWithGraphics(Graphics G)
         {
-            Bus thisBus = new Bus(busPic, PositionAt, TurnBack, route, Coordinates, tracker);
+            Bus thisBus = new Bus(busPic, PositionAt, TurnBack, route, Coordinates, Tracker);
             List<Bus> buses = Main.buses;
             buses.Remove(thisBus);
             if (checkStop == 0)
             {
                 if (TurnBack == false)
                 {
-                    //for (int i = 0; i < Main.routesEdge[thisBus.route].Count; i++)
-                    //{
-                    //    if(Main.routesEdge[thisBus.route][i].v1 != Main.routesEdge[thisBus.route][i + 1].v1 + 1)
-                    //    {
-                    //        stopDown();
-                    //        skipEnd = rnd.Next(0, 200);
-                    //        G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
-                    //        if (skipEnd == 0)
-                    //        {
-                    //            TurnBack = true;
-                    //            PositionAt--;
-                    //        }
-                    //        break;
-                    //    }
-                    //}
                     if (PositionAt < Coordinates.Count - 1)
                     {
                         if (checkStoppedBus == 0)
@@ -570,14 +544,14 @@ namespace SystAnalys_lr1
                             {
                                 foreach (var sp in Main.traficLights)
                                 {
-                                    if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status != Status.RED)
+                                    if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status != Status.RED)
                                     {
                                         skip = 100;
                                         checkStoppedBus = 100;
                                         break;
                                     }
                                     else
-                                    if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status == Status.RED)
+                                    if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status == Status.RED)
                                     {
                                         if (sp.bal == 0)
                                         {
@@ -597,12 +571,12 @@ namespace SystAnalys_lr1
                             }
                         }
                         G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
-                        stopDown();
+                        StopDown();
                         PositionAt++;
                     }
                     else
                     {
-                        stopDown();
+                        StopDown();
                         skipEnd = rnd.Next(0, 200);
                         G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
                         if (skipEnd == 0)
@@ -675,14 +649,14 @@ namespace SystAnalys_lr1
                                 {
                                     foreach (var sp in Main.traficLights)
                                     {
-                                        if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status != Status.RED)
+                                        if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status != Status.RED)
                                         {
                                             skip = 100;
                                             checkStoppedBus = 100;
                                             break;
                                         }
                                         else
-                                        if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.status == Status.RED)
+                                        if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status == Status.RED)
                                         {
                                             if (sp.bal == 0)
                                             {
@@ -702,13 +676,13 @@ namespace SystAnalys_lr1
                             }
 
                             G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
-                            stopDown();
+                            StopDown();
                             PositionAt--;
                         }
                     }
                     else
                     {
-                        stopDown();
+                        StopDown();
                         skipEnd = rnd.Next(0, 200);
                         G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
                         if (skipEnd == 0)
@@ -723,18 +697,18 @@ namespace SystAnalys_lr1
             }
             else
             {
-                stopDown();
+                StopDown();
                 G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
             }
 
         }
 
-        public string getRoute()
+        public string GetRoute()
         {
             return route;
         }
 
-        public async Task asDetectEpicenter2()
+        public async Task AsDetectEpicenter2()
         {
             await Task.Run(() => DetectEpicenter2());
         }
@@ -747,14 +721,14 @@ namespace SystAnalys_lr1
                 {
                     foreach (var Square in Sector.Value)
                         if ((PositionAt < Coordinates.Count))
-                            if (((Coordinates[PositionAt].X * ZoomCoef) >= Square.x * ZoomCoef) && ((Coordinates[PositionAt].X * ZoomCoef) <= Square.x * ZoomCoef + GridPart.width * ZoomCoef) && ((Coordinates[PositionAt].Y * ZoomCoef) >= Square.y * ZoomCoef) && ((Coordinates[PositionAt].Y * ZoomCoef) <= (Square.y * ZoomCoef + GridPart.height * ZoomCoef)))
+                            if (((Coordinates[PositionAt].X * ZoomCoef) >= Square.x * ZoomCoef) && ((Coordinates[PositionAt].X * ZoomCoef) <= Square.x * ZoomCoef + GridPart.Width * ZoomCoef) && ((Coordinates[PositionAt].Y * ZoomCoef) >= Square.y * ZoomCoef) && ((Coordinates[PositionAt].Y * ZoomCoef) <= (Square.y * ZoomCoef + GridPart.Height * ZoomCoef)))
                             {
                                 switch (Sector.Key)
                                 {
                                     case 1:
-                                        if (Square.check == false)
+                                        if (Square.Check == false)
                                         {
-                                            Square.check = true;
+                                            Square.Check = true;
                                             EpicList.DetectCount++;
                                         }
                                         return 3;
@@ -782,35 +756,35 @@ namespace SystAnalys_lr1
                     {                    
                        
                         
-                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
-                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
-                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.height == Square.y)))
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.Height == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
-                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.height == Square.y)))
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.Height == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
-                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.height == Square.y)))
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.Height == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
-                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.height == Square.y)))
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.Height == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
-                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.height == Square.y)))
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.Height == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
-                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.height == Square.y)))
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.Height == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
@@ -829,9 +803,9 @@ namespace SystAnalys_lr1
             switch (Sector.Key)
             {
                 case 1:
-                    if (Square.check == false)
+                    if (Square.Check == false)
                     {
-                        Square.check = true;
+                        Square.Check = true;
                         EpicList.DetectCount++;
                     }
                     return 3;
@@ -847,7 +821,7 @@ namespace SystAnalys_lr1
         }
 
 
-        public async Task asyncDetectRectangle2()
+        public async Task AsyncDetectRectangle2()
         {
             await Task.Run(() => DetectRectangle2());
         }
@@ -859,7 +833,7 @@ namespace SystAnalys_lr1
             {
                 if ((PositionAt < Coordinates.Count))
 
-                    if (((Coordinates[PositionAt].X) > Main.TheGrid[i].x) && ((Coordinates[PositionAt].X) < Main.TheGrid[i].x + GridPart.width) && ((Coordinates[PositionAt].Y) > Main.TheGrid[i].y) && ((Coordinates[PositionAt].Y) < (Main.TheGrid[i].y + GridPart.height)))
+                    if (((Coordinates[PositionAt].X) > Main.TheGrid[i].x) && ((Coordinates[PositionAt].X) < Main.TheGrid[i].x + GridPart.Width) && ((Coordinates[PositionAt].Y) > Main.TheGrid[i].y) && ((Coordinates[PositionAt].Y) < (Main.TheGrid[i].y + GridPart.Height)))
                     {
                         Locate = i;
                     }
@@ -907,10 +881,10 @@ namespace SystAnalys_lr1
             {
                 foreach (var PollutedSqure in Pollutedroute)
                 {
-                    if (PollutedSqure.status != 0)
+                    if (PollutedSqure.Status != 0)
                     {
                         bool net = false;
-                        switch (PollutedSqure.status)
+                        switch (PollutedSqure.Status)
                         {
                             case 2:
                                 foreach (var part in EpicenterGrid[2])
@@ -951,12 +925,12 @@ namespace SystAnalys_lr1
             {
                 for (int i = 1; i <= 5; i++)
                 {
-                    GridPart ScanGrid = new GridPart(RedGrid.x, RedGrid.y - GridPart.height * i);
+                    GridPart ScanGrid = new GridPart(RedGrid.x, RedGrid.y - GridPart.Height * i);
                     for (int j = 0; j < 4; j++)
                     {
-                        while (ScanGrid.x < RedGrid.x + GridPart.width * i)
+                        while (ScanGrid.x < RedGrid.x + GridPart.Width * i)
                         {
-                            ScanGrid.x += GridPart.width;
+                            ScanGrid.x += GridPart.Width;
                             foreach (var SearchGrid in EpicenterGrid[1])
                             {
                                 if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
@@ -969,20 +943,20 @@ namespace SystAnalys_lr1
 
                                         if (bufpart.x == RedGrid.x)
                                         {
-                                            bufpart.y += GridPart.height;
+                                            bufpart.y += GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                         else
                                         if (bufpart.y == RedGrid.y)
                                         {
-                                            bufpart.x -= GridPart.width;
+                                            bufpart.x -= GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                         else
                                         {
-                                            bufpart.y += GridPart.height;
+                                            bufpart.y += GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                            bufpart.x -= GridPart.width;
+                                            bufpart.x -= GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                     }
@@ -991,7 +965,7 @@ namespace SystAnalys_lr1
                         }
                         while (ScanGrid.y < RedGrid.y)
                         {
-                            ScanGrid.y += GridPart.height;
+                            ScanGrid.y += GridPart.Height;
                             foreach (var SearchGrid in EpicenterGrid[1])
                             {
                                 if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
@@ -1002,20 +976,20 @@ namespace SystAnalys_lr1
 
                                         if (bufpart.x == RedGrid.x)
                                         {
-                                            bufpart.y += GridPart.height;
+                                            bufpart.y += GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                         else
                                         if (bufpart.y == RedGrid.y)
                                         {
-                                            bufpart.x -= GridPart.width;
+                                            bufpart.x -= GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                         else
                                         {
-                                            bufpart.x -= GridPart.width;
+                                            bufpart.x -= GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                            bufpart.y += GridPart.height;
+                                            bufpart.y += GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
 
@@ -1023,9 +997,9 @@ namespace SystAnalys_lr1
                                 }
                             }
                         }
-                        while (ScanGrid.y < RedGrid.y + GridPart.height * i)
+                        while (ScanGrid.y < RedGrid.y + GridPart.Height * i)
                         {
-                            ScanGrid.y += GridPart.height;
+                            ScanGrid.y += GridPart.Height;
                             foreach (var SearchGrid in EpicenterGrid[1])
                             {
                                 if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
@@ -1037,20 +1011,20 @@ namespace SystAnalys_lr1
 
                                         if (bufpart.x == RedGrid.x)
                                         {
-                                            bufpart.y -= GridPart.height;
+                                            bufpart.y -= GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                         else
                                         if (bufpart.y == RedGrid.y)
                                         {
-                                            bufpart.x -= GridPart.width;
+                                            bufpart.x -= GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                         else
                                         {
-                                            bufpart.y -= GridPart.height;
+                                            bufpart.y -= GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                            bufpart.x -= GridPart.width;
+                                            bufpart.x -= GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
 
@@ -1060,7 +1034,7 @@ namespace SystAnalys_lr1
                         }
                         while (ScanGrid.x > RedGrid.x)
                         {
-                            ScanGrid.x -= GridPart.width;
+                            ScanGrid.x -= GridPart.Width;
                             foreach (var SearchGrid in EpicenterGrid[1])
                             {
                                 if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
@@ -1071,20 +1045,20 @@ namespace SystAnalys_lr1
 
                                         if (bufpart.x == RedGrid.x)
                                         {
-                                            bufpart.y -= GridPart.height;
+                                            bufpart.y -= GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                         else
                                         if (bufpart.y == RedGrid.y)
                                         {
-                                            bufpart.x -= GridPart.width;
+                                            bufpart.x -= GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                         else
                                         {
-                                            bufpart.y -= GridPart.height;
+                                            bufpart.y -= GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                            bufpart.x -= GridPart.width;
+                                            bufpart.x -= GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
 
@@ -1092,9 +1066,9 @@ namespace SystAnalys_lr1
                                 }
                             }
                         }
-                        while (ScanGrid.x > RedGrid.x - GridPart.width * i)
+                        while (ScanGrid.x > RedGrid.x - GridPart.Width * i)
                         {
-                            ScanGrid.x -= GridPart.width;
+                            ScanGrid.x -= GridPart.Width;
                             foreach (var SearchGrid in EpicenterGrid[1])
                             {
                                 if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
@@ -1106,20 +1080,20 @@ namespace SystAnalys_lr1
 
                                         if (bufpart.x == RedGrid.x)
                                         {
-                                            bufpart.y -= GridPart.height;
+                                            bufpart.y -= GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                         else
                                         if (bufpart.y == RedGrid.y)
                                         {
-                                            bufpart.x += GridPart.width;
+                                            bufpart.x += GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                         else
                                         {
-                                            bufpart.y -= GridPart.height;
+                                            bufpart.y -= GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                            bufpart.x += GridPart.width;
+                                            bufpart.x += GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
 
@@ -1129,7 +1103,7 @@ namespace SystAnalys_lr1
                         }
                         while (ScanGrid.y > RedGrid.y)
                         {
-                            ScanGrid.y -= GridPart.height;
+                            ScanGrid.y -= GridPart.Height;
                             foreach (var SearchGrid in EpicenterGrid[1])
                             {
                                 if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
@@ -1141,20 +1115,20 @@ namespace SystAnalys_lr1
 
                                         if (bufpart.x == RedGrid.x)
                                         {
-                                            bufpart.y -= GridPart.height;
+                                            bufpart.y -= GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                         else
                                         if (bufpart.y == RedGrid.y)
                                         {
-                                            bufpart.x += GridPart.width;
+                                            bufpart.x += GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                         else
                                         {
-                                            bufpart.y -= GridPart.height;
+                                            bufpart.y -= GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                            bufpart.x += GridPart.width;
+                                            bufpart.x += GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
 
@@ -1162,9 +1136,9 @@ namespace SystAnalys_lr1
                                 }
                             }
                         }
-                        while (ScanGrid.y > RedGrid.y - GridPart.width * i)
+                        while (ScanGrid.y > RedGrid.y - GridPart.Width * i)
                         {
-                            ScanGrid.y -= GridPart.height;
+                            ScanGrid.y -= GridPart.Height;
                             foreach (var SearchGrid in EpicenterGrid[1])
                             {
                                 if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
@@ -1176,20 +1150,20 @@ namespace SystAnalys_lr1
 
                                         if (bufpart.x == RedGrid.x)
                                         {
-                                            bufpart.y += GridPart.height;
+                                            bufpart.y += GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                         else
                                         if (bufpart.y == RedGrid.y)
                                         {
-                                            bufpart.x += GridPart.width;
+                                            bufpart.x += GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                         else
                                         {
-                                            bufpart.y += GridPart.height;
+                                            bufpart.y += GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                            bufpart.x += GridPart.width;
+                                            bufpart.x += GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
 
@@ -1199,7 +1173,7 @@ namespace SystAnalys_lr1
                         }
                         while (ScanGrid.x < RedGrid.x)
                         {
-                            ScanGrid.x += GridPart.width;
+                            ScanGrid.x += GridPart.Width;
                             foreach (var SearchGrid in EpicenterGrid[1])
                             {
                                 if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
@@ -1212,20 +1186,20 @@ namespace SystAnalys_lr1
 
                                         if (bufpart.x == RedGrid.x)
                                         {
-                                            bufpart.y += GridPart.height;
+                                            bufpart.y += GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                         else
                                         if (bufpart.y == RedGrid.y)
                                         {
-                                            bufpart.x += GridPart.width;
+                                            bufpart.x += GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
                                         else
                                         {
-                                            bufpart.y += GridPart.height;
+                                            bufpart.y += GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                            bufpart.x += GridPart.width;
+                                            bufpart.x += GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.x, bufpart.y));
                                         }
 
@@ -1353,7 +1327,7 @@ namespace SystAnalys_lr1
                         {
 
                             case "right":
-                                gridPart.x = gridPart.x + GridPart.width;
+                                gridPart.x = gridPart.x + GridPart.Width;
                                 if (!(gridPart.x <= TheGrid.Last().x))
                                 {
                                     gridPart.IsMovedAway = true;
@@ -1365,7 +1339,7 @@ namespace SystAnalys_lr1
                             //case "right-up":
                             //    break;
                             case "down":
-                                gridPart.y = gridPart.y + GridPart.height;
+                                gridPart.y = gridPart.y + GridPart.Height;
                                 if (!(gridPart.y <= TheGrid.Last().y))
                                 {
                                     gridPart.IsMovedAway = true;
@@ -1373,7 +1347,7 @@ namespace SystAnalys_lr1
                                 }
                                 break;
                             case "up":
-                                gridPart.y -= GridPart.height;
+                                gridPart.y -= GridPart.Height;
                                 if (!(gridPart.y >= TheGrid.First().y))
                                 {
                                     gridPart.IsMovedAway = true;
@@ -1382,7 +1356,7 @@ namespace SystAnalys_lr1
 
                                 break;
                             case "left":
-                                gridPart.x = gridPart.x - GridPart.width;
+                                gridPart.x = gridPart.x - GridPart.Width;
                                 if (!((gridPart.x >= TheGrid.First().x)))
                                 {
                                     gridPart.IsMovedAway = true;
@@ -1641,7 +1615,7 @@ namespace SystAnalys_lr1
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
-                        if ((part.x == EpicPart.x + GridPart.width) && (part.y == EpicPart.y))
+                        if ((part.x == EpicPart.x + GridPart.Width) && (part.y == EpicPart.y))
                         {
                             net = true;
                             break;
@@ -1659,7 +1633,7 @@ namespace SystAnalys_lr1
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
-                        if ((part.x == EpicPart.x + GridPart.width) && (part.y == EpicPart.y + GridPart.height))
+                        if ((part.x == EpicPart.x + GridPart.Width) && (part.y == EpicPart.y + GridPart.Height))
                         {
                             net = true;
                             break;
@@ -1677,7 +1651,7 @@ namespace SystAnalys_lr1
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
-                        if ((part.x == EpicPart.x + GridPart.width) && (part.y == EpicPart.y - GridPart.height))
+                        if ((part.x == EpicPart.x + GridPart.Width) && (part.y == EpicPart.y - GridPart.Height))
                         {
                             net = true;
                             break;
@@ -1695,7 +1669,7 @@ namespace SystAnalys_lr1
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
-                        if ((part.x == EpicPart.x) && (part.y == EpicPart.y + GridPart.height))
+                        if ((part.x == EpicPart.x) && (part.y == EpicPart.y + GridPart.Height))
                         {
                             net = true;
                             break;
@@ -1713,7 +1687,7 @@ namespace SystAnalys_lr1
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
-                        if ((part.x == EpicPart.x) && (part.y == EpicPart.y - GridPart.height))
+                        if ((part.x == EpicPart.x) && (part.y == EpicPart.y - GridPart.Height))
                         {
                             net = true;
                             break;
@@ -1730,7 +1704,7 @@ namespace SystAnalys_lr1
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
-                        if ((part.x == EpicPart.x - GridPart.width) && (part.y == EpicPart.y))
+                        if ((part.x == EpicPart.x - GridPart.Width) && (part.y == EpicPart.y))
                         {
                             net = true;
                             break;
@@ -1747,7 +1721,7 @@ namespace SystAnalys_lr1
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
-                        if ((part.x == EpicPart.x - GridPart.width) && (part.y == EpicPart.y - GridPart.height))
+                        if ((part.x == EpicPart.x - GridPart.Width) && (part.y == EpicPart.y - GridPart.Height))
                         {
                             net = true;
                             break;
@@ -1765,7 +1739,7 @@ namespace SystAnalys_lr1
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
-                        if ((part.x == EpicPart.x - GridPart.width) && (part.y == EpicPart.y + GridPart.height))
+                        if ((part.x == EpicPart.x - GridPart.Width) && (part.y == EpicPart.y + GridPart.Height))
                         {
                             net = true;
                             break;
@@ -1784,28 +1758,28 @@ namespace SystAnalys_lr1
             switch (Param)
             {
                 case "right":
-                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x + GridPart.width, StarterEpicPart.y));
+                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x + GridPart.Width, StarterEpicPart.y));
                     break;
                 case "right-down":
-                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x + GridPart.width, StarterEpicPart.y + GridPart.height));
+                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x + GridPart.Width, StarterEpicPart.y + GridPart.Height));
                     break;
                 case "right-up":
-                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x + GridPart.width, StarterEpicPart.y - GridPart.height));
+                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x + GridPart.Width, StarterEpicPart.y - GridPart.Height));
                     break;
                 case "down":
-                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x, StarterEpicPart.y + GridPart.height));
+                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x, StarterEpicPart.y + GridPart.Height));
                     break;
                 case "up":
-                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x, StarterEpicPart.y - GridPart.height));
+                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x, StarterEpicPart.y - GridPart.Height));
                     break;
                 case "left":
-                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x - GridPart.width, StarterEpicPart.y));
+                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x - GridPart.Width, StarterEpicPart.y));
                     break;
                 case "left-down":
-                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x - GridPart.width, StarterEpicPart.y + GridPart.height));
+                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x - GridPart.Width, StarterEpicPart.y + GridPart.Height));
                     break;
                 case "left-up":
-                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x - GridPart.width, StarterEpicPart.y - GridPart.height));
+                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x - GridPart.Width, StarterEpicPart.y - GridPart.Height));
                     break;
                 default:
                     break;
@@ -1819,11 +1793,11 @@ namespace SystAnalys_lr1
                 for (int j = 0; j < EpicenterGrid[i].Count; j++)
                 {
                     if (i == 1)
-                        g.gr.FillRectangle(new SolidBrush(Color.FromArgb(80, 255, 0, 0)), new Rectangle(EpicenterGrid[i][j].x * zoom, EpicenterGrid[i][j].y * zoom, GridPart.width * zoom, GridPart.height * zoom));
+                        g.gr.FillRectangle(new SolidBrush(Color.FromArgb(80, 255, 0, 0)), new Rectangle(EpicenterGrid[i][j].x * zoom, EpicenterGrid[i][j].y * zoom, GridPart.Width * zoom, GridPart.Height * zoom));
                     if (i == 2)
-                        g.gr.FillRectangle(new SolidBrush(Color.FromArgb(80, 255, 128, 0)), new Rectangle(EpicenterGrid[i][j].x * zoom, EpicenterGrid[i][j].y * zoom, GridPart.width * zoom, GridPart.height * zoom));
+                        g.gr.FillRectangle(new SolidBrush(Color.FromArgb(80, 255, 128, 0)), new Rectangle(EpicenterGrid[i][j].x * zoom, EpicenterGrid[i][j].y * zoom, GridPart.Width * zoom, GridPart.Height * zoom));
                     if (i == 3)
-                        g.gr.FillRectangle(new SolidBrush(Color.FromArgb(80, 255, 255, 0)), new Rectangle(EpicenterGrid[i][j].x * zoom, EpicenterGrid[i][j].y * zoom, GridPart.width * zoom, GridPart.height * zoom));
+                        g.gr.FillRectangle(new SolidBrush(Color.FromArgb(80, 255, 255, 0)), new Rectangle(EpicenterGrid[i][j].x * zoom, EpicenterGrid[i][j].y * zoom, GridPart.Width * zoom, GridPart.Height * zoom));
                 }
             }
         }
@@ -1851,7 +1825,7 @@ namespace SystAnalys_lr1
     {
         [XmlIgnore]
         public Timer TimerLight { get; private set; }
-        public Status status { get; set; }
+        public Status Status { get; set; }
         public int x, y;
         public int tick, greenTime, redTime;
         public int yellowTime = 2;
@@ -1907,42 +1881,42 @@ namespace SystAnalys_lr1
             if (tick == 0)
             {
                 bal = greenTime;
-                Main.G.drawGreenVertex(x, y);
-                status = Status.GREEN;
+                Main.G.DrawGreenVertex(x, y);
+                Status = Status.GREEN;
             }
             else if (tick == greenTime)
             {
                 bal = yellowTime;
-                Main.G.drawYellowVertex(x, y);
-                status = Status.YELLOW;
+                Main.G.DrawYellowVertex(x, y);
+                Status = Status.YELLOW;
             }
             else if (tick == greenTime + yellowTime)
             {
                 bal = redTime;
-                Main.G.drawSelectedVertex(x, y);
-                status = Status.RED;
+                Main.G.DrawSelectedVertex(x, y);
+                Status = Status.RED;
             }
             else if (tick == greenTime + yellowTime + redTime)
             {
                 bal = yellowTime;
-                Main.G.drawYellowVertex(x, y);
-                status = Status.YELLOW;
+                Main.G.DrawYellowVertex(x, y);
+                Status = Status.YELLOW;
             }
         }
     }
     public class GridPart
     {
         public int x, y;
-        public int status { get; set; }
-        public bool check { get; set; } = false;
+        public int Status { get; set; }
+        public bool Check { get; set; } = false;
         public bool IsMovedAway { get; set; } = false;
-        public static int width { get; set; } = 1;
-        public static int height { get; set; } = 1;
+        public static int Width { get; set; } = 1;
+        public static int Height { get; set; } = 1;
         public GridPart(int x, int y)
         {
             this.x = x;
             this.y = y;
-            status = 1000;
+            Status = 1000;
         }
         public GridPart()
         {
@@ -1950,15 +1924,15 @@ namespace SystAnalys_lr1
         }
         public void DrawPart(DrawGraph G, int zoom)
         {
-            G.gr.DrawRectangle(new Pen(Color.Black, 1), x * zoom, y * zoom, width * zoom, height * zoom);
+            G.gr.DrawRectangle(new Pen(Color.Black, 1), x * zoom, y * zoom, Width * zoom, Height * zoom);
         }
         public void FillGreen(DrawGraph G, int zoom)
         {
-            G.gr.FillRectangle(new SolidBrush(Color.FromArgb(20, 0, 128, 0)), new Rectangle(x * zoom, y * zoom, width * zoom, height * zoom));
+            G.gr.FillRectangle(new SolidBrush(Color.FromArgb(20, 0, 128, 0)), new Rectangle(x * zoom, y * zoom, Width * zoom, Height * zoom));
         }
         public void DrawPartInRed(DrawGraph G)
         {
-            G.gr.DrawRectangle(new Pen(Color.Red, 1), (x + 5) * Main.zoom, (y + 5) * Main.zoom, (width - 10) * Main.zoom, (height - 10) * Main.zoom);
+            G.gr.DrawRectangle(new Pen(Color.Red, 1), (x + 5) * Main.zoom, (y + 5) * Main.zoom, (Width - 10) * Main.zoom, (Height - 10) * Main.zoom);
         }
     }
 }
