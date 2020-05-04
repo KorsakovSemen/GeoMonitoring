@@ -237,22 +237,7 @@ namespace SystAnalys_lr1
                     drawRouteVertex(V[i].X, V[i].Y);
                 else
                     drawVertex(V[i].X, V[i].Y);
-            }
-
-            foreach (var stopPoints in Main.allstopPoints)
-            {
-                drawStopVertex(stopPoints.X, stopPoints.Y);
-            }
-            if (Main.selectedRoute != null)
-            {
-                if (Main.stopPoints.ContainsKey(Main.selectedRoute))
-                {
-                    foreach (var stopPoints in Main.stopPoints[Main.selectedRoute])
-                    {
-                        drawStopRouteVertex(stopPoints.X, stopPoints.Y);
-                    }
-                }
-            }
+            }         
 
             foreach (var tl in Main.traficLights)
             {
@@ -272,6 +257,23 @@ namespace SystAnalys_lr1
 
         }
 
+        public void drawStopPoints()
+        {
+            foreach (var stopPoints in Main.allstopPoints)
+            {
+                drawStopVertex(stopPoints.X, stopPoints.Y);
+            }
+            if (Main.selectedRoute != null)
+            {
+                if (Main.stopPoints.ContainsKey(Main.selectedRoute))
+                {
+                    foreach (var stopPoints in Main.stopPoints[Main.selectedRoute])
+                    {
+                        drawStopRouteVertex(stopPoints.X, stopPoints.Y);
+                    }
+                }
+            }
+        }
 
     }
 
@@ -777,7 +779,7 @@ namespace SystAnalys_lr1
                 foreach (var Sector in EpicList.GetEpicenterGrid())
                 {
                     foreach (var Square in Sector.Value)
-                    {                        
+                    {                    
                        
                         
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
@@ -788,16 +790,14 @@ namespace SystAnalys_lr1
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
-                        //
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.height == Square.y)))
                         {
-                             CheckEpic(Sector, Square, EpicList);
+                            CheckEpic(Sector, Square, EpicList);
                         }
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.height == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
-                        //
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.height == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
@@ -806,7 +806,6 @@ namespace SystAnalys_lr1
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
-                        //
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.height == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
@@ -815,7 +814,6 @@ namespace SystAnalys_lr1
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
-                        ////////
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
                         {
                             return CheckEpic(Sector, Square, EpicList);

@@ -610,7 +610,7 @@
     <value>9</value>
   </data>
   <data name="stopBuses.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 50</value>
+    <value>145, 49</value>
   </data>
   <data name="stopBuses.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 23</value>
@@ -634,7 +634,7 @@
     <value>3</value>
   </data>
   <data name="launchBuses.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 21</value>
+    <value>145, 20</value>
   </data>
   <data name="launchBuses.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 23</value>
@@ -930,105 +930,6 @@
   <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>470, 17</value>
   </metadata>
-  <data name="&gt;&gt;metroLabel8.Name" xml:space="preserve">
-    <value>metroLabel8</value>
-  </data>
-  <data name="&gt;&gt;metroLabel8.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroLabel8.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;metroLabel8.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;metroLabel6.Name" xml:space="preserve">
-    <value>metroLabel6</value>
-  </data>
-  <data name="&gt;&gt;metroLabel6.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroLabel6.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;metroLabel6.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;metroLabel5.Name" xml:space="preserve">
-    <value>metroLabel5</value>
-  </data>
-  <data name="&gt;&gt;metroLabel5.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroLabel5.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;metroLabel5.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;panel8.Name" xml:space="preserve">
-    <value>panel8</value>
-  </data>
-  <data name="&gt;&gt;panel8.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;panel8.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;panel8.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;panel7.Name" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;panel7.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;panel7.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;panel7.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;metroTrackBar1.Name" xml:space="preserve">
-    <value>metroTrackBar1</value>
-  </data>
-  <data name="&gt;&gt;metroTrackBar1.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroTrackBar, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroTrackBar1.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;metroTrackBar1.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 87</value>
-  </data>
-  <data name="panel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>303, 654</value>
-  </data>
-  <data name="panel4.TabIndex" type="System.Int32, mscorlib">
-    <value>76</value>
-  </data>
-  <data name="&gt;&gt;panel4.Name" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;panel4.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;panel4.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
   <data name="metroLabel8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1158,6 +1059,321 @@
   <data name="&gt;&gt;panel8.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="metroLabel4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 68</value>
+  </data>
+  <data name="metroLabel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 19</value>
+  </data>
+  <data name="metroLabel4.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="metroLabel4.Text" xml:space="preserve">
+    <value>Настройки автобуса</value>
+  </data>
+  <data name="&gt;&gt;metroLabel4.Name" xml:space="preserve">
+    <value>metroLabel4</value>
+  </data>
+  <data name="&gt;&gt;metroLabel4.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel4.Parent" xml:space="preserve">
+    <value>panel7</value>
+  </data>
+  <data name="&gt;&gt;metroLabel4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="metroLabel3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 10</value>
+  </data>
+  <data name="metroLabel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 19</value>
+  </data>
+  <data name="metroLabel3.TabIndex" type="System.Int32, mscorlib">
+    <value>101</value>
+  </data>
+  <data name="metroLabel3.Text" xml:space="preserve">
+    <value>Маршруты</value>
+  </data>
+  <data name="&gt;&gt;metroLabel3.Name" xml:space="preserve">
+    <value>metroLabel3</value>
+  </data>
+  <data name="&gt;&gt;metroLabel3.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel3.Parent" xml:space="preserve">
+    <value>panel7</value>
+  </data>
+  <data name="&gt;&gt;metroLabel3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="backsideCheck.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="backsideCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 48</value>
+  </data>
+  <data name="backsideCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 15</value>
+  </data>
+  <data name="backsideCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="backsideCheck.Text" xml:space="preserve">
+    <value>В обратную сторону</value>
+  </data>
+  <data name="&gt;&gt;backsideCheck.Name" xml:space="preserve">
+    <value>backsideCheck</value>
+  </data>
+  <data name="&gt;&gt;backsideCheck.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;backsideCheck.Parent" xml:space="preserve">
+    <value>allBusSettings</value>
+  </data>
+  <data name="&gt;&gt;backsideCheck.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="trackerCheck.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="trackerCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 28</value>
+  </data>
+  <data name="trackerCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 15</value>
+  </data>
+  <data name="trackerCheck.TabIndex" type="System.Int32, mscorlib">
+    <value>101</value>
+  </data>
+  <data name="trackerCheck.Text" xml:space="preserve">
+    <value>Трекер</value>
+  </data>
+  <data name="&gt;&gt;trackerCheck.Name" xml:space="preserve">
+    <value>trackerCheck</value>
+  </data>
+  <data name="&gt;&gt;trackerCheck.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;trackerCheck.Parent" xml:space="preserve">
+    <value>allBusSettings</value>
+  </data>
+  <data name="&gt;&gt;trackerCheck.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="metroLabel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 79</value>
+  </data>
+  <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 19</value>
+  </data>
+  <data name="metroLabel2.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="metroLabel2.Text" xml:space="preserve">
+    <value>Размер автобуса:</value>
+  </data>
+  <data name="metroLabel2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;metroLabel2.Name" xml:space="preserve">
+    <value>metroLabel2</value>
+  </data>
+  <data name="&gt;&gt;metroLabel2.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel2.Parent" xml:space="preserve">
+    <value>allBusSettings</value>
+  </data>
+  <data name="&gt;&gt;metroLabel2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="resource.Image4" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="resource.ImeMode4" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="resource.Location4" type="System.Drawing.Point, System.Drawing">
+    <value>101, 1</value>
+  </data>
+  <data name="resource.Margin4" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="resource.Size4" type="System.Drawing.Size, System.Drawing">
+    <value>21, 21</value>
+  </data>
+  <data name="resource.TabIndex4" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="resource.Visible4" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="busSize.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="busSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>146, 79</value>
+  </data>
+  <data name="busSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 23</value>
+  </data>
+  <data name="busSize.TabIndex" type="System.Int32, mscorlib">
+    <value>98</value>
+  </data>
+  <data name="busSize.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;busSize.Name" xml:space="preserve">
+    <value>busSize</value>
+  </data>
+  <data name="&gt;&gt;busSize.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;busSize.Parent" xml:space="preserve">
+    <value>allBusSettings</value>
+  </data>
+  <data name="&gt;&gt;busSize.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="allBusSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 89</value>
+  </data>
+  <data name="allBusSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>279, 113</value>
+  </data>
+  <data name="allBusSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="&gt;&gt;allBusSettings.Name" xml:space="preserve">
+    <value>allBusSettings</value>
+  </data>
+  <data name="&gt;&gt;allBusSettings.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;allBusSettings.Parent" xml:space="preserve">
+    <value>panel7</value>
+  </data>
+  <data name="&gt;&gt;allBusSettings.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="changeRoute.ItemHeight" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="changeRoute.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 35</value>
+  </data>
+  <data name="changeRoute.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="changeRoute.Size" type="System.Drawing.Size, System.Drawing">
+    <value>279, 29</value>
+  </data>
+  <data name="changeRoute.TabIndex" type="System.Int32, mscorlib">
+    <value>77</value>
+  </data>
+  <data name="&gt;&gt;changeRoute.Name" xml:space="preserve">
+    <value>changeRoute</value>
+  </data>
+  <data name="&gt;&gt;changeRoute.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;changeRoute.Parent" xml:space="preserve">
+    <value>panel7</value>
+  </data>
+  <data name="&gt;&gt;changeRoute.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="panel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="panel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>303, 210</value>
+  </data>
+  <data name="panel7.TabIndex" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <data name="&gt;&gt;panel7.Name" xml:space="preserve">
+    <value>panel7</value>
+  </data>
+  <data name="&gt;&gt;panel7.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;panel7.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;panel7.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="metroTrackBar1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 635</value>
+  </data>
+  <data name="metroTrackBar1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="metroTrackBar1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 18</value>
+  </data>
+  <data name="metroTrackBar1.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="metroTrackBar1.Text" xml:space="preserve">
+    <value>metroTrackBar1</value>
+  </data>
+  <data name="&gt;&gt;metroTrackBar1.Name" xml:space="preserve">
+    <value>metroTrackBar1</value>
+  </data>
+  <data name="&gt;&gt;metroTrackBar1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTrackBar, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroTrackBar1.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;metroTrackBar1.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 87</value>
+  </data>
+  <data name="panel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>303, 654</value>
+  </data>
+  <data name="panel4.TabIndex" type="System.Int32, mscorlib">
+    <value>76</value>
+  </data>
+  <data name="&gt;&gt;panel4.Name" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;panel4.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;panel4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <data name="metroLabel7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1217,378 +1433,6 @@
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="&gt;&gt;metroLabel4.Name" xml:space="preserve">
-    <value>metroLabel4</value>
-  </data>
-  <data name="&gt;&gt;metroLabel4.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroLabel4.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;metroLabel4.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;metroLabel3.Name" xml:space="preserve">
-    <value>metroLabel3</value>
-  </data>
-  <data name="&gt;&gt;metroLabel3.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroLabel3.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;metroLabel3.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;allBusSettings.Name" xml:space="preserve">
-    <value>allBusSettings</value>
-  </data>
-  <data name="&gt;&gt;allBusSettings.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;allBusSettings.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;allBusSettings.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;changeRoute.Name" xml:space="preserve">
-    <value>changeRoute</value>
-  </data>
-  <data name="&gt;&gt;changeRoute.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;changeRoute.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;changeRoute.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="panel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panel7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="panel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>303, 210</value>
-  </data>
-  <data name="panel7.TabIndex" type="System.Int32, mscorlib">
-    <value>67</value>
-  </data>
-  <data name="&gt;&gt;panel7.Name" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;panel7.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;panel7.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;panel7.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="metroLabel4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="metroLabel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 68</value>
-  </data>
-  <data name="metroLabel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 19</value>
-  </data>
-  <data name="metroLabel4.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="metroLabel4.Text" xml:space="preserve">
-    <value>Настройки автобуса</value>
-  </data>
-  <data name="&gt;&gt;metroLabel4.Name" xml:space="preserve">
-    <value>metroLabel4</value>
-  </data>
-  <data name="&gt;&gt;metroLabel4.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroLabel4.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;metroLabel4.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="metroLabel3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="metroLabel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 10</value>
-  </data>
-  <data name="metroLabel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 19</value>
-  </data>
-  <data name="metroLabel3.TabIndex" type="System.Int32, mscorlib">
-    <value>101</value>
-  </data>
-  <data name="metroLabel3.Text" xml:space="preserve">
-    <value>Маршруты</value>
-  </data>
-  <data name="&gt;&gt;metroLabel3.Name" xml:space="preserve">
-    <value>metroLabel3</value>
-  </data>
-  <data name="&gt;&gt;metroLabel3.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroLabel3.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;metroLabel3.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;backsideCheck.Name" xml:space="preserve">
-    <value>backsideCheck</value>
-  </data>
-  <data name="&gt;&gt;backsideCheck.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;backsideCheck.Parent" xml:space="preserve">
-    <value>allBusSettings</value>
-  </data>
-  <data name="&gt;&gt;backsideCheck.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;trackerCheck.Name" xml:space="preserve">
-    <value>trackerCheck</value>
-  </data>
-  <data name="&gt;&gt;trackerCheck.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;trackerCheck.Parent" xml:space="preserve">
-    <value>allBusSettings</value>
-  </data>
-  <data name="&gt;&gt;trackerCheck.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;metroLabel2.Name" xml:space="preserve">
-    <value>metroLabel2</value>
-  </data>
-  <data name="&gt;&gt;metroLabel2.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroLabel2.Parent" xml:space="preserve">
-    <value>allBusSettings</value>
-  </data>
-  <data name="&gt;&gt;metroLabel2.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;busSize.Name" xml:space="preserve">
-    <value>busSize</value>
-  </data>
-  <data name="&gt;&gt;busSize.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;busSize.Parent" xml:space="preserve">
-    <value>allBusSettings</value>
-  </data>
-  <data name="&gt;&gt;busSize.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="allBusSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 89</value>
-  </data>
-  <data name="allBusSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 113</value>
-  </data>
-  <data name="allBusSettings.TabIndex" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="&gt;&gt;allBusSettings.Name" xml:space="preserve">
-    <value>allBusSettings</value>
-  </data>
-  <data name="&gt;&gt;allBusSettings.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;allBusSettings.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;allBusSettings.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="backsideCheck.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="backsideCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 31</value>
-  </data>
-  <data name="backsideCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 15</value>
-  </data>
-  <data name="backsideCheck.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="backsideCheck.Text" xml:space="preserve">
-    <value>В обратную сторону</value>
-  </data>
-  <data name="&gt;&gt;backsideCheck.Name" xml:space="preserve">
-    <value>backsideCheck</value>
-  </data>
-  <data name="&gt;&gt;backsideCheck.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;backsideCheck.Parent" xml:space="preserve">
-    <value>allBusSettings</value>
-  </data>
-  <data name="&gt;&gt;backsideCheck.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="trackerCheck.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="trackerCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 11</value>
-  </data>
-  <data name="trackerCheck.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 15</value>
-  </data>
-  <data name="trackerCheck.TabIndex" type="System.Int32, mscorlib">
-    <value>101</value>
-  </data>
-  <data name="trackerCheck.Text" xml:space="preserve">
-    <value>Трекер</value>
-  </data>
-  <data name="&gt;&gt;trackerCheck.Name" xml:space="preserve">
-    <value>trackerCheck</value>
-  </data>
-  <data name="&gt;&gt;trackerCheck.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;trackerCheck.Parent" xml:space="preserve">
-    <value>allBusSettings</value>
-  </data>
-  <data name="&gt;&gt;trackerCheck.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="metroLabel2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 52</value>
-  </data>
-  <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 19</value>
-  </data>
-  <data name="metroLabel2.TabIndex" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="metroLabel2.Text" xml:space="preserve">
-    <value>Размер автобуса:</value>
-  </data>
-  <data name="&gt;&gt;metroLabel2.Name" xml:space="preserve">
-    <value>metroLabel2</value>
-  </data>
-  <data name="&gt;&gt;metroLabel2.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroLabel2.Parent" xml:space="preserve">
-    <value>allBusSettings</value>
-  </data>
-  <data name="&gt;&gt;metroLabel2.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="resource.Image4" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="resource.ImeMode4" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="resource.Location4" type="System.Drawing.Point, System.Drawing">
-    <value>101, 1</value>
-  </data>
-  <data name="resource.Margin4" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
-  </data>
-  <data name="resource.Size4" type="System.Drawing.Size, System.Drawing">
-    <value>21, 21</value>
-  </data>
-  <data name="resource.TabIndex4" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="resource.Visible4" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="busSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 78</value>
-  </data>
-  <data name="busSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 23</value>
-  </data>
-  <data name="busSize.TabIndex" type="System.Int32, mscorlib">
-    <value>98</value>
-  </data>
-  <data name="&gt;&gt;busSize.Name" xml:space="preserve">
-    <value>busSize</value>
-  </data>
-  <data name="&gt;&gt;busSize.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroTextBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;busSize.Parent" xml:space="preserve">
-    <value>allBusSettings</value>
-  </data>
-  <data name="&gt;&gt;busSize.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="changeRoute.ItemHeight" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="changeRoute.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 35</value>
-  </data>
-  <data name="changeRoute.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="changeRoute.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 29</value>
-  </data>
-  <data name="changeRoute.TabIndex" type="System.Int32, mscorlib">
-    <value>77</value>
-  </data>
-  <data name="&gt;&gt;changeRoute.Name" xml:space="preserve">
-    <value>changeRoute</value>
-  </data>
-  <data name="&gt;&gt;changeRoute.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;changeRoute.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;changeRoute.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="metroTrackBar1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>29, 635</value>
-  </data>
-  <data name="metroTrackBar1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
-  </data>
-  <data name="metroTrackBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 18</value>
-  </data>
-  <data name="metroTrackBar1.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="metroTrackBar1.Text" xml:space="preserve">
-    <value>metroTrackBar1</value>
-  </data>
-  <data name="&gt;&gt;metroTrackBar1.Name" xml:space="preserve">
-    <value>metroTrackBar1</value>
-  </data>
-  <data name="&gt;&gt;metroTrackBar1.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroTrackBar, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroTrackBar1.Parent" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;metroTrackBar1.ZOrder" xml:space="preserve">
-    <value>8</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1992,6 +1836,87 @@
   <data name="clearButton.Text" xml:space="preserve">
     <value>Очистить</value>
   </data>
+  <data name="deleteBus.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="deleteBus.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="deleteBus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="deleteBus.Text" xml:space="preserve">
+    <value>toolStripButton1</value>
+  </data>
+  <data name="deleteBus.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="deleteRoute.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="deleteRoute.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="deleteRoute.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="deleteRoute.Text" xml:space="preserve">
+    <value>toolStripButton2</value>
+  </data>
+  <data name="deleteRoute.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="delAllBusesOnRoute.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="delAllBusesOnRoute.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="delAllBusesOnRoute.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 24</value>
+  </data>
+  <data name="delAllBusesOnRoute.Text" xml:space="preserve">
+    <value>toolStripButton3</value>
+  </data>
+  <data name="delAllBusesOnRoute.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <metadata name="msmMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>279, 20</value>
   </metadata>
@@ -2346,18 +2271,6 @@
   <data name="&gt;&gt;clearButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;msmMain.Name" xml:space="preserve">
-    <value>msmMain</value>
-  </data>
-  <data name="&gt;&gt;msmMain.Type" xml:space="preserve">
-    <value>MetroFramework.Components.MetroStyleManager, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;timer1.Name" xml:space="preserve">
-    <value>timer1</value>
-  </data>
-  <data name="&gt;&gt;timer1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;deleteBus.Name" xml:space="preserve">
     <value>deleteBus</value>
   </data>
@@ -2376,6 +2289,18 @@
   <data name="&gt;&gt;delAllBusesOnRoute.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;msmMain.Name" xml:space="preserve">
+    <value>msmMain</value>
+  </data>
+  <data name="&gt;&gt;msmMain.Type" xml:space="preserve">
+    <value>MetroFramework.Components.MetroStyleManager, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;timer1.Name" xml:space="preserve">
+    <value>timer1</value>
+  </data>
+  <data name="&gt;&gt;timer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Main</value>
   </data>
@@ -2385,85 +2310,4 @@
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>731, 19</value>
   </metadata>
-  <data name="deleteBus.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="deleteBus.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="deleteBus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="deleteBus.Text" xml:space="preserve">
-    <value>toolStripButton1</value>
-  </data>
-  <data name="deleteBus.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="deleteRoute.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="deleteRoute.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="deleteRoute.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="deleteRoute.Text" xml:space="preserve">
-    <value>toolStripButton2</value>
-  </data>
-  <data name="deleteRoute.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="delAllBusesOnRoute.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="delAllBusesOnRoute.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="delAllBusesOnRoute.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="delAllBusesOnRoute.Text" xml:space="preserve">
-    <value>toolStripButton3</value>
-  </data>
-  <data name="delAllBusesOnRoute.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
 </root>

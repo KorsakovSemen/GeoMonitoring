@@ -747,6 +747,8 @@ namespace SystAnalys_lr1
                 selectRoute.Enabled = false;
                 delAllBusesOnRoute.Enabled = false;
                 G.clearSheet();
+                G.drawStopPoints();
+                sheet.Image = G.GetBitmap();
                 label12.Visible = false;
                 //DrawGrid();
                 selected = new List<int>();
