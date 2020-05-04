@@ -66,7 +66,7 @@ namespace SystAnalys_lr1
         
         public static Grid g;
         //Лист всех эпицентров
-        List<Epicenter> Epics;
+        public static List<Epicenter> Epics;
         //Лист, в котором хранится сетка
         static public List<GridPart> TheGrid;
         public static DrawGraph G;
@@ -91,7 +91,7 @@ namespace SystAnalys_lr1
         //потом
         List<Dictionary<string, Dictionary<string, int>>> AllRouteGridFilling;
         //уровень загрязнения в координатах
-        Dictionary<string, List<GridPart>> PollutionInRoutes;
+    
 
         // лист номеров квадратов, в которм есть светофор
         static public List<int> TraficLightsInGrids;
@@ -105,7 +105,7 @@ namespace SystAnalys_lr1
         public static List<TraficLight> traficLights;
         bool lang = false;
         //все координаты движения автобусов
-        private SerializableDictionary<string, List<Point>> AllCoordinates;
+        public static SerializableDictionary<string, List<Point>> AllCoordinates;
         //все квадраты сетки, которые есть в каждом из маршрутов 
         public static SerializableDictionary<string, List<int>> AllGridsInRoutes { get; set; }
         Image saveImage;
@@ -113,7 +113,7 @@ namespace SystAnalys_lr1
         static public List<SerializableDictionary<int, Vertex>> routePoints;
         static public SerializableDictionary<int, List<Edge>> edgePoints;
         //вторая форма
-        DisplayEpicenters Ep;
+        static public DisplayEpicenters Ep;
         int countWithoutSensors;
         int wsheet;
         int hsheet;
@@ -121,8 +121,8 @@ namespace SystAnalys_lr1
         static public int zoom, scrollX, scrollY;
         Report r;
 
-        int T;
-        List<int?> ResultFromModeling = new List<int?>();
+
+     
 
         int rCount;
         int iCh;
@@ -357,7 +357,7 @@ namespace SystAnalys_lr1
         //функция возвращает массив загрязнений по маршрутам (для 2 формы)
         public Dictionary<string, List<GridPart>> GetPollutionInRoutes()
         {
-            return PollutionInRoutes;
+            return Optimization.PollutionInRoutes;
         }
         //функция возвращает эпицентры (для 2 формы)
         public List<Epicenter> GetEpicenters()
@@ -380,235 +380,9 @@ namespace SystAnalys_lr1
         delegate void DelBool(bool text);
         //функция, которая моделирует движение
         int small = 10000;
-        private void ExpandEpics(List<Epicenter> Epics)
-        {
-            Epics.First().ExpandEpic();
-        }
-        private void MoveEpics(List<Epicenter> Epics)
-        {
-            if (MovingEpicParamet.Count > 0)
-            {
-                Epics.First().EpicMoving(MovingEpicParamet);
-            }
-        }
-        private void Modeling(string SavePath, int Cicle, int ModelNum)
-        {
-            List<Epicenter> epList = new List<Epicenter>();
-            int i = 0;
-            ConcurrentQueue<Bus> cqBus = new ConcurrentQueue<Bus>();
-            buses.ForEach((b) => cqBus.Enqueue((Bus)b.Clone()));
-            foreach (var EpicList in Epics)
-            {
+  
 
-                epList.Add(new Epicenter(TheGrid));
-                foreach (var Sector in EpicList.GetEpicenterGrid())
-                {
-                    epList[i].EpicenterGrid.Add(Sector.Key, new List<GridPart>());
-                    epList[i].StartPositon = EpicList.StartPositon;
-                    epList[i].NewExpandCount = new List<int>();
-                    foreach (var Square in Sector.Value)
-                    {
-                        epList[i].EpicenterGrid[Sector.Key].Add(new GridPart(Square.x, Square.y));
-                    }
-                }
-                i++;
-            }
-            CreatePollutionInRoutes();
-            int small = 10000;
-            int old = small;
-            int FoundTime = small + 1;
-
-            int ExpandTimer = 0;
-            int MovingTimer = 0;
-            i = 1;
-            int PhaseSizeSelect()
-            {
-                if (extendedSavePictures == false)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return EpicPhaseSavingParam;
-                }
-
-            }
-            foreach (var bus in cqBus)
-            {
-                bus.AllTickCount = 0;
-
-            }
-            bool EpicFounded = false;
-            for (int j = PhaseSizeSelect(); j > 0; j--)
-            {
-                ////
-                if (j == PhaseSizeSelect())
-                {
-                    if ((SavePictures == true) && (extendedSavePictures == true))
-                    {
-                        Directory.CreateDirectory(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + 0.ToString());
-                        lock (Ep.Esheet)
-                        {
-                            Ep.EDrawEpics(epList);
-                        }
-                        lock (Ep.Esheet)
-                        {
-                            using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
-                            {
-                                img.Save(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + 0.ToString() + "/" + 0.ToString() + "_nat" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                            }
-                        }
-                    }
-                }
-                ////
-
-                foreach (var bus in cqBus)
-                {
-                    bus.Epicenters = epList;
-
-                    bus.TickCount_ = 0;
-                    if (bus.skip > 0)
-                        bus.skip -= 1;
-                    if (bus.Tracker == true)
-                    {
-                        while (bus.TickCount_ < (T / PhaseSizeSelect()))
-                        {
-                            bus.MoveWithoutGraphicsByGrids();
-                            if (EpicSettings.TurnMovingSet == true)
-                            {
-                                if (MovingTimer >= ((EpicFreqMovingParam / 20) * cqBus.Count))
-                                {
-                                    lock (epList)
-                                    {
-                                        MoveEpics(epList);
-                                    }
-                                    MovingTimer = 0;
-                                }
-                            }
-                            if (EpicSettings.TurnSpreadingSet == true)
-                            {
-                                if (ExpandTimer >= ((EpicFreqSpreadingParam / 20) * cqBus.Count))
-                                {
-                                    lock (epList)
-                                    {
-                                        ExpandEpics(epList);
-                                    }
-                                    ExpandTimer = 0;
-                                }
-                            }
-                            if (TraficLightsInGrids.Contains(AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt])) //ошибка с выходом за пределы тушто нужно "вот эту" разкоментить
-                            {
-                                if (bus.skip == 0)
-                                {
-                                    foreach (var sp in traficLights)
-                                    {
-                                        if (sp.Status != Status.RED)
-                                        {
-                                            bus.skip = sp.greenTime;
-                                            break;
-                                        }
-                                        if (sp.Status == Status.RED)
-                                        {
-                                            bus.TickCount_ = bus.TickCount_ + sp.bal;
-                                            bus.AllTickCount = bus.AllTickCount + sp.bal;
-                                            bus.skip = sp.greenTime;
-                                            break;
-
-                                        }
-                                    }
-                                }
-                            }
-
-                            if ((stopPointsInGrids.ContainsKey(bus.GetRoute())) && (stopPointsInGrids[bus.GetRoute()].Contains(AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt])))
-                            {
-                                int timeboost = rnd.Next(0, 3);
-                                bus.TickCount_ = bus.TickCount_ + timeboost;
-                                bus.AllTickCount = bus.AllTickCount + timeboost;
-                            }
-
-                            PollutionInRoutes[bus.GetRoute()][AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt]].Status = bus.DetectEpicenterByGrid(); // ошибка
-
-                            foreach (var Epic in bus.Epicenters)
-                            {
-                                if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 2)
-                                {
-                                    if (EpicFounded == false)
-                                    {
-                                        EpicFounded = true;
-                                        if (EpicFounded == true)
-                                        {
-                                            //  FoundTime = (T - (bus.TickCount_ * j));
-                                            FoundTime = bus.AllTickCount;
-                                            if (small > FoundTime)
-                                            {
-                                                small = FoundTime;
-                                            }
-                                        }
-                                    }
-                                    break;
-                                }
-                            }
-                            //  bus.TickCount_--;
-                            bus.TickCount_++;
-                            bus.AllTickCount++;
-                            if (EpicSettings.TurnSpreadingSet == true)
-                            {
-                                ExpandTimer++;
-                            }
-                            if (EpicSettings.TurnMovingSet == true)
-                            {
-                                MovingTimer++;
-                            }
-                        }
-                    }
-                }
-
-                if ((SavePictures == true) && (extendedSavePictures == true))
-                {
-                    Directory.CreateDirectory(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + i.ToString());
-                    lock (Ep.Esheet)
-                    {
-                        Ep.EDrawEpics(epList);
-                    }
-                    lock (Ep.Esheet)
-                    {
-                        using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
-                        {
-                            img.Save(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + i.ToString() + "/" + i.ToString() + "_nat" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                        }
-                    }
-
-                    lock (Ep.Esheet)
-                    {
-                        Ep.RecReateFunction();
-                    }
-                    lock (Ep.Esheet)
-                    {
-                        using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
-                        {
-                            img.Save(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + i.ToString() + "/" + i.ToString() + "_re" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                        }
-                    }
-                    i++;
-                }
-
-            }
-            if (small == old)
-                ResultFromModeling.Add(null);
-            else
-            {
-                if (small == 0)
-                {
-                    small += 1;
-                    ResultFromModeling.Add(small * 20); // small в мин или секах
-                }
-                else
-                {
-                    ResultFromModeling.Add(small * 20);
-                }
-            }
-
-        }
+       
         delegate void DelBmp(Bitmap bmp);
         //функция создает 1 случайный эпицентр в пределах сетки
         public void CreateOneRandomEpicenter(int EpicSizeParam, int? StartPos)
@@ -621,27 +395,16 @@ namespace SystAnalys_lr1
             Epics.First().CreateRandomEpicenter(EpicSizeParam, StartPos);
         }
         //функция создает массив загрязнений в маршруте
-        private void CreatePollutionInRoutes()
-        {
-            PollutionInRoutes = new Dictionary<string, List<GridPart>>();
-            for (int i = 0; i < AllCoordinates.Count; i++)
-            {
-                PollutionInRoutes.Add(AllCoordinates.ElementAt(i).Key, new List<GridPart>());
-                foreach (var Grid in TheGrid)
-                {
-                    PollutionInRoutes[PollutionInRoutes.ElementAt(i).Key].Add(new GridPart(Grid.x, Grid.y));
-                }
-            }
-        }
+  
         private void CreateGridRoutes()
         {
-            PollutionInRoutes = new Dictionary<string, List<GridPart>>();
+            Optimization.PollutionInRoutes = new Dictionary<string, List<GridPart>>();
             for (int i = 0; i < AllCoordinates.Count; i++)
             {
-                PollutionInRoutes.Add(AllCoordinates.ElementAt(i).Key, new List<GridPart>());
+                Optimization.PollutionInRoutes.Add(AllCoordinates.ElementAt(i).Key, new List<GridPart>());
                 foreach (var Grid in TheGrid)
                 {
-                    PollutionInRoutes[PollutionInRoutes.ElementAt(i).Key].Add(new GridPart(Grid.x, Grid.y));
+                    Optimization.PollutionInRoutes[Optimization.PollutionInRoutes.ElementAt(i).Key].Add(new GridPart(Grid.x, Grid.y));
                 }
             }
         }
@@ -1196,7 +959,7 @@ namespace SystAnalys_lr1
                 globalMap = sheet.Image;
                 G.SetBitmap();
                 CreateGrid();
-                CreatePollutionInRoutes();
+                Optimization.CreatePollutionInRoutes();
                 addInComboBox();
                 Ep = new DisplayEpicenters(this);
                 StyleManager.Clone(Ep);
@@ -1604,9 +1367,9 @@ namespace SystAnalys_lr1
             if (speed.Text != "" && int.TryParse(speed.Text, out int sp))
             {
                 if (int.Parse(speed.Text) / 20 == 0)
-                    T = 1;
+                    Optimization.T = 1;
                 else
-                    T = int.Parse(speed.Text) / 20;
+                    Optimization.T = int.Parse(speed.Text) / 20;
             }
             int old = small;
             var style = msmMain.Style;
@@ -1649,7 +1412,7 @@ namespace SystAnalys_lr1
                             Directory.CreateDirectory(pathOpt + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString());
                         }
                         CreateOneRandomEpicenter(EpicSizeParam, null);
-                        Modeling(pathOpt, cicl, i);
+                        Optimization.Modeling(pathOpt, cicl, i);
                         if ((SavePictures == true) && (!extendedSavePictures == true))
                         {
 
@@ -1683,9 +1446,9 @@ namespace SystAnalys_lr1
                         small = 10000;
                     }
 
-                    int total = ResultFromModeling.Sum(x => Convert.ToInt32(x));
+                    int total = Optimization.ResultFromModeling.Sum(x => Convert.ToInt32(x));
                     int count = 0;
-                    foreach (var m in ResultFromModeling)
+                    foreach (var m in Optimization.ResultFromModeling)
                     {
                         if (m != null)
                         {
@@ -1693,7 +1456,7 @@ namespace SystAnalys_lr1
                         }
                     }
 
-                    if (total < 0 || count < ResultFromModeling.Count / 2)
+                    if (total < 0 || count < Optimization.ResultFromModeling.Count / 2)
                     {
                         //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
                         if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
@@ -1720,7 +1483,7 @@ namespace SystAnalys_lr1
                         fileV.WriteLine(MainStrings.countBuses + ": " + (withoutSensorsBuses.Last()).ToString());
                         fileV.WriteLine(MainStrings.numIter + ": " + optText.Text);
                         fileV.WriteLine(MainStrings.distance + ": " + speed.Text + " " + MainStrings.sec + " (" + (int.Parse(speed.Text) / 60 == 0 ? ">1" + MainStrings.minute : int.Parse(speed.Text) / 60 + " " + MainStrings.minute) + ")");
-                        fileV.WriteLine(MainStrings.found + ": " + (from num in ResultFromModeling where (num != null) select num).Count());
+                        fileV.WriteLine(MainStrings.found + ": " + (from num in Optimization.ResultFromModeling where (num != null) select num).Count());
                         if (count == 0)
                         {
                             fileV.WriteLine(MainStrings.none);
@@ -1728,13 +1491,13 @@ namespace SystAnalys_lr1
                         else
                         {
                             fileV.WriteLine(MainStrings.average + " " + (total / count / 60 == 0 ? (total / count + " " + MainStrings.sec).ToString() : (total / count / 60 + " " + MainStrings.minute + " " + total / count % 60 + " " + MainStrings.sec).ToString())
-                                + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + (((ResultFromModeling.Count - count) * 100.00 / int.Parse(optText.Text))).ToString());
+                                + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + (((Optimization.ResultFromModeling.Count - count) * 100.00 / int.Parse(optText.Text))).ToString());
                         }
                         fileV.WriteLine(MainStrings.cycle + " " + cicl.ToString());
-                        for (int i = 0; i < ResultFromModeling.Count; i++)
-                            if (ResultFromModeling[i] != null)
+                        for (int i = 0; i < Optimization.ResultFromModeling.Count; i++)
+                            if (Optimization.ResultFromModeling[i] != null)
                             {
-                                fileV.WriteLine(i.ToString() + " : " + (ResultFromModeling[i] / 60 == 0 ? (ResultFromModeling[i] + " " + MainStrings.sec).ToString() : (ResultFromModeling[i] / 60 + " " + MainStrings.minute + " " + ResultFromModeling[i] % 60 + " " + MainStrings.sec).ToString()));
+                                fileV.WriteLine(i.ToString() + " : " + (Optimization.ResultFromModeling[i] / 60 == 0 ? (Optimization.ResultFromModeling[i] + " " + MainStrings.sec).ToString() : (Optimization.ResultFromModeling[i] / 60 + " " + MainStrings.minute + " " + Optimization.ResultFromModeling[i] % 60 + " " + MainStrings.sec).ToString()));
                             }
                             else
                             {
@@ -1743,7 +1506,7 @@ namespace SystAnalys_lr1
 
                         Console.WriteLine("Объект сериализован");
                     }
-                    ResultFromModeling = new List<int?>();
+                    Optimization.ResultFromModeling = new List<int?>();
                 }
 
             });
@@ -2026,7 +1789,7 @@ namespace SystAnalys_lr1
                     globalMap = sheet.Image;
                     G.SetBitmap();
                     CreateGrid();
-                    CreatePollutionInRoutes();
+                    Optimization.CreatePollutionInRoutes();
                     addInComboBox();
                     DrawGrid();
                     Matrix();
@@ -2743,7 +2506,7 @@ namespace SystAnalys_lr1
                 loadingForm.loading.Value = 90;
                 openEpicFormToolStripMenuItem.Enabled = true;
                 CreateGrid();
-                CreatePollutionInRoutes();
+                Optimization.CreatePollutionInRoutes();
                 CreateOneRandomEpicenter(EpicSizeParam, null);
 
                 addInComboBox();
@@ -2803,7 +2566,7 @@ namespace SystAnalys_lr1
         {
             await Task.Run(() => CheckV(e, check));
         }
-
+        
         private bool CheckV(MouseEventArgs e, bool check)
         {
             for (int i = 0; i < V.Count; i++)
@@ -4166,7 +3929,7 @@ namespace SystAnalys_lr1
                 }
 
                 CreateAllCoordinates();
-                CreatePollutionInRoutes();
+                Optimization.CreatePollutionInRoutes();
             }
         }
 

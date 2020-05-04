@@ -14,6 +14,7 @@ namespace SystAnalys_lr1.Classes
         public async void AsSelect(MouseEventArgs e, List<Vertex> V, List<Edge> E, DrawGraph G, PictureBox sheet, int n = 0)
         {
             await Task.Run(() => Select(e, V, E, G, sheet, n));
+          
         }
 
         public async void AsDrawEdge(MouseEventArgs e, List<Vertex> V, List<Edge> E, DrawGraph G, PictureBox sheet, int n)
