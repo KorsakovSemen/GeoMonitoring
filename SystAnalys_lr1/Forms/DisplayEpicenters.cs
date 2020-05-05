@@ -1,5 +1,6 @@
 ﻿using MetroFramework.Controls;
 using MetroFramework.Forms;
+using SystAnalys_lr1.Classes;
 using SystAnalys_lr1.Forms;
 using SystAnalys_lr1.Strings;
 using System;

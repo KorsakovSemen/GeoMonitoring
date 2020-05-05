@@ -463,7 +463,7 @@
     <value>9</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 247</value>
+    <value>9, 239</value>
   </data>
   <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -487,10 +487,10 @@
     <value>7</value>
   </data>
   <data name="stopBuses.Location" type="System.Drawing.Point, System.Drawing">
-    <value>145, 49</value>
+    <value>146, 49</value>
   </data>
   <data name="stopBuses.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 23</value>
+    <value>123, 23</value>
   </data>
   <data name="stopBuses.TabIndex" type="System.Int32, mscorlib">
     <value>94</value>
@@ -805,7 +805,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 220</value>
+    <value>9, 212</value>
   </data>
   <data name="metroLabel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 19</value>
@@ -994,7 +994,7 @@
     <value>True</value>
   </data>
   <data name="backsideCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 48</value>
+    <value>9, 46</value>
   </data>
   <data name="backsideCheck.Size" type="System.Drawing.Size, System.Drawing">
     <value>136, 15</value>
@@ -1021,7 +1021,7 @@
     <value>True</value>
   </data>
   <data name="trackerCheck.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 28</value>
+    <value>9, 26</value>
   </data>
   <data name="trackerCheck.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 15</value>
@@ -1180,7 +1180,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>303, 210</value>
+    <value>303, 212</value>
   </data>
   <data name="panel7.TabIndex" type="System.Int32, mscorlib">
     <value>67</value>
@@ -1877,9 +1877,6 @@
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>

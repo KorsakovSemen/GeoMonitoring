@@ -77,7 +77,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Bus.cs" />
     <Compile Include="Classes\Constructor.cs" />
+    <Compile Include="Classes\DrawGraph.cs" />
+    <Compile Include="Classes\Edge.cs" />
+    <Compile Include="Classes\Epicenter.cs" />
+    <Compile Include="Classes\Grid.cs" />
+    <Compile Include="Classes\GridPart.cs" />
+    <Compile Include="Classes\Vertex.cs" />
     <Compile Include="Controls\MatrixControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -97,7 +104,7 @@
     <Compile Include="Forms\AddRoute.Designer.cs">
       <DependentUpon>AddRoute.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\CodeFile.cs" />
+    <Compile Include="Classes\TraficLight.cs" />
     <Compile Include="Forms\Coordinates.cs">
       <SubType>Form</SubType>
     </Compile>

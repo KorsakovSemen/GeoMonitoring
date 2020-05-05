@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SystAnalys_lr1.Classes;
 
 namespace SystAnalys_lr1.Classes
 {

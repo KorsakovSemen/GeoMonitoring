@@ -64,7 +64,7 @@ namespace SystAnalys_lr1
         
         public static bool extendedSavePictures = false;
         
-        public static Grid g;
+        public static Classes.Grid g;
         //Лист всех эпицентров
         public static List<Epicenter> Epics;
         //Лист, в котором хранится сетка
@@ -145,7 +145,7 @@ namespace SystAnalys_lr1
             r =  new Report();
             iCh = 0;
             rCount = 0;
-            g = new Grid(0, 0, 0, 0, 80, 40);
+            g = new Classes.Grid(0, 0, 0, 0, 80, 40);
             routePoints = new List<SerializableDictionary<int, Vertex>>();
             edgePoints = new SerializableDictionary<int, List<Edge>>();
             AllCoordinates = new SerializableDictionary<string, List<Point>>();
@@ -1996,7 +1996,7 @@ namespace SystAnalys_lr1
                     File.Delete(save + "grid.xml");
                     using (FileStream fileTL = new FileStream(save + "grid.xml", FileMode.OpenOrCreate))
                     {
-                        XmlSerializer tl = new XmlSerializer(typeof(Grid));
+                        XmlSerializer tl = new XmlSerializer(typeof(Classes.Grid));
                         tl.Serialize(fileTL, g);
 
                         Console.WriteLine("Объект сериализован");
@@ -2152,8 +2152,8 @@ namespace SystAnalys_lr1
                 {
                     using (StreamReader reader = new StreamReader(load + "grid.xml"))
                     {
-                        XmlSerializer deserializerV = new XmlSerializer(typeof(Grid));
-                        g = (Grid)deserializerV.Deserialize(reader);
+                        XmlSerializer deserializerV = new XmlSerializer(typeof(Classes.Grid));
+                        g = (Classes.Grid)deserializerV.Deserialize(reader);
                         g.gridHeight = 40;
                         g.gridWidth = 80;
                     }
@@ -2163,7 +2163,7 @@ namespace SystAnalys_lr1
                 {
                     using (StreamReader reader = new StreamReader(load + "grid.json"))
                     {
-                        g = JsonConvert.DeserializeObject<Grid>(reader.ReadToEnd());
+                        g = JsonConvert.DeserializeObject<Classes.Grid>(reader.ReadToEnd());
                         g.gridHeight = 40;
                         g.gridWidth = 80;
                     }
@@ -2568,6 +2568,79 @@ namespace SystAnalys_lr1
             return false;
         }
 
+        private void addTrafficLight(MouseEventArgs e)
+        {
+            if (firstCrossRoads > 0 || secondCrossRoads > 0)
+            {
+                if (firstCrossRoads > 0)
+                {
+                    label12.Visible = true;
+                    label12.Text = MainStrings.putTrafficLights1 + " " + firstCrossRoads.ToString();
+                    foreach (var gridPart in GetTheGrid())
+                    {
+                        if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.Width * zoom) && (e.Y < gridPart.y * zoom + GridPart.Height * zoom)))
+                        {
+                            traficLights.Add(new TraficLight(e.X / zoom, e.Y / zoom, GetTheGrid().IndexOf(gridPart), firstCrossRoadsGreenLight, firstCrossRoadsRedLight));
+                            TraficLightsInGrids.Add(GetTheGrid().IndexOf(gridPart));
+                            G.DrawGreenVertex(e.X / zoom, e.Y / zoom);
+                            firstCrossRoads -= 1;
+                            if (firstCrossRoads == 0)
+                                label12.Text = MainStrings.putTrafficLights2 + " " + secondCrossRoads.ToString();
+                            sheet.Image = G.GetBitmap();
+                            DrawGrid();
+                            break;
+                        }
+                    }
+                    return;
+                }
+                if (firstCrossRoads <= 0 && secondCrossRoads > 0)
+                {
+                    label12.Text = MainStrings.putTrafficLights2 + " " + secondCrossRoads.ToString();
+
+                    foreach (var gridPart in GetTheGrid())
+                    {
+                        if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.Width * zoom) && (e.Y < gridPart.y * zoom + GridPart.Height * zoom)))
+                        {
+                            traficLights.Add(new TraficLight(e.X / zoom, e.Y / zoom, GetTheGrid().IndexOf(gridPart), firstCrossRoadsRedLight, firstCrossRoadsGreenLight));
+                            TraficLightsInGrids.Add(GetTheGrid().IndexOf(gridPart));
+                            traficLights.Last().tick = firstCrossRoadsRedLight + 2;
+                            traficLights.Last().Status = Status.RED;
+                            label12.Text = MainStrings.putTrafficLights2 + " " + (secondCrossRoads - 1).ToString();
+                            G.DrawSelectedVertex(e.X / zoom, e.Y / zoom);
+                            sheet.Image = G.GetBitmap();
+                            DrawGrid();
+                            secondCrossRoads -= 1;
+                            break;
+                        }
+
+                    }
+                }
+            }
+            if (firstCrossRoads <= 0 && secondCrossRoads <= 0)
+            {
+                label12.Visible = false;
+                traficLights.ForEach((tl) =>
+                {
+                    tl.Set();
+                    tl.Start();
+                });
+                selectedRoute = null;
+                selectRoute.Enabled = true;
+                deleteBus.Enabled = true;
+                allBusSettings.Enabled = false;
+                drawEdgeButton.Enabled = true;
+                selectButton.Enabled = true;
+                drawVertexButton.Enabled = true;
+                deleteButton.Enabled = true;
+                deleteALLButton.Enabled = true;
+                deleteRoute.Enabled = true;
+                addBus.Enabled = false;
+                deleteBus.Enabled = false;
+                stopPointButton.Enabled = true;
+                addTraficLight.Enabled = true;
+            }
+        }
+
         private void sheet_MouseClick_1(object sender, MouseEventArgs e)
         {
             if (changeRoute.Text == MainStrings.network)
@@ -2576,114 +2649,43 @@ namespace SystAnalys_lr1
                 {
                     bool check = false;
                     check = CheckV(e, check);
-                    c.SelectRoute(e, V, E, G, sheet, c, selected, check);
+                    c.SelectRoute(e, V, E, sheet, c, selected, check);
                 }
                 if (addTraficLight.Enabled == false)
                 {
-                    if (firstCrossRoads > 0 || secondCrossRoads > 0)
-                    {
-                        if (firstCrossRoads > 0)
-                        {
-                            label12.Visible = true;
-                            label12.Text = MainStrings.putTrafficLights1 + " " + firstCrossRoads.ToString();
-                            foreach (var gridPart in GetTheGrid())
-                            {
-                                if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.Width * zoom) && (e.Y < gridPart.y * zoom + GridPart.Height * zoom)))
-                                {
-                                    traficLights.Add(new TraficLight(e.X / zoom, e.Y / zoom, GetTheGrid().IndexOf(gridPart), firstCrossRoadsGreenLight, firstCrossRoadsRedLight));
-                                    TraficLightsInGrids.Add(GetTheGrid().IndexOf(gridPart));
-                                    G.DrawGreenVertex(e.X / zoom, e.Y / zoom);
-                                    firstCrossRoads -= 1;
-                                    if (firstCrossRoads == 0)
-                                        label12.Text = MainStrings.putTrafficLights2 + " " + secondCrossRoads.ToString();
-                                    sheet.Image = G.GetBitmap();
-                                    DrawGrid();
-                                    break;
-                                }
-                            }
-                            return;
-                        }
-                        if (firstCrossRoads <= 0 && secondCrossRoads > 0)
-                        {
-                            label12.Text = MainStrings.putTrafficLights2 + " " + secondCrossRoads.ToString();
-
-                            foreach (var gridPart in GetTheGrid())
-                            {
-                                if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.Width * zoom) && (e.Y < gridPart.y * zoom + GridPart.Height * zoom)))
-                                {
-                                    traficLights.Add(new TraficLight(e.X / zoom, e.Y / zoom, GetTheGrid().IndexOf(gridPart), firstCrossRoadsRedLight, firstCrossRoadsGreenLight));
-                                    TraficLightsInGrids.Add(GetTheGrid().IndexOf(gridPart));
-                                    traficLights.Last().tick = firstCrossRoadsRedLight + 2;
-                                    traficLights.Last().Status = Status.RED;
-                                    label12.Text = MainStrings.putTrafficLights2 + " " + (secondCrossRoads - 1).ToString();
-                                    G.DrawSelectedVertex(e.X / zoom, e.Y / zoom);
-                                    sheet.Image = G.GetBitmap();
-                                    DrawGrid();
-                                    secondCrossRoads -= 1;
-                                    break;
-                                }
-
-                            }
-                        }
-                    }
-                    if (firstCrossRoads <= 0 && secondCrossRoads <= 0)
-                    {
-                        label12.Visible = false;
-                        traficLights.ForEach((tl) =>
-                        {
-                            tl.Set();
-                            tl.Start();
-                        });
-                        selectedRoute = null;
-                        selectRoute.Enabled = true;
-                        deleteBus.Enabled = true;
-                        allBusSettings.Enabled = false;
-                        drawEdgeButton.Enabled = true;
-                        selectButton.Enabled = true;
-                        drawVertexButton.Enabled = true;
-                        deleteButton.Enabled = true;
-                        deleteALLButton.Enabled = true;
-                        deleteRoute.Enabled = true;
-                        addBus.Enabled = false;
-                        deleteBus.Enabled = false;
-                        stopPointButton.Enabled = true;
-                        addTraficLight.Enabled = true;
-                    }
+                    addTrafficLight(e);
                 }
                 if (stopPointButton.Enabled == false)
                 {
-                    c.AddStopPoints(e, allstopPoints, sheet, G, GetTheGrid());
+                    c.AddStopPoints(e, allstopPoints, sheet, GetTheGrid());
                 }
                 if (selectButton.Enabled == false)
                 {
-                    c.Select(e, V, E, G, sheet, 0);
+                    c.Select(e, V, E, sheet, 0);
                 }
-                //нажата кнопка "рисовать вершину"
                 if (drawVertexButton.Enabled == false)
                 {
-                    c.DrawVertex(e, V, G, sheet);
+                    c.DrawVertex(e, V, sheet);
                 }
-                //нажата кнопка "рисовать ребро"
                 if (drawEdgeButton.Enabled == false)
                 {
-                    c.AsDrawEdge(e, V, E, G, sheet, 0);
+                    c.AsDrawEdge(e, V, E, sheet, 0);
                 }
-                //нажата кнопка "удалить элемент"
                 if (deleteButton.Enabled == false)
                 {
                     switch (delType)
                     {
                         case deleteType.All:
-                            c.AsDelete(e, V, E, sheet, G, routesEdge);
+                            c.AsDelete(e, V, E, sheet, routesEdge);
                             break;
                         case deleteType.BusStops:
-                            c.deleteBS(e, V, E, sheet, G, routesEdge);
+                            c.deleteBS(e, V, E, sheet, routesEdge);
                             break;
                         case deleteType.TrafficLight:
-                            c.deleteTF(e, V, E, sheet, G, routesEdge);
+                            c.deleteTF(e, V, E, sheet, routesEdge);
                             break;
                         case deleteType.VertexAndEdge:
-                            c.deleteVE(e, V, E, sheet, G, routesEdge);
+                            c.deleteVE(e, V, E, sheet, routesEdge);
                             break;
                     }
                     if (flag)
@@ -2702,272 +2704,39 @@ namespace SystAnalys_lr1
                 List<Vertex> routeV = routes[changeRoute.Text];
                 if (stopPointButton.Enabled == false)
                 {
-                    foreach (var sp in allstopPoints)
-                    {
-                        if (Math.Pow((sp.X - e.X / zoom), 2) + Math.Pow((sp.Y - e.Y / zoom), 2) <= G.R * G.R)
-                        {
-                            foreach (var gridPart in GetTheGrid())
-                            {
-                                if (((e.X > gridPart.x * zoom) && (e.Y > gridPart.y * zoom)) && ((e.X < gridPart.x * zoom + GridPart.Width * zoom) && (e.Y < gridPart.y * zoom + GridPart.Height * zoom)))
-                                {
-
-                                    if (!stopPoints[changeRoute.Text].Contains(new Vertex(sp.X, sp.Y)))
-                                    {
-                                        if (stopPoints.ContainsKey(changeRoute.Text))
-                                        {
-                                            stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
-                                            stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
-                                            if (stopPointsInGrids.ContainsKey(changeRoute.Text))
-                                                stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart)); //дроп ошибки
-                                            else
-                                            {
-                                                stopPointsInGrids.Add(changeRoute.Text, new List<int>());
-                                                stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart));
-                                            }
-
-                                        }
-                                        else
-                                        {
-                                            stopPoints.Add(changeRoute.Text, new List<Vertex>());
-                                            stopPointsInGrids.Add(changeRoute.Text, new List<int>());
-                                            if (!stopPoints[changeRoute.Text].Contains(new Vertex(sp.X, sp.Y)))
-                                            {
-                                                if (stopPoints.ContainsKey(changeRoute.Text) && stopPointsInGrids.ContainsKey(changeRoute.Text))
-                                                {
-                                                    stopPoints[changeRoute.Text].Add(new Vertex(sp.X, sp.Y));
-                                                    stopPoints[changeRoute.Text].Last().gridNum = GetTheGrid().IndexOf(gridPart);
-                                                    stopPointsInGrids[changeRoute.Text].Add(GetTheGrid().IndexOf(gridPart)); //дроп ошибки
-                                                }
-                                            }
-                                        }
-                                    }
-
-                                    G.DrawStopRouteVertex(sp.X, sp.Y);
-                                    sheet.Image = G.GetBitmap();
-                                    DrawGrid();
-
-                                    break;
-                                }
-                            }
-
-                        }
-                    }
+                    c.AddStopPointsInRoutes(e, allstopPoints, sheet, GetTheGrid(), changeRoute.Text);
                 }
                 //нажата кнопка "выбрать вершину", ищем степень вершины
                 if (selectButton.Enabled == false)
                 {
-                    c.Select(e, routeV, routesEdge[changeRoute.Text], G, sheet, 1);
+                    c.Select(e, routeV, routesEdge[changeRoute.Text], sheet, 1);
                 }
                 if (selectRoute.Enabled == false)
                 {
-                    c.SelectRouteInRoute(e, routeV, routesEdge[changeRoute.Text], G, sheet, selected);
-
+                    c.SelectRouteInRoute(e, routeV, routesEdge[changeRoute.Text], sheet, selected);
                 }
                 //нажата кнопка addBus
                 if (addBus.Enabled == false)
                 {
                     try
                     {
-                        if (AllCoordinates[changeRoute.Text].Count != 0)
-                        {
-                            int pos = 0;
-
-                            if (e.Button == MouseButtons.Left)
-                            {
-                                double min = Math.Pow((AllCoordinates[changeRoute.Text].Last().X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text].Last().Y - e.Y / zoom), 2);
-                                for (int i = 0; i < AllCoordinates[changeRoute.Text].Count; i++)
-                                {
-                                    if (Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2) <= G.R * G.R * 500)
-                                    {
-                                        if ((Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2) < min))
-                                        {
-                                            min = Math.Pow((AllCoordinates[changeRoute.Text][i].X - e.X / zoom), 2) + Math.Pow((AllCoordinates[changeRoute.Text][i].Y - e.Y / zoom), 2);
-                                            pos = i;
-                                        }
-                                    }
-                                }
-                            }
-
-                            if (trackerCheck.Checked == true)
-                            {
-                                Rectangle rect = new Rectangle(0, 0, 200, 100);
-                                Bitmap busPic = new Bitmap(Bus.busImg);
-                                busPic = new Bitmap(busPic, new Size(15, 15));
-                                Bitmap num = new Bitmap(busPic.Height, busPic.Width);
-                                using (Graphics gr = Graphics.FromImage(num))
-                                {
-                                    using (Font font = new Font("Arial", 10))
-                                    {
-                                        // Заливаем фон нужным цветом.
-                                        gr.FillRectangle(Brushes.Transparent, rect);
-
-                                        // Выводим текст.
-                                        gr.DrawString(
-                                            changeRoute.Text,
-                                            font,
-                                            Brushes.Black, // цвет текста
-                                            rect, // текст будет вписан в указанный прямоугольник
-                                            StringFormat.GenericTypographic
-                                            );
-                                    }
-                                }
-
-                                Bitmap original = new Bitmap(Math.Max(busPic.Width, num.Width), Math.Max(busPic.Height, num.Height) * 2); //load the image file
-                                using (Graphics graphics = Graphics.FromImage(original))
-                                {
-
-                                    graphics.DrawImage(busPic, 0, 0);
-                                    graphics.DrawImage(num, 0, 15);
-                                    graphics.Dispose();
-
-                                }
-                                buses.Add(new Bus(original, pos, backsideCheck.Checked, changeRoute.Text, AllCoordinates[changeRoute.Text], true));
-                            }
-                            else
-                            {
-                                Rectangle rect = new Rectangle(0, 0, 200, 100);
-                                Bitmap busPic = new Bitmap(Bus.offBusImg);
-                                busPic = new Bitmap(busPic, new Size(15, 15));
-                                Bitmap num = new Bitmap(busPic.Height, busPic.Width);
-                                using (Graphics gr = Graphics.FromImage(num))
-                                {
-                                    using (Font font = new Font("Arial", 10))
-                                    {
-                                        // Заливаем фон нужным цветом.
-                                        gr.FillRectangle(Brushes.Transparent, rect);
-
-                                        // Выводим текст.
-                                        gr.DrawString(
-                                            changeRoute.Text,
-                                            font,
-                                            Brushes.Black, // цвет текста
-                                            rect, // текст будет вписан в указанный прямоугольник
-                                            StringFormat.GenericTypographic
-                                            );
-                                    }
-                                }
-
-                                Bitmap original = new Bitmap(Math.Max(busPic.Width, num.Width), Math.Max(busPic.Height, num.Height) * 2); //load the image file
-                                using (Graphics graphics = Graphics.FromImage(original))
-                                {
-
-                                    graphics.DrawImage(busPic, 0, 0);
-                                    graphics.DrawImage(num, 0, 15);
-                                    graphics.Dispose();
-
-                                }
-                                buses.Add(new Bus(original, pos, backsideCheck.Checked, changeRoute.Text, AllCoordinates[changeRoute.Text], false));
-                            };
-                        }
+                        c.AddBus(e, trackerCheck.Checked, backsideCheck.Checked, changeRoute.Text);
                     }
                     catch
                     {
                         MetroMessageBox.Show(this, MainStrings.error);
                     }
 
-
                 }
                 if (deleteBus.Enabled == false)
                 {
-                    if (AllCoordinates[changeRoute.Text].Count != 0)
-                    {
-                        int? pos = null;
-                        double min = Math.Pow((sheet.Image.Width - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((sheet.Image.Height - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2);
-                        for (int i = 0; i < buses.Count; i++)
-                        {
-                            if (Math.Pow((buses[i].Coordinates[buses[i].PositionAt].X - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].Coordinates[buses[i].PositionAt].Y - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) <= buses[i].R * buses[i].R * 500)
-                            {
-                                if (buses[i].route == changeRoute.Text)
-                                {
-                                    if (Math.Pow((buses[i].Coordinates[buses[i].PositionAt].X - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].Coordinates[buses[i].PositionAt].Y - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2) < min)
-                                    {
-                                        min = Math.Pow((buses[i].Coordinates[buses[i].PositionAt].X - (e.X / zoom + mainPanel.AutoScrollPosition.X)), 2) + Math.Pow((buses[i].Coordinates[buses[i].PositionAt].Y - (e.Y / zoom + mainPanel.AutoScrollPosition.Y)), 2);
-                                        pos = i;
-                                    }
-
-                                }
-                            }
-                        }
-                        if (pos != null)
-                        {
-                            buses.Remove(buses[int.Parse(pos.ToString())]);
-                        }
-                        G.ClearSheet();
-                        G.DrawALLGraph(V, E);
-                        G.DrawALLGraph(routeV, routesEdge[changeRoute.Text], 1);
-                        sheet.Image = G.GetBitmap();
-                        DrawGrid();
-                    }
+                    c.DeleteBus(e, routeV, routesEdge[changeRoute.Text], sheet, changeRoute.Text, mainPanel.AutoScrollPosition.X, mainPanel.AutoScrollPosition.Y);
                 }
 
                 //нажата кнопка "рисовать ребро"
                 if (drawEdgeButton.Enabled == false)
                 {
-                    if (e.Button == MouseButtons.Left)
-                    {
-                        for (int i = 0; i < V.Count; i++)
-                        {
-                            if (Math.Pow((V[i].X - e.X / Main.zoom), 2) + Math.Pow((V[i].Y - e.Y / Main.zoom), 2) <= G.R * G.R)
-                            {
-                                if (selected1 == -1)
-                                {
-                                    if (routesEdge[changeRoute.Text].Count != 0)
-                                    {
-                                        if (routeV[routesEdge[changeRoute.Text].Last().V2].X == V[i].X && routeV[routesEdge[changeRoute.Text].Last().V2].Y == V[i].Y)
-                                        {
-                                            selected1 = i;
-                                            G.DrawSelectedVertex(V[i].X, V[i].Y);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (!routeV.Contains(new Vertex(V[i].X, V[i].Y)))
-                                        {
-                                            routeV.Add(new Vertex(V[i].X, V[i].Y));
-                                        }
-                                        selected1 = i;
-
-                                        G.DrawSelectedVertex(V[i].X, V[i].Y);
-                                    }
-                                    break;
-                                }
-                                if (selected2 == -1)
-                                {
-                                    G.DrawSelectedVertex(V[i].X, V[i].Y);
-                                    selected2 = i;
-                                    foreach (var ed in E)
-                                    {
-                                        if ((ed.V1 == selected1 && ed.V2 == selected2) || (ed.V2 == selected1 && ed.V1 == selected2))
-                                        {
-
-                                            // if (!routeV.Contains(new Vertex(V[i].x, V[i].y))) {
-                                            routesEdge[changeRoute.Text].Add(new Edge(routeV.Count - 1, routeV.Count));
-                                            routeV.Add(new Vertex(V[i].X, V[i].Y));
-                                            //  routesEdge[int.Parse(changeRoute.Text)].Add(new Edge(routeV.Count - (routeV.Count / 2 + 1), routeV.Count - (routeV.Count / 2)));                                    
-                                            G.DrawEdge(V[selected1], V[selected2], E[E.Count - 1], 1);
-                                            sheet.Image = G.GetBitmap();
-                                            selected1 = -1;
-                                            selected2 = -1;
-                                            break;
-                                        }
-                                    }
-                                    //if (res == 0)
-                                    //{
-                                    //    routeV.RemoveAt(routeV.Count - 1);
-                                    //    //routeV.RemoveAt(routeV.Count - 1);
-                                    //}
-                                    G.ClearSheet();
-                                    G.DrawALLGraph(V, E);
-                                    G.DrawALLGraph(routeV, routesEdge[changeRoute.Text], 1);
-                                    selected1 = -1;
-                                    selected2 = -1;
-                                    sheet.Image = G.GetBitmap();
-                                    DrawGrid();
-                                    break;
-                                }
-                            }
-                        }
-                    }
+                    c.DrawEdgeInRoute(e, routeV, routesEdge[changeRoute.Text], sheet, changeRoute.Text);
                 }
                 //нажата кнопка "удалить элемент"
                 if (deleteButton.Enabled == false)
@@ -2999,6 +2768,7 @@ namespace SystAnalys_lr1
                 return;
             }
         }
+
         private void deleteStopsOnRoute(MouseEventArgs e, List<Vertex> routeV)
         {
             bool flag = false; //удалили ли что-нибудь по ЭТОМУ клику
@@ -3025,6 +2795,7 @@ namespace SystAnalys_lr1
                 DrawGrid();
             }
         }
+
         private void deleteVandE(MouseEventArgs e, List<Vertex> routeV)
         {
             bool flag = false; //удалили ли что-нибудь по ЭТОМУ клику
@@ -3809,11 +3580,6 @@ namespace SystAnalys_lr1
             timer1.Start();
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void reportTool_Click(object sender, EventArgs e)
         {
             r.Show();
@@ -3822,11 +3588,10 @@ namespace SystAnalys_lr1
 
         private void clearButton_Click(object sender, EventArgs e)
         {
-
             openEpicFormToolStripMenuItem.Enabled = false;
             addRouteToolStripMenuItem.Enabled = false;
             createGridToolStripMenuItem.Enabled = false;
-            savepath = null; //мб лучше это оствить при клире
+            savepath = null; 
             sheet.Image = null;
             if (Ep != null)
             {

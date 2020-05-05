@@ -1,4 +1,5 @@
 ﻿using MetroFramework.Forms;
+using SystAnalys_lr1.Classes;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

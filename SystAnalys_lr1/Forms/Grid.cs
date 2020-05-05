@@ -1,5 +1,6 @@
 ﻿using MetroFramework.Forms;
 using Newtonsoft.Json;
+using SystAnalys_lr1.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,6 @@ namespace SystAnalys_lr1
 {
     public partial class Main : MetroForm
     {
-
         //отрисовать всю сетку
         static public void DrawGrid()
         {
@@ -23,27 +23,6 @@ namespace SystAnalys_lr1
             _instance.Invoke(new DelBmp((s) => _instance.sheet.Image = s), G.GetBitmap());
         }
 
-        public class Grid
-        {
-            public Grid() { }
-            public Grid(int l, int u, int r, int d, int gW, int gH)
-            {
-                left = l;
-                up = u;
-                right = r;
-                down = d;
-                gridWidth = gW;
-                gridHeight = gH;
-            }
-            public int left;
-            public int up;
-            public int right;
-            public int down;
-            [XmlIgnore, JsonIgnore]
-            public int gridWidth;
-            [XmlIgnore, JsonIgnore]
-            public int gridHeight;
-        }
         //создать сетку
         public void CreateGrid()
         {
