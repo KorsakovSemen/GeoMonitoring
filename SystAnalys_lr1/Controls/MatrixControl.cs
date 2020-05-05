@@ -19,9 +19,9 @@ namespace SystAnalys_lr1.Classes
             InitializeComponent();
         }
 
-        public static List<List<Bus>> busesPark;
-        public static SortedDictionary<string, List<Vertex>> routesSorted;
-        public static int parkSize;
+        public List<List<Bus>> busesPark;
+        public SortedDictionary<string, List<Vertex>> routesSorted;
+        public int parkSize;
 
         public List<Bus> SplitBuses()
         {

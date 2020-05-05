@@ -1249,6 +1249,7 @@ namespace SystAnalys_lr1
             int countSensors = 0;
             int tot = 0;
             matrixControl1.SplitBuses();
+            busesPark = matrixControl1.busesPark;
             foreach (var b in busesPark)
             {
                 double razm = Math.Round(b.Count - b.Count * 0.01 * proc);
