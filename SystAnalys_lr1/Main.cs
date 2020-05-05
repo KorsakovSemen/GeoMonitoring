@@ -72,7 +72,7 @@ namespace SystAnalys_lr1
         public static DrawGraph G;
         //Лист, в котором хранятся автобусы
         static public List<Bus> buses;
-        static List<List<Bus>> busesPark;
+        public static List<List<Bus>> busesPark;
         public static int selected1; //выбранные вершины, для соединения линиями
         public static int selected2;
         //массив всех маршрутов
@@ -114,7 +114,7 @@ namespace SystAnalys_lr1
         static public SerializableDictionary<int, List<Edge>> edgePoints;
         //вторая форма
         static public DisplayEpicenters Ep;
-        int countWithoutSensors;
+       // int countWithoutSensors;
         int wsheet;
         int hsheet;
         static public Image globalMap;
@@ -304,7 +304,7 @@ namespace SystAnalys_lr1
             mainPanel.MaximumSize = new System.Drawing.Size(sheet.Width, sheet.Height);
             mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             mainPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(panel6_MouseWheel);
-            countWithoutSensors = buses.Count;
+            Optimization.countWithoutSensors = buses.Count;
             matrixControl1.MatrixCreate();
             hint.Visible = false;
             r.ch.Titles.Add(MainStrings.report);
@@ -355,7 +355,7 @@ namespace SystAnalys_lr1
         //функция возвращает массив загрязнений по маршрутам (для 2 формы)
         public Dictionary<string, List<GridPart>> GetPollutionInRoutes()
         {
-            return Optimizator.PollutionInRoutes;
+            return Modeling.PollutionInRoutes;
         }
         //функция возвращает эпицентры (для 2 формы)
         public List<Epicenter> GetEpicenters()
@@ -376,33 +376,20 @@ namespace SystAnalys_lr1
         delegate void Del(string text);
         delegate void DelInt(int text);
         delegate void DelBool(bool text);
-        //функция, которая моделирует движение
-        int small = 10000;
+
   
 
        
         delegate void DelBmp(Bitmap bmp);
-        //функция создает 1 случайный эпицентр в пределах сетки
-        public void CreateOneRandomEpicenter(int EpicSizeParam, int? StartPos)
-        {
-            var rand = new Random();
-            Epics = new List<Epicenter>
-            {
-                new Epicenter(TheGrid)
-            };
-            Epics.First().CreateRandomEpicenter(EpicSizeParam, StartPos);
-        }
-        //функция создает массив загрязнений в маршруте
-  
         private void CreateGridRoutes()
         {
-            Optimizator.PollutionInRoutes = new Dictionary<string, List<GridPart>>();
+            Modeling.PollutionInRoutes = new Dictionary<string, List<GridPart>>();
             for (int i = 0; i < AllCoordinates.Count; i++)
             {
-                Optimizator.PollutionInRoutes.Add(AllCoordinates.ElementAt(i).Key, new List<GridPart>());
+                Modeling.PollutionInRoutes.Add(AllCoordinates.ElementAt(i).Key, new List<GridPart>());
                 foreach (var Grid in TheGrid)
                 {
-                    Optimizator.PollutionInRoutes[Optimizator.PollutionInRoutes.ElementAt(i).Key].Add(new GridPart(Grid.x, Grid.y));
+                    Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key].Add(new GridPart(Grid.x, Grid.y));
                 }
             }
         }
@@ -890,8 +877,6 @@ namespace SystAnalys_lr1
                 selected = new List<int>();
                 stopPointButton.Enabled = true;
                 Ep.ERefreshRouts();
-
-                BarabanAfterOpti();
                 loadingForm.loading.Value = 85;
                 loadingForm.loading.Value = 100;
                 loadingForm.close = true;
@@ -957,7 +942,7 @@ namespace SystAnalys_lr1
                 globalMap = sheet.Image;
                 G.SetBitmap();
                 CreateGrid();
-                Optimizator.CreatePollutionInRoutes();
+                Modeling.CreatePollutionInRoutes();
                 addInComboBox();
                 Ep = new DisplayEpicenters(this);
                 StyleManager.Clone(Ep);
@@ -1127,8 +1112,6 @@ namespace SystAnalys_lr1
                 {
                     Ep.ERefreshRouts();
                 }
-
-                BarabanAfterOpti();
                 loadingForm.loading.Value = 100;
                 loadingForm.close = true;
                 loadingForm.Close();
@@ -1189,105 +1172,10 @@ namespace SystAnalys_lr1
             // as simple as possible
             return rnd.Next(0, 2) == 1;
         }
-        private void BarabanAfterOpti()
-        {
-            Random rnd = new Random();
-            foreach (var b in buses)
-            {
-                int r = rnd.Next(0, AllCoordinates[b.route].Count - 1);
-                b.PositionAt = r;
-            };
-        }
-        private void Baraban()
-        {
-
-            foreach (var bp in busesPark)
-            {
-                var tot = (AllGridsInRoutes[bp.First().route].Count - 1) / bp.Count;
-                if (tot == 0 || tot == 1)
-                {
-                    foreach (var b in buses)
-                    {
-                        if (b.route == bp.First().route)
-                        {
-                            int r = rnd.Next(0, AllGridsInRoutes[bp.First().route].Count - 1);
-                            b.PositionAt = r;
-                        }
-
-                    };
-                }
-                else
-                {
-                    List<int> array = new List<int>();
-                    int i = 0;
-                    while (i < AllGridsInRoutes[bp.First().route].Count - 1)
-                    {
-                        array.Add(i);
-                        i += tot;
-                    }
-                    if (array.Count != 0)
-                    {
-                        foreach (var b in buses)
-                        {
-
-                            if (b.route == bp.First().route)
-                            {
-                                int r = rnd.Next(0, array.Count - 1);
-                                b.PositionAt = array[r];
-                                array.RemoveAt(r);
-                            }
-
-                        };
-                    }
-                }
-            }
-        }
-
-        List<int> withoutSensorsBuses = new List<int>();
-        private void offBuses(int proc = 0)
-        {
-            int countSensors = 0;
-            int tot = 0;
-            matrixControl1.SplitBuses();
-            busesPark = matrixControl1.busesPark;
-            foreach (var b in busesPark)
-            {
-                double razm = Math.Round(b.Count - b.Count * 0.01 * proc);
-                double limit = Math.Round(b.Count - razm, 0);
-                foreach (var bus in b)
-                {
-                    if (0 != limit)
-                    {
-                        countSensors += 1;
-                        bus.Tracker = false;
-                        limit = limit - 1;
-                    }
-                    else
-                    {
-                        break;
-                    };
-                };
-                for (var i = 0; i < b.Count; i++)
-                {
-                    buses[tot] = b[i];
-                    tot += 1;
-                }
-            };
-            countWithoutSensors -= countSensors;
-            if (withoutSensorsBuses.Count == 4)
-            {
-                countWithoutSensors = 1;
-            }
-            if (withoutSensorsBuses.Count != 5)
-            {
-                withoutSensorsBuses.Add(countWithoutSensors);
-            }
-        }
-
-        SerializableDictionary<int, int?> percentMean;
+      
         public int? GetKeyByValue(int? value)
         {
-            foreach (var recordOfDictionary in percentMean)
+            foreach (var recordOfDictionary in Optimization.percentMean)
             {
                 if (recordOfDictionary.Value.Equals(value))
                     return recordOfDictionary.Key;
@@ -1296,220 +1184,16 @@ namespace SystAnalys_lr1
         }
 
         LoadingForm loadingForm = new LoadingForm();
-        string pathOpt;
-        private async void Opt()
-        {
-            loadingForm = new LoadingForm();
-            buttonOff();
-            pathOpt = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}_{5}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
-            Directory.CreateDirectory(pathOpt);
 
-            if (SavePictures == true)
-            {
-                Ep.Hide();
-                Directory.CreateDirectory(pathOpt + "/Epics");
-            }
-            loadingForm.Theme = msmMain.Theme;
-            loadingForm.Style = msmMain.Style;
-            matrixControl1.MatrixCreate();
-            percentMean = new SerializableDictionary<int, int?>();
-
-            List<Bus> optimizeBuses = new List<Bus>();
-            buses.ForEach((b) => optimizeBuses.Add(
-                (Bus)b.Clone()
-            ));
-            if (speed.Text != "" && int.TryParse(speed.Text, out int sp))
-            {
-                if (int.Parse(speed.Text) / 20 == 0)
-                    Optimizator.T = 1;
-                else
-                    Optimizator.T = int.Parse(speed.Text) / 20;
-            }
-            int old = small;
-            var style = msmMain.Style;
-            if (msmMain.Style == (MetroFramework.MetroColorStyle)Convert.ToInt32(13))
-                msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(14);
-            else
-                msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(13);
-            loadingForm.Show();
-            StyleManager.Clone(Ep);
-            if (Ep != null)
-            {
-                Ep.Refresh();
-            }
-            var busesparkreturn = busesPark;
-
-            await Task.Run(() =>
-            {
-                if (changeProcent.Text != "" && int.TryParse(speed.Text, out int ch) && changeProcent.Text != "")
-                {
-                    offBuses(int.Parse(changeProcent.Text));
-                };
-                int ciclTotal = 5;
-
-                loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Maximum = s), ciclTotal * int.Parse(optText.Text));
-                for (int cicl = 0; cicl < ciclTotal; cicl++)
-                {
-                    offBuses(cicl * 10);
-                    if (cicl == ciclTotal - 1)
-                        buses[rnd.Next(0, buses.Count)].Tracker = true;
-                    List<int?> mas = new List<int?>();
-                    Baraban();
-                    if (SavePictures == true)
-                    {
-                        Directory.CreateDirectory(pathOpt + "/Epics" + "/" + (cicl + 1).ToString());
-                    }
-                    for (int i = 0; i < int.Parse(optText.Text); i++)
-                    {
-                        if (SavePictures == true)
-                        {
-                            Directory.CreateDirectory(pathOpt + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString());
-                        }
-                        CreateOneRandomEpicenter(EpicSizeParam, null);
-                        Optimizator.Modeling(pathOpt, cicl, i);
-                        if ((SavePictures == true) && (!extendedSavePictures == true))
-                        {
-
-                            lock (Ep.Esheet)
-                            {
-                                Ep.EDrawEpics(Epics);
-                            }
-                            lock (Ep.Esheet)
-                            {
-                                using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
-                                {
-                                    img.Save(pathOpt + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString() + "/" + i.ToString() + "_nat" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                                }
-                            }
-
-                            lock (Ep.Esheet)
-                            {
-                                Ep.RecReateFunction();
-                            }
-                            lock (Ep.Esheet)
-                            {
-                                using (System.Drawing.Image img = (Image)Ep.Esheet.Image.Clone())
-                                {
-                                    img.Save(pathOpt + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString() + "/" + i.ToString() + "_re" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                                }
-                            }
-
-                        }
-
-                        loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Value = s), loadingForm.loading.Value + 1);
-                        small = 10000;
-                    }
-
-                    int total = Optimizator.ResultFromModeling.Sum(x => Convert.ToInt32(x));
-                    int count = 0;
-                    foreach (var m in Optimizator.ResultFromModeling)
-                    {
-                        if (m != null)
-                        {
-                            count += 1;
-                        }
-                    }
-
-                    if (total < 0 || count < Optimizator.ResultFromModeling.Count / 2)
-                    {
-                        //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
-                        if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
-                            percentMean.Add(withoutSensorsBuses.Last(), null);
-                        //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none);
-                    }
-                    else
-                    {
-                        //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
-                        //      + "\n" + MainStrings.procentSuc + " " + ResultFromModeling.Count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
-                        if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
-                        {
-                            if (count != 0)
-                                percentMean.Add(withoutSensorsBuses.Last(), total / count);
-                            else
-                                percentMean.Add(withoutSensorsBuses.Last(), -1);
-                        }
-                        //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (Convert.ToDouble(total / ResultFromModeling.Count).ToString()));
-                    }
-                    ;
-                    using (StreamWriter fileV = new StreamWriter(pathOpt + @"\" + withoutSensorsBuses.Last() + "_buses" + ".txt"))
-                    {
-                        fileV.WriteLine(MainStrings.sensorsDown + ": " + (cicl * 10).ToString());
-                        fileV.WriteLine(MainStrings.countBuses + ": " + (withoutSensorsBuses.Last()).ToString());
-                        fileV.WriteLine(MainStrings.numIter + ": " + optText.Text);
-                        fileV.WriteLine(MainStrings.distance + ": " + speed.Text + " " + MainStrings.sec + " (" + (int.Parse(speed.Text) / 60 == 0 ? ">1" + MainStrings.minute : int.Parse(speed.Text) / 60 + " " + MainStrings.minute) + ")");
-                        fileV.WriteLine(MainStrings.found + ": " + (from num in Optimizator.ResultFromModeling where (num != null) select num).Count());
-                        if (count == 0)
-                        {
-                            fileV.WriteLine(MainStrings.none);
-                        }
-                        else
-                        {
-                            fileV.WriteLine(MainStrings.average + " " + (total / count / 60 == 0 ? (total / count + " " + MainStrings.sec).ToString() : (total / count / 60 + " " + MainStrings.minute + " " + total / count % 60 + " " + MainStrings.sec).ToString())
-                                + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + (((Optimizator.ResultFromModeling.Count - count) * 100.00 / int.Parse(optText.Text))).ToString());
-                        }
-                        fileV.WriteLine(MainStrings.cycle + " " + cicl.ToString());
-                        for (int i = 0; i < Optimizator.ResultFromModeling.Count; i++)
-                            if (Optimizator.ResultFromModeling[i] != null)
-                            {
-                                fileV.WriteLine(i.ToString() + " : " + (Optimizator.ResultFromModeling[i] / 60 == 0 ? (Optimizator.ResultFromModeling[i] + " " + MainStrings.sec).ToString() : (Optimizator.ResultFromModeling[i] / 60 + " " + MainStrings.minute + " " + Optimizator.ResultFromModeling[i] % 60 + " " + MainStrings.sec).ToString()));
-                            }
-                            else
-                            {
-                                fileV.WriteLine(i.ToString() + " : " + MainStrings.notFound);
-                            }
-
-                        Console.WriteLine("Объект сериализован");
-                    }
-                    Optimizator.ResultFromModeling = new List<int?>();
-                }
-
-            });
-            var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();
-            var min = percentMean.Min(v => v.Value);
-            var result = percentMean.Where(s => s.Value.Equals(min)).Select(s => s.Key).ToList();
-            result.Sort();
-            if (res.Count != 0 && min != 0 && min != null)
-                mean.Text = MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " " + " - " + MainStrings.countSensors + ": " + result[0];
-            else
-            {
-                mean.Text = MainStrings.average + " " + MainStrings.notFound;
-            }
-
-            using (StreamWriter fileV = new StreamWriter(pathOpt + "/Average.txt"))
-            {
-                fileV.WriteLine(mean.Text != MainStrings.average + " " + MainStrings.notFound ? MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + result[0] : MainStrings.notFound);
-            }
-            matrixControl1.MatrixCreate();
-            resMatrix();
-            msmMain.Style = style;
-            // MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
-            loadingForm.close = true;
-            loadingForm.Close();
-            loadingForm.Dispose();
-            BringToFront();
-            if (!Ep.IsDisposed)
-            {
-                Ep.Show();
-            }
-            BarabanAfterOpti();
-            timer1.Start();
-            buttonOn();
-            busesPark = busesparkreturn;
-            buses = optimizeBuses;
-
-
-            resChart();
-
-        }
 
         public static int EpicSizeParam = 25;
-
-        private void optimize_Click(object sender, EventArgs e)
+   
+        private async void optimize_ClickAsync(object sender, EventArgs e)
         {
             if (optText.Text != "" && speed.Text != "" && buses.Count != 0 && int.Parse(optText.Text) > 0 && int.Parse(speed.Text) > 0 && buses != null)
             {
-                withoutSensorsBuses = new List<int>();
-                countWithoutSensors = buses.Count;
+                Optimization.withoutSensorsBuses = new List<int>();
+                Optimization.countWithoutSensors = buses.Count;
                 bool check = false;
                 foreach (var bus in buses)
                 {
@@ -1526,13 +1210,59 @@ namespace SystAnalys_lr1
                     timer1.Stop();
                     foreach (var tl in traficLights)
                         tl.TimerLight.Interval = 1;
-                    Opt();
+                    Optimization.OptiCount = int.Parse(optText.Text);
+                    Optimization.OptiSpeed = int.Parse(speed.Text);
+///
+                    buttonOff();
+                    loadingForm.Theme = msmMain.Theme;
+                    loadingForm.Style = msmMain.Style;
+                    matrixControl1.MatrixCreate();
+                    if (speed.Text != "" && int.TryParse(speed.Text, out int sp))
+                    {
+                        if (int.Parse(speed.Text) / 20 == 0)
+                            Modeling.T = 1;
+                        else
+                            Modeling.T = int.Parse(speed.Text) / 20;
+                    }
+                    var style = msmMain.Style;
+                    if (msmMain.Style == (MetroFramework.MetroColorStyle)Convert.ToInt32(13))
+                        msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(14);
+                    else
+                        msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(13);
+                    StyleManager.Clone(Main.Ep);
+                    if (Main.SavePictures == true)
+                    {
+                        Main.Ep.Hide();
+                        Directory.CreateDirectory(Optimization.pathOpt + "/Epics");
+                    }
+                    if (Main.Ep != null)
+                    {
+                        Main.Ep.Refresh();
+                    }
+                    await Task.Run(() =>
+                    {
+                        Optimization.Opt(matrixControl1);
+                    });                       
+                    matrixControl1.MatrixCreate();
+                    resMatrix();
+                    msmMain.Style = style;
+                    StyleManager.Clone(Main.Ep);
+                    MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    if (!Main.Ep.IsDisposed)
+                    {
+                        Main.Ep.Show();
+                    }
+                    BringToFront();
+                    timer1.Start();
+                    buttonOn();
+                    resChart();             
+                    ////
                     foreach (var tl in traficLights)
                         tl.TimerLight.Interval = 1000;
                 }
                 else
                 {
-                    return;
+           
                 }
 
             }
@@ -1543,7 +1273,7 @@ namespace SystAnalys_lr1
             results.Refresh();
             results.RowCount = 5;
             int i = 0;
-            foreach (var pm in percentMean)
+            foreach (var pm in Optimization.percentMean)
             {
                 results.Rows[i].HeaderCell.Value = pm.Key.ToString();
                 if (pm.Value != 0)
@@ -1555,14 +1285,14 @@ namespace SystAnalys_lr1
         }
         public void resChart()
         {
-            if (oldChart == (int)percentMean.Keys.Sum())
+            if (oldChart == (int)Optimization.percentMean.Keys.Sum())
             {
                 int iCh = 0;
                 StyleManager.Clone(r);
                 if (rCount != 0)
                     r.ch.Series.Add(rCount.ToString());
                 r.ch.Series[rCount].LegendText = rCount.ToString();
-                foreach (var pm in percentMean)
+                foreach (var pm in Optimization.percentMean)
                 {
                     if (pm.Value == null)
                     {
@@ -1576,7 +1306,7 @@ namespace SystAnalys_lr1
                         r.ch.ChartAreas[rCount].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
                     iCh++;
                 }
-                r.ch.SaveImage(pathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                r.ch.SaveImage(Optimization.pathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                 r.TopMost = true;
                 r.Show();
                 r.BringToFront();
@@ -1594,13 +1324,13 @@ namespace SystAnalys_lr1
                     {
                         series.Points.Clear();
                     }
-                    oldChart = (int)percentMean.Keys.Sum();
+                    oldChart = (int)Optimization.percentMean.Keys.Sum();
                     int iCh = 0;
                     StyleManager.Clone(r);
                     if (rCount != 0)
                         r.ch.Series.Add(rCount.ToString());
                     r.ch.Series[rCount].LegendText = rCount.ToString();
-                    foreach (var pm in percentMean)
+                    foreach (var pm in Optimization.percentMean)
                     {
                         if (pm.Value == null)
                         {
@@ -1614,7 +1344,7 @@ namespace SystAnalys_lr1
                             r.ch.ChartAreas[rCount].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
                         iCh++;
                     }
-                    r.ch.SaveImage(pathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    r.ch.SaveImage(Optimization.pathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                     r.TopMost = true;
                     r.Show();
                     r.BringToFront();
@@ -1743,7 +1473,7 @@ namespace SystAnalys_lr1
                     globalMap = sheet.Image;
                     G.SetBitmap();
                     CreateGrid();
-                    Optimizator.CreatePollutionInRoutes();
+                    Modeling.CreatePollutionInRoutes();
                     addInComboBox();
                     DrawGrid();
                     matrixControl1.MatrixCreate();
@@ -2460,8 +2190,8 @@ namespace SystAnalys_lr1
                 loadingForm.loading.Value = 90;
                 openEpicFormToolStripMenuItem.Enabled = true;
                 CreateGrid();
-                Optimizator.CreatePollutionInRoutes();
-                CreateOneRandomEpicenter(EpicSizeParam, null);
+                Modeling.CreatePollutionInRoutes();
+                Epicenter.CreateOneRandomEpicenter(EpicSizeParam, null);
 
                 addInComboBox();
                 G.ClearSheet();
@@ -3684,7 +3414,7 @@ namespace SystAnalys_lr1
                 }
 
                 CreateAllCoordinates();
-                Optimizator.CreatePollutionInRoutes();
+                Modeling.CreatePollutionInRoutes();
             }
         }
 

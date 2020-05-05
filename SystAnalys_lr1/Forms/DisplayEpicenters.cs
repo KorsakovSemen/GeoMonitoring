@@ -110,7 +110,7 @@ namespace SystAnalys_lr1
                 {
 
                     ERefreshRouts();
-                    MainForm.CreateOneRandomEpicenter(Main.EpicSizeParam, MainForm.GetTheGrid().IndexOf(gridPart));
+                    Epicenter.CreateOneRandomEpicenter(Main.EpicSizeParam, MainForm.GetTheGrid().IndexOf(gridPart));
 
                     EG.ClearSheet2();
              
@@ -355,7 +355,7 @@ namespace SystAnalys_lr1
 
         private void metroButton4_Click(object sender, EventArgs e)
         {
-            MainForm.CreateOneRandomEpicenter(Main.EpicSizeParam,null);
+         Epicenter.CreateOneRandomEpicenter(Main.EpicSizeParam,null);
         }
     }
 }

@@ -282,7 +282,7 @@
             this.optimize.Name = "optimize";
             this.optimize.Style = MetroFramework.MetroColorStyle.Green;
             this.optimize.UseSelectable = true;
-            this.optimize.Click += new System.EventHandler(this.optimize_Click);
+            this.optimize.Click += new System.EventHandler(this.optimize_ClickAsync);
             // 
             // mean
             // 
@@ -1060,7 +1060,7 @@
         private MetroFramework.Controls.MetroLabel mean;
         public MetroFramework.Controls.MetroPanel mainPanel;
         private System.Windows.Forms.ToolStripButton stopPointButton;
-        private MetroFramework.Controls.MetroTextBox speed;
+        public MetroFramework.Controls.MetroTextBox speed;
         private System.Windows.Forms.ToolStripMenuItem jSONToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xMLToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton addTraficLight;
@@ -1074,7 +1074,7 @@
         private MetroFramework.Controls.MetroPanel panel8;
         private MetroFramework.Controls.MetroPanel panel1;
         private System.Windows.Forms.ToolStripMenuItem runTrafficLightsToolStripMenuItem;
-        private MetroFramework.Components.MetroStyleManager msmMain;
+        public MetroFramework.Components.MetroStyleManager msmMain;
         private MetroFramework.Controls.MetroToggle themes;
         private MetroFramework.Controls.MetroComboBox changeTheme;
         private MetroFramework.Controls.MetroLabel theme;

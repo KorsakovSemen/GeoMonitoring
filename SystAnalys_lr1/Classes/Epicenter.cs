@@ -9,6 +9,15 @@ namespace SystAnalys_lr1.Classes
 {
     public class Epicenter : ICloneable
     {
+        public static void CreateOneRandomEpicenter(int EpicSizeParam, int? StartPos)
+        {
+            var rand = new Random();
+            Main.Epics = new List<Epicenter>
+            {
+                new Epicenter(Main.TheGrid)
+            };
+            Main.Epics.First().CreateRandomEpicenter(EpicSizeParam, StartPos);
+        }
         public SerializableDictionary<int, List<GridPart>> EpicenterGrid { get; set; }
         public Point StartPositon;
         public SerializableDictionary<int, List<GridPart>> getEpicenterGrid()

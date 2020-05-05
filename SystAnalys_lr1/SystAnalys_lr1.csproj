@@ -84,6 +84,7 @@
     <Compile Include="Classes\Epicenter.cs" />
     <Compile Include="Classes\Grid.cs" />
     <Compile Include="Classes\GridPart.cs" />
+    <Compile Include="Classes\Optimization.cs" />
     <Compile Include="Classes\Vertex.cs" />
     <Compile Include="Controls\MatrixControl.cs">
       <SubType>UserControl</SubType>
@@ -91,7 +92,7 @@
     <Compile Include="Controls\MatrixControl.Designer.cs">
       <DependentUpon>MatrixControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Optimizator.cs" />
+    <Compile Include="Classes\Modeling.cs" />
     <Compile Include="Forms\AddGrid.cs">
       <SubType>Form</SubType>
     </Compile>

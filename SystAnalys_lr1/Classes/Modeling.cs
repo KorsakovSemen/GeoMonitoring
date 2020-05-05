@@ -11,7 +11,7 @@ using SystAnalys_lr1.Classes;
 
 namespace SystAnalys_lr1.Classes
 {
-    static class Optimizator
+    static class Modeling
     {
         static public Dictionary<string, List<GridPart>> PollutionInRoutes;
         static public int T;
@@ -31,7 +31,7 @@ namespace SystAnalys_lr1.Classes
         }
 
 
-        public static void Modeling(string SavePath, int Cicle, int ModelNum)
+        public static void StartModeling(string SavePath, int Cicle, int ModelNum)
         {
             List<Epicenter> epList = new List<Epicenter>();
             int i = 0;
