@@ -246,4 +246,7 @@
   <data name="theBuses" xml:space="preserve">
     <value>Автобусы</value>
   </data>
+  <data name="create" xml:space="preserve">
+    <value>Создать</value>
+  </data>
 </root>

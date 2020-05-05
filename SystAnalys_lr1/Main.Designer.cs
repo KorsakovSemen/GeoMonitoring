@@ -39,7 +39,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.about = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.button1 = new MetroFramework.Controls.MetroButton();
             this.matrixGrid = new MetroFramework.Controls.MetroGrid();
             this.panel1 = new MetroFramework.Controls.MetroPanel();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
@@ -119,6 +118,7 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.hint = new MetroFramework.Controls.MetroLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.matrixControl1 = new SystAnalys_lr1.Classes.MatrixControl();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).BeginInit();
             this.panel1.SuspendLayout();
@@ -146,13 +146,6 @@
             // 
             this.about.Name = "about";
             resources.ApplyResources(this.about, "about");
-            // 
-            // button1
-            // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseSelectable = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // matrixGrid
             // 
@@ -209,12 +202,12 @@
             this.panel1.Controls.Add(this.speed);
             this.panel1.HorizontalScrollbarBarColor = true;
             this.panel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel1.HorizontalScrollbarSize = 10;
+            this.panel1.HorizontalScrollbarSize = 8;
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             this.panel1.VerticalScrollbarBarColor = true;
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
-            this.panel1.VerticalScrollbarSize = 11;
+            this.panel1.VerticalScrollbarSize = 8;
             // 
             // metroButton2
             // 
@@ -382,12 +375,12 @@
             this.panel2.Controls.Add(this.changeProcent);
             this.panel2.HorizontalScrollbarBarColor = true;
             this.panel2.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel2.HorizontalScrollbarSize = 10;
+            this.panel2.HorizontalScrollbarSize = 8;
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             this.panel2.VerticalScrollbarBarColor = true;
             this.panel2.VerticalScrollbarHighlightOnWheel = false;
-            this.panel2.VerticalScrollbarSize = 11;
+            this.panel2.VerticalScrollbarSize = 8;
             // 
             // createCoordinates
             // 
@@ -482,11 +475,11 @@
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.HorizontalScrollbarBarColor = true;
             this.panel4.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel4.HorizontalScrollbarSize = 10;
+            this.panel4.HorizontalScrollbarSize = 8;
             this.panel4.Name = "panel4";
             this.panel4.VerticalScrollbarBarColor = true;
             this.panel4.VerticalScrollbarHighlightOnWheel = false;
-            this.panel4.VerticalScrollbarSize = 11;
+            this.panel4.VerticalScrollbarSize = 8;
             // 
             // metroLabel8
             // 
@@ -507,18 +500,18 @@
             // 
             this.panel8.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Controls.Add(this.matrixControl1);
             this.panel8.Controls.Add(this.metroLabel7);
-            this.panel8.Controls.Add(this.button1);
             this.panel8.Controls.Add(this.label8);
             this.panel8.Controls.Add(this.matrixGrid);
             this.panel8.HorizontalScrollbarBarColor = true;
             this.panel8.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel8.HorizontalScrollbarSize = 10;
+            this.panel8.HorizontalScrollbarSize = 8;
             resources.ApplyResources(this.panel8, "panel8");
             this.panel8.Name = "panel8";
             this.panel8.VerticalScrollbarBarColor = true;
             this.panel8.VerticalScrollbarHighlightOnWheel = false;
-            this.panel8.VerticalScrollbarSize = 11;
+            this.panel8.VerticalScrollbarSize = 8;
             // 
             // metroLabel7
             // 
@@ -539,12 +532,12 @@
             this.panel7.Controls.Add(this.changeRoute);
             this.panel7.HorizontalScrollbarBarColor = true;
             this.panel7.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel7.HorizontalScrollbarSize = 10;
+            this.panel7.HorizontalScrollbarSize = 8;
             resources.ApplyResources(this.panel7, "panel7");
             this.panel7.Name = "panel7";
             this.panel7.VerticalScrollbarBarColor = true;
             this.panel7.VerticalScrollbarHighlightOnWheel = false;
-            this.panel7.VerticalScrollbarSize = 11;
+            this.panel7.VerticalScrollbarSize = 8;
             // 
             // metroLabel4
             // 
@@ -568,14 +561,14 @@
             this.allBusSettings.Controls.Add(this.busSize);
             this.allBusSettings.HorizontalScrollbarBarColor = true;
             this.allBusSettings.HorizontalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.HorizontalScrollbarSize = 17;
+            this.allBusSettings.HorizontalScrollbarSize = 13;
             resources.ApplyResources(this.allBusSettings, "allBusSettings");
             this.allBusSettings.Name = "allBusSettings";
             this.allBusSettings.Style = MetroFramework.MetroColorStyle.Blue;
             this.allBusSettings.UseStyleColors = true;
             this.allBusSettings.VerticalScrollbarBarColor = true;
             this.allBusSettings.VerticalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.VerticalScrollbarSize = 17;
+            this.allBusSettings.VerticalScrollbarSize = 13;
             // 
             // backsideCheck
             // 
@@ -686,12 +679,12 @@
             this.mainPanel.HorizontalScrollbar = true;
             this.mainPanel.HorizontalScrollbarBarColor = false;
             this.mainPanel.HorizontalScrollbarHighlightOnWheel = false;
-            this.mainPanel.HorizontalScrollbarSize = 13;
+            this.mainPanel.HorizontalScrollbarSize = 10;
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.VerticalScrollbar = true;
             this.mainPanel.VerticalScrollbarBarColor = false;
             this.mainPanel.VerticalScrollbarHighlightOnWheel = false;
-            this.mainPanel.VerticalScrollbarSize = 13;
+            this.mainPanel.VerticalScrollbarSize = 10;
             this.mainPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.panel6_Scroll);
             this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
@@ -978,6 +971,12 @@
             this.timer1.Interval = 20;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // matrixControl1
+            // 
+            resources.ApplyResources(this.matrixControl1, "matrixControl1");
+            this.matrixControl1.Name = "matrixControl1";
+            this.matrixControl1.UseSelectable = true;
+            // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
@@ -1073,7 +1072,6 @@
         private System.Windows.Forms.ToolStripMenuItem addRouteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createGridToolStripMenuItem;
         private MetroFramework.Controls.MetroPanel panel8;
-        private MetroFramework.Controls.MetroButton button1;
         private MetroFramework.Controls.MetroPanel panel1;
         private System.Windows.Forms.ToolStripMenuItem runTrafficLightsToolStripMenuItem;
         private MetroFramework.Components.MetroStyleManager msmMain;
@@ -1117,6 +1115,7 @@
         private System.Windows.Forms.ToolStripButton deleteBus;
         private System.Windows.Forms.ToolStripButton deleteRoute;
         private System.Windows.Forms.ToolStripButton delAllBusesOnRoute;
+        private Classes.MatrixControl matrixControl1;
     }
 }
 

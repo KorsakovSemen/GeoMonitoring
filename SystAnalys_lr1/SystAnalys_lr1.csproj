@@ -78,7 +78,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Constructor.cs" />
-    <Compile Include="Classes\Optimization.cs" />
+    <Compile Include="Controls\MatrixControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MatrixControl.Designer.cs">
+      <DependentUpon>MatrixControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Optimizator.cs" />
     <Compile Include="Forms\AddGrid.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,13 +144,11 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Grid.cs">
+      <DependentUpon>Main.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GradientPanel.cs">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Forms\Matrix.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -159,6 +163,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MainStrings.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\MatrixControl.resx">
+      <DependentUpon>MatrixControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddGrid.en-US.resx">
       <DependentUpon>AddGrid.cs</DependentUpon>
     </EmbeddedResource>

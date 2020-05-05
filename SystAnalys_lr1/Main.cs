@@ -119,10 +119,7 @@ namespace SystAnalys_lr1
         int hsheet;
         static public Image globalMap;
         static public int zoom, scrollX, scrollY;
-        Report r;
-
-
-     
+        Report r;     
 
         int rCount;
         int iCh;
@@ -187,6 +184,7 @@ namespace SystAnalys_lr1
             routes = new SerializableDictionary<string, List<Vertex>>();
             buses = new List<Bus>();
         }
+
 
         private void LoadSettings()
         {
@@ -307,7 +305,7 @@ namespace SystAnalys_lr1
             mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             mainPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(panel6_MouseWheel);
             countWithoutSensors = buses.Count;
-            Matrix();
+            matrixControl1.MatrixCreate();
             hint.Visible = false;
             r.ch.Titles.Add(MainStrings.report);
             r.ch.Series[rCount].LegendText = "1";
@@ -357,7 +355,7 @@ namespace SystAnalys_lr1
         //функция возвращает массив загрязнений по маршрутам (для 2 формы)
         public Dictionary<string, List<GridPart>> GetPollutionInRoutes()
         {
-            return Optimization.PollutionInRoutes;
+            return Optimizator.PollutionInRoutes;
         }
         //функция возвращает эпицентры (для 2 формы)
         public List<Epicenter> GetEpicenters()
@@ -398,13 +396,13 @@ namespace SystAnalys_lr1
   
         private void CreateGridRoutes()
         {
-            Optimization.PollutionInRoutes = new Dictionary<string, List<GridPart>>();
+            Optimizator.PollutionInRoutes = new Dictionary<string, List<GridPart>>();
             for (int i = 0; i < AllCoordinates.Count; i++)
             {
-                Optimization.PollutionInRoutes.Add(AllCoordinates.ElementAt(i).Key, new List<GridPart>());
+                Optimizator.PollutionInRoutes.Add(AllCoordinates.ElementAt(i).Key, new List<GridPart>());
                 foreach (var Grid in TheGrid)
                 {
-                    Optimization.PollutionInRoutes[Optimization.PollutionInRoutes.ElementAt(i).Key].Add(new GridPart(Grid.x, Grid.y));
+                    Optimizator.PollutionInRoutes[Optimizator.PollutionInRoutes.ElementAt(i).Key].Add(new GridPart(Grid.x, Grid.y));
                 }
             }
         }
@@ -959,7 +957,7 @@ namespace SystAnalys_lr1
                 globalMap = sheet.Image;
                 G.SetBitmap();
                 CreateGrid();
-                Optimization.CreatePollutionInRoutes();
+                Optimizator.CreatePollutionInRoutes();
                 addInComboBox();
                 Ep = new DisplayEpicenters(this);
                 StyleManager.Clone(Ep);
@@ -968,7 +966,7 @@ namespace SystAnalys_lr1
                 openEpicFormToolStripMenuItem.Enabled = true;
                 addRouteToolStripMenuItem.Enabled = true;
                 createGridToolStripMenuItem.Enabled = true;
-                Matrix();
+                matrixControl1.MatrixCreate();
                 BringToFront();
                 timer1.Dispose();
                 timer1.Start();
@@ -1185,52 +1183,7 @@ namespace SystAnalys_lr1
             selected = new List<int>();
             DrawGrid();
         }
-        private List<Bus> SplitBuses()
-        {
-            busesPark = new List<List<Bus>>();
-
-            List<Bus> b = new List<Bus>();
-
-            for (int i = 0; i < buses.Count; i++)
-            {
-                if (i == buses.Count - 1)
-                {
-                    if (b.Count == 0)
-                    {
-                        busesPark.Add(new List<Bus>() { buses[i] });
-                    }
-                    else
-                    {
-                        b.Add(buses[i]);
-                        b = BubbleSortEx(b);
-                        busesPark.Add(new List<Bus>(b));
-                        b.Clear();
-                    }
-                }
-                else
-                {
-                    if (buses[i].route == buses[i + 1].route)
-                    {
-                        b.Add(buses[i]);
-                    }
-                    else
-                    {
-                        if (b.Count == 0)
-                        {
-                            busesPark.Add(new List<Bus>() { buses[i] });
-                        }
-                        else
-                        {
-                            b.Add(buses[i]);
-                            b = BubbleSortEx(b);
-                            busesPark.Add(new List<Bus>(b));
-                            b.Clear();
-                        }
-                    }
-                }
-            };
-            return b;
-        }
+       
         public bool NextBool()
         {
             // as simple as possible
@@ -1295,7 +1248,7 @@ namespace SystAnalys_lr1
         {
             int countSensors = 0;
             int tot = 0;
-            SplitBuses();
+            matrixControl1.SplitBuses();
             foreach (var b in busesPark)
             {
                 double razm = Math.Round(b.Count - b.Count * 0.01 * proc);
@@ -1357,7 +1310,7 @@ namespace SystAnalys_lr1
             }
             loadingForm.Theme = msmMain.Theme;
             loadingForm.Style = msmMain.Style;
-            Matrix();
+            matrixControl1.MatrixCreate();
             percentMean = new SerializableDictionary<int, int?>();
 
             List<Bus> optimizeBuses = new List<Bus>();
@@ -1367,9 +1320,9 @@ namespace SystAnalys_lr1
             if (speed.Text != "" && int.TryParse(speed.Text, out int sp))
             {
                 if (int.Parse(speed.Text) / 20 == 0)
-                    Optimization.T = 1;
+                    Optimizator.T = 1;
                 else
-                    Optimization.T = int.Parse(speed.Text) / 20;
+                    Optimizator.T = int.Parse(speed.Text) / 20;
             }
             int old = small;
             var style = msmMain.Style;
@@ -1412,7 +1365,7 @@ namespace SystAnalys_lr1
                             Directory.CreateDirectory(pathOpt + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString());
                         }
                         CreateOneRandomEpicenter(EpicSizeParam, null);
-                        Optimization.Modeling(pathOpt, cicl, i);
+                        Optimizator.Modeling(pathOpt, cicl, i);
                         if ((SavePictures == true) && (!extendedSavePictures == true))
                         {
 
@@ -1446,9 +1399,9 @@ namespace SystAnalys_lr1
                         small = 10000;
                     }
 
-                    int total = Optimization.ResultFromModeling.Sum(x => Convert.ToInt32(x));
+                    int total = Optimizator.ResultFromModeling.Sum(x => Convert.ToInt32(x));
                     int count = 0;
-                    foreach (var m in Optimization.ResultFromModeling)
+                    foreach (var m in Optimizator.ResultFromModeling)
                     {
                         if (m != null)
                         {
@@ -1456,7 +1409,7 @@ namespace SystAnalys_lr1
                         }
                     }
 
-                    if (total < 0 || count < Optimization.ResultFromModeling.Count / 2)
+                    if (total < 0 || count < Optimizator.ResultFromModeling.Count / 2)
                     {
                         //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
                         if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
@@ -1483,7 +1436,7 @@ namespace SystAnalys_lr1
                         fileV.WriteLine(MainStrings.countBuses + ": " + (withoutSensorsBuses.Last()).ToString());
                         fileV.WriteLine(MainStrings.numIter + ": " + optText.Text);
                         fileV.WriteLine(MainStrings.distance + ": " + speed.Text + " " + MainStrings.sec + " (" + (int.Parse(speed.Text) / 60 == 0 ? ">1" + MainStrings.minute : int.Parse(speed.Text) / 60 + " " + MainStrings.minute) + ")");
-                        fileV.WriteLine(MainStrings.found + ": " + (from num in Optimization.ResultFromModeling where (num != null) select num).Count());
+                        fileV.WriteLine(MainStrings.found + ": " + (from num in Optimizator.ResultFromModeling where (num != null) select num).Count());
                         if (count == 0)
                         {
                             fileV.WriteLine(MainStrings.none);
@@ -1491,13 +1444,13 @@ namespace SystAnalys_lr1
                         else
                         {
                             fileV.WriteLine(MainStrings.average + " " + (total / count / 60 == 0 ? (total / count + " " + MainStrings.sec).ToString() : (total / count / 60 + " " + MainStrings.minute + " " + total / count % 60 + " " + MainStrings.sec).ToString())
-                                + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + (((Optimization.ResultFromModeling.Count - count) * 100.00 / int.Parse(optText.Text))).ToString());
+                                + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + (((Optimizator.ResultFromModeling.Count - count) * 100.00 / int.Parse(optText.Text))).ToString());
                         }
                         fileV.WriteLine(MainStrings.cycle + " " + cicl.ToString());
-                        for (int i = 0; i < Optimization.ResultFromModeling.Count; i++)
-                            if (Optimization.ResultFromModeling[i] != null)
+                        for (int i = 0; i < Optimizator.ResultFromModeling.Count; i++)
+                            if (Optimizator.ResultFromModeling[i] != null)
                             {
-                                fileV.WriteLine(i.ToString() + " : " + (Optimization.ResultFromModeling[i] / 60 == 0 ? (Optimization.ResultFromModeling[i] + " " + MainStrings.sec).ToString() : (Optimization.ResultFromModeling[i] / 60 + " " + MainStrings.minute + " " + Optimization.ResultFromModeling[i] % 60 + " " + MainStrings.sec).ToString()));
+                                fileV.WriteLine(i.ToString() + " : " + (Optimizator.ResultFromModeling[i] / 60 == 0 ? (Optimizator.ResultFromModeling[i] + " " + MainStrings.sec).ToString() : (Optimizator.ResultFromModeling[i] / 60 + " " + MainStrings.minute + " " + Optimizator.ResultFromModeling[i] % 60 + " " + MainStrings.sec).ToString()));
                             }
                             else
                             {
@@ -1506,7 +1459,7 @@ namespace SystAnalys_lr1
 
                         Console.WriteLine("Объект сериализован");
                     }
-                    Optimization.ResultFromModeling = new List<int?>();
+                    Optimizator.ResultFromModeling = new List<int?>();
                 }
 
             });
@@ -1525,7 +1478,7 @@ namespace SystAnalys_lr1
             {
                 fileV.WriteLine(mean.Text != MainStrings.average + " " + MainStrings.notFound ? MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + result[0] : MainStrings.notFound);
             }
-            Matrix();
+            matrixControl1.MatrixCreate();
             resMatrix();
             msmMain.Style = style;
             // MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
@@ -1789,10 +1742,10 @@ namespace SystAnalys_lr1
                     globalMap = sheet.Image;
                     G.SetBitmap();
                     CreateGrid();
-                    Optimization.CreatePollutionInRoutes();
+                    Optimizator.CreatePollutionInRoutes();
                     addInComboBox();
                     DrawGrid();
-                    Matrix();
+                    matrixControl1.MatrixCreate();
                     BringToFront();
                     //
                     Console.WriteLine("Memory used before collection:       {0:N0}",
@@ -2506,7 +2459,7 @@ namespace SystAnalys_lr1
                 loadingForm.loading.Value = 90;
                 openEpicFormToolStripMenuItem.Enabled = true;
                 CreateGrid();
-                Optimization.CreatePollutionInRoutes();
+                Optimizator.CreatePollutionInRoutes();
                 CreateOneRandomEpicenter(EpicSizeParam, null);
 
                 addInComboBox();
@@ -2542,10 +2495,46 @@ namespace SystAnalys_lr1
             }
         }
 
+        private MetroGrid CopyDataGridView(MetroGrid dgv_org)
+        {
+            MetroGrid dgv_copy = new MetroGrid();
+            try
+            {
+                if (dgv_copy.Columns.Count == 0)
+                {
+                    foreach (DataGridViewColumn dgvc in dgv_org.Columns)
+                    {
+                        dgv_copy.Columns.Add(dgvc.Clone() as DataGridViewColumn);
+                    }
+                }
+
+                DataGridViewRow row = new DataGridViewRow();
+
+                for (int i = 0; i < dgv_org.Rows.Count; i++)
+                {
+                    row = (DataGridViewRow)dgv_org.Rows[i].Clone();
+                    int intColIndex = 0;
+                    foreach (DataGridViewCell cell in dgv_org.Rows[i].Cells)
+                    {
+                        row.Cells[intColIndex].Value = cell.Value;
+                        intColIndex++;
+                    }
+                    dgv_copy.Rows.Add(row);
+                }
+                dgv_copy.AllowUserToAddRows = false;
+                dgv_copy.Refresh();
+
+            }
+            catch (Exception ex)
+            {
+                //cf.ShowExceptionErrorMsg("Copy DataGridViw", ex);
+            }
+            return dgv_copy;
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Matrix();
+            matrixControl1.MatrixCreate();
         }
 
 
@@ -3891,7 +3880,7 @@ namespace SystAnalys_lr1
             delAllBusesOnRoute.Enabled = false;
             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
             BringToFront();
-            Matrix();
+            matrixControl1.MatrixCreate();
             TheGrid = new List<GridPart>();
             TheGrid.TrimExcess();
             timer1.Stop();
@@ -3929,7 +3918,7 @@ namespace SystAnalys_lr1
                 }
 
                 CreateAllCoordinates();
-                Optimization.CreatePollutionInRoutes();
+                Optimizator.CreatePollutionInRoutes();
             }
         }
 

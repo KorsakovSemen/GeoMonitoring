@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SystAnalys_lr1.Classes
 {
-    static class Optimization
+    static class Optimizator
     {
         static public Dictionary<string, List<GridPart>> PollutionInRoutes;
         static public int T;
@@ -28,10 +28,6 @@ namespace SystAnalys_lr1.Classes
                 }
             }
         }
-
-
-
-
 
 
         public static void Modeling(string SavePath, int Cicle, int ModelNum)
