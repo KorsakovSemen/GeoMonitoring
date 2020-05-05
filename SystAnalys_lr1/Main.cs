@@ -37,6 +37,7 @@ namespace SystAnalys_lr1
         PictureBox AnimationBox;
         Graphics AnimationGraphics;
         Bitmap AnimationBitmap;
+        Coordinates coordinates;
 
         public static deleteType delType;
         int tracbarX, tracbarY;
@@ -91,7 +92,36 @@ namespace SystAnalys_lr1
         //потом
         List<Dictionary<string, Dictionary<string, int>>> AllRouteGridFilling;
         //уровень загрязнения в координатах
-    
+        //функция возвращает массив координат маршрутов (для 2 формы)
+        public SerializableDictionary<string, List<Point>> GetAllCoordinates()
+        {
+            return AllCoordinates;
+        }
+        //функция возвращает массив загрязнений по маршрутам (для 2 формы)
+        public Dictionary<string, List<GridPart>> GetPollutionInRoutes()
+        {
+            return Modeling.PollutionInRoutes;
+        }
+        //функция возвращает эпицентры (для 2 формы)
+        public List<Epicenter> GetEpicenters()
+        {
+            return Epics;
+        }
+        //функция возвращает сетку (для 2 формы)
+        public List<GridPart> GetTheGrid()
+        {
+            return TheGrid;
+        }
+        //функция возвращает комбобох1 (для 2 формы)
+        public ComboBox GetcomboBox1()
+        {
+            return changeRoute;
+        }
+
+        delegate void Del(string text);
+        delegate void DelInt(int text);
+        delegate void DelBool(bool text);
+        delegate void DelBmp(Bitmap bmp);
 
         // лист номеров квадратов, в которм есть светофор
         static public List<int> TraficLightsInGrids;
@@ -124,7 +154,7 @@ namespace SystAnalys_lr1
         int rCount;
         int iCh;
         int oldChart;
-
+        //class jopa
         private void addInComboBox()
         {
             changeRoute.Items.Clear();
@@ -136,15 +166,37 @@ namespace SystAnalys_lr1
             };
             changeRoute.Text = MainStrings.network;
         }
+        
 
+        public Main()
+        {
+            // Если в настройках есть язык, устанавлияем его для текущего потока, в котором выполняется приложение.
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.Language))
+            {
+                // ВАЖНО: Устанавливать язык нужно до создания элементов формы!
+                // Это можно сделать глобально, в рамках приложения в классе Program (см. файл Program.cs).
+                System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
+                System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
+            }
+
+            InitializeComponent();
+            InitializeElements();
+            LoadSettings();
+            AnimationSettings();
+
+
+        }
+
+        //class jopa
         private void InitializeElements()
         {
             tracbarX = metroTrackBar1.Location.X;
             tracbarY = metroTrackBar1.Location.Y;
             MovingEpicParamet = new List<string>();
-            r =  new Report();
+            r = new Report();
             iCh = 0;
             rCount = 0;
+            coordinates = new Coordinates();
             g = new Classes.Grid(0, 0, 0, 0, 80, 40);
             routePoints = new List<SerializableDictionary<int, Vertex>>();
             edgePoints = new SerializableDictionary<int, List<Edge>>();
@@ -168,7 +220,6 @@ namespace SystAnalys_lr1
             addBus.Enabled = false;
             deleteBus.Enabled = false;
             selectRoute.Enabled = false;
-            _instance = this;
             G = new DrawGraph();
             E = new List<Edge>();
             V = new List<Vertex>();
@@ -185,7 +236,7 @@ namespace SystAnalys_lr1
             buses = new List<Bus>();
         }
 
-
+        //class jopa
         private void LoadSettings()
         {
             if (File.Exists("../../SaveConfig/save.txt"))
@@ -310,7 +361,7 @@ namespace SystAnalys_lr1
             r.ch.Titles.Add(MainStrings.report);
             r.ch.Series[rCount].LegendText = "1";
         }
-
+        //class jopa
         public void AnimationSettings()
         {
 
@@ -327,60 +378,7 @@ namespace SystAnalys_lr1
             AnimationBox.MouseClick += sheet_MouseClick_1;
         }
 
-        private static Main _instance;
-
-        public Main()
-        {
-            // Если в настройках есть язык, устанавлияем его для текущего потока, в котором выполняется приложение.
-            if (!string.IsNullOrEmpty(Properties.Settings.Default.Language))
-            {
-                // ВАЖНО: Устанавливать язык нужно до создания элементов формы!
-                // Это можно сделать глобально, в рамках приложения в классе Program (см. файл Program.cs).
-                System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
-                System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
-            }
-
-            InitializeComponent();
-            InitializeElements();
-            LoadSettings();
-            AnimationSettings();
-
-
-        }
-        //функция возвращает массив координат маршрутов (для 2 формы)
-        public SerializableDictionary<string, List<Point>> GetAllCoordinates()
-        {
-            return AllCoordinates;
-        }
-        //функция возвращает массив загрязнений по маршрутам (для 2 формы)
-        public Dictionary<string, List<GridPart>> GetPollutionInRoutes()
-        {
-            return Modeling.PollutionInRoutes;
-        }
-        //функция возвращает эпицентры (для 2 формы)
-        public List<Epicenter> GetEpicenters()
-        {
-            return Epics;
-        }
-        //функция возвращает сетку (для 2 формы)
-        public List<GridPart> GetTheGrid()
-        {
-            return TheGrid;
-        }
-        //функция возвращает комбобох1 (для 2 формы)
-        public ComboBox GetcomboBox1()
-        {
-            return changeRoute;
-        }
-
-        delegate void Del(string text);
-        delegate void DelInt(int text);
-        delegate void DelBool(bool text);
-
-  
-
-       
-        delegate void DelBmp(Bitmap bmp);
+        //class grid
         private void CreateGridRoutes()
         {
             Modeling.PollutionInRoutes = new Dictionary<string, List<GridPart>>();
@@ -622,12 +620,7 @@ namespace SystAnalys_lr1
             DrawGrid();
             checkBusesOnRoute();
         }
-
-        private void deleteBus_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        //class zoom
         public static Image ResizeBitmap(Image sourceBMP, int width, int height)
         {
 
@@ -646,21 +639,13 @@ namespace SystAnalys_lr1
             return metroTrackBar1;
         }
 
-        private static Image Zoom(Image img, Size size)
-        {
-            Bitmap bmp = new Bitmap(img, size);
-            Graphics g = Graphics.FromImage(bmp);
-            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            return bmp;
-        }
-
         public static string NormalizePath(string path)
         {
             return Path.GetFullPath(new Uri(path).LocalPath)
                        .TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)
                        .ToUpperInvariant();
         }
-
+        //class saver
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -781,7 +766,7 @@ namespace SystAnalys_lr1
             DrawGrid();
             selected = new List<int>();
         }
-
+        //class constructor
         private void deleteRoute_Click(object sender, EventArgs e)
         {
             try
@@ -893,7 +878,7 @@ namespace SystAnalys_lr1
                 }
             }
         }
-
+        //saver/loader
         private void newModelToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -1131,9 +1116,6 @@ namespace SystAnalys_lr1
 
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-        }
 
         private void selectButton_Click(object sender, EventArgs e)
         {
@@ -1267,6 +1249,7 @@ namespace SystAnalys_lr1
 
             }
         }
+        //class opt
         public void resMatrix()
         {
             results.Rows.Clear();
@@ -1283,6 +1266,7 @@ namespace SystAnalys_lr1
                 i += 1;
             }
         }
+        //class opt
         public void resChart()
         {
             if (oldChart == (int)Optimization.percentMean.Keys.Sum())
@@ -1359,6 +1343,7 @@ namespace SystAnalys_lr1
         {
             return SavePictures;
         }
+        //class loader
         private void loadFromToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var dialog = new FolderBrowserDialog())
@@ -1416,6 +1401,7 @@ namespace SystAnalys_lr1
             }
             BringToFront();
         }
+        //class loader
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (savepath != null)
@@ -1621,7 +1607,7 @@ namespace SystAnalys_lr1
             selected = new List<int>();
             DrawGrid();
         }
-
+        //class saver
         string saveF = "xml";
         private void SaveRoutes(string saveFormat = "xml", string save = "../../Data/")
         {
@@ -1799,16 +1785,6 @@ namespace SystAnalys_lr1
             LoadRoutes();
         }
 
-        public List<string> extensionsFiles(string path)
-        {
-            DirectoryInfo dir = new DirectoryInfo(path);
-            var res = dir.GetFiles();
-            List<string> extensions = new List<string>();
-            foreach (var r in res)
-                extensions.Add(r.Extension);
-            return extensions;
-        }
-
         private void deleteAll()
         {
             TraficLightsInGrids.Clear();
@@ -1821,7 +1797,7 @@ namespace SystAnalys_lr1
             routesEdge.Clear();
 
         }
-
+        //class loader
         private void LoadRoutes(string load = "../../Data/")
         {
             try
@@ -2209,7 +2185,7 @@ namespace SystAnalys_lr1
 
                 if (AllCoordinates.Count != 0)
                 {
-                    CreateAllCoordinates();
+                    coordinates.CreateAllCoordinates();
                 }
                 GC.Collect(GC.MaxGeneration);
             }
@@ -2226,42 +2202,6 @@ namespace SystAnalys_lr1
             }
         }
 
-        private MetroGrid CopyDataGridView(MetroGrid dgv_org)
-        {
-            MetroGrid dgv_copy = new MetroGrid();
-            try
-            {
-                if (dgv_copy.Columns.Count == 0)
-                {
-                    foreach (DataGridViewColumn dgvc in dgv_org.Columns)
-                    {
-                        dgv_copy.Columns.Add(dgvc.Clone() as DataGridViewColumn);
-                    }
-                }
-
-                DataGridViewRow row = new DataGridViewRow();
-
-                for (int i = 0; i < dgv_org.Rows.Count; i++)
-                {
-                    row = (DataGridViewRow)dgv_org.Rows[i].Clone();
-                    int intColIndex = 0;
-                    foreach (DataGridViewCell cell in dgv_org.Rows[i].Cells)
-                    {
-                        row.Cells[intColIndex].Value = cell.Value;
-                        intColIndex++;
-                    }
-                    dgv_copy.Rows.Add(row);
-                }
-                dgv_copy.AllowUserToAddRows = false;
-                dgv_copy.Refresh();
-
-            }
-            catch (Exception ex)
-            {
-                //cf.ShowExceptionErrorMsg("Copy DataGridViw", ex);
-            }
-            return dgv_copy;
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -2281,7 +2221,7 @@ namespace SystAnalys_lr1
         static public int refreshLights = 0;
 
         public static bool flag = false;
-
+        //остальное конструктор
         private async void asyncCheckV(MouseEventArgs e, bool check)
         {
             await Task.Run(() => CheckV(e, check));
@@ -2494,7 +2434,7 @@ namespace SystAnalys_lr1
                 //   
 
                 DrawGrid();
-                CreateOneRouteCoordinates((changeRoute.Text));
+                coordinates.CreateOneRouteCoordinates(changeRoute.Text);
                 //Bus.AllCoordinates = AllCoordinates;
                 return;
             }
@@ -3278,7 +3218,7 @@ namespace SystAnalys_lr1
 
         private void metroButton1_Click_1(object sender, EventArgs e)
         {
-            AsyncCreateAllCoordinates();
+            coordinates.AsyncCreateAllCoordinates();
         }
 
         //
@@ -3413,7 +3353,7 @@ namespace SystAnalys_lr1
                     Ep.EDrawGrid();
                 }
 
-                CreateAllCoordinates();
+                coordinates.CreateAllCoordinates();
                 Modeling.CreatePollutionInRoutes();
             }
         }
