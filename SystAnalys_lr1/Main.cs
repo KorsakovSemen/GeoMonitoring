@@ -186,9 +186,7 @@ namespace SystAnalys_lr1
         public ComboBox GetcomboBox1()
         {
             return changeRoute;
-        }
-
-     
+        }     
 
        
    
@@ -221,8 +219,24 @@ namespace SystAnalys_lr1
             InitializeElements();
             LoadSettings();
             AnimationSettings();
+            
 
-
+        }
+        private void constructorOnNetwork()
+        {
+            addTraficLight.Enabled = true;
+            delAllBusesOnRoute.Enabled = false;
+            stopPointButton.Enabled = true; 
+            allBusSettings.Enabled = false;
+            drawEdgeButton.Enabled = true;
+            selectButton.Enabled = true;
+            drawVertexButton.Enabled = true;
+            deleteButton.Enabled = true;
+            deleteALLButton.Enabled = true;
+            deleteRoute.Enabled = true;
+            addBus.Enabled = false;
+            deleteBus.Enabled = true;
+            selectRoute.Enabled = true;
         }
 
         //class jopa
@@ -2206,13 +2220,12 @@ namespace SystAnalys_lr1
                         AllGridsInRoutes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<int>>>(reader.ReadToEnd());
                     }
                 }
-                // loadingForm.loading.Value = 50;
                 loadingForm.loading.Value = 90;
                 openEpicFormToolStripMenuItem.Enabled = true;
                 CreateGrid();
                 Modeling.CreatePollutionInRoutes();
                 Epicenter.CreateOneRandomEpicenter(EpicSizeParam, null);
-
+                constructorOnNetwork();
                 addInComboBox();
                 G.ClearSheet();
                 G.DrawALLGraph(V, E);
@@ -2226,7 +2239,6 @@ namespace SystAnalys_lr1
                 loadingForm.loading.Value = 100;
                 loadingForm.close = true;
                 loadingForm.Close();
-
                 if (AllCoordinates.Count != 0)
                 {
                     coordinates.CreateAllCoordinates();
