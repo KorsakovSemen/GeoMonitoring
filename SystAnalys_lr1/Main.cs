@@ -33,54 +33,45 @@ namespace SystAnalys_lr1
             All,
             TheBuses
         }
-
+//
         PictureBox AnimationBox;
         Graphics AnimationGraphics;
         Bitmap AnimationBitmap;
         Coordinates coordinates;
+//
 
         public static deleteType delType;
+        //
+     
         int tracbarX, tracbarY;
+       //
         public static string selectedRoute;
         public static int firstCrossRoads = 0;
         public static int firstCrossRoadsGreenLight = 0;
         public static int firstCrossRoadsRedLight = 0;
         public static int secondCrossRoads = 0;
-        public static string EpicSizeParamSave = "radioEpicMedium";
-        
-        public static List<string> MovingEpicParamet;
-        
+        //временно тут
+        public static string EpicSizeParamSave = "radioEpicMedium";       
+        public static List<string> MovingEpicParamet;        
         public static string EpicFreqMovingSave = null;
-        public static int EpicFreqMovingParam = 0;
-        
+        public static int EpicFreqMovingParam = 0;    
         public static string EpicFreqSpreadingSave = null;
-        public static int EpicFreqSpreadingParam = 0;
-        
+        public static int EpicFreqSpreadingParam = 0;   
         public static string EpicPhaseSavingSave = null;
         public static int EpicPhaseSavingParam = 1;
-        
-        string savepath;
-       
-        public static bool SavePictures = false;        
-        
+        public static bool SavePictures = false;
         public static bool extendedSavePictures = false;
-        
-        public static Classes.Grid g;
+        //
+        string savepath;
+
+        //все массивы
         //Лист всех эпицентров
         public static List<Epicenter> Epics;
         //Лист, в котором хранится сетка
         static public List<GridPart> TheGrid { get; set; }
-        public static DrawGraph G;
         //Лист, в котором хранятся автобусы
         static public List<Bus> buses;
         public static List<List<Bus>> busesPark;
-        public static int selected1; //выбранные вершины, для соединения линиями
-        public static int selected2;
-        //массив всех маршрутов
-        static public SerializableDictionary<string, List<Vertex>> routes;
-        //статичный размер басса
-        public static int sizeBus;
-        //очистить данные
         //все вершины
         static public List<Vertex> V;
         //ребра маршрутов
@@ -89,8 +80,92 @@ namespace SystAnalys_lr1
         public static List<Edge> E;
         //для AllGridFilling, чтобы отображать время за которое моделилось движение
         List<int> TimeForAllGridFilling;
-        //потом
         List<Dictionary<string, Dictionary<string, int>>> AllRouteGridFilling;
+        //массив всех маршрутов
+        static public SerializableDictionary<string, List<Vertex>> routes;
+        static public List<SerializableDictionary<int, Vertex>> routePoints;
+        static public SerializableDictionary<int, List<Edge>> edgePoints;
+        // лист номеров квадратов, в которм есть светофор
+        static public List<int> TraficLightsInGrids;
+        // словарь номеров квадратов, в которм есть остановка для каждого маршрута
+        public static List<Vertex> allstopPoints;
+        public static SerializableDictionary<string, List<int>> stopPointsInGrids;
+        //Остановки маршрутов
+        public static SerializableDictionary<string, List<Vertex>> stopPoints;
+
+        //Светофоры
+        public static List<TraficLight> traficLights;
+
+        //все координаты движения автобусов
+        public static SerializableDictionary<string, List<Point>> AllCoordinates;
+        //все квадраты сетки, которые есть в каждом из маршрутов 
+        public static SerializableDictionary<string, List<int>> AllGridsInRoutes { get; set; }
+        //
+
+
+        public static Classes.Grid g;
+   
+
+        public static DrawGraph G;
+
+        public static int selected1; //выбранные вершины, для соединения линиями
+        public static int selected2;
+
+        //статичный размер басса
+        public static int sizeBus;
+
+        bool lang = false;
+
+        delegate void Del(string text);
+        delegate void DelInt(int text);
+        delegate void DelBool(bool text);
+        delegate void DelBmp(Bitmap bmp);
+
+        Image saveImage;
+        Random rnd = new Random();
+
+        //вторая форма
+        static public DisplayEpicenters Ep;
+
+        int wsheet;
+        int hsheet;
+        static public Image globalMap;
+        static public int zoom, scrollX, scrollY;
+        Report r;
+        static public Main _instance;
+        public static bool yes;
+
+        int rCount;
+        int oldChart;
+
+        static public string globalDel = "All";
+
+        LoadingForm loadingForm = new LoadingForm();
+
+
+        public static int EpicSizeParam = 25;
+
+        string saveF = "xml";
+
+
+
+        List<int> selected = new List<int>();
+
+        Constructor c = new Constructor();
+
+        static public int refreshLights = 0;
+
+        public static bool flag = false;
+
+        CrossroadsSettings crossSettings;
+
+        AddRoute addR;
+
+        AddGrid addG;
+
+        public EpicSettings epSet;
+
+
         //уровень загрязнения в координатах
         //функция возвращает массив координат маршрутов (для 2 формы)
         public SerializableDictionary<string, List<Point>> GetAllCoordinates()
@@ -113,44 +188,10 @@ namespace SystAnalys_lr1
             return changeRoute;
         }
 
-        delegate void Del(string text);
-        delegate void DelInt(int text);
-        delegate void DelBool(bool text);
-        delegate void DelBmp(Bitmap bmp);
+     
 
-        // лист номеров квадратов, в которм есть светофор
-        static public List<int> TraficLightsInGrids;
-        // словарь номеров квадратов, в которм есть остановка для каждого маршрута
-        public static List<Vertex> allstopPoints;
-        public static SerializableDictionary<string, List<int>> stopPointsInGrids;
-        //Остановки маршрутов
-        public static SerializableDictionary<string, List<Vertex>> stopPoints;
-
-        //Светофоры
-        public static List<TraficLight> traficLights;
-        bool lang = false;
-        //все координаты движения автобусов
-        public static SerializableDictionary<string, List<Point>> AllCoordinates;
-        //все квадраты сетки, которые есть в каждом из маршрутов 
-        public static SerializableDictionary<string, List<int>> AllGridsInRoutes { get; set; }
-        Image saveImage;
-        Random rnd = new Random();
-        static public List<SerializableDictionary<int, Vertex>> routePoints;
-        static public SerializableDictionary<int, List<Edge>> edgePoints;
-        //вторая форма
-        static public DisplayEpicenters Ep;
-       // int countWithoutSensors;
-        int wsheet;
-        int hsheet;
-        static public Image globalMap;
-        static public int zoom, scrollX, scrollY;
-        Report r;
-        static public Main _instance;
-
-
-        int rCount;
-        int iCh;
-        int oldChart;
+       
+   
         //class jopa
         private void addInComboBox()
         {
@@ -190,8 +231,7 @@ namespace SystAnalys_lr1
             tracbarX = zoomBar.Location.X;
             tracbarY = zoomBar.Location.Y;
             MovingEpicParamet = new List<string>();
-            r = new Report();
-            iCh = 0;
+            r = new Report();   
             rCount = 0;
             coordinates = new Coordinates();
             g = new Classes.Grid(0, 0, 0, 0, 80, 40);
@@ -693,7 +733,7 @@ namespace SystAnalys_lr1
                 }
             }
         }
-        static public string globalDel = "All";
+       
         private void deleteButton_Click(object sender, EventArgs e)
         {
             yes = false;
@@ -946,7 +986,7 @@ namespace SystAnalys_lr1
             }
         }
 
-        public static bool yes;
+
         private void deleteALLButton_Click(object sender, EventArgs e)
         {
             try
@@ -1159,10 +1199,7 @@ namespace SystAnalys_lr1
             return null;
         }
 
-        LoadingForm loadingForm = new LoadingForm();
-
-
-        public static int EpicSizeParam = 25;
+    
    
         private async void optimize_ClickAsync(object sender, EventArgs e)
         {
@@ -1614,7 +1651,7 @@ namespace SystAnalys_lr1
             DrawGrid();
         }
         //class saver
-        string saveF = "xml";
+
         private void SaveRoutes(string saveFormat = "xml", string save = "../../Data/")
         {
             try
@@ -2220,13 +2257,7 @@ namespace SystAnalys_lr1
             return (int)Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
         }
 
-        List<int> selected = new List<int>();
-
-        Constructor c = new Constructor();
-
-        static public int refreshLights = 0;
-
-        public static bool flag = false;
+       
         //остальное конструктор
         private async void asyncCheckV(MouseEventArgs e, bool check)
         {
@@ -2596,7 +2627,7 @@ namespace SystAnalys_lr1
             BringToFront();
 
         }
-        CrossroadsSettings crossSettings;
+
         private void addTraficLight_Click(object sender, EventArgs e)
         {
             if (changeRoute.Text == MainStrings.network)
@@ -2729,7 +2760,7 @@ namespace SystAnalys_lr1
             Ep.Show();
 
         }
-        AddRoute addR;
+ 
         private void addRouteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             addR = new AddRoute();
@@ -2941,7 +2972,7 @@ namespace SystAnalys_lr1
             //    Console.WriteLine("ex");
             //}
         }
-        AddGrid addG;
+   
 
         private void busSize_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -2975,7 +3006,7 @@ namespace SystAnalys_lr1
         }
 
         //
-        public EpicSettings epSet;
+
         private void metroButton2_Click(object sender, EventArgs e)
         {
             epSet = new EpicSettings();
