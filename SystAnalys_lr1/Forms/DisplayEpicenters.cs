@@ -27,11 +27,11 @@ namespace SystAnalys_lr1
         {
             this.MainForm = Main;
             InitializeComponent();
-
         }
 
         private MetroTrackBar EZoomBar = new MetroTrackBar();
         public PictureBox Esheet = new PictureBox();
+        private MetroLabel label = new MetroLabel();
         private MetroFramework.Controls.MetroPanel MapPanel = new MetroFramework.Controls.MetroPanel();
  
 
@@ -67,8 +67,9 @@ namespace SystAnalys_lr1
             ////
             this.Controls.Add(MapPanel);
             this.MapPanel.Controls.Add(Esheet);
-            Esheet.Dock = MainForm.GetSheet().Dock;
 
+
+            Esheet.Dock = MainForm.GetSheet().Dock;
             Esheet.Location = new Point(panel1.Width, 1);
             Esheet.Size = MainForm.GetSheet().Size;
             Esheet.Image = Main.globalMap;
@@ -80,8 +81,7 @@ namespace SystAnalys_lr1
             Esheet.Anchor = MainForm.GetSheet().Anchor;
             EG = new DrawGraph();
             EG.SetBitmap2();
-            ///
-            //EZoomBar = MainForm.GetTrackBar();
+
             EZoomBar.StyleManager = MainForm.GetTrackBar().StyleManager;
             EZoomBar.Size = MainForm.GetTrackBar().Size;
             EZoomBar.LargeChange = MainForm.GetTrackBar().LargeChange;
@@ -91,9 +91,14 @@ namespace SystAnalys_lr1
             EZoomBar.Left = MainForm.GetTrackBar().Left;  
             EZoomBar.Top = MainForm.GetTrackBar().Top;
             EZoomBar.Scroll += EZoomBar_Scroll;
-            //
-            this.panel1.Controls.Add(ERouts);
-            this.panel1.Controls.Add(EZoomBar);
+
+
+            label.Text = "|";
+            label.Location = new Point(EZoomBar.Width / 2 + 23, panel1.Height - 65);
+            
+            panel1.Controls.Add(ERouts);
+            panel1.Controls.Add(EZoomBar);
+            panel1.Controls.Add(label);
 
 
 

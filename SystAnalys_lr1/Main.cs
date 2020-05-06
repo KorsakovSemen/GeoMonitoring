@@ -149,7 +149,9 @@ namespace SystAnalys_lr1
         int hsheet;
         static public Image globalMap;
         static public int zoom, scrollX, scrollY;
-        Report r;     
+        Report r;
+        static public Main _instance;
+
 
         int rCount;
         int iCh;
@@ -178,7 +180,7 @@ namespace SystAnalys_lr1
                 System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
                 System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
             }
-
+            _instance = this;
             InitializeComponent();
             InitializeElements();
             LoadSettings();

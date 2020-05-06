@@ -12,9 +12,9 @@ namespace SystAnalys_lr1.Classes
 
     public class Bus : ICloneable
     {
-        public static int ScrollX;
-        public static int ScrollY;
-        public int skip = 1;
+        public static int ScrollX { get; set; }
+        public static int ScrollY { get; set; }
+        public int skip = 1; // это в конструкторы
         public static string busImg = "../../Resources/newbus.PNG";
         public static string offBusImg = "../../Resources/bus.PNG";
         //таймер для движения
@@ -439,12 +439,12 @@ namespace SystAnalys_lr1.Classes
             return route;
         }
 
-        public async Task AsDetectEpicenter2()
+        public async Task AsDetectEpicenter()
         {
-            await Task.Run(() => DetectEpicenter2());
+            await Task.Run(() => DetectEpicenter());
         }
         // обмнаружение  эпицентров через точки
-        public int DetectEpicenter2()
+        public int DetectEpicenter()
         {
             foreach (var EpicList in Epicenters)
             {
@@ -485,8 +485,6 @@ namespace SystAnalys_lr1.Classes
                 {
                     foreach (var Square in Sector.Value)
                     {
-
-
                         if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
@@ -552,12 +550,12 @@ namespace SystAnalys_lr1.Classes
         }
 
 
-        public async Task AsyncDetectRectangle2()
+        public async Task AsyncDetectRectangle()
         {
-            await Task.Run(() => DetectRectangle2());
+            await Task.Run(() => DetectRectangle());
         }
         //определение квадрата по новому
-        public void DetectRectangle2()
+        public void DetectRectangle()
         {
 
             for (int i = 0; i < Main.TheGrid.Count; i++)
@@ -571,7 +569,6 @@ namespace SystAnalys_lr1.Classes
             }
 
         }
-
 
 
     }

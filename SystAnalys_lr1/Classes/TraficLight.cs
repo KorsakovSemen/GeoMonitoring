@@ -11,16 +11,7 @@ using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace SystAnalys_lr1
-{
-    public class StringValueAttribute : Attribute
-    {
-        public string Value { get; private set; }
-
-        public StringValueAttribute(string value)
-        {
-            Value = value;
-        }
-    }
+{   
     public enum Status
     {
         [XmlEnum(Name = "1")]

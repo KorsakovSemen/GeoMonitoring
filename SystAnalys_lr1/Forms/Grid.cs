@@ -20,7 +20,7 @@ namespace SystAnalys_lr1
             {
                 TheGrid[i].DrawPart(G, zoom);
             }
-            _instance.Invoke(new DelBmp((s) => _instance.sheet.Image = s), G.GetBitmap());
+            _instance.Invoke(new DelBmp((s) => _instance.sheet.Image = s), G.GetBitmap()); // инстанс вырезать как свинью
         }
 
         //создать сетку
