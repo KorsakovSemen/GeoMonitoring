@@ -1353,7 +1353,8 @@ namespace SystAnalys_lr1
             {
                 if (!Directory.Exists(savepath))
                 {
-                    dialog.SelectedPath = System.Windows.Forms.Application.StartupPath;
+                    //dialog.SelectedPath = System.Windows.Forms.Application.StartupPath;
+                    dialog.SelectedPath = Path.GetFullPath("../../Configs/");
                 }
                 else
                 {
@@ -1381,6 +1382,7 @@ namespace SystAnalys_lr1
                             allstopPoints.TrimExcess();
                             LoadRoutes(dialog.SelectedPath + @"\");
                             savepath = dialog.SelectedPath;
+                            Console.WriteLine(savepath);
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
                             using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
                             {
@@ -1483,7 +1485,8 @@ namespace SystAnalys_lr1
                         {
                             if (!Directory.Exists(savepath))
                             {
-                                dialog.SelectedPath = System.Windows.Forms.Application.StartupPath;
+                                //dialog.SelectedPath = System.Windows.Forms.Application.StartupPath;
+                                dialog.SelectedPath = Path.GetFullPath("../../Configs/");
                             }
                             else
                             {
@@ -3008,6 +3011,15 @@ namespace SystAnalys_lr1
             r.BringToFront();
         }
 
+        private void stopBuses_Click_1(object sender, EventArgs e)
+        {
+            timer.Stop();
+        }
+
+        private void launchBuses_Click_1(object sender, EventArgs e)
+        {
+            timer.Start();
+        }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
