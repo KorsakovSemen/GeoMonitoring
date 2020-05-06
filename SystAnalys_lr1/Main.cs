@@ -1573,7 +1573,8 @@ namespace SystAnalys_lr1
                 {
                     if (!Directory.Exists(savepath))
                     {
-                        dialog.SelectedPath = System.Windows.Forms.Application.StartupPath;
+                        //dialog.SelectedPath = System.Windows.Forms.Application.StartupPath;
+                        dialog.SelectedPath = Path.GetFullPath("../../Configs/");
                     }
                     else
                     {
@@ -3054,6 +3055,8 @@ namespace SystAnalys_lr1
 
         private void clearButton_Click(object sender, EventArgs e)
         {
+            clearButton.Enabled = false;
+            //
             openEpicFormToolStripMenuItem.Enabled = false;
             addRouteToolStripMenuItem.Enabled = false;
             createGridToolStripMenuItem.Enabled = false;
@@ -3119,7 +3122,9 @@ namespace SystAnalys_lr1
             AnimationBox.Image = null;
             AnimationGraphics.Dispose();
             AnimationBitmap.Dispose();
+            clearButton.Enabled = true;
             Refresh();
+
         }
 
 
