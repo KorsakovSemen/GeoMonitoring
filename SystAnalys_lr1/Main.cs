@@ -2251,7 +2251,7 @@ namespace SystAnalys_lr1
                 if (firstCrossRoads <= 0 && secondCrossRoads > 0)
                 {
                     trafficLightLabel.Text = MainStrings.putTrafficLights2 + " " + secondCrossRoads.ToString();
-
+                    c.SecondTrafficLight(e, traficLights, sheet, TheGrid);
                     trafficLightLabel.Text = MainStrings.putTrafficLights2 + " " + (secondCrossRoads - 1).ToString();
                 }
             }
@@ -2396,7 +2396,7 @@ namespace SystAnalys_lr1
                             break;
                     }
                 }
-                c.MapUpdateRoute(sheet, routeV, routesEdge[changeRoute.Text]);
+                //c.MapUpdateRoute(sheet, routeV, routesEdge[changeRoute.Text]);
                 coordinates.CreateOneRouteCoordinates(changeRoute.Text);
                 return;
             }

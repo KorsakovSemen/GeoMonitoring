@@ -457,8 +457,8 @@ namespace SystAnalys_lr1.Classes
         public void MapUpdateRoute(PictureBox sheet, List<Vertex> routeV, List<Edge> routeE)
         {
             Main.G.ClearSheet();
-            Main.G.DrawALLGraph(routeV, routeE, 1);
             Main.G.DrawALLGraph(Main.V, Main.E);
+            Main.G.DrawALLGraph(routeV, routeE, 1);
             sheet.Image = Main.G.GetBitmap();
             Main.DrawGrid();
         }
@@ -472,7 +472,7 @@ namespace SystAnalys_lr1.Classes
                     if (Main.selected1 != -1)
                     {
                         Main.selected1 = -1;
-                        if (n != 0) MapUpdateRoute(sheet, V, E);
+                        if (n != 0) MapUpdateRoute(sheet, V, E); 
                         else MapUpdateNetwork(sheet, V, E);
                     }
                     if (Main.selected1 == -1)
