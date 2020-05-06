@@ -28,26 +28,21 @@ namespace SystAnalys_lr1.Classes
         public bool skipTraffics = false;
         public int skipStops = 1;
         public int skipEnd = 5;
-        public int skip { get; set; } = 1;
+        public int Skip { get; set; } = 1;
 
         private readonly Random rnd = new Random();
-       
+
 
         int checkStop = 0;
         int checkStoppedBus = 0;
-
-        readonly int stopTime = 0;
-        public double angle { get; set; }
-        public double x { get; set; }
-        public double y { get; set; }
         //позиция автобуса
         public int PositionAt { get; set; }
         //для обратного движения по маршруту
         public bool TurnBack { get; set; }
         [XmlIgnore, JsonIgnore]
-        public Image busPic { get; set; }
+        public Image BusPic { get; set; }
         //номер маршрута, по которому будет ездить автобус
-        public string route { get; set; }
+        public string Route { get; set; }
         //текущий квадрат, в котором находится автобус
         private int? Locate = null;
         //все координаты для движения автобуса
@@ -79,10 +74,10 @@ namespace SystAnalys_lr1.Classes
         public Bus(Image busPic, int PositionAt, bool Turn, string route, List<Point> Coordinates, bool not)
         {
             Tracker = not;
-            this.busPic = busPic;
+            this.BusPic = busPic;
             this.PositionAt = PositionAt;
             TurnBack = Turn;
-            this.route = route;
+            this.Route = route;
             this.Coordinates = Coordinates;
         }
 
@@ -141,7 +136,7 @@ namespace SystAnalys_lr1.Classes
                 if (TurnBack == false)
                 {
 
-                    if (PositionAt < Main.AllGridsInRoutes[route].Count - 1)
+                    if (PositionAt < Main.AllGridsInRoutes[Route].Count - 1)
                     {
                         PositionAt++;
 
@@ -171,8 +166,8 @@ namespace SystAnalys_lr1.Classes
 
         private void StopDown()
         {
-            if (skip != 0)
-                skip -= 1;
+            if (Skip != 0)
+                Skip -= 1;
             if (skipStops != 0)
                 skipStops -= 1;
             if (skipEnd != 0)
@@ -185,7 +180,7 @@ namespace SystAnalys_lr1.Classes
 
         public void MoveWithGraphics(Graphics G)
         {
-            Bus thisBus = new Bus(busPic, PositionAt, TurnBack, route, Coordinates, Tracker);
+            Bus thisBus = new Bus(BusPic, PositionAt, TurnBack, Route, Coordinates, Tracker);
             List<Bus> buses = Main.buses;
             buses.Remove(thisBus);
             if (checkStop == 0)
@@ -204,18 +199,18 @@ namespace SystAnalys_lr1.Classes
                                     {
                                         Console.WriteLine("Turn false");
                                         checkStop = sp.checkStop;
-                                        skip = 100;
+                                        Skip = 100;
                                         skipStops = rnd.Next(0, 50);
                                         break;
                                     }
                                 }
                             }
                         }
-                        if (Main.stopPoints.Count != 0 && Main.stopPoints.ContainsKey(route))
+                        if (Main.stopPoints.Count != 0 && Main.stopPoints.ContainsKey(Route))
                         {
                             if (skipStops == 0)
                             {
-                                foreach (var sp in Main.stopPoints[route])
+                                foreach (var sp in Main.stopPoints[Route])
                                 {
                                     if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
                                     {
@@ -229,13 +224,13 @@ namespace SystAnalys_lr1.Classes
                         }
                         if (Main.traficLights.Count != 0)
                         {
-                            if (skip == 0)
+                            if (Skip == 0)
                             {
                                 foreach (var sp in Main.traficLights)
                                 {
                                     if ((Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status != Status.RED)
                                     {
-                                        skip = 100;
+                                        Skip = 100;
                                         checkStoppedBus = 100;
                                         break;
                                     }
@@ -244,12 +239,12 @@ namespace SystAnalys_lr1.Classes
                                     {
                                         if (sp.bal == 0)
                                         {
-                                            skip = (sp.bal + 2) * 30 + 100;
+                                            Skip = (sp.bal + 2) * 30 + 100;
                                             checkStop = 80;
                                         }
                                         else
                                         {
-                                            skip = (sp.bal + 2) * 30 + 100;
+                                            Skip = (sp.bal + 2) * 30 + 100;
                                             checkStop = ((sp.bal + 2) * 30);
                                         }
                                         checkStoppedBus = 100;
@@ -259,7 +254,7 @@ namespace SystAnalys_lr1.Classes
                                 }
                             }
                         }
-                        G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
+                        G.DrawImage(BusPic, Coordinates[PositionAt].X * (int)ZoomCoef - BusPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - BusPic.Height / 2);
                         StopDown();
                         PositionAt++;
                     }
@@ -267,7 +262,7 @@ namespace SystAnalys_lr1.Classes
                     {
                         StopDown();
                         skipEnd = rnd.Next(0, 200);
-                        G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
+                        G.DrawImage(BusPic, Coordinates[PositionAt].X * (int)ZoomCoef - BusPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - BusPic.Height / 2);
                         if (skipEnd == 0)
                         {
                             TurnBack = true;
@@ -308,7 +303,7 @@ namespace SystAnalys_lr1.Classes
                                         {
                                             Console.WriteLine("Turn true");
                                             checkStop = sp.checkStop;
-                                            skip = 100;
+                                            Skip = 100;
                                             skipStops = rnd.Next(200, 250);
                                             break;
                                         }
@@ -316,11 +311,11 @@ namespace SystAnalys_lr1.Classes
                                 }
                             }
                             // }
-                            if (Main.stopPoints.Count != 0 && Main.stopPoints.ContainsKey(route))
+                            if (Main.stopPoints.Count != 0 && Main.stopPoints.ContainsKey(Route))
                             {
                                 if (skipStops == 0)
                                 {
-                                    foreach (var sp in Main.stopPoints[route])
+                                    foreach (var sp in Main.stopPoints[Route])
                                     {
                                         if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
                                         {
@@ -334,13 +329,13 @@ namespace SystAnalys_lr1.Classes
                             }
                             if (Main.traficLights.Count != 0)
                             {
-                                if (skip == 0)
+                                if (Skip == 0)
                                 {
                                     foreach (var sp in Main.traficLights)
                                     {
                                         if ((Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status != Status.RED)
                                         {
-                                            skip = 100;
+                                            Skip = 100;
                                             checkStoppedBus = 100;
                                             break;
                                         }
@@ -349,12 +344,12 @@ namespace SystAnalys_lr1.Classes
                                         {
                                             if (sp.bal == 0)
                                             {
-                                                skip = (sp.bal + 2) * 30 + 100;
+                                                Skip = (sp.bal + 2) * 30 + 100;
                                                 checkStop = 80;
                                             }
                                             else
                                             {
-                                                skip = (sp.bal + 2) * 30 + 100;
+                                                Skip = (sp.bal + 2) * 30 + 100;
                                                 checkStop = ((sp.bal + 2) * 30);
                                             }
                                             checkStoppedBus = 100;
@@ -364,7 +359,7 @@ namespace SystAnalys_lr1.Classes
                                 }
                             }
 
-                            G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
+                            G.DrawImage(BusPic, Coordinates[PositionAt].X * (int)ZoomCoef - BusPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - BusPic.Height / 2);
                             StopDown();
                             PositionAt--;
                         }
@@ -373,7 +368,7 @@ namespace SystAnalys_lr1.Classes
                     {
                         StopDown();
                         skipEnd = rnd.Next(0, 200);
-                        G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
+                        G.DrawImage(BusPic, Coordinates[PositionAt].X * (int)ZoomCoef - BusPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - BusPic.Height / 2);
                         if (skipEnd == 0)
                         {
                             TurnBack = false;
@@ -387,14 +382,14 @@ namespace SystAnalys_lr1.Classes
             else
             {
                 StopDown();
-                G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
+                G.DrawImage(BusPic, Coordinates[PositionAt].X * (int)ZoomCoef - BusPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - BusPic.Height / 2);
             }
 
         }
 
         public string GetRoute()
         {
-            return route;
+            return Route;
         }
 
         public async Task AsDetectEpicenter()
@@ -443,39 +438,15 @@ namespace SystAnalys_lr1.Classes
                 {
                     foreach (var Square in Sector.Value)
                     {
-                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
-                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[Route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
-                        }
-                        //if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.Height == Square.y)))
-                        //{
-                        //    CheckEpic(Sector, Square, EpicList);
-                        //}
-                        //if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.Height == Square.y)))
-                        //{
-                        //    CheckEpic(Sector, Square, EpicList);
-                        //}
-                        //if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.Height == Square.y)))
-                        //{
-                        //    CheckEpic(Sector, Square, EpicList);
-                        //}
-                        //if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.Height == Square.y)))
-                        //{
-                        //    CheckEpic(Sector, Square, EpicList);
-                        //}
-                        //if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.Height == Square.y)))
-                        //{
-                        //    CheckEpic(Sector, Square, EpicList);
-                        //}
-                        //if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.Height == Square.y)))
-                        //{
-                        //    CheckEpic(Sector, Square, EpicList);
-                        //}
-                        if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y == Square.y)))
+                        } 
+                        if (((Main.TheGrid[Main.AllGridsInRoutes[Route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
                         {
                             return CheckEpic(Sector, Square, EpicList);
                         }

@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+
 namespace SystAnalys_lr1.Classes
 {
     static class Optimization
     {
-        static LoadingForm loadingForm = new LoadingForm();
         static public string pathOpt;
         static public SerializableDictionary<int, int?> percentMean;
         static int small = 10000;
@@ -21,9 +22,8 @@ namespace SystAnalys_lr1.Classes
         public static int OptiSpeed;
         public static int OptiCount;
 
-        public static void Opt(MatrixControl matrixControl1)   
+        public static void Opt(MatrixControl matrixControl1, LoadingForm loadingForm)
         {
-            loadingForm = new LoadingForm();
             pathOpt = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}_{5}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
             Directory.CreateDirectory(pathOpt);
             percentMean = new SerializableDictionary<int, int?>();
@@ -32,26 +32,19 @@ namespace SystAnalys_lr1.Classes
             Main.buses.ForEach((b) => optimizeBuses.Add(
                 (Bus)b.Clone()
             ));
-            //if (speed.Text != "" && int.TryParse(speed.Text, out int sp))
-            //{
-            //    if (int.Parse(speed.Text) / 20 == 0)
-            //        Modeling.T = 1;
-            //    else
-            //        Modeling.T = int.Parse(speed.Text) / 20;
-            //}
             int old = small;
-            loadingForm.Show();
-            var busesparkreturn = Main.busesPark;       
-                //if (changeProcent.Text != "" && int.TryParse(speed.Text, out int ch) && changeProcent.Text != "") //это  нужно ?
-                //{
-                //    offBuses(int.Parse(changeProcent.Text));
-                //};
-                int ciclTotal = 5;
+
+            var busesparkreturn = Main.busesPark;
+            //if (changeProcent.Text != "" && int.TryParse(speed.Text, out int ch) && changeProcent.Text != "") //это  нужно ?
+            //{
+            //    offBuses(int.Parse(changeProcent.Text));
+            //};
+            int ciclTotal = 5;
 
                 loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Maximum = s), ciclTotal * OptiCount);
                 for (int cicl = 0; cicl < ciclTotal; cicl++)
                 {
-                    offBuses( matrixControl1, cicl * 10);
+                    offBuses(matrixControl1, cicl * 10);
                     if (cicl == ciclTotal - 1)
                         Main.buses[rnd.Next(0, Main.buses.Count)].Tracker = true;
                     List<int?> mas = new List<int?>();
@@ -113,7 +106,7 @@ namespace SystAnalys_lr1.Classes
 
                     if (total < 0 || count < Modeling.ResultFromModeling.Count / 2)
                     {
-                          // mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
+                        // mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
                         if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
                             percentMean.Add(withoutSensorsBuses.Last(), null);
                         //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none);
@@ -136,7 +129,7 @@ namespace SystAnalys_lr1.Classes
                     {
                         fileV.WriteLine(MainStrings.sensorsDown + ": " + (cicl * 10).ToString());
                         fileV.WriteLine(MainStrings.countBuses + ": " + (withoutSensorsBuses.Last()).ToString());
-                        fileV.WriteLine(MainStrings.numIter + ": " +OptiCount);
+                        fileV.WriteLine(MainStrings.numIter + ": " + OptiCount);
                         fileV.WriteLine(MainStrings.distance + ": " + OptiSpeed.ToString() + " " + MainStrings.sec + " (" + (OptiSpeed / 60 == 0 ? ">1" + MainStrings.minute : OptiSpeed / 60 + " " + MainStrings.minute) + ")");
                         fileV.WriteLine(MainStrings.found + ": " + (from num in Modeling.ResultFromModeling where (num != null) select num).Count());
                         if (count == 0)
@@ -163,31 +156,29 @@ namespace SystAnalys_lr1.Classes
                     }
                     Modeling.ResultFromModeling = new List<int?>();
                 }
-        
-            var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();
-            var min = percentMean.Min(v => v.Value);
-            var result = percentMean.Where(s => s.Value.Equals(min)).Select(s => s.Key).ToList();
-            result.Sort();
-            if (res.Count != 0 && min != 0 && min != null)
-                mean = MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " " + " - " + MainStrings.countSensors + ": " + result[0];
-            else
-            {
-                mean = MainStrings.average + " " + MainStrings.notFound;
-            }
 
-            using (StreamWriter fileV = new StreamWriter(pathOpt + "/Average.txt"))
-            {
-                fileV.WriteLine(mean != MainStrings.average + " " + MainStrings.notFound ? MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + result[0] : MainStrings.notFound);
-            }
-            
-            loadingForm.close = true;
-            loadingForm.Close();
-            loadingForm.Dispose();
+                var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();
+                var min = percentMean.Min(v => v.Value);
+                var result = percentMean.Where(s => s.Value.Equals(min)).Select(s => s.Key).ToList();
+                result.Sort();
+                if (res.Count != 0 && min != 0 && min != null)
+                    mean = MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " " + " - " + MainStrings.countSensors + ": " + result[0];
+                else
+                {
+                    mean = MainStrings.average + " " + MainStrings.notFound;
+                }
+
+                using (StreamWriter fileV = new StreamWriter(pathOpt + "/Average.txt"))
+                {
+                    fileV.WriteLine(mean != MainStrings.average + " " + MainStrings.notFound ? MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + result[0] : MainStrings.notFound);
+                }
+                
+
             BarabanAfterOpti();
             Main.busesPark = busesparkreturn;
             Main.buses = optimizeBuses;
         }
-      
+
         private static void offBuses(MatrixControl matrixControl1, int proc = 0)
         {
             int countSensors = 0;
@@ -214,7 +205,7 @@ namespace SystAnalys_lr1.Classes
                 };
                 for (var i = 0; i < b.Count; i++)
                 {
-                   Main.buses[tot] = b[i];
+                    Main.buses[tot] = b[i];
                     tot += 1;
                 }
             };
@@ -233,14 +224,14 @@ namespace SystAnalys_lr1.Classes
 
             foreach (var bp in Main.busesPark)
             {
-                var tot = (Main.AllGridsInRoutes[bp.First().route].Count - 1) / bp.Count;
+                var tot = (Main.AllGridsInRoutes[bp.First().Route].Count - 1) / bp.Count;
                 if (tot == 0 || tot == 1)
                 {
                     foreach (var b in Main.buses)
                     {
-                        if (b.route == bp.First().route)
+                        if (b.Route == bp.First().Route)
                         {
-                            int r = rnd.Next(0, Main.AllGridsInRoutes[bp.First().route].Count - 1);
+                            int r = rnd.Next(0, Main.AllGridsInRoutes[bp.First().Route].Count - 1);
                             b.PositionAt = r;
                         }
 
@@ -250,7 +241,7 @@ namespace SystAnalys_lr1.Classes
                 {
                     List<int> array = new List<int>();
                     int i = 0;
-                    while (i < Main.AllGridsInRoutes[bp.First().route].Count - 1)
+                    while (i < Main.AllGridsInRoutes[bp.First().Route].Count - 1)
                     {
                         array.Add(i);
                         i += tot;
@@ -260,7 +251,7 @@ namespace SystAnalys_lr1.Classes
                         foreach (var b in Main.buses)
                         {
 
-                            if (b.route == bp.First().route)
+                            if (b.Route == bp.First().Route)
                             {
                                 int r = rnd.Next(0, array.Count - 1);
                                 b.PositionAt = array[r];
@@ -277,7 +268,7 @@ namespace SystAnalys_lr1.Classes
             Random rnd = new Random();
             foreach (var b in Main.buses)
             {
-                int r = rnd.Next(0, Main.AllCoordinates[b.route].Count - 1);
+                int r = rnd.Next(0, Main.AllCoordinates[b.Route].Count - 1);
                 b.PositionAt = r;
             };
         }

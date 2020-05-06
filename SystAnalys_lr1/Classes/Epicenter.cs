@@ -564,7 +564,6 @@ namespace SystAnalys_lr1.Classes
 
                 }
                 EpicenterGrid[1].RemoveAt(IndexOfOutMovedGrid);
-                //NewExpandCount.Remove(IndexOfOutMovedGrid);
             }
 
 
@@ -643,7 +642,6 @@ namespace SystAnalys_lr1.Classes
                         Parameter = EpicenterGenerator(StarterEpicPart, Parameter);
                         foreach (var item in Parameter)
                         {
-                            //if (Parameters.Contains(item))
                             Creater(item, StarterEpicPart, 1);
                             NewExpandCount.Add(EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()));
                         }
@@ -654,19 +652,11 @@ namespace SystAnalys_lr1.Classes
                         Parameter = EpicenterGenerator(StarterEpicPart, Parameter);
                         foreach (var item in Parameter)
                         {
-                            //if (Parameters.Contains(item))
                             Creater(item, StarterEpicPart, 1);
                             //  NewExpandCount.Add(EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()));
                         }
 
-                    }
-
-
-
-
-                    //if ((StarterEpicPart.x== StartPositon.X)&&(StarterEpicPart.y == StartPositon.Y))
-                    //{
-                    //}               
+                    }             
                 }
             }
             ////

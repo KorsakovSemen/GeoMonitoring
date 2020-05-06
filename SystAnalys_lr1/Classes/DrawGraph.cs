@@ -67,7 +67,7 @@ namespace SystAnalys_lr1.Classes
        
             gr = null;
             //  gr.Dispose();
-            gr = (Graphics.FromImage(bitmap));
+            gr = Graphics.FromImage(bitmap);
 
         }
 

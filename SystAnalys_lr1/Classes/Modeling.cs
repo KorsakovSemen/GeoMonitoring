@@ -107,8 +107,8 @@ namespace SystAnalys_lr1.Classes
                     bus.Epicenters = epList;
 
                     bus.TickCount_ = 0;
-                    if (bus.skip > 0)
-                        bus.skip -= 1;
+                    if (bus.Skip > 0)
+                        bus.Skip -= 1;
                     if (bus.Tracker == true)
                     {
                         while (bus.TickCount_ < (T / PhaseSizeSelect()))
@@ -138,20 +138,20 @@ namespace SystAnalys_lr1.Classes
                             }
                             if (Main.TraficLightsInGrids.Contains(Main.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt])) //ошибка с выходом за пределы тушто нужно "вот эту" разкоментить
                             {
-                                if (bus.skip == 0)
+                                if (bus.Skip == 0)
                                 {
                                     foreach (var sp in Main.traficLights)
                                     {
                                         if (sp.Status != Status.RED)
                                         {
-                                            bus.skip = sp.greenTime;
+                                            bus.Skip = sp.greenTime;
                                             break;
                                         }
                                         if (sp.Status == Status.RED)
                                         {
                                             bus.TickCount_ = bus.TickCount_ + sp.bal;
                                             bus.AllTickCount = bus.AllTickCount + sp.bal;
-                                            bus.skip = sp.greenTime;
+                                            bus.Skip = sp.greenTime;
                                             break;
 
                                         }
@@ -177,8 +177,7 @@ namespace SystAnalys_lr1.Classes
                                     {
                                         EpicFounded = true;
                                         if (EpicFounded == true)
-                                        {
-                                            //  FoundTime = (T - (bus.TickCount_ * j));
+                                        {                         
                                             FoundTime = bus.AllTickCount;
                                             if (small > FoundTime)
                                             {
@@ -189,7 +188,6 @@ namespace SystAnalys_lr1.Classes
                                     break;
                                 }
                             }
-                            //  bus.TickCount_--;
                             bus.TickCount_++;
                             bus.AllTickCount++;
                             if (EpicSettings.TurnSpreadingSet == true)

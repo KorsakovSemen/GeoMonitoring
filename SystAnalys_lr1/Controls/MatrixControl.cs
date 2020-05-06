@@ -47,7 +47,7 @@ namespace SystAnalys_lr1.Classes
                 }
                 else
                 {
-                    if (Main.buses[i].route == Main.buses[i + 1].route)
+                    if (Main.buses[i].Route == Main.buses[i + 1].Route)
                     {
                         b.Add(Main.buses[i]);
                     }
@@ -78,7 +78,7 @@ namespace SystAnalys_lr1.Classes
             {
                 for (int j = 0; j < buses.Count - i - 1; j++)
                 {
-                    if (buses[j + 1].route == buses[j].route && buses[j + 1].Tracker == true && buses[j].Tracker == false)
+                    if (buses[j + 1].Route == buses[j].Route && buses[j + 1].Tracker == true && buses[j].Tracker == false)
                     {
                         temp = buses[j + 1];
                         buses[j + 1] = buses[j];
@@ -97,7 +97,7 @@ namespace SystAnalys_lr1.Classes
                 matrixGrid.Rows.Clear();
                 matrixGrid.Refresh();
 
-                Main.buses.Sort((a1, b1) => a1.route.CompareTo(b1.route));
+                Main.buses.Sort((a1, b1) => a1.Route.CompareTo(b1.Route));
 
                 SplitBuses();
 
@@ -143,7 +143,7 @@ namespace SystAnalys_lr1.Classes
                     {
                         if (busesPark[i].Count != 0)
                         {
-                            matrixGrid.Rows[i].HeaderCell.Value = busesPark[i].Last().route.ToString();
+                            matrixGrid.Rows[i].HeaderCell.Value = busesPark[i].Last().Route.ToString();
                         }
                     }
 

@@ -387,7 +387,7 @@ namespace SystAnalys_lr1.Classes
                 {
                     if (Math.Pow((Main.buses[i].Coordinates[Main.buses[i].PositionAt].X - (e.X / Main.zoom + scrollX)), 2) + Math.Pow((Main.buses[i].Coordinates[Main.buses[i].PositionAt].Y - (e.Y / Main.zoom + scrollY)), 2) <= Main.buses[i].R * Main.buses[i].R * 500)
                     {
-                        if (Main.buses[i].route == route)
+                        if (Main.buses[i].Route == route)
                         {
                             if (Math.Pow((Main.buses[i].Coordinates[Main.buses[i].PositionAt].X - (e.X / Main.zoom + scrollX)), 2) + Math.Pow((Main.buses[i].Coordinates[Main.buses[i].PositionAt].Y - (e.Y / Main.zoom + scrollY)), 2) < min)
                             {

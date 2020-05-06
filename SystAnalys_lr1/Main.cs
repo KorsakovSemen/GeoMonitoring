@@ -786,7 +786,7 @@ namespace SystAnalys_lr1
                         loadingForm.loading.Value = 20;
                         foreach (var b in buses)
                         {
-                            if (b.route == changeRoute.Text)
+                            if (b.Route == changeRoute.Text)
                             {
                                 // mainPanel.Controls.Remove(b.busPic);
                                 busTest.Add(b);
@@ -985,7 +985,7 @@ namespace SystAnalys_lr1
                             List<Bus> busTest = new List<Bus>();
                             foreach (var b in buses)
                             {
-                                if (b.route == changeRoute.Text)
+                                if (b.Route == changeRoute.Text)
                                 {
                                     busTest.Add(b);
                                 };
@@ -1190,8 +1190,7 @@ namespace SystAnalys_lr1
                     Optimization.OptiSpeed = int.Parse(speed.Text);
 ///
                     buttonOff();
-                    loadingForm.Theme = msmMain.Theme;
-                    loadingForm.Style = msmMain.Style;
+               
                     matrix.MatrixCreate();
                     if (speed.Text != "" && int.TryParse(speed.Text, out int sp))
                     {
@@ -1205,34 +1204,44 @@ namespace SystAnalys_lr1
                         msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(14);
                     else
                         msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(13);
-                    StyleManager.Clone(Main.Ep);
+                    loadingForm = new LoadingForm();
+                    loadingForm.Theme = msmMain.Theme;
+                    loadingForm.Style = msmMain.Style;
+                    if (!Main.Ep.IsDisposed)
+                    {
+                        StyleManager.Clone(Main.Ep);
+                        Main.Ep.Refresh();
+                    }
                     if (Main.SavePictures == true)
                     {
                         Main.Ep.Hide();
                         Directory.CreateDirectory(Optimization.pathOpt + "/Epics");
-                    }
-                    if (Main.Ep != null)
-                    {
-                        Main.Ep.Refresh();
-                    }
+                    }          
+                    loadingForm.Show();
+                    loadingForm.Refresh();
                     await Task.Run(() =>
                     {
-                        Optimization.Opt(matrix);
-                    });                       
+                        Optimization.Opt(matrix, loadingForm);
+                    });
+                    //
+                    loadingForm.close = true;
+                    loadingForm.Close();
+                    loadingForm.Dispose();
+                    //
                     matrix.MatrixCreate();
                     resMatrix();
-                    msmMain.Style = style;
-                    StyleManager.Clone(Main.Ep);
+                    msmMain.Style = style;                
                     MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     if (!Main.Ep.IsDisposed)
-                    {
-                        Main.Ep.Show();
+                    {                     
+                        StyleManager.Clone(Main.Ep);
+                        Main.Ep.Refresh();
                     }
                     BringToFront();
                     timer.Start();
                     buttonOn();
                     resChart();             
-                    ////
+                    ///
                     foreach (var tl in traficLights)
                         tl.TimerLight.Interval = 1000;
                 }
@@ -1416,7 +1425,7 @@ namespace SystAnalys_lr1
                     {
                         bus.Coordinates.Clear();
                         bus.Coordinates.TrimExcess();
-                        bus.busPic.Dispose();
+                        bus.BusPic.Dispose();
                         //   mainPanel.Controls.Remove(bus.busPic);
                     }
                     buses.Clear();
@@ -2014,9 +2023,9 @@ namespace SystAnalys_lr1
                     if (x.Tracker == true)
                     {
                         Rectangle rect = new Rectangle(0, 0, 200, 100);
-                        x.busPic = new Bitmap(Bus.busImg);
-                        x.busPic = new Bitmap(x.busPic, new Size(15, 15));
-                        num = new Bitmap(x.busPic.Height, x.busPic.Width);
+                        x.BusPic = new Bitmap(Bus.busImg);
+                        x.BusPic = new Bitmap(x.BusPic, new Size(15, 15));
+                        num = new Bitmap(x.BusPic.Height, x.BusPic.Width);
                         using (Graphics gr = Graphics.FromImage(num))
                         {
                             using (Font font = new Font("Arial", 10))
@@ -2026,7 +2035,7 @@ namespace SystAnalys_lr1
 
                                 // Выводим текст.
                                 gr.DrawString(
-                                    x.route.ToString(),
+                                    x.Route.ToString(),
                                     font,
                                     Brushes.Black, // цвет текста
                                     rect, // текст будет вписан в указанный прямоугольник
@@ -2035,11 +2044,11 @@ namespace SystAnalys_lr1
                             }
                         }
 
-                        original = new Bitmap(Math.Max(x.busPic.Width, num.Width), Math.Max(x.busPic.Height, num.Height) * 2); //load the image file
+                        original = new Bitmap(Math.Max(x.BusPic.Width, num.Width), Math.Max(x.BusPic.Height, num.Height) * 2); //load the image file
                         using (Graphics graphics = Graphics.FromImage(original))
                         {
 
-                            graphics.DrawImage(x.busPic, 0, 0);
+                            graphics.DrawImage(x.BusPic, 0, 0);
                             graphics.DrawImage(num, 0, 15);
                             graphics.Dispose();
 
@@ -2049,9 +2058,9 @@ namespace SystAnalys_lr1
                     else
                     {
                         Rectangle rect = new Rectangle(0, 0, 200, 100);
-                        x.busPic = new Bitmap(Bus.offBusImg);
-                        x.busPic = new Bitmap(x.busPic, new Size(15, 15));
-                        num = new Bitmap(x.busPic.Height, x.busPic.Width);
+                        x.BusPic = new Bitmap(Bus.offBusImg);
+                        x.BusPic = new Bitmap(x.BusPic, new Size(15, 15));
+                        num = new Bitmap(x.BusPic.Height, x.BusPic.Width);
                         using (Graphics gr = Graphics.FromImage(num))
                         {
                             using (Font font = new Font("Arial", 10))
@@ -2061,7 +2070,7 @@ namespace SystAnalys_lr1
 
                                 // Выводим текст.
                                 gr.DrawString(
-                                    x.route.ToString(),
+                                    x.Route.ToString(),
                                     font,
                                     Brushes.Black, // цвет текста
                                     rect, // текст будет вписан в указанный прямоугольник
@@ -2070,11 +2079,11 @@ namespace SystAnalys_lr1
                             }
                         }
 
-                        original = new Bitmap(Math.Max(x.busPic.Width, num.Width), Math.Max(x.busPic.Height, num.Height) * 2); //load the image file
+                        original = new Bitmap(Math.Max(x.BusPic.Width, num.Width), Math.Max(x.BusPic.Height, num.Height) * 2); //load the image file
                         using (Graphics graphics = Graphics.FromImage(original))
                         {
 
-                            graphics.DrawImage(x.busPic, 0, 0);
+                            graphics.DrawImage(x.BusPic, 0, 0);
                             graphics.DrawImage(num, 0, 15);
                             graphics.Dispose();
 
@@ -2082,9 +2091,9 @@ namespace SystAnalys_lr1
                     }
 
 
-                    x.busPic = original;//res;// new Bitmap(res, new Size(1000, 1000));
+                    x.BusPic = original;//res;// new Bitmap(res, new Size(1000, 1000));
 
-                    x.skip = 5;
+                    x.Skip = 5;
                     x.skipStops = 5;
                     x.skipEnd = 5;
 
@@ -2489,7 +2498,7 @@ namespace SystAnalys_lr1
                 List<Bus> b = new List<Bus>();
                 foreach (var bus in buses)
                 {
-                    if (bus.route == (changeRoute.Text))
+                    if (bus.Route == (changeRoute.Text))
                     {
                         b.Add(bus);
                     }
@@ -2529,7 +2538,7 @@ namespace SystAnalys_lr1
         {
             foreach (var bus in buses)
             {
-                if (bus.route == (changeRoute.Text))
+                if (bus.Route == (changeRoute.Text))
                 {
                     delAllBusesOnRoute.Enabled = true;
                     break;
@@ -2911,7 +2920,7 @@ namespace SystAnalys_lr1
                     foreach (var bus in buses)
                     {
 
-                        AnimationGraphics.DrawImage(bus.busPic, bus.Coordinates[bus.PositionAt].X * zoomBar.Value - bus.busPic.Width / 2, bus.Coordinates[bus.PositionAt].Y * zoomBar.Value - bus.busPic.Height / 2);
+                        AnimationGraphics.DrawImage(bus.BusPic, bus.Coordinates[bus.PositionAt].X * zoomBar.Value - bus.BusPic.Width / 2, bus.Coordinates[bus.PositionAt].Y * zoomBar.Value - bus.BusPic.Height / 2);
                     }
                     AnimationBox.Image = AnimationBitmap;
                     //AnimationBox.Update();
