@@ -61,7 +61,10 @@ namespace SystAnalys_lr1.Classes
         public void ClearSheet2()
         {
             /*Graphics.FromImage(bitmap).Clear(Color.Wheat); *//// ТУТ ЭКСЕПШН НА МОДЕЛИНГЕ   
-            bitmap = new Bitmap(DisplayEpicenters.EsheetPicture);
+            if (!Main.Ep.IsDisposed) {
+                bitmap = new Bitmap(DisplayEpicenters.EsheetPicture);
+            }
+       
             gr = null;
             //  gr.Dispose();
             gr = (Graphics.FromImage(bitmap));
