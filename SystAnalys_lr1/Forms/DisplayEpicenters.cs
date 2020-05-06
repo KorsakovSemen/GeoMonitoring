@@ -33,7 +33,7 @@ namespace SystAnalys_lr1
         public PictureBox Esheet = new PictureBox();
         private MetroLabel label = new MetroLabel();
         private MetroFramework.Controls.MetroPanel MapPanel = new MetroFramework.Controls.MetroPanel();
- 
+
 
         private void DisplayEpicenters_Load(object sender, EventArgs e)
         {
@@ -52,11 +52,11 @@ namespace SystAnalys_lr1
             this.MapPanel.Dock = MainForm.GetMapPanel().Dock;
             this.MapPanel.AutoSize = MainForm.GetMapPanel().AutoSize;
             this.MapPanel.Location = MainForm.GetMapPanel().Location;
-           
+
             this.MapPanel.AutoScroll = MainForm.GetMapPanel().AutoScroll;
             this.MapPanel.BorderStyle = MainForm.GetMapPanel().BorderStyle;
             this.MapPanel.AutoSizeMode = MainForm.GetMapPanel().AutoSizeMode;
-           
+
             //this.MapPanel.MaximumSize = MainForm.GetMapPanel().MaximumSize;
             //this.MapPanel.Size = MainForm.GetMapPanel().Size;
 
@@ -88,14 +88,14 @@ namespace SystAnalys_lr1
             EZoomBar.Value = MainForm.GetTrackBar().Value;
             EZoomBar.Maximum = MainForm.GetTrackBar().Maximum;
             EZoomBar.Minimum = MainForm.GetTrackBar().Minimum;
-            EZoomBar.Left = MainForm.GetTrackBar().Left;  
+            EZoomBar.Left = MainForm.GetTrackBar().Left;
             EZoomBar.Top = MainForm.GetTrackBar().Top;
             EZoomBar.Scroll += EZoomBar_Scroll;
 
 
             label.Text = "|";
             label.Location = new Point(EZoomBar.Width / 2 + 23, panel1.Height - 65);
-            
+
             panel1.Controls.Add(ERouts);
             panel1.Controls.Add(EZoomBar);
             panel1.Controls.Add(label);
@@ -109,16 +109,16 @@ namespace SystAnalys_lr1
 
         private void Esheet_MouseClick(object sender, MouseEventArgs e)
         {
-            foreach (var gridPart in MainForm.GetTheGrid())
+            foreach (var gridPart in Main.TheGrid)
             {
                 if (((e.X > gridPart.x * Ezoom) && (e.Y > gridPart.y * Ezoom)) && ((e.X < gridPart.x * Ezoom + GridPart.Width * Ezoom) && (e.Y < gridPart.y * Ezoom + GridPart.Height * Ezoom)))
                 {
 
                     ERefreshRouts();
-                    Epicenter.CreateOneRandomEpicenter(Main.EpicSizeParam, MainForm.GetTheGrid().IndexOf(gridPart));
+                    Epicenter.CreateOneRandomEpicenter(Main.EpicSizeParam, Main.TheGrid.IndexOf(gridPart));
 
                     EG.ClearSheet2();
-             
+
                     EDrawPollutions();
                     break;
                 }
@@ -148,11 +148,11 @@ namespace SystAnalys_lr1
             {
                 ERouts.Items.Add(r);
             };
-            if(ERouts.Items.Count != 0)
+            if (ERouts.Items.Count != 0)
                 ERouts.SelectedIndex = 0;
         }
         delegate void DelBitmap(Bitmap b);
-        public void EDrawEpics(System.Collections.Generic.List<Epicenter>Epics)
+        public void EDrawEpics(System.Collections.Generic.List<Epicenter> Epics)
         {
             EG.ClearSheet2();
             Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap()); //ошибка при закрытии формы
@@ -172,7 +172,7 @@ namespace SystAnalys_lr1
         public void EDrawMAinEpics()
         {
             EG.ClearSheet2();
-           
+
             Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap()); //ошибка при закрытии формы
             // Esheet.Image = EG.GetBitmap();
             if (MainForm.GetEpicenters() != null)
@@ -190,9 +190,9 @@ namespace SystAnalys_lr1
         public void EDrawGrid()
         {
             //EG.clearSheet();
-            for (int i = 0; i < MainForm.GetTheGrid().Count; i++)
+            for (int i = 0; i < Main.TheGrid.Count; i++)
             {
-                MainForm.GetTheGrid()[i].DrawPart(EG, Ezoom);
+                Main.TheGrid[i].DrawPart(EG, Ezoom);
             }
             Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap());
             // Esheet.Image = EG.GetBitmap();
@@ -224,7 +224,7 @@ namespace SystAnalys_lr1
                             EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 0, 0)), new Rectangle(MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key][j].x * Ezoom, MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key][j].y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
                             break;
                         default:
-    
+
                             break;
                     }
                 }
@@ -277,7 +277,7 @@ namespace SystAnalys_lr1
                                 EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 0, 0)), new Rectangle(MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key][j].x * Ezoom, MainForm.GetPollutionInRoutes()[MainForm.GetPollutionInRoutes().ElementAt(i).Key][j].y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
                                 break;
                             default:
-                           
+
                                 break;
                         }
                     }
@@ -294,11 +294,11 @@ namespace SystAnalys_lr1
             epSet = new EpicSettings();
             this.StyleManager.Clone(epSet);
             epSet.ShowDialog();
-    
+
         }
         public void RecReateFunction()
         {
-            restoredEpic = new Epicenter(MainForm.GetTheGrid());
+            restoredEpic = new Epicenter(Main.TheGrid);
 
             restoredEpic.Recreate(MainForm.GetPollutionInRoutes());
 
@@ -306,9 +306,9 @@ namespace SystAnalys_lr1
             EG.ClearSheet2();
             //Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap());
             // Esheet.Image = EG.GetBitmap();
-            for (int i = 0; i < MainForm.GetTheGrid().Count; i++)
+            for (int i = 0; i < Main.TheGrid.Count; i++)
             {
-                MainForm.GetTheGrid()[i].FillGreen(EG, Ezoom);
+                Main.TheGrid[i].FillGreen(EG, Ezoom);
             }
             //Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap());
             restoredEpic.DrawEpicenter(EG, Ezoom);
@@ -339,10 +339,10 @@ namespace SystAnalys_lr1
 
         private void metroButton2_Click_1(object sender, EventArgs e)
         {
-            List<string>  ssss = new List<string>();
+            List<string> ssss = new List<string>();
             //ssss.Add("up");
             ssss.Add("right");
-        //     ssss.Add("down");
+            //     ssss.Add("down");
             MainForm.GetEpicenters().First().EpicMoving(ssss);
             //MainForm.GetEpicenters().First().EpicMoving(ssss);
             //MainForm.GetEpicenters().First().EpicMoving(ssss);
@@ -352,15 +352,15 @@ namespace SystAnalys_lr1
 
         private void metroButton3_Click(object sender, EventArgs e)
         {
-        
-     
+
+
             MainForm.GetEpicenters().First().ExpandEpic();
             EDrawEpics(MainForm.GetEpicenters());
         }
 
         private void metroButton4_Click(object sender, EventArgs e)
         {
-         Epicenter.CreateOneRandomEpicenter(Main.EpicSizeParam,null);
+            Epicenter.CreateOneRandomEpicenter(Main.EpicSizeParam, null);
         }
     }
 }

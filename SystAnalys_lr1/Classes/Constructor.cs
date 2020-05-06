@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SystAnalys_lr1.Strings;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -409,6 +410,59 @@ namespace SystAnalys_lr1.Classes
             }
         }
 
+        public void FirstTrafficLight(MouseEventArgs e, List<TraficLight> traficLights, PictureBox sheet, List<GridPart> gridParts)
+        {
+            foreach (var gridPart in gridParts)
+            {
+                if (((e.X > gridPart.x * Main.zoom) && (e.Y > gridPart.y * Main.zoom)) && ((e.X < gridPart.x * Main.zoom + GridPart.Width * Main.zoom) && (e.Y < gridPart.y * Main.zoom + GridPart.Height * Main.zoom)))
+                {
+                    traficLights.Add(new TraficLight(e.X / Main.zoom, e.Y / Main.zoom, gridParts.IndexOf(gridPart), Main.firstCrossRoadsGreenLight, Main.firstCrossRoadsRedLight));
+                    Main.TraficLightsInGrids.Add(gridParts.IndexOf(gridPart));
+                    Main.G.DrawGreenVertex(e.X / Main.zoom, e.Y / Main.zoom);
+                    Main.firstCrossRoads -= 1;
+                    sheet.Image = Main.G.GetBitmap();
+                    Main.DrawGrid();
+                    break;
+                }
+            }
+        }
+
+        public void SecondTrafficLight(MouseEventArgs e, List<TraficLight> traficLights, PictureBox sheet, List<GridPart> gridParts)
+        {
+            foreach (var gridPart in gridParts)
+            {
+                if (((e.X > gridPart.x * Main.zoom) && (e.Y > gridPart.y * Main.zoom)) && ((e.X < gridPart.x * Main.zoom + GridPart.Width * Main.zoom) && (e.Y < gridPart.y * Main.zoom + GridPart.Height * Main.zoom)))
+                {
+                    traficLights.Add(new TraficLight(e.X / Main.zoom, e.Y / Main.zoom, gridParts.IndexOf(gridPart), Main.firstCrossRoadsRedLight, Main.firstCrossRoadsGreenLight));
+                    Main.TraficLightsInGrids.Add(gridParts.IndexOf(gridPart));
+                    traficLights.Last().tick = Main.firstCrossRoadsRedLight + 2;
+                    traficLights.Last().Status = Status.RED;
+
+                    Main.G.DrawSelectedVertex(e.X / Main.zoom, e.Y / Main.zoom);
+                    Main.secondCrossRoads -= 1;
+                    break;
+                }
+
+            }
+        }
+
+        public void MapUpdateNetwork(PictureBox sheet, List<Vertex> V, List<Edge> E)
+        {
+            Main.G.ClearSheet();
+            Main.G.DrawALLGraph(V, E);
+            sheet.Image = Main.G.GetBitmap();
+            Main.DrawGrid();
+        }
+
+        public void MapUpdateRoute(PictureBox sheet, List<Vertex> routeV, List<Edge> routeE)
+        {
+            Main.G.ClearSheet();
+            Main.G.DrawALLGraph(routeV, routeE, 1);
+            Main.G.DrawALLGraph(Main.V, Main.E);
+            sheet.Image = Main.G.GetBitmap();
+            Main.DrawGrid();
+        }
+
         public void Select(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, int n = 0)
         {
             for (int i = 0; i < V.Count; i++)
@@ -418,12 +472,8 @@ namespace SystAnalys_lr1.Classes
                     if (Main.selected1 != -1)
                     {
                         Main.selected1 = -1;
-                        Main.G.ClearSheet();
-                        if (n != 0) Main.G.DrawALLGraph(Main.V, Main.E);
-                        Main.G.DrawALLGraph(V, E, n);
-                        //  sheet.Image = Main.G.GetBitmap();
-                        sheet.Invoke(new Del((s) => sheet.Image = s), Main.G.GetBitmap());
-                        Main.DrawGrid();
+                        if (n != 0) MapUpdateRoute(sheet, V, E);
+                        else MapUpdateNetwork(sheet, V, E);
                     }
                     if (Main.selected1 == -1)
                     {
@@ -431,12 +481,6 @@ namespace SystAnalys_lr1.Classes
                         Main.selected1 = i;
                         sheet.Invoke(new Del((s) => sheet.Image = s), Main.G.GetBitmap());
                         Main.DrawGrid();
-                        //createAdjAndOut();
-                        //listBoxMatrix.Items.Clear();
-                        //int degree = 0;
-                        //for (int j = 0; j < routeV.Count; j++)
-                        //    degree += AMatrix[selected1, j];
-                        //listBoxMatrix.Items.Add("Степень вершины №" + (selected1 + 1) + " равна " + degree);
                         break;
                     }
                 }
@@ -648,6 +692,221 @@ namespace SystAnalys_lr1.Classes
                 }
             }
         }
+
+
+        public void deleteStopsOnRoute(MouseEventArgs e, List<Vertex> routeV, PictureBox sheet, string route)
+        {
+            bool flag = false; //удалили ли что-нибудь по ЭТОМУ клику
+                               //ищем, возможно была нажата вершина
+
+
+            foreach (var stopRoute in Main.stopPoints[route])
+            {
+                if (Math.Pow((stopRoute.X - e.X / Main.zoom), 2) + Math.Pow((stopRoute.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
+                {
+                    Main.stopPointsInGrids[route].Remove(stopRoute.gridNum);
+                    Main.stopPoints[route].Remove(stopRoute);
+                    flag = true;
+                    break;
+                }
+
+            }
+            if (flag)
+            {
+                Main.G.ClearSheet();
+                Main.G.DrawALLGraph(Main.V, Main.E);
+                Main.G.DrawALLGraph(routeV, Main.routesEdge[route], 1);
+                sheet.Image = Main.G.GetBitmap();
+                Main.DrawGrid();
+            }
+        }
+
+        public void deleteVandE(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet)
+        {
+            bool flag = false; 
+
+            for (int i = 0; i < routeV.Count; i++)
+            {
+                if (Math.Pow((routeV[i].X - e.X / Main.zoom), 2) + Math.Pow((routeV[i].Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
+                {
+                    for (int j = 0; j < routesEdge.Count; j++)
+                    {
+                        if ((routesEdge[j].V1 == i) || (routesEdge[j].V2 == i))
+                        {
+                            routesEdge.RemoveAt(j);
+                            j--;
+                        }
+                        else
+                        {
+                            if (routesEdge[j].V1 > i) routesEdge[j].V1--;
+                            if (routesEdge[j].V2 > i) routesEdge[j].V2--;
+                        }
+                    }
+                    routeV.RemoveAt(i);
+                    flag = true;
+                    break;
+                }
+            }
+            //ищем, возможно было нажато ребро
+            if (!flag)
+            {
+                for (int i = 0; i < routesEdge.Count; i++)
+                {
+                    if (routesEdge[i].V1 == routesEdge[i].V2) //если это петля
+                    {
+                        if ((Math.Pow((routeV[routesEdge[i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((routeV[routesEdge[i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) <= ((Main.G.R + 2) * (Main.G.R + 2))) &&
+                            (Math.Pow((routeV[routesEdge[i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((routeV[routesEdge[i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) >= ((Main.G.R - 2) * (Main.G.R - 2))))
+                        {
+                            routesEdge.RemoveAt(i);
+                            flag = true;
+                            break;
+                        }
+                    }
+                    else //не петля
+                    {
+                        try
+                        {
+                            if (((e.X / Main.zoom - routeV[routesEdge[i].V1].X) * (routeV[routesEdge[i].V2].Y - routeV[routesEdge[i].V1].Y) / (routeV[routesEdge[i].V2].X - routeV[routesEdge[i].V1].X) + routeV[routesEdge[i].V1].Y) <= (e.Y / Main.zoom + 4) &&
+                                ((e.X / Main.zoom - routeV[routesEdge[i].V1].X) * (routeV[routesEdge[i].V2].Y - routeV[routesEdge[i].V1].Y) / (routeV[routesEdge[i].V2].X - routeV[routesEdge[i].V1].X) + routeV[routesEdge[i].V1].Y) >= (e.Y / Main.zoom - 4))
+                            {
+                                if ((routeV[routesEdge[i].V1].X <= routeV[routesEdge[i].V2].X && routeV[routesEdge[i].V1].X <= e.X / Main.zoom && e.X / Main.zoom <= routeV[routesEdge[i].V2].X) ||
+                                    (routeV[routesEdge[i].V1].X >= routeV[routesEdge[i].V2].X && routeV[routesEdge[i].V1].X >= e.X / Main.zoom && e.X / Main.zoom >= routeV[routesEdge[i].V2].X))
+                                {
+                                    routesEdge.RemoveAt(i);
+                                    flag = true;
+                                    break;
+                                }
+                            }
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Ребро не удаляется");
+                        }
+                    }
+
+                }
+            }
+            if (flag)
+            {
+                Main.G.ClearSheet();
+                Main.G.DrawALLGraph(Main.V, Main.E);
+                Main.G.DrawALLGraph(routeV, routesEdge, 1);
+                sheet.Image = Main.G.GetBitmap();
+                Main.DrawGrid();
+            }
+        }
+        public void deleteTFOnRoute(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet, List<TraficLight> traficLights)
+        {
+            bool flag = false; //удалили ли что-нибудь по ЭТОМУ клику
+
+            for (var i = 0; i < traficLights.Count; i++)
+            {
+                if (Math.Pow((traficLights[i].X - e.X / Main.zoom), 2) + Math.Pow((traficLights[i].Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
+                {
+                    Main.TraficLightsInGrids.RemoveAt(i);
+                    traficLights.RemoveAt(i);
+                    flag = true;
+                    break;
+                }
+
+            }
+            if (flag)
+            {
+                Main.G.ClearSheet();
+                Main.G.DrawALLGraph(Main.V, Main.E);
+                Main.G.DrawALLGraph(routeV, routesEdge, 1);
+                sheet.Image = Main.G.GetBitmap();
+                Main.DrawGrid();
+            }
+        }
+
+        public void deleteOnRoute(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet, string route)
+        {
+            bool flag = false; 
+
+            foreach (var stopRoute in Main.stopPoints[route])
+            {
+                if (Math.Pow((stopRoute.X - e.X / Main.zoom), 2) + Math.Pow((stopRoute.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
+                {
+                    Main.stopPointsInGrids[route].Remove(stopRoute.gridNum);
+                    Main.stopPoints[route].Remove(stopRoute);
+                    flag = true;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < routeV.Count; i++)
+            {
+                if (Math.Pow((routeV[i].X - e.X / Main.zoom), 2) + Math.Pow((routeV[i].Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
+                {
+                    for (int j = 0; j < routesEdge.Count; j++)
+                    {
+                        if ((routesEdge[j].V1 == i) || (routesEdge[j].V2 == i))
+                        {
+                            routesEdge.RemoveAt(j);
+                            j--;
+                        }
+                        else
+                        {
+                            if (routesEdge[j].V1 > i) routesEdge[j].V1--;
+                            if (routesEdge[j].V2 > i) routesEdge[j].V2--;
+                        }
+                    }
+                    routeV.RemoveAt(i);
+                    flag = true;
+                    break;
+                }
+            }
+            //ищем, возможно было нажато ребро
+            if (!flag)
+            {
+                for (int i = 0; i < routesEdge.Count; i++)
+                {
+                    if (routesEdge[i].V1 == routesEdge[i].V2) //если это петля
+                    {
+                        if ((Math.Pow((routeV[routesEdge[i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((routeV[routesEdge[i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) <= ((Main.G.R + 2) * (Main.G.R + 2))) &&
+                            (Math.Pow((routeV[routesEdge[i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((routeV[routesEdge[i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) >= ((Main.G.R - 2) * (Main.G.R - 2))))
+                        {
+                            routesEdge.RemoveAt(i);
+                            flag = true;
+                            break;
+                        }
+                    }
+                    else //не петля
+                    {
+                        try
+                        {
+                            if (((e.X / Main.zoom - routeV[routesEdge[i].V1].X) * (routeV[routesEdge[i].V2].Y - routeV[routesEdge[i].V1].Y) / (routeV[routesEdge[i].V2].X - routeV[routesEdge[i].V1].X) + routeV[routesEdge[i].V1].Y) <= (e.Y / Main.zoom + 4) &&
+                                ((e.X / Main.zoom - routeV[routesEdge[i].V1].X) * (routeV[routesEdge[i].V2].Y - routeV[routesEdge[i].V1].Y) / (routeV[routesEdge[i].V2].X - routeV[routesEdge[i].V1].X) + routeV[routesEdge[i].V1].Y) >= (e.Y / Main.zoom - 4))
+                            {
+                                if ((routeV[routesEdge[i].V1].X <= routeV[routesEdge[i].V2].X && routeV[routesEdge[i].V1].X <= e.X / Main.zoom && e.X / Main.zoom <= routeV[routesEdge[i].V2].X) ||
+                                    (routeV[routesEdge[i].V1].X >= routeV[routesEdge[i].V2].X && routeV[routesEdge[i].V1].X >= e.X / Main.zoom && e.X / Main.zoom >= routeV[routesEdge[i].V2].X))
+                                {
+                                    routesEdge.RemoveAt(i);
+                                    flag = true;
+                                    break;
+                                }
+                            }
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Ребро не удаляется");
+                        }
+                    }
+
+                }
+            }
+            //если что-то было удалено, то обновляем граф на экране
+            if (flag)
+            {
+                Main.G.ClearSheet();
+                Main.G.DrawALLGraph(Main.V, Main.E);
+                Main.G.DrawALLGraph(routeV, routesEdge, 1);
+                sheet.Image = Main.G.GetBitmap();
+                Main.DrawGrid();
+            }
+        }
+
         public void deleteBS(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
 
@@ -949,4 +1208,6 @@ namespace SystAnalys_lr1.Classes
         }
 
     }
+
+
 }

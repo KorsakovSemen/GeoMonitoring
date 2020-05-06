@@ -29,4 +29,5 @@ namespace SystAnalys_lr1.Classes
         [XmlIgnore, JsonIgnore]
         public int gridHeight;
     }
+
 }

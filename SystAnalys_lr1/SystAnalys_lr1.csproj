@@ -78,11 +78,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Bus.cs" />
+    <Compile Include="Classes\BusStop.cs" />
     <Compile Include="Classes\Constructor.cs" />
     <Compile Include="Classes\DrawGraph.cs" />
     <Compile Include="Classes\Edge.cs" />
     <Compile Include="Classes\Epicenter.cs" />
     <Compile Include="Classes\Grid.cs" />
+    <Compile Include="Classes\GridCreator.cs" />
     <Compile Include="Classes\GridPart.cs" />
     <Compile Include="Classes\Optimization.cs" />
     <Compile Include="Classes\Vertex.cs" />
