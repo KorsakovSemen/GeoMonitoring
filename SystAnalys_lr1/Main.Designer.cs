@@ -30,53 +30,26 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.about = new System.Windows.Forms.ToolStripMenuItem();
-            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.matrixGrid = new MetroFramework.Controls.MetroGrid();
-            this.panel1 = new MetroFramework.Controls.MetroPanel();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.panelOpt = new MetroFramework.Controls.MetroPanel();
+            this.pollutionOptions = new MetroFramework.Controls.MetroButton();
             this.results = new MetroFramework.Controls.MetroGrid();
             this.Avg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label14 = new MetroFramework.Controls.MetroLabel();
-            this.label13 = new MetroFramework.Controls.MetroLabel();
+            this.Walkthrough = new MetroFramework.Controls.MetroLabel();
+            this.T = new MetroFramework.Controls.MetroLabel();
             this.optimize = new MetroFramework.Controls.MetroButton();
             this.mean = new MetroFramework.Controls.MetroLabel();
             this.optText = new MetroFramework.Controls.MetroTextBox();
             this.speed = new MetroFramework.Controls.MetroTextBox();
-            this.stopBuses = new MetroFramework.Controls.MetroButton();
-            this.launchBuses = new MetroFramework.Controls.MetroButton();
-            this.panel2 = new MetroFramework.Controls.MetroPanel();
-            this.createCoordinates = new MetroFramework.Controls.MetroButton();
-            this.label7 = new MetroFramework.Controls.MetroLabel();
-            this.textBox2 = new MetroFramework.Controls.MetroTextBox();
-            this.button8 = new MetroFramework.Controls.MetroButton();
-            this.changeProcent = new MetroFramework.Controls.MetroTextBox();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.panel4 = new MetroFramework.Controls.MetroPanel();
-            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.panelSettings = new MetroFramework.Controls.MetroPanel();
+            this.matrixLabel = new MetroFramework.Controls.MetroLabel();
             this.zoomLabel = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.panel8 = new MetroFramework.Controls.MetroPanel();
-            this.matrixControl1 = new SystAnalys_lr1.Classes.MatrixControl();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.label8 = new MetroFramework.Controls.MetroLabel();
-            this.panel7 = new MetroFramework.Controls.MetroPanel();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.allBusSettings = new MetroFramework.Controls.MetroPanel();
-            this.backsideCheck = new MetroFramework.Controls.MetroCheckBox();
-            this.trackerCheck = new MetroFramework.Controls.MetroCheckBox();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.busSize = new MetroFramework.Controls.MetroTextBox();
-            this.changeRoute = new MetroFramework.Controls.MetroComboBox();
-            this.metroTrackBar1 = new MetroFramework.Controls.MetroTrackBar();
+            this.optimization = new MetroFramework.Controls.MetroLabel();
+            this.panelMatrix = new MetroFramework.Controls.MetroPanel();
+            this.matrix = new SystAnalys_lr1.Classes.MatrixControl();
+            this.zoomBar = new MetroFramework.Controls.MetroTrackBar();
             this.trafficLightLabel = new MetroFramework.Controls.MetroLabel();
             this.theme = new MetroFramework.Controls.MetroLabel();
             this.changeTheme = new MetroFramework.Controls.MetroComboBox();
@@ -115,106 +88,57 @@
             this.msmMain = new MetroFramework.Components.MetroStyleManager(this.components);
             this.themes = new MetroFramework.Controls.MetroToggle();
             this.config = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.changeLanguage = new MetroFramework.Controls.MetroComboBox();
+            this.language = new MetroFramework.Controls.MetroLabel();
             this.hint = new MetroFramework.Controls.MetroLabel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.busOptions = new MetroFramework.Controls.MetroLabel();
+            this.selectedLanguage = new MetroFramework.Controls.MetroLabel();
+            this.allBusSettings = new MetroFramework.Controls.MetroPanel();
+            this.backsideCheck = new MetroFramework.Controls.MetroCheckBox();
+            this.stopBuses = new MetroFramework.Controls.MetroButton();
+            this.launchBuses = new MetroFramework.Controls.MetroButton();
+            this.trackerCheck = new MetroFramework.Controls.MetroCheckBox();
+            this.busSize = new MetroFramework.Controls.MetroTextBox();
+            this.changeRoute = new MetroFramework.Controls.MetroComboBox();
+            this.panelOpt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.results)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.allBusSettings.SuspendLayout();
+            this.panelSettings.SuspendLayout();
+            this.panelMatrix.SuspendLayout();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.toolStripMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).BeginInit();
+            this.allBusSettings.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // panelOpt
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.about});
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
-            this.menuStrip1.Name = "menuStrip1";
+            this.panelOpt.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.panelOpt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelOpt.Controls.Add(this.pollutionOptions);
+            this.panelOpt.Controls.Add(this.results);
+            this.panelOpt.Controls.Add(this.Walkthrough);
+            this.panelOpt.Controls.Add(this.T);
+            this.panelOpt.Controls.Add(this.optimize);
+            this.panelOpt.Controls.Add(this.mean);
+            this.panelOpt.Controls.Add(this.optText);
+            this.panelOpt.Controls.Add(this.speed);
+            this.panelOpt.HorizontalScrollbarBarColor = true;
+            this.panelOpt.HorizontalScrollbarHighlightOnWheel = false;
+            this.panelOpt.HorizontalScrollbarSize = 10;
+            resources.ApplyResources(this.panelOpt, "panelOpt");
+            this.panelOpt.Name = "panelOpt";
+            this.panelOpt.VerticalScrollbarBarColor = true;
+            this.panelOpt.VerticalScrollbarHighlightOnWheel = false;
+            this.panelOpt.VerticalScrollbarSize = 11;
             // 
-            // about
+            // pollutionOptions
             // 
-            this.about.Name = "about";
-            resources.ApplyResources(this.about, "about");
-            // 
-            // matrixGrid
-            // 
-            this.matrixGrid.AllowUserToResizeRows = false;
-            this.matrixGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.matrixGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.matrixGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.matrixGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.matrixGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.matrixGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.matrixGrid.DefaultCellStyle = dataGridViewCellStyle2;
-            this.matrixGrid.EnableHeadersVisualStyles = false;
-            resources.ApplyResources(this.matrixGrid, "matrixGrid");
-            this.matrixGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.matrixGrid.Name = "matrixGrid";
-            this.matrixGrid.ReadOnly = true;
-            this.matrixGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.matrixGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.matrixGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.matrixGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.metroButton2);
-            this.panel1.Controls.Add(this.results);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.optimize);
-            this.panel1.Controls.Add(this.mean);
-            this.panel1.Controls.Add(this.optText);
-            this.panel1.Controls.Add(this.speed);
-            this.panel1.HorizontalScrollbarBarColor = true;
-            this.panel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel1.HorizontalScrollbarSize = 10;
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
-            this.panel1.VerticalScrollbarBarColor = true;
-            this.panel1.VerticalScrollbarHighlightOnWheel = false;
-            this.panel1.VerticalScrollbarSize = 11;
-            // 
-            // metroButton2
-            // 
-            resources.ApplyResources(this.metroButton2, "metroButton2");
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.UseSelectable = true;
-            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
+            resources.ApplyResources(this.pollutionOptions, "pollutionOptions");
+            this.pollutionOptions.Name = "pollutionOptions";
+            this.pollutionOptions.UseSelectable = true;
+            this.pollutionOptions.Click += new System.EventHandler(this.metroButton2_Click);
             // 
             // results
             // 
@@ -266,15 +190,15 @@
             this.Avg.Name = "Avg";
             this.Avg.ReadOnly = true;
             // 
-            // label14
+            // Walkthrough
             // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.Name = "label14";
+            resources.ApplyResources(this.Walkthrough, "Walkthrough");
+            this.Walkthrough.Name = "Walkthrough";
             // 
-            // label13
+            // T
             // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
+            resources.ApplyResources(this.T, "T");
+            this.T.Name = "T";
             // 
             // optimize
             // 
@@ -351,297 +275,73 @@
             this.speed.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.speed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.speed_KeyPress);
             // 
-            // stopBuses
+            // panelSettings
             // 
-            resources.ApplyResources(this.stopBuses, "stopBuses");
-            this.stopBuses.Name = "stopBuses";
-            this.stopBuses.UseSelectable = true;
-            this.stopBuses.Click += new System.EventHandler(this.stopBuses_Click);
+            this.panelSettings.BackColor = System.Drawing.SystemColors.Menu;
+            this.panelSettings.Controls.Add(this.busOptions);
+            this.panelSettings.Controls.Add(this.selectedLanguage);
+            this.panelSettings.Controls.Add(this.allBusSettings);
+            this.panelSettings.Controls.Add(this.changeRoute);
+            this.panelSettings.Controls.Add(this.matrixLabel);
+            this.panelSettings.Controls.Add(this.zoomLabel);
+            this.panelSettings.Controls.Add(this.optimization);
+            this.panelSettings.Controls.Add(this.panelMatrix);
+            this.panelSettings.Controls.Add(this.panelOpt);
+            this.panelSettings.Controls.Add(this.zoomBar);
+            resources.ApplyResources(this.panelSettings, "panelSettings");
+            this.panelSettings.HorizontalScrollbarBarColor = true;
+            this.panelSettings.HorizontalScrollbarHighlightOnWheel = false;
+            this.panelSettings.HorizontalScrollbarSize = 10;
+            this.panelSettings.Name = "panelSettings";
+            this.panelSettings.VerticalScrollbarBarColor = true;
+            this.panelSettings.VerticalScrollbarHighlightOnWheel = false;
+            this.panelSettings.VerticalScrollbarSize = 11;
             // 
-            // launchBuses
+            // matrixLabel
             // 
-            resources.ApplyResources(this.launchBuses, "launchBuses");
-            this.launchBuses.Name = "launchBuses";
-            this.launchBuses.UseSelectable = true;
-            this.launchBuses.Click += new System.EventHandler(this.launchBuses_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.panel2.Controls.Add(this.createCoordinates);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.button8);
-            this.panel2.Controls.Add(this.changeProcent);
-            this.panel2.HorizontalScrollbarBarColor = true;
-            this.panel2.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel2.HorizontalScrollbarSize = 10;
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
-            this.panel2.VerticalScrollbarBarColor = true;
-            this.panel2.VerticalScrollbarHighlightOnWheel = false;
-            this.panel2.VerticalScrollbarSize = 11;
-            // 
-            // createCoordinates
-            // 
-            resources.ApplyResources(this.createCoordinates, "createCoordinates");
-            this.createCoordinates.Name = "createCoordinates";
-            this.createCoordinates.UseSelectable = true;
-            this.createCoordinates.Click += new System.EventHandler(this.metroButton1_Click_1);
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
-            // 
-            // textBox2
-            // 
-            // 
-            // 
-            // 
-            this.textBox2.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            this.textBox2.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode2")));
-            this.textBox2.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location2")));
-            this.textBox2.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin2")));
-            this.textBox2.CustomButton.Name = "";
-            this.textBox2.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size2")));
-            this.textBox2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.textBox2.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex2")));
-            this.textBox2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.textBox2.CustomButton.UseSelectable = true;
-            this.textBox2.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible2")));
-            this.textBox2.Lines = new string[0];
-            resources.ApplyResources(this.textBox2, "textBox2");
-            this.textBox2.MaxLength = 9;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '\0';
-            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.textBox2.SelectedText = "";
-            this.textBox2.SelectionLength = 0;
-            this.textBox2.SelectionStart = 0;
-            this.textBox2.ShortcutsEnabled = true;
-            this.textBox2.UseSelectable = true;
-            this.textBox2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.textBox2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
-            // 
-            // button8
-            // 
-            resources.ApplyResources(this.button8, "button8");
-            this.button8.Name = "button8";
-            this.button8.UseSelectable = true;
-            // 
-            // changeProcent
-            // 
-            // 
-            // 
-            // 
-            this.changeProcent.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            this.changeProcent.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode3")));
-            this.changeProcent.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location3")));
-            this.changeProcent.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin3")));
-            this.changeProcent.CustomButton.Name = "";
-            this.changeProcent.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size3")));
-            this.changeProcent.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.changeProcent.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex3")));
-            this.changeProcent.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.changeProcent.CustomButton.UseSelectable = true;
-            this.changeProcent.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible3")));
-            this.changeProcent.Lines = new string[0];
-            resources.ApplyResources(this.changeProcent, "changeProcent");
-            this.changeProcent.MaxLength = 9;
-            this.changeProcent.Name = "changeProcent";
-            this.changeProcent.PasswordChar = '\0';
-            this.changeProcent.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.changeProcent.SelectedText = "";
-            this.changeProcent.SelectionLength = 0;
-            this.changeProcent.SelectionStart = 0;
-            this.changeProcent.ShortcutsEnabled = true;
-            this.changeProcent.UseSelectable = true;
-            this.changeProcent.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.changeProcent.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.SystemColors.Menu;
-            this.panel4.Controls.Add(this.metroLabel8);
-            this.panel4.Controls.Add(this.zoomLabel);
-            this.panel4.Controls.Add(this.metroLabel5);
-            this.panel4.Controls.Add(this.panel8);
-            this.panel4.Controls.Add(this.panel7);
-            this.panel4.Controls.Add(this.panel1);
-            this.panel4.Controls.Add(this.metroTrackBar1);
-            this.panel4.Controls.Add(this.panel2);
-            resources.ApplyResources(this.panel4, "panel4");
-            this.panel4.HorizontalScrollbarBarColor = true;
-            this.panel4.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel4.HorizontalScrollbarSize = 10;
-            this.panel4.Name = "panel4";
-            this.panel4.VerticalScrollbarBarColor = true;
-            this.panel4.VerticalScrollbarHighlightOnWheel = false;
-            this.panel4.VerticalScrollbarSize = 11;
-            // 
-            // metroLabel8
-            // 
-            resources.ApplyResources(this.metroLabel8, "metroLabel8");
-            this.metroLabel8.Name = "metroLabel8";
+            resources.ApplyResources(this.matrixLabel, "matrixLabel");
+            this.matrixLabel.Name = "matrixLabel";
             // 
             // zoomLabel
             // 
             resources.ApplyResources(this.zoomLabel, "zoomLabel");
             this.zoomLabel.Name = "zoomLabel";
             // 
-            // metroLabel5
+            // optimization
             // 
-            resources.ApplyResources(this.metroLabel5, "metroLabel5");
-            this.metroLabel5.Name = "metroLabel5";
+            resources.ApplyResources(this.optimization, "optimization");
+            this.optimization.Name = "optimization";
             // 
-            // panel8
+            // panelMatrix
             // 
-            this.panel8.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Controls.Add(this.matrixControl1);
-            this.panel8.Controls.Add(this.metroLabel7);
-            this.panel8.Controls.Add(this.label8);
-            this.panel8.Controls.Add(this.matrixGrid);
-            this.panel8.HorizontalScrollbarBarColor = true;
-            this.panel8.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel8.HorizontalScrollbarSize = 10;
-            resources.ApplyResources(this.panel8, "panel8");
-            this.panel8.Name = "panel8";
-            this.panel8.VerticalScrollbarBarColor = true;
-            this.panel8.VerticalScrollbarHighlightOnWheel = false;
-            this.panel8.VerticalScrollbarSize = 11;
+            this.panelMatrix.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panelMatrix.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelMatrix.Controls.Add(this.matrix);
+            this.panelMatrix.HorizontalScrollbarBarColor = true;
+            this.panelMatrix.HorizontalScrollbarHighlightOnWheel = false;
+            this.panelMatrix.HorizontalScrollbarSize = 10;
+            resources.ApplyResources(this.panelMatrix, "panelMatrix");
+            this.panelMatrix.Name = "panelMatrix";
+            this.panelMatrix.VerticalScrollbarBarColor = true;
+            this.panelMatrix.VerticalScrollbarHighlightOnWheel = false;
+            this.panelMatrix.VerticalScrollbarSize = 11;
             // 
-            // matrixControl1
+            // matrix
             // 
-            resources.ApplyResources(this.matrixControl1, "matrixControl1");
-            this.matrixControl1.Name = "matrixControl1";
-            this.matrixControl1.UseSelectable = true;
+            resources.ApplyResources(this.matrix, "matrix");
+            this.matrix.Name = "matrix";
+            this.matrix.UseSelectable = true;
             // 
-            // metroLabel7
+            // zoomBar
             // 
-            resources.ApplyResources(this.metroLabel7, "metroLabel7");
-            this.metroLabel7.Name = "metroLabel7";
-            // 
-            // label8
-            // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel7.Controls.Add(this.metroLabel4);
-            this.panel7.Controls.Add(this.metroLabel3);
-            this.panel7.Controls.Add(this.allBusSettings);
-            this.panel7.Controls.Add(this.changeRoute);
-            this.panel7.HorizontalScrollbarBarColor = true;
-            this.panel7.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel7.HorizontalScrollbarSize = 10;
-            resources.ApplyResources(this.panel7, "panel7");
-            this.panel7.Name = "panel7";
-            this.panel7.VerticalScrollbarBarColor = true;
-            this.panel7.VerticalScrollbarHighlightOnWheel = false;
-            this.panel7.VerticalScrollbarSize = 11;
-            // 
-            // metroLabel4
-            // 
-            resources.ApplyResources(this.metroLabel4, "metroLabel4");
-            this.metroLabel4.Name = "metroLabel4";
-            // 
-            // metroLabel3
-            // 
-            resources.ApplyResources(this.metroLabel3, "metroLabel3");
-            this.metroLabel3.Name = "metroLabel3";
-            // 
-            // allBusSettings
-            // 
-            this.allBusSettings.BackColor = System.Drawing.Color.DimGray;
-            this.allBusSettings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.allBusSettings.Controls.Add(this.backsideCheck);
-            this.allBusSettings.Controls.Add(this.stopBuses);
-            this.allBusSettings.Controls.Add(this.launchBuses);
-            this.allBusSettings.Controls.Add(this.trackerCheck);
-            this.allBusSettings.Controls.Add(this.metroLabel2);
-            this.allBusSettings.Controls.Add(this.busSize);
-            this.allBusSettings.HorizontalScrollbarBarColor = true;
-            this.allBusSettings.HorizontalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.HorizontalScrollbarSize = 17;
-            resources.ApplyResources(this.allBusSettings, "allBusSettings");
-            this.allBusSettings.Name = "allBusSettings";
-            this.allBusSettings.Style = MetroFramework.MetroColorStyle.Blue;
-            this.allBusSettings.UseStyleColors = true;
-            this.allBusSettings.VerticalScrollbarBarColor = true;
-            this.allBusSettings.VerticalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.VerticalScrollbarSize = 17;
-            // 
-            // backsideCheck
-            // 
-            resources.ApplyResources(this.backsideCheck, "backsideCheck");
-            this.backsideCheck.Name = "backsideCheck";
-            this.backsideCheck.UseSelectable = true;
-            // 
-            // trackerCheck
-            // 
-            resources.ApplyResources(this.trackerCheck, "trackerCheck");
-            this.trackerCheck.Name = "trackerCheck";
-            this.trackerCheck.UseSelectable = true;
-            // 
-            // metroLabel2
-            // 
-            resources.ApplyResources(this.metroLabel2, "metroLabel2");
-            this.metroLabel2.Name = "metroLabel2";
-            // 
-            // busSize
-            // 
-            // 
-            // 
-            // 
-            this.busSize.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            this.busSize.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode4")));
-            this.busSize.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location4")));
-            this.busSize.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin4")));
-            this.busSize.CustomButton.Name = "";
-            this.busSize.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size4")));
-            this.busSize.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.busSize.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex4")));
-            this.busSize.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.busSize.CustomButton.UseSelectable = true;
-            this.busSize.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible4")));
-            resources.ApplyResources(this.busSize, "busSize");
-            this.busSize.Lines = new string[0];
-            this.busSize.MaxLength = 9;
-            this.busSize.Name = "busSize";
-            this.busSize.PasswordChar = '\0';
-            this.busSize.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.busSize.SelectedText = "";
-            this.busSize.SelectionLength = 0;
-            this.busSize.SelectionStart = 0;
-            this.busSize.ShortcutsEnabled = true;
-            this.busSize.UseSelectable = true;
-            this.busSize.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.busSize.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.busSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.busSize_KeyPress);
-            // 
-            // changeRoute
-            // 
-            this.changeRoute.FormattingEnabled = true;
-            resources.ApplyResources(this.changeRoute, "changeRoute");
-            this.changeRoute.Name = "changeRoute";
-            this.changeRoute.UseSelectable = true;
-            this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChangedAsync);
-            // 
-            // metroTrackBar1
-            // 
-            this.metroTrackBar1.BackColor = System.Drawing.Color.Transparent;
-            this.metroTrackBar1.LargeChange = 1;
-            resources.ApplyResources(this.metroTrackBar1, "metroTrackBar1");
-            this.metroTrackBar1.Maximum = 3;
-            this.metroTrackBar1.Minimum = 1;
-            this.metroTrackBar1.Name = "metroTrackBar1";
-            this.metroTrackBar1.Value = 1;
-            this.metroTrackBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.metroTrackBar1_ScrollAsync);
+            this.zoomBar.BackColor = System.Drawing.Color.Transparent;
+            this.zoomBar.LargeChange = 1;
+            resources.ApplyResources(this.zoomBar, "zoomBar");
+            this.zoomBar.Maximum = 3;
+            this.zoomBar.Minimum = 1;
+            this.zoomBar.Name = "zoomBar";
+            this.zoomBar.Value = 1;
+            this.zoomBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.metroTrackBar1_ScrollAsync);
             // 
             // trafficLightLabel
             // 
@@ -951,94 +651,166 @@
             resources.ApplyResources(this.config, "config");
             this.config.Name = "config";
             // 
-            // metroComboBox1
+            // changeLanguage
             // 
-            this.metroComboBox1.AutoCompleteCustomSource.AddRange(new string[] {
-            resources.GetString("metroComboBox1.AutoCompleteCustomSource"),
-            resources.GetString("metroComboBox1.AutoCompleteCustomSource1")});
-            this.metroComboBox1.FormattingEnabled = true;
-            resources.ApplyResources(this.metroComboBox1, "metroComboBox1");
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.UseSelectable = true;
-            this.metroComboBox1.SelectedIndexChanged += new System.EventHandler(this.metroComboBox1_SelectedIndexChanged);
+            this.changeLanguage.AutoCompleteCustomSource.AddRange(new string[] {
+            resources.GetString("changeLanguage.AutoCompleteCustomSource"),
+            resources.GetString("changeLanguage.AutoCompleteCustomSource1")});
+            this.changeLanguage.FormattingEnabled = true;
+            resources.ApplyResources(this.changeLanguage, "changeLanguage");
+            this.changeLanguage.Name = "changeLanguage";
+            this.changeLanguage.UseSelectable = true;
+            this.changeLanguage.SelectedIndexChanged += new System.EventHandler(this.metroComboBox1_SelectedIndexChanged);
             // 
-            // metroLabel1
+            // language
             // 
-            resources.ApplyResources(this.metroLabel1, "metroLabel1");
-            this.metroLabel1.Name = "metroLabel1";
+            resources.ApplyResources(this.language, "language");
+            this.language.Name = "language";
             // 
             // hint
             // 
             resources.ApplyResources(this.hint, "hint");
             this.hint.Name = "hint";
             // 
-            // timer1
+            // timer
             // 
-            this.timer1.Interval = 20;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer.Interval = 20;
+            this.timer.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // busOptions
+            // 
+            resources.ApplyResources(this.busOptions, "busOptions");
+            this.busOptions.Name = "busOptions";
+            // 
+            // selectedLanguage
+            // 
+            resources.ApplyResources(this.selectedLanguage, "selectedLanguage");
+            this.selectedLanguage.Name = "selectedLanguage";
+            // 
+            // allBusSettings
+            // 
+            this.allBusSettings.BackColor = System.Drawing.Color.DimGray;
+            this.allBusSettings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.allBusSettings.Controls.Add(this.backsideCheck);
+            this.allBusSettings.Controls.Add(this.stopBuses);
+            this.allBusSettings.Controls.Add(this.launchBuses);
+            this.allBusSettings.Controls.Add(this.trackerCheck);
+            this.allBusSettings.Controls.Add(this.busSize);
+            this.allBusSettings.HorizontalScrollbarBarColor = true;
+            this.allBusSettings.HorizontalScrollbarHighlightOnWheel = false;
+            this.allBusSettings.HorizontalScrollbarSize = 17;
+            resources.ApplyResources(this.allBusSettings, "allBusSettings");
+            this.allBusSettings.Name = "allBusSettings";
+            this.allBusSettings.Style = MetroFramework.MetroColorStyle.Blue;
+            this.allBusSettings.UseStyleColors = true;
+            this.allBusSettings.VerticalScrollbarBarColor = true;
+            this.allBusSettings.VerticalScrollbarHighlightOnWheel = false;
+            this.allBusSettings.VerticalScrollbarSize = 17;
+            // 
+            // backsideCheck
+            // 
+            resources.ApplyResources(this.backsideCheck, "backsideCheck");
+            this.backsideCheck.Name = "backsideCheck";
+            this.backsideCheck.UseSelectable = true;
+            // 
+            // stopBuses
+            // 
+            resources.ApplyResources(this.stopBuses, "stopBuses");
+            this.stopBuses.Name = "stopBuses";
+            this.stopBuses.UseSelectable = true;
+            // 
+            // launchBuses
+            // 
+            resources.ApplyResources(this.launchBuses, "launchBuses");
+            this.launchBuses.Name = "launchBuses";
+            this.launchBuses.UseSelectable = true;
+            // 
+            // trackerCheck
+            // 
+            resources.ApplyResources(this.trackerCheck, "trackerCheck");
+            this.trackerCheck.Name = "trackerCheck";
+            this.trackerCheck.UseSelectable = true;
+            // 
+            // busSize
+            // 
+            // 
+            // 
+            // 
+            this.busSize.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            this.busSize.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode2")));
+            this.busSize.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location2")));
+            this.busSize.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin2")));
+            this.busSize.CustomButton.Name = "";
+            this.busSize.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size2")));
+            this.busSize.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.busSize.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex2")));
+            this.busSize.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.busSize.CustomButton.UseSelectable = true;
+            this.busSize.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible2")));
+            resources.ApplyResources(this.busSize, "busSize");
+            this.busSize.Lines = new string[0];
+            this.busSize.MaxLength = 9;
+            this.busSize.Name = "busSize";
+            this.busSize.PasswordChar = '\0';
+            this.busSize.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.busSize.SelectedText = "";
+            this.busSize.SelectionLength = 0;
+            this.busSize.SelectionStart = 0;
+            this.busSize.ShortcutsEnabled = true;
+            this.busSize.UseSelectable = true;
+            this.busSize.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.busSize.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // changeRoute
+            // 
+            this.changeRoute.FormattingEnabled = true;
+            resources.ApplyResources(this.changeRoute, "changeRoute");
+            this.changeRoute.Name = "changeRoute";
+            this.changeRoute.UseSelectable = true;
             // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.hint);
-            this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.metroComboBox1);
+            this.Controls.Add(this.language);
+            this.Controls.Add(this.changeLanguage);
             this.Controls.Add(this.config);
             this.Controls.Add(this.themes);
             this.Controls.Add(this.trafficLightLabel);
             this.Controls.Add(this.theme);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.changeTheme);
-            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panelSettings);
             this.Controls.Add(this.toolStripMenu);
-            this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.HelpButton = true;
-            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Main";
             this.Style = MetroFramework.MetroColorStyle.Default;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.matrixGrid)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelOpt.ResumeLayout(false);
+            this.panelOpt.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.results)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.allBusSettings.ResumeLayout(false);
-            this.allBusSettings.PerformLayout();
+            this.panelSettings.ResumeLayout(false);
+            this.panelSettings.PerformLayout();
+            this.panelMatrix.ResumeLayout(false);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).EndInit();
+            this.allBusSettings.ResumeLayout(false);
+            this.allBusSettings.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem about;
-        private System.ComponentModel.BackgroundWorker backgroundWorker;
-        private MetroFramework.Controls.MetroGrid matrixGrid;
-        private MetroFramework.Controls.MetroButton button8;
-        private MetroFramework.Controls.MetroTextBox textBox2;
-        private MetroFramework.Controls.MetroLabel label7;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private MetroFramework.Controls.MetroPanel panel2;
-        private MetroFramework.Controls.MetroPanel panel4;
+        private MetroFramework.Controls.MetroPanel panelSettings;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton selectButton;
         private System.Windows.Forms.ToolStripButton drawVertexButton;
@@ -1053,7 +825,6 @@
         private System.Windows.Forms.ToolStripDropDownButton loadButton;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadFromToolStripMenuItem;
-        private MetroFramework.Controls.MetroLabel label8;
         private MetroFramework.Controls.MetroButton optimize;
         private MetroFramework.Controls.MetroTextBox optText;
         private System.Windows.Forms.PictureBox sheet;
@@ -1067,55 +838,50 @@
         public System.Windows.Forms.ToolStrip toolStripMenu;
         private System.Windows.Forms.ToolStripButton selectRoute;
         private System.Windows.Forms.ToolStripMenuItem openEpicFormToolStripMenuItem;
-        private MetroFramework.Controls.MetroLabel label14;
-        private MetroFramework.Controls.MetroLabel label13;
+        private MetroFramework.Controls.MetroLabel Walkthrough;
+        private MetroFramework.Controls.MetroLabel T;
         private System.Windows.Forms.ToolStripMenuItem addRouteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createGridToolStripMenuItem;
-        private MetroFramework.Controls.MetroPanel panel8;
-        private MetroFramework.Controls.MetroPanel panel1;
+        private MetroFramework.Controls.MetroPanel panelMatrix;
+        private MetroFramework.Controls.MetroPanel panelOpt;
         private System.Windows.Forms.ToolStripMenuItem runTrafficLightsToolStripMenuItem;
         public MetroFramework.Components.MetroStyleManager msmMain;
         private MetroFramework.Controls.MetroToggle themes;
         private MetroFramework.Controls.MetroComboBox changeTheme;
         private MetroFramework.Controls.MetroLabel theme;
-        private MetroFramework.Controls.MetroButton stopBuses;
-        private MetroFramework.Controls.MetroButton launchBuses;
         private MetroFramework.Controls.MetroLabel config;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
-        private MetroFramework.Controls.MetroTrackBar metroTrackBar1;
-        private MetroFramework.Controls.MetroTextBox changeProcent;
+        private MetroFramework.Controls.MetroLabel language;
+        private MetroFramework.Controls.MetroComboBox changeLanguage;
+        private MetroFramework.Controls.MetroTrackBar zoomBar;
         private MetroFramework.Controls.MetroLabel hint;
-        private MetroFramework.Controls.MetroButton createCoordinates;
-        private MetroFramework.Controls.MetroPanel panel7;
-        private MetroFramework.Controls.MetroPanel allBusSettings;
-        private MetroFramework.Controls.MetroCheckBox backsideCheck;
-        private MetroFramework.Controls.MetroCheckBox trackerCheck;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroTextBox busSize;
-        public MetroFramework.Controls.MetroComboBox changeRoute;
         private MetroFramework.Controls.MetroLabel trafficLightLabel;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel optimization;
         private MetroFramework.Controls.MetroLabel zoomLabel;
-        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private MetroFramework.Controls.MetroLabel matrixLabel;
 
         //test
         private MetroFramework.Controls.MetroGrid results;
         private System.Windows.Forms.DataGridViewTextBoxColumn Avg;
 
 
-        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroButton pollutionOptions;
         private System.Windows.Forms.ToolStripButton clearButton;
-        private MetroFramework.Controls.MetroLabel metroLabel7;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.ToolStripButton reportTool;
         private System.Windows.Forms.ToolStripButton deleteButton;
         private System.Windows.Forms.ToolStripButton deleteBus;
         private System.Windows.Forms.ToolStripButton deleteRoute;
         private System.Windows.Forms.ToolStripButton delAllBusesOnRoute;
-        private Classes.MatrixControl matrixControl1;
+        private Classes.MatrixControl matrix;
+        private MetroFramework.Controls.MetroLabel busOptions;
+        private MetroFramework.Controls.MetroLabel selectedLanguage;
+        private MetroFramework.Controls.MetroPanel allBusSettings;
+        private MetroFramework.Controls.MetroCheckBox backsideCheck;
+        private MetroFramework.Controls.MetroButton stopBuses;
+        private MetroFramework.Controls.MetroButton launchBuses;
+        private MetroFramework.Controls.MetroCheckBox trackerCheck;
+        private MetroFramework.Controls.MetroTextBox busSize;
+        public MetroFramework.Controls.MetroComboBox changeRoute;
     }
 }
 

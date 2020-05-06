@@ -187,8 +187,8 @@ namespace SystAnalys_lr1
         //class jopa
         private void InitializeElements()
         {
-            tracbarX = metroTrackBar1.Location.X;
-            tracbarY = metroTrackBar1.Location.Y;
+            tracbarX = zoomBar.Location.X;
+            tracbarY = zoomBar.Location.Y;
             MovingEpicParamet = new List<string>();
             r = new Report();
             iCh = 0;
@@ -353,7 +353,7 @@ namespace SystAnalys_lr1
             mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             mainPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(panel6_MouseWheel);
             Optimization.countWithoutSensors = buses.Count;
-            matrixControl1.MatrixCreate();
+            matrix.MatrixCreate();
             hint.Visible = false;
             r.ch.Titles.Add(MainStrings.report);
             r.ch.Series[rCount].LegendText = "1";
@@ -410,7 +410,7 @@ namespace SystAnalys_lr1
 
         public Panel GetMainPanel()
         {
-            return panel4;
+            return panelSettings;
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -554,12 +554,11 @@ namespace SystAnalys_lr1
         private void buttonOn()
         {
             changeRoute.Invoke(new DelBool((s) => changeRoute.Enabled = s), true);
-            button8.Invoke(new DelBool((s) => button8.Enabled = s), true);
             optimize.Invoke(new DelBool((s) => optimize.Enabled = s), true);
-            createCoordinates.Invoke(new DelBool((s) => createCoordinates.Enabled = s), true);
+            //.Invoke(new DelBool((s) => createCoordinates.Enabled = s), true);
             launchBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), true);
             stopBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), true);
-            metroButton2.Invoke(new DelBool((s) => metroButton2.Enabled = s), true);
+            pollutionOptions.Invoke(new DelBool((s) => pollutionOptions.Enabled = s), true);
             toolStripMenu.Invoke((System.Action)(() =>
             {
                 saveButton.Enabled = true;
@@ -569,12 +568,11 @@ namespace SystAnalys_lr1
         private void buttonOff()
         {
             changeRoute.Invoke(new DelBool((s) => changeRoute.Enabled = s), false);
-            button8.Invoke(new DelBool((s) => button8.Enabled = s), false);
             optimize.Invoke(new DelBool((s) => optimize.Enabled = s), false);
-            createCoordinates.Invoke(new DelBool((s) => createCoordinates.Enabled = s), false);
+            //createCoordinates.Invoke(new DelBool((s) => createCoordinates.Enabled = s), false);
             launchBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), false);
             stopBuses.Invoke(new DelBool((s) => launchBuses.Enabled = s), false);
-            metroButton2.Invoke(new DelBool((s) => metroButton2.Enabled = s), false);
+            pollutionOptions.Invoke(new DelBool((s) => pollutionOptions.Enabled = s), false);
             toolStripMenu.Invoke((System.Action)(() =>
             {
                 saveButton.Enabled = false;
@@ -632,7 +630,7 @@ namespace SystAnalys_lr1
 
         public MetroTrackBar GetTrackBar()
         {
-            return metroTrackBar1;
+            return zoomBar;
         }
 
         public static string NormalizePath(string path)
@@ -917,7 +915,7 @@ namespace SystAnalys_lr1
                 traficLights.Clear();
                 sheet.Image = Image.FromFile(fb.FileName);
                 saveImage = sheet.Image;
-                metroTrackBar1.Value = 1;
+                zoomBar.Value = 1;
                 wsheet = sheet.Width;
                 hsheet = sheet.Height;
                 globalMap = sheet.Image;
@@ -932,10 +930,10 @@ namespace SystAnalys_lr1
                 openEpicFormToolStripMenuItem.Enabled = true;
                 addRouteToolStripMenuItem.Enabled = true;
                 createGridToolStripMenuItem.Enabled = true;
-                matrixControl1.MatrixCreate();
+                matrix.MatrixCreate();
                 BringToFront();
-                timer1.Dispose();
-                timer1.Start();
+                timer.Dispose();
+                timer.Start();
                 MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
         }
@@ -1185,7 +1183,7 @@ namespace SystAnalys_lr1
                 {
                     //foreach (var bus in buses)
                     //    bus.Stop();
-                    timer1.Stop();
+                    timer.Stop();
                     foreach (var tl in traficLights)
                         tl.TimerLight.Interval = 1;
                     Optimization.OptiCount = int.Parse(optText.Text);
@@ -1194,7 +1192,7 @@ namespace SystAnalys_lr1
                     buttonOff();
                     loadingForm.Theme = msmMain.Theme;
                     loadingForm.Style = msmMain.Style;
-                    matrixControl1.MatrixCreate();
+                    matrix.MatrixCreate();
                     if (speed.Text != "" && int.TryParse(speed.Text, out int sp))
                     {
                         if (int.Parse(speed.Text) / 20 == 0)
@@ -1219,9 +1217,9 @@ namespace SystAnalys_lr1
                     }
                     await Task.Run(() =>
                     {
-                        Optimization.Opt(matrixControl1);
+                        Optimization.Opt(matrix);
                     });                       
-                    matrixControl1.MatrixCreate();
+                    matrix.MatrixCreate();
                     resMatrix();
                     msmMain.Style = style;
                     StyleManager.Clone(Main.Ep);
@@ -1231,7 +1229,7 @@ namespace SystAnalys_lr1
                         Main.Ep.Show();
                     }
                     BringToFront();
-                    timer1.Start();
+                    timer.Start();
                     buttonOn();
                     resChart();             
                     ////
@@ -1449,7 +1447,7 @@ namespace SystAnalys_lr1
                     traficLights.TrimExcess();
                     LoadRoutes(savepath + @"\");
                     saveImage = sheet.Image;
-                    metroTrackBar1.Value = 1;
+                    zoomBar.Value = 1;
                     wsheet = sheet.Width;
                     hsheet = sheet.Height;
                     globalMap = sheet.Image;
@@ -1458,7 +1456,7 @@ namespace SystAnalys_lr1
                     Modeling.CreatePollutionInRoutes();
                     addInComboBox();
                     DrawGrid();
-                    matrixControl1.MatrixCreate();
+                    matrix.MatrixCreate();
                     BringToFront();
                     //
                     Console.WriteLine("Memory used before collection:       {0:N0}",
@@ -1802,7 +1800,7 @@ namespace SystAnalys_lr1
                 DisplayEpicenters.path = load;
                 sheet.Image = Image.FromFile(load + "/Map.png");
                 saveImage = sheet.Image;
-                metroTrackBar1.Value = 1;
+                zoomBar.Value = 1;
                 wsheet = sheet.Width;
                 hsheet = sheet.Height;
                 //ZoomHelper(); //дроп ошибки если загружать конфиг в первый раз
@@ -2092,7 +2090,7 @@ namespace SystAnalys_lr1
 
                 }
                 //
-                timer1.Start();
+                timer.Start();
                 //
                 XmlSerializer ver = new XmlSerializer(typeof(List<Vertex>));
                 XmlSerializer ed = new XmlSerializer(typeof(List<Edge>));
@@ -2201,7 +2199,7 @@ namespace SystAnalys_lr1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            matrixControl1.MatrixCreate();
+            matrix.MatrixCreate();
         }
 
 
@@ -2816,7 +2814,7 @@ namespace SystAnalys_lr1
 
             //    bus.Start();
             //}
-            timer1.Start();
+            timer.Start();
         }
 
         private void stopBuses_Click(object sender, EventArgs e)
@@ -2825,14 +2823,14 @@ namespace SystAnalys_lr1
             //{
             //    bus.Stop();
             //}
-            timer1.Stop();
+            timer.Stop();
         }
 
 
 
         private async void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Properties.Settings.Default.Language = metroComboBox1.SelectedValue.ToString();
+            Properties.Settings.Default.Language = changeLanguage.SelectedValue.ToString();
             Properties.Settings.Default.Save();
             await Task.Delay(1000);
         }
@@ -2840,20 +2838,20 @@ namespace SystAnalys_lr1
         private void Main_Load(object sender, EventArgs e)
         {
             // Заносим список поддерживаемых языков.
-            metroComboBox1.DataSource = new System.Globalization.CultureInfo[]{
+            changeLanguage.DataSource = new System.Globalization.CultureInfo[]{
                  System.Globalization.CultureInfo.GetCultureInfo("ru-RU"),
                  System.Globalization.CultureInfo.GetCultureInfo("en-US")
             };
 
             // Каждый элемент списка comboBox1 будет являться экземпляром класса CultureInfo.
 
-            metroComboBox1.DisplayMember = "NativeName"; // <= System.Globalization.CultureInfo.GetCultureInfo("ru-RU").NativeName
-            metroComboBox1.ValueMember = "Name"; // <= System.Globalization.CultureInfo.GetCultureInfo("ru-RU").Name
+            changeLanguage.DisplayMember = "NativeName"; // <= System.Globalization.CultureInfo.GetCultureInfo("ru-RU").NativeName
+            changeLanguage.ValueMember = "Name"; // <= System.Globalization.CultureInfo.GetCultureInfo("ru-RU").Name
 
             // Если в настройках есть язык, выбираем его в списке.
             if (!string.IsNullOrEmpty(Properties.Settings.Default.Language))
             {
-                metroComboBox1.SelectedValue = Properties.Settings.Default.Language;
+                changeLanguage.SelectedValue = Properties.Settings.Default.Language;
             }
             lang = true;
         }
@@ -2869,15 +2867,15 @@ namespace SystAnalys_lr1
 
         private void ZoomHelper()
         {
-            sheet.Image = ResizeBitmap(new Bitmap(saveImage), wsheet * metroTrackBar1.Value, hsheet * metroTrackBar1.Value);
+            sheet.Image = ResizeBitmap(new Bitmap(saveImage), wsheet * zoomBar.Value, hsheet * zoomBar.Value);
             globalMap = sheet.Image;
-            mainPanel.AutoScrollPosition = new Point(scrollX * metroTrackBar1.Value, scrollY * metroTrackBar1.Value);
+            mainPanel.AutoScrollPosition = new Point(scrollX * zoomBar.Value, scrollY * zoomBar.Value);
             scrollX = mainPanel.AutoScrollPosition.X;
             scrollY = mainPanel.AutoScrollPosition.Y;
-            zoom = metroTrackBar1.Value;
+            zoom = zoomBar.Value;
             Bus.ScrollX = mainPanel.AutoScrollPosition.X;
             Bus.ScrollY = mainPanel.AutoScrollPosition.Y;
-            Bus.ZoomCoef = metroTrackBar1.Value;
+            Bus.ZoomCoef = zoomBar.Value;
         }
 
         private void metroTrackBar1_ScrollAsync(object sender, ScrollEventArgs e)
@@ -2903,7 +2901,7 @@ namespace SystAnalys_lr1
                     G.DrawALLGraph(V, E);
                 }
 
-                if (timer1.Enabled == false)
+                if (timer.Enabled == false)
                 {
                     AnimationBitmap.Dispose();
                     AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
@@ -2913,7 +2911,7 @@ namespace SystAnalys_lr1
                     foreach (var bus in buses)
                     {
 
-                        AnimationGraphics.DrawImage(bus.busPic, bus.Coordinates[bus.PositionAt].X * metroTrackBar1.Value - bus.busPic.Width / 2, bus.Coordinates[bus.PositionAt].Y * metroTrackBar1.Value - bus.busPic.Height / 2);
+                        AnimationGraphics.DrawImage(bus.busPic, bus.Coordinates[bus.PositionAt].X * zoomBar.Value - bus.busPic.Width / 2, bus.Coordinates[bus.PositionAt].Y * zoomBar.Value - bus.busPic.Height / 2);
                     }
                     AnimationBox.Image = AnimationBitmap;
                     //AnimationBox.Update();
@@ -2991,8 +2989,8 @@ namespace SystAnalys_lr1
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            timer1.Interval = 1000;
-            timer1.Start();
+            timer.Interval = 1000;
+            timer.Start();
         }
 
         private void reportTool_Click(object sender, EventArgs e)
@@ -3000,6 +2998,7 @@ namespace SystAnalys_lr1
             r.Show();
             r.BringToFront();
         }
+
 
         private void clearButton_Click(object sender, EventArgs e)
         {
@@ -3044,7 +3043,7 @@ namespace SystAnalys_lr1
             stopPoints.Clear();
             traficLights.Clear();
             traficLights.TrimExcess();
-            metroTrackBar1.Value = 1;
+            zoomBar.Value = 1;
             deleteBus.Enabled = false;
             allBusSettings.Enabled = false;
             selectButton.Enabled = false;
@@ -3060,11 +3059,11 @@ namespace SystAnalys_lr1
             delAllBusesOnRoute.Enabled = false;
             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
             BringToFront();
-            matrixControl1.MatrixCreate();
+            matrix.MatrixCreate();
             TheGrid = new List<GridPart>();
             TheGrid.TrimExcess();
-            timer1.Stop();
-            timer1.Dispose();
+            timer.Stop();
+            timer.Dispose();
             AnimationBox.Image = null;
             AnimationGraphics.Dispose();
             AnimationBitmap.Dispose();
