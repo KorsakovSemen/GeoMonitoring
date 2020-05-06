@@ -10,6 +10,29 @@ namespace SystAnalys_lr1.Classes
 {
     public class Constructor
     {
+        public void MapUpdate(PictureBox sheet)
+        {
+            sheet.Invoke(new Del((s) => sheet.Image = s), Main.G.GetBitmap());
+            Main.DrawGrid();
+        }
+
+        public void MapUpdateNetwork(PictureBox sheet, List<Vertex> V, List<Edge> E)
+        {
+            Main.G.ClearSheet();
+            Main.G.DrawALLGraph(V, E);
+            sheet.Invoke(new Del((s) => sheet.Image = s), Main.G.GetBitmap());
+            Main.DrawGrid();
+        }
+
+        public void MapUpdateRoute(PictureBox sheet, List<Vertex> routeV, List<Edge> routeE)
+        {
+            Main.G.ClearSheet();
+            Main.G.DrawALLGraph(Main.V, Main.E);
+            Main.G.DrawALLGraph(routeV, routeE, 1);
+            sheet.Invoke(new Del((s) => sheet.Image = s), Main.G.GetBitmap());
+            Main.DrawGrid();
+        }
+
         delegate void Del(Bitmap bmp);
 
         public async void AsSelect(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, int n = 0)
@@ -18,9 +41,9 @@ namespace SystAnalys_lr1.Classes
           
         }
 
-        public async void AsDrawEdge(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, int n)
+        public async void AsDrawEdge(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet)
         {
-            await Task.Run(() => DrawEdge(e, V, E, sheet, n));
+            await Task.Run(() => DrawEdge(e, V, E, sheet));
         }
 
 
@@ -180,8 +203,7 @@ namespace SystAnalys_lr1.Classes
                             }
 
                             Main.G.DrawStopRouteVertex(sp.X, sp.Y);
-                            sheet.Image = Main.G.GetBitmap();
-                            Main.DrawGrid();
+                            MapUpdate(sheet);
 
                             break;
                         }
@@ -199,8 +221,7 @@ namespace SystAnalys_lr1.Classes
                 {
                     allstopPoints.Add(new Vertex(e.X / Main.zoom, e.Y / Main.zoom));
                     Main.G.DrawStopVertex(e.X / Main.zoom, e.Y / Main.zoom);
-                    sheet.Image = Main.G.GetBitmap();
-                    Main.DrawGrid();
+                    MapUpdate(sheet);
                     break;
                 }
             }
@@ -220,7 +241,7 @@ namespace SystAnalys_lr1.Classes
                     {
                         selected.Add(i);
                         Main.G.DrawSelectedVertex(V[i].X, V[i].Y);
-                        sheet.Image = Main.G.GetBitmap();
+                        MapUpdate(sheet);
                         break;
                     }
                     else
@@ -230,10 +251,7 @@ namespace SystAnalys_lr1.Classes
                         Main.G.DrawEdge(V[selected[0]], V[selected[1]], E[E.Count - 1], 1);
                         selected[0] = selected[1];
                         selected.Remove(selected[1]);
-                        Main.G.ClearSheet();
-                        Main.G.DrawALLGraph(V, E);
-                        sheet.Image = Main.G.GetBitmap();
-                        Main.DrawGrid();
+                        MapUpdateNetwork(sheet, V, E);
                         Main.G.DrawSelectedVertex(V[i].X, V[i].Y);
                         break;
                     }
@@ -280,11 +298,7 @@ namespace SystAnalys_lr1.Classes
                             {
                                 routesEdge.Add(new Edge(routeV.Count - 1, routeV.Count));
                                 routeV.Add(new Vertex(Main.V[i].X, Main.V[i].Y));
-                                Main.G.ClearSheet();
-                                Main.G.DrawALLGraph(Main.V, Main.E);
-                                Main.G.DrawALLGraph(routeV, routesEdge, 1);
-                                sheet.Image = Main.G.GetBitmap();
-                                Main.DrawGrid();
+                                MapUpdateRoute(sheet, routeV, routesEdge);
                                 select = true;
                                 Main.G.DrawSelectedVertex(Main.V[i].X, Main.V[i].Y);
                                 break;
@@ -293,11 +307,7 @@ namespace SystAnalys_lr1.Classes
                         }
                         if (!select)
                         {
-                            Main.G.ClearSheet();
-                            Main.G.DrawALLGraph(Main.V, Main.E);
-                            Main.G.DrawALLGraph(routeV, routesEdge, 1);
-                            sheet.Image = Main.G.GetBitmap();
-                            Main.DrawGrid();
+                            MapUpdateNetwork(sheet, Main.V, Main.E);
                         }
                         if (routeV.Contains(new Vertex(Main.V[i].X, Main.V[i].Y)))
                             Main.G.DrawSelectedVertex(Main.V[i].X, Main.V[i].Y);
@@ -336,7 +346,6 @@ namespace SystAnalys_lr1.Classes
                                     routeV.Add(new Vertex(Main.V[i].X, Main.V[i].Y));
                                 }
                                 Main.selected1 = i;
-
                                 Main.G.DrawSelectedVertex(Main.V[i].X, Main.V[i].Y);
                             }
                             break;
@@ -349,7 +358,6 @@ namespace SystAnalys_lr1.Classes
                             {
                                 if ((ed.V1 == Main.selected1 && ed.V2 == Main.selected2) || (ed.V2 == Main.selected1 && ed.V1 == Main.selected2))
                                 {
-
                                     routesEdge.Add(new Edge(routeV.Count - 1, routeV.Count));
                                     routeV.Add(new Vertex(Main.V[i].X, Main.V[i].Y));                                  
                                     Main.G.DrawEdge(Main.V[Main.selected1], Main.V[Main.selected2], Main.E[Main.E.Count - 1], 1);
@@ -359,18 +367,9 @@ namespace SystAnalys_lr1.Classes
                                     break;
                                 }
                             }
-                            //if (res == 0)
-                            //{
-                            //    routeV.RemoveAt(routeV.Count - 1);
-                            //    //routeV.RemoveAt(routeV.Count - 1);
-                            //}
-                            Main.G.ClearSheet();
-                            Main.G.DrawALLGraph(Main.V, Main.E);
-                            Main.G.DrawALLGraph(routeV, routesEdge, 1);
+                            MapUpdateRoute(sheet, routeV, routesEdge);
                             Main.selected1 = -1;
                             Main.selected2 = -1;
-                            sheet.Image = Main.G.GetBitmap();
-                            Main.DrawGrid();
                             break;
                         }
                     }
@@ -402,11 +401,7 @@ namespace SystAnalys_lr1.Classes
                 {
                     Main.buses.Remove(Main.buses[int.Parse(pos.ToString())]);
                 }
-                Main.G.ClearSheet();
-                Main.G.DrawALLGraph(Main.V, Main.E);
-                Main.G.DrawALLGraph(routeV, routesEdge, 1);
-                sheet.Image = Main.G.GetBitmap();
-                Main.DrawGrid();
+                MapUpdateRoute(sheet, routeV, routesEdge);
             }
         }
 
@@ -437,30 +432,12 @@ namespace SystAnalys_lr1.Classes
                     Main.TraficLightsInGrids.Add(gridParts.IndexOf(gridPart));
                     traficLights.Last().tick = Main.firstCrossRoadsRedLight + 2;
                     traficLights.Last().Status = Status.RED;
-
                     Main.G.DrawSelectedVertex(e.X / Main.zoom, e.Y / Main.zoom);
                     Main.secondCrossRoads -= 1;
                     break;
                 }
 
             }
-        }
-
-        public void MapUpdateNetwork(PictureBox sheet, List<Vertex> V, List<Edge> E)
-        {
-            Main.G.ClearSheet();
-            Main.G.DrawALLGraph(V, E);
-            sheet.Image = Main.G.GetBitmap();
-            Main.DrawGrid();
-        }
-
-        public void MapUpdateRoute(PictureBox sheet, List<Vertex> routeV, List<Edge> routeE)
-        {
-            Main.G.ClearSheet();
-            Main.G.DrawALLGraph(Main.V, Main.E);
-            Main.G.DrawALLGraph(routeV, routeE, 1);
-            sheet.Image = Main.G.GetBitmap();
-            Main.DrawGrid();
         }
 
         public void Select(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, int n = 0)
@@ -479,8 +456,7 @@ namespace SystAnalys_lr1.Classes
                     {
                         Main.G.DrawSelectedVertex(V[i].X, V[i].Y);
                         Main.selected1 = i;
-                        sheet.Invoke(new Del((s) => sheet.Image = s), Main.G.GetBitmap());
-                        Main.DrawGrid();
+                        MapUpdate(sheet);
                         break;
                     }
                 }
@@ -492,12 +468,10 @@ namespace SystAnalys_lr1.Classes
         {
             V.Add(new Vertex(e.X / Main.zoom, e.Y / Main.zoom));
             Main.G.DrawVertex(e.X / Main.zoom, e.Y / Main.zoom);
-            sheet.Image = Main.G.GetBitmap();
-            Main.DrawGrid();
-
+            MapUpdate(sheet);
         }
 
-        public void DrawEdge(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, int n)
+        public void DrawEdge(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -517,14 +491,10 @@ namespace SystAnalys_lr1.Classes
                             Main.G.DrawSelectedVertex(V[i].X, V[i].Y);
                             Main.selected2 = i;
                             E.Add(new Edge(Main.selected1, Main.selected2));
-                            Main.G.DrawEdge(V[Main.selected1], V[Main.selected2], E[E.Count - 1], n);
+                            Main.G.DrawEdge(V[Main.selected1], V[Main.selected2], E[E.Count - 1]);
                             Main.selected1 = -1;
                             Main.selected2 = -1;
-                            Main.G.ClearSheet();
-                            if (n != 0) Main.G.DrawALLGraph(Main.V, Main.E);
-                            Main.G.DrawALLGraph(V, E, n);
-                            Main.DrawGrid();
-                            sheet.Invoke(new Del((s) => sheet.Image = s), Main.G.GetBitmap());
+                            MapUpdateNetwork(sheet, V, E);
                             break;
                         }
                     }
@@ -556,8 +526,6 @@ namespace SystAnalys_lr1.Classes
                     {
                         if (Math.Pow((routeV.Value[i].X - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[i].Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                         {
-                            //foreach(var routesEdge in routesEdgeE.Values)
-                            //{
                             for (int j = 0; j < routesEdgeE[routeV.Key].Count; j++)
                             {
                                 if ((routesEdgeE[routeV.Key][j].V1 == i) || (routesEdgeE[routeV.Key][j].V2 == i))
@@ -573,8 +541,7 @@ namespace SystAnalys_lr1.Classes
                             }
                             routeV.Value.RemoveAt(i);
                             Main.flag = true;
-                            break;
-                            //}                       
+                            break;              
                         }
 
                     }
@@ -713,11 +680,7 @@ namespace SystAnalys_lr1.Classes
             }
             if (flag)
             {
-                Main.G.ClearSheet();
-                Main.G.DrawALLGraph(Main.V, Main.E);
-                Main.G.DrawALLGraph(routeV, Main.routesEdge[route], 1);
-                sheet.Image = Main.G.GetBitmap();
-                Main.DrawGrid();
+                MapUpdateRoute(sheet, routeV, Main.routesEdge[route]);
             }
         }
 
@@ -788,11 +751,7 @@ namespace SystAnalys_lr1.Classes
             }
             if (flag)
             {
-                Main.G.ClearSheet();
-                Main.G.DrawALLGraph(Main.V, Main.E);
-                Main.G.DrawALLGraph(routeV, routesEdge, 1);
-                sheet.Image = Main.G.GetBitmap();
-                Main.DrawGrid();
+                MapUpdateRoute(sheet, routeV, routesEdge);
             }
         }
         public void deleteTFOnRoute(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet, List<TraficLight> traficLights)
@@ -812,11 +771,7 @@ namespace SystAnalys_lr1.Classes
             }
             if (flag)
             {
-                Main.G.ClearSheet();
-                Main.G.DrawALLGraph(Main.V, Main.E);
-                Main.G.DrawALLGraph(routeV, routesEdge, 1);
-                sheet.Image = Main.G.GetBitmap();
-                Main.DrawGrid();
+                MapUpdateRoute(sheet, routeV, routesEdge);
             }
         }
 
@@ -899,11 +854,7 @@ namespace SystAnalys_lr1.Classes
             //если что-то было удалено, то обновляем граф на экране
             if (flag)
             {
-                Main.G.ClearSheet();
-                Main.G.DrawALLGraph(Main.V, Main.E);
-                Main.G.DrawALLGraph(routeV, routesEdge, 1);
-                sheet.Image = Main.G.GetBitmap();
-                Main.DrawGrid();
+                MapUpdateRoute(sheet, routeV, routesEdge);
             }
         }
 
@@ -1151,10 +1102,8 @@ namespace SystAnalys_lr1.Classes
                     }
                     routeV.RemoveAt(i);
                     flag = true;
-                    //  DrawGrid();
                     break;
                 }
-                // DrawGrid();
             }
             //ищем, возможно было нажато ребро
             if (!flag)
@@ -1168,7 +1117,6 @@ namespace SystAnalys_lr1.Classes
                         {
                             routesEdge.RemoveAt(i);
                             flag = true;
-                            //   DrawGrid();
                             break;
                         }
                     }
@@ -1199,11 +1147,7 @@ namespace SystAnalys_lr1.Classes
             //если что-то было удалено, то обновляем граф на экране
             if (flag)
             {
-                Main.G.ClearSheet();
-                Main.G.DrawALLGraph(Main.V, Main.E);
-                Main.G.DrawALLGraph(routeV, routesEdge, 1);
-                sheet.Invoke(new Del((s) => sheet.Image = s), Main.G.GetBitmap());
-                Main.DrawGrid();
+                MapUpdateRoute(sheet, routeV, routesEdge);
             }
         }
 

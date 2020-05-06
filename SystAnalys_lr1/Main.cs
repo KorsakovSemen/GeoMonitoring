@@ -2309,7 +2309,7 @@ namespace SystAnalys_lr1
                 }
                 if (drawEdgeButton.Enabled == false)
                 {
-                    c.AsDrawEdge(e, V, E, sheet, 0);
+                    c.DrawEdge(e, V, E, sheet);
                 }
                 if (deleteButton.Enabled == false)
                 {
@@ -2327,11 +2327,8 @@ namespace SystAnalys_lr1
                         case deleteType.VertexAndEdge:
                             c.deleteVE(e, V, E, sheet, routesEdge);
                             break;
-                    }
-                    
+                    }                    
                 }
-
-               // c.MapUpdateNetwork(sheet, V, E);
                 return;
             }
 
@@ -2978,17 +2975,18 @@ namespace SystAnalys_lr1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //AnimationBitmap.Dispose();
             AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
             AnimationBitmap.MakeTransparent();
-            // AnimationGraphics.Dispose();
             AnimationGraphics = Graphics.FromImage(AnimationBitmap);
             foreach (var bus in buses)
             {
-                bus.MoveWithGraphics(AnimationGraphics);
+                try
+                {
+                    bus.MoveWithGraphics(AnimationGraphics);
+                }
+                catch { }
             }
             AnimationBox.Image = AnimationBitmap;
-            //  AnimationBox.Update();
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
