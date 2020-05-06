@@ -396,15 +396,14 @@ namespace SystAnalys_lr1
 
         private void panel6_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-
-            Bus.SetScrollX(mainPanel.AutoScrollPosition.X);
-            Bus.SetScrollY(mainPanel.AutoScrollPosition.Y);
+            Bus.ScrollX = mainPanel.AutoScrollPosition.X;
+            Bus.ScrollY = mainPanel.AutoScrollPosition.Y;
         }
         private void panel6_Scroll(object sender, ScrollEventArgs e)
         {
 
-            Bus.SetScrollX(mainPanel.AutoScrollPosition.X);
-            Bus.SetScrollY(mainPanel.AutoScrollPosition.Y);
+            Bus.ScrollX = mainPanel.AutoScrollPosition.X;
+            Bus.ScrollY = mainPanel.AutoScrollPosition.Y;
 
         }
 
@@ -1422,8 +1421,8 @@ namespace SystAnalys_lr1
                     }
                     foreach (var bus in buses)
                     {
-                        bus.GetCoordinates().Clear();
-                        bus.GetCoordinates().TrimExcess();
+                        bus.Coordinates.Clear();
+                        bus.Coordinates.TrimExcess();
                         bus.busPic.Dispose();
                         //   mainPanel.Controls.Remove(bus.busPic);
                     }
@@ -2433,11 +2432,9 @@ namespace SystAnalys_lr1
                             break;
                     }
                 }
-                //   
 
                 DrawGrid();
                 coordinates.CreateOneRouteCoordinates(changeRoute.Text);
-                //Bus.AllCoordinates = AllCoordinates;
                 return;
             }
         }
@@ -2549,7 +2546,7 @@ namespace SystAnalys_lr1
 
             for (var i = 0; i < traficLights.Count; i++)
             {
-                if (Math.Pow((traficLights[i].x - e.X / zoom), 2) + Math.Pow((traficLights[i].y - e.Y / zoom), 2) <= G.R * G.R)
+                if (Math.Pow((traficLights[i].X - e.X / zoom), 2) + Math.Pow((traficLights[i].Y - e.Y / zoom), 2) <= G.R * G.R)
                 {
                     TraficLightsInGrids.RemoveAt(i);
                     traficLights.RemoveAt(i);
@@ -2572,7 +2569,6 @@ namespace SystAnalys_lr1
         {
             bool flag = false; //удалили ли что-нибудь по ЭТОМУ клику
                                //ищем, возможно была нажата вершина
-
 
             foreach (var stopRoute in stopPoints[changeRoute.Text])
             {
@@ -3129,16 +3125,16 @@ namespace SystAnalys_lr1
         private void ZoomHelper()
         {
             sheet.Image = ResizeBitmap(new Bitmap(saveImage), wsheet * metroTrackBar1.Value, hsheet * metroTrackBar1.Value);
-            //AnimationBox.Image = ResizeBitmap(new Bitmap(AnimationBitmap), wsheet * metroTrackBar1.Value, hsheet * metroTrackBar1.Value);
             globalMap = sheet.Image;
             mainPanel.AutoScrollPosition = new Point(scrollX * metroTrackBar1.Value, scrollY * metroTrackBar1.Value);
             scrollX = mainPanel.AutoScrollPosition.X;
             scrollY = mainPanel.AutoScrollPosition.Y;
             zoom = metroTrackBar1.Value;
-            Bus.SetScrollX(mainPanel.AutoScrollPosition.X);
-            Bus.SetScrollY(mainPanel.AutoScrollPosition.Y);
+            Bus.ScrollX = mainPanel.AutoScrollPosition.X;
+            Bus.ScrollY = mainPanel.AutoScrollPosition.Y;
             Bus.ZoomCoef = metroTrackBar1.Value;
         }
+
         private void metroTrackBar1_ScrollAsync(object sender, ScrollEventArgs e)
         {
             //try

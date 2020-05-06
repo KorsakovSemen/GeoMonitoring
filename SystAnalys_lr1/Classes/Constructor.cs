@@ -492,7 +492,7 @@ namespace SystAnalys_lr1.Classes
         {
             foreach (var tl in Main.traficLights)
             {
-                if (Math.Pow((tl.x - e.X / Main.zoom), 2) + Math.Pow((tl.y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
+                if (Math.Pow((tl.X - e.X / Main.zoom), 2) + Math.Pow((tl.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                 {
                     tl.Stop();
                     Main.TraficLightsInGrids.Remove(tl.gridNum);
@@ -685,7 +685,7 @@ namespace SystAnalys_lr1.Classes
 
             foreach (var tl in Main.traficLights)
             {
-                if (Math.Pow((tl.x - e.X / Main.zoom), 2) + Math.Pow((tl.y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
+                if (Math.Pow((tl.X - e.X / Main.zoom), 2) + Math.Pow((tl.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                 {
                     tl.Stop();
                     Main.TraficLightsInGrids.Remove(tl.gridNum);

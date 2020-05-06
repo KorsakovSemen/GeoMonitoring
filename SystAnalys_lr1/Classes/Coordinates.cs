@@ -28,13 +28,13 @@ namespace SystAnalys_lr1
                 Main.AllCoordinates[i].AddRange(getPoints(Main.routes[i], i));
 
             }
-            Bus.SetScrollX(Main.scrollX);
-            Bus.SetScrollY(Main.scrollY);
+            Bus.ScrollX = Main.scrollX;
+            Bus.ScrollY = Main.scrollY;
 
 
             foreach (var bus in Main.buses)
             {
-                bus.SetAllCoordinates(Main.AllCoordinates[bus.GetRoute()]);
+                bus.Coordinates = Main.AllCoordinates[bus.GetRoute()];
             }
 
         }
@@ -126,14 +126,14 @@ namespace SystAnalys_lr1
                 {
                     Main.AllCoordinates[Main.AllCoordinates.ElementAt(i).Key].AddRange(getPoints(Main.routes.ElementAt(i).Value, Main.routes.ElementAt(i).Key));
                 }
-                Bus.SetScrollX(Main.scrollX);
-                Bus.SetScrollY(Main.scrollY);
+                Bus.ScrollX = Main.scrollX;
+                Bus.ScrollY = Main.scrollY;
 
             }
 
             foreach (var bus in Main.buses)
             {
-                bus.SetAllCoordinates(Main.AllCoordinates[bus.GetRoute()]);
+                bus.Coordinates = Main.AllCoordinates[bus.GetRoute()];
             }
 
 

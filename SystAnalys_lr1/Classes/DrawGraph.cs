@@ -186,15 +186,15 @@ namespace SystAnalys_lr1.Classes
             {
                 if (tl.Status == Status.GREEN)
                 {
-                    Main.G.DrawGreenVertex(tl.x, tl.y);
+                    Main.G.DrawGreenVertex(tl.X, tl.Y);
                 }
                 else if (tl.Status == Status.YELLOW)
                 {
-                    Main.G.DrawYellowVertex(tl.x, tl.y);
+                    Main.G.DrawYellowVertex(tl.X, tl.Y);
                 }
                 else if (tl.Status == Status.RED)
                 {
-                    Main.G.DrawSelectedVertex(tl.x, tl.y);
+                    Main.G.DrawSelectedVertex(tl.X, tl.Y);
                 }
             }
 

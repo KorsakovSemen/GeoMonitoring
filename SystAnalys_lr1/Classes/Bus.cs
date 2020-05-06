@@ -9,88 +9,61 @@ using System.Xml.Serialization;
 
 namespace SystAnalys_lr1.Classes
 {
+    enum Skips
+    {
+    }
 
     public class Bus : ICloneable
     {
+        delegate void Dpoint(Point pos);
+
+        public static string busImg { get; set; } = "../../Resources/newbus.PNG";
+        public static string offBusImg { get; set; } = "../../Resources/bus.PNG";
+
         public static int ScrollX { get; set; }
         public static int ScrollY { get; set; }
-        public int skip = 1; // это в конструкторы
-        public static string busImg = "../../Resources/newbus.PNG";
-        public static string offBusImg = "../../Resources/bus.PNG";
-        //таймер для движения
+
         public List<Epicenter> Epicenters { get; set; } = new List<Epicenter>();
 
-        readonly int stopTime = 0;
-        //сетка
-        //для создания координат
-        public double angle, x, y;
-        //позиция автобуса
-        public int PositionAt;
-        //для обратного движения по маршруту
-        public bool TurnBack;
-        [XmlIgnore, JsonIgnore]
+        public bool skipTraffics = false;
+        public int skipStops = 1;
+        public int skipEnd = 5;
+        public int skip { get; set; } = 1;
 
-        public Image busPic;
+        private readonly Random rnd = new Random();
+       
+
+        int checkStop = 0;
+        int checkStoppedBus = 0;
+
+        readonly int stopTime = 0;
+        public double angle { get; set; }
+        public double x { get; set; }
+        public double y { get; set; }
+        //позиция автобуса
+        public int PositionAt { get; set; }
+        //для обратного движения по маршруту
+        public bool TurnBack { get; set; }
+        [XmlIgnore, JsonIgnore]
+        public Image busPic { get; set; }
         //номер маршрута, по которому будет ездить автобус
-        public string route;
+        public string route { get; set; }
         //текущий квадрат, в котором находится автобус
         private int? Locate = null;
         //все координаты для движения автобуса
-        public List<Point> Coordinates;
+        public List<Point> Coordinates { get; set; }
         //для того, чтобы 1 раз прибавлять к OneGridFilling
-        public int R = 7;
+        public int R { get; set; } = 7;
         //сколько автобусу нужно проехать в тиках
         public int TickCount_ { get; set; }
         //все время, которое проехал автобус
         public int AllTickCount { get; set; }
         //за сколько времени автобус нашел эпицентр
         public static int FoundTime { get; set; }
-        //проверка нашел ли автобус эпицентр
+
         public bool EpicFounded { get; set; }
-        public int oldSize;
         static public int? ZoomCoef { get; set; } = 1;
-        static public int Small { get; set; } = 1000;
-        //не позволит басу двигаться на светофорах когда он должен стоять
-        public static bool InstaStop { get; set; } = false;
-        public static void SetScrollX(int x)
-        {
-            ScrollX = x;
-        }
-        public int GetScrollY()
-        {
-            return ScrollY;
-        }
-        public int GetScrollX()
-        {
-            return ScrollX;
-        }
-        public static void SetScrollY(int y)
-        {
-            ScrollY = y;
-        }
-
-        int oldZoom = (int)ZoomCoef;
-        public void SetBusSize()
-        {
-            oldZoom = (int)ZoomCoef;
-        }
-
-        public List<Point> GetCoordinates()
-        {
-            return Coordinates;
-        }
-
-
-        public void SetAllCoordinates(List<Point> A)
-        {
-            Coordinates = A;
-        }
-
-        public int? GetLocate()
-        {
-            return Locate;
-        }
-
+        public bool Tracker { get; set; }
 
         public object Clone()
         {
@@ -98,27 +71,21 @@ namespace SystAnalys_lr1.Classes
         }
 
         ~Bus()
-        {
-        }
+        { }
 
         public Bus()
         { }
 
-        public bool Tracker { get; set; }
-
-
         public Bus(Image busPic, int PositionAt, bool Turn, string route, List<Point> Coordinates, bool not)
         {
             Tracker = not;
-            oldSize = busPic.Size.Height;
             this.busPic = busPic;
             this.PositionAt = PositionAt;
             TurnBack = Turn;
             this.route = route;
-            oldSize = busPic.Height;
             this.Coordinates = Coordinates;
         }
-        //движение без графики (для моделирования)
+
         public void ClearAroundEpic()
         {
             foreach (var Epic in Epicenters)
@@ -129,10 +96,12 @@ namespace SystAnalys_lr1.Classes
                 }
             }
         }
+
         public async Task AsMoveWithoutGraphics()
         {
             await Task.Run(() => MoveWithoutGraphics());
         }
+
         public void MoveWithoutGraphics()
         {
             if (Tracker == true)
@@ -200,18 +169,6 @@ namespace SystAnalys_lr1.Classes
             }
         }
 
-        readonly Random rnd = new Random();
-        public bool skipTraffics = false;
-        public int skipStops = 1;
-        public int skipEnd = 5;
-        //движение с графикой (для визуализации движения)
-        delegate void Dpoint(Point pos);
-        public void AlignBus()
-        {
-
-        }
-        int checkStop = 0;
-        int checkStoppedBus = 0;
         private void StopDown()
         {
             if (skip != 0)
@@ -225,6 +182,7 @@ namespace SystAnalys_lr1.Classes
             if (checkStoppedBus != 0)
                 checkStoppedBus -= 1;
         }
+
         public void MoveWithGraphics(Graphics G)
         {
             Bus thisBus = new Bus(busPic, PositionAt, TurnBack, route, Coordinates, Tracker);
@@ -275,14 +233,14 @@ namespace SystAnalys_lr1.Classes
                             {
                                 foreach (var sp in Main.traficLights)
                                 {
-                                    if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status != Status.RED)
+                                    if ((Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status != Status.RED)
                                     {
                                         skip = 100;
                                         checkStoppedBus = 100;
                                         break;
                                     }
                                     else
-                                    if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status == Status.RED)
+                                    if ((Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status == Status.RED)
                                     {
                                         if (sp.bal == 0)
                                         {
@@ -380,14 +338,14 @@ namespace SystAnalys_lr1.Classes
                                 {
                                     foreach (var sp in Main.traficLights)
                                     {
-                                        if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status != Status.RED)
+                                        if ((Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status != Status.RED)
                                         {
                                             skip = 100;
                                             checkStoppedBus = 100;
                                             break;
                                         }
                                         else
-                                        if ((Math.Pow((double.Parse((sp.x * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status == Status.RED)
+                                        if ((Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status == Status.RED)
                                         {
                                             if (sp.bal == 0)
                                             {

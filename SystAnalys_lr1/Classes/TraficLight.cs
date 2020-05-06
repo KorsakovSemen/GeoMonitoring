@@ -1,5 +1,6 @@
 ﻿using MetroFramework;
 using Newtonsoft.Json;
+using SystAnalys_lr1.Classes;
 using SystAnalys_lr1.Strings;
 using System;
 using System.Collections.Generic;
@@ -21,23 +22,21 @@ namespace SystAnalys_lr1
         [XmlEnum(Name = "3")]
         RED = 3
     }
-    public class TraficLight
+    public class TraficLight : Vertex
     {
         [XmlIgnore]
         public Timer TimerLight { get; private set; }
         public Status Status { get; set; }
-        public int x, y;
         public int tick, greenTime, redTime;
         public int yellowTime = 2;
-        public int gridNum;
         public int bal; // остаток времени на светофоре
 
         public TraficLight() { }
 
         public TraficLight(int x, int y, int gridNum, int greenTime, int redTime)
         {
-            this.x = x;
-            this.y = y;
+            this.X = x;
+            this.Y = y;
             this.gridNum = gridNum;
             this.greenTime = greenTime;
             this.redTime = redTime;
@@ -81,25 +80,25 @@ namespace SystAnalys_lr1
             if (tick == 0)
             {
                 bal = greenTime;
-                Main.G.DrawGreenVertex(x, y);
+                Main.G.DrawGreenVertex(X, Y);
                 Status = Status.GREEN;
             }
             else if (tick == greenTime)
             {
                 bal = yellowTime;
-                Main.G.DrawYellowVertex(x, y);
+                Main.G.DrawYellowVertex(X, Y);
                 Status = Status.YELLOW;
             }
             else if (tick == greenTime + yellowTime)
             {
                 bal = redTime;
-                Main.G.DrawSelectedVertex(x, y);
+                Main.G.DrawSelectedVertex(X, Y);
                 Status = Status.RED;
             }
             else if (tick == greenTime + yellowTime + redTime)
             {
                 bal = yellowTime;
-                Main.G.DrawYellowVertex(x, y);
+                Main.G.DrawYellowVertex(X, Y);
                 Status = Status.YELLOW;
             }
         }
