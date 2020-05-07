@@ -1355,7 +1355,7 @@ namespace SystAnalys_lr1
         //class loader
         private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (savepath != null && savepath.Length > 2)
+            if (savepath != null && savepath.Length > 2 && Directory.Exists(savepath))
             {
                 try
                 {
