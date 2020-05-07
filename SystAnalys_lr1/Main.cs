@@ -933,13 +933,7 @@ namespace SystAnalys_lr1
                 df.ShowDialog();
                 LoadingForm loadingForm = new LoadingForm();
                 loadingForm.loading.Value = 0;
-                loadingForm.loading.Maximum = 100;
-                addBus.Enabled = true;
-                drawVertexButton.Enabled = false;
-                allBusSettings.Enabled = false;
-                selectButton.Enabled = true;
-                drawEdgeButton.Enabled = true;
-                deleteButton.Enabled = true;
+                loadingForm.loading.Maximum = 100;                
                 string message = MainStrings.clearGraph;
                 string caption = MainStrings.delete;
                 DialogResult MBSave = DialogResult.No;
@@ -1047,14 +1041,6 @@ namespace SystAnalys_lr1
                         break;
                 }
 
-
-                if (changeRoute.Text == MainStrings.network)
-                {
-                    deleteBus.Enabled = false;
-                    addBus.Enabled = false;
-                    drawVertexButton.Enabled = true;
-                    addTraficLight.Enabled = true;
-                };
                 G.DrawALLGraph(V, E);
                 selectRoute.Enabled = true;
                 loadingForm.loading.Value = 80;
@@ -1068,6 +1054,40 @@ namespace SystAnalys_lr1
                 loadingForm.loading.Value = 100;
                 loadingForm.close = true;
                 loadingForm.Close();
+                if (changeRoute.Text == MainStrings.network)
+                {
+                    selectRoute.Enabled = true;
+                    deleteBus.Enabled = true;
+                    allBusSettings.Enabled = false;
+                    drawEdgeButton.Enabled = true;
+                    selectButton.Enabled = true;
+                    drawVertexButton.Enabled = true;
+                    deleteButton.Enabled = true;
+                    deleteALLButton.Enabled = true;
+                    deleteRoute.Enabled = true;
+                    addBus.Enabled = false;
+                    deleteBus.Enabled = false;
+                    stopPointButton.Enabled = true;
+                    addTraficLight.Enabled = true;
+                    checkBuses();
+                };
+                if (changeRoute.SelectedIndex > 1)
+                {
+                    selectRoute.Enabled = true;
+                    deleteBus.Enabled = true;
+                    allBusSettings.Enabled = false;
+                    drawEdgeButton.Enabled = true;
+                    selectButton.Enabled = true;
+                    drawVertexButton.Enabled = true;
+                    deleteButton.Enabled = true;
+                    deleteALLButton.Enabled = true;
+                    deleteRoute.Enabled = true;
+                    addBus.Enabled = false;
+                    deleteBus.Enabled = false;
+                    stopPointButton.Enabled = true;
+                    addTraficLight.Enabled = true;
+                    checkBusesOnRoute();
+                }
                 BringToFront();
             }
 
