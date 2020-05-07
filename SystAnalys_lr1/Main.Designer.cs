@@ -138,7 +138,7 @@
             resources.ApplyResources(this.pollutionOptions, "pollutionOptions");
             this.pollutionOptions.Name = "pollutionOptions";
             this.pollutionOptions.UseSelectable = true;
-            this.pollutionOptions.Click += new System.EventHandler(this.metroButton2_Click);
+            this.pollutionOptions.Click += new System.EventHandler(this.MetroButton2_Click);
             // 
             // results
             // 
@@ -206,7 +206,7 @@
             this.optimize.Name = "optimize";
             this.optimize.Style = MetroFramework.MetroColorStyle.Green;
             this.optimize.UseSelectable = true;
-            this.optimize.Click += new System.EventHandler(this.optimize_ClickAsync);
+            this.optimize.Click += new System.EventHandler(this.Optimize_ClickAsync);
             // 
             // mean
             // 
@@ -242,7 +242,7 @@
             this.optText.UseSelectable = true;
             this.optText.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.optText.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.optText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.optText_KeyPress);
+            this.optText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OptText_KeyPress);
             // 
             // speed
             // 
@@ -273,7 +273,7 @@
             this.speed.UseSelectable = true;
             this.speed.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.speed.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.speed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.speed_KeyPress);
+            this.speed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Speed_KeyPress);
             // 
             // panelSettings
             // 
@@ -338,14 +338,14 @@
             resources.ApplyResources(this.stopBuses, "stopBuses");
             this.stopBuses.Name = "stopBuses";
             this.stopBuses.UseSelectable = true;
-            this.stopBuses.Click += new System.EventHandler(this.stopBuses_Click_1);
+            this.stopBuses.Click += new System.EventHandler(this.StopBuses_Click_1);
             // 
             // launchBuses
             // 
             resources.ApplyResources(this.launchBuses, "launchBuses");
             this.launchBuses.Name = "launchBuses";
             this.launchBuses.UseSelectable = true;
-            this.launchBuses.Click += new System.EventHandler(this.launchBuses_Click_1);
+            this.launchBuses.Click += new System.EventHandler(this.LaunchBuses_Click_1);
             // 
             // trackerCheck
             // 
@@ -389,7 +389,7 @@
             resources.ApplyResources(this.changeRoute, "changeRoute");
             this.changeRoute.Name = "changeRoute";
             this.changeRoute.UseSelectable = true;
-            this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.changeRoute_SelectedIndexChanged);
+            this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.ChangeRoute_SelectedIndexChanged);
             // 
             // matrixLabel
             // 
@@ -435,7 +435,7 @@
             this.zoomBar.Minimum = 1;
             this.zoomBar.Name = "zoomBar";
             this.zoomBar.Value = 1;
-            this.zoomBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.metroTrackBar1_ScrollAsync);
+            this.zoomBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.MetroTrackBar1_ScrollAsync);
             // 
             // trafficLightLabel
             // 
@@ -469,7 +469,7 @@
             resources.GetString("changeTheme.Items14")});
             this.changeTheme.Name = "changeTheme";
             this.changeTheme.UseSelectable = true;
-            this.changeTheme.SelectedIndexChanged += new System.EventHandler(this.changeTheme_SelectedIndexChanged);
+            this.changeTheme.SelectedIndexChanged += new System.EventHandler(this.ChangeTheme_SelectedIndexChanged);
             // 
             // mainPanel
             // 
@@ -485,8 +485,8 @@
             this.mainPanel.VerticalScrollbarBarColor = false;
             this.mainPanel.VerticalScrollbarHighlightOnWheel = false;
             this.mainPanel.VerticalScrollbarSize = 10;
-            this.mainPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.panel6_Scroll);
-            this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
+            this.mainPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.Panel6_Scroll);
+            this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel6_Paint);
             // 
             // sheet
             // 
@@ -494,7 +494,7 @@
             resources.ApplyResources(this.sheet, "sheet");
             this.sheet.Name = "sheet";
             this.sheet.TabStop = false;
-            this.sheet.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sheet_MouseClick_1);
+            this.sheet.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick_1);
             // 
             // toolStripSeparator1
             // 
@@ -551,31 +551,31 @@
             // 
             this.createModelToolStripMenuItem.Name = "createModelToolStripMenuItem";
             resources.ApplyResources(this.createModelToolStripMenuItem, "createModelToolStripMenuItem");
-            this.createModelToolStripMenuItem.Click += new System.EventHandler(this.newModelToolStripMenuItem_Click);
+            this.createModelToolStripMenuItem.Click += new System.EventHandler(this.NewModelToolStripMenuItem_Click);
             // 
             // openEpicFormToolStripMenuItem
             // 
             this.openEpicFormToolStripMenuItem.Name = "openEpicFormToolStripMenuItem";
             resources.ApplyResources(this.openEpicFormToolStripMenuItem, "openEpicFormToolStripMenuItem");
-            this.openEpicFormToolStripMenuItem.Click += new System.EventHandler(this.openEpicFormToolStripMenuItem_Click);
+            this.openEpicFormToolStripMenuItem.Click += new System.EventHandler(this.OpenEpicFormToolStripMenuItem_Click);
             // 
             // addRouteToolStripMenuItem
             // 
             this.addRouteToolStripMenuItem.Name = "addRouteToolStripMenuItem";
             resources.ApplyResources(this.addRouteToolStripMenuItem, "addRouteToolStripMenuItem");
-            this.addRouteToolStripMenuItem.Click += new System.EventHandler(this.addRouteToolStripMenuItem_Click);
+            this.addRouteToolStripMenuItem.Click += new System.EventHandler(this.AddRouteToolStripMenuItem_Click);
             // 
             // createGridToolStripMenuItem
             // 
             this.createGridToolStripMenuItem.Name = "createGridToolStripMenuItem";
             resources.ApplyResources(this.createGridToolStripMenuItem, "createGridToolStripMenuItem");
-            this.createGridToolStripMenuItem.Click += new System.EventHandler(this.createGridToolStripMenuItem_Click);
+            this.createGridToolStripMenuItem.Click += new System.EventHandler(this.CreateGridToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             resources.ApplyResources(this.saveToolStripMenuItem, "saveToolStripMenuItem");
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // saveInToolStripMenuItem
             // 
@@ -589,19 +589,19 @@
             // 
             this.jSONToolStripMenuItem.Name = "jSONToolStripMenuItem";
             resources.ApplyResources(this.jSONToolStripMenuItem, "jSONToolStripMenuItem");
-            this.jSONToolStripMenuItem.Click += new System.EventHandler(this.jSONToolStripMenuItem_Click);
+            this.jSONToolStripMenuItem.Click += new System.EventHandler(this.JSONToolStripMenuItem_Click);
             // 
             // xMLToolStripMenuItem
             // 
             this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
             resources.ApplyResources(this.xMLToolStripMenuItem, "xMLToolStripMenuItem");
-            this.xMLToolStripMenuItem.Click += new System.EventHandler(this.xMLToolStripMenuItem_Click);
+            this.xMLToolStripMenuItem.Click += new System.EventHandler(this.XMLToolStripMenuItem_Click);
             // 
             // runTrafficLightsToolStripMenuItem
             // 
             this.runTrafficLightsToolStripMenuItem.Name = "runTrafficLightsToolStripMenuItem";
             resources.ApplyResources(this.runTrafficLightsToolStripMenuItem, "runTrafficLightsToolStripMenuItem");
-            this.runTrafficLightsToolStripMenuItem.Click += new System.EventHandler(this.runTrafficLightsToolStripMenuItem_Click);
+            this.runTrafficLightsToolStripMenuItem.Click += new System.EventHandler(this.RunTrafficLightsToolStripMenuItem_Click);
             // 
             // loadButton
             // 
@@ -616,20 +616,20 @@
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             resources.ApplyResources(this.loadToolStripMenuItem, "loadToolStripMenuItem");
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
             // 
             // loadFromToolStripMenuItem
             // 
             this.loadFromToolStripMenuItem.Name = "loadFromToolStripMenuItem";
             resources.ApplyResources(this.loadFromToolStripMenuItem, "loadFromToolStripMenuItem");
-            this.loadFromToolStripMenuItem.Click += new System.EventHandler(this.loadFromToolStripMenuItem_Click);
+            this.loadFromToolStripMenuItem.Click += new System.EventHandler(this.LoadFromToolStripMenuItem_Click);
             // 
             // reportTool
             // 
             this.reportTool.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             resources.ApplyResources(this.reportTool, "reportTool");
             this.reportTool.Name = "reportTool";
-            this.reportTool.Click += new System.EventHandler(this.reportTool_Click);
+            this.reportTool.Click += new System.EventHandler(this.ReportTool_Click);
             // 
             // selectButton
             // 
@@ -637,7 +637,7 @@
             this.selectButton.Image = global::SystAnalys_lr1.Properties.Resources.newcursor;
             this.selectButton.Name = "selectButton";
             resources.ApplyResources(this.selectButton, "selectButton");
-            this.selectButton.Click += new System.EventHandler(this.selectButton_Click);
+            this.selectButton.Click += new System.EventHandler(this.SelectButton_Click);
             // 
             // drawVertexButton
             // 
@@ -645,7 +645,7 @@
             this.drawVertexButton.Image = global::SystAnalys_lr1.Properties.Resources.circle1;
             this.drawVertexButton.Name = "drawVertexButton";
             resources.ApplyResources(this.drawVertexButton, "drawVertexButton");
-            this.drawVertexButton.Click += new System.EventHandler(this.drawVertexButton_Click);
+            this.drawVertexButton.Click += new System.EventHandler(this.DrawVertexButton_Click);
             // 
             // drawEdgeButton
             // 
@@ -653,7 +653,7 @@
             this.drawEdgeButton.Image = global::SystAnalys_lr1.Properties.Resources.new_line__;
             this.drawEdgeButton.Name = "drawEdgeButton";
             resources.ApplyResources(this.drawEdgeButton, "drawEdgeButton");
-            this.drawEdgeButton.Click += new System.EventHandler(this.drawEdgeButton_Click);
+            this.drawEdgeButton.Click += new System.EventHandler(this.DrawEdgeButton_Click);
             // 
             // selectRoute
             // 
@@ -668,7 +668,7 @@
             this.deleteButton.Image = global::SystAnalys_lr1.Properties.Resources.criss_cross;
             this.deleteButton.Name = "deleteButton";
             resources.ApplyResources(this.deleteButton, "deleteButton");
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // deleteALLButton
             // 
@@ -676,7 +676,7 @@
             this.deleteALLButton.Image = global::SystAnalys_lr1.Properties.Resources.rubbish;
             this.deleteALLButton.Name = "deleteALLButton";
             resources.ApplyResources(this.deleteALLButton, "deleteALLButton");
-            this.deleteALLButton.Click += new System.EventHandler(this.deleteALLButton_Click);
+            this.deleteALLButton.Click += new System.EventHandler(this.DeleteALLButton_Click);
             // 
             // addBus
             // 
@@ -684,7 +684,7 @@
             this.addBus.Image = global::SystAnalys_lr1.Properties.Resources.newbus;
             this.addBus.Name = "addBus";
             resources.ApplyResources(this.addBus, "addBus");
-            this.addBus.Click += new System.EventHandler(this.addBus_Click);
+            this.addBus.Click += new System.EventHandler(this.AddBus_Click);
             // 
             // stopPointButton
             // 
@@ -692,7 +692,7 @@
             this.stopPointButton.Image = global::SystAnalys_lr1.Properties.Resources.transportation;
             this.stopPointButton.Name = "stopPointButton";
             resources.ApplyResources(this.stopPointButton, "stopPointButton");
-            this.stopPointButton.Click += new System.EventHandler(this.gridButton_Click);
+            this.stopPointButton.Click += new System.EventHandler(this.GridButton_Click);
             // 
             // addTraficLight
             // 
@@ -700,7 +700,7 @@
             this.addTraficLight.Image = global::SystAnalys_lr1.Properties.Resources.traffic_light_;
             this.addTraficLight.Name = "addTraficLight";
             resources.ApplyResources(this.addTraficLight, "addTraficLight");
-            this.addTraficLight.Click += new System.EventHandler(this.addTraficLight_Click);
+            this.addTraficLight.Click += new System.EventHandler(this.AddTraficLight_Click);
             // 
             // clearButton
             // 
@@ -708,7 +708,7 @@
             this.clearButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             resources.ApplyResources(this.clearButton, "clearButton");
             this.clearButton.Name = "clearButton";
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // deleteBus
             // 
@@ -737,7 +737,7 @@
             resources.ApplyResources(this.themes, "themes");
             this.themes.Name = "themes";
             this.themes.UseSelectable = true;
-            this.themes.CheckedChanged += new System.EventHandler(this.themes_CheckedChanged);
+            this.themes.CheckedChanged += new System.EventHandler(this.Themes_CheckedChanged);
             // 
             // config
             // 
@@ -753,7 +753,7 @@
             resources.ApplyResources(this.changeLanguage, "changeLanguage");
             this.changeLanguage.Name = "changeLanguage";
             this.changeLanguage.UseSelectable = true;
-            this.changeLanguage.SelectedIndexChanged += new System.EventHandler(this.metroComboBox1_SelectedIndexChanged);
+            this.changeLanguage.SelectedIndexChanged += new System.EventHandler(this.MetroComboBox1_SelectedIndexChanged);
             // 
             // language
             // 
@@ -768,7 +768,7 @@
             // timer
             // 
             this.timer.Interval = 20;
-            this.timer.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // Main
             // 

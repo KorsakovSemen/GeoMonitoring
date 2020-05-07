@@ -41,9 +41,9 @@ namespace SystAnalys_lr1
         public static string average;
 
         public static DeleteType delType;
-        
-     
-        int tracbarX, tracbarY;
+
+
+        //int tracbarX, tracbarY;
        
         public static string selectedRoute;
         public static int firstCrossRoads = 0;
@@ -85,7 +85,7 @@ namespace SystAnalys_lr1
         delegate void DelBmp(Bitmap bmp);
 
         Image saveImage;
-        Random rnd = new Random();
+        readonly Random rnd = new Random();
 
         //вторая форма
         static public DisplayEpicenters Ep;
@@ -113,8 +113,7 @@ namespace SystAnalys_lr1
 
 
         List<int> selected = new List<int>();
-
-        Constructor c = new Constructor();
+        readonly Constructor c = new Constructor();
 
         static public int refreshLights = 0;
 
@@ -202,8 +201,8 @@ namespace SystAnalys_lr1
         //class jopa
         private void InitializeElements()
         {
-            tracbarX = zoomBar.Location.X;
-            tracbarY = zoomBar.Location.Y;
+            //tracbarX = zoomBar.Location.X;
+            //tracbarY = zoomBar.Location.Y;
             MovingEpicParamet = new List<string>();
             timer.Interval = BusStop.stopTime / 10;
             r = new Report();   
@@ -361,7 +360,7 @@ namespace SystAnalys_lr1
 
             mainPanel.MaximumSize = new System.Drawing.Size(sheet.Width, sheet.Height);
             mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            mainPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(panel6_MouseWheel);
+            mainPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(Panel6_MouseWheel);
             Optimization.countWithoutSensors = Data.buses.Count;
             matrix.MatrixCreate();
             hint.Visible = false;
@@ -384,29 +383,16 @@ namespace SystAnalys_lr1
             AnimationBox.Location = new Point(0, 0);
             AnimationBox.BackColor = Color.Transparent;
             AnimationBox.Size = sheet.Size;
-            AnimationBox.MouseClick += sheet_MouseClick_1;
+            AnimationBox.MouseClick += Sheet_MouseClick_1;
         }
 
         //class grid
-        private void CreateGridRoutes()
-        {
-            Modeling.PollutionInRoutes = new Dictionary<string, List<GridPart>>();
-            for (int i = 0; i < Data.AllCoordinates.Count; i++)
-            {
-                Modeling.PollutionInRoutes.Add(Data.AllCoordinates.ElementAt(i).Key, new List<GridPart>());
-                foreach (var Grid in Data.TheGrid)
-                {
-                    Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key].Add(new GridPart(Grid.x, Grid.y));
-                }
-            }
-        }
-
-        private void panel6_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void Panel6_MouseWheel(object sender, MouseEventArgs e)
         {
             Bus.ScrollX = mainPanel.AutoScrollPosition.X;
             Bus.ScrollY = mainPanel.AutoScrollPosition.Y;
         }
-        private void panel6_Scroll(object sender, ScrollEventArgs e)
+        private void Panel6_Scroll(object sender, ScrollEventArgs e)
         {
 
             Bus.ScrollX = mainPanel.AutoScrollPosition.X;
@@ -414,7 +400,7 @@ namespace SystAnalys_lr1
 
         }
 
-        private void panel6_Paint(object sender, PaintEventArgs e)
+        private void Panel6_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             g.ScaleTransform(10, 10);
@@ -425,7 +411,7 @@ namespace SystAnalys_lr1
             return panelSettings;
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void Button7_Click(object sender, EventArgs e)
         {
             AddRoute f = new AddRoute
             {
@@ -436,7 +422,7 @@ namespace SystAnalys_lr1
         }
 
         //в textBox1 можно вводить только цифры
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((!char.IsNumber(e.KeyChar)) && (!char.IsControl(e.KeyChar)))
             {
@@ -456,7 +442,7 @@ namespace SystAnalys_lr1
         }
 
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             G.ClearSheet();
             G.DrawALLGraph(Data.V, Data.E);
@@ -465,7 +451,7 @@ namespace SystAnalys_lr1
             DrawGrid();
         }
 
-        private void addBus_Click(object sender, EventArgs e)
+        private void AddBus_Click(object sender, EventArgs e)
         {
             addBus.Enabled = false;
             deleteBus.Enabled = true;
@@ -483,7 +469,7 @@ namespace SystAnalys_lr1
             DrawGrid();
         }
 
-        private void buttonOn()
+        private void ButtonOn()
         {
             changeRoute.Invoke(new DelBool((s) => changeRoute.Enabled = s), true);
             optimize.Invoke(new DelBool((s) => optimize.Enabled = s), true);
@@ -497,7 +483,7 @@ namespace SystAnalys_lr1
                 loadButton.Enabled = true;
             }));
         }
-        private void buttonOff()
+        private void ButtonOff()
         {
             changeRoute.Invoke(new DelBool((s) => changeRoute.Enabled = s), false);
             optimize.Invoke(new DelBool((s) => optimize.Enabled = s), false);
@@ -544,7 +530,7 @@ namespace SystAnalys_lr1
             selected = new List<int>();
             trafficLightLabel.Visible = false;
             DrawGrid();
-            checkBusesOnRoute();
+            CheckBusesOnRoute();
         }
         //class zoom
         public static Image ResizeBitmap(Image sourceBMP, int width, int height)
@@ -572,7 +558,7 @@ namespace SystAnalys_lr1
                        .ToUpperInvariant();
         }
         //class saver
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -626,7 +612,7 @@ namespace SystAnalys_lr1
             }
         }
        
-        private void deleteButton_Click(object sender, EventArgs e)
+        private void DeleteButton_Click(object sender, EventArgs e)
         {
             yes = false;
             DeleteForm df = new DeleteForm();
@@ -642,7 +628,7 @@ namespace SystAnalys_lr1
                 drawVertexButton.Enabled = true;
                 deleteButton.Enabled = false;
                 addTraficLight.Enabled = true;
-                checkBuses();
+                CheckBuses();
             };
             if (changeRoute.SelectedIndex > 1)
             {
@@ -656,7 +642,7 @@ namespace SystAnalys_lr1
                 deleteButton.Enabled = false;
                 addTraficLight.Enabled = false;
                 G.DrawALLGraph(Data.routes[(changeRoute.Text)], Data.routesEdge[(changeRoute.Text)], 1);
-                checkBusesOnRoute();
+                CheckBusesOnRoute();
             }
             df.ShowDialog();
             trafficLightLabel.Text = globalDel;
@@ -672,7 +658,7 @@ namespace SystAnalys_lr1
         }
 
 
-        private void drawVertexButton_Click(object sender, EventArgs e)
+        private void DrawVertexButton_Click(object sender, EventArgs e)
         {
             deleteBus.Enabled = false;
             addBus.Enabled = false;
@@ -693,7 +679,7 @@ namespace SystAnalys_lr1
             selected = new List<int>();
         }
         //class constructor
-        private void deleteRoute_Click(object sender, EventArgs e)
+        private void DeleteRoute_Click(object sender, EventArgs e)
         {
             try
             {
@@ -766,7 +752,7 @@ namespace SystAnalys_lr1
                         G.DrawALLGraph(Data.V, Data.E);
                         sheet.Image = G.GetBitmap();
                         DrawGrid();
-                        checkBuses();
+                        CheckBuses();
                         loadingForm.loading.Value = 60;
                     }
                     else
@@ -805,7 +791,7 @@ namespace SystAnalys_lr1
             }
         }
         //saver/loader
-        private void newModelToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NewModelToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             OpenFileDialog fb = new OpenFileDialog
@@ -870,7 +856,7 @@ namespace SystAnalys_lr1
             }
         }
 
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((!char.IsNumber(e.KeyChar)) && (!char.IsControl(e.KeyChar)))
             {
@@ -879,7 +865,7 @@ namespace SystAnalys_lr1
         }
 
 
-        private void deleteALLButton_Click(object sender, EventArgs e)
+        private void DeleteALLButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -992,7 +978,7 @@ namespace SystAnalys_lr1
                         {
                             loadingForm.Show();
                             loadingForm.loading.Value = 20;
-                            delAllBus();
+                            DelAllBus();
                             loadingForm.loading.Value = 40;
                             loadingForm.loading.Value = 50;
                         }
@@ -1027,7 +1013,7 @@ namespace SystAnalys_lr1
                     deleteBus.Enabled = false;
                     stopPointButton.Enabled = true;
                     addTraficLight.Enabled = true;
-                    checkBuses();
+                    CheckBuses();
                 };
                 if (changeRoute.SelectedIndex > 1)
                 {
@@ -1044,7 +1030,7 @@ namespace SystAnalys_lr1
                     deleteBus.Enabled = false;
                     stopPointButton.Enabled = true;
                     addTraficLight.Enabled = true;
-                    checkBusesOnRoute();
+                    CheckBusesOnRoute();
                 }
                 BringToFront();
             }
@@ -1063,7 +1049,7 @@ namespace SystAnalys_lr1
         }
 
 
-        private void selectButton_Click(object sender, EventArgs e)
+        private void SelectButton_Click(object sender, EventArgs e)
         {
             if (changeRoute.Text == MainStrings.network)
             {
@@ -1073,7 +1059,7 @@ namespace SystAnalys_lr1
                 drawVertexButton.Enabled = true;
                 drawEdgeButton.Enabled = true;
                 addTraficLight.Enabled = true;
-                checkBuses();
+                CheckBuses();
             };
             if (changeRoute.SelectedIndex > 1)
             {
@@ -1084,7 +1070,7 @@ namespace SystAnalys_lr1
                 drawVertexButton.Enabled = false;
                 drawEdgeButton.Enabled = true;
                 addTraficLight.Enabled = false;
-                checkBusesOnRoute();
+                CheckBusesOnRoute();
             }
             trafficLightLabel.Visible = false;
             selectRoute.Enabled = true;
@@ -1113,7 +1099,7 @@ namespace SystAnalys_lr1
 
     
    
-        private async void optimize_ClickAsync(object sender, EventArgs e)
+        private async void Optimize_ClickAsync(object sender, EventArgs e)
         {
             if (optText.Text != "" && speed.Text != "" && Data.buses.Count != 0 && int.Parse(optText.Text) > 0 && int.Parse(speed.Text) > 0 && Data.buses != null)
             {
@@ -1138,7 +1124,7 @@ namespace SystAnalys_lr1
                     Optimization.OptiCount = int.Parse(optText.Text);
                     Optimization.OptiSpeed = int.Parse(speed.Text);
 
-                    buttonOff();
+                    ButtonOff();
                
                     matrix.MatrixCreate();
                     if (speed.Text != "" && int.TryParse(speed.Text, out int sp))
@@ -1192,7 +1178,7 @@ namespace SystAnalys_lr1
                     }
                     BringToFront();
                     timer.Start();
-                    buttonOn();
+                    ButtonOn();
                     ResChart();    
 
                     foreach (var tl in Data.traficLights)
@@ -1300,7 +1286,7 @@ namespace SystAnalys_lr1
             return SavePictures;
         }
         //class loader
-        private void loadFromToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LoadFromToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var dialog = new FolderBrowserDialog())
             {
@@ -1318,7 +1304,7 @@ namespace SystAnalys_lr1
                     {
                         if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
                         {
-                            toolStripMenuButtonOn();
+                            ToolStripMenuButtonOn();
 
                             LoadRoutes(dialog.SelectedPath + @"\");
                             savepath = dialog.SelectedPath;
@@ -1345,14 +1331,14 @@ namespace SystAnalys_lr1
                 }
             }
         }
-        public void toolStripMenuButtonOn()
+        public void ToolStripMenuButtonOn()
         {
             openEpicFormToolStripMenuItem.Enabled = true;
             addRouteToolStripMenuItem.Enabled = true;
             createGridToolStripMenuItem.Enabled = true;
         }
 
-        public FolderBrowserDialog newBasePath(FolderBrowserDialog dialog)
+        public FolderBrowserDialog NewBasePath(FolderBrowserDialog dialog)
         {
             if (!Directory.Exists(savepath))
             {
@@ -1367,13 +1353,13 @@ namespace SystAnalys_lr1
         }
 
         //class loader
-        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (savepath != null && savepath.Length > 2)
             {
                 try
                 {
-                    toolStripMenuButtonOn();
+                    ToolStripMenuButtonOn();
                     LoadRoutes(savepath + @"\");                    
                 }
                 catch (Exception exc)
@@ -1395,7 +1381,7 @@ namespace SystAnalys_lr1
                             {
                                 if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
                                 {
-                                    toolStripMenuButtonOn();
+                                    ToolStripMenuButtonOn();
 
                                     LoadRoutes(dialog.SelectedPath + @"\");
 
@@ -1438,7 +1424,7 @@ namespace SystAnalys_lr1
                     {
                         if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
                         {
-                            toolStripMenuButtonOn();
+                            ToolStripMenuButtonOn();
 
                             LoadRoutes(dialog.SelectedPath + @"\");
                             savepath = dialog.SelectedPath;
@@ -1458,7 +1444,7 @@ namespace SystAnalys_lr1
             changeRoute.Text = MainStrings.network;
         }
 
-        private void drawEdgeButton_Click(object sender, EventArgs e)
+        private void DrawEdgeButton_Click(object sender, EventArgs e)
         {
             G.ClearSheet();
             G.DrawALLGraph(Data.V, Data.E);
@@ -1472,7 +1458,7 @@ namespace SystAnalys_lr1
                 drawVertexButton.Enabled = true;
                 addTraficLight.Enabled = true;
                 deleteButton.Enabled = true;
-                checkBuses();
+                CheckBuses();
             };
             if (changeRoute.SelectedIndex > 1)
             {
@@ -1485,7 +1471,7 @@ namespace SystAnalys_lr1
                 deleteButton.Enabled = true;
                 addTraficLight.Enabled = false;
                 G.DrawALLGraph(Data.routes[changeRoute.Text], Data.routesEdge[changeRoute.Text], 1);
-                checkBusesOnRoute();
+                CheckBusesOnRoute();
             }
             selectRoute.Enabled = true;
             trafficLightLabel.Visible = false;
@@ -2065,7 +2051,7 @@ namespace SystAnalys_lr1
                 }
                 loadingForm.loading.Value = 90;
 
-                DisplayEpicenters.path = load;
+                DisplayEpicenters.Path = load;
                 sheet.Image = Image.FromFile(load + "/Map.png");
                 saveImage = sheet.Image;
                 zoomBar.Value = 1;
@@ -2123,7 +2109,7 @@ namespace SystAnalys_lr1
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             matrix.MatrixCreate();
         }
@@ -2136,11 +2122,11 @@ namespace SystAnalys_lr1
 
        
         //остальное конструктор
-        private async void AsyncCheckV(MouseEventArgs e, bool check)
-        {
-            await Task.Run(() => CheckV(e, check));
-        }
-        
+        //private async void AsyncCheckV(MouseEventArgs e, bool check)
+        //{
+        //    await Task.Run(() => CheckV(e, check));
+        //}
+        //не юзается нигде
         private bool CheckV(MouseEventArgs e, bool check)
         {
             for (int i = 0; i < Data.V.Count; i++)
@@ -2199,7 +2185,7 @@ namespace SystAnalys_lr1
         }
 
 
-        private void sheet_MouseClick_1(object sender, MouseEventArgs e)
+        private void Sheet_MouseClick_1(object sender, MouseEventArgs e)
         {
             if (changeRoute.Text == MainStrings.network)
             {
@@ -2325,7 +2311,7 @@ namespace SystAnalys_lr1
             }
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void Button9_Click(object sender, EventArgs e)
         {
             if (G.bitmap != null)
             {
@@ -2345,7 +2331,7 @@ namespace SystAnalys_lr1
             }
         }
 
-        private void gridButton_Click(object sender, EventArgs e)
+        private void GridButton_Click(object sender, EventArgs e)
         {
             if (changeRoute.Text == MainStrings.network)
             {
@@ -2359,7 +2345,7 @@ namespace SystAnalys_lr1
                 allBusSettings.Enabled = false;
                 selectRoute.Enabled = true;
                 addTraficLight.Enabled = true;
-                checkBuses();
+                CheckBuses();
             };
             if (changeRoute.SelectedIndex > 1)
             {
@@ -2373,7 +2359,7 @@ namespace SystAnalys_lr1
                 selectRoute.Enabled = true;
                 allBusSettings.Enabled = false;
                 addTraficLight.Enabled = false;
-                checkBusesOnRoute();
+                CheckBusesOnRoute();
             }
             selected = new List<int>();
             selectRoute.Enabled = true;
@@ -2381,9 +2367,9 @@ namespace SystAnalys_lr1
             delAllBusesOnRoute.Enabled = true;
             stopPointButton.Enabled = false;
         }
-        private void delAllBus()
+        private void DelAllBus()
         {
-            checkBuses();
+            CheckBuses();
             if (changeRoute.Text == MainStrings.network)
             {
                 selectRoute.Enabled = false;
@@ -2401,7 +2387,7 @@ namespace SystAnalys_lr1
                 Data.buses.Clear();
                 delAllBusesOnRoute.Enabled = false;
             };
-            checkBusesOnRoute();
+            CheckBusesOnRoute();
             if (changeRoute.SelectedIndex > 1)
             {
                 selectRoute.Enabled = true;
@@ -2441,19 +2427,19 @@ namespace SystAnalys_lr1
             selected = new List<int>();
 
         }
-        private void delAllBusesOnRoute_Click(object sender, EventArgs e)
+        private void DelAllBusesOnRoute_Click(object sender, EventArgs e)
         {
 
 
         }
-        private void checkBuses()
+        private void CheckBuses()
         {
             if (Data.buses.Count != 0 && changeRoute.Text == MainStrings.network)
             {
                 delAllBusesOnRoute.Enabled = true;
             }
         }
-        private void checkBusesOnRoute()
+        private void CheckBusesOnRoute()
         {
             foreach (var bus in Data.buses)
             {
@@ -2466,9 +2452,8 @@ namespace SystAnalys_lr1
         }
 
 
-        private void jSONToolStripMenuItem_Click(object sender, EventArgs e)
+        private void JSONToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string path = savepath;
             if (sheet.Image != null)
             {
                 using (var dialog = new FolderBrowserDialog())
@@ -2484,7 +2469,7 @@ namespace SystAnalys_lr1
                     // dialog.SelectedPath = Path.GetFullPath(savepath); //System.Windows.Forms.Application.StartupPath;
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
-                        path = dialog.SelectedPath;
+                        string path = dialog.SelectedPath;
                         savepath = dialog.SelectedPath + @"\" + string.Format("{0}_{1}_{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute);
                         File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
                         using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
@@ -2499,7 +2484,7 @@ namespace SystAnalys_lr1
                         }
                         else
                         {
-                            savepath = savepath + rnd.Next(0, 100).ToString();
+                            savepath += rnd.Next(0, 100).ToString();
                             Directory.CreateDirectory(savepath);
                             SaveRoutes("json", savepath + @"\");
                             saveImage.Save(savepath + "/Map.png", System.Drawing.Imaging.ImageFormat.Png);
@@ -2513,7 +2498,7 @@ namespace SystAnalys_lr1
 
         }
 
-        private void addTraficLight_Click(object sender, EventArgs e)
+        private void AddTraficLight_Click(object sender, EventArgs e)
         {
             if (changeRoute.Text == MainStrings.network)
             {
@@ -2546,7 +2531,7 @@ namespace SystAnalys_lr1
             }
 
         }
-        private void xMLToolStripMenuItem_Click(object sender, EventArgs e)
+        private void XMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             if (sheet.Image != null)
@@ -2579,7 +2564,7 @@ namespace SystAnalys_lr1
                         }
                         else
                         {
-                            savepath = savepath + rnd.Next(0, 100).ToString();
+                            savepath += rnd.Next(0, 100).ToString();
                             Directory.CreateDirectory(savepath);
                             SaveRoutes("xml", savepath + @"\");
                             saveImage.Save(savepath + "/Map.png", System.Drawing.Imaging.ImageFormat.Png);
@@ -2592,7 +2577,7 @@ namespace SystAnalys_lr1
             BringToFront();
         }
 
-        private void selectRoute_Click(object sender, EventArgs e)
+        private void SelectRoute_Click(object sender, EventArgs e)
         {
             if (changeRoute.Text == MainStrings.network)
             {
@@ -2608,7 +2593,7 @@ namespace SystAnalys_lr1
                 allBusSettings.Enabled = false;
                 delAllBusesOnRoute.Enabled = false;
                 addTraficLight.Enabled = true;
-                checkBuses();
+                CheckBuses();
             };
             if (changeRoute.SelectedIndex > 1)
             {
@@ -2623,7 +2608,7 @@ namespace SystAnalys_lr1
                 deleteButton.Enabled = true;
                 allBusSettings.Enabled = false;
                 delAllBusesOnRoute.Enabled = true;
-                checkBusesOnRoute();
+                CheckBusesOnRoute();
             }
             trafficLightLabel.Visible = false;
             stopPointButton.Enabled = true;
@@ -2633,7 +2618,7 @@ namespace SystAnalys_lr1
         }
 
 
-        private void openEpicFormToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenEpicFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!Ep.IsDisposed)
             {
@@ -2646,7 +2631,7 @@ namespace SystAnalys_lr1
 
         }
  
-        private void addRouteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddRouteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             addR = new AddRoute();
             this.StyleManager.Clone(addR);
@@ -2669,7 +2654,7 @@ namespace SystAnalys_lr1
             }
         }
 
-        private void runTrafficLightsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RunTrafficLightsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Data.traficLights.ForEach((tl) =>
             {
@@ -2677,7 +2662,7 @@ namespace SystAnalys_lr1
             });
         }
 
-        private void themes_CheckedChanged(object sender, EventArgs e)
+        private void Themes_CheckedChanged(object sender, EventArgs e)
         {
             if (themes.Checked == true)
             {
@@ -2718,7 +2703,7 @@ namespace SystAnalys_lr1
         }
 
 
-        private void changeTheme_SelectedIndexChanged(object sender, EventArgs e)
+        private void ChangeTheme_SelectedIndexChanged(object sender, EventArgs e)
         {
             msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(changeTheme.Items.IndexOf(changeTheme.Text));
             StyleManager.Clone(Ep);
@@ -2734,23 +2719,13 @@ namespace SystAnalys_lr1
 
         }
 
-        private void launchBuses_Click(object sender, EventArgs e)
+        private void LaunchBuses_Click(object sender, EventArgs e)
         {
-            //BarabanAfterOpti();
-            //foreach (var bus in Data.buses)
-            //{
-
-            //    bus.Start();
-            //}
             timer.Start();
         }
 
-        private void stopBuses_Click(object sender, EventArgs e)
+        private void StopBuses_Click(object sender, EventArgs e)
         {
-            //foreach (var bus in Data.buses)
-            //{
-            //    bus.Stop();
-            //}
             timer.Stop();
         }
 
@@ -2784,7 +2759,7 @@ namespace SystAnalys_lr1
             lang = true;
         }
 
-        private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void MetroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lang == true)
             {
@@ -2806,7 +2781,7 @@ namespace SystAnalys_lr1
             Bus.ZoomCoef = zoomBar.Value;
         }
 
-        private void metroTrackBar1_ScrollAsync(object sender, ScrollEventArgs e)
+        private void MetroTrackBar1_ScrollAsync(object sender, ScrollEventArgs e)
         {
             //try
             //{
@@ -2859,7 +2834,7 @@ namespace SystAnalys_lr1
         }
    
 
-        private void busSize_KeyPress(object sender, KeyPressEventArgs e)
+        private void BusSize_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
 
@@ -2869,7 +2844,7 @@ namespace SystAnalys_lr1
             }
         }
 
-        private void optText_KeyPress(object sender, KeyPressEventArgs e)
+        private void OptText_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((!char.IsNumber(e.KeyChar)) && (!char.IsControl(e.KeyChar)))
             {
@@ -2877,7 +2852,7 @@ namespace SystAnalys_lr1
             }
         }
 
-        private void speed_KeyPress(object sender, KeyPressEventArgs e)
+        private void Speed_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((!char.IsNumber(e.KeyChar)) && (!char.IsControl(e.KeyChar)))
             {
@@ -2885,21 +2860,21 @@ namespace SystAnalys_lr1
             }
         }
 
-        private void metroButton1_Click_1(object sender, EventArgs e)
+        private void MetroButton1_Click_1(object sender, EventArgs e)
         {
             coordinates.AsyncCreateAllCoordinates();
         }
 
         //
 
-        private void metroButton2_Click(object sender, EventArgs e)
+        private void MetroButton2_Click(object sender, EventArgs e)
         {
             epSet = new EpicSettings();
             StyleManager.Clone(epSet);
             epSet.ShowDialog();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
             AnimationBitmap.MakeTransparent();
@@ -2915,29 +2890,29 @@ namespace SystAnalys_lr1
             AnimationBox.Image = AnimationBitmap;
         }
 
-        private void metroButton1_Click(object sender, EventArgs e)
+        private void MetroButton1_Click(object sender, EventArgs e)
         {
             timer.Interval = 1000;
             timer.Start();
         }
 
-        private void reportTool_Click(object sender, EventArgs e)
+        private void ReportTool_Click(object sender, EventArgs e)
         {
             r.Show();
             r.BringToFront();
         }
 
-        private void stopBuses_Click_1(object sender, EventArgs e)
+        private void StopBuses_Click_1(object sender, EventArgs e)
         {
             timer.Stop();
         }
 
-        private void launchBuses_Click_1(object sender, EventArgs e)
+        private void LaunchBuses_Click_1(object sender, EventArgs e)
         {
             timer.Start();
         }
 
-        private void changeRoute_SelectedIndexChanged(object sender, EventArgs e)
+        private void ChangeRoute_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (changeRoute.Text == MainStrings.none)
             {
@@ -2979,7 +2954,7 @@ namespace SystAnalys_lr1
                 deleteBus.Enabled = false;
                 stopPointButton.Enabled = true;
                 addTraficLight.Enabled = true;
-                checkBuses();
+                CheckBuses();
                 G.ClearSheet();
                 G.DrawALLGraph(Data.V, Data.E);
                 trafficLightLabel.Visible = false;
@@ -3007,7 +2982,7 @@ namespace SystAnalys_lr1
                     stopPointButton.Enabled = true;
                     trafficLightLabel.Visible = false;
                     addTraficLight.Enabled = false;
-                    checkBusesOnRoute();
+                    CheckBusesOnRoute();
                     G.ClearSheet();
                     G.DrawALLGraph(Data.V, Data.E);
                     G.DrawALLGraph(Data.routes[(changeRoute.Text)], Data.routesEdge[(changeRoute.Text)], 1);
@@ -3019,7 +2994,7 @@ namespace SystAnalys_lr1
             }
         }
 
-        private void clearButton_Click(object sender, EventArgs e)
+        private void ClearButton_Click(object sender, EventArgs e)
         {
             clearButton.Enabled = false;
             //
@@ -3097,7 +3072,7 @@ namespace SystAnalys_lr1
 
 
 
-        private void createGridToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CreateGridToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (G.bitmap != null)
             {
@@ -3124,7 +3099,7 @@ namespace SystAnalys_lr1
             }
         }
 
-        private void button11_Click(object sender, EventArgs e)
+        private void Button11_Click(object sender, EventArgs e)
         {
             if (G.bitmap != null)
             {

@@ -16,23 +16,23 @@ namespace SystAnalys_lr1
     {
         public static bool FormOpen;
         private Epicenter restoredEpic;
-        public static string path { get; set; }
-        public int wsheet { get; set; }
-        public int hsheet { get; set; }
+        public static string Path { get; set; }
+        public int Wsheet { get; set; }
+        public int Hsheet { get; set; }
         private static int Ezoom { get; set; } = 1;
         public static Image EsheetPicture { get; set; }
         public DrawGraph EG;
-        private Main MainForm;
+        private readonly Main MainForm;
         public DisplayEpicenters(Main Main)
         {
             this.MainForm = Main;
             InitializeComponent();
         }
 
-        private MetroTrackBar EZoomBar = new MetroTrackBar();
+        private readonly MetroTrackBar EZoomBar = new MetroTrackBar();
         public PictureBox Esheet = new PictureBox();
-        private MetroLabel label = new MetroLabel();
-        private MetroFramework.Controls.MetroPanel MapPanel = new MetroFramework.Controls.MetroPanel();
+        private readonly MetroLabel label = new MetroLabel();
+        private readonly MetroFramework.Controls.MetroPanel MapPanel = new MetroFramework.Controls.MetroPanel();
 
 
         private void DisplayEpicenters_Load(object sender, EventArgs e)
@@ -74,8 +74,8 @@ namespace SystAnalys_lr1
             Esheet.Size = MainForm.GetSheet().Size;
             Esheet.Image = Main.globalMap;
             EsheetPicture = Main.globalMap;
-            wsheet = Esheet.Width;
-            hsheet = Esheet.Height;
+            Wsheet = Esheet.Width;
+            Hsheet = Esheet.Height;
             Esheet.AutoSize = MainForm.GetSheet().AutoSize;
             Esheet.SizeMode = MainForm.GetSheet().SizeMode;
             Esheet.Anchor = MainForm.GetSheet().Anchor;
@@ -129,9 +129,9 @@ namespace SystAnalys_lr1
         private void EZoomBar_Scroll(object sender, EventArgs e)
         {
 
-            Esheet.Image = Main.ResizeBitmap(new Bitmap(EsheetPicture), wsheet * EZoomBar.Value, hsheet * EZoomBar.Value);
-            EsheetPicture = Main.ResizeBitmap(new Bitmap(EsheetPicture), wsheet * EZoomBar.Value, hsheet * EZoomBar.Value);
-            EsheetPicture = Main.ResizeBitmap(new Bitmap(EsheetPicture), wsheet * EZoomBar.Value, hsheet * EZoomBar.Value);
+            Esheet.Image = Main.ResizeBitmap(new Bitmap(EsheetPicture), Wsheet * EZoomBar.Value, Hsheet * EZoomBar.Value);
+            EsheetPicture = Main.ResizeBitmap(new Bitmap(EsheetPicture), Wsheet * EZoomBar.Value, Hsheet * EZoomBar.Value);
+            EsheetPicture = Main.ResizeBitmap(new Bitmap(EsheetPicture), Wsheet * EZoomBar.Value, Hsheet * EZoomBar.Value);
             MapPanel.AutoScrollPosition = new Point(MapPanel.AutoScrollPosition.X * EZoomBar.Value, MapPanel.AutoScrollPosition.Y * EZoomBar.Value);
             Ezoom = EZoomBar.Value;
 
@@ -288,7 +288,7 @@ namespace SystAnalys_lr1
 
 
         public EpicSettings epSet;
-        private void button11_Click(object sender, EventArgs e)
+        private void Button11_Click(object sender, EventArgs e)
         {
 
             epSet = new EpicSettings();
@@ -315,7 +315,7 @@ namespace SystAnalys_lr1
 
             EDrawGrid();
         }
-        private void metroButton1_Click(object sender, EventArgs e)
+        private void MetroButton1_Click(object sender, EventArgs e)
         {
             RecReateFunction();
 
@@ -325,7 +325,7 @@ namespace SystAnalys_lr1
             return Esheet.Image;
         }
 
-        private void metroButton2_Click(object sender, EventArgs e)
+        private void MetroButton2_Click(object sender, EventArgs e)
         {
             EDrawMAinEpics();
         }
@@ -337,28 +337,7 @@ namespace SystAnalys_lr1
             Main.extendedSavePictures = false;
         }
 
-        private void metroButton2_Click_1(object sender, EventArgs e)
-        {
-            List<string> ssss = new List<string>();
-            //ssss.Add("up");
-            ssss.Add("right");
-            //     ssss.Add("down");
-            MainForm.GetEpicenters().First().EpicMoving(ssss);
-            //MainForm.GetEpicenters().First().EpicMoving(ssss);
-            //MainForm.GetEpicenters().First().EpicMoving(ssss);
-            //MainForm.GetEpicenters().First().ExpandEpic(ssss);
-            EDrawEpics(MainForm.GetEpicenters());
-        }
-
-        private void metroButton3_Click(object sender, EventArgs e)
-        {
-
-
-            MainForm.GetEpicenters().First().ExpandEpic();
-            EDrawEpics(MainForm.GetEpicenters());
-        }
-
-        private void metroButton4_Click(object sender, EventArgs e)
+        private void MetroButton4_Click(object sender, EventArgs e)
         {
             Epicenter.CreateOneRandomEpicenter(Main.EpicSizeParam, null);
         }

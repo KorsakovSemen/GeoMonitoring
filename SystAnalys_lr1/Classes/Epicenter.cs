@@ -10,8 +10,7 @@ namespace SystAnalys_lr1.Classes
     public class Epicenter : ICloneable
     {
         public static void CreateOneRandomEpicenter(int EpicSizeParam, int? StartPos)
-        {
-            var rand = new Random();
+        {           
             Data.Epics = new List<Epicenter>
             {
                 new Epicenter(Data.TheGrid)
@@ -494,7 +493,7 @@ namespace SystAnalys_lr1.Classes
                         {
 
                             case "right":
-                                gridPart.x = gridPart.x + GridPart.Width;
+                                gridPart.x += GridPart.Width;
                                 if (!(gridPart.x <= TheGrid.Last().x))
                                 {
                                     gridPart.IsMovedAway = true;
@@ -506,7 +505,7 @@ namespace SystAnalys_lr1.Classes
                             //case "right-up":
                             //    break;
                             case "down":
-                                gridPart.y = gridPart.y + GridPart.Height;
+                                gridPart.y += GridPart.Height;
                                 if (!(gridPart.y <= TheGrid.Last().y))
                                 {
                                     gridPart.IsMovedAway = true;
@@ -523,7 +522,7 @@ namespace SystAnalys_lr1.Classes
 
                                 break;
                             case "left":
-                                gridPart.x = gridPart.x - GridPart.Width;
+                                gridPart.x -= GridPart.Width;
                                 if (!((gridPart.x >= TheGrid.First().x)))
                                 {
                                     gridPart.IsMovedAway = true;
@@ -563,7 +562,7 @@ namespace SystAnalys_lr1.Classes
 
 
 
-            List<string> Parameter = new List<string>();
+            List<string> Parameter;
             //
             for (int i = 2; i < 4; i++)
             {
@@ -765,7 +764,7 @@ namespace SystAnalys_lr1.Classes
         }
         public List<string> EpicenterGenerator(GridPart EpicPart, List<string> Parameter)
         {
-            bool net = false;
+            bool net;
             if (EpicPart.x < TheGrid.Last().x)
             {
                 net = false;

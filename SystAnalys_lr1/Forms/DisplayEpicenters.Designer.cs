@@ -81,14 +81,14 @@
             resources.ApplyResources(this.metroButton1, "metroButton1");
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            this.metroButton1.Click += new System.EventHandler(this.MetroButton1_Click);
             // 
             // button11
             // 
             resources.ApplyResources(this.button11, "button11");
             this.button11.Name = "button11";
             this.button11.UseSelectable = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.button11.Click += new System.EventHandler(this.Button11_Click);
             // 
             // label2
             // 

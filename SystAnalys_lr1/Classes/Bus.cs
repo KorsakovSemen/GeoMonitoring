@@ -59,6 +59,7 @@ namespace SystAnalys_lr1.Classes
         public bool EpicFounded { get; set; }
         static public int? ZoomCoef { get; set; } = 1;
         public bool Tracker { get; set; }
+       
 
         public object Clone()
         {
