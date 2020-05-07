@@ -29,17 +29,17 @@ namespace SystAnalys_lr1.Classes
 
             List<Bus> b = new List<Bus>();
 
-            for (int i = 0; i < Main.buses.Count; i++)
+            for (int i = 0; i < Data.buses.Count; i++)
             {
-                if (i == Main.buses.Count - 1)
+                if (i == Data.buses.Count - 1)
                 {
                     if (b.Count == 0)
                     {
-                        busesPark.Add(new List<Bus>() { Main.buses[i] });
+                        busesPark.Add(new List<Bus>() { Data.buses[i] });
                     }
                     else
                     {
-                        b.Add(Main.buses[i]);
+                        b.Add(Data.buses[i]);
                         b = BubbleSortEx(b);
                         busesPark.Add(new List<Bus>(b));
                         b.Clear();
@@ -47,19 +47,19 @@ namespace SystAnalys_lr1.Classes
                 }
                 else
                 {
-                    if (Main.buses[i].Route == Main.buses[i + 1].Route)
+                    if (Data.buses[i].Route == Data.buses[i + 1].Route)
                     {
-                        b.Add(Main.buses[i]);
+                        b.Add(Data.buses[i]);
                     }
                     else
                     {
                         if (b.Count == 0)
                         {
-                            busesPark.Add(new List<Bus>() { Main.buses[i] });
+                            busesPark.Add(new List<Bus>() { Data.buses[i] });
                         }
                         else
                         {
-                            b.Add(Main.buses[i]);
+                            b.Add(Data.buses[i]);
                             b = BubbleSortEx(b);
                             busesPark.Add(new List<Bus>(b));
                             b.Clear();
@@ -97,13 +97,13 @@ namespace SystAnalys_lr1.Classes
                 matrixGrid.Rows.Clear();
                 matrixGrid.Refresh();
 
-                Main.buses.Sort((a1, b1) => a1.Route.CompareTo(b1.Route));
+                Data.buses.Sort((a1, b1) => a1.Route.CompareTo(b1.Route));
 
                 SplitBuses();
 
-                routesSorted = new SortedDictionary<string, List<Vertex>>(Main.routes);
+                routesSorted = new SortedDictionary<string, List<Vertex>>(Data.routes);
 
-                foreach (var x in Main.routes)
+                foreach (var x in Data.routes)
                 {
                     if (x.Value.Count == 0)
                     {
@@ -177,8 +177,8 @@ namespace SystAnalys_lr1.Classes
                         res += total;
                     }
 
-                    result.Text = MainStrings.matrixFirst + res.ToString() + " " + MainStrings.matrixSecond + (Main.buses.Count - res).ToString();
-                    count.Text = MainStrings.matrixThird + Main.buses.Count.ToString();
+                    result.Text = MainStrings.matrixFirst + res.ToString() + " " + MainStrings.matrixSecond + (Data.buses.Count - res).ToString();
+                    count.Text = MainStrings.matrixThird + Data.buses.Count.ToString();
                 }
                 catch
                 {

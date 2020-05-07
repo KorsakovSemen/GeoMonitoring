@@ -21,20 +21,20 @@ namespace SystAnalys_lr1
         //функция, которая создает все координаты для одного маршрута
         public void CreateOneRouteCoordinates(string i)
         {
-            if (Main.routes[i].Count >= 2)
+            if (Data.routes[i].Count >= 2)
             {
-                Main.AllCoordinates[i] = new List<Point>();
-                Main.AllGridsInRoutes[i] = new List<int>();
-                Main.AllCoordinates[i].AddRange(getPoints(Main.routes[i], i));
+                Data.AllCoordinates[i] = new List<Point>();
+                Data.AllGridsInRoutes[i] = new List<int>();
+                Data.AllCoordinates[i].AddRange(getPoints(Data.routes[i], i));
 
             }
             Bus.ScrollX = Main.scrollX;
             Bus.ScrollY = Main.scrollY;
 
 
-            foreach (var bus in Main.buses)
+            foreach (var bus in Data.buses)
             {
-                bus.Coordinates = Main.AllCoordinates[bus.GetRoute()];
+                bus.Coordinates = Data.AllCoordinates[bus.GetRoute()];
             }
 
         }
@@ -87,21 +87,21 @@ namespace SystAnalys_lr1
         {
             int Locate = 0;
             int LastLocate = 0;
-            foreach (var gridpart in Main.TheGrid)
+            foreach (var gridpart in Data.TheGrid)
             {
                 if ((points.Last().X > gridpart.x) && ((points.Last().X) < gridpart.x + GridPart.Width) && ((points.Last().Y) > gridpart.y) && ((points.Last().Y) < (gridpart.y + GridPart.Height)))
                 {
 
-                    Locate = Main.TheGrid.IndexOf(gridpart);
+                    Locate = Data.TheGrid.IndexOf(gridpart);
                 }
             }
-            for (int k = 0; k < Main.TheGrid.Count; k++)
+            for (int k = 0; k < Data.TheGrid.Count; k++)
             {
                 if (Locate == k)
                 {
                     if (LastLocate != Locate)
                     {
-                        Main.AllGridsInRoutes[route].Add(k);
+                        Data.AllGridsInRoutes[route].Add(k);
 
                         LastLocate = Locate;
                     }
@@ -116,24 +116,24 @@ namespace SystAnalys_lr1
         public void CreateAllCoordinates()
         {
 
-            Main.AllCoordinates = new SerializableDictionary<string, List<Point>>();
-            Main.AllGridsInRoutes = new SerializableDictionary<string, List<int>>();
-            for (int i = 0; i < Main.routes.Count; i++)
+            Data.AllCoordinates = new SerializableDictionary<string, List<Point>>();
+            Data.AllGridsInRoutes = new SerializableDictionary<string, List<int>>();
+            for (int i = 0; i < Data.routes.Count; i++)
             {
-                Main.AllCoordinates.Add(Main.routes.ElementAt(i).Key, new List<Point>());
-                Main.AllGridsInRoutes.Add(Main.routes.ElementAt(i).Key, new List<int>());
-                if (Main.routes.ElementAt(i).Value.Count >= 2)
+                Data.AllCoordinates.Add(Data.routes.ElementAt(i).Key, new List<Point>());
+                Data.AllGridsInRoutes.Add(Data.routes.ElementAt(i).Key, new List<int>());
+                if (Data.routes.ElementAt(i).Value.Count >= 2)
                 {
-                    Main.AllCoordinates[Main.AllCoordinates.ElementAt(i).Key].AddRange(getPoints(Main.routes.ElementAt(i).Value, Main.routes.ElementAt(i).Key));
+                    Data.AllCoordinates[Data.AllCoordinates.ElementAt(i).Key].AddRange(getPoints(Data.routes.ElementAt(i).Value, Data.routes.ElementAt(i).Key));
                 }
                 Bus.ScrollX = Main.scrollX;
                 Bus.ScrollY = Main.scrollY;
 
             }
 
-            foreach (var bus in Main.buses)
+            foreach (var bus in Data.buses)
             {
-                bus.Coordinates = Main.AllCoordinates[bus.GetRoute()];
+                bus.Coordinates = Data.AllCoordinates[bus.GetRoute()];
             }
 
 

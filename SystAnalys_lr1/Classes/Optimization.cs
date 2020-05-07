@@ -29,12 +29,12 @@ namespace SystAnalys_lr1.Classes
             percentMean = new SerializableDictionary<int, int?>();
 
             List<Bus> optimizeBuses = new List<Bus>();
-            Main.buses.ForEach((b) => optimizeBuses.Add(
+            Data.buses.ForEach((b) => optimizeBuses.Add(
                 (Bus)b.Clone()
             ));
             int old = small;
 
-            var busesparkreturn = Main.busesPark;
+            var busesparkreturn = Data.busesPark;
 
             int ciclTotal = 5;
 
@@ -43,7 +43,7 @@ namespace SystAnalys_lr1.Classes
             {
                 offBuses(matrixControl1, cicl * 10);
                 if (cicl == ciclTotal - 1)
-                    Main.buses[rnd.Next(0, Main.buses.Count)].Tracker = true;
+                    Data.buses[rnd.Next(0, Data.buses.Count)].Tracker = true;
                 List<int?> mas = new List<int?>();
                 Baraban();
                 if (Main.SavePictures == true)
@@ -63,7 +63,7 @@ namespace SystAnalys_lr1.Classes
 
                         lock (Main.Ep.Esheet)
                         {
-                            Main.Ep.EDrawEpics(Main.Epics);
+                            Main.Ep.EDrawEpics(Data.Epics);
                         }
                         lock (Main.Ep.Esheet)
                         {
@@ -172,8 +172,8 @@ namespace SystAnalys_lr1.Classes
 
             Main.average = mean;
             BarabanAfterOpti();
-            Main.busesPark = busesparkreturn;
-            Main.buses = optimizeBuses;
+            Data.busesPark = busesparkreturn;
+            Data.buses = optimizeBuses;
         }
 
         private static void offBuses(MatrixControl matrixControl1, int proc = 0)
@@ -181,8 +181,8 @@ namespace SystAnalys_lr1.Classes
             int countSensors = 0;
             int tot = 0;
             matrixControl1.SplitBuses();
-            Main.busesPark = matrixControl1.busesPark;
-            foreach (var b in Main.busesPark)
+            Data.busesPark = matrixControl1.busesPark;
+            foreach (var b in Data.busesPark)
             {
                 double razm = Math.Round(b.Count - b.Count * 0.01 * proc);
                 double limit = Math.Round(b.Count - razm, 0);
@@ -202,7 +202,7 @@ namespace SystAnalys_lr1.Classes
                 };
                 for (var i = 0; i < b.Count; i++)
                 {
-                    Main.buses[tot] = b[i];
+                    Data.buses[tot] = b[i];
                     tot += 1;
                 }
             };
@@ -219,16 +219,16 @@ namespace SystAnalys_lr1.Classes
         private static void Baraban()
         {
 
-            foreach (var bp in Main.busesPark)
+            foreach (var bp in Data.busesPark)
             {
-                var tot = (Main.AllGridsInRoutes[bp.First().Route].Count - 1) / bp.Count;
+                var tot = (Data.AllGridsInRoutes[bp.First().Route].Count - 1) / bp.Count;
                 if (tot == 0 || tot == 1)
                 {
-                    foreach (var b in Main.buses)
+                    foreach (var b in Data.buses)
                     {
                         if (b.Route == bp.First().Route)
                         {
-                            int r = rnd.Next(0, Main.AllGridsInRoutes[bp.First().Route].Count - 1);
+                            int r = rnd.Next(0, Data.AllGridsInRoutes[bp.First().Route].Count - 1);
                             b.PositionAt = r;
                         }
 
@@ -238,14 +238,14 @@ namespace SystAnalys_lr1.Classes
                 {
                     List<int> array = new List<int>();
                     int i = 0;
-                    while (i < Main.AllGridsInRoutes[bp.First().Route].Count - 1)
+                    while (i < Data.AllGridsInRoutes[bp.First().Route].Count - 1)
                     {
                         array.Add(i);
                         i += tot;
                     }
                     if (array.Count != 0)
                     {
-                        foreach (var b in Main.buses)
+                        foreach (var b in Data.buses)
                         {
 
                             if (b.Route == bp.First().Route)
@@ -263,9 +263,9 @@ namespace SystAnalys_lr1.Classes
         private static void BarabanAfterOpti()
         {
             Random rnd = new Random();
-            foreach (var b in Main.buses)
+            foreach (var b in Data.buses)
             {
-                int r = rnd.Next(0, Main.AllCoordinates[b.Route].Count - 1);
+                int r = rnd.Next(0, Data.AllCoordinates[b.Route].Count - 1);
                 b.PositionAt = r;
             };
         }

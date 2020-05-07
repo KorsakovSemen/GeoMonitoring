@@ -12,11 +12,11 @@ namespace SystAnalys_lr1.Classes
         public static void CreateOneRandomEpicenter(int EpicSizeParam, int? StartPos)
         {
             var rand = new Random();
-            Main.Epics = new List<Epicenter>
+            Data.Epics = new List<Epicenter>
             {
-                new Epicenter(Main.TheGrid)
+                new Epicenter(Data.TheGrid)
             };
-            Main.Epics.First().CreateRandomEpicenter(EpicSizeParam, StartPos);
+            Data.Epics.First().CreateRandomEpicenter(EpicSizeParam, StartPos);
         }
         public SerializableDictionary<int, List<GridPart>> EpicenterGrid { get; set; }
         public Point StartPositon;

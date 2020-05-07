@@ -41,16 +41,16 @@ namespace SystAnalys_lr1
         public static string average;
 
         public static DeleteType delType;
-        //
+        
      
         int tracbarX, tracbarY;
-       //
+       
         public static string selectedRoute;
         public static int firstCrossRoads = 0;
         public static int firstCrossRoadsGreenLight = 0;
         public static int firstCrossRoadsRedLight = 0;
         public static int secondCrossRoads = 0;
-        //временно тут
+        //временно тут УБИРАЙ
         public static string EpicSizeParamSave = "radioEpicMedium";       
         public static List<string> MovingEpicParamet;        
         public static string EpicFreqMovingSave = null;
@@ -62,45 +62,8 @@ namespace SystAnalys_lr1
         public static bool SavePictures = false;
         public static bool extendedSavePictures = false;
         //
-        string savepath;
-
-        //все массивы
-        //Лист всех эпицентров
-        public static List<Epicenter> Epics;
-        //Лист, в котором хранится сетка
-        static public List<GridPart> TheGrid { get; set; }
-        //Лист, в котором хранятся автобусы
-        static public List<Bus> buses;
-        public static List<List<Bus>> busesPark;
-        //все вершины
-        static public List<Vertex> V;
-        //ребра маршрутов
-        static public SerializableDictionary<string, List<Edge>> routesEdge;
-        //все ребра
-        public static List<Edge> E;
-        //для AllGridFilling, чтобы отображать время за которое моделилось движение
-        List<int> TimeForAllGridFilling;
-        List<Dictionary<string, Dictionary<string, int>>> AllRouteGridFilling;
-        //массив всех маршрутов
-        static public SerializableDictionary<string, List<Vertex>> routes;
-      //  static public List<SerializableDictionary<int, Vertex>> routePoints;
-        static public SerializableDictionary<int, List<Edge>> edgePoints;
-        // лист номеров квадратов, в которм есть светофор
-        static public List<int> TraficLightsInGrids;
-        // словарь номеров квадратов, в которм есть остановка для каждого маршрута
-        public static List<BusStop> allstopPoints;
-        public static SerializableDictionary<string, List<int>> stopPointsInGrids;
-        //Остановки маршрутов
-        public static SerializableDictionary<string, List<BusStop>> stopPoints;
-
-        //Светофоры
-        public static List<TraficLight> traficLights;
-
-        //все координаты движения автобусов
-        public static SerializableDictionary<string, List<Point>> AllCoordinates;
-        //все квадраты сетки, которые есть в каждом из маршрутов 
-        public static SerializableDictionary<string, List<int>> AllGridsInRoutes { get; set; }
-        //
+        string savepath;        
+        
 
 
         public static Classes.Grid g;
@@ -165,12 +128,12 @@ namespace SystAnalys_lr1
 
         public EpicSettings epSet;
 
-
+        /// /Потом все ремувну
         //уровень загрязнения в координатах
         //функция возвращает массив координат маршрутов (для 2 формы)
         public SerializableDictionary<string, List<Point>> GetAllCoordinates()
         {
-            return AllCoordinates;
+            return Data.AllCoordinates;
         }
         //функция возвращает массив загрязнений по маршрутам (для 2 формы)
         public Dictionary<string, List<GridPart>> GetPollutionInRoutes()
@@ -180,23 +143,20 @@ namespace SystAnalys_lr1
         //функция возвращает эпицентры (для 2 формы)
         public List<Epicenter> GetEpicenters()
         {
-            return Epics;
+            return Data.Epics;
         }
         //функция возвращает комбобох1 (для 2 формы)
         public ComboBox GetcomboBox1()
         {
             return changeRoute;
-        }     
-
-       
-   
+        }
         //class jopa
         private void AddInComboBox()
         {
             changeRoute.Items.Clear();
             changeRoute.Items.Add(MainStrings.none);
             changeRoute.Items.Add(MainStrings.network);
-            foreach (var r in routes)
+            foreach (var r in Data.routes)
             {
                 changeRoute.Items.Add(r.Key);
             };
@@ -250,13 +210,13 @@ namespace SystAnalys_lr1
             rCount = 0;
             coordinates = new Coordinates();
             g = new Classes.Grid(0, 0, 0, 0, 80, 40);
-            edgePoints = new SerializableDictionary<int, List<Edge>>();
-            AllCoordinates = new SerializableDictionary<string, List<Point>>();
-            AllGridsInRoutes = new SerializableDictionary<string, List<int>>();
-            stopPointsInGrids = new SerializableDictionary<string, List<int>>();
-            TraficLightsInGrids = new List<int>();
-            allstopPoints = new List<BusStop>();
-            stopPoints = new SerializableDictionary<string, List<BusStop>>();
+            //Потом вынесу в конструктор Data (или что0=-то типа того)
+            Data.AllCoordinates = new SerializableDictionary<string, List<Point>>();
+            Data.AllGridsInRoutes = new SerializableDictionary<string, List<int>>();
+            Data.stopPointsInGrids = new SerializableDictionary<string, List<int>>();
+            Data.TraficLightsInGrids = new List<int>();
+            Data.allstopPoints = new List<BusStop>();
+            Data.stopPoints = new SerializableDictionary<string, List<BusStop>>();
             StyleManager = msmMain;
             addTraficLight.Enabled = false;
             delAllBusesOnRoute.Enabled = false;
@@ -272,19 +232,17 @@ namespace SystAnalys_lr1
             deleteBus.Enabled = false;
             selectRoute.Enabled = false;
             G = new DrawGraph();
-            E = new List<Edge>();
-            V = new List<Vertex>();
+            Data.E = new List<Edge>();
+            Data.V = new List<Vertex>();
 
             zoom = 1;
             scrollX = 0;
             scrollY = 0;
 
-            routesEdge = new SerializableDictionary<string, List<Edge>>();
-            AllRouteGridFilling = new List<Dictionary<string, Dictionary<string, int>>>();
-            TimeForAllGridFilling = new List<int>();
-            traficLights = new List<TraficLight>();
-            routes = new SerializableDictionary<string, List<Vertex>>();
-            buses = new List<Bus>();
+            Data.routesEdge = new SerializableDictionary<string, List<Edge>>();
+            Data.traficLights = new List<TraficLight>();
+            Data.routes = new SerializableDictionary<string, List<Vertex>>();
+            Data.buses = new List<Bus>();
         }
 
         //class jopa
@@ -404,7 +362,7 @@ namespace SystAnalys_lr1
             mainPanel.MaximumSize = new System.Drawing.Size(sheet.Width, sheet.Height);
             mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             mainPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(panel6_MouseWheel);
-            Optimization.countWithoutSensors = buses.Count;
+            Optimization.countWithoutSensors = Data.buses.Count;
             matrix.MatrixCreate();
             hint.Visible = false;
             r.ch.Titles.Add(MainStrings.report);
@@ -433,10 +391,10 @@ namespace SystAnalys_lr1
         private void CreateGridRoutes()
         {
             Modeling.PollutionInRoutes = new Dictionary<string, List<GridPart>>();
-            for (int i = 0; i < AllCoordinates.Count; i++)
+            for (int i = 0; i < Data.AllCoordinates.Count; i++)
             {
-                Modeling.PollutionInRoutes.Add(AllCoordinates.ElementAt(i).Key, new List<GridPart>());
-                foreach (var Grid in TheGrid)
+                Modeling.PollutionInRoutes.Add(Data.AllCoordinates.ElementAt(i).Key, new List<GridPart>());
+                foreach (var Grid in Data.TheGrid)
                 {
                     Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key].Add(new GridPart(Grid.x, Grid.y));
                 }
@@ -501,7 +459,7 @@ namespace SystAnalys_lr1
         private void button3_Click(object sender, EventArgs e)
         {
             G.ClearSheet();
-            G.DrawALLGraph(V, E);
+            G.DrawALLGraph(Data.V, Data.E);
             sheet.Image = G.GetBitmap();
             selected1 = -1;
             DrawGrid();
@@ -578,8 +536,8 @@ namespace SystAnalys_lr1
             addTraficLight.Enabled = false;
             selectRoute.Enabled = true;
             G.ClearSheet();
-            G.DrawALLGraph(V, E);
-            G.DrawALLGraph(routes[(changeRoute.Text)], routesEdge[(changeRoute.Text)], 1);
+            G.DrawALLGraph(Data.V, Data.E);
+            G.DrawALLGraph(Data.routes[(changeRoute.Text)], Data.routesEdge[(changeRoute.Text)], 1);
             sheet.Image = G.GetBitmap();
             selected1 = -1;
             stopPointButton.Enabled = true;
@@ -697,7 +655,7 @@ namespace SystAnalys_lr1
                 drawVertexButton.Enabled = false;
                 deleteButton.Enabled = false;
                 addTraficLight.Enabled = false;
-                G.DrawALLGraph(routes[(changeRoute.Text)], routesEdge[(changeRoute.Text)], 1);
+                G.DrawALLGraph(Data.routes[(changeRoute.Text)], Data.routesEdge[(changeRoute.Text)], 1);
                 checkBusesOnRoute();
             }
             df.ShowDialog();
@@ -725,7 +683,7 @@ namespace SystAnalys_lr1
             drawEdgeButton.Enabled = true;
             deleteButton.Enabled = true;
             G.ClearSheet();
-            G.DrawALLGraph(V, E);
+            G.DrawALLGraph(Data.V, Data.E);
             selectRoute.Enabled = true;
             sheet.Image = G.GetBitmap();
             stopPointButton.Enabled = true;
@@ -751,14 +709,14 @@ namespace SystAnalys_lr1
                 string message = MainStrings.deleteGraph;
                 string caption = MainStrings.delete;
                 var MBSave = MetroMessageBox.Show(this, message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (routes != null && routesEdge != null && E != null && V != null && buses != null)
+                if (Data.routes != null && Data.routesEdge != null && Data.E != null && Data.V != null && Data.buses != null)
                 {
                     if (MBSave == DialogResult.Yes && changeRoute.Text != "" && changeRoute.Text != MainStrings.network)
                     {
                         loadingForm.Show();
                         List<Bus> busTest = new List<Bus>();
                         loadingForm.loading.Value = 20;
-                        foreach (var b in buses)
+                        foreach (var b in Data.buses)
                         {
                             if (b.Route == changeRoute.Text)
                             {
@@ -769,16 +727,16 @@ namespace SystAnalys_lr1
                         loadingForm.loading.Value = 40;
                         foreach (var b in busTest)
                         {
-                            buses.Remove(b);
+                            Data.buses.Remove(b);
                         }
 
-                        routes.Remove(changeRoute.Text);
-                        routesEdge.Remove(changeRoute.Text);
-                        AllCoordinates.Remove(changeRoute.Text);
+                        Data.routes.Remove(changeRoute.Text);
+                        Data.routesEdge.Remove(changeRoute.Text);
+                        Data.AllCoordinates.Remove(changeRoute.Text);
                         AddInComboBox();
                         changeRoute.Text = changeRoute.Items[0].ToString();
                         G.ClearSheet();
-                        G.DrawALLGraph(V, E);
+                        G.DrawALLGraph(Data.V, Data.E);
                         sheet.Image = G.GetBitmap();
                         DrawGrid();
                         loadingForm.loading.Value = 60;
@@ -793,19 +751,19 @@ namespace SystAnalys_lr1
                         loadingForm = new LoadingForm();
                         loadingForm.Show();
                         loadingForm.loading.Value = 20;
-                        buses.Clear();
+                        Data.buses.Clear();
                         addBus.Enabled = false;
                         deleteBus.Enabled = false;
                         loadingForm.loading.Value = 40;
-                        V.Clear();
-                        E.Clear();
+                        Data.V.Clear();
+                        Data.E.Clear();
                         addTraficLight.Enabled = true;
-                        routes.Clear();
-                        routesEdge.Clear();
+                        Data.routes.Clear();
+                        Data.routesEdge.Clear();
                         AddInComboBox();
-                        AllCoordinates.Clear();
+                        Data.AllCoordinates.Clear();
                         G.ClearSheet();
-                        G.DrawALLGraph(V, E);
+                        G.DrawALLGraph(Data.V, Data.E);
                         sheet.Image = G.GetBitmap();
                         DrawGrid();
                         checkBuses();
@@ -863,16 +821,16 @@ namespace SystAnalys_lr1
                     Ep.EG = new DrawGraph();
                     Ep.Close();
                 }
-                buses.Clear();
+                Data.buses.Clear();
                 config.Text = MainStrings.config;
-                foreach (var tl in traficLights)
+                foreach (var tl in Data.traficLights)
                 {
                     tl.Stop();
                 }
-                TraficLightsInGrids.Clear();
-                stopPointsInGrids.Clear();
-                V.Clear();
-                E.Clear();
+                Data.TraficLightsInGrids.Clear();
+                Data.stopPointsInGrids.Clear();
+                Data.V.Clear();
+                Data.E.Clear();
                 G.bitmap = null;
                 if (G.bitmap != null)
                 {
@@ -880,13 +838,13 @@ namespace SystAnalys_lr1
                     G.ClearSheet();
                     G.ClearSheet2();
                 }
-                routes.Clear();
-                routesEdge.Clear();
+                Data.routes.Clear();
+                Data.routesEdge.Clear();
                 changeRoute.Items.Clear();
-                AllCoordinates.Clear();
-                allstopPoints.Clear();
-                stopPoints.Clear();
-                traficLights.Clear();
+                Data.AllCoordinates.Clear();
+                Data.allstopPoints.Clear();
+                Data.stopPoints.Clear();
+                Data.traficLights.Clear();
                 sheet.Image = Image.FromFile(fb.FileName);
                 saveImage = sheet.Image;
                 zoomBar.Value = 1;
@@ -947,11 +905,11 @@ namespace SystAnalys_lr1
                         if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
                         {
                             loadingForm.Show();
-                            routes[changeRoute.Text].Clear();
-                            routesEdge[changeRoute.Text].Clear();
+                            Data.routes[changeRoute.Text].Clear();
+                            Data.routesEdge[changeRoute.Text].Clear();
                             loadingForm.loading.Value = 20;
                             List<Bus> busTest = new List<Bus>();
-                            foreach (var b in buses)
+                            foreach (var b in Data.buses)
                             {
                                 if (b.Route == changeRoute.Text)
                                 {
@@ -961,12 +919,12 @@ namespace SystAnalys_lr1
                             loadingForm.loading.Value = 40;
                             foreach (var b in busTest)
                             {
-                                buses.Remove(b);
+                                Data.buses.Remove(b);
                             }
                             loadingForm.loading.Value = 50;
-                            AllCoordinates[changeRoute.Text].Clear();
+                            Data.AllCoordinates[changeRoute.Text].Clear();
                             G.ClearSheet();
-                            G.DrawALLGraph(V, E);
+                            G.DrawALLGraph(Data.V, Data.E);
                             sheet.Image = G.GetBitmap();
                             DrawGrid();
 
@@ -975,11 +933,11 @@ namespace SystAnalys_lr1
                         {
                             loadingForm.Show();
                             loadingForm.loading.Value = 20;
-                            buses.Clear();
-                            routes.Keys.ToList().ForEach(x => routes[x] = new List<Vertex>());
-                            routesEdge.Keys.ToList().ForEach(x => routesEdge[x] = new List<Edge>());
+                            Data.buses.Clear();
+                            Data.routes.Keys.ToList().ForEach(x => Data.routes[x] = new List<Vertex>());
+                            Data.routesEdge.Keys.ToList().ForEach(x => Data.routesEdge[x] = new List<Edge>());
                             loadingForm.loading.Value = 40;
-                            AllCoordinates.Clear();
+                            Data.AllCoordinates.Clear();
                             G.ClearSheet();
                             sheet.Image = G.GetBitmap();
                             DrawGrid();
@@ -991,8 +949,8 @@ namespace SystAnalys_lr1
                         {
                             loadingForm.Show();
                             loadingForm.loading.Value = 20;
-                            stopPoints[changeRoute.Text].Clear();
-                            stopPointsInGrids[changeRoute.Text].Clear();
+                            Data.stopPoints[changeRoute.Text].Clear();
+                            Data.stopPointsInGrids[changeRoute.Text].Clear();
                             loadingForm.loading.Value = 40;
                             G.ClearSheet();
                             sheet.Image = G.GetBitmap();
@@ -1003,9 +961,9 @@ namespace SystAnalys_lr1
                         {
                             loadingForm.Show();
                             loadingForm.loading.Value = 20;
-                            allstopPoints.Clear();
-                            stopPoints.Clear();
-                            stopPointsInGrids.Clear();
+                            Data.allstopPoints.Clear();
+                            Data.stopPoints.Clear();
+                            Data.stopPointsInGrids.Clear();
                             loadingForm.loading.Value = 40;
                             G.ClearSheet();
                             sheet.Image = G.GetBitmap();
@@ -1018,10 +976,10 @@ namespace SystAnalys_lr1
                         {
                             loadingForm.Show();
                             loadingForm.loading.Value = 20;
-                            foreach (var tf in traficLights)
+                            foreach (var tf in Data.traficLights)
                                 tf.Stop();
-                            traficLights.Clear();
-                            TraficLightsInGrids.Clear();
+                            Data.traficLights.Clear();
+                            Data.TraficLightsInGrids.Clear();
                             loadingForm.loading.Value = 40;
                             G.ClearSheet();
                             sheet.Image = G.GetBitmap();
@@ -1041,7 +999,7 @@ namespace SystAnalys_lr1
                         break;
                 }
 
-                G.DrawALLGraph(V, E);
+                G.DrawALLGraph(Data.V, Data.E);
                 selectRoute.Enabled = true;
                 loadingForm.loading.Value = 80;
                 trafficLightLabel.Visible = false;
@@ -1157,12 +1115,12 @@ namespace SystAnalys_lr1
    
         private async void optimize_ClickAsync(object sender, EventArgs e)
         {
-            if (optText.Text != "" && speed.Text != "" && buses.Count != 0 && int.Parse(optText.Text) > 0 && int.Parse(speed.Text) > 0 && buses != null)
+            if (optText.Text != "" && speed.Text != "" && Data.buses.Count != 0 && int.Parse(optText.Text) > 0 && int.Parse(speed.Text) > 0 && Data.buses != null)
             {
                 Optimization.withoutSensorsBuses = new List<int>();
-                Optimization.countWithoutSensors = buses.Count;
+                Optimization.countWithoutSensors = Data.buses.Count;
                 bool check = false;
-                foreach (var bus in buses)
+                foreach (var bus in Data.buses)
                 {
                     if (bus.Tracker == true)
                     {
@@ -1172,10 +1130,10 @@ namespace SystAnalys_lr1
                 }
                 if (check)
                 {
-                    //foreach (var bus in buses)
+                    //foreach (var bus in Data.buses)
                     //    bus.Stop();
                     timer.Stop();
-                    foreach (var tl in traficLights)
+                    foreach (var tl in Data.traficLights)
                         tl.TimerLight.Interval = 1;
                     Optimization.OptiCount = int.Parse(optText.Text);
                     Optimization.OptiSpeed = int.Parse(speed.Text);
@@ -1237,7 +1195,7 @@ namespace SystAnalys_lr1
                     buttonOn();
                     ResChart();    
 
-                    foreach (var tl in traficLights)
+                    foreach (var tl in Data.traficLights)
                         tl.TimerLight.Interval = 1000;
                 }
                 else
@@ -1503,7 +1461,7 @@ namespace SystAnalys_lr1
         private void drawEdgeButton_Click(object sender, EventArgs e)
         {
             G.ClearSheet();
-            G.DrawALLGraph(V, E);
+            G.DrawALLGraph(Data.V, Data.E);
             if (changeRoute.Text == MainStrings.network)
             {
                 allBusSettings.Enabled = false;
@@ -1526,7 +1484,7 @@ namespace SystAnalys_lr1
                 drawVertexButton.Enabled = false;
                 deleteButton.Enabled = true;
                 addTraficLight.Enabled = false;
-                G.DrawALLGraph(routes[changeRoute.Text], routesEdge[changeRoute.Text], 1);
+                G.DrawALLGraph(Data.routes[changeRoute.Text], Data.routesEdge[changeRoute.Text], 1);
                 checkBusesOnRoute();
             }
             selectRoute.Enabled = true;
@@ -1558,7 +1516,7 @@ namespace SystAnalys_lr1
                     File.Delete(save + "Vertices.xml");
                     using (FileStream fileV = new FileStream(save + "Vertices.xml", FileMode.OpenOrCreate))
                     {
-                        serializerV.Serialize(fileV, V);
+                        serializerV.Serialize(fileV, Data.V);
                         Console.WriteLine("Объект сериализован");
                         fileV.Close();
                     }
@@ -1566,7 +1524,7 @@ namespace SystAnalys_lr1
                     File.Delete(save + "Edges.xml");
                     using (FileStream fileE = new FileStream(save + "Edges.xml", FileMode.OpenOrCreate))
                     {
-                        serializerE.Serialize(fileE, E);
+                        serializerE.Serialize(fileE, Data.E);
                         Console.WriteLine("Объект сериализован");
                         fileE.Close();
                     }
@@ -1575,25 +1533,25 @@ namespace SystAnalys_lr1
                     XmlSerializer serializerAllBuses = new XmlSerializer(typeof(List<Bus>));
                     using (FileStream fileB = new FileStream(save + "Buses.xml", FileMode.OpenOrCreate))
                     {
-                        serializerAllBuses.Serialize(fileB, buses);
+                        serializerAllBuses.Serialize(fileB, Data.buses);
                         Console.WriteLine("Объект сериализован");
                     }
                     loadingForm.loading.Value = 30;
 
                     //AsyncCreateAllCoordinates();
-                    File.Delete(save + "AllCoordinates.xml");
+                    File.Delete(save + "Data.AllCoordinates.xml");
                     XmlSerializer serializerAllCoor = new XmlSerializer(typeof(SerializableDictionary<string, List<Point>>));
-                    using (FileStream fileA = new FileStream(save + "AllCoordinates.xml", FileMode.OpenOrCreate))
+                    using (FileStream fileA = new FileStream(save + "Data.AllCoordinates.xml", FileMode.OpenOrCreate))
                     {
-                        serializerAllCoor.Serialize(fileA, AllCoordinates);
+                        serializerAllCoor.Serialize(fileA, Data.AllCoordinates);
                         Console.WriteLine("Объект сериализован");
                     }
                     loadingForm.loading.Value = 50;
-                    File.Delete(save + "AllGridsInRoutes.xml");
+                    File.Delete(save + "Data.AllGridsInRoutes.xml");
                     XmlSerializer serializerAllGridsInRoutes = new XmlSerializer(typeof(SerializableDictionary<string, List<int>>));
-                    using (FileStream fileAG = new FileStream(save + "AllGridsInRoutes.xml", FileMode.OpenOrCreate))
+                    using (FileStream fileAG = new FileStream(save + "Data.AllGridsInRoutes.xml", FileMode.OpenOrCreate))
                     {
-                        serializerAllGridsInRoutes.Serialize(fileAG, AllGridsInRoutes);
+                        serializerAllGridsInRoutes.Serialize(fileAG, Data.AllGridsInRoutes);
                         Console.WriteLine("Объект сериализован");
                     }
                     loadingForm.loading.Value = 60;
@@ -1603,21 +1561,21 @@ namespace SystAnalys_lr1
                     File.Delete(save + "vertexRoutes.xml");
                     using (FileStream fileV = new FileStream(save + "vertexRoutes.xml", FileMode.OpenOrCreate))
                     {
-                        Ver.Serialize(fileV, routes);
+                        Ver.Serialize(fileV, Data.routes);
                         Console.WriteLine("Объект сериализован");
                     }
                     loadingForm.loading.Value = 70;
                     File.Delete(save + "StopPoints.xml");
                     using (FileStream fileV = new FileStream(save + "StopPoints.xml", FileMode.OpenOrCreate))
                     {
-                        Ver.Serialize(fileV, stopPoints);
+                        Ver.Serialize(fileV, Data.stopPoints);
                         Console.WriteLine("Объект сериализован");
                     }
                     File.Delete(save + "allStopPoints.xml");
                     using (FileStream fileV = new FileStream(save + "allStopPoints.xml", FileMode.OpenOrCreate))
                     {
                         XmlSerializer V = new XmlSerializer(typeof(List<Vertex>));
-                        V.Serialize(fileV, allstopPoints);
+                        V.Serialize(fileV, Data.allstopPoints);
                         Console.WriteLine("Объект сериализован");
                     }
                     loadingForm.loading.Value = 80;
@@ -1625,19 +1583,19 @@ namespace SystAnalys_lr1
                     File.Delete(save + "edgeRoutes.xml");
                     using (FileStream fileE = new FileStream(save + "edgeRoutes.xml", FileMode.OpenOrCreate))
                     {
-                        Edge.Serialize(fileE, routesEdge);
+                        Edge.Serialize(fileE, Data.routesEdge);
                         Console.WriteLine("Объект сериализован");
 
                     }
-                    foreach (var tl in traficLights)
+                    foreach (var tl in Data.traficLights)
                     {
                         tl.Stop();
                     }
-                    File.Delete(save + "traficLights.xml");
-                    using (FileStream fileTL = new FileStream(save + "traficLights.xml", FileMode.OpenOrCreate))
+                    File.Delete(save + "Data.traficLights.xml");
+                    using (FileStream fileTL = new FileStream(save + "Data.traficLights.xml", FileMode.OpenOrCreate))
                     {
                         XmlSerializer tl = new XmlSerializer(typeof(List<TraficLight>));
-                        tl.Serialize(fileTL, traficLights);
+                        tl.Serialize(fileTL, Data.traficLights);
 
                         Console.WriteLine("Объект сериализован");
 
@@ -1661,36 +1619,36 @@ namespace SystAnalys_lr1
                 if (saveFormat == "json")
                 {
                     loadingForm.loading.Value = 10;
-                    string json = JsonConvert.SerializeObject(V);
+                    string json = JsonConvert.SerializeObject(Data.V);
                     File.WriteAllText(save + "Vertices.json", json);
                     loadingForm.loading.Value = 20;
-                    json = JsonConvert.SerializeObject(E);
+                    json = JsonConvert.SerializeObject(Data.E);
                     File.WriteAllText(save + "Edges.json", json);
                     loadingForm.loading.Value = 30;
-                    json = JsonConvert.SerializeObject(buses);
+                    json = JsonConvert.SerializeObject(Data.buses);
                     File.WriteAllText(save + "Buses.json", json);
                     loadingForm.loading.Value = 50;
                     //AsyncCreateAllCoordinates();
-                    json = JsonConvert.SerializeObject(AllCoordinates);
-                    File.WriteAllText(save + "AllCoordinates.json", json);
+                    json = JsonConvert.SerializeObject(Data.AllCoordinates);
+                    File.WriteAllText(save + "Data.AllCoordinates.json", json);
                     loadingForm.loading.Value = 60;
-                    json = JsonConvert.SerializeObject(AllGridsInRoutes);
-                    File.WriteAllText(save + "AllGridsInRoutes.json", json);
+                    json = JsonConvert.SerializeObject(Data.AllGridsInRoutes);
+                    File.WriteAllText(save + "Data.AllGridsInRoutes.json", json);
                     loadingForm.loading.Value = 70;
-                    json = JsonConvert.SerializeObject(stopPoints);
+                    json = JsonConvert.SerializeObject(Data.stopPoints);
                     File.WriteAllText(save + "StopPoints.json", json);
-                    json = JsonConvert.SerializeObject(allstopPoints);
+                    json = JsonConvert.SerializeObject(Data.allstopPoints);
                     File.WriteAllText(save + "allStopPoints.json", json);
                     loadingForm.loading.Value = 80;
-                    json = JsonConvert.SerializeObject(routes);
+                    json = JsonConvert.SerializeObject(Data.routes);
                     File.WriteAllText(save + "vertexRoutes.json", json);
                     json = JsonConvert.SerializeObject(g);
                     File.WriteAllText(save + "grid.json", json);
                     loadingForm.loading.Value = 90;
-                    json = JsonConvert.SerializeObject(routesEdge);
+                    json = JsonConvert.SerializeObject(Data.routesEdge);
                     File.WriteAllText(save + "edgeRoutes.json", json);
-                    json = JsonConvert.SerializeObject(traficLights);
-                    File.WriteAllText(save + "traficLights.json", json);
+                    json = JsonConvert.SerializeObject(Data.traficLights);
+                    File.WriteAllText(save + "Data.traficLights.json", json);
                     saveF = saveFormat;
                     loadingForm.loading.Value = 100;
                     loadingForm.close = true;
@@ -1724,37 +1682,37 @@ namespace SystAnalys_lr1
                 }
             }
 
-            foreach (var bus in buses)
+            foreach (var bus in Data.buses)
             {
                 bus.Coordinates.Clear();
                 bus.Coordinates.TrimExcess();
                 bus.BusPic.Dispose();
             }
-            buses.Clear();
+            Data.buses.Clear();
 
 
-            foreach (var tl in traficLights)
+            foreach (var tl in Data.traficLights)
             {
                 tl.Stop();
                 tl.TimerLight.Dispose();
             }
 
-            routes.Clear();
-            routesEdge.Clear();
+            Data.routes.Clear();
+            Data.routesEdge.Clear();
             changeRoute.Items.Clear();
 
-            AllCoordinates.Clear();
+            Data.AllCoordinates.Clear();
 
-            allstopPoints.Clear();
-            stopPoints.Clear();
-            stopPointsInGrids.Clear();
+            Data.allstopPoints.Clear();
+            Data.stopPoints.Clear();
+            Data.stopPointsInGrids.Clear();
 
-            traficLights.Clear();
-            traficLights.TrimExcess();
-            TraficLightsInGrids.Clear();
+            Data.traficLights.Clear();
+            Data.traficLights.TrimExcess();
+            Data.TraficLightsInGrids.Clear();
 
-            V.Clear();
-            E.Clear();
+            Data.V.Clear();
+            Data.E.Clear();
 
         }
         //class loader
@@ -1768,7 +1726,7 @@ namespace SystAnalys_lr1
                     using (StreamReader reader = new StreamReader(load + "Vertices.xml"))
                     {
                         XmlSerializer deserializerV = new XmlSerializer(typeof(List<Vertex>));
-                        V = (List<Vertex>)deserializerV.Deserialize(reader);
+                        Data.V = (List<Vertex>)deserializerV.Deserialize(reader);
                     }
                 }
 
@@ -1776,7 +1734,7 @@ namespace SystAnalys_lr1
                 {
                     using (StreamReader reader = new StreamReader(load + "Vertices.json"))
                     {
-                        V = JsonConvert.DeserializeObject<List<Vertex>>(File.ReadAllText(load + "Vertices.json"));
+                        Data.V = JsonConvert.DeserializeObject<List<Vertex>>(File.ReadAllText(load + "Vertices.json"));
                     }
                 }
                 loadingForm.loading.Value = 10;
@@ -1786,7 +1744,7 @@ namespace SystAnalys_lr1
                     using (StreamReader reader = new StreamReader(load + "Edges.xml"))
                     {
                         XmlSerializer deserializerE = new XmlSerializer(typeof(List<Edge>));
-                        E = (List<Edge>)deserializerE.Deserialize(reader);
+                        Data.E = (List<Edge>)deserializerE.Deserialize(reader);
                     }
                 }
 
@@ -1794,7 +1752,7 @@ namespace SystAnalys_lr1
                 {
                     using (StreamReader reader = new StreamReader(load + "Edges.json"))
                     {
-                        E = JsonConvert.DeserializeObject<List<Edge>>(reader.ReadToEnd());
+                        Data.E = JsonConvert.DeserializeObject<List<Edge>>(reader.ReadToEnd());
                     }
                 }
 
@@ -1826,20 +1784,20 @@ namespace SystAnalys_lr1
                     using (StreamReader reader = new StreamReader(load + "StopPoints.xml"))
                     {
                         XmlSerializer deserializerV = new XmlSerializer(typeof(SerializableDictionary<string, List<Vertex>>));
-                        stopPoints = (SerializableDictionary<string, List<BusStop>>)deserializerV.Deserialize(reader);
-                        foreach (var sp in stopPoints.Values)
+                        Data.stopPoints = (SerializableDictionary<string, List<BusStop>>)deserializerV.Deserialize(reader);
+                        foreach (var sp in Data.stopPoints.Values)
                         {
                             foreach (var s in sp)
-                                if (!allstopPoints.Contains(s))
-                                    allstopPoints.Add(s);
+                                if (!Data.allstopPoints.Contains(s))
+                                    Data.allstopPoints.Add(s);
                         }
-                        stopPointsInGrids = new SerializableDictionary<string, List<int>>();
-                        foreach (var StopList in stopPoints)
+                        Data.stopPointsInGrids = new SerializableDictionary<string, List<int>>();
+                        foreach (var StopList in Data.stopPoints)
                         {
-                            stopPointsInGrids.Add(StopList.Key, new List<int>());
+                            Data.stopPointsInGrids.Add(StopList.Key, new List<int>());
                             foreach (var vertex in StopList.Value)
                             {
-                                stopPointsInGrids[StopList.Key].Add(vertex.gridNum);
+                                Data.stopPointsInGrids[StopList.Key].Add(vertex.gridNum);
                             }
 
                         }
@@ -1851,7 +1809,7 @@ namespace SystAnalys_lr1
                     using (StreamReader reader = new StreamReader(load + "allStopPoints.xml"))
                     {
                         XmlSerializer deserializerV = new XmlSerializer(typeof(List<Vertex>));
-                        allstopPoints = (List<BusStop>)deserializerV.Deserialize(reader);
+                        Data.allstopPoints = (List<BusStop>)deserializerV.Deserialize(reader);
 
                     }
                 }
@@ -1860,20 +1818,20 @@ namespace SystAnalys_lr1
                 {
                     using (StreamReader reader = new StreamReader(load + "StopPoints.json"))
                     {
-                        stopPoints = JsonConvert.DeserializeObject<SerializableDictionary<string, List<BusStop>>>(File.ReadAllText(load + "StopPoints.json"));
-                        foreach (var sp in stopPoints.Values)
+                        Data.stopPoints = JsonConvert.DeserializeObject<SerializableDictionary<string, List<BusStop>>>(File.ReadAllText(load + "StopPoints.json"));
+                        foreach (var sp in Data.stopPoints.Values)
                         {
                             foreach (var s in sp)
-                                if (!allstopPoints.Contains(s))
-                                    allstopPoints.Add(s);
+                                if (!Data.allstopPoints.Contains(s))
+                                    Data.allstopPoints.Add(s);
                         }
-                        stopPointsInGrids = new SerializableDictionary<string, List<int>>();
-                        foreach (var StopList in stopPoints)
+                        Data.stopPointsInGrids = new SerializableDictionary<string, List<int>>();
+                        foreach (var StopList in Data.stopPoints)
                         {
-                            stopPointsInGrids.Add(StopList.Key, new List<int>());
+                            Data.stopPointsInGrids.Add(StopList.Key, new List<int>());
                             foreach (var vertex in StopList.Value)
                             {
-                                stopPointsInGrids[StopList.Key].Add(vertex.gridNum);
+                                Data.stopPointsInGrids[StopList.Key].Add(vertex.gridNum);
                             }
 
                         }
@@ -1885,41 +1843,41 @@ namespace SystAnalys_lr1
                 {
                     using (StreamReader reader = new StreamReader(load + "allStopPoints.json"))
                     {
-                        allstopPoints = JsonConvert.DeserializeObject<List<BusStop>>(File.ReadAllText(load + "allStopPoints.json"));
+                        Data.allstopPoints = JsonConvert.DeserializeObject<List<BusStop>>(File.ReadAllText(load + "allStopPoints.json"));
                     }
                 }
 
                 loadingForm.loading.Value = 30;
 
 
-                if (File.Exists(load + "traficLights.xml"))
+                if (File.Exists(load + "Data.traficLights.xml"))
                 {
                     XmlSerializer tl = new XmlSerializer(typeof(List<TraficLight>));
-                    using (StreamReader reader = new StreamReader(load + "traficLights.xml"))
-                        traficLights = (List<TraficLight>)tl.Deserialize(reader);
-                    TraficLightsInGrids = new List<int>();
-                    foreach (var item in traficLights)
+                    using (StreamReader reader = new StreamReader(load + "Data.traficLights.xml"))
+                        Data.traficLights = (List<TraficLight>)tl.Deserialize(reader);
+                    Data.TraficLightsInGrids = new List<int>();
+                    foreach (var item in Data.traficLights)
                     {
-                        TraficLightsInGrids.Add(item.gridNum);
+                        Data.TraficLightsInGrids.Add(item.gridNum);
                     }
-                    foreach (var tll in traficLights)
+                    foreach (var tll in Data.traficLights)
                     {
                         tll.Set();
                         tll.Start();
                     }
                     sheet.Image = G.GetBitmap();
                 }
-                if (File.Exists(load + "traficLights.json"))
+                if (File.Exists(load + "Data.traficLights.json"))
                 {
-                    using (StreamReader reader = new StreamReader(load + "traficLights.json"))
+                    using (StreamReader reader = new StreamReader(load + "Data.traficLights.json"))
                     {
-                        traficLights = JsonConvert.DeserializeObject<List<TraficLight>>(reader.ReadToEnd());
-                        TraficLightsInGrids = new List<int>();
-                        foreach (var item in traficLights)
+                        Data.traficLights = JsonConvert.DeserializeObject<List<TraficLight>>(reader.ReadToEnd());
+                        Data.TraficLightsInGrids = new List<int>();
+                        foreach (var item in Data.traficLights)
                         {
-                            TraficLightsInGrids.Add(item.gridNum);
+                            Data.TraficLightsInGrids.Add(item.gridNum);
                         }
-                        foreach (var tll in traficLights)
+                        foreach (var tll in Data.traficLights)
                         {
                             tll.Set();
                             tll.Start();
@@ -1929,16 +1887,16 @@ namespace SystAnalys_lr1
                 }
                 loadingForm.loading.Value = 40;
 
-                if (buses != null)
+                if (Data.buses != null)
                 {
-                    buses.Clear();
+                    Data.buses.Clear();
                 }
 
                 if (File.Exists(load + "Buses.json"))
                 {
                     using (StreamReader reader = new StreamReader(load + "Buses.json"))
                     {
-                        buses = JsonConvert.DeserializeObject<List<Bus>>(reader.ReadToEnd());
+                        Data.buses = JsonConvert.DeserializeObject<List<Bus>>(reader.ReadToEnd());
                     }
                 }
 
@@ -1947,17 +1905,17 @@ namespace SystAnalys_lr1
                 {
                     using (StreamReader reader = new StreamReader(load + "Buses.xml"))
                     {
-                        buses = (List<Bus>)deserializerAllBuses.Deserialize(reader);
+                        Data.buses = (List<Bus>)deserializerAllBuses.Deserialize(reader);
                     }
                 }
                 loadingForm.loading.Value = 60;
-                foreach (var tl in traficLights)
+                foreach (var tl in Data.traficLights)
                 {
                     tl.Start();
                 }
                 Image num;
                 Bitmap original = new Bitmap(1, 1);
-                foreach (var x in buses)
+                foreach (var x in Data.buses)
                 {
 
                     if (x.Tracker == true)
@@ -2051,21 +2009,21 @@ namespace SystAnalys_lr1
                 if (File.Exists(load + "vertexRoutes.xml"))
                 {
                     using (StreamReader reader = new StreamReader(load + "vertexRoutes.xml"))
-                        routes = (SerializableDictionary<string, List<Vertex>>)Ver.Deserialize(reader);
+                        Data.routes = (SerializableDictionary<string, List<Vertex>>)Ver.Deserialize(reader);
                 }
 
                 if (File.Exists(load + "vertexRoutes.json"))
                 {
                     using (StreamReader reader = new StreamReader(load + "vertexRoutes.json"))
                     {
-                        routes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Vertex>>>(reader.ReadToEnd());
+                        Data.routes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Vertex>>>(reader.ReadToEnd());
                     }
                 }
                 loadingForm.loading.Value = 80;
                 if (File.Exists(load + "edgeRoutes.xml"))
                 {
                     using (StreamReader reader = new StreamReader(load + "edgeRoutes.xml"))
-                        routesEdge = (SerializableDictionary<string, List<Edge>>)Edge.Deserialize(reader);
+                        Data.routesEdge = (SerializableDictionary<string, List<Edge>>)Edge.Deserialize(reader);
                     saveF = "xml";
                 }
 
@@ -2073,36 +2031,36 @@ namespace SystAnalys_lr1
                 {
                     using (StreamReader reader = new StreamReader(load + "edgeRoutes.json"))
                     {
-                        routesEdge = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Edge>>>(reader.ReadToEnd());
+                        Data.routesEdge = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Edge>>>(reader.ReadToEnd());
                     }
                     saveF = "json";
                 }
                 XmlSerializer deserializerAllCoor = new XmlSerializer(typeof(SerializableDictionary<string, List<Point>>));
-                if (File.Exists(load + "AllCoordinates.xml"))
+                if (File.Exists(load + "Data.AllCoordinates.xml"))
                 {
-                    using (StreamReader reader = new StreamReader(load + "AllCoordinates.xml"))
-                        AllCoordinates = (SerializableDictionary<string, List<Point>>)deserializerAllCoor.Deserialize(reader);
+                    using (StreamReader reader = new StreamReader(load + "Data.AllCoordinates.xml"))
+                        Data.AllCoordinates = (SerializableDictionary<string, List<Point>>)deserializerAllCoor.Deserialize(reader);
                 }
 
-                if (File.Exists(load + "AllCoordinates.json"))
+                if (File.Exists(load + "Data.AllCoordinates.json"))
                 {
-                    using (StreamReader reader = new StreamReader(load + "AllCoordinates.json"))
+                    using (StreamReader reader = new StreamReader(load + "Data.AllCoordinates.json"))
                     {
-                        AllCoordinates = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Point>>>(reader.ReadToEnd());
+                        Data.AllCoordinates = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Point>>>(reader.ReadToEnd());
                     }
                 }
                 XmlSerializer deserializerAllGridsInRoutes = new XmlSerializer(typeof(SerializableDictionary<string, List<int>>));
-                if (File.Exists(load + "AllGridsInRoutes.xml"))
+                if (File.Exists(load + "Data.AllGridsInRoutes.xml"))
                 {
-                    using (StreamReader reader = new StreamReader(load + "AllGridsInRoutes.xml"))
-                        AllGridsInRoutes = (SerializableDictionary<string, List<int>>)deserializerAllGridsInRoutes.Deserialize(reader);
+                    using (StreamReader reader = new StreamReader(load + "Data.AllGridsInRoutes.xml"))
+                        Data.AllGridsInRoutes = (SerializableDictionary<string, List<int>>)deserializerAllGridsInRoutes.Deserialize(reader);
                 }
 
-                if (File.Exists(load + "AllGridsInRoutes.json"))
+                if (File.Exists(load + "Data.AllGridsInRoutes.json"))
                 {
-                    using (StreamReader reader = new StreamReader(load + "AllGridsInRoutes.json"))
+                    using (StreamReader reader = new StreamReader(load + "Data.AllGridsInRoutes.json"))
                     {
-                        AllGridsInRoutes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<int>>>(reader.ReadToEnd());
+                        Data.AllGridsInRoutes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<int>>>(reader.ReadToEnd());
                     }
                 }
                 loadingForm.loading.Value = 90;
@@ -2130,7 +2088,7 @@ namespace SystAnalys_lr1
                 ConstructorOnNetwork();
                 AddInComboBox();
                 G.ClearSheet();
-                G.DrawALLGraph(V, E);
+                G.DrawALLGraph(Data.V, Data.E);
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
                 if (Ep != null)
@@ -2141,7 +2099,7 @@ namespace SystAnalys_lr1
                 loadingForm.loading.Value = 100;
                 loadingForm.close = true;
                 loadingForm.Close();
-                if (AllCoordinates.Count != 0)
+                if (Data.AllCoordinates.Count != 0)
                 {
                     coordinates.CreateAllCoordinates();
                 }
@@ -2185,9 +2143,9 @@ namespace SystAnalys_lr1
         
         private bool CheckV(MouseEventArgs e, bool check)
         {
-            for (int i = 0; i < V.Count; i++)
+            for (int i = 0; i < Data.V.Count; i++)
             {
-                if (Math.Pow((V[i].X - e.X / zoom), 2) + Math.Pow((V[i].Y - e.Y / zoom), 2) <= G.R * G.R)
+                if (Math.Pow((Data.V[i].X - e.X / zoom), 2) + Math.Pow((Data.V[i].Y - e.Y / zoom), 2) <= G.R * G.R)
                 {
                     return true;
                 }
@@ -2202,7 +2160,7 @@ namespace SystAnalys_lr1
                 if (firstCrossRoads > 0)
                 {
                     trafficLightLabel.Visible = true;
-                    c.FirstTrafficLight(e, traficLights, sheet, TheGrid);
+                    c.FirstTrafficLight(e, Data.traficLights, sheet, Data.TheGrid);
                     trafficLightLabel.Text = MainStrings.putTrafficLights1 + " " + firstCrossRoads.ToString();
                     if (firstCrossRoads == 0)
                         trafficLightLabel.Text = MainStrings.putTrafficLights2 + " " + secondCrossRoads.ToString();
@@ -2211,14 +2169,14 @@ namespace SystAnalys_lr1
                 if (firstCrossRoads <= 0 && secondCrossRoads > 0)
                 {
                     trafficLightLabel.Text = MainStrings.putTrafficLights2 + " " + secondCrossRoads.ToString();
-                    c.SecondTrafficLight(e, traficLights, sheet, TheGrid);
+                    c.SecondTrafficLight(e, Data.traficLights, sheet, Data.TheGrid);
                     trafficLightLabel.Text = MainStrings.putTrafficLights2 + " " + (secondCrossRoads - 1).ToString();
                 }
             }
             if (firstCrossRoads <= 0 && secondCrossRoads <= 0)
             {
                 trafficLightLabel.Visible = false;
-                traficLights.ForEach((tl) =>
+                Data.traficLights.ForEach((tl) =>
                 {
                     tl.Set();
                     tl.Start();
@@ -2249,7 +2207,7 @@ namespace SystAnalys_lr1
                 {
                     bool check = false;
                     check = CheckV(e, check);
-                    c.SelectRoute(e, V, E, sheet, c, selected, check);
+                    c.SelectRoute(e, Data.V, Data.E, sheet, c, selected, check);
                 }
                 if (addTraficLight.Enabled == false)
                 {
@@ -2257,40 +2215,40 @@ namespace SystAnalys_lr1
                 }
                 if (stopPointButton.Enabled == false)
                 {
-                    c.AddStopPoints(e, allstopPoints, sheet, TheGrid);
+                    c.AddStopPoints(e, Data.allstopPoints, sheet, Data.TheGrid);
                 }
                 if (selectButton.Enabled == false)
                 {
-                    c.Select(e, V, E, sheet, 0);
+                    c.Select(e, Data.V, Data.E, sheet, 0);
                 }
                 if (drawVertexButton.Enabled == false)
                 {
-                    c.DrawVertex(e, V, sheet);
+                    c.DrawVertex(e, Data.V, sheet);
                 }
                 if (drawEdgeButton.Enabled == false)
                 {
-                    c.DrawEdge(e, V, E, sheet);
+                    c.DrawEdge(e, Data.V, Data.E, sheet);
                 }
                 if (deleteButton.Enabled == false)
                 {
                     switch (delType)
                     {
                         case DeleteType.All:
-                            c.AsDelete(e, V, E, sheet, routesEdge);
+                            c.AsDelete(e, Data.V, Data.E, sheet, Data.routesEdge);
                             break;
                         case DeleteType.BusStops:
-                            c.DeleteBS(e, V, E, sheet, routesEdge);
+                            c.DeleteBS(e, Data.V, Data.E, sheet, Data.routesEdge);
                             break;
                         case DeleteType.TrafficLight:
-                            c.DeleteTF(e, V, E, sheet, routesEdge);
+                            c.DeleteTF(e, Data.V, Data.E, sheet, Data.routesEdge);
                             break;
                         case DeleteType.VertexAndEdge:
-                            c.DeleteVE(e, V, E, sheet, routesEdge);
+                            c.DeleteVE(e, Data.V, Data.E, sheet, Data.routesEdge);
                             break;
                     }
                     if (flag)
                     {
-                        c.MapUpdateNetwork(sheet, V, E);
+                        c.MapUpdateNetwork(sheet, Data.V, Data.E);
                     }
                 }
                 return;
@@ -2298,19 +2256,19 @@ namespace SystAnalys_lr1
 
             if (changeRoute.SelectedIndex > 1)
             {
-                List<Vertex> routeV = routes[changeRoute.Text];
+                List<Vertex> routeV = Data.routes[changeRoute.Text];
                 if (stopPointButton.Enabled == false)
                 {
-                    c.AddStopPointsInRoutes(e, allstopPoints, sheet, TheGrid, changeRoute.Text);
+                    c.AddStopPointsInRoutes(e, Data.allstopPoints, sheet, Data.TheGrid, changeRoute.Text);
                 }
                 //нажата кнопка "выбрать вершину", ищем степень вершины
                 if (selectButton.Enabled == false)
                 {
-                    c.Select(e, routeV, routesEdge[changeRoute.Text], sheet, 1);
+                    c.Select(e, routeV, Data.routesEdge[changeRoute.Text], sheet, 1);
                 }
                 if (selectRoute.Enabled == false)
                 {
-                    c.SelectRouteInRoute(e, routeV, routesEdge[changeRoute.Text], sheet, selected);
+                    c.SelectRouteInRoute(e, routeV, Data.routesEdge[changeRoute.Text], sheet, selected);
                 }
                 //нажата кнопка addBus
                 if (addBus.Enabled == false)
@@ -2327,13 +2285,13 @@ namespace SystAnalys_lr1
                 }
                 if (deleteBus.Enabled == false)
                 {
-                    c.DeleteBus(e, routeV, routesEdge[changeRoute.Text], sheet, changeRoute.Text, mainPanel.AutoScrollPosition.X, mainPanel.AutoScrollPosition.Y);
+                    c.DeleteBus(e, routeV, Data.routesEdge[changeRoute.Text], sheet, changeRoute.Text, mainPanel.AutoScrollPosition.X, mainPanel.AutoScrollPosition.Y);
                 }
 
                 //нажата кнопка "рисовать ребро"
                 if (drawEdgeButton.Enabled == false)
                 {
-                    c.DrawEdgeInRoute(e, routeV, routesEdge[changeRoute.Text], sheet, changeRoute.Text);
+                    c.DrawEdgeInRoute(e, routeV, Data.routesEdge[changeRoute.Text], sheet, changeRoute.Text);
                 }
                 //нажата кнопка "удалить элемент"
                 if (deleteButton.Enabled == false)
@@ -2341,16 +2299,16 @@ namespace SystAnalys_lr1
                     switch (delType)
                     {
                         case DeleteType.All:
-                            c.DeleteOnRoute(e, routeV, routesEdge[changeRoute.Text], sheet, changeRoute.Text);
+                            c.DeleteOnRoute(e, routeV, Data.routesEdge[changeRoute.Text], sheet, changeRoute.Text);
                             break;
                         case DeleteType.BusStops:
                             c.DeleteStopsOnRoute(e, routeV, sheet, changeRoute.Text);
                             break;
                         case DeleteType.TrafficLight:
-                            c.DeleteTFOnRoute(e, routeV, routesEdge[changeRoute.Text], sheet, traficLights);
+                            c.DeleteTFOnRoute(e, routeV, Data.routesEdge[changeRoute.Text], sheet, Data.traficLights);
                             break;
                         case DeleteType.VertexAndEdge:
-                            c.DeleteVandE(e, routeV, routesEdge[changeRoute.Text], sheet);
+                            c.DeleteVandE(e, routeV, Data.routesEdge[changeRoute.Text], sheet);
                             break;
                         case DeleteType.TheBuses:
                             DelBus();
@@ -2358,10 +2316,10 @@ namespace SystAnalys_lr1
                     }
                     if (flag)
                     {
-                        c.MapUpdateRoute(sheet, routeV, routesEdge[changeRoute.Text]);
+                        c.MapUpdateRoute(sheet, routeV, Data.routesEdge[changeRoute.Text]);
                     }
                 }
-                //c.MapUpdateRoute(sheet, routeV, routesEdge[changeRoute.Text]);
+                //c.MapUpdateRoute(sheet, routeV, Data.routesEdge[changeRoute.Text]);
                 coordinates.CreateOneRouteCoordinates(changeRoute.Text);
                 return;
             }
@@ -2440,7 +2398,7 @@ namespace SystAnalys_lr1
                 allBusSettings.Enabled = false;
                 stopPointButton.Enabled = true;
                 addTraficLight.Enabled = true;
-                buses.Clear();
+                Data.buses.Clear();
                 delAllBusesOnRoute.Enabled = false;
             };
             checkBusesOnRoute();
@@ -2457,7 +2415,7 @@ namespace SystAnalys_lr1
                 allBusSettings.Enabled = false;
                 stopPointButton.Enabled = true;
                 List<Bus> b = new List<Bus>();
-                foreach (var bus in buses)
+                foreach (var bus in Data.buses)
                 {
                     if (bus.Route == (changeRoute.Text))
                     {
@@ -2466,11 +2424,11 @@ namespace SystAnalys_lr1
                 }
                 Parallel.ForEach(b, (bus) =>
                 {
-                    foreach (var B in buses)
+                    foreach (var B in Data.buses)
                     {
                         if (B == bus)
                         {
-                            buses.Remove(bus);
+                            Data.buses.Remove(bus);
                             break;
                         }
                     }
@@ -2490,14 +2448,14 @@ namespace SystAnalys_lr1
         }
         private void checkBuses()
         {
-            if (buses.Count != 0 && changeRoute.Text == MainStrings.network)
+            if (Data.buses.Count != 0 && changeRoute.Text == MainStrings.network)
             {
                 delAllBusesOnRoute.Enabled = true;
             }
         }
         private void checkBusesOnRoute()
         {
-            foreach (var bus in buses)
+            foreach (var bus in Data.buses)
             {
                 if (bus.Route == (changeRoute.Text))
                 {
@@ -2700,12 +2658,12 @@ namespace SystAnalys_lr1
             }
             if (addR.textBox1.Text != "")
             {
-                if (!routes.ContainsKey(this.addR.textBox1.Text))
+                if (!Data.routes.ContainsKey(this.addR.textBox1.Text))
                 {
-                    routes.Add((this.addR.textBox1.Text), new List<Vertex>());
-                    routesEdge.Add((this.addR.textBox1.Text), new List<Edge>());
+                    Data.routes.Add((this.addR.textBox1.Text), new List<Vertex>());
+                    Data.routesEdge.Add((this.addR.textBox1.Text), new List<Edge>());
                     changeRoute.Items.Add(addR.textBox1.Text);
-                    stopPoints.Add((this.addR.textBox1.Text), new List<BusStop>());
+                    Data.stopPoints.Add((this.addR.textBox1.Text), new List<BusStop>());
                     changeRoute.SelectedIndex = changeRoute.Items.IndexOf(addR.textBox1.Text);
                 }
             }
@@ -2713,7 +2671,7 @@ namespace SystAnalys_lr1
 
         private void runTrafficLightsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            traficLights.ForEach((tl) =>
+            Data.traficLights.ForEach((tl) =>
             {
                 tl.Start();
             });
@@ -2779,7 +2737,7 @@ namespace SystAnalys_lr1
         private void launchBuses_Click(object sender, EventArgs e)
         {
             //BarabanAfterOpti();
-            //foreach (var bus in buses)
+            //foreach (var bus in Data.buses)
             //{
 
             //    bus.Start();
@@ -2789,7 +2747,7 @@ namespace SystAnalys_lr1
 
         private void stopBuses_Click(object sender, EventArgs e)
         {
-            //foreach (var bus in buses)
+            //foreach (var bus in Data.buses)
             //{
             //    bus.Stop();
             //}
@@ -2859,8 +2817,8 @@ namespace SystAnalys_lr1
                 G.ClearSheet();
                 if (changeRoute.SelectedIndex > 1)
                 {
-                    G.DrawALLGraph(V, E);
-                    G.DrawALLGraph(routes[(changeRoute.Text)], routesEdge[(changeRoute.Text)], 1);
+                    G.DrawALLGraph(Data.V, Data.E);
+                    G.DrawALLGraph(Data.routes[(changeRoute.Text)], Data.routesEdge[(changeRoute.Text)], 1);
                 }
                 else if (changeRoute.Text == MainStrings.none)
                 {
@@ -2868,7 +2826,7 @@ namespace SystAnalys_lr1
                 }
                 else
                 {
-                    G.DrawALLGraph(V, E);
+                    G.DrawALLGraph(Data.V, Data.E);
                 }
 
                 if (timer.Enabled == false)
@@ -2878,7 +2836,7 @@ namespace SystAnalys_lr1
                     AnimationBitmap.MakeTransparent();
                     AnimationGraphics.Dispose();
                     AnimationGraphics = Graphics.FromImage(AnimationBitmap);
-                    foreach (var bus in buses)
+                    foreach (var bus in Data.buses)
                     {
 
                         AnimationGraphics.DrawImage(bus.BusPic, bus.Coordinates[bus.PositionAt].X * zoomBar.Value - bus.BusPic.Width / 2, bus.Coordinates[bus.PositionAt].Y * zoomBar.Value - bus.BusPic.Height / 2);
@@ -2946,7 +2904,7 @@ namespace SystAnalys_lr1
             AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
             AnimationBitmap.MakeTransparent();
             AnimationGraphics = Graphics.FromImage(AnimationBitmap);
-            foreach (var bus in buses)
+            foreach (var bus in Data.buses)
             {
                 try
                 {
@@ -3023,7 +2981,7 @@ namespace SystAnalys_lr1
                 addTraficLight.Enabled = true;
                 checkBuses();
                 G.ClearSheet();
-                G.DrawALLGraph(V, E);
+                G.DrawALLGraph(Data.V, Data.E);
                 trafficLightLabel.Visible = false;
                 sheet.Image = G.GetBitmap();
                 DrawGrid();
@@ -3031,9 +2989,9 @@ namespace SystAnalys_lr1
                 selected = new List<int>();
                 return;
             };
-            for (int i = 0; i < routes.Count; i++)
+            for (int i = 0; i < Data.routes.Count; i++)
             {
-                if (routes.ElementAt(i).Key == (changeRoute.Text))
+                if (Data.routes.ElementAt(i).Key == (changeRoute.Text))
                 {
                     selectedRoute = (changeRoute.Text);
                     selectRoute.Enabled = true;
@@ -3051,8 +3009,8 @@ namespace SystAnalys_lr1
                     addTraficLight.Enabled = false;
                     checkBusesOnRoute();
                     G.ClearSheet();
-                    G.DrawALLGraph(V, E);
-                    G.DrawALLGraph(routes[(changeRoute.Text)], routesEdge[(changeRoute.Text)], 1);
+                    G.DrawALLGraph(Data.V, Data.E);
+                    G.DrawALLGraph(Data.routes[(changeRoute.Text)], Data.routesEdge[(changeRoute.Text)], 1);
                     sheet.Image = G.GetBitmap();
                     DrawGrid();
                     selected = new List<int>();
@@ -3075,18 +3033,18 @@ namespace SystAnalys_lr1
                 Ep.EG.ClearSheet2();
                 Ep.Close();
             }
-            buses.Clear();
-            buses.TrimExcess();
+            Data.buses.Clear();
+            Data.buses.TrimExcess();
             config.Text = MainStrings.config;
-            foreach (var tl in traficLights)
+            foreach (var tl in Data.traficLights)
             {
                 tl.Stop();
                 tl.TimerLight.Dispose();
             }
-            TraficLightsInGrids.Clear();
-            stopPointsInGrids.Clear();
-            V.Clear();
-            E.Clear();
+            Data.TraficLightsInGrids.Clear();
+            Data.stopPointsInGrids.Clear();
+            Data.V.Clear();
+            Data.E.Clear();
             if (G.GetBitmap() != null)
             {
                 G.ClearSheet();
@@ -3095,17 +3053,17 @@ namespace SystAnalys_lr1
                 globalMap.Dispose();
 
             }
-            routes.Clear();
-            routesEdge.Clear();
+            Data.routes.Clear();
+            Data.routesEdge.Clear();
             changeRoute.Items.Clear();
             changeRoute.Items.Add(MainStrings.none);
             changeRoute.Items.Clear();
             changeRoute.Text = "";
-            AllCoordinates.Clear();
-            allstopPoints.Clear();
-            stopPoints.Clear();
-            traficLights.Clear();
-            traficLights.TrimExcess();
+            Data.AllCoordinates.Clear();
+            Data.allstopPoints.Clear();
+            Data.stopPoints.Clear();
+            Data.traficLights.Clear();
+            Data.traficLights.TrimExcess();
             zoomBar.Value = 1;
             deleteBus.Enabled = false;
             allBusSettings.Enabled = false;
@@ -3123,8 +3081,8 @@ namespace SystAnalys_lr1
             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
             BringToFront();
             matrix.MatrixCreate();
-            TheGrid = new List<GridPart>();
-            TheGrid.TrimExcess();
+            Data.TheGrid = new List<GridPart>();
+            Data.TheGrid.TrimExcess();
             timer.Stop();
             timer.Dispose();
             AnimationBox.Image = null;
@@ -3151,7 +3109,7 @@ namespace SystAnalys_lr1
                 {
                     Ep.EG.ClearSheet2();
                 }
-                G.DrawALLGraph(V, E);
+                G.DrawALLGraph(Data.V, Data.E);
                 CreateGrid();
 
                 sheet.Image = G.GetBitmap();

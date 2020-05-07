@@ -109,13 +109,13 @@ namespace SystAnalys_lr1
 
         private void Esheet_MouseClick(object sender, MouseEventArgs e)
         {
-            foreach (var gridPart in Main.TheGrid)
+            foreach (var gridPart in Data.TheGrid)
             {
                 if (((e.X > gridPart.x * Ezoom) && (e.Y > gridPart.y * Ezoom)) && ((e.X < gridPart.x * Ezoom + GridPart.Width * Ezoom) && (e.Y < gridPart.y * Ezoom + GridPart.Height * Ezoom)))
                 {
 
                     ERefreshRouts();
-                    Epicenter.CreateOneRandomEpicenter(Main.EpicSizeParam, Main.TheGrid.IndexOf(gridPart));
+                    Epicenter.CreateOneRandomEpicenter(Main.EpicSizeParam, Data.TheGrid.IndexOf(gridPart));
 
                     EG.ClearSheet2();
 
@@ -144,7 +144,7 @@ namespace SystAnalys_lr1
         public void ERefreshRouts()
         {
             ERouts.Items.Clear();
-            foreach (var r in MainForm.GetcomboBox1().Items)
+            foreach (var r in MainForm.changeRoute.Items)
             {
                 ERouts.Items.Add(r);
             };
@@ -190,9 +190,9 @@ namespace SystAnalys_lr1
         public void EDrawGrid()
         {
             //EG.clearSheet();
-            for (int i = 0; i < Main.TheGrid.Count; i++)
+            for (int i = 0; i < Data.TheGrid.Count; i++)
             {
-                Main.TheGrid[i].DrawPart(EG, Ezoom);
+                Data.TheGrid[i].DrawPart(EG, Ezoom);
             }
             Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap());
             // Esheet.Image = EG.GetBitmap();
@@ -298,7 +298,7 @@ namespace SystAnalys_lr1
         }
         public void RecReateFunction()
         {
-            restoredEpic = new Epicenter(Main.TheGrid);
+            restoredEpic = new Epicenter(Data.TheGrid);
 
             restoredEpic.Recreate(MainForm.GetPollutionInRoutes());
 
@@ -306,9 +306,9 @@ namespace SystAnalys_lr1
             EG.ClearSheet2();
             //Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap());
             // Esheet.Image = EG.GetBitmap();
-            for (int i = 0; i < Main.TheGrid.Count; i++)
+            for (int i = 0; i < Data.TheGrid.Count; i++)
             {
-                Main.TheGrid[i].FillGreen(EG, Ezoom);
+                Data.TheGrid[i].FillGreen(EG, Ezoom);
             }
             //Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap());
             restoredEpic.DrawEpicenter(EG, Ezoom);

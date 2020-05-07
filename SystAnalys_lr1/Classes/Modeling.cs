@@ -20,10 +20,10 @@ namespace SystAnalys_lr1.Classes
         public static void CreatePollutionInRoutes()
         {
             PollutionInRoutes = new Dictionary<string, List<GridPart>>();
-            for (int i = 0; i < Main.AllCoordinates.Count; i++)
+            for (int i = 0; i < Data.AllCoordinates.Count; i++)
             {
-                PollutionInRoutes.Add(Main.AllCoordinates.ElementAt(i).Key, new List<GridPart>());
-                foreach (var Grid in Main.TheGrid)
+                PollutionInRoutes.Add(Data.AllCoordinates.ElementAt(i).Key, new List<GridPart>());
+                foreach (var Grid in Data.TheGrid)
                 {
                     PollutionInRoutes[PollutionInRoutes.ElementAt(i).Key].Add(new GridPart(Grid.x, Grid.y));
                 }
@@ -36,11 +36,11 @@ namespace SystAnalys_lr1.Classes
             List<Epicenter> epList = new List<Epicenter>();
             int i = 0;
             ConcurrentQueue<Bus> cqBus = new ConcurrentQueue<Bus>();
-            Main.buses.ForEach((b) => cqBus.Enqueue((Bus)b.Clone()));
-            foreach (var EpicList in Main.Epics)
+            Data.buses.ForEach((b) => cqBus.Enqueue((Bus)b.Clone()));
+            foreach (var EpicList in Data.Epics)
             {
 
-                epList.Add(new Epicenter(Main.TheGrid));
+                epList.Add(new Epicenter(Data.TheGrid));
                 foreach (var Sector in EpicList.EpicenterGrid)
                 {
                     epList[i].EpicenterGrid.Add(Sector.Key, new List<GridPart>());
@@ -136,11 +136,11 @@ namespace SystAnalys_lr1.Classes
                                     ExpandTimer = 0;
                                 }
                             }
-                            if (Main.TraficLightsInGrids.Contains(Main.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt])) //ошибка с выходом за пределы тушто нужно "вот эту" разкоментить
+                            if (Data.TraficLightsInGrids.Contains(Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt])) //ошибка с выходом за пределы тушто нужно "вот эту" разкоментить
                             {
                                 if (bus.Skip == 0)
                                 {
-                                    foreach (var sp in Main.traficLights)
+                                    foreach (var sp in Data.traficLights)
                                     {
                                         if (sp.Status != Status.RED)
                                         {
@@ -159,7 +159,7 @@ namespace SystAnalys_lr1.Classes
                                 }
                             }
 
-                            if ((Main.stopPointsInGrids.ContainsKey(bus.GetRoute())) && (Main.stopPointsInGrids[bus.GetRoute()].Contains(Main.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt])))
+                            if ((Data.stopPointsInGrids.ContainsKey(bus.GetRoute())) && (Data.stopPointsInGrids[bus.GetRoute()].Contains(Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt])))
                             {
                                 Random rnd = new Random();
                                 int timeboost = rnd.Next(0, 3);
@@ -167,7 +167,7 @@ namespace SystAnalys_lr1.Classes
                                 bus.AllTickCount = bus.AllTickCount + timeboost;
                             }
 
-                            PollutionInRoutes[bus.GetRoute()][Main.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt]].Status = bus.DetectEpicenterByGrid(); // ошибка
+                            PollutionInRoutes[bus.GetRoute()][Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt]].Status = bus.DetectEpicenterByGrid(); // ошибка
 
                             foreach (var Epic in bus.Epicenters)
                             {

@@ -16,9 +16,9 @@ namespace SystAnalys_lr1
         //отрисовать всю сетку
         static public void DrawGrid()
         {
-            for (int i = 0; i < TheGrid.Count; i++)
+            for (int i = 0; i < Data.TheGrid.Count; i++)
             {
-                TheGrid[i].DrawPart(G, zoom);
+                Data.TheGrid[i].DrawPart(G, zoom);
             }
             _instance.Invoke(new DelBmp((s) => _instance.sheet.Image = s), G.GetBitmap()); // инстанс вырезать как свинью
         }
@@ -28,12 +28,12 @@ namespace SystAnalys_lr1
         {
             GridPart.Height = sheet.Height / g.gridHeight;
             GridPart.Width =  sheet.Width / g.gridWidth;
-            TheGrid = new List<GridPart>();
+            Data.TheGrid = new List<GridPart>();
             for (int i = g.left; i < sheet.Height - g.right; i += sheet.Height / g.gridHeight)
             {
                 for (int j = g.up; j < sheet.Width - g.down; j += sheet.Width / g.gridWidth)
                 {
-                    TheGrid.Add(new GridPart(j, i));
+                    Data.TheGrid.Add(new GridPart(j, i));
                 }
             }
             DrawGrid();
