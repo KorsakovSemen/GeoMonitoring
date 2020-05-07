@@ -185,6 +185,12 @@ namespace SystAnalys_lr1.Classes
                     DrawVertex(V[i].X, V[i].Y);
             }
 
+            DrawTrafficLights();
+
+        }
+
+        public void DrawTrafficLights()
+        {
             foreach (var tl in Main.traficLights)
             {
                 if (tl.Status == Status.GREEN)
@@ -200,7 +206,6 @@ namespace SystAnalys_lr1.Classes
                     Main.G.DrawSelectedVertex(tl.X, tl.Y);
                 }
             }
-
         }
 
         public void DrawStopPoints()

@@ -38,7 +38,7 @@ namespace SystAnalys_lr1
         Graphics AnimationGraphics;
         Bitmap AnimationBitmap;
         Coordinates coordinates;
-
+        public static string average;
 
         public static DeleteType delType;
         //
@@ -83,7 +83,7 @@ namespace SystAnalys_lr1
         List<Dictionary<string, Dictionary<string, int>>> AllRouteGridFilling;
         //массив всех маршрутов
         static public SerializableDictionary<string, List<Vertex>> routes;
-        static public List<SerializableDictionary<int, Vertex>> routePoints;
+      //  static public List<SerializableDictionary<int, Vertex>> routePoints;
         static public SerializableDictionary<int, List<Edge>> edgePoints;
         // лист номеров квадратов, в которм есть светофор
         static public List<int> TraficLightsInGrids;
@@ -245,11 +245,11 @@ namespace SystAnalys_lr1
             tracbarX = zoomBar.Location.X;
             tracbarY = zoomBar.Location.Y;
             MovingEpicParamet = new List<string>();
+            timer.Interval = BusStop.stopTime / 10;
             r = new Report();   
             rCount = 0;
             coordinates = new Coordinates();
             g = new Classes.Grid(0, 0, 0, 0, 80, 40);
-            routePoints = new List<SerializableDictionary<int, Vertex>>();
             edgePoints = new SerializableDictionary<int, List<Edge>>();
             AllCoordinates = new SerializableDictionary<string, List<Point>>();
             AllGridsInRoutes = new SerializableDictionary<string, List<int>>();
@@ -300,7 +300,7 @@ namespace SystAnalys_lr1
                     savepath = System.Text.Encoding.Default.GetString(array);
                     try
                     {
-                        if (savepath != "")
+                        if (savepath != null && savepath.Length > 2)
                         {
                             savepath = Path.GetFullPath(savepath);
                             try
@@ -309,7 +309,6 @@ namespace SystAnalys_lr1
                                 {
                                     Console.WriteLine(savepath);
                                     LoadRoutes(savepath + @"\");
-
                                 }
                             }
                             catch (Exception exc)
@@ -319,7 +318,6 @@ namespace SystAnalys_lr1
                                 {
                                     BringToFront();
                                     MetroMessageBox.Show(this, $"{exc.StackTrace}", MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                    //loading.Visible = false;
                                 }
                             }
                         }
@@ -1161,7 +1159,7 @@ namespace SystAnalys_lr1
                         tl.TimerLight.Interval = 1;
                     Optimization.OptiCount = int.Parse(optText.Text);
                     Optimization.OptiSpeed = int.Parse(speed.Text);
-///
+
                     buttonOff();
                
                     matrix.MatrixCreate();
@@ -1182,14 +1180,14 @@ namespace SystAnalys_lr1
                         Theme = msmMain.Theme,
                         Style = msmMain.Style
                     };
-                    if (!Main.Ep.IsDisposed)
+                    if (!Ep.IsDisposed)
                     {
-                        StyleManager.Clone(Main.Ep);
-                        Main.Ep.Refresh();
+                        StyleManager.Clone(Ep);
+                        Ep.Refresh();
                     }
-                    if (Main.SavePictures == true)
+                    if (SavePictures == true)
                     {
-                        Main.Ep.Hide();
+                        Ep.Hide();
                         Directory.CreateDirectory(Optimization.pathOpt + "/Epics");
                     }          
                     loadingForm.Show();
@@ -1198,25 +1196,27 @@ namespace SystAnalys_lr1
                     {
                         Optimization.Opt(matrix, loadingForm);
                     });
-                    //
+
+                    mean.Text = average;
+
                     loadingForm.close = true;
                     loadingForm.Close();
                     loadingForm.Dispose();
-                    //
+                    
                     matrix.MatrixCreate();
                     ResMatrix();
                     msmMain.Style = style;                
                     MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
-                    if (!Main.Ep.IsDisposed)
+                    if (!Ep.IsDisposed)
                     {                     
-                        StyleManager.Clone(Main.Ep);
-                        Main.Ep.Refresh();
+                        StyleManager.Clone(Ep);
+                        Ep.Refresh();
                     }
                     BringToFront();
                     timer.Start();
                     buttonOn();
-                    ResChart();             
-                    ///
+                    ResChart();    
+
                     foreach (var tl in traficLights)
                         tl.TimerLight.Interval = 1000;
                 }
@@ -1328,7 +1328,6 @@ namespace SystAnalys_lr1
             {
                 if (!Directory.Exists(savepath))
                 {
-                    //dialog.SelectedPath = System.Windows.Forms.Application.StartupPath;
                     dialog.SelectedPath = Path.GetFullPath("../../Configs/");
                 }
                 else
@@ -1341,29 +1340,17 @@ namespace SystAnalys_lr1
                     {
                         if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
                         {
-                            openEpicFormToolStripMenuItem.Enabled = true;
-                            addRouteToolStripMenuItem.Enabled = true;
-                            createGridToolStripMenuItem.Enabled = true;
-                            foreach (var tl in traficLights)
-                            {
-                                tl.Stop();
-                                tl.TimerLight.Dispose();
-                            }
-                            traficLights.Clear();
-                            traficLights.TrimExcess();
-                            TraficLightsInGrids.Clear();
-                            stopPoints.Clear();
-                            allstopPoints.Clear();
-                            allstopPoints.TrimExcess();
+                            toolStripMenuButtonOn();
+
                             LoadRoutes(dialog.SelectedPath + @"\");
                             savepath = dialog.SelectedPath;
-                            Console.WriteLine(savepath);
+
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
                             using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
                             {
                                 fileV.WriteLine(savepath.ToString());
                             }
-                            BringToFront();
+
                             MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
 
@@ -1379,78 +1366,37 @@ namespace SystAnalys_lr1
                     }
                 }
             }
-            BringToFront();
         }
+        public void toolStripMenuButtonOn()
+        {
+            openEpicFormToolStripMenuItem.Enabled = true;
+            addRouteToolStripMenuItem.Enabled = true;
+            createGridToolStripMenuItem.Enabled = true;
+        }
+
+        public FolderBrowserDialog newBasePath(FolderBrowserDialog dialog)
+        {
+            if (!Directory.Exists(savepath))
+            {
+                dialog.SelectedPath = Path.GetFullPath("../../Configs/");
+            }
+            else
+            {
+                dialog.SelectedPath = Path.GetFullPath(savepath);
+            }
+            return dialog;
+
+        }
+
         //class loader
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (savepath != null)
+            if (savepath != null && savepath.Length > 2)
             {
                 try
                 {
-                    openEpicFormToolStripMenuItem.Enabled = true;
-                    addRouteToolStripMenuItem.Enabled = true;
-                    createGridToolStripMenuItem.Enabled = true;
-                    //
-                    if (!Ep.IsDisposed)
-                    {
-                        Ep.EG.ClearSheet2();
-                        Ep.Dispose();
-                        Ep.Close();
-                    }
-                    foreach (var bus in buses)
-                    {
-                        bus.Coordinates.Clear();
-                        bus.Coordinates.TrimExcess();
-                        bus.BusPic.Dispose();
-                        //   mainPanel.Controls.Remove(bus.busPic);
-                    }
-                    buses.Clear();
-
-                    config.Text = MainStrings.config;
-                    foreach (var tl in traficLights)
-                    {
-                        tl.Stop();
-                        tl.TimerLight.Dispose();
-                    }
-                    TraficLightsInGrids.Clear();
-                    stopPointsInGrids.Clear();
-                    V.Clear();
-                    E.Clear();
-                    if (G.bitmap != null)
-                    {
-                        ZoomHelper();
-                        G.ClearSheet();
-                        G.ClearSheet2();
-                    }
-                    routes.Clear();
-                    routesEdge.Clear();
-                    changeRoute.Items.Clear();
-                    AllCoordinates.Clear();
-                    allstopPoints.Clear();
-                    stopPoints.Clear();
-                    traficLights.Clear();
-                    traficLights.TrimExcess();
-                    LoadRoutes(savepath + @"\");
-                    saveImage = sheet.Image;
-                    zoomBar.Value = 1;
-                    wsheet = sheet.Width;
-                    hsheet = sheet.Height;
-                    globalMap = sheet.Image;
-                    G.SetBitmap();
-                    CreateGrid();
-                    Modeling.CreatePollutionInRoutes();
-                    AddInComboBox();
-                    DrawGrid();
-                    matrix.MatrixCreate();
-                    BringToFront();
-                    //
-                    Console.WriteLine("Memory used before collection:       {0:N0}",
-                       GC.GetTotalMemory(false));
-                    // Collect all generations of memory.
-                    GC.Collect();
-                    Console.WriteLine("Memory used after full collection:   {0:N0}",
-                                      GC.GetTotalMemory(true));
+                    toolStripMenuButtonOn();
+                    LoadRoutes(savepath + @"\");                    
                 }
                 catch (Exception exc)
                 {
@@ -1460,35 +1406,28 @@ namespace SystAnalys_lr1
                         {
                             if (!Directory.Exists(savepath))
                             {
-                                //dialog.SelectedPath = System.Windows.Forms.Application.StartupPath;
                                 dialog.SelectedPath = Path.GetFullPath("../../Configs/");
                             }
                             else
                             {
                                 dialog.SelectedPath = Path.GetFullPath(savepath);
                             }
+
                             if (dialog.ShowDialog() == DialogResult.OK)
                             {
                                 if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
                                 {
-                                    foreach (var tl in traficLights)
-                                    {
-                                        tl.Stop();
-                                    }
-                                    TraficLightsInGrids.Clear();
-                                    stopPoints.Clear();
-                                    allstopPoints.Clear();
+                                    toolStripMenuButtonOn();
+
                                     LoadRoutes(dialog.SelectedPath + @"\");
-                                    openEpicFormToolStripMenuItem.Enabled = true;
-                                    addRouteToolStripMenuItem.Enabled = true;
-                                    createGridToolStripMenuItem.Enabled = true;
-                                    savepath = dialog.SelectedPath;
+
                                     File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
+                                    savepath = dialog.SelectedPath;
                                     using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
                                     {
                                         fileV.WriteLine(savepath.ToString());
                                     }
-                                    BringToFront();
+
                                     MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                                 }
                             }
@@ -1511,7 +1450,6 @@ namespace SystAnalys_lr1
                 {
                     if (!Directory.Exists(savepath))
                     {
-                        //dialog.SelectedPath = System.Windows.Forms.Application.StartupPath;
                         dialog.SelectedPath = Path.GetFullPath("../../Configs/");
                     }
                     else
@@ -1522,31 +1460,23 @@ namespace SystAnalys_lr1
                     {
                         if (!string.IsNullOrWhiteSpace(dialog.SelectedPath))
                         {
-                            foreach (var tl in traficLights)
-                            {
-                                tl.Stop();
-                            }
-                            TraficLightsInGrids.Clear();
-                            stopPoints.Clear();
-                            allstopPoints.Clear();
+                            toolStripMenuButtonOn();
+
                             LoadRoutes(dialog.SelectedPath + @"\");
-                            openEpicFormToolStripMenuItem.Enabled = true;
-                            addRouteToolStripMenuItem.Enabled = true;
-                            createGridToolStripMenuItem.Enabled = true;
                             savepath = dialog.SelectedPath;
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
+
                             using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
                             {
-                                fileV.WriteLine(savepath.ToString());
+                                fileV.WriteLine(savepath);
                             }
-                            BringToFront();
+
                             MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
 
                     }
                 }
             }
-            BringToFront();
             changeRoute.Text = MainStrings.network;
         }
 
@@ -1591,7 +1521,7 @@ namespace SystAnalys_lr1
         }
         //class saver
 
-        private void SaveRoutes(string saveFormat = "xml", string save = "../../Data/")
+        private void SaveRoutes(string saveFormat = "xml", string save = "../../Configs/")
         {
             try
             {
@@ -1762,46 +1692,57 @@ namespace SystAnalys_lr1
             }
         }
 
-        private void Load_Click(object sender, EventArgs e)
-        {
-            LoadRoutes();
-        }
-
         private void DeleteAll()
         {
-            TraficLightsInGrids.Clear();
+            if (Ep != null)
+            {
+                if (!Ep.IsDisposed)
+                {
+                    Ep.EG.ClearSheet2();
+                    Ep.Dispose();
+                    Ep.Close();
+                }
+            }
+
+            foreach (var bus in buses)
+            {
+                bus.Coordinates.Clear();
+                bus.Coordinates.TrimExcess();
+                bus.BusPic.Dispose();
+            }
+            buses.Clear();
+
+
+            foreach (var tl in traficLights)
+            {
+                tl.Stop();
+                tl.TimerLight.Dispose();
+            }
+
+            routes.Clear();
+            routesEdge.Clear();
+            changeRoute.Items.Clear();
+
+            AllCoordinates.Clear();
+
             allstopPoints.Clear();
             stopPoints.Clear();
             stopPointsInGrids.Clear();
+
+            traficLights.Clear();
+            traficLights.TrimExcess();
+            TraficLightsInGrids.Clear();
+
             V.Clear();
             E.Clear();
-            routes.Clear();
-            routesEdge.Clear();
 
         }
         //class loader
-        private void LoadRoutes(string load = "../../Data/")
+        private void LoadRoutes(string load)
         {
             try
             {
-                DeleteAll();
-                DisplayEpicenters.path = load;
-                sheet.Image = Image.FromFile(load + "/Map.png");
-                saveImage = sheet.Image;
-                zoomBar.Value = 1;
-                wsheet = sheet.Width;
-                hsheet = sheet.Height;
-                //ZoomHelper(); //дроп ошибки если загружать конфиг в первый раз
-                loadingForm = new LoadingForm
-                {
-                    close = false
-                };
-                loadingForm.Show();
-                loadingForm.loading.Value = 0;
-                routePoints.Clear();
-                globalMap = sheet.Image;
-                G.SetBitmap();
-                config.Text = MainStrings.config + load;
+                DeleteAll();               
                 if (File.Exists(load + "Vertices.xml"))
                 {
                     using (StreamReader reader = new StreamReader(load + "Vertices.xml"))
@@ -2145,6 +2086,23 @@ namespace SystAnalys_lr1
                     }
                 }
                 loadingForm.loading.Value = 90;
+
+                DisplayEpicenters.path = load;
+                sheet.Image = Image.FromFile(load + "/Map.png");
+                saveImage = sheet.Image;
+                zoomBar.Value = 1;
+                wsheet = sheet.Width;
+                hsheet = sheet.Height;
+                ZoomHelper();
+                loadingForm = new LoadingForm
+                {
+                    close = false
+                };
+                loadingForm.Show();
+                loadingForm.loading.Value = 0;
+                globalMap = sheet.Image;
+                G.SetBitmap();
+                config.Text = MainStrings.config + load;
                 openEpicFormToolStripMenuItem.Enabled = true;
                 CreateGrid();
                 Modeling.CreatePollutionInRoutes();
@@ -2167,7 +2125,11 @@ namespace SystAnalys_lr1
                 {
                     coordinates.CreateAllCoordinates();
                 }
-                GC.Collect(GC.MaxGeneration);
+
+                matrix.MatrixCreate();
+                //Ep.BringToFront();
+                BringToFront();
+
             }
             catch (Exception exc)
             {
@@ -2305,7 +2267,11 @@ namespace SystAnalys_lr1
                         case DeleteType.VertexAndEdge:
                             c.DeleteVE(e, V, E, sheet, routesEdge);
                             break;
-                    }                    
+                    }
+                    if (flag)
+                    {
+                        c.MapUpdateNetwork(sheet, V, E);
+                    }
                 }
                 return;
             }
@@ -2369,6 +2335,10 @@ namespace SystAnalys_lr1
                         case DeleteType.TheBuses:
                             DelBus();
                             break;
+                    }
+                    if (flag)
+                    {
+                        c.MapUpdateRoute(sheet, routeV, routesEdge[changeRoute.Text]);
                     }
                 }
                 //c.MapUpdateRoute(sheet, routeV, routesEdge[changeRoute.Text]);
@@ -3009,6 +2979,7 @@ namespace SystAnalys_lr1
                 delAllBusesOnRoute.Enabled = false;
                 G.ClearSheet();
                 G.DrawStopPoints();
+                G.DrawTrafficLights();
                 sheet.Image = G.GetBitmap();
                 trafficLightLabel.Visible = false;
                 selected = new List<int>();

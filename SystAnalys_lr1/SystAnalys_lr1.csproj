@@ -86,6 +86,7 @@
     <Compile Include="Classes\Grid.cs" />
     <Compile Include="Classes\GridCreator.cs" />
     <Compile Include="Classes\GridPart.cs" />
+    <Compile Include="Classes\Loader.cs" />
     <Compile Include="Classes\Optimization.cs" />
     <Compile Include="Classes\Vertex.cs" />
     <Compile Include="Controls\MatrixControl.cs">
