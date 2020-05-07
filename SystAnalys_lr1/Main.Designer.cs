@@ -661,6 +661,7 @@
             this.selectRoute.Image = global::SystAnalys_lr1.Properties.Resources.line_chart;
             this.selectRoute.Name = "selectRoute";
             resources.ApplyResources(this.selectRoute, "selectRoute");
+            this.selectRoute.Click += new System.EventHandler(this.SelectRoute_Click);
             // 
             // deleteButton
             // 
