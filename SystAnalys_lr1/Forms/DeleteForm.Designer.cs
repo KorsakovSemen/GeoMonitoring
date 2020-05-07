@@ -95,7 +95,7 @@
             resources.ApplyResources(this.VandE, "VandE");
             this.VandE.Name = "VandE";
             this.VandE.UseSelectable = true;
-            this.VandE.CheckedChanged += new System.EventHandler(this.metroRadioButton1_CheckedChanged);
+            this.VandE.CheckedChanged += new System.EventHandler(this.MetroRadioButton1_CheckedChanged);
             // 
             // metroButton1
             // 

@@ -17,8 +17,8 @@ namespace SystAnalys_lr1.Classes
     {
         delegate void Dpoint(Point pos);
 
-        public static string busImg { get; set; } = "../../Resources/newbus.PNG";
-        public static string offBusImg { get; set; } = "../../Resources/bus.PNG";
+        public static string BusImg { get; set; } = "../../Resources/newbus.PNG";
+        public static string OffBusImg { get; set; } = "../../Resources/bus.PNG";
 
         public static int ScrollX { get; set; }
         public static int ScrollY { get; set; }
@@ -200,7 +200,7 @@ namespace SystAnalys_lr1.Classes
                                         Console.WriteLine("Turn false");
                                         checkStop = sp.checkStop;
                                         Skip = 100;
-                                        skipStops = rnd.Next(0, 50);
+                                        skipStops = rnd.Next(BusStop.stopTime, 250);
                                         break;
                                     }
                                 }
@@ -214,7 +214,7 @@ namespace SystAnalys_lr1.Classes
                                 {
                                     if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
                                     {
-                                        checkStop = rnd.Next(0, 200);
+                                        checkStop = rnd.Next(0, BusStop.stopTime);
                                         skipStops = 250 - checkStop;
                                         checkStoppedBus = checkStop + 100;
                                         break;
@@ -261,7 +261,7 @@ namespace SystAnalys_lr1.Classes
                     else
                     {
                         StopDown();
-                        skipEnd = rnd.Next(0, 200);
+                        skipEnd = rnd.Next(0, BusStop.stopTime * 3);
                         G.DrawImage(BusPic, Coordinates[PositionAt].X * (int)ZoomCoef - BusPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - BusPic.Height / 2);
                         if (skipEnd == 0)
                         {
@@ -274,21 +274,6 @@ namespace SystAnalys_lr1.Classes
                 {
                     if (PositionAt > 0)
                     {
-                        //for (int i = Main.routesEdge[thisBus.route].Count; i > 1; i--)
-                        //{
-                        //    if (Main.routesEdge[thisBus.route][i].v1 != Main.routesEdge[thisBus.route][i - 1].v1 - 1)
-                        //    {
-                        //        stopDown();
-                        //        skipEnd = rnd.Next(0, 200);
-                        //        G.DrawImage(busPic, Coordinates[PositionAt].X * (int)ZoomCoef - busPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - busPic.Height / 2);
-                        //        if (skipEnd == 0)
-                        //        {
-                        //            TurnBack = false;
-                        //            PositionAt++;
-                        //        }
-                        //        break;
-                        //    }
-                        //}
                         if (PositionAt < Coordinates.Count)
                         {
                             //if (skipStops == 0)
@@ -304,7 +289,7 @@ namespace SystAnalys_lr1.Classes
                                             Console.WriteLine("Turn true");
                                             checkStop = sp.checkStop;
                                             Skip = 100;
-                                            skipStops = rnd.Next(200, 250);
+                                            skipStops = rnd.Next(BusStop.stopTime, 250);
                                             break;
                                         }
                                     }
@@ -319,7 +304,7 @@ namespace SystAnalys_lr1.Classes
                                     {
                                         if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
                                         {
-                                            checkStop = rnd.Next(0, 200);
+                                            checkStop = rnd.Next(0, BusStop.stopTime);
                                             skipStops = 250 - checkStop;
                                             checkStoppedBus = checkStop + 100;
                                             break;
@@ -367,7 +352,7 @@ namespace SystAnalys_lr1.Classes
                     else
                     {
                         StopDown();
-                        skipEnd = rnd.Next(0, 200);
+                        skipEnd = rnd.Next(0, BusStop.stopTime * 3);
                         G.DrawImage(BusPic, Coordinates[PositionAt].X * (int)ZoomCoef - BusPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - BusPic.Height / 2);
                         if (skipEnd == 0)
                         {
@@ -401,7 +386,7 @@ namespace SystAnalys_lr1.Classes
         {
             foreach (var EpicList in Epicenters)
             {
-                foreach (var Sector in EpicList.GetEpicenterGrid())
+                foreach (var Sector in EpicList.EpicenterGrid)
                 {
                     foreach (var Square in Sector.Value)
                         if ((PositionAt < Coordinates.Count))
@@ -434,7 +419,7 @@ namespace SystAnalys_lr1.Classes
         {
             foreach (var EpicList in Epicenters)
             {
-                foreach (var Sector in EpicList.GetEpicenterGrid())
+                foreach (var Sector in EpicList.EpicenterGrid)
                 {
                     foreach (var Square in Sector.Value)
                     {

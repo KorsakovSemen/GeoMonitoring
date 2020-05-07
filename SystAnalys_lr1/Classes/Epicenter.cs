@@ -20,25 +20,20 @@ namespace SystAnalys_lr1.Classes
         }
         public SerializableDictionary<int, List<GridPart>> EpicenterGrid { get; set; }
         public Point StartPositon;
-        public SerializableDictionary<int, List<GridPart>> getEpicenterGrid()
-        {
-            return EpicenterGrid;
-        }
+       
         public int DetectCount { get; set; }
 
         public List<GridPart> TheGrid { get; set; }
+
         public Epicenter(List<GridPart> TheGrid)
         {
             this.TheGrid = TheGrid;
             EpicenterGrid = new SerializableDictionary<int, List<GridPart>>();
         }
+
         public Epicenter()
         { }
 
-        public Dictionary<int, List<GridPart>> GetEpicenterGrid()
-        {
-            return EpicenterGrid;
-        }
         public object Clone()
         {
             return MemberwiseClone();

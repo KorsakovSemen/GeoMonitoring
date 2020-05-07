@@ -19,27 +19,27 @@ namespace SystAnalys_lr1.Forms
             InitializeComponent();
         }
 
-        private void metroRadioButton1_CheckedChanged(object sender, EventArgs e)
+        private void MetroRadioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            Main.delType = Main.deleteType.VertexAndEdge;
+            Main.delType = Main.DeleteType.VertexAndEdge;
             Main.globalDel = MainStrings.VandE;
         }
 
         private void TrafficLights_CheckedChanged(object sender, EventArgs e)
         {
-            Main.delType = Main.deleteType.TrafficLight;
+            Main.delType = Main.DeleteType.TrafficLight;
             Main.globalDel = MainStrings.TrafficLights;
         }
 
         private void BusStops_CheckedChanged(object sender, EventArgs e)
         {
-            Main.delType = Main.deleteType.BusStops;
+            Main.delType = Main.DeleteType.BusStops;
             Main.globalDel = MainStrings.busStops;
         }
 
         private void All_CheckedChanged(object sender, EventArgs e)
         {
-            Main.delType = Main.deleteType.All;
+            Main.delType = Main.DeleteType.All;
             Main.globalDel = MainStrings.all;
         }
 
@@ -51,7 +51,7 @@ namespace SystAnalys_lr1.Forms
 
         private void theBuses_CheckedChanged(object sender, EventArgs e)
         {
-            Main.delType = Main.deleteType.TheBuses;
+            Main.delType = Main.DeleteType.TheBuses;
             Main.globalDel = MainStrings.theBuses;
         }
 
@@ -59,7 +59,7 @@ namespace SystAnalys_lr1.Forms
         {
             if (!Main.yes)
             {
-                Main.delType = Main.deleteType.None;
+                Main.delType = Main.DeleteType.None;
                 Main.globalDel = "";
             }            
         }

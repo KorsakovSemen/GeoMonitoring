@@ -49,7 +49,7 @@ namespace SystAnalys_lr1.Classes
 
         public async void AsDelete(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
-            await Task.Run(() => delete(e, V, E, sheet, routesEdgeE));
+            await Task.Run(() => Delete(e, V, E, sheet, routesEdgeE));
             if (Main.flag)
             {
                 Main.G.ClearSheet();
@@ -61,7 +61,7 @@ namespace SystAnalys_lr1.Classes
 
         public async void AsDeleteRoute(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet)
         {
-            await Task.Run(() => deleteRoute(e, routeV, routesEdge, sheet));
+            await Task.Run(() => DeleteRoute(e, routeV, routesEdge, sheet));
 
         }
 
@@ -90,7 +90,7 @@ namespace SystAnalys_lr1.Classes
                 if (trackerCheck)
                 {
                     Rectangle rect = new Rectangle(0, 0, 200, 100);
-                    Bitmap busPic = new Bitmap(Bus.busImg);
+                    Bitmap busPic = new Bitmap(Bus.BusImg);
                     busPic = new Bitmap(busPic, new Size(15, 15));
                     Bitmap num = new Bitmap(busPic.Height, busPic.Width);
                     using (Graphics gr = Graphics.FromImage(num))
@@ -125,7 +125,7 @@ namespace SystAnalys_lr1.Classes
                 else
                 {
                     Rectangle rect = new Rectangle(0, 0, 200, 100);
-                    Bitmap busPic = new Bitmap(Bus.offBusImg);
+                    Bitmap busPic = new Bitmap(Bus.OffBusImg);
                     busPic = new Bitmap(busPic, new Size(15, 15));
                     Bitmap num = new Bitmap(busPic.Height, busPic.Width);
                     using (Graphics gr = Graphics.FromImage(num))
@@ -160,7 +160,7 @@ namespace SystAnalys_lr1.Classes
             }
         }
 
-        public void AddStopPointsInRoutes(MouseEventArgs e, List<Vertex> allstopPoints, PictureBox sheet, List<GridPart> gridParts, string route)
+        public void AddStopPointsInRoutes(MouseEventArgs e, List<BusStop> allstopPoints, PictureBox sheet, List<GridPart> gridParts, string route)
         {
             foreach (var sp in allstopPoints)
             {
@@ -175,7 +175,7 @@ namespace SystAnalys_lr1.Classes
                             {
                                 if (Main.stopPoints.ContainsKey(route))
                                 {
-                                    Main.stopPoints[route].Add(new Vertex(sp.X, sp.Y));
+                                    Main.stopPoints[route].Add(new BusStop(sp.X, sp.Y));
                                     Main.stopPoints[route].Last().gridNum = gridParts.IndexOf(gridPart);
                                     if (Main.stopPointsInGrids.ContainsKey(route))
                                         Main.stopPointsInGrids[route].Add(gridParts.IndexOf(gridPart)); //дроп ошибки
@@ -188,13 +188,13 @@ namespace SystAnalys_lr1.Classes
                                 }
                                 else
                                 {
-                                    Main.stopPoints.Add(route, new List<Vertex>());
+                                    Main.stopPoints.Add(route, new List<BusStop>());
                                     Main.stopPointsInGrids.Add(route, new List<int>());
                                     if (!Main.stopPoints[route].Contains(new Vertex(sp.X, sp.Y)))
                                     {
                                         if (Main.stopPoints.ContainsKey(route) && Main.stopPointsInGrids.ContainsKey(route))
                                         {
-                                            Main.stopPoints[route].Add(new Vertex(sp.X, sp.Y));
+                                            Main.stopPoints[route].Add(new BusStop(sp.X, sp.Y));
                                             Main.stopPoints[route].Last().gridNum = gridParts.IndexOf(gridPart);
                                             Main.stopPointsInGrids[route].Add(gridParts.IndexOf(gridPart)); //дроп ошибки
                                         }
@@ -213,13 +213,13 @@ namespace SystAnalys_lr1.Classes
             }
         }
 
-        public void AddStopPoints(MouseEventArgs e, List<Vertex> allstopPoints, PictureBox sheet, List<GridPart> gridParts)
+        public void AddStopPoints(MouseEventArgs e, List<BusStop> allstopPoints, PictureBox sheet, List<GridPart> gridParts)
         {
             foreach (var gridPart in gridParts)
             {
                 if (((e.X > gridPart.x * Main.zoom) && (e.Y > gridPart.y * Main.zoom)) && ((e.X < gridPart.x * Main.zoom + GridPart.Width * Main.zoom) && (e.Y < gridPart.y * Main.zoom + GridPart.Height * Main.zoom)))
                 {
-                    allstopPoints.Add(new Vertex(e.X / Main.zoom, e.Y / Main.zoom));
+                    allstopPoints.Add(new BusStop(e.X / Main.zoom, e.Y / Main.zoom));
                     Main.G.DrawStopVertex(e.X / Main.zoom, e.Y / Main.zoom);
                     MapUpdate(sheet);
                     break;
@@ -502,7 +502,7 @@ namespace SystAnalys_lr1.Classes
             }
         }
 
-        public void deleteTF(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)
+        public void DeleteTF(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
             foreach (var tl in Main.traficLights)
             {
@@ -516,7 +516,7 @@ namespace SystAnalys_lr1.Classes
                 }
             }
         }
-        public void deleteVE(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)
+        public void DeleteVE(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
             if (!Main.flag)
             {
@@ -661,7 +661,7 @@ namespace SystAnalys_lr1.Classes
         }
 
 
-        public void deleteStopsOnRoute(MouseEventArgs e, List<Vertex> routeV, PictureBox sheet, string route)
+        public void DeleteStopsOnRoute(MouseEventArgs e, List<Vertex> routeV, PictureBox sheet, string route)
         {
             bool flag = false; //удалили ли что-нибудь по ЭТОМУ клику
                                //ищем, возможно была нажата вершина
@@ -684,7 +684,7 @@ namespace SystAnalys_lr1.Classes
             }
         }
 
-        public void deleteVandE(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet)
+        public void DeleteVandE(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet)
         {
             bool flag = false; 
 
@@ -754,7 +754,7 @@ namespace SystAnalys_lr1.Classes
                 MapUpdateRoute(sheet, routeV, routesEdge);
             }
         }
-        public void deleteTFOnRoute(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet, List<TraficLight> traficLights)
+        public void DeleteTFOnRoute(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet, List<TraficLight> traficLights)
         {
             bool flag = false; //удалили ли что-нибудь по ЭТОМУ клику
 
@@ -775,7 +775,7 @@ namespace SystAnalys_lr1.Classes
             }
         }
 
-        public void deleteOnRoute(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet, string route)
+        public void DeleteOnRoute(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet, string route)
         {
             bool flag = false; 
 
@@ -858,7 +858,7 @@ namespace SystAnalys_lr1.Classes
             }
         }
 
-        public void deleteBS(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)
+        public void DeleteBS(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
 
             foreach (var sp in Main.allstopPoints)
@@ -887,7 +887,7 @@ namespace SystAnalys_lr1.Classes
             }
 
         }
-        public void delete(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)
+        public void Delete(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
             //удалили ли что-нибудь по ЭТОМУ клику
             //ищем, возможно была нажата вершина
@@ -1079,7 +1079,7 @@ namespace SystAnalys_lr1.Classes
             }
         }
 
-        public void deleteRoute(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet)
+        public void DeleteRoute(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet)
         {
             bool flag = false; //удалили ли что-нибудь по ЭТОМУ клику
                                //ищем, возможно была нажата вершина

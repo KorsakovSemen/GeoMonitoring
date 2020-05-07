@@ -41,7 +41,7 @@ namespace SystAnalys_lr1.Classes
             {
 
                 epList.Add(new Epicenter(Main.TheGrid));
-                foreach (var Sector in EpicList.GetEpicenterGrid())
+                foreach (var Sector in EpicList.EpicenterGrid)
                 {
                     epList[i].EpicenterGrid.Add(Sector.Key, new List<GridPart>());
                     epList[i].StartPositon = EpicList.StartPositon;
@@ -171,7 +171,7 @@ namespace SystAnalys_lr1.Classes
 
                             foreach (var Epic in bus.Epicenters)
                             {
-                                if (Epic.DetectCount >= Epic.getEpicenterGrid()[1].Count / 2)
+                                if (Epic.DetectCount >= Epic.EpicenterGrid[1].Count / 2)
                                 {
                                     if (EpicFounded == false)
                                     {

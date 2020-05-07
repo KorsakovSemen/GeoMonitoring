@@ -27,16 +27,18 @@ namespace SystAnalys_lr1
         [XmlIgnore]
         public Timer TimerLight { get; private set; }
         public Status Status { get; set; }
-        public int tick, greenTime, redTime;
-        public int yellowTime = 2;
+        public int tick { get; set; } 
+        public int greenTime { get; }
+        public int redTime { get; }
+        public int yellowTime { get; } = 2;
         public int bal; // остаток времени на светофоре
 
         public TraficLight() { }
 
         public TraficLight(int x, int y, int gridNum, int greenTime, int redTime)
         {
-            this.X = x;
-            this.Y = y;
+            X = x;
+            Y = y;
             this.gridNum = gridNum;
             this.greenTime = greenTime;
             this.redTime = redTime;
