@@ -13,7 +13,7 @@ namespace SystAnalys_lr1.Classes
         public void MapUpdate(PictureBox sheet)
         {
             sheet.Invoke(new Del((s) => sheet.Image = s), Main.G.GetBitmap());
-            Main.DrawGrid();
+            GridCreator.DrawGrid(sheet);
         }
 
         public void MapUpdateNetwork(PictureBox sheet, List<Vertex> V, List<Edge> E)
@@ -21,7 +21,7 @@ namespace SystAnalys_lr1.Classes
             Main.G.ClearSheet();
             Main.G.DrawALLGraph(V, E);
             sheet.Invoke(new Del((s) => sheet.Image = s), Main.G.GetBitmap());
-            Main.DrawGrid();
+            GridCreator.DrawGrid(sheet);
         }
 
         public void MapUpdateRoute(PictureBox sheet, List<Vertex> routeV, List<Edge> routeE)
@@ -30,7 +30,7 @@ namespace SystAnalys_lr1.Classes
             Main.G.DrawALLGraph(Data.V, Data.E);
             Main.G.DrawALLGraph(routeV, routeE, 1);
             sheet.Invoke(new Del((s) => sheet.Image = s), Main.G.GetBitmap());
-            Main.DrawGrid();
+            GridCreator.DrawGrid(sheet);
         }
 
         delegate void Del(Bitmap bmp);
@@ -55,7 +55,7 @@ namespace SystAnalys_lr1.Classes
                 Main.G.ClearSheet();
                 Main.G.DrawALLGraph(V, E);
                 sheet.Invoke(new Del((s) => sheet.Image = s), Main.G.GetBitmap());
-                Main.DrawGrid();
+                GridCreator.DrawGrid(sheet);
             }
         }
 
@@ -416,7 +416,7 @@ namespace SystAnalys_lr1.Classes
                     Main.G.DrawGreenVertex(e.X / Main.zoom, e.Y / Main.zoom);
                     Main.firstCrossRoads -= 1;
                     sheet.Image = Main.G.GetBitmap();
-                    Main.DrawGrid();
+                    GridCreator.DrawGrid(sheet);
                     break;
                 }
             }
@@ -1132,7 +1132,7 @@ namespace SystAnalys_lr1.Classes
                                 {
                                     routesEdge.RemoveAt(i);
                                     Main.flag = true;
-                                    Main.DrawGrid();
+                                    GridCreator.DrawGrid(sheet);
                                     break;
                                 }
                             }

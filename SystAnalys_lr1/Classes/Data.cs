@@ -34,8 +34,6 @@ namespace SystAnalys_lr1.Classes
         //Остановки маршрутов
         public static List<BusStop> allstopPoints;
         public static SerializableDictionary<string, List<BusStop>> stopPoints;
-
-
         //все координаты движения автобусов
         public static SerializableDictionary<string, List<Point>> AllCoordinates;
         //все квадраты сетки, которые есть в каждом из маршрутов 
