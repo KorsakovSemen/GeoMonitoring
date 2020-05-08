@@ -858,6 +858,8 @@ namespace SystAnalys_lr1
                             G.DrawALLGraph(Data.V, Data.E);
                             sheet.Image = G.GetBitmap();
                             GridCreator.DrawGrid(sheet);
+                            AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
+                            AnimationBox.Image = AnimationBitmap;
 
                         }
                         if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
@@ -924,6 +926,7 @@ namespace SystAnalys_lr1
                             loadingForm.Show();
                             loadingForm.loading.Value = 20;
                             DelAllBus();
+                       
                             loadingForm.loading.Value = 40;
                             loadingForm.loading.Value = 50;
                         }
@@ -1836,6 +1839,7 @@ namespace SystAnalys_lr1
                 addTraficLight.Enabled = true;
                 Data.buses.Clear();
                 delAllBusesOnRoute.Enabled = false;
+        
             };
             CheckBusesOnRoute();
             if (changeRoute.SelectedIndex > 1)
@@ -1875,7 +1879,8 @@ namespace SystAnalys_lr1
             }
             trafficLightLabel.Visible = false;
             selected = new List<int>();
-
+            AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
+            AnimationBox.Image = AnimationBitmap;
         }
         private void DelAllBusesOnRoute_Click(object sender, EventArgs e)
         {
