@@ -106,16 +106,13 @@ namespace SystAnalys_lr1
                         LastLocate = Locate;
                     }
                 }
-            }
-       
-        }
-    
+            }       
+        }    
 
 
         //функция, которая создает все координаты для всех маршрутов
         public void CreateAllCoordinates()
         {
-
             Data.AllCoordinates = new SerializableDictionary<string, List<Point>>();
             Data.AllGridsInRoutes = new SerializableDictionary<string, List<int>>();
             for (int i = 0; i < Data.routes.Count; i++)

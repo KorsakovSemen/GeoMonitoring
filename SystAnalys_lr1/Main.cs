@@ -1044,6 +1044,7 @@ namespace SystAnalys_lr1
         {
             if (optText.Text != "" && speed.Text != "" && Data.buses.Count != 0 && int.Parse(optText.Text) > 0 && int.Parse(speed.Text) > 0 && Data.buses != null)
             {
+                coordinates.CreateAllCoordinates();
                 Optimization.withoutSensorsBuses = new List<int>();
                 Optimization.countWithoutSensors = Data.buses.Count;
                 bool check = false;

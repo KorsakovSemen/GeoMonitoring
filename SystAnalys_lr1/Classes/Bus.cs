@@ -136,11 +136,9 @@ namespace SystAnalys_lr1.Classes
             {
                 if (TurnBack == false)
                 {
-
                     if (PositionAt < Data.AllGridsInRoutes[Route].Count - 1)
                     {
                         PositionAt++;
-
                     }
                     else
                     {
@@ -160,7 +158,6 @@ namespace SystAnalys_lr1.Classes
                         PositionAt++;
 
                     }
-
                 }
             }
         }
@@ -382,6 +379,7 @@ namespace SystAnalys_lr1.Classes
         {
             await Task.Run(() => DetectEpicenter());
         }
+
         // обмнаружение  эпицентров через точки
         public int DetectEpicenter()
         {
@@ -424,6 +422,30 @@ namespace SystAnalys_lr1.Classes
                 {
                     foreach (var Square in Sector.Value)
                     {
+                        //if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.Height == Square.y)))
+                        //{
+                        //    CheckEpic(Sector, Square, EpicList);
+                        //}
+                        //if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.Height == Square.y)))
+                        //{
+                        //    CheckEpic(Sector, Square, EpicList);
+                        //}
+                        //if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.Height == Square.y)))
+                        //{
+                        //    CheckEpic(Sector, Square, EpicList);
+                        //}
+                        //if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.Height == Square.y)))
+                        //{
+                        //    CheckEpic(Sector, Square, EpicList);
+                        //}
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y - GridPart.Height == Square.y)))
+                        {
+                            CheckEpic(Sector, Square, EpicList);
+                        }
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y + GridPart.Height == Square.y)))
+                        {
+                            CheckEpic(Sector, Square, EpicList);
+                        }
                         if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);

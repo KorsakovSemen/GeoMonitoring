@@ -45,7 +45,7 @@ namespace SystAnalys_lr1.Classes
                 if (cicl == ciclTotal - 1)
                     Data.buses[rnd.Next(0, Data.buses.Count)].Tracker = true;
                 List<int?> mas = new List<int?>();
-                Baraban();
+                ShuffleBuses();
                 if (Main.SavePictures == true)
                 {
                     Directory.CreateDirectory(pathOpt + "/Epics" + "/" + (cicl + 1).ToString());
@@ -171,7 +171,7 @@ namespace SystAnalys_lr1.Classes
             }
 
             Main.average = mean;
-            BarabanAfterOpti();
+            //BarabanAfterOpti();
             Data.busesPark = busesparkreturn;
             Data.buses = optimizeBuses;
         }
@@ -216,9 +216,8 @@ namespace SystAnalys_lr1.Classes
                 withoutSensorsBuses.Add(countWithoutSensors);
             }
         }
-        private static void Baraban()
+        private static void ShuffleBuses()
         {
-
             foreach (var bp in Data.busesPark)
             {
                 var tot = (Data.AllGridsInRoutes[bp.First().Route].Count - 1) / bp.Count;
@@ -260,7 +259,7 @@ namespace SystAnalys_lr1.Classes
                 }
             }
         }
-        private static void BarabanAfterOpti()
+        private static void ShuffleBusesAfterOptimization()
         {
             Random rnd = new Random();
             foreach (var b in Data.buses)
