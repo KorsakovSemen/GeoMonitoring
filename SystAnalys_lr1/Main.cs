@@ -2330,20 +2330,28 @@ namespace SystAnalys_lr1
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
+          
             if (Data.buses.Any())
             {
                 AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
                 AnimationBitmap.MakeTransparent();
+                AnimationGraphics.Dispose();
                 AnimationGraphics = Graphics.FromImage(AnimationBitmap);
                 foreach (var bus in Data.buses)
                 {
-                    try
-                    {
+                    //try
+                    //{
                         bus.MoveWithGraphics(AnimationGraphics);
                         AnimationBox.Image = AnimationBitmap; // поместил в трай
+                    //}
+                    //catch { }
+                    if (Data.buses.Count <= 20)
+                    {
+                        GC.Collect();
                     }
-                    catch { }
+                 
                 }
+
             }
         }
 
