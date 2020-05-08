@@ -89,6 +89,7 @@
     <Compile Include="Classes\GridPart.cs" />
     <Compile Include="Classes\Loader.cs" />
     <Compile Include="Classes\Optimization.cs" />
+    <Compile Include="Classes\Saver.cs" />
     <Compile Include="Classes\Vertex.cs" />
     <Compile Include="Controls\MatrixControl.cs">
       <SubType>UserControl</SubType>

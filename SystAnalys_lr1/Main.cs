@@ -38,11 +38,16 @@ namespace SystAnalys_lr1
         Graphics AnimationGraphics;
         Bitmap AnimationBitmap;
         Coordinates coordinates;
+        Report r;
+        CrossroadsSettings crossSettings;
+        AddRoute addR;
+        AddGrid addG;
+        public EpicSettings epSet;
+        LoadingForm loadingForm;
+        readonly Constructor c = new Constructor();
+
         public static string average;
-
         public static DeleteType delType;
-
-        //int tracbarX, tracbarY;
        
         public static string selectedRoute;
         public static int firstCrossRoads = 0;
@@ -61,18 +66,12 @@ namespace SystAnalys_lr1
         public static bool SavePictures = false;
         public static bool extendedSavePictures = false;
         //
-        string savepath;              
-
-
+        string savepath;          
         public static Classes.Grid g;   
-
         public static DrawGraph G;
 
         public static int selected1; //выбранные вершины, для соединения линиями
         public static int selected2;
-
-        //статичный размер басса
-        public static int sizeBus;
 
         bool lang = false;
 
@@ -91,52 +90,19 @@ namespace SystAnalys_lr1
         int hsheet;
         static public Image globalMap;
         static public int zoom, scrollX, scrollY;
-        Report r;
-        static public Main _instance;
         public static bool yes;
 
         int rCount;
         int oldChart;
 
         static public string globalDel = "All";
-
-        LoadingForm loadingForm = new LoadingForm();
-
-
         public static int EpicSizeParam = 25;
-
-        string saveF = "xml";
-
-
+        public static string saveF = "xml";        
         List<int> selected = new List<int>();
-        readonly Constructor c = new Constructor();
-
         static public int refreshLights = 0;
-
         public static bool flag = false;
-
-        CrossroadsSettings crossSettings;
-
-        AddRoute addR;
-
-        AddGrid addG;
-
-        public EpicSettings epSet;        
-        
-        
-        //class jopa
-        private void AddInComboBox()
-        {
-            changeRoute.Items.Clear();
-            changeRoute.Items.Add(MainStrings.none);
-            changeRoute.Items.Add(MainStrings.network);
-            foreach (var r in Data.routes)
-            {
-                changeRoute.Items.Add(r.Key);
-            };
-            changeRoute.Text = MainStrings.network;
-        }
-        
+     
+       
 
         public Main()
         {
@@ -148,14 +114,27 @@ namespace SystAnalys_lr1
                 System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
                 System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
             }
-            _instance = this;
             InitializeComponent();
             InitializeElements();
             LoadSettings();
-            AnimationSettings();
-            
+            AnimationSettings();           
 
         }
+
+
+        private void AddInComboBox()
+        {
+            changeRoute.Items.Clear();
+            changeRoute.Items.Add(MainStrings.none);
+            changeRoute.Items.Add(MainStrings.network);
+            foreach (var r in Data.routes)
+            {
+                changeRoute.Items.Add(r.Key);
+            };
+            changeRoute.Text = MainStrings.network;
+        }
+
+
         private void ConstructorOnNetwork()
         {
             addTraficLight.Enabled = true;
@@ -178,23 +157,12 @@ namespace SystAnalys_lr1
         {
             MovingEpicParamet = new List<string>();
             timer.Interval = BusStop.stopTime / 10;
-            r = new Report();   
+            r = new Report();
+            loadingForm = new LoadingForm();
             rCount = 0;
             coordinates = new Coordinates();
             g = new Classes.Grid(0, 0, 0, 0, 80, 40);
-            //Потом вынесу в конструктор Data (или что0=-то типа того)
-            Data.AllCoordinates = new SerializableDictionary<string, List<Point>>();
-            Data.AllGridsInRoutes = new SerializableDictionary<string, List<int>>();
-            Data.stopPointsInGrids = new SerializableDictionary<string, List<int>>();
-            Data.routesEdge = new SerializableDictionary<string, List<Edge>>();
-            Data.traficLights = new List<TraficLight>();
-            Data.routes = new SerializableDictionary<string, List<Vertex>>();
-            Data.buses = new List<Bus>();
-            Data.TraficLightsInGrids = new List<int>();
-            Data.allstopPoints = new List<BusStop>();
-            Data.stopPoints = new SerializableDictionary<string, List<BusStop>>();
-            Data.E = new List<Edge>();
-            Data.V = new List<Vertex>();
+           
             StyleManager = msmMain;
             addTraficLight.Enabled = false;
             delAllBusesOnRoute.Enabled = false;
@@ -1469,150 +1437,11 @@ namespace SystAnalys_lr1
                 loadingForm.loading.Maximum = 100;
                 if (saveFormat == "xml")
                 {
-                    XmlSerializer serializerV = new XmlSerializer(typeof(List<Vertex>));
-                    XmlSerializer serializerE = new XmlSerializer(typeof(List<Edge>));
-
-                    File.Delete(save + "Vertices.xml");
-                    using (FileStream fileV = new FileStream(save + "Vertices.xml", FileMode.OpenOrCreate))
-                    {
-                        serializerV.Serialize(fileV, Data.V);
-                        Console.WriteLine("Объект сериализован");
-                        fileV.Close();
-                    }
-                    loadingForm.loading.Value = 10;
-                    File.Delete(save + "Edges.xml");
-                    using (FileStream fileE = new FileStream(save + "Edges.xml", FileMode.OpenOrCreate))
-                    {
-                        serializerE.Serialize(fileE, Data.E);
-                        Console.WriteLine("Объект сериализован");
-                        fileE.Close();
-                    }
-                    loadingForm.loading.Value = 20;
-                    File.Delete(save + "Buses.xml");
-                    XmlSerializer serializerAllBuses = new XmlSerializer(typeof(List<Bus>));
-                    using (FileStream fileB = new FileStream(save + "Buses.xml", FileMode.OpenOrCreate))
-                    {
-                        serializerAllBuses.Serialize(fileB, Data.buses);
-                        Console.WriteLine("Объект сериализован");
-                    }
-                    loadingForm.loading.Value = 30;
-
-                    //AsyncCreateAllCoordinates();
-                    File.Delete(save + "Data.AllCoordinates.xml");
-                    XmlSerializer serializerAllCoor = new XmlSerializer(typeof(SerializableDictionary<string, List<Point>>));
-                    using (FileStream fileA = new FileStream(save + "Data.AllCoordinates.xml", FileMode.OpenOrCreate))
-                    {
-                        serializerAllCoor.Serialize(fileA, Data.AllCoordinates);
-                        Console.WriteLine("Объект сериализован");
-                    }
-                    loadingForm.loading.Value = 50;
-                    File.Delete(save + "Data.AllGridsInRoutes.xml");
-                    XmlSerializer serializerAllGridsInRoutes = new XmlSerializer(typeof(SerializableDictionary<string, List<int>>));
-                    using (FileStream fileAG = new FileStream(save + "Data.AllGridsInRoutes.xml", FileMode.OpenOrCreate))
-                    {
-                        serializerAllGridsInRoutes.Serialize(fileAG, Data.AllGridsInRoutes);
-                        Console.WriteLine("Объект сериализован");
-                    }
-                    loadingForm.loading.Value = 60;
-                    XmlSerializer Ver = new XmlSerializer(typeof(SerializableDictionary<string, List<Vertex>>));
-                    XmlSerializer Edge = new XmlSerializer(typeof(SerializableDictionary<string, List<Edge>>));
-
-                    File.Delete(save + "vertexRoutes.xml");
-                    using (FileStream fileV = new FileStream(save + "vertexRoutes.xml", FileMode.OpenOrCreate))
-                    {
-                        Ver.Serialize(fileV, Data.routes);
-                        Console.WriteLine("Объект сериализован");
-                    }
-                    loadingForm.loading.Value = 70;
-                    File.Delete(save + "StopPoints.xml");
-                    using (FileStream fileV = new FileStream(save + "StopPoints.xml", FileMode.OpenOrCreate))
-                    {
-                        Ver.Serialize(fileV, Data.stopPoints);
-                        Console.WriteLine("Объект сериализован");
-                    }
-                    File.Delete(save + "allStopPoints.xml");
-                    using (FileStream fileV = new FileStream(save + "allStopPoints.xml", FileMode.OpenOrCreate))
-                    {
-                        XmlSerializer V = new XmlSerializer(typeof(List<Vertex>));
-                        V.Serialize(fileV, Data.allstopPoints);
-                        Console.WriteLine("Объект сериализован");
-                    }
-                    loadingForm.loading.Value = 80;
-
-                    File.Delete(save + "edgeRoutes.xml");
-                    using (FileStream fileE = new FileStream(save + "edgeRoutes.xml", FileMode.OpenOrCreate))
-                    {
-                        Edge.Serialize(fileE, Data.routesEdge);
-                        Console.WriteLine("Объект сериализован");
-
-                    }
-                    foreach (var tl in Data.traficLights)
-                    {
-                        tl.Stop();
-                    }
-                    File.Delete(save + "Data.traficLights.xml");
-                    using (FileStream fileTL = new FileStream(save + "Data.traficLights.xml", FileMode.OpenOrCreate))
-                    {
-                        XmlSerializer tl = new XmlSerializer(typeof(List<TraficLight>));
-                        tl.Serialize(fileTL, Data.traficLights);
-
-                        Console.WriteLine("Объект сериализован");
-
-                    }
-                    File.Delete(save + "grid.xml");
-                    using (FileStream fileTL = new FileStream(save + "grid.xml", FileMode.OpenOrCreate))
-                    {
-                        XmlSerializer tl = new XmlSerializer(typeof(Classes.Grid));
-                        tl.Serialize(fileTL, g);
-
-                        Console.WriteLine("Объект сериализован");
-
-                    }
-                    loadingForm.loading.Value = 90;
-                    saveF = saveFormat;
-                    loadingForm.loading.Value = 100;
-                    loadingForm.close = true;
-                    loadingForm.Close();
-                    return;
+                    Saver.saveXML(save, loadingForm, saveFormat);
                 }
                 if (saveFormat == "json")
                 {
-                    loadingForm.loading.Value = 10;
-                    string json = JsonConvert.SerializeObject(Data.V);
-                    File.WriteAllText(save + "Vertices.json", json);
-                    loadingForm.loading.Value = 20;
-                    json = JsonConvert.SerializeObject(Data.E);
-                    File.WriteAllText(save + "Edges.json", json);
-                    loadingForm.loading.Value = 30;
-                    json = JsonConvert.SerializeObject(Data.buses);
-                    File.WriteAllText(save + "Buses.json", json);
-                    loadingForm.loading.Value = 50;
-                    //AsyncCreateAllCoordinates();
-                    json = JsonConvert.SerializeObject(Data.AllCoordinates);
-                    File.WriteAllText(save + "Data.AllCoordinates.json", json);
-                    loadingForm.loading.Value = 60;
-                    json = JsonConvert.SerializeObject(Data.AllGridsInRoutes);
-                    File.WriteAllText(save + "Data.AllGridsInRoutes.json", json);
-                    loadingForm.loading.Value = 70;
-                    json = JsonConvert.SerializeObject(Data.stopPoints);
-                    File.WriteAllText(save + "StopPoints.json", json);
-                    json = JsonConvert.SerializeObject(Data.allstopPoints);
-                    File.WriteAllText(save + "allStopPoints.json", json);
-                    loadingForm.loading.Value = 80;
-                    json = JsonConvert.SerializeObject(Data.routes);
-                    File.WriteAllText(save + "vertexRoutes.json", json);
-                    json = JsonConvert.SerializeObject(g);
-                    File.WriteAllText(save + "grid.json", json);
-                    loadingForm.loading.Value = 90;
-                    json = JsonConvert.SerializeObject(Data.routesEdge);
-                    File.WriteAllText(save + "edgeRoutes.json", json);
-                    json = JsonConvert.SerializeObject(Data.traficLights);
-                    File.WriteAllText(save + "Data.traficLights.json", json);
-                    saveF = saveFormat;
-                    loadingForm.loading.Value = 100;
-                    loadingForm.close = true;
-                    loadingForm.Close();
-                    return;
+                    Saver.saveJSON(save, loadingForm, saveFormat);
                 }
 
             }
@@ -1659,7 +1488,6 @@ namespace SystAnalys_lr1
             Data.routes.Clear();
             Data.routesEdge.Clear();
             changeRoute.Items.Clear();
-
             Data.AllCoordinates.Clear();
 
             Data.allstopPoints.Clear();
@@ -1672,396 +1500,22 @@ namespace SystAnalys_lr1
 
             Data.V.Clear();
             Data.E.Clear();
-
+        
         }
+
         //class loader
         private void LoadRoutes(string load)
         {
             try
             {
-                DeleteAll();               
-                if (File.Exists(load + "Vertices.xml"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "Vertices.xml"))
-                    {
-                        XmlSerializer deserializerV = new XmlSerializer(typeof(List<Vertex>));
-                        Data.V = (List<Vertex>)deserializerV.Deserialize(reader);
-                    }
-                }
+                DeleteAll();
+                Loader.Load(load, loadingForm, sheet, timer);                
 
-                if (File.Exists(load + "Vertices.json"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "Vertices.json"))
-                    {
-                        Data.V = JsonConvert.DeserializeObject<List<Vertex>>(File.ReadAllText(load + "Vertices.json"));
-                    }
-                }
-                loadingForm.loading.Value = 10;
+                LoadOptions(load);
 
-                if (File.Exists(load + "Edges.xml"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "Edges.xml"))
-                    {
-                        XmlSerializer deserializerE = new XmlSerializer(typeof(List<Edge>));
-                        Data.E = (List<Edge>)deserializerE.Deserialize(reader);
-                    }
-                }
-
-                if (File.Exists(load + "Edges.json"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "Edges.json"))
-                    {
-                        Data.E = JsonConvert.DeserializeObject<List<Edge>>(reader.ReadToEnd());
-                    }
-                }
-
-                if (File.Exists(load + "grid.xml"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "grid.xml"))
-                    {
-                        XmlSerializer deserializerV = new XmlSerializer(typeof(Classes.Grid));
-                        g = (Classes.Grid)deserializerV.Deserialize(reader);
-                        g.gridHeight = 40;
-                        g.gridWidth = 80;
-                    }
-                }
-
-                if (File.Exists(load + "grid.json"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "grid.json"))
-                    {
-                        g = JsonConvert.DeserializeObject<Classes.Grid>(reader.ReadToEnd());
-                        g.gridHeight = 40;
-                        g.gridWidth = 80;
-                    }
-                }
-
-                loadingForm.loading.Value = 20;
-
-                if (File.Exists(load + "StopPoints.xml"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "StopPoints.xml"))
-                    {
-                        XmlSerializer deserializerV = new XmlSerializer(typeof(SerializableDictionary<string, List<Vertex>>));
-                        Data.stopPoints = (SerializableDictionary<string, List<BusStop>>)deserializerV.Deserialize(reader);
-                        foreach (var sp in Data.stopPoints.Values)
-                        {
-                            foreach (var s in sp)
-                                if (!Data.allstopPoints.Contains(s))
-                                    Data.allstopPoints.Add(s);
-                        }
-                        Data.stopPointsInGrids = new SerializableDictionary<string, List<int>>();
-                        foreach (var StopList in Data.stopPoints)
-                        {
-                            Data.stopPointsInGrids.Add(StopList.Key, new List<int>());
-                            foreach (var vertex in StopList.Value)
-                            {
-                                Data.stopPointsInGrids[StopList.Key].Add(vertex.gridNum);
-                            }
-
-                        }
-                    }
-                }
-
-                if (File.Exists(load + "allStopPoints.xml"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "allStopPoints.xml"))
-                    {
-                        XmlSerializer deserializerV = new XmlSerializer(typeof(List<Vertex>));
-                        Data.allstopPoints = (List<BusStop>)deserializerV.Deserialize(reader);
-
-                    }
-                }
-
-                if (File.Exists(load + "StopPoints.json"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "StopPoints.json"))
-                    {
-                        Data.stopPoints = JsonConvert.DeserializeObject<SerializableDictionary<string, List<BusStop>>>(File.ReadAllText(load + "StopPoints.json"));
-                        foreach (var sp in Data.stopPoints.Values)
-                        {
-                            foreach (var s in sp)
-                                if (!Data.allstopPoints.Contains(s))
-                                    Data.allstopPoints.Add(s);
-                        }
-                        Data.stopPointsInGrids = new SerializableDictionary<string, List<int>>();
-                        foreach (var StopList in Data.stopPoints)
-                        {
-                            Data.stopPointsInGrids.Add(StopList.Key, new List<int>());
-                            foreach (var vertex in StopList.Value)
-                            {
-                                Data.stopPointsInGrids[StopList.Key].Add(vertex.gridNum);
-                            }
-
-                        }
-
-                    }
-                }
-
-                if (File.Exists(load + "allStopPoints.json"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "allStopPoints.json"))
-                    {
-                        Data.allstopPoints = JsonConvert.DeserializeObject<List<BusStop>>(File.ReadAllText(load + "allStopPoints.json"));
-                    }
-                }
-
-                loadingForm.loading.Value = 30;
-
-
-                if (File.Exists(load + "Data.traficLights.xml"))
-                {
-                    XmlSerializer tl = new XmlSerializer(typeof(List<TraficLight>));
-                    using (StreamReader reader = new StreamReader(load + "Data.traficLights.xml"))
-                        Data.traficLights = (List<TraficLight>)tl.Deserialize(reader);
-                    Data.TraficLightsInGrids = new List<int>();
-                    foreach (var item in Data.traficLights)
-                    {
-                        Data.TraficLightsInGrids.Add(item.gridNum);
-                    }
-                    foreach (var tll in Data.traficLights)
-                    {
-                        tll.Set();
-                        tll.Start();
-                    }
-                    sheet.Image = G.GetBitmap();
-                }
-                if (File.Exists(load + "Data.traficLights.json"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "Data.traficLights.json"))
-                    {
-                        Data.traficLights = JsonConvert.DeserializeObject<List<TraficLight>>(reader.ReadToEnd());
-                        Data.TraficLightsInGrids = new List<int>();
-                        foreach (var item in Data.traficLights)
-                        {
-                            Data.TraficLightsInGrids.Add(item.gridNum);
-                        }
-                        foreach (var tll in Data.traficLights)
-                        {
-                            tll.Set();
-                            tll.Start();
-                        }
-                        sheet.Image = G.GetBitmap();
-                    }
-                }
-                loadingForm.loading.Value = 40;
-
-                if (Data.buses != null)
-                {
-                    Data.buses.Clear();
-                }
-
-                if (File.Exists(load + "Buses.json"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "Buses.json"))
-                    {
-                        Data.buses = JsonConvert.DeserializeObject<List<Bus>>(reader.ReadToEnd());
-                    }
-                }
-
-                XmlSerializer deserializerAllBuses = new XmlSerializer(typeof(List<Bus>));
-                if (File.Exists(load + "Buses.xml"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "Buses.xml"))
-                    {
-                        Data.buses = (List<Bus>)deserializerAllBuses.Deserialize(reader);
-                    }
-                }
-                loadingForm.loading.Value = 60;
-                foreach (var tl in Data.traficLights)
-                {
-                    tl.Start();
-                }
-                Image num;
-                Bitmap original = new Bitmap(1, 1);
-                foreach (var x in Data.buses)
-                {
-
-                    if (x.Tracker == true)
-                    {
-                        Rectangle rect = new Rectangle(0, 0, 200, 100);
-                        x.BusPic = new Bitmap(Bus.BusImg);
-                        x.BusPic = new Bitmap(x.BusPic, new Size(15, 15));
-                        num = new Bitmap(x.BusPic.Height, x.BusPic.Width);
-                        using (Graphics gr = Graphics.FromImage(num))
-                        {
-                            using (Font font = new Font("Arial", 10))
-                            {
-                                // Заливаем фон нужным цветом.
-                                gr.FillRectangle(Brushes.Transparent, rect);
-
-                                // Выводим текст.
-                                gr.DrawString(
-                                    x.Route.ToString(),
-                                    font,
-                                    Brushes.Black, // цвет текста
-                                    rect, // текст будет вписан в указанный прямоугольник
-                                    StringFormat.GenericTypographic
-                                    );
-                            }
-                        }
-
-                        original = new Bitmap(Math.Max(x.BusPic.Width, num.Width), Math.Max(x.BusPic.Height, num.Height) * 2); //load the image file
-                        using (Graphics graphics = Graphics.FromImage(original))
-                        {
-
-                            graphics.DrawImage(x.BusPic, 0, 0);
-                            graphics.DrawImage(num, 0, 15);
-                            graphics.Dispose();
-
-                        }
-                        //  bitmap = new Bitmap(original, new Size(15, 15));
-                    }
-                    else
-                    {
-                        Rectangle rect = new Rectangle(0, 0, 200, 100);
-                        x.BusPic = new Bitmap(Bus.OffBusImg);
-                        x.BusPic = new Bitmap(x.BusPic, new Size(15, 15));
-                        num = new Bitmap(x.BusPic.Height, x.BusPic.Width);
-                        using (Graphics gr = Graphics.FromImage(num))
-                        {
-                            using (Font font = new Font("Arial", 10))
-                            {
-                                // Заливаем фон нужным цветом.
-                                gr.FillRectangle(Brushes.Transparent, rect);
-
-                                // Выводим текст.
-                                gr.DrawString(
-                                    x.Route.ToString(),
-                                    font,
-                                    Brushes.Black, // цвет текста
-                                    rect, // текст будет вписан в указанный прямоугольник
-                                    StringFormat.GenericTypographic
-                                    );
-                            }
-                        }
-
-                        original = new Bitmap(Math.Max(x.BusPic.Width, num.Width), Math.Max(x.BusPic.Height, num.Height) * 2); //load the image file
-                        using (Graphics graphics = Graphics.FromImage(original))
-                        {
-
-                            graphics.DrawImage(x.BusPic, 0, 0);
-                            graphics.DrawImage(num, 0, 15);
-                            graphics.Dispose();
-
-                        }
-                    }
-
-
-                    x.BusPic = original;//res;// new Bitmap(res, new Size(1000, 1000));
-
-                    x.Skip = 5;
-                    x.skipStops = 5;
-                    x.skipEnd = 5;
-
-                }
-                //
-                timer.Start();
-                //
-                XmlSerializer ver = new XmlSerializer(typeof(List<Vertex>));
-                XmlSerializer ed = new XmlSerializer(typeof(List<Edge>));
-
-
-                XmlSerializer Ver = new XmlSerializer(typeof(SerializableDictionary<string, List<Vertex>>));
-                XmlSerializer Edge = new XmlSerializer(typeof(SerializableDictionary<string, List<Edge>>));
-
-                if (File.Exists(load + "vertexRoutes.xml"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "vertexRoutes.xml"))
-                        Data.routes = (SerializableDictionary<string, List<Vertex>>)Ver.Deserialize(reader);
-                }
-
-                if (File.Exists(load + "vertexRoutes.json"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "vertexRoutes.json"))
-                    {
-                        Data.routes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Vertex>>>(reader.ReadToEnd());
-                    }
-                }
-                loadingForm.loading.Value = 80;
-                if (File.Exists(load + "edgeRoutes.xml"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "edgeRoutes.xml"))
-                        Data.routesEdge = (SerializableDictionary<string, List<Edge>>)Edge.Deserialize(reader);
-                    saveF = "xml";
-                }
-
-                if (File.Exists(load + "edgeRoutes.json"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "edgeRoutes.json"))
-                    {
-                        Data.routesEdge = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Edge>>>(reader.ReadToEnd());
-                    }
-                    saveF = "json";
-                }
-                XmlSerializer deserializerAllCoor = new XmlSerializer(typeof(SerializableDictionary<string, List<Point>>));
-                if (File.Exists(load + "Data.AllCoordinates.xml"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "Data.AllCoordinates.xml"))
-                        Data.AllCoordinates = (SerializableDictionary<string, List<Point>>)deserializerAllCoor.Deserialize(reader);
-                }
-
-                if (File.Exists(load + "Data.AllCoordinates.json"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "Data.AllCoordinates.json"))
-                    {
-                        Data.AllCoordinates = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Point>>>(reader.ReadToEnd());
-                    }
-                }
-                XmlSerializer deserializerAllGridsInRoutes = new XmlSerializer(typeof(SerializableDictionary<string, List<int>>));
-                if (File.Exists(load + "Data.AllGridsInRoutes.xml"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "Data.AllGridsInRoutes.xml"))
-                        Data.AllGridsInRoutes = (SerializableDictionary<string, List<int>>)deserializerAllGridsInRoutes.Deserialize(reader);
-                }
-
-                if (File.Exists(load + "Data.AllGridsInRoutes.json"))
-                {
-                    using (StreamReader reader = new StreamReader(load + "Data.AllGridsInRoutes.json"))
-                    {
-                        Data.AllGridsInRoutes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<int>>>(reader.ReadToEnd());
-                    }
-                }
-                loadingForm.loading.Value = 90;
-
-                DisplayEpicenters.Path = load;
-                sheet.Image = Image.FromFile(load + "/Map.png");
-                saveImage = sheet.Image;
-                zoomBar.Value = 1;
-                wsheet = sheet.Width;
-                hsheet = sheet.Height;
-                ZoomHelper();
-                loadingForm = new LoadingForm
-                {
-                    close = false
-                };
-                loadingForm.Show();
-                loadingForm.loading.Value = 0;
-                globalMap = sheet.Image;
-                G.SetBitmap();
-                config.Text = MainStrings.config + load;
-                openEpicFormToolStripMenuItem.Enabled = true;
-                GridCreator.CreateGrid(sheet);
-                Modeling.CreatePollutionInRoutes();
-                Epicenter.CreateOneRandomEpicenter(EpicSizeParam, null);
-                ConstructorOnNetwork();
-                AddInComboBox();
-                G.ClearSheet();
-                G.DrawALLGraph(Data.V, Data.E);
-                sheet.Image = G.GetBitmap();
-                GridCreator.DrawGrid(sheet);
-                if (Ep != null)
-                    Ep.Close();
-                Ep = new DisplayEpicenters(this);
-                StyleManager.Clone(Ep);
-                Ep.Show();
                 loadingForm.loading.Value = 100;
                 loadingForm.close = true;
-                loadingForm.Close();
-                if (Data.AllCoordinates.Count != 0)
-                {
-                    coordinates.CreateAllCoordinates();
-                }
+                loadingForm.Close();               
 
                 matrix.MatrixCreate();
                 //Ep.BringToFront();
@@ -2081,6 +1535,44 @@ namespace SystAnalys_lr1
             }
         }
 
+        private void LoadOptions(string load)
+        {
+
+            DisplayEpicenters.Path = load;
+            sheet.Image = Image.FromFile(load + "/Map.png");
+            saveImage = sheet.Image;
+            zoomBar.Value = 1;
+            wsheet = sheet.Width;
+            hsheet = sheet.Height;
+            ZoomHelper();
+            loadingForm = new LoadingForm
+            {
+                close = false
+            };
+            loadingForm.Show();
+            loadingForm.loading.Value = 0;
+            globalMap = sheet.Image;
+            G.SetBitmap();
+            config.Text = MainStrings.config + load;
+            openEpicFormToolStripMenuItem.Enabled = true;
+            GridCreator.CreateGrid(sheet);
+            Modeling.CreatePollutionInRoutes();
+            Epicenter.CreateOneRandomEpicenter(EpicSizeParam, null);
+            ConstructorOnNetwork();
+            AddInComboBox();
+            G.ClearSheet();
+            G.DrawALLGraph(Data.V, Data.E);
+            sheet.Image = G.GetBitmap();
+            GridCreator.DrawGrid(sheet);
+            if (Ep != null)
+                Ep.Close();
+            Ep = new DisplayEpicenters(this);
+            StyleManager.Clone(Ep);
+            Ep.Show();
+
+            if (Data.AllCoordinates.Count != 0)
+                coordinates.CreateAllCoordinates();
+        }
 
         private void Button1_Click(object sender, EventArgs e)
         {
@@ -2093,24 +1585,6 @@ namespace SystAnalys_lr1
             return (int)Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
         }
 
-       
-        //остальное конструктор
-        //private async void AsyncCheckV(MouseEventArgs e, bool check)
-        //{
-        //    await Task.Run(() => CheckV(e, check));
-        //}
-        //не юзается нигде
-        private bool CheckV(MouseEventArgs e, bool check)
-        {
-            for (int i = 0; i < Data.V.Count; i++)
-            {
-                if (Math.Pow((Data.V[i].X - e.X / zoom), 2) + Math.Pow((Data.V[i].Y - e.Y / zoom), 2) <= G.R * G.R)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
 
         private void AddTrafficLight(MouseEventArgs e)
         {
@@ -2165,7 +1639,7 @@ namespace SystAnalys_lr1
                 if (selectRoute.Enabled == false)
                 {
                     bool check = false;
-                    check = CheckV(e, check);
+                    check = c.CheckV(e, check);
                     c.SelectRoute(e, Data.V, Data.E, sheet, c, selected, check);
                 }
                 if (addTraficLight.Enabled == false)
@@ -2278,7 +1752,6 @@ namespace SystAnalys_lr1
                         c.MapUpdateRoute(sheet, routeV, Data.routesEdge[changeRoute.Text]);
                     }
                 }
-                //c.MapUpdateRoute(sheet, routeV, Data.routesEdge[changeRoute.Text]);
                 coordinates.CreateOneRouteCoordinates(changeRoute.Text);
                 return;
             }
@@ -2293,8 +1766,7 @@ namespace SystAnalys_lr1
                     Owner = this
                 };
                 f.ShowDialog();
-                G.ClearSheet();
-                sheet.Image = G.GetBitmap();
+                c.MapUpdate(sheet);
                 GridCreator.DrawGrid(sheet);
                 if (!Ep.IsDisposed)
                 {
@@ -2519,7 +1991,6 @@ namespace SystAnalys_lr1
                     {
                         dialog.SelectedPath = Path.GetFullPath(savepath);
                     }
-                    //dialog.SelectedPath = Path.GetFullPath(savepath); //System.Windows.Forms.Application.StartupPath;
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
                         string path = dialog.SelectedPath;
@@ -2857,10 +2328,10 @@ namespace SystAnalys_lr1
                 try
                 {
                     bus.MoveWithGraphics(AnimationGraphics);
+                    AnimationBox.Image = AnimationBitmap; // поместил в трай
                 }
                 catch { }
             }
-            AnimationBox.Image = AnimationBitmap;
         }
 
         private void MetroButton1_Click(object sender, EventArgs e)

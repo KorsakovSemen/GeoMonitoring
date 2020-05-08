@@ -10,6 +10,8 @@ namespace SystAnalys_lr1.Classes
     {
         public static int stopTime { get; } = 200;
 
+        public BusStop() { }
+
         public BusStop(int x, int y)
         {
             X = x;

@@ -10,6 +10,21 @@ namespace SystAnalys_lr1.Classes
 {
     public class Constructor
     {
+
+        //ты по всем документам смотри
+        public bool CheckV(MouseEventArgs e, bool check)
+        {
+            for (int i = 0; i < Data.V.Count; i++)
+            {
+                if (Math.Pow((Data.V[i].X - e.X / Main.zoom), 2) + Math.Pow((Data.V[i].Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
         public void MapUpdate(PictureBox sheet)
         {
             sheet.Invoke(new Del((s) => sheet.Image = s), Main.G.GetBitmap());
