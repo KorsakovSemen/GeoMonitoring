@@ -92,7 +92,7 @@ namespace SystAnalys_lr1
         static public int zoom, scrollX, scrollY;
         public static bool yes;
 
-        int rCount;
+        static public int rCount { get; set; }
         int oldChart;
 
         static public string GlobalDel { get; set; } = "All";
@@ -623,7 +623,6 @@ namespace SystAnalys_lr1
                             G.ClearSheet();
                             G.DrawALLGraph(Data.V, Data.E);
                             sheet.Image = G.GetBitmap();
-                            GridCreator.DrawGrid(sheet);
                             AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
                             AnimationBox.Image = AnimationBitmap;
 
@@ -636,9 +635,7 @@ namespace SystAnalys_lr1
                             Data.Routes.Keys.ToList().ForEach(x => Data.Routes[x] = new List<Vertex>());
                             Data.RoutesEdge.Keys.ToList().ForEach(x => Data.RoutesEdge[x] = new List<Edge>());
                             loadingForm.loading.Value = 40;
-                            Data.AllCoordinates.Clear();
-                           
-                            GridCreator.DrawGrid(sheet);
+                            Data.AllCoordinates.Clear();                           
                             loadingForm.loading.Value = 50;
                         };
                         break;
@@ -649,8 +646,7 @@ namespace SystAnalys_lr1
                             loadingForm.loading.Value = 20;
                             Data.StopPoints[changeRoute.Text].Clear();
                             Data.StopPointsInGrids[changeRoute.Text].Clear();
-                            loadingForm.loading.Value = 40;                            
-                            GridCreator.DrawGrid(sheet);
+                            loadingForm.loading.Value = 40;      
                             loadingForm.loading.Value = 50;
                         }
                         if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
@@ -660,8 +656,7 @@ namespace SystAnalys_lr1
                             Data.AllstopPoints.Clear();
                             Data.StopPoints.Clear();
                             Data.StopPointsInGrids.Clear();
-                            loadingForm.loading.Value = 40;                           
-                            GridCreator.DrawGrid(sheet);
+                            loadingForm.loading.Value = 40;       
                             loadingForm.loading.Value = 50;
                         }
                         break;
@@ -675,7 +670,6 @@ namespace SystAnalys_lr1
                             Data.TraficLights.Clear();
                             Data.TraficLightsInGrids.Clear();
                             loadingForm.loading.Value = 40;
-                            GridCreator.DrawGrid(sheet);
                             loadingForm.loading.Value = 50;
                         }
                         break;
@@ -694,6 +688,7 @@ namespace SystAnalys_lr1
                 G.ClearSheet();
                 sheet.Image = G.GetBitmap();
                 G.DrawALLGraph(Data.V, Data.E);
+                GridCreator.DrawGrid(sheet);
                 selectRoute.Enabled = true;
                 loadingForm.loading.Value = 80;
                 trafficLightLabel.Visible = false;
@@ -871,7 +866,7 @@ namespace SystAnalys_lr1
                     Data.BusesPark = busesparkreturn;
 
                     msmMain.Style = style;
-                    MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                   // MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     if (!Ep.IsDisposed)
                     {
                         StyleManager.Clone(Ep);
@@ -880,7 +875,9 @@ namespace SystAnalys_lr1
                     BringToFront();
                     timer.Start();
                     ButtonOn();
-                    Optimization.ResChart(oldChart, r, rCount, StyleManager);
+                    if(rCount == 0)
+                        oldChart = (int)Optimization.percentMean.Keys.Sum();
+                    Optimization.ResChart(oldChart, r, StyleManager);
 
                     foreach (var tl in Data.TraficLights)
                         tl.TimerLight.Interval = 1000;

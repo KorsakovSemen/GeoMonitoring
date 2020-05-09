@@ -11,6 +11,7 @@ namespace SystAnalys_lr1.Classes
 {
     enum Skips
     {
+
     }
 
     public class Bus : ICloneable
@@ -507,6 +508,9 @@ namespace SystAnalys_lr1.Classes
 
         }
 
-
+        public int CompareTo(object obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

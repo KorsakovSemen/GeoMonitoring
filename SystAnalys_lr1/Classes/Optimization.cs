@@ -43,75 +43,89 @@ namespace SystAnalys_lr1.Classes
             }
         }
         //class opt
-        public static void ResChart(int oldChart, Report r, int rCount, MetroStyleManager StyleManager)
+        public static void ResChart(int oldChart, Report r, MetroStyleManager StyleManager)
         {
-            if (oldChart == (int)Optimization.percentMean.Keys.Sum())
+            bool changeText = false;
+            if (oldChart != percentMean.Keys.Sum())
             {
-                int iCh = 0;
-                StyleManager.Clone(r);
-                if (rCount != 0)
-                    r.ch.Series.Add(rCount.ToString());
-                r.ch.Series[rCount].LegendText = rCount.ToString();
-                foreach (var pm in Optimization.percentMean)
+                r.ch.Legends.Clear();
+                Main.rCount = 0;
+                foreach (var series in r.ch.Series)
                 {
-                    if (pm.Value == null)
-                    {
-                        r.ch.Series[rCount].Points.AddY(0);
-                    }
-                    else
-                    {
-                        r.ch.Series[rCount].Points.AddY(pm.Value / 60 != 0 ? (double)pm.Value / 60 : (double)pm.Value);
-                    }
-                    if (rCount == 0)
-                        r.ch.ChartAreas[rCount].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
-                    iCh++;
+                    series.Points.Clear();
                 }
-                r.ch.SaveImage(Optimization.pathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                r.TopMost = true;
-                r.Show();
-                r.BringToFront();
-
-                rCount += 1;
+                oldChart = percentMean.Keys.Sum();
+                changeText = true;
             }
-            else
+            int iCh = 0;
+            StyleManager.Clone(r);
+            if (Main.rCount != 0)
+                r.ch.Series.Add(Main.rCount.ToString());
+            r.ch.Series[Main.rCount].LegendText = Main.rCount.ToString();
+            foreach (var pm in percentMean)
             {
-                try
+                if (pm.Value == null)
                 {
-                    r.ch.Legends.Clear();
-                    rCount = 0;
-                    foreach (var series in r.ch.Series)
-                    {
-                        series.Points.Clear();
-                    }
-                    oldChart = (int)Optimization.percentMean.Keys.Sum();
-                    int iCh = 0;
-                    StyleManager.Clone(r);
-                    if (rCount != 0)
-                        r.ch.Series.Add(rCount.ToString());
-                    r.ch.Series[rCount].LegendText = rCount.ToString();
-                    foreach (var pm in Optimization.percentMean)
-                    {
-                        if (pm.Value == null)
-                        {
-                            r.ch.Series[rCount].Points.AddY(0);
-                        }
-                        else
-                        {
-                            r.ch.Series[rCount].Points.AddY(pm.Value / 60 != 0 ? (double)pm.Value / 60 : (double)pm.Value);
-                        }
-                        if (rCount == 0)
-                            r.ch.ChartAreas[rCount].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
-                        iCh++;
-                    }
-                    r.ch.SaveImage(Optimization.pathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                    r.TopMost = true;
-                    r.Show();
-                    r.BringToFront();
-
-                    rCount += 1;
+                    r.ch.Series[Main.rCount].Points.AddY(0);
                 }
-                catch { }
+                else
+                {
+                    r.ch.Series[Main.rCount].Points.AddY(pm.Value / 60 != 0 ? (double)pm.Value / 60 : (double)pm.Value);
+                }
+                if (!changeText)
+                    r.ch.ChartAreas[0].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
+                else
+                    r.ch.ChartAreas[0].AxisX.CustomLabels[iCh].Text = pm.Key.ToString();
+                iCh++;
             }
+            r.ch.SaveImage(pathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            r.TopMost = true;
+            r.Show();
+            r.BringToFront();
+
+            Main.rCount += 1;
+           
+            //else
+            //{
+            //    try
+            //    {
+            //        r.ch.Legends.Clear();
+            //        Main.rCount = 0;
+            //        foreach (var series in r.ch.Series)
+            //        {
+            //            series.Points.Clear();
+            //        }
+            //        oldChart = (int)percentMean.Keys.Sum();
+            //        int iCh = 0;
+            //        StyleManager.Clone(r);
+            //        if (Main.rCount != 0)
+            //            r.ch.Series.Add(Main.rCount.ToString());
+            //        r.ch.Series[Main.rCount].LegendText = Main.rCount.ToString();
+            //        foreach (var pm in percentMean)
+            //        {
+            //            if (pm.Value == null)
+            //            {
+            //                r.ch.Series[Main.rCount].Points.AddY(0);
+            //            }
+            //            else
+            //            {
+            //                r.ch.Series[Main.rCount].Points.AddY(pm.Value / 60 != 0 ? (double)pm.Value / 60 : (double)pm.Value);
+            //            }
+            //            if (Main.rCount == 0)
+            //                r.ch.ChartAreas[0].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
+            //            else
+            //                r.ch.ChartAreas[0].AxisX.CustomLabels[iCh].Text = pm.Key.ToString();
+            //            iCh++;
+            //        }
+            //        r.ch.SaveImage(pathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            //        r.TopMost = true;
+            //        r.Show();
+            //        r.BringToFront();
+
+            //        Main.rCount += 1;
+            //    }
+            //    catch { }
+            //}
 
         }
 
@@ -262,6 +276,7 @@ namespace SystAnalys_lr1.Classes
                 fileV.WriteLine(mean != MainStrings.average + " " + MainStrings.notFound ? MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + result[0] : MainStrings.notFound);
             }
 
+            
             Main.Average = mean;
             //BarabanAfterOpti();
             Data.Buses = optimizeBuses;
@@ -281,7 +296,6 @@ namespace SystAnalys_lr1.Classes
                 {
                     if (0 != limit)
                     {
-
                         countSensors += 1;
                         bus.Tracker = false;
                         limit = limit - 1;
