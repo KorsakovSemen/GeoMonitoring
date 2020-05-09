@@ -31,11 +31,23 @@ namespace SystAnalys_lr1
             Bus.ScrollX = Main.scrollX;
             Bus.ScrollY = Main.scrollY;
 
-
-            foreach (var bus in Data.Buses)
+            try
             {
-                bus.Coordinates = Data.AllCoordinates[bus.GetRoute()];
+                foreach (var bus in Data.Buses)
+                {
+                    bus.Coordinates = Data.AllCoordinates[bus.GetRoute()];
+                }
             }
+            catch (Exception)
+            {
+
+                CreateAllCoordinates();
+                foreach (var bus in Data.Buses)
+                {
+                    bus.Coordinates = Data.AllCoordinates[bus.GetRoute()];
+                }
+            }
+         
 
         }
         public async void AsyncCreateAllCoordinates()
