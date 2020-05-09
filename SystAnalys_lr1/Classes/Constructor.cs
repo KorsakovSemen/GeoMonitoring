@@ -135,7 +135,7 @@ namespace SystAnalys_lr1.Classes
                         graphics.Dispose();
 
                     }
-                    Data.buses.Add(new Bus(original, pos, backsideCheck, route, Data.AllCoordinates[route], true));
+                    Data.Buses.Add(new Bus(original, pos, backsideCheck, route, Data.AllCoordinates[route], true));
                 }
                 else
                 {
@@ -170,7 +170,7 @@ namespace SystAnalys_lr1.Classes
                         graphics.Dispose();
 
                     }
-                    Data.buses.Add(new Bus(original, pos, backsideCheck, route, Data.AllCoordinates[route], false));
+                    Data.Buses.Add(new Bus(original, pos, backsideCheck, route, Data.AllCoordinates[route], false));
                 };
             }
         }
@@ -186,32 +186,32 @@ namespace SystAnalys_lr1.Classes
                         if (((e.X > gridPart.x * Main.zoom) && (e.Y > gridPart.y * Main.zoom)) && ((e.X < gridPart.x * Main.zoom + GridPart.Width * Main.zoom) && (e.Y < gridPart.y * Main.zoom + GridPart.Height * Main.zoom)))
                         {
 
-                            if (!Data.stopPoints[route].Contains(new Vertex(sp.X, sp.Y)))
+                            if (!Data.StopPoints[route].Contains(new Vertex(sp.X, sp.Y)))
                             {
-                                if (Data.stopPoints.ContainsKey(route))
+                                if (Data.StopPoints.ContainsKey(route))
                                 {
-                                    Data.stopPoints[route].Add(new BusStop(sp.X, sp.Y));
-                                    Data.stopPoints[route].Last().gridNum = gridParts.IndexOf(gridPart);
-                                    if (Data.stopPointsInGrids.ContainsKey(route))
-                                        Data.stopPointsInGrids[route].Add(gridParts.IndexOf(gridPart)); //дроп ошибки
+                                    Data.StopPoints[route].Add(new BusStop(sp.X, sp.Y));
+                                    Data.StopPoints[route].Last().gridNum = gridParts.IndexOf(gridPart);
+                                    if (Data.StopPointsInGrids.ContainsKey(route))
+                                        Data.StopPointsInGrids[route].Add(gridParts.IndexOf(gridPart)); //дроп ошибки
                                     else
                                     {
-                                        Data.stopPointsInGrids.Add(route, new List<int>());
-                                        Data.stopPointsInGrids[route].Add(gridParts.IndexOf(gridPart));
+                                        Data.StopPointsInGrids.Add(route, new List<int>());
+                                        Data.StopPointsInGrids[route].Add(gridParts.IndexOf(gridPart));
                                     }
 
                                 }
                                 else
                                 {
-                                    Data.stopPoints.Add(route, new List<BusStop>());
-                                    Data.stopPointsInGrids.Add(route, new List<int>());
-                                    if (!Data.stopPoints[route].Contains(new Vertex(sp.X, sp.Y)))
+                                    Data.StopPoints.Add(route, new List<BusStop>());
+                                    Data.StopPointsInGrids.Add(route, new List<int>());
+                                    if (!Data.StopPoints[route].Contains(new Vertex(sp.X, sp.Y)))
                                     {
-                                        if (Data.stopPoints.ContainsKey(route) && Data.stopPointsInGrids.ContainsKey(route))
+                                        if (Data.StopPoints.ContainsKey(route) && Data.StopPointsInGrids.ContainsKey(route))
                                         {
-                                            Data.stopPoints[route].Add(new BusStop(sp.X, sp.Y));
-                                            Data.stopPoints[route].Last().gridNum = gridParts.IndexOf(gridPart);
-                                            Data.stopPointsInGrids[route].Add(gridParts.IndexOf(gridPart)); //дроп ошибки
+                                            Data.StopPoints[route].Add(new BusStop(sp.X, sp.Y));
+                                            Data.StopPoints[route].Last().gridNum = gridParts.IndexOf(gridPart);
+                                            Data.StopPointsInGrids[route].Add(gridParts.IndexOf(gridPart)); //дроп ошибки
                                         }
                                     }
                                 }
@@ -398,15 +398,15 @@ namespace SystAnalys_lr1.Classes
             {
                 int? pos = null;
                 double min = Math.Pow((sheet.Image.Width - (e.X / Main.zoom + scrollX)), 2) + Math.Pow((sheet.Image.Height - (e.Y / Main.zoom + scrollY)), 2);
-                for (int i = 0; i < Data.buses.Count; i++)
+                for (int i = 0; i < Data.Buses.Count; i++)
                 {
-                    if (Math.Pow((Data.buses[i].Coordinates[Data.buses[i].PositionAt].X - (e.X / Main.zoom + scrollX)), 2) + Math.Pow((Data.buses[i].Coordinates[Data.buses[i].PositionAt].Y - (e.Y / Main.zoom + scrollY)), 2) <= Data.buses[i].R * Data.buses[i].R * 500)
+                    if (Math.Pow((Data.Buses[i].Coordinates[Data.Buses[i].PositionAt].X - (e.X / Main.zoom + scrollX)), 2) + Math.Pow((Data.Buses[i].Coordinates[Data.Buses[i].PositionAt].Y - (e.Y / Main.zoom + scrollY)), 2) <= Data.Buses[i].R * Data.Buses[i].R * 500)
                     {
-                        if (Data.buses[i].Route == route)
+                        if (Data.Buses[i].Route == route)
                         {
-                            if (Math.Pow((Data.buses[i].Coordinates[Data.buses[i].PositionAt].X - (e.X / Main.zoom + scrollX)), 2) + Math.Pow((Data.buses[i].Coordinates[Data.buses[i].PositionAt].Y - (e.Y / Main.zoom + scrollY)), 2) < min)
+                            if (Math.Pow((Data.Buses[i].Coordinates[Data.Buses[i].PositionAt].X - (e.X / Main.zoom + scrollX)), 2) + Math.Pow((Data.Buses[i].Coordinates[Data.Buses[i].PositionAt].Y - (e.Y / Main.zoom + scrollY)), 2) < min)
                             {
-                                min = Math.Pow((Data.buses[i].Coordinates[Data.buses[i].PositionAt].X - (e.X / Main.zoom + scrollX)), 2) + Math.Pow((Data.buses[i].Coordinates[Data.buses[i].PositionAt].Y - (e.Y / Main.zoom + scrollY)), 2);
+                                min = Math.Pow((Data.Buses[i].Coordinates[Data.Buses[i].PositionAt].X - (e.X / Main.zoom + scrollX)), 2) + Math.Pow((Data.Buses[i].Coordinates[Data.Buses[i].PositionAt].Y - (e.Y / Main.zoom + scrollY)), 2);
                                 pos = i;
                             }
                         }
@@ -414,7 +414,7 @@ namespace SystAnalys_lr1.Classes
                 }
                 if (pos != null)
                 {
-                    Data.buses.Remove(Data.buses[int.Parse(pos.ToString())]);
+                    Data.Buses.Remove(Data.Buses[int.Parse(pos.ToString())]);
                 }
                 MapUpdateRoute(sheet, routeV, routesEdge);
             }
@@ -445,7 +445,7 @@ namespace SystAnalys_lr1.Classes
                 {
                     traficLights.Add(new TraficLight(e.X / Main.zoom, e.Y / Main.zoom, gridParts.IndexOf(gridPart), Main.firstCrossRoadsRedLight, Main.firstCrossRoadsGreenLight));
                     Data.TraficLightsInGrids.Add(gridParts.IndexOf(gridPart));
-                    traficLights.Last().tick = Main.firstCrossRoadsRedLight + 2;
+                    traficLights.Last().Tick = Main.firstCrossRoadsRedLight + 2;
                     traficLights.Last().Status = Status.RED;
                     Main.G.DrawSelectedVertex(e.X / Main.zoom, e.Y / Main.zoom);
                     Main.secondCrossRoads -= 1;
@@ -519,13 +519,13 @@ namespace SystAnalys_lr1.Classes
 
         public void DeleteTF(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
-            foreach (var tl in Data.traficLights)
+            foreach (var tl in Data.TraficLights)
             {
                 if (Math.Pow((tl.X - e.X / Main.zoom), 2) + Math.Pow((tl.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                 {
                     tl.Stop();
                     Data.TraficLightsInGrids.Remove(tl.gridNum);
-                    Data.traficLights.Remove(tl);
+                    Data.TraficLights.Remove(tl);
                     Main.flag = true;
                     break;
                 }
@@ -535,7 +535,7 @@ namespace SystAnalys_lr1.Classes
         {
             if (!Main.flag)
             {
-                foreach (var routeV in Data.routes)
+                foreach (var routeV in Data.Routes)
                 {
                     for (int i = 0; i < routeV.Value.Count; i++)
                     {
@@ -567,7 +567,7 @@ namespace SystAnalys_lr1.Classes
             {
                 try
                 {
-                    foreach (var routeV in Data.routes)
+                    foreach (var routeV in Data.Routes)
                     {
                         for (int j = 0; j < routeV.Value.Count; j++)
                         {
@@ -682,12 +682,12 @@ namespace SystAnalys_lr1.Classes
                                //ищем, возможно была нажата вершина
 
 
-            foreach (var stopRoute in Data.stopPoints[route])
+            foreach (var stopRoute in Data.StopPoints[route])
             {
                 if (Math.Pow((stopRoute.X - e.X / Main.zoom), 2) + Math.Pow((stopRoute.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                 {
-                    Data.stopPointsInGrids[route].Remove(stopRoute.gridNum);
-                    Data.stopPoints[route].Remove(stopRoute);
+                    Data.StopPointsInGrids[route].Remove(stopRoute.gridNum);
+                    Data.StopPoints[route].Remove(stopRoute);
                     flag = true;
                     break;
                 }
@@ -695,7 +695,7 @@ namespace SystAnalys_lr1.Classes
             }
             if (flag)
             {
-                MapUpdateRoute(sheet, routeV, Data.routesEdge[route]);
+                MapUpdateRoute(sheet, routeV, Data.RoutesEdge[route]);
             }
         }
 
@@ -794,12 +794,12 @@ namespace SystAnalys_lr1.Classes
         {
             bool flag = false; 
 
-            foreach (var stopRoute in Data.stopPoints[route])
+            foreach (var stopRoute in Data.StopPoints[route])
             {
                 if (Math.Pow((stopRoute.X - e.X / Main.zoom), 2) + Math.Pow((stopRoute.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                 {
-                    Data.stopPointsInGrids[route].Remove(stopRoute.gridNum);
-                    Data.stopPoints[route].Remove(stopRoute);
+                    Data.StopPointsInGrids[route].Remove(stopRoute.gridNum);
+                    Data.StopPoints[route].Remove(stopRoute);
                     flag = true;
                     break;
                 }
@@ -876,24 +876,24 @@ namespace SystAnalys_lr1.Classes
         public void DeleteBS(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
 
-            foreach (var sp in Data.allstopPoints)
+            foreach (var sp in Data.AllstopPoints)
             {
                 if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                 {
-                    Data.allstopPoints.Remove(sp);
+                    Data.AllstopPoints.Remove(sp);
                     Main.flag = true;
                     break;
                 }
             }
 
 
-            foreach (var stop in Data.stopPoints)
+            foreach (var stop in Data.StopPoints)
             {
                 foreach (var sp in stop.Value)
                 {
                     if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                     {
-                        Data.stopPointsInGrids[stop.Key].Remove(sp.gridNum);
+                        Data.StopPointsInGrids[stop.Key].Remove(sp.gridNum);
                         stop.Value.Remove(sp);
                         Main.flag = true;
                         break;
@@ -908,13 +908,13 @@ namespace SystAnalys_lr1.Classes
             //ищем, возможно была нажата вершина
             Main.flag = false;
 
-            foreach (var tl in Data.traficLights)
+            foreach (var tl in Data.TraficLights)
             {
                 if (Math.Pow((tl.X - e.X / Main.zoom), 2) + Math.Pow((tl.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                 {
                     tl.Stop();
                     Data.TraficLightsInGrids.Remove(tl.gridNum);
-                    Data.traficLights.Remove(tl);
+                    Data.TraficLights.Remove(tl);
                     Main.flag = true;
                     break;
                 }
@@ -922,11 +922,11 @@ namespace SystAnalys_lr1.Classes
 
             if (!Main.flag)
             {
-                foreach (var sp in Data.allstopPoints)
+                foreach (var sp in Data.AllstopPoints)
                 {
                     if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                     {
-                        Data.allstopPoints.Remove(sp);
+                        Data.AllstopPoints.Remove(sp);
                         Main.flag = true;
                         break;
                     }
@@ -934,13 +934,13 @@ namespace SystAnalys_lr1.Classes
             }
 
 
-            foreach (var stop in Data.stopPoints)
+            foreach (var stop in Data.StopPoints)
             {
                 foreach (var sp in stop.Value)
                 {
                     if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                     {
-                        Data.stopPointsInGrids[stop.Key].Remove(sp.gridNum);
+                        Data.StopPointsInGrids[stop.Key].Remove(sp.gridNum);
                         stop.Value.Remove(sp);
                         Main.flag = true;
                         break;
@@ -951,7 +951,7 @@ namespace SystAnalys_lr1.Classes
 
             if (!Main.flag)
             {
-                foreach (var routeV in Data.routes)
+                foreach (var routeV in Data.Routes)
                 {
                     for (int i = 0; i < routeV.Value.Count; i++)
                     {
@@ -986,7 +986,7 @@ namespace SystAnalys_lr1.Classes
             {
                 try
                 {
-                    foreach (var routeV in Data.routes)
+                    foreach (var routeV in Data.Routes)
                     {
                         for (int j = 0; j < routeV.Value.Count; j++)
                         {

@@ -43,13 +43,13 @@ namespace SystAnalys_lr1.Forms
             Main.globalDel = MainStrings.all;
         }
 
-        private void metroButton1_Click(object sender, EventArgs e)
+        private void MetroButton1_Click(object sender, EventArgs e)
         {
             Main.yes = true;
             Close();
         }
 
-        private void theBuses_CheckedChanged(object sender, EventArgs e)
+        private void TheBuses_CheckedChanged(object sender, EventArgs e)
         {
             Main.delType = Main.DeleteType.TheBuses;
             Main.globalDel = MainStrings.theBuses;

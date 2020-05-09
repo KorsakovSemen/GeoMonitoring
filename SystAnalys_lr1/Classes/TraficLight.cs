@@ -27,10 +27,10 @@ namespace SystAnalys_lr1
         [XmlIgnore]
         public Timer TimerLight { get; private set; }
         public Status Status { get; set; }
-        public int tick { get; set; } 
-        public int greenTime { get; }
-        public int redTime { get; }
-        public int yellowTime { get; } = 2;
+        public int Tick { get; set; } 
+        public int GreenTime { get; }
+        public int RedTime { get; }
+        public int YellowTime { get; } = 2;
         public int bal; // остаток времени на светофоре
 
         public TraficLight() { }
@@ -40,19 +40,19 @@ namespace SystAnalys_lr1
             X = x;
             Y = y;
             this.gridNum = gridNum;
-            this.greenTime = greenTime;
-            this.redTime = redTime;
+            this.GreenTime = greenTime;
+            this.RedTime = redTime;
         }
 
         private void TimerLightProcessor(object sender, EventArgs e)
         {
             SwapLights();
-            tick += 1;
+            Tick += 1;
             if (bal > 0)
                 bal -= 1;
-            if (tick == greenTime + redTime + yellowTime + yellowTime)
+            if (Tick == GreenTime + RedTime + YellowTime + YellowTime)
             {
-                tick = 0;
+                Tick = 0;
             }
         }
         public void Stop()
@@ -79,27 +79,27 @@ namespace SystAnalys_lr1
 
         private void SwapLights()
         {
-            if (tick == 0)
+            if (Tick == 0)
             {
-                bal = greenTime;
+                bal = GreenTime;
                 Main.G.DrawGreenVertex(X, Y);
                 Status = Status.GREEN;
             }
-            else if (tick == greenTime)
+            else if (Tick == GreenTime)
             {
-                bal = yellowTime;
+                bal = YellowTime;
                 Main.G.DrawYellowVertex(X, Y);
                 Status = Status.YELLOW;
             }
-            else if (tick == greenTime + yellowTime)
+            else if (Tick == GreenTime + YellowTime)
             {
-                bal = redTime;
+                bal = RedTime;
                 Main.G.DrawSelectedVertex(X, Y);
                 Status = Status.RED;
             }
-            else if (tick == greenTime + yellowTime + redTime)
+            else if (Tick == GreenTime + YellowTime + RedTime)
             {
-                bal = yellowTime;
+                bal = YellowTime;
                 Main.G.DrawYellowVertex(X, Y);
                 Status = Status.YELLOW;
             }

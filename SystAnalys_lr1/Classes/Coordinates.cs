@@ -21,18 +21,18 @@ namespace SystAnalys_lr1
         //функция, которая создает все координаты для одного маршрута
         public void CreateOneRouteCoordinates(string i)
         {
-            if (Data.routes[i].Count >= 2)
+            if (Data.Routes[i].Count >= 2)
             {
                 Data.AllCoordinates[i] = new List<Point>();
                 Data.AllGridsInRoutes[i] = new List<int>();
-                Data.AllCoordinates[i].AddRange(getPoints(Data.routes[i], i));
+                Data.AllCoordinates[i].AddRange(GetPoints(Data.Routes[i], i));
 
             }
             Bus.ScrollX = Main.scrollX;
             Bus.ScrollY = Main.scrollY;
 
 
-            foreach (var bus in Data.buses)
+            foreach (var bus in Data.Buses)
             {
                 bus.Coordinates = Data.AllCoordinates[bus.GetRoute()];
             }
@@ -46,7 +46,7 @@ namespace SystAnalys_lr1
             });
         }
 
-        public List<Point> getPoints(List<Vertex> routeVertexes, string route)
+        public List<Point> GetPoints(List<Vertex> routeVertexes, string route)
         {
             var points = new List<Point>();
             int RectCheckCount = 0;
@@ -69,7 +69,7 @@ namespace SystAnalys_lr1
                         if (RectCheckCount == 10)
                         {
                             RectCheckCount = 0;
-                            getOneRouteGrids(points, route);
+                            GetOneRouteGrids(points, route);
                         }
                         else
                         {
@@ -78,12 +78,12 @@ namespace SystAnalys_lr1
 
                     }
                     points.Add(p2);
-                    getOneRouteGrids(points, route);
+                    GetOneRouteGrids(points, route);
                 }
             }
             return points;
         }
-        public void getOneRouteGrids(List<Point> points,string route)
+        public void GetOneRouteGrids(List<Point> points,string route)
         {
             int Locate = 0;
             int LastLocate = 0;
@@ -115,20 +115,20 @@ namespace SystAnalys_lr1
         {
             Data.AllCoordinates = new SerializableDictionary<string, List<Point>>();
             Data.AllGridsInRoutes = new SerializableDictionary<string, List<int>>();
-            for (int i = 0; i < Data.routes.Count; i++)
+            for (int i = 0; i < Data.Routes.Count; i++)
             {
-                Data.AllCoordinates.Add(Data.routes.ElementAt(i).Key, new List<Point>());
-                Data.AllGridsInRoutes.Add(Data.routes.ElementAt(i).Key, new List<int>());
-                if (Data.routes.ElementAt(i).Value.Count >= 2)
+                Data.AllCoordinates.Add(Data.Routes.ElementAt(i).Key, new List<Point>());
+                Data.AllGridsInRoutes.Add(Data.Routes.ElementAt(i).Key, new List<int>());
+                if (Data.Routes.ElementAt(i).Value.Count >= 2)
                 {
-                    Data.AllCoordinates[Data.AllCoordinates.ElementAt(i).Key].AddRange(getPoints(Data.routes.ElementAt(i).Value, Data.routes.ElementAt(i).Key));
+                    Data.AllCoordinates[Data.AllCoordinates.ElementAt(i).Key].AddRange(GetPoints(Data.Routes.ElementAt(i).Value, Data.Routes.ElementAt(i).Key));
                 }
                 Bus.ScrollX = Main.scrollX;
                 Bus.ScrollY = Main.scrollY;
 
             }
 
-            foreach (var bus in Data.buses)
+            foreach (var bus in Data.Buses)
             {
                 bus.Coordinates = Data.AllCoordinates[bus.GetRoute()];
             }

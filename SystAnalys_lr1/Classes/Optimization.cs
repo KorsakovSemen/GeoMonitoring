@@ -29,21 +29,21 @@ namespace SystAnalys_lr1.Classes
             percentMean = new SerializableDictionary<int, int?>();
 
             List<Bus> optimizeBuses = new List<Bus>();
-            Data.buses.ForEach((b) => optimizeBuses.Add(
+            Data.Buses.ForEach((b) => optimizeBuses.Add(
                 (Bus)b.Clone()
             ));
             int old = small;
 
-            var busesparkreturn = Data.busesPark;
+            var busesparkreturn = Data.BusesPark;
 
             int ciclTotal = 5;
 
             loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Maximum = s), ciclTotal * OptiCount);
             for (int cicl = 0; cicl < ciclTotal; cicl++)
             {
-                offBuses(matrixControl1, cicl * 10);
+                OffBuses(matrixControl1, cicl * 10);
                 if (cicl == ciclTotal - 1)
-                    Data.buses[rnd.Next(0, Data.buses.Count)].Tracker = true;
+                    Data.Buses[rnd.Next(0, Data.Buses.Count)].Tracker = true;
                 List<int?> mas = new List<int?>();
                 ShuffleBuses();
                 if (Main.SavePictures == true)
@@ -172,17 +172,17 @@ namespace SystAnalys_lr1.Classes
 
             Main.average = mean;
             //BarabanAfterOpti();
-            Data.busesPark = busesparkreturn;
-            Data.buses = optimizeBuses;
+            Data.BusesPark = busesparkreturn;
+            Data.Buses = optimizeBuses;
         }
 
-        private static void offBuses(MatrixControl matrixControl1, int proc = 0)
+        private static void OffBuses(MatrixControl matrixControl1, int proc = 0)
         {
             int countSensors = 0;
             int tot = 0;
             matrixControl1.SplitBuses();
-            Data.busesPark = matrixControl1.busesPark;
-            foreach (var b in Data.busesPark)
+            Data.BusesPark = matrixControl1.busesPark;
+            foreach (var b in Data.BusesPark)
             {
                 double razm = Math.Round(b.Count - b.Count * 0.01 * proc);
                 double limit = Math.Round(b.Count - razm, 0);
@@ -202,7 +202,7 @@ namespace SystAnalys_lr1.Classes
                 };
                 for (var i = 0; i < b.Count; i++)
                 {
-                    Data.buses[tot] = b[i];
+                    Data.Buses[tot] = b[i];
                     tot += 1;
                 }
             };
@@ -218,12 +218,12 @@ namespace SystAnalys_lr1.Classes
         }
         private static void ShuffleBuses()
         {
-            foreach (var bp in Data.busesPark)
+            foreach (var bp in Data.BusesPark)
             {
                 var tot = (Data.AllGridsInRoutes[bp.First().Route].Count - 1) / bp.Count;
                 if (tot == 0 || tot == 1)
                 {
-                    foreach (var b in Data.buses)
+                    foreach (var b in Data.Buses)
                     {
                         if (b.Route == bp.First().Route)
                         {
@@ -244,7 +244,7 @@ namespace SystAnalys_lr1.Classes
                     }
                     if (array.Count != 0)
                     {
-                        foreach (var b in Data.buses)
+                        foreach (var b in Data.Buses)
                         {
 
                             if (b.Route == bp.First().Route)
@@ -262,7 +262,7 @@ namespace SystAnalys_lr1.Classes
         private static void ShuffleBusesAfterOptimization()
         {
             Random rnd = new Random();
-            foreach (var b in Data.buses)
+            foreach (var b in Data.Buses)
             {
                 int r = rnd.Next(0, Data.AllCoordinates[b.Route].Count - 1);
                 b.PositionAt = r;

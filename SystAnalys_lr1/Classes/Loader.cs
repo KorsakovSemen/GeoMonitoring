@@ -79,20 +79,20 @@ namespace SystAnalys_lr1.Classes
                 using (StreamReader reader = new StreamReader(load + "StopPoints.xml"))
                 {
                     XmlSerializer deserializerV = new XmlSerializer(typeof(SerializableDictionary<string, List<Vertex>>));
-                    Data.stopPoints = (SerializableDictionary<string, List<BusStop>>)deserializerV.Deserialize(reader);
-                    foreach (var sp in Data.stopPoints.Values)
+                    Data.StopPoints = (SerializableDictionary<string, List<BusStop>>)deserializerV.Deserialize(reader);
+                    foreach (var sp in Data.StopPoints.Values)
                     {
                         foreach (var s in sp)
-                            if (!Data.allstopPoints.Contains(s))
-                                Data.allstopPoints.Add(s);
+                            if (!Data.AllstopPoints.Contains(s))
+                                Data.AllstopPoints.Add(s);
                     }
-                    Data.stopPointsInGrids = new SerializableDictionary<string, List<int>>();
-                    foreach (var StopList in Data.stopPoints)
+                    Data.StopPointsInGrids = new SerializableDictionary<string, List<int>>();
+                    foreach (var StopList in Data.StopPoints)
                     {
-                        Data.stopPointsInGrids.Add(StopList.Key, new List<int>());
+                        Data.StopPointsInGrids.Add(StopList.Key, new List<int>());
                         foreach (var vertex in StopList.Value)
                         {
-                            Data.stopPointsInGrids[StopList.Key].Add(vertex.gridNum);
+                            Data.StopPointsInGrids[StopList.Key].Add(vertex.gridNum);
                         }
 
                     }
@@ -104,7 +104,7 @@ namespace SystAnalys_lr1.Classes
                 using (StreamReader reader = new StreamReader(load + "allStopPoints.xml"))
                 {
                     XmlSerializer deserializerV = new XmlSerializer(typeof(List<Vertex>));
-                    Data.allstopPoints = (List<BusStop>)deserializerV.Deserialize(reader);
+                    Data.AllstopPoints = (List<BusStop>)deserializerV.Deserialize(reader);
 
                 }
             }
@@ -113,20 +113,20 @@ namespace SystAnalys_lr1.Classes
             {
                 using (StreamReader reader = new StreamReader(load + "StopPoints.json"))
                 {
-                    Data.stopPoints = JsonConvert.DeserializeObject<SerializableDictionary<string, List<BusStop>>>(File.ReadAllText(load + "StopPoints.json"));
-                    foreach (var sp in Data.stopPoints.Values)
+                    Data.StopPoints = JsonConvert.DeserializeObject<SerializableDictionary<string, List<BusStop>>>(File.ReadAllText(load + "StopPoints.json"));
+                    foreach (var sp in Data.StopPoints.Values)
                     {
                         foreach (var s in sp)
-                            if (!Data.allstopPoints.Contains(s))
-                                Data.allstopPoints.Add(s);
+                            if (!Data.AllstopPoints.Contains(s))
+                                Data.AllstopPoints.Add(s);
                     }
-                    Data.stopPointsInGrids = new SerializableDictionary<string, List<int>>();
-                    foreach (var StopList in Data.stopPoints)
+                    Data.StopPointsInGrids = new SerializableDictionary<string, List<int>>();
+                    foreach (var StopList in Data.StopPoints)
                     {
-                        Data.stopPointsInGrids.Add(StopList.Key, new List<int>());
+                        Data.StopPointsInGrids.Add(StopList.Key, new List<int>());
                         foreach (var vertex in StopList.Value)
                         {
-                            Data.stopPointsInGrids[StopList.Key].Add(vertex.gridNum);
+                            Data.StopPointsInGrids[StopList.Key].Add(vertex.gridNum);
                         }
 
                     }
@@ -138,7 +138,7 @@ namespace SystAnalys_lr1.Classes
             {
                 using (StreamReader reader = new StreamReader(load + "allStopPoints.json"))
                 {
-                    Data.allstopPoints = JsonConvert.DeserializeObject<List<BusStop>>(File.ReadAllText(load + "allStopPoints.json"));
+                    Data.AllstopPoints = JsonConvert.DeserializeObject<List<BusStop>>(File.ReadAllText(load + "allStopPoints.json"));
                 }
             }
 
@@ -149,13 +149,13 @@ namespace SystAnalys_lr1.Classes
             {
                 XmlSerializer tl = new XmlSerializer(typeof(List<TraficLight>));
                 using (StreamReader reader = new StreamReader(load + "Data.traficLights.xml"))
-                    Data.traficLights = (List<TraficLight>)tl.Deserialize(reader);
+                    Data.TraficLights = (List<TraficLight>)tl.Deserialize(reader);
                 Data.TraficLightsInGrids = new List<int>();
-                foreach (var item in Data.traficLights)
+                foreach (var item in Data.TraficLights)
                 {
                     Data.TraficLightsInGrids.Add(item.gridNum);
                 }
-                foreach (var tll in Data.traficLights)
+                foreach (var tll in Data.TraficLights)
                 {
                     tll.Set();
                     tll.Start();
@@ -166,13 +166,13 @@ namespace SystAnalys_lr1.Classes
             {
                 using (StreamReader reader = new StreamReader(load + "Data.traficLights.json"))
                 {
-                    Data.traficLights = JsonConvert.DeserializeObject<List<TraficLight>>(reader.ReadToEnd());
+                    Data.TraficLights = JsonConvert.DeserializeObject<List<TraficLight>>(reader.ReadToEnd());
                     Data.TraficLightsInGrids = new List<int>();
-                    foreach (var item in Data.traficLights)
+                    foreach (var item in Data.TraficLights)
                     {
                         Data.TraficLightsInGrids.Add(item.gridNum);
                     }
-                    foreach (var tll in Data.traficLights)
+                    foreach (var tll in Data.TraficLights)
                     {
                         tll.Set();
                         tll.Start();
@@ -182,16 +182,16 @@ namespace SystAnalys_lr1.Classes
             }
             loadingForm.loading.Value = 40;
 
-            if (Data.buses != null)
+            if (Data.Buses != null)
             {
-                Data.buses.Clear();
+                Data.Buses.Clear();
             }
 
             if (File.Exists(load + "Buses.json"))
             {
                 using (StreamReader reader = new StreamReader(load + "Buses.json"))
                 {
-                    Data.buses = JsonConvert.DeserializeObject<List<Bus>>(reader.ReadToEnd());
+                    Data.Buses = JsonConvert.DeserializeObject<List<Bus>>(reader.ReadToEnd());
                 }
             }
 
@@ -200,17 +200,17 @@ namespace SystAnalys_lr1.Classes
             {
                 using (StreamReader reader = new StreamReader(load + "Buses.xml"))
                 {
-                    Data.buses = (List<Bus>)deserializerAllBuses.Deserialize(reader);
+                    Data.Buses = (List<Bus>)deserializerAllBuses.Deserialize(reader);
                 }
             }
             loadingForm.loading.Value = 60;
-            foreach (var tl in Data.traficLights)
+            foreach (var tl in Data.TraficLights)
             {
                 tl.Start();
             }
             Image num;
             Bitmap original = new Bitmap(1, 1);
-            foreach (var x in Data.buses)
+            foreach (var x in Data.Buses)
             {
 
                 if (x.Tracker == true)
@@ -304,21 +304,21 @@ namespace SystAnalys_lr1.Classes
             if (File.Exists(load + "vertexRoutes.xml"))
             {
                 using (StreamReader reader = new StreamReader(load + "vertexRoutes.xml"))
-                    Data.routes = (SerializableDictionary<string, List<Vertex>>)Ver.Deserialize(reader);
+                    Data.Routes = (SerializableDictionary<string, List<Vertex>>)Ver.Deserialize(reader);
             }
 
             if (File.Exists(load + "vertexRoutes.json"))
             {
                 using (StreamReader reader = new StreamReader(load + "vertexRoutes.json"))
                 {
-                    Data.routes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Vertex>>>(reader.ReadToEnd());
+                    Data.Routes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Vertex>>>(reader.ReadToEnd());
                 }
             }
             loadingForm.loading.Value = 80;
             if (File.Exists(load + "edgeRoutes.xml"))
             {
                 using (StreamReader reader = new StreamReader(load + "edgeRoutes.xml"))
-                    Data.routesEdge = (SerializableDictionary<string, List<Edge>>)Edge.Deserialize(reader);
+                    Data.RoutesEdge = (SerializableDictionary<string, List<Edge>>)Edge.Deserialize(reader);
                 Main.saveF = "xml";
             }
 
@@ -326,7 +326,7 @@ namespace SystAnalys_lr1.Classes
             {
                 using (StreamReader reader = new StreamReader(load + "edgeRoutes.json"))
                 {
-                    Data.routesEdge = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Edge>>>(reader.ReadToEnd());
+                    Data.RoutesEdge = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Edge>>>(reader.ReadToEnd());
                 }
                 Main.saveF = "json";
             }

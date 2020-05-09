@@ -191,7 +191,7 @@ namespace SystAnalys_lr1.Classes
 
         public void DrawTrafficLights()
         {
-            foreach (var tl in Data.traficLights)
+            foreach (var tl in Data.TraficLights)
             {
                 if (tl.Status == Status.GREEN)
                 {
@@ -210,15 +210,15 @@ namespace SystAnalys_lr1.Classes
 
         public void DrawStopPoints()
         {
-            foreach (var stopPoints in Data.allstopPoints)
+            foreach (var stopPoints in Data.AllstopPoints)
             {
                 DrawStopVertex(stopPoints.X, stopPoints.Y);
             }
             if (Main.selectedRoute != null)
             {
-                if (Data.stopPoints.ContainsKey(Main.selectedRoute))
+                if (Data.StopPoints.ContainsKey(Main.selectedRoute))
                 {
-                    foreach (var stopPoints in Data.stopPoints[Main.selectedRoute])
+                    foreach (var stopPoints in Data.StopPoints[Main.selectedRoute])
                     {
                         DrawStopRouteVertex(stopPoints.X, stopPoints.Y);
                     }

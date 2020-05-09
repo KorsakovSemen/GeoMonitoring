@@ -15,25 +15,25 @@ namespace SystAnalys_lr1.Classes
         //Лист, в котором хранится сетка
         static public List<GridPart> TheGrid { get; set; } = new List<GridPart>();
         //Лист, в котором хранятся автобусы
-        static public List<Bus> buses { get; set; } = new List<Bus>();
-        public static List<List<Bus>> busesPark { get; set; } = new List<List<Bus>>();
+        static public List<Bus> Buses { get; set; } = new List<Bus>();
+        public static List<List<Bus>> BusesPark { get; set; } = new List<List<Bus>>();
         //все вершины
         static public List<Vertex> V { get; set; } = new List<Vertex>();
         //ребра маршрутов
-        static public SerializableDictionary<string, List<Edge>> routesEdge { get; set; } = new SerializableDictionary<string, List<Edge>>();
+        static public SerializableDictionary<string, List<Edge>> RoutesEdge { get; set; } = new SerializableDictionary<string, List<Edge>>();
         //все ребра
         public static List<Edge> E { get; set; } = new List<Edge>();
         //массив всех маршрутов
-        static public SerializableDictionary<string, List<Vertex>> routes { get; set; } = new SerializableDictionary<string, List<Vertex>>();
+        static public SerializableDictionary<string, List<Vertex>> Routes { get; set; } = new SerializableDictionary<string, List<Vertex>>();
         // лист номеров квадратов, в которм есть светофор
         static public List<int> TraficLightsInGrids { get; set; } = new List<int>();
         //Светофоры
-        public static List<TraficLight> traficLights { get; set; } = new List<TraficLight>();
+        public static List<TraficLight> TraficLights { get; set; } = new List<TraficLight>();
         // словарь номеров квадратов, в которм есть остановка для каждого маршрута
-        public static SerializableDictionary<string, List<int>> stopPointsInGrids { get; set; } = new SerializableDictionary<string, List<int>>();
+        public static SerializableDictionary<string, List<int>> StopPointsInGrids { get; set; } = new SerializableDictionary<string, List<int>>();
         //Остановки маршрутов
-        public static List<BusStop> allstopPoints { get; set; } = new List<BusStop>();
-        public static SerializableDictionary<string, List<BusStop>> stopPoints { get; set; } = new SerializableDictionary<string, List<BusStop>>();
+        public static List<BusStop> AllstopPoints { get; set; } = new List<BusStop>();
+        public static SerializableDictionary<string, List<BusStop>> StopPoints { get; set; } = new SerializableDictionary<string, List<BusStop>>();
         //все координаты движения автобусов
         public static SerializableDictionary<string, List<Point>> AllCoordinates { get; set; } = new SerializableDictionary<string, List<Point>>();
         //все квадраты сетки, которые есть в каждом из маршрутов 

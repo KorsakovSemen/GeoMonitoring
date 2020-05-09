@@ -36,7 +36,7 @@ namespace SystAnalys_lr1.Classes
             List<Epicenter> epList = new List<Epicenter>();
             int i = 0;
             ConcurrentQueue<Bus> cqBus = new ConcurrentQueue<Bus>();
-            Data.buses.ForEach((b) => cqBus.Enqueue((Bus)b.Clone()));
+            Data.Buses.ForEach((b) => cqBus.Enqueue((Bus)b.Clone()));
             foreach (var EpicList in Data.Epics)
             {
 
@@ -140,18 +140,18 @@ namespace SystAnalys_lr1.Classes
                             {
                                 if (bus.Skip == 0)
                                 {
-                                    foreach (var sp in Data.traficLights)
+                                    foreach (var sp in Data.TraficLights)
                                     {
                                         if (sp.Status != Status.RED)
                                         {
-                                            bus.Skip = sp.greenTime;
+                                            bus.Skip = sp.GreenTime;
                                             break;
                                         }
                                         if (sp.Status == Status.RED)
                                         {
                                             bus.TickCount_ = bus.TickCount_ + sp.bal;
                                             bus.AllTickCount = bus.AllTickCount + sp.bal;
-                                            bus.Skip = sp.greenTime;
+                                            bus.Skip = sp.GreenTime;
                                             break;
 
                                         }
@@ -159,7 +159,7 @@ namespace SystAnalys_lr1.Classes
                                 }
                             }
 
-                            if ((Data.stopPointsInGrids.ContainsKey(bus.GetRoute())) && (Data.stopPointsInGrids[bus.GetRoute()].Contains(Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt])))
+                            if ((Data.StopPointsInGrids.ContainsKey(bus.GetRoute())) && (Data.StopPointsInGrids[bus.GetRoute()].Contains(Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt])))
                             {
                                 Random rnd = new Random();
                                 int timeboost = rnd.Next(0, 3);

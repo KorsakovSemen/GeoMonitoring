@@ -62,7 +62,7 @@
             resources.ApplyResources(this.theBuses, "theBuses");
             this.theBuses.Name = "theBuses";
             this.theBuses.UseSelectable = true;
-            this.theBuses.CheckedChanged += new System.EventHandler(this.theBuses_CheckedChanged);
+            this.theBuses.CheckedChanged += new System.EventHandler(this.TheBuses_CheckedChanged);
             // 
             // All
             // 
@@ -102,7 +102,7 @@
             resources.ApplyResources(this.metroButton1, "metroButton1");
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            this.metroButton1.Click += new System.EventHandler(this.MetroButton1_Click);
             // 
             // DeleteForm
             // 
