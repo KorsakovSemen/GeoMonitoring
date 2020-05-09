@@ -49,18 +49,18 @@ namespace SystAnalys_lr1
             this.ERouts.SelectedIndexChanged += ERouts_SelectedIndexChanged;
             // Esheet.Dock = DockStyle.Right;
             ////
-            this.MapPanel.Dock = MainForm.GetMapPanel().Dock;
-            this.MapPanel.AutoSize = MainForm.GetMapPanel().AutoSize;
-            this.MapPanel.Location = MainForm.GetMapPanel().Location;
+            this.MapPanel.Dock = MainForm.mainPanel.Dock;
+            this.MapPanel.AutoSize = MainForm.mainPanel.AutoSize;
+            this.MapPanel.Location = MainForm.mainPanel.Location;
 
-            this.MapPanel.AutoScroll = MainForm.GetMapPanel().AutoScroll;
-            this.MapPanel.BorderStyle = MainForm.GetMapPanel().BorderStyle;
-            this.MapPanel.AutoSizeMode = MainForm.GetMapPanel().AutoSizeMode;
+            this.MapPanel.AutoScroll = MainForm.mainPanel.AutoScroll;
+            this.MapPanel.BorderStyle = MainForm.mainPanel.BorderStyle;
+            this.MapPanel.AutoSizeMode = MainForm.mainPanel.AutoSizeMode;
 
-            //this.MapPanel.MaximumSize = MainForm.GetMapPanel().MaximumSize;
-            //this.MapPanel.Size = MainForm.GetMapPanel().Size;
+            //this.MapPanel.MaximumSize = MainForm.mainPanel.MaximumSize;
+            //this.MapPanel.Size = MainForm.mainPanel.Size;
 
-            //this.MapPanel.Dock = MainForm.GetMapPanel().Dock;
+            //this.MapPanel.Dock = MainForm.mainPanel.Dock;
             ////
             this.Width = MainForm.Width;
             this.Height = MainForm.Height;
@@ -72,8 +72,8 @@ namespace SystAnalys_lr1
             Esheet.Dock = MainForm.GetSheet().Dock;
             Esheet.Location = new Point(panel1.Width, 1);
             Esheet.Size = MainForm.GetSheet().Size;
-            Esheet.Image = Main.globalMap;
-            EsheetPicture = Main.globalMap;
+            Esheet.Image = Main.GlobalMap;
+            EsheetPicture = Main.GlobalMap;
             Wsheet = Esheet.Width;
             Hsheet = Esheet.Height;
             Esheet.AutoSize = MainForm.GetSheet().AutoSize;
@@ -334,7 +334,7 @@ namespace SystAnalys_lr1
         {
             FormOpen = false;
             Main.SavePictures = false;
-            Main.extendedSavePictures = false;
+            Main.ExtendedSavePictures = false;
         }
 
         private void MetroButton4_Click(object sender, EventArgs e)

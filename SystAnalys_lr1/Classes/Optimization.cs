@@ -1,4 +1,6 @@
-﻿using SystAnalys_lr1.Forms;
+﻿using MetroFramework.Components;
+using MetroFramework.Controls;
+using SystAnalys_lr1.Forms;
 using SystAnalys_lr1.Strings;
 using System;
 using System.Collections.Generic;
@@ -6,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace SystAnalys_lr1.Classes
 {
@@ -22,6 +25,96 @@ namespace SystAnalys_lr1.Classes
         public static int OptiSpeed;
         public static int OptiCount;
 
+        //class opt
+        public static void ResMatrix(MetroGrid results)
+        {
+            results.Rows.Clear();
+            results.Refresh();
+            results.RowCount = 5;
+            int i = 0;
+            foreach (var pm in Optimization.percentMean)
+            {
+                results.Rows[i].HeaderCell.Value = pm.Key.ToString();
+                if (pm.Value != 0)
+                    results.Rows[i].Cells[0].Value = (pm.Value / 60).ToString();
+                else
+                    results.Rows[i].Cells[0].Value = MainStrings.notFound;
+                i += 1;
+            }
+        }
+        //class opt
+        public static void ResChart(int oldChart, Report r, int rCount, MetroStyleManager StyleManager)
+        {
+            if (oldChart == (int)Optimization.percentMean.Keys.Sum())
+            {
+                int iCh = 0;
+                StyleManager.Clone(r);
+                if (rCount != 0)
+                    r.ch.Series.Add(rCount.ToString());
+                r.ch.Series[rCount].LegendText = rCount.ToString();
+                foreach (var pm in Optimization.percentMean)
+                {
+                    if (pm.Value == null)
+                    {
+                        r.ch.Series[rCount].Points.AddY(0);
+                    }
+                    else
+                    {
+                        r.ch.Series[rCount].Points.AddY(pm.Value / 60 != 0 ? (double)pm.Value / 60 : (double)pm.Value);
+                    }
+                    if (rCount == 0)
+                        r.ch.ChartAreas[rCount].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
+                    iCh++;
+                }
+                r.ch.SaveImage(Optimization.pathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                r.TopMost = true;
+                r.Show();
+                r.BringToFront();
+
+                rCount += 1;
+            }
+            else
+            {
+                try
+                {
+                    r.ch.Legends.Clear();
+                    rCount = 0;
+                    foreach (var series in r.ch.Series)
+                    {
+                        series.Points.Clear();
+                    }
+                    oldChart = (int)Optimization.percentMean.Keys.Sum();
+                    int iCh = 0;
+                    StyleManager.Clone(r);
+                    if (rCount != 0)
+                        r.ch.Series.Add(rCount.ToString());
+                    r.ch.Series[rCount].LegendText = rCount.ToString();
+                    foreach (var pm in Optimization.percentMean)
+                    {
+                        if (pm.Value == null)
+                        {
+                            r.ch.Series[rCount].Points.AddY(0);
+                        }
+                        else
+                        {
+                            r.ch.Series[rCount].Points.AddY(pm.Value / 60 != 0 ? (double)pm.Value / 60 : (double)pm.Value);
+                        }
+                        if (rCount == 0)
+                            r.ch.ChartAreas[rCount].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
+                        iCh++;
+                    }
+                    r.ch.SaveImage(Optimization.pathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    r.TopMost = true;
+                    r.Show();
+                    r.BringToFront();
+
+                    rCount += 1;
+                }
+                catch { }
+            }
+
+        }
+
         public static void Opt(MatrixControl matrixControl1, LoadingForm loadingForm)
         {
             pathOpt = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}_{5}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
@@ -34,7 +127,6 @@ namespace SystAnalys_lr1.Classes
             ));
             int old = small;
 
-            var busesparkreturn = Data.BusesPark;
 
             int ciclTotal = 5;
 
@@ -58,7 +150,7 @@ namespace SystAnalys_lr1.Classes
                     }
                     Epicenter.CreateOneRandomEpicenter(Main.EpicSizeParam, null);
                     Modeling.StartModeling(pathOpt, cicl, i);
-                    if ((Main.SavePictures == true) && (!Main.extendedSavePictures == true))
+                    if ((Main.SavePictures == true) && (!Main.ExtendedSavePictures == true))
                     {
 
                         lock (Main.Ep.Esheet)
@@ -170,9 +262,8 @@ namespace SystAnalys_lr1.Classes
                 fileV.WriteLine(mean != MainStrings.average + " " + MainStrings.notFound ? MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + result[0] : MainStrings.notFound);
             }
 
-            Main.average = mean;
+            Main.Average = mean;
             //BarabanAfterOpti();
-            Data.BusesPark = busesparkreturn;
             Data.Buses = optimizeBuses;
         }
 

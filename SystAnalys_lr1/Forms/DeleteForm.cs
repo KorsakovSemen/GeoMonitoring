@@ -21,26 +21,26 @@ namespace SystAnalys_lr1.Forms
 
         private void MetroRadioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            Main.delType = Main.DeleteType.VertexAndEdge;
-            Main.globalDel = MainStrings.VandE;
+            Main.DelType = Main.DeleteType.VertexAndEdge;
+            Main.GlobalDel = MainStrings.VandE;
         }
 
         private void TrafficLights_CheckedChanged(object sender, EventArgs e)
         {
-            Main.delType = Main.DeleteType.TrafficLight;
-            Main.globalDel = MainStrings.TrafficLights;
+            Main.DelType = Main.DeleteType.TrafficLight;
+            Main.GlobalDel = MainStrings.TrafficLights;
         }
 
         private void BusStops_CheckedChanged(object sender, EventArgs e)
         {
-            Main.delType = Main.DeleteType.BusStops;
-            Main.globalDel = MainStrings.busStops;
+            Main.DelType = Main.DeleteType.BusStops;
+            Main.GlobalDel = MainStrings.busStops;
         }
 
         private void All_CheckedChanged(object sender, EventArgs e)
         {
-            Main.delType = Main.DeleteType.All;
-            Main.globalDel = MainStrings.all;
+            Main.DelType = Main.DeleteType.All;
+            Main.GlobalDel = MainStrings.all;
         }
 
         private void MetroButton1_Click(object sender, EventArgs e)
@@ -51,16 +51,16 @@ namespace SystAnalys_lr1.Forms
 
         private void TheBuses_CheckedChanged(object sender, EventArgs e)
         {
-            Main.delType = Main.DeleteType.TheBuses;
-            Main.globalDel = MainStrings.theBuses;
+            Main.DelType = Main.DeleteType.TheBuses;
+            Main.GlobalDel = MainStrings.theBuses;
         }
 
         private void DeleteForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!Main.yes)
             {
-                Main.delType = Main.DeleteType.None;
-                Main.globalDel = "";
+                Main.DelType = Main.DeleteType.None;
+                Main.GlobalDel = "";
             }            
         }
     }

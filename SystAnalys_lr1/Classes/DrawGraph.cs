@@ -34,13 +34,13 @@ namespace SystAnalys_lr1.Classes
         public void SetBitmap()
         {
             //эксепшн при загрузке левой директоории
-            bitmap = new Bitmap(Main.globalMap);
+            bitmap = new Bitmap(Main.GlobalMap);
             gr = Graphics.FromImage(bitmap);
         }
         // для второй формы быстрофикс
         public void SetBitmap2()
         {
-            bitmap = new Bitmap(Main.globalMap);
+            bitmap = new Bitmap(Main.GlobalMap);
             gr = Graphics.FromImage(bitmap);
         }
         //
@@ -52,7 +52,7 @@ namespace SystAnalys_lr1.Classes
         public void ClearSheet()
         {
             Graphics.FromImage(bitmap).Clear(Color.White);
-            bitmap = new Bitmap(Main.globalMap);
+            bitmap = new Bitmap(Main.GlobalMap);
             gr.Dispose();
             gr = Graphics.FromImage(bitmap);
 
@@ -214,11 +214,11 @@ namespace SystAnalys_lr1.Classes
             {
                 DrawStopVertex(stopPoints.X, stopPoints.Y);
             }
-            if (Main.selectedRoute != null)
+            if (Main.SelectedRoute != null)
             {
-                if (Data.StopPoints.ContainsKey(Main.selectedRoute))
+                if (Data.StopPoints.ContainsKey(Main.SelectedRoute))
                 {
-                    foreach (var stopPoints in Data.StopPoints[Main.selectedRoute])
+                    foreach (var stopPoints in Data.StopPoints[Main.SelectedRoute])
                     {
                         DrawStopRouteVertex(stopPoints.X, stopPoints.Y);
                     }

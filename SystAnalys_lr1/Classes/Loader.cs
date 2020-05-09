@@ -14,6 +14,8 @@ namespace SystAnalys_lr1.Classes
 {
     public static class Loader
     {
+       
+
         public static void Load(string load, LoadingForm loadingForm, PictureBox sheet, Timer timer)
         {
             if (File.Exists(load + "Vertices.xml"))
@@ -56,9 +58,9 @@ namespace SystAnalys_lr1.Classes
                 using (StreamReader reader = new StreamReader(load + "grid.xml"))
                 {
                     XmlSerializer deserializerV = new XmlSerializer(typeof(Classes.Grid));
-                    Main.g = (Classes.Grid)deserializerV.Deserialize(reader);
-                    Main.g.gridHeight = 40;
-                    Main.g.gridWidth = 80;
+                    Main.Grid = (Classes.Grid)deserializerV.Deserialize(reader);
+                    Main.Grid.gridHeight = 40;
+                    Main.Grid.gridWidth = 80;
                 }
             }
 
@@ -66,9 +68,9 @@ namespace SystAnalys_lr1.Classes
             {
                 using (StreamReader reader = new StreamReader(load + "grid.json"))
                 {
-                    Main.g = JsonConvert.DeserializeObject<Classes.Grid>(reader.ReadToEnd());
-                    Main.g.gridHeight = 40;
-                    Main.g.gridWidth = 80;
+                    Main.Grid = JsonConvert.DeserializeObject<Classes.Grid>(reader.ReadToEnd());
+                    Main.Grid.gridHeight = 40;
+                    Main.Grid.gridWidth = 80;
                 }
             }
 
@@ -319,7 +321,7 @@ namespace SystAnalys_lr1.Classes
             {
                 using (StreamReader reader = new StreamReader(load + "edgeRoutes.xml"))
                     Data.RoutesEdge = (SerializableDictionary<string, List<Edge>>)Edge.Deserialize(reader);
-                Main.saveF = "xml";
+                Main.SaveF = "xml";
             }
 
             if (File.Exists(load + "edgeRoutes.json"))
@@ -328,7 +330,7 @@ namespace SystAnalys_lr1.Classes
                 {
                     Data.RoutesEdge = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Edge>>>(reader.ReadToEnd());
                 }
-                Main.saveF = "json";
+                Main.SaveF = "json";
             }
             XmlSerializer deserializerAllCoor = new XmlSerializer(typeof(SerializableDictionary<string, List<Point>>));
             if (File.Exists(load + "Data.AllCoordinates.xml"))

@@ -20,11 +20,11 @@ namespace SystAnalys_lr1.Forms
         {
             
             if (textBox3.Text != "")
-                Main.firstCrossRoadsGreenLight = int.Parse(textBox3.Text);
+                Main.FirstCrossRoadsGreenLight = int.Parse(textBox3.Text);
             else
                 errorProvider3.SetError(textBox3, "Заполните поле!");
             if (textBox4.Text != "")
-                Main.firstCrossRoadsRedLight = int.Parse(textBox4.Text);
+                Main.FirstCrossRoadsRedLight = int.Parse(textBox4.Text);
             else
                 errorProvider4.SetError(textBox4, "Заполните поле!");
             if (textBox3.Text != "" && textBox4.Text != "" && (Xbutton.Checked == true || Tbutton.Checked == true))
@@ -86,14 +86,14 @@ namespace SystAnalys_lr1.Forms
 
         private void Tbutton_CheckedChanged(object sender, EventArgs e)
         {
-            Main.firstCrossRoads = 1;
-            Main.secondCrossRoads = 2;
+            Main.FirstCrossRoads = 1;
+            Main.SecondCrossRoads = 2;
         }
 
         private void Xbutton_CheckedChanged(object sender, EventArgs e)
         {
-            Main.firstCrossRoads = 2;
-            Main.secondCrossRoads = 2;
+            Main.FirstCrossRoads = 2;
+            Main.SecondCrossRoads = 2;
         }
     }
 }

@@ -29,7 +29,7 @@ namespace SystAnalys_lr1.Forms
             else
             {
                 SavePictures.Checked = Main.SavePictures;
-                extendedSavePictures.Checked = Main.extendedSavePictures;
+                extendedSavePictures.Checked = Main.ExtendedSavePictures;
             }
             if (extendedSavePictures.Checked == true)
             {
@@ -230,7 +230,7 @@ namespace SystAnalys_lr1.Forms
             Main.EpicFreqSpreadingParam = SetFreqSpreadingSize();
             Main.MovingEpicParamet = SetExpandParam();
             Main.SavePictures = SavePictures.Checked;
-            Main.extendedSavePictures = extendedSavePictures.Checked;
+            Main.ExtendedSavePictures = extendedSavePictures.Checked;
             this.Close();
         }
         private int SetEpicSize()

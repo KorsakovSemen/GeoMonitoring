@@ -22,12 +22,12 @@ namespace SystAnalys_lr1.Classes
         //создать сетку
         static public void CreateGrid(PictureBox sheet)
         {
-            GridPart.Height = sheet.Height / Main.g.gridHeight;
-            GridPart.Width = sheet.Width / Main.g.gridWidth;
+            GridPart.Height = sheet.Height / Main.Grid.gridHeight;
+            GridPart.Width = sheet.Width / Main.Grid.gridWidth;
             Data.TheGrid = new List<GridPart>();
-            for (int i = Main.g.left; i < sheet.Height - Main.g.right; i += sheet.Height / Main.g.gridHeight)
+            for (int i = Main.Grid.left; i < sheet.Height - Main.Grid.right; i += sheet.Height / Main.Grid.gridHeight)
             {
-                for (int j = Main.g.up; j < sheet.Width - Main.g.down; j += sheet.Width / Main.g.gridWidth)
+                for (int j = Main.Grid.up; j < sheet.Width - Main.Grid.down; j += sheet.Width / Main.Grid.gridWidth)
                 {
                     Data.TheGrid.Add(new GridPart(j, i));
                 }

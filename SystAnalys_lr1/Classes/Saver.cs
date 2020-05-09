@@ -39,14 +39,14 @@ namespace SystAnalys_lr1.Classes
             loadingForm.loading.Value = 80;
             json = JsonConvert.SerializeObject(Data.Routes);
             File.WriteAllText(save + "vertexRoutes.json", json);
-            json = JsonConvert.SerializeObject(Main.g);
+            json = JsonConvert.SerializeObject(Main.Grid);
             File.WriteAllText(save + "grid.json", json);
             loadingForm.loading.Value = 90;
             json = JsonConvert.SerializeObject(Data.RoutesEdge);
             File.WriteAllText(save + "edgeRoutes.json", json);
             json = JsonConvert.SerializeObject(Data.TraficLights);
             File.WriteAllText(save + "traficLights.json", json);
-            Main.saveF = saveFormat;
+            Main.SaveF = saveFormat;
             loadingForm.loading.Value = 100;
             loadingForm.close = true;
             loadingForm.Close();
@@ -150,13 +150,13 @@ namespace SystAnalys_lr1.Classes
             using (FileStream fileTL = new FileStream(save + "grid.xml", FileMode.OpenOrCreate))
             {
                 XmlSerializer tl = new XmlSerializer(typeof(Classes.Grid));
-                tl.Serialize(fileTL, Main.g);
+                tl.Serialize(fileTL, Main.Grid);
 
                 Console.WriteLine("Объект сериализован");
 
             }
 
-            Main.saveF = saveFormat;
+            Main.SaveF = saveFormat;
             loadingForm.loading.Value = 90;
             loadingForm.loading.Value = 100;
             loadingForm.close = true;

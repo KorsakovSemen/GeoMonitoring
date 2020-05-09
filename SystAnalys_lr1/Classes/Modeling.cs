@@ -63,7 +63,7 @@ namespace SystAnalys_lr1.Classes
             i = 1;
             int PhaseSizeSelect()
             {
-                if (Main.extendedSavePictures == false)
+                if (Main.ExtendedSavePictures == false)
                 {
                     return 1;
                 }
@@ -84,7 +84,7 @@ namespace SystAnalys_lr1.Classes
                 ////
                 if (j == PhaseSizeSelect())
                 {
-                    if ((Main.SavePictures == true) && (Main.extendedSavePictures == true))
+                    if ((Main.SavePictures == true) && (Main.ExtendedSavePictures == true))
                     {
                         Directory.CreateDirectory(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + 0.ToString());
                         lock (Main.Ep.Esheet)
@@ -202,7 +202,7 @@ namespace SystAnalys_lr1.Classes
                     }
                 }
 
-                if ((Main.SavePictures == true) && (Main.extendedSavePictures == true))
+                if ((Main.SavePictures == true) && (Main.ExtendedSavePictures == true))
                 {
                     Directory.CreateDirectory(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + i.ToString());
                     lock (Main.Ep.Esheet)

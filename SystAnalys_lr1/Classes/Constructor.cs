@@ -65,7 +65,7 @@ namespace SystAnalys_lr1.Classes
         public async void AsDelete(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
             await Task.Run(() => Delete(e, V, E, sheet, routesEdgeE));
-            if (Main.flag)
+            if (Main.Flag)
             {
                 Main.G.ClearSheet();
                 Main.G.DrawALLGraph(V, E);
@@ -344,13 +344,13 @@ namespace SystAnalys_lr1.Classes
                 {
                     if (Math.Pow((Data.V[i].X - e.X / Main.zoom), 2) + Math.Pow((Data.V[i].Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                     {
-                        if (Main.selected1 == -1)
+                        if (Main.Selected1 == -1)
                         {
                             if (routesEdge.Count != 0)
                             {
                                 if (routeV[routesEdge.Last().V2].X == Data.V[i].X && routeV[routesEdge.Last().V2].Y == Data.V[i].Y)
                                 {
-                                    Main.selected1 = i;
+                                    Main.Selected1 = i;
                                     Main.G.DrawSelectedVertex(Data.V[i].X, Data.V[i].Y);
                                 }
                             }
@@ -360,31 +360,31 @@ namespace SystAnalys_lr1.Classes
                                 {
                                     routeV.Add(new Vertex(Data.V[i].X, Data.V[i].Y));
                                 }
-                                Main.selected1 = i;
+                                Main.Selected1 = i;
                                 Main.G.DrawSelectedVertex(Data.V[i].X, Data.V[i].Y);
                             }
                             break;
                         }
-                        if (Main.selected2 == -1)
+                        if (Main.Selected2 == -1)
                         {
                             Main.G.DrawSelectedVertex(Data.V[i].X, Data.V[i].Y);
-                            Main.selected2 = i;
+                            Main.Selected2 = i;
                             foreach (var ed in Data.E)
                             {
-                                if ((ed.V1 == Main.selected1 && ed.V2 == Main.selected2) || (ed.V2 == Main.selected1 && ed.V1 == Main.selected2))
+                                if ((ed.V1 == Main.Selected1 && ed.V2 == Main.Selected2) || (ed.V2 == Main.Selected1 && ed.V1 == Main.Selected2))
                                 {
                                     routesEdge.Add(new Edge(routeV.Count - 1, routeV.Count));
                                     routeV.Add(new Vertex(Data.V[i].X, Data.V[i].Y));                                  
-                                    Main.G.DrawEdge(Data.V[Main.selected1], Data.V[Main.selected2], Data.E[Data.E.Count - 1], 1);
+                                    Main.G.DrawEdge(Data.V[Main.Selected1], Data.V[Main.Selected2], Data.E[Data.E.Count - 1], 1);
                                     sheet.Image = Main.G.GetBitmap();
-                                    Main.selected1 = -1;
-                                    Main.selected2 = -1;
+                                    Main.Selected1 = -1;
+                                    Main.Selected2 = -1;
                                     break;
                                 }
                             }
                             MapUpdateRoute(sheet, routeV, routesEdge);
-                            Main.selected1 = -1;
-                            Main.selected2 = -1;
+                            Main.Selected1 = -1;
+                            Main.Selected2 = -1;
                             break;
                         }
                     }
@@ -426,10 +426,10 @@ namespace SystAnalys_lr1.Classes
             {
                 if (((e.X > gridPart.x * Main.zoom) && (e.Y > gridPart.y * Main.zoom)) && ((e.X < gridPart.x * Main.zoom + GridPart.Width * Main.zoom) && (e.Y < gridPart.y * Main.zoom + GridPart.Height * Main.zoom)))
                 {
-                    traficLights.Add(new TraficLight(e.X / Main.zoom, e.Y / Main.zoom, gridParts.IndexOf(gridPart), Main.firstCrossRoadsGreenLight, Main.firstCrossRoadsRedLight));
+                    traficLights.Add(new TraficLight(e.X / Main.zoom, e.Y / Main.zoom, gridParts.IndexOf(gridPart), Main.FirstCrossRoadsGreenLight, Main.FirstCrossRoadsRedLight));
                     Data.TraficLightsInGrids.Add(gridParts.IndexOf(gridPart));
                     Main.G.DrawGreenVertex(e.X / Main.zoom, e.Y / Main.zoom);
-                    Main.firstCrossRoads -= 1;
+                    Main.FirstCrossRoads -= 1;
                     sheet.Image = Main.G.GetBitmap();
                     GridCreator.DrawGrid(sheet);
                     break;
@@ -443,12 +443,12 @@ namespace SystAnalys_lr1.Classes
             {
                 if (((e.X > gridPart.x * Main.zoom) && (e.Y > gridPart.y * Main.zoom)) && ((e.X < gridPart.x * Main.zoom + GridPart.Width * Main.zoom) && (e.Y < gridPart.y * Main.zoom + GridPart.Height * Main.zoom)))
                 {
-                    traficLights.Add(new TraficLight(e.X / Main.zoom, e.Y / Main.zoom, gridParts.IndexOf(gridPart), Main.firstCrossRoadsRedLight, Main.firstCrossRoadsGreenLight));
+                    traficLights.Add(new TraficLight(e.X / Main.zoom, e.Y / Main.zoom, gridParts.IndexOf(gridPart), Main.FirstCrossRoadsRedLight, Main.FirstCrossRoadsGreenLight));
                     Data.TraficLightsInGrids.Add(gridParts.IndexOf(gridPart));
-                    traficLights.Last().Tick = Main.firstCrossRoadsRedLight + 2;
+                    traficLights.Last().Tick = Main.FirstCrossRoadsRedLight + 2;
                     traficLights.Last().Status = Status.RED;
                     Main.G.DrawSelectedVertex(e.X / Main.zoom, e.Y / Main.zoom);
-                    Main.secondCrossRoads -= 1;
+                    Main.SecondCrossRoads -= 1;
                     break;
                 }
 
@@ -461,16 +461,16 @@ namespace SystAnalys_lr1.Classes
             {
                 if (Math.Pow((V[i].X - e.X / Main.zoom), 2) + Math.Pow((V[i].Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                 {
-                    if (Main.selected1 != -1)
+                    if (Main.Selected1 != -1)
                     {
-                        Main.selected1 = -1;
+                        Main.Selected1 = -1;
                         if (n != 0) MapUpdateRoute(sheet, V, E); 
                         else MapUpdateNetwork(sheet, V, E);
                     }
-                    if (Main.selected1 == -1)
+                    if (Main.Selected1 == -1)
                     {
                         Main.G.DrawSelectedVertex(V[i].X, V[i].Y);
-                        Main.selected1 = i;
+                        Main.Selected1 = i;
                         MapUpdate(sheet);
                         break;
                     }
@@ -494,21 +494,21 @@ namespace SystAnalys_lr1.Classes
                 {
                     if (Math.Pow((V[i].X - e.X / Main.zoom), 2) + Math.Pow((V[i].Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                     {
-                        if (Main.selected1 == -1)
+                        if (Main.Selected1 == -1)
                         {
                             Main.G.DrawSelectedVertex(V[i].X, V[i].Y);
-                            Main.selected1 = i;
+                            Main.Selected1 = i;
                             sheet.Invoke(new Del((s) => sheet.Image = s), Main.G.GetBitmap());
                             break;
                         }
-                        if (Main.selected2 == -1)
+                        if (Main.Selected2 == -1)
                         {
                             Main.G.DrawSelectedVertex(V[i].X, V[i].Y);
-                            Main.selected2 = i;
-                            E.Add(new Edge(Main.selected1, Main.selected2));
-                            Main.G.DrawEdge(V[Main.selected1], V[Main.selected2], E[E.Count - 1]);
-                            Main.selected1 = -1;
-                            Main.selected2 = -1;
+                            Main.Selected2 = i;
+                            E.Add(new Edge(Main.Selected1, Main.Selected2));
+                            Main.G.DrawEdge(V[Main.Selected1], V[Main.Selected2], E[E.Count - 1]);
+                            Main.Selected1 = -1;
+                            Main.Selected2 = -1;
                             MapUpdateNetwork(sheet, V, E);
                             break;
                         }
@@ -526,14 +526,14 @@ namespace SystAnalys_lr1.Classes
                     tl.Stop();
                     Data.TraficLightsInGrids.Remove(tl.gridNum);
                     Data.TraficLights.Remove(tl);
-                    Main.flag = true;
+                    Main.Flag = true;
                     break;
                 }
             }
         }
         public void DeleteVE(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
-            if (!Main.flag)
+            if (!Main.Flag)
             {
                 foreach (var routeV in Data.Routes)
                 {
@@ -555,7 +555,7 @@ namespace SystAnalys_lr1.Classes
                                 }
                             }
                             routeV.Value.RemoveAt(i);
-                            Main.flag = true;
+                            Main.Flag = true;
                             break;              
                         }
 
@@ -563,7 +563,7 @@ namespace SystAnalys_lr1.Classes
                 }
             }
             //ищем, возможно было нажато ребро
-            if (!Main.flag)
+            if (!Main.Flag)
             {
                 try
                 {
@@ -579,7 +579,7 @@ namespace SystAnalys_lr1.Classes
                                         (Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) >= ((Main.G.R - 2) * (Main.G.R - 2))))
                                     {
                                         routesEdgeE[routeV.Key].RemoveAt(i);
-                                        Main.flag = true;
+                                        Main.Flag = true;
                                         break;
                                     }
                                 }
@@ -592,7 +592,7 @@ namespace SystAnalys_lr1.Classes
                                             (routeV.Value[routesEdgeE[routeV.Key][i].V1].X >= routeV.Value[routesEdgeE[routeV.Key][i].V2].X && routeV.Value[routesEdgeE[routeV.Key][i].V1].X >= e.X / Main.zoom && e.X / Main.zoom >= routeV.Value[routesEdgeE[routeV.Key][i].V2].X))
                                         {
                                             routesEdgeE[routeV.Key].RemoveAt(i);
-                                            Main.flag = true;
+                                            Main.Flag = true;
                                             break;
                                         }
                                     }
@@ -628,7 +628,7 @@ namespace SystAnalys_lr1.Classes
                         }
                     }
                     V.RemoveAt(i);
-                    Main.flag = true;
+                    Main.Flag = true;
                     break;
 
                 }
@@ -636,7 +636,7 @@ namespace SystAnalys_lr1.Classes
             }
 
             //ищем, возможно было нажато ребро
-            if (!Main.flag)
+            if (!Main.Flag)
             {
                 for (int i = 0; i < E.Count; i++)
                 {
@@ -646,7 +646,7 @@ namespace SystAnalys_lr1.Classes
                             (Math.Pow((V[E[i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((V[E[i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) >= ((Main.G.R - 2) * (Main.G.R - 2))))
                         {
                             E.RemoveAt(i);
-                            Main.flag = true;
+                            Main.Flag = true;
                             break;
                         }
                     }
@@ -661,7 +661,7 @@ namespace SystAnalys_lr1.Classes
                                     (V[E[i].V1].X >= V[E[i].V2].X && V[E[i].V1].X >= e.X / Main.zoom && e.X / Main.zoom >= V[E[i].V2].X))
                                 {
                                     E.RemoveAt(i);
-                                    Main.flag = true;
+                                    Main.Flag = true;
                                     break;
                                 }
                             }
@@ -881,7 +881,7 @@ namespace SystAnalys_lr1.Classes
                 if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                 {
                     Data.AllstopPoints.Remove(sp);
-                    Main.flag = true;
+                    Main.Flag = true;
                     break;
                 }
             }
@@ -895,7 +895,7 @@ namespace SystAnalys_lr1.Classes
                     {
                         Data.StopPointsInGrids[stop.Key].Remove(sp.gridNum);
                         stop.Value.Remove(sp);
-                        Main.flag = true;
+                        Main.Flag = true;
                         break;
                     }
                 }
@@ -906,7 +906,7 @@ namespace SystAnalys_lr1.Classes
         {
             //удалили ли что-нибудь по ЭТОМУ клику
             //ищем, возможно была нажата вершина
-            Main.flag = false;
+            Main.Flag = false;
 
             foreach (var tl in Data.TraficLights)
             {
@@ -915,19 +915,19 @@ namespace SystAnalys_lr1.Classes
                     tl.Stop();
                     Data.TraficLightsInGrids.Remove(tl.gridNum);
                     Data.TraficLights.Remove(tl);
-                    Main.flag = true;
+                    Main.Flag = true;
                     break;
                 }
             }
 
-            if (!Main.flag)
+            if (!Main.Flag)
             {
                 foreach (var sp in Data.AllstopPoints)
                 {
                     if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                     {
                         Data.AllstopPoints.Remove(sp);
-                        Main.flag = true;
+                        Main.Flag = true;
                         break;
                     }
                 }
@@ -942,14 +942,14 @@ namespace SystAnalys_lr1.Classes
                     {
                         Data.StopPointsInGrids[stop.Key].Remove(sp.gridNum);
                         stop.Value.Remove(sp);
-                        Main.flag = true;
+                        Main.Flag = true;
                         break;
                     }
                 }
             }
 
 
-            if (!Main.flag)
+            if (!Main.Flag)
             {
                 foreach (var routeV in Data.Routes)
                 {
@@ -973,7 +973,7 @@ namespace SystAnalys_lr1.Classes
                                 }
                             }
                             routeV.Value.RemoveAt(i);
-                            Main.flag = true;
+                            Main.Flag = true;
                             break;
                             //}                       
                         }
@@ -982,7 +982,7 @@ namespace SystAnalys_lr1.Classes
                 }
             }
             //ищем, возможно было нажато ребро
-            if (!Main.flag)
+            if (!Main.Flag)
             {
                 try
                 {
@@ -998,7 +998,7 @@ namespace SystAnalys_lr1.Classes
                                         (Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) >= ((Main.G.R - 2) * (Main.G.R - 2))))
                                     {
                                         routesEdgeE[routeV.Key].RemoveAt(i);
-                                        Main.flag = true;
+                                        Main.Flag = true;
                                         break;
                                     }
                                 }
@@ -1011,7 +1011,7 @@ namespace SystAnalys_lr1.Classes
                                             (routeV.Value[routesEdgeE[routeV.Key][i].V1].X >= routeV.Value[routesEdgeE[routeV.Key][i].V2].X && routeV.Value[routesEdgeE[routeV.Key][i].V1].X >= e.X / Main.zoom && e.X / Main.zoom >= routeV.Value[routesEdgeE[routeV.Key][i].V2].X))
                                         {
                                             routesEdgeE[routeV.Key].RemoveAt(i);
-                                            Main.flag = true;
+                                            Main.Flag = true;
                                             break;
                                         }
                                     }
@@ -1047,7 +1047,7 @@ namespace SystAnalys_lr1.Classes
                         }
                     }
                     V.RemoveAt(i);
-                    Main.flag = true;
+                    Main.Flag = true;
                     break;
 
                 }
@@ -1055,7 +1055,7 @@ namespace SystAnalys_lr1.Classes
             }
 
             //ищем, возможно было нажато ребро
-            if (!Main.flag)
+            if (!Main.Flag)
             {
                 for (int i = 0; i < E.Count; i++)
                 {
@@ -1065,7 +1065,7 @@ namespace SystAnalys_lr1.Classes
                             (Math.Pow((V[E[i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((V[E[i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) >= ((Main.G.R - 2) * (Main.G.R - 2))))
                         {
                             E.RemoveAt(i);
-                            Main.flag = true;
+                            Main.Flag = true;
                             break;
                         }
                     }
@@ -1080,7 +1080,7 @@ namespace SystAnalys_lr1.Classes
                                     (V[E[i].V1].X >= V[E[i].V2].X && V[E[i].V1].X >= e.X / Main.zoom && e.X / Main.zoom >= V[E[i].V2].X))
                                 {
                                     E.RemoveAt(i);
-                                    Main.flag = true;
+                                    Main.Flag = true;
                                     break;
                                 }
                             }
@@ -1146,7 +1146,7 @@ namespace SystAnalys_lr1.Classes
                                     (routeV[routesEdge[i].V1].X >= routeV[routesEdge[i].V2].X && routeV[routesEdge[i].V1].X >= e.X && e.X >= routeV[routesEdge[i].V2].X))
                                 {
                                     routesEdge.RemoveAt(i);
-                                    Main.flag = true;
+                                    Main.Flag = true;
                                     GridCreator.DrawGrid(sheet);
                                     break;
                                 }

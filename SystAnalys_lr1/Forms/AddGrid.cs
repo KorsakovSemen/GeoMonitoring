@@ -33,29 +33,29 @@ namespace SystAnalys_lr1.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             if (up.Text != "")
-                 Main.g.left = int.Parse(up.Text);
+                 Main.Grid.left = int.Parse(up.Text);
             else
                 errorProvider1.SetError(up, "Заполните поле!");
             if (left.Text != "")
-                Main.g.up = int.Parse(left.Text);
+                Main.Grid.up = int.Parse(left.Text);
             else
                 errorProvider1.SetError(left, "Заполните поле!");
             if (down.Text != "")
-                Main.g.right = int.Parse(down.Text);
+                Main.Grid.right = int.Parse(down.Text);
             else
                 errorProvider1.SetError(down, "Заполните поле!");
             if (right.Text != "")
-                Main.g.down = int.Parse(right.Text);
+                Main.Grid.down = int.Parse(right.Text);
             else
                 errorProvider1.SetError(right, "Заполните поле!");
             if (w.Text != "")
-                Main.g.gridWidth = int.Parse(w.Text);
+                Main.Grid.gridWidth = int.Parse(w.Text);
             else
-                Main.g.gridWidth = 80;
+                Main.Grid.gridWidth = 80;
             if (h.Text != "")
-                Main.g.gridHeight = int.Parse(h.Text);
+                Main.Grid.gridHeight = int.Parse(h.Text);
             else
-                Main.g.gridHeight = 40;
+                Main.Grid.gridHeight = 40;
             //GridPart.height = int.Parse(textBox1.Text) / 40;
             //GridPart.width = int.Parse(textBox2.Text) / 80;
             //  Data.buses.Add(new Bus(Data.routes[int.Parse(this.textBox1.Text)], new PictureBox(), 0, false, new List<Vertex>(),int.Parse(this.textBox1.Text), true));
