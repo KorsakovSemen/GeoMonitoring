@@ -14,16 +14,16 @@ namespace SystAnalys_lr1.Classes
 {
     static class Optimization
     {
-        static public string pathOpt;
-        static public SerializableDictionary<int, int?> percentMean;
-        static int small = 10000;
-        static public int countWithoutSensors;
-        static public List<int> withoutSensorsBuses = new List<int>();
+        static public string pathOpt { get; set; }
+        static public SerializableDictionary<int, int?> percentMean { get; set; }
+        static int small { get; set; } = 10000;
+        static public int countWithoutSensors { get; set; }
+        static public List<int> withoutSensorsBuses { get; set; } = new List<int>();
         delegate void DelInt(int text);
         static Random rnd = new Random();
         static string mean;
-        public static int OptiSpeed;
-        public static int OptiCount;
+        public static int OptiSpeed { get; set; }
+        public static int OptiCount { get; set; }
 
         //class opt
         public static void ResMatrix(MetroGrid results)
@@ -32,7 +32,7 @@ namespace SystAnalys_lr1.Classes
             results.Refresh();
             results.RowCount = 5;
             int i = 0;
-            foreach (var pm in Optimization.percentMean)
+            foreach (var pm in percentMean)
             {
                 results.Rows[i].HeaderCell.Value = pm.Key.ToString();
                 if (pm.Value != 0)

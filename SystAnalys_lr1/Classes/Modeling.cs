@@ -13,9 +13,9 @@ namespace SystAnalys_lr1.Classes
 {
     static class Modeling
     {
-        static public Dictionary<string, List<GridPart>> PollutionInRoutes;
-        static public int T;
-        static public List<int?> ResultFromModeling = new List<int?>();
+        static public Dictionary<string, List<GridPart>> PollutionInRoutes { get; set; }
+        static public int T { get; set; }
+        static public List<int?> ResultFromModeling { get; set; } = new List<int?>();
 
         public static void CreatePollutionInRoutes()
         {

@@ -13,8 +13,7 @@ using System.Xml.Serialization;
 namespace SystAnalys_lr1.Classes
 {
     public static class Loader
-    {
-       
+    {     
 
         public static void Load(string load, LoadingForm loadingForm, PictureBox sheet, Timer timer)
         {

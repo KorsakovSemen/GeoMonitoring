@@ -31,7 +31,7 @@ namespace SystAnalys_lr1
         public int GreenTime { get; }
         public int RedTime { get; }
         public int YellowTime { get; } = 2;
-        public int bal; // остаток времени на светофоре
+        public int bal { get; set; } // остаток времени на светофоре
 
         public TraficLight() { }
 

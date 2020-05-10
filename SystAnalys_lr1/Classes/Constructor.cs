@@ -11,7 +11,6 @@ namespace SystAnalys_lr1.Classes
     public class Constructor
     {
 
-        //ты по всем документам смотри
         public bool CheckV(MouseEventArgs e, bool check)
         {
             for (int i = 0; i < Data.V.Count; i++)

@@ -10,7 +10,7 @@ namespace SystAnalys_lr1.Classes
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public int gridNum;
+        public int gridNum { get; set; }
 
         public Vertex()
         { }
