@@ -92,7 +92,7 @@ namespace SystAnalys_lr1
         static public int zoom, scrollX, scrollY;
         public static bool yes;
 
-        static public int rCount { get; set; }
+        static public int ReportCount { get; set; }
         int oldChart;
 
         static public string GlobalDel { get; set; } = "All";
@@ -799,7 +799,7 @@ namespace SystAnalys_lr1
             {
                 coordinates.CreateAllCoordinates();
                 Optimization.withoutSensorsBuses = new List<int>();
-                Optimization.countWithoutSensors = Data.Buses.Count;
+                Optimization.countWithoutSensors = Data.Buses.Where((bus) => bus.Tracker == true).Count();
                 var busesparkreturn = Data.BusesPark;
                 bool check = false;
                 foreach (var bus in Data.Buses)
@@ -829,25 +829,30 @@ namespace SystAnalys_lr1
                             Modeling.T = int.Parse(speed.Text) / 20;
                     }
                     var style = msmMain.Style;
+
                     if (msmMain.Style == (MetroFramework.MetroColorStyle)Convert.ToInt32(13))
                         msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(14);
                     else
                         msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(13);
+
                     loadingForm = new LoadingForm
                     {
                         Theme = msmMain.Theme,
                         Style = msmMain.Style
                     };
+
                     if (!Ep.IsDisposed)
                     {
                         StyleManager.Clone(Ep);
                         Ep.Refresh();
                     }
+
                     if (SavePictures == true)
                     {
                         Ep.Hide();
                         Directory.CreateDirectory(Optimization.pathOpt + "/Epics");
                     }
+
                     loadingForm.Show();
                     loadingForm.Refresh();
                     await Task.Run(() =>
@@ -866,7 +871,7 @@ namespace SystAnalys_lr1
                     Data.BusesPark = busesparkreturn;
 
                     msmMain.Style = style;
-                   // MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     if (!Ep.IsDisposed)
                     {
                         StyleManager.Clone(Ep);
@@ -875,7 +880,7 @@ namespace SystAnalys_lr1
                     BringToFront();
                     timer.Start();
                     ButtonOn();
-                    if(rCount == 0)
+                    if(ReportCount == 0)
                         oldChart = (int)Optimization.percentMean.Keys.Sum();
                     Optimization.ResChart(oldChart, r, StyleManager);
 

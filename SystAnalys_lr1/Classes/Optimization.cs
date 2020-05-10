@@ -49,7 +49,7 @@ namespace SystAnalys_lr1.Classes
             if (oldChart != percentMean.Keys.Sum())
             {
                 r.ch.Legends.Clear();
-                Main.rCount = 0;
+                Main.ReportCount = 0;
                 foreach (var series in r.ch.Series)
                 {
                     series.Points.Clear();
@@ -59,18 +59,18 @@ namespace SystAnalys_lr1.Classes
             }
             int iCh = 0;
             StyleManager.Clone(r);
-            if (Main.rCount != 0)
-                r.ch.Series.Add(Main.rCount.ToString());
-            r.ch.Series[Main.rCount].LegendText = Main.rCount.ToString();
+            if (Main.ReportCount != 0)
+                r.ch.Series.Add(Main.ReportCount.ToString());
+            r.ch.Series[Main.ReportCount].LegendText = Main.ReportCount.ToString();
             foreach (var pm in percentMean)
             {
                 if (pm.Value == null)
                 {
-                    r.ch.Series[Main.rCount].Points.AddY(0);
+                    r.ch.Series[Main.ReportCount].Points.AddY(0);
                 }
                 else
                 {
-                    r.ch.Series[Main.rCount].Points.AddY(pm.Value / 60 != 0 ? (double)pm.Value / 60 : (double)pm.Value);
+                    r.ch.Series[Main.ReportCount].Points.AddY(pm.Value / 60 != 0 ? (double)pm.Value / 60 : (double)pm.Value);
                 }
                 if (!changeText)
                     r.ch.ChartAreas[0].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
@@ -83,50 +83,8 @@ namespace SystAnalys_lr1.Classes
             r.Show();
             r.BringToFront();
 
-            Main.rCount += 1;
+            Main.ReportCount += 1;
            
-            //else
-            //{
-            //    try
-            //    {
-            //        r.ch.Legends.Clear();
-            //        Main.rCount = 0;
-            //        foreach (var series in r.ch.Series)
-            //        {
-            //            series.Points.Clear();
-            //        }
-            //        oldChart = (int)percentMean.Keys.Sum();
-            //        int iCh = 0;
-            //        StyleManager.Clone(r);
-            //        if (Main.rCount != 0)
-            //            r.ch.Series.Add(Main.rCount.ToString());
-            //        r.ch.Series[Main.rCount].LegendText = Main.rCount.ToString();
-            //        foreach (var pm in percentMean)
-            //        {
-            //            if (pm.Value == null)
-            //            {
-            //                r.ch.Series[Main.rCount].Points.AddY(0);
-            //            }
-            //            else
-            //            {
-            //                r.ch.Series[Main.rCount].Points.AddY(pm.Value / 60 != 0 ? (double)pm.Value / 60 : (double)pm.Value);
-            //            }
-            //            if (Main.rCount == 0)
-            //                r.ch.ChartAreas[0].AxisX.CustomLabels.Add(new CustomLabel(iCh, iCh + 2, pm.Key.ToString(), 0, LabelMarkStyle.LineSideMark));
-            //            else
-            //                r.ch.ChartAreas[0].AxisX.CustomLabels[iCh].Text = pm.Key.ToString();
-            //            iCh++;
-            //        }
-            //        r.ch.SaveImage(pathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            //        r.TopMost = true;
-            //        r.Show();
-            //        r.BringToFront();
-
-            //        Main.rCount += 1;
-            //    }
-            //    catch { }
-            //}
-
         }
 
         public static void Opt(MatrixControl matrixControl1, LoadingForm loadingForm)
@@ -209,15 +167,11 @@ namespace SystAnalys_lr1.Classes
 
                 if (total < 0 || count < Modeling.ResultFromModeling.Count / 2)
                 {
-                    // mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none + "\n" + MainStrings.procentSuc + " " + count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
                     if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
                         percentMean.Add(withoutSensorsBuses.Last(), null);
-                    //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + MainStrings.none);
                 }
                 else
                 {
-                    //  mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (total / ResultFromModeling.Count).ToString()
-                    //      + "\n" + MainStrings.procentSuc + " " + ResultFromModeling.Count * 100.00 / (int.Parse(optText.Text)) + "\n" + MainStrings.procentFailed + " " + ((ResultFromModeling.Count - count) * 100.00 / (int.Parse(optText.Text))));
                     if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
                     {
                         if (count != 0)
@@ -225,9 +179,8 @@ namespace SystAnalys_lr1.Classes
                         else
                             percentMean.Add(withoutSensorsBuses.Last(), -1);
                     }
-                    //   mean.Invoke(new Del((s) => mean.Text = s), MainStrings.average + " " + (Convert.ToDouble(total / ResultFromModeling.Count).ToString()));
-                }
-                ;
+                };
+
                 using (StreamWriter fileV = new StreamWriter(pathOpt + @"\" + withoutSensorsBuses.Last() + "_buses" + ".txt"))
                 {
                     fileV.WriteLine(MainStrings.sensorsDown + ": " + (cicl * 10).ToString());
@@ -290,9 +243,10 @@ namespace SystAnalys_lr1.Classes
             Data.BusesPark = matrixControl1.busesPark;
             foreach (var b in Data.BusesPark)
             {
+                var BusesParkWithSensors = b.Where((bus) => bus.Tracker == true);
                 double razm = Math.Round(b.Count - b.Count * 0.01 * proc);
                 double limit = Math.Round(b.Count - razm, 0);
-                foreach (var bus in b)
+                foreach (var bus in BusesParkWithSensors)
                 {
                     if (0 != limit)
                     {
