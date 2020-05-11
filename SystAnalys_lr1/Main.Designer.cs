@@ -51,8 +51,8 @@
             this.stopBuses = new MetroFramework.Controls.MetroButton();
             this.launchBuses = new MetroFramework.Controls.MetroButton();
             this.trackerCheck = new MetroFramework.Controls.MetroCheckBox();
-            this.busSize = new MetroFramework.Controls.MetroTextBox();
             this.changeRoute = new MetroFramework.Controls.MetroComboBox();
+            this.busSize = new MetroFramework.Controls.MetroTextBox();
             this.matrixLabel = new MetroFramework.Controls.MetroLabel();
             this.zoomLabel = new MetroFramework.Controls.MetroLabel();
             this.optimization = new MetroFramework.Controls.MetroLabel();
@@ -353,6 +353,14 @@
             this.trackerCheck.Name = "trackerCheck";
             this.trackerCheck.UseSelectable = true;
             // 
+            // changeRoute
+            // 
+            this.changeRoute.FormattingEnabled = true;
+            resources.ApplyResources(this.changeRoute, "changeRoute");
+            this.changeRoute.Name = "changeRoute";
+            this.changeRoute.UseSelectable = true;
+            this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.ChangeRoute_SelectedIndexChanged);
+            // 
             // busSize
             // 
             // 
@@ -382,14 +390,6 @@
             this.busSize.UseSelectable = true;
             this.busSize.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.busSize.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // changeRoute
-            // 
-            this.changeRoute.FormattingEnabled = true;
-            resources.ApplyResources(this.changeRoute, "changeRoute");
-            this.changeRoute.Name = "changeRoute";
-            this.changeRoute.UseSelectable = true;
-            this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.ChangeRoute_SelectedIndexChanged);
             // 
             // matrixLabel
             // 
