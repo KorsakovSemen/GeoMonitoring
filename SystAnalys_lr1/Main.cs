@@ -129,7 +129,7 @@ namespace SystAnalys_lr1
 
         }
 
-       
+
         private void Panel6_MouseWheel(object sender, MouseEventArgs e)
         {
             Bus.ScrollX = mainPanel.AutoScrollPosition.X;
@@ -236,7 +236,7 @@ namespace SystAnalys_lr1
         }
 
         private void ConstructorPressButton()
-        {           
+        {
             sheet.Image = G.GetBitmap();
             stopPointButton.Enabled = true;
             selected = new List<int>();
@@ -285,7 +285,7 @@ namespace SystAnalys_lr1
                        .TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)
                        .ToUpperInvariant();
         }
-        
+
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -527,7 +527,7 @@ namespace SystAnalys_lr1
                 {
                     Ep.EG = new DrawGraph();
                     Ep.Close();
-                }               
+                }
                 config.Text = MainStrings.config;
                 DeleteAll();
                 G.bitmap = null;
@@ -537,7 +537,7 @@ namespace SystAnalys_lr1
                     G.ClearSheet();
                     G.ClearSheet2();
                 }
-               
+
                 sheet.Image = Image.FromFile(fb.FileName);
                 saveImage = sheet.Image;
                 zoomBar.Value = 1;
@@ -589,8 +589,8 @@ namespace SystAnalys_lr1
                 StyleManager.Clone(df);
                 df.VandE.Enabled = false;
                 df.All.Text = MainStrings.graphClear;
-                df.ShowDialog();              
-              
+                df.ShowDialog();
+
                 DialogResult MBSave = DialogResult.No;
                 if (yes)
                     MBSave = MetroMessageBox.Show(this, message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -635,7 +635,7 @@ namespace SystAnalys_lr1
                             Data.Routes.Keys.ToList().ForEach(x => Data.Routes[x] = new List<Vertex>());
                             Data.RoutesEdge.Keys.ToList().ForEach(x => Data.RoutesEdge[x] = new List<Edge>());
                             loadingForm.loading.Value = 40;
-                            Data.AllCoordinates.Clear();                           
+                            Data.AllCoordinates.Clear();
                             loadingForm.loading.Value = 50;
                         };
                         break;
@@ -646,7 +646,7 @@ namespace SystAnalys_lr1
                             loadingForm.loading.Value = 20;
                             Data.StopPoints[changeRoute.Text].Clear();
                             Data.StopPointsInGrids[changeRoute.Text].Clear();
-                            loadingForm.loading.Value = 40;      
+                            loadingForm.loading.Value = 40;
                             loadingForm.loading.Value = 50;
                         }
                         if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
@@ -656,7 +656,7 @@ namespace SystAnalys_lr1
                             Data.AllstopPoints.Clear();
                             Data.StopPoints.Clear();
                             Data.StopPointsInGrids.Clear();
-                            loadingForm.loading.Value = 40;       
+                            loadingForm.loading.Value = 40;
                             loadingForm.loading.Value = 50;
                         }
                         break;
@@ -861,12 +861,12 @@ namespace SystAnalys_lr1
                     loadingForm.Close();
                     loadingForm.Dispose();
 
-                    matrix.MatrixCreate();                    
+                    matrix.MatrixCreate();
                     Optimization.ResMatrix(results);
                     Data.BusesPark = busesparkreturn;
 
                     msmMain.Style = style;
-                   // MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    // MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     if (!Ep.IsDisposed)
                     {
                         StyleManager.Clone(Ep);
@@ -875,7 +875,7 @@ namespace SystAnalys_lr1
                     BringToFront();
                     timer.Start();
                     ButtonOn();
-                    if(rCount == 0)
+                    if (rCount == 0)
                         oldChart = (int)Optimization.percentMean.Keys.Sum();
                     Optimization.ResChart(oldChart, r, StyleManager);
 
@@ -889,7 +889,7 @@ namespace SystAnalys_lr1
 
             }
         }
-       
+
         public bool GetSavePictruesCheckBox()
         {
             return SavePictures;
@@ -1146,7 +1146,7 @@ namespace SystAnalys_lr1
             }
             Data.Buses.Clear();
 
-
+        
             foreach (var tl in Data.TraficLights)
             {
                 tl.Stop();
@@ -1991,12 +1991,12 @@ namespace SystAnalys_lr1
                 AnimationGraphics = Graphics.FromImage(AnimationBitmap);
                 foreach (var bus in Data.Buses)
                 {
-                    //try
-                    //{
-                    bus.MoveWithGraphics(AnimationGraphics);
-                    AnimationBox.Image = AnimationBitmap; // поместил в трай
-                    //}
-                    //catch { }
+                    try
+                    {
+                        bus.MoveWithGraphics(AnimationGraphics);
+                        AnimationBox.Image = AnimationBitmap; // поместил в трай
+                    }
+                    catch { }
                     if (Data.Buses.Count <= 20)
                     {
                         GC.Collect();

@@ -147,10 +147,10 @@ namespace SystAnalys_lr1.Classes
             loadingForm.loading.Value = 30;
 
 
-            if (File.Exists(load + "Data.traficLights.xml"))
+            if (File.Exists(load + "traficLights.xml"))
             {
                 XmlSerializer tl = new XmlSerializer(typeof(List<TraficLight>));
-                using (StreamReader reader = new StreamReader(load + "Data.traficLights.xml"))
+                using (StreamReader reader = new StreamReader(load + "traficLights.xml"))
                     Data.TraficLights = (List<TraficLight>)tl.Deserialize(reader);
                 Data.TraficLightsInGrids = new List<int>();
                 foreach (var item in Data.TraficLights)
@@ -164,9 +164,9 @@ namespace SystAnalys_lr1.Classes
                 }
                 sheet.Image = Main.G.GetBitmap();
             }
-            if (File.Exists(load + "Data.traficLights.json"))
+            if (File.Exists(load + "traficLights.json"))
             {
-                using (StreamReader reader = new StreamReader(load + "Data.traficLights.json"))
+                using (StreamReader reader = new StreamReader(load + "traficLights.json"))
                 {
                     Data.TraficLights = JsonConvert.DeserializeObject<List<TraficLight>>(reader.ReadToEnd());
                     Data.TraficLightsInGrids = new List<int>();
