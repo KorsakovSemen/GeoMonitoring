@@ -9,17 +9,9 @@ namespace SystAnalys_lr1.Classes
 {
     public class Epicenter : ICloneable
     {
-        public static void CreateOneRandomEpicenter(int EpicSizeParam, int? StartPos)
-        {           
-            Data.Epics = new List<Epicenter>
-            {
-                new Epicenter(Data.TheGrid)
-            };
-            Data.Epics.First().CreateRandomEpicenter(EpicSizeParam, StartPos);
-        }
         public SerializableDictionary<int, List<GridPart>> EpicenterGrid { get; set; }
         public Point StartPositon;
-       
+
         public int DetectCount { get; set; }
 
         public List<GridPart> TheGrid { get; set; }
@@ -33,10 +25,20 @@ namespace SystAnalys_lr1.Classes
         public Epicenter()
         { }
 
+        public static void CreateOneRandomEpicenter(int EpicSizeParam, int? StartPos)
+        {
+            Data.Epics = new List<Epicenter>
+            {
+                new Epicenter(Data.TheGrid)
+            };
+            Data.Epics.First().CreateRandomEpicenter(EpicSizeParam, StartPos);
+        }      
+
         public object Clone()
         {
             return MemberwiseClone();
         }
+
         public void Recreate(Dictionary<string, List<GridPart>> PollutionInRoutes)
         {
             EpicenterGrid.Add(1, new List<GridPart>());
@@ -470,17 +472,13 @@ namespace SystAnalys_lr1.Classes
 
             }
         }
-        ////////
+        
         public void EpicMoving(List<string> Parameters)
         {
             for (int i = 2; i < EpicenterGrid.Count + 1; i++)
             {
-
                 EpicenterGrid[i].Clear();
-
             }
-
-            //EpicenterGrid[1].RemoveAt(EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()));
 
             List<Point> ForRemove = new List<Point>();
             foreach (var gridPart in EpicenterGrid[1])
@@ -567,7 +565,6 @@ namespace SystAnalys_lr1.Classes
             for (int i = 2; i < 4; i++)
             {
 
-                // EpicenterGrid.Add(i, new List<GridPart>());
                 List<GridPart> fillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i - 1])
                 {
@@ -600,9 +597,9 @@ namespace SystAnalys_lr1.Classes
                 }
 
             }
-            ///
+            
         }
-        //
+        
         public List<int> NewExpandCount { get; set; } = new List<int>();
         public void ExpandEpic()
         {
@@ -615,7 +612,6 @@ namespace SystAnalys_lr1.Classes
             for (int i = 0; i < 3; i++)
             {
                 List<string> Parameter = new List<string>();
-                //GridPart StarterEpicPart = EpicenterGrid[1][rand.Next(EpicenterGrid[1].IndexOf(EpicenterGrid[1].First()), EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()))];
                 GridPart StarterEpicPart = new GridPart(StartPositon.X, StartPositon.Y);
                 Parameter = EpicenterGenerator(StarterEpicPart, Parameter);
                 if (Parameter.Count > 0)
@@ -623,7 +619,6 @@ namespace SystAnalys_lr1.Classes
                     NewExpandCount.Clear();
                     foreach (var item in Parameter)
                     {
-                        //if (Parameters.Contains(item))
                         Creater(item, StarterEpicPart, 1);
                         NewExpandCount.Add(EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()));
                     }
@@ -647,7 +642,6 @@ namespace SystAnalys_lr1.Classes
                         foreach (var item in Parameter)
                         {
                             Creater(item, StarterEpicPart, 1);
-                            //  NewExpandCount.Add(EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()));
                         }
 
                     }             
@@ -656,7 +650,6 @@ namespace SystAnalys_lr1.Classes
             ////
             for (int i = 2; i < 4; i++)
             {
-                // EpicenterGrid.Add(i, new List<GridPart>());
                 List<GridPart> fillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i - 1])
                 {

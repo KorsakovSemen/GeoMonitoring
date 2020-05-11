@@ -9,16 +9,15 @@ namespace SystAnalys_lr1.Classes
 {
     public class DrawGraph
     {
-        public Bitmap bitmap;
+        public Bitmap bitmap { get; set; }
         readonly private Pen blackPen;
         readonly private Pen darkGoldPen;
-        public Graphics gr;
+        public Graphics gr { get; set; }
         readonly private Color color;
-        public int R = 3; //радиус окружности вершины
+        public int R { get; set; } = 3; //радиус окружности вершины
 
         public DrawGraph()
         {
-
             blackPen = new Pen(Color.Black)
             {
                 Width = 1

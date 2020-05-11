@@ -10,6 +10,15 @@ namespace SystAnalys_lr1.Classes
 {
     public class Grid
     {
+        public int left { get; set; }
+        public int up { get; set; }
+        public int right { get; set; }
+        public int down { get; set; }
+        [XmlIgnore, JsonIgnore]
+        public int gridWidth { get; set; }
+        [XmlIgnore, JsonIgnore]
+        public int gridHeight { get; set; }
+
         public Grid() { }
         public Grid(int l, int u, int r, int d, int gW, int gH)
         {
@@ -19,15 +28,7 @@ namespace SystAnalys_lr1.Classes
             down = d;
             gridWidth = gW;
             gridHeight = gH;
-        }
-        public int left;
-        public int up;
-        public int right;
-        public int down;
-        [XmlIgnore, JsonIgnore]
-        public int gridWidth;
-        [XmlIgnore, JsonIgnore]
-        public int gridHeight;
+        }    
     }
 
 }

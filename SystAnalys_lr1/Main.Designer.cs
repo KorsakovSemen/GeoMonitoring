@@ -51,13 +51,12 @@
             this.stopBuses = new MetroFramework.Controls.MetroButton();
             this.launchBuses = new MetroFramework.Controls.MetroButton();
             this.trackerCheck = new MetroFramework.Controls.MetroCheckBox();
-            this.busSize = new MetroFramework.Controls.MetroTextBox();
             this.changeRoute = new MetroFramework.Controls.MetroComboBox();
+            this.busSize = new MetroFramework.Controls.MetroTextBox();
             this.matrixLabel = new MetroFramework.Controls.MetroLabel();
             this.zoomLabel = new MetroFramework.Controls.MetroLabel();
             this.optimization = new MetroFramework.Controls.MetroLabel();
             this.panelMatrix = new MetroFramework.Controls.MetroPanel();
-            this.matrix = new SystAnalys_lr1.Classes.MatrixControl();
             this.zoomBar = new MetroFramework.Controls.MetroTrackBar();
             this.trafficLightLabel = new MetroFramework.Controls.MetroLabel();
             this.theme = new MetroFramework.Controls.MetroLabel();
@@ -101,6 +100,7 @@
             this.language = new MetroFramework.Controls.MetroLabel();
             this.hint = new MetroFramework.Controls.MetroLabel();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.matrix = new SystAnalys_lr1.Classes.MatrixControl();
             this.panelOpt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.results)).BeginInit();
             this.panelSettings.SuspendLayout();
@@ -282,6 +282,7 @@
             this.panelSettings.Controls.Add(this.selectedLanguage);
             this.panelSettings.Controls.Add(this.allBusSettings);
             this.panelSettings.Controls.Add(this.changeRoute);
+            this.panelSettings.Controls.Add(this.busSize);
             this.panelSettings.Controls.Add(this.matrixLabel);
             this.panelSettings.Controls.Add(this.zoomLabel);
             this.panelSettings.Controls.Add(this.optimization);
@@ -315,7 +316,6 @@
             this.allBusSettings.Controls.Add(this.stopBuses);
             this.allBusSettings.Controls.Add(this.launchBuses);
             this.allBusSettings.Controls.Add(this.trackerCheck);
-            this.allBusSettings.Controls.Add(this.busSize);
             this.allBusSettings.HorizontalScrollbarBarColor = true;
             this.allBusSettings.HorizontalScrollbarHighlightOnWheel = false;
             this.allBusSettings.HorizontalScrollbarSize = 13;
@@ -353,6 +353,14 @@
             this.trackerCheck.Name = "trackerCheck";
             this.trackerCheck.UseSelectable = true;
             // 
+            // changeRoute
+            // 
+            this.changeRoute.FormattingEnabled = true;
+            resources.ApplyResources(this.changeRoute, "changeRoute");
+            this.changeRoute.Name = "changeRoute";
+            this.changeRoute.UseSelectable = true;
+            this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.ChangeRoute_SelectedIndexChanged);
+            // 
             // busSize
             // 
             // 
@@ -383,14 +391,6 @@
             this.busSize.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.busSize.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // changeRoute
-            // 
-            this.changeRoute.FormattingEnabled = true;
-            resources.ApplyResources(this.changeRoute, "changeRoute");
-            this.changeRoute.Name = "changeRoute";
-            this.changeRoute.UseSelectable = true;
-            this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.ChangeRoute_SelectedIndexChanged);
-            // 
             // matrixLabel
             // 
             resources.ApplyResources(this.matrixLabel, "matrixLabel");
@@ -419,12 +419,6 @@
             this.panelMatrix.VerticalScrollbarBarColor = true;
             this.panelMatrix.VerticalScrollbarHighlightOnWheel = false;
             this.panelMatrix.VerticalScrollbarSize = 8;
-            // 
-            // matrix
-            // 
-            resources.ApplyResources(this.matrix, "matrix");
-            this.matrix.Name = "matrix";
-            this.matrix.UseSelectable = true;
             // 
             // zoomBar
             // 
@@ -770,6 +764,12 @@
             // 
             this.timer.Interval = 20;
             this.timer.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // matrix
+            // 
+            resources.ApplyResources(this.matrix, "matrix");
+            this.matrix.Name = "matrix";
+            this.matrix.UseSelectable = true;
             // 
             // Main
             // 

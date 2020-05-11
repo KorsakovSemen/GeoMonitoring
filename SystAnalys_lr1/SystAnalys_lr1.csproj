@@ -176,6 +176,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MainStrings.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\MatrixControl.en-US.resx">
+      <DependentUpon>MatrixControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\MatrixControl.resx">
       <DependentUpon>MatrixControl.cs</DependentUpon>
     </EmbeddedResource>

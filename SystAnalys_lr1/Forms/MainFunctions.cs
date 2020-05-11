@@ -72,7 +72,7 @@ namespace SystAnalys_lr1
             timer.Interval = BusStop.StopTime / 10;
             r = new Report();
             loadingForm = new LoadingForm();
-            rCount = 0;
+            ReportCount = 0;
             coordinates = new Coordinates();
             Grid = new Classes.Grid(0, 0, 0, 0, 80, 40);
             G = new DrawGraph();
@@ -206,7 +206,7 @@ namespace SystAnalys_lr1
             matrix.MatrixCreate();
             hint.Visible = false;
             r.ch.Titles.Add(MainStrings.report);
-            r.ch.Series[rCount].LegendText = "1";
+            r.ch.Series[ReportCount].LegendText = "1";
         }
         //class jopa
         public void AnimationSettings()

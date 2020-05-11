@@ -18,7 +18,6 @@ namespace SystAnalys_lr1
             return (int)Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
         }
 
-        //функция, которая создает все координаты для одного маршрута
         public void CreateOneRouteCoordinates(string i)
         {
             if (Data.Routes[i].Count >= 2)
