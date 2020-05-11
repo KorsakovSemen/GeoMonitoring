@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelOpt = new MetroFramework.Controls.MetroPanel();
             this.pollutionOptions = new MetroFramework.Controls.MetroButton();
             this.results = new MetroFramework.Controls.MetroGrid();
@@ -57,7 +57,6 @@
             this.zoomLabel = new MetroFramework.Controls.MetroLabel();
             this.optimization = new MetroFramework.Controls.MetroLabel();
             this.panelMatrix = new MetroFramework.Controls.MetroPanel();
-            this.matrix = new SystAnalys_lr1.Classes.MatrixControl();
             this.zoomBar = new MetroFramework.Controls.MetroTrackBar();
             this.trafficLightLabel = new MetroFramework.Controls.MetroLabel();
             this.theme = new MetroFramework.Controls.MetroLabel();
@@ -101,6 +100,7 @@
             this.language = new MetroFramework.Controls.MetroLabel();
             this.hint = new MetroFramework.Controls.MetroLabel();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.matrix = new SystAnalys_lr1.Classes.MatrixControl();
             this.panelOpt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.results)).BeginInit();
             this.panelSettings.SuspendLayout();
@@ -114,7 +114,6 @@
             // 
             // panelOpt
             // 
-            resources.ApplyResources(this.panelOpt, "panelOpt");
             this.panelOpt.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panelOpt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelOpt.Controls.Add(this.pollutionOptions);
@@ -128,6 +127,7 @@
             this.panelOpt.HorizontalScrollbarBarColor = true;
             this.panelOpt.HorizontalScrollbarHighlightOnWheel = false;
             this.panelOpt.HorizontalScrollbarSize = 8;
+            resources.ApplyResources(this.panelOpt, "panelOpt");
             this.panelOpt.Name = "panelOpt";
             this.panelOpt.VerticalScrollbarBarColor = true;
             this.panelOpt.VerticalScrollbarHighlightOnWheel = false;
@@ -142,44 +142,44 @@
             // 
             // results
             // 
-            resources.ApplyResources(this.results, "results");
             this.results.AllowUserToResizeRows = false;
             this.results.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.results.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.results.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.results.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.results.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.results.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.results.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.results.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Avg});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.results.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.results.DefaultCellStyle = dataGridViewCellStyle2;
             this.results.EnableHeadersVisualStyles = false;
+            resources.ApplyResources(this.results, "results");
             this.results.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.results.Name = "results";
             this.results.ReadOnly = true;
             this.results.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.results.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.results.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.results.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.results.RowTemplate.Height = 24;
             this.results.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -215,39 +215,22 @@
             // 
             // optText
             // 
-            resources.ApplyResources(this.optText, "optText");
             // 
             // 
             // 
-            this.optText.CustomButton.AccessibleDescription = resources.GetString("resource.AccessibleDescription");
-            this.optText.CustomButton.AccessibleName = resources.GetString("resource.AccessibleName");
-            this.optText.CustomButton.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("resource.Anchor")));
-            this.optText.CustomButton.AutoSize = ((bool)(resources.GetObject("resource.AutoSize")));
-            this.optText.CustomButton.AutoSizeMode = ((System.Windows.Forms.AutoSizeMode)(resources.GetObject("resource.AutoSizeMode")));
-            this.optText.CustomButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("resource.BackgroundImage")));
-            this.optText.CustomButton.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("resource.BackgroundImageLayout")));
-            this.optText.CustomButton.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("resource.Dock")));
-            this.optText.CustomButton.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("resource.FlatStyle")));
-            this.optText.CustomButton.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font")));
             this.optText.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            this.optText.CustomButton.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.ImageAlign")));
-            this.optText.CustomButton.ImageIndex = ((int)(resources.GetObject("resource.ImageIndex")));
-            this.optText.CustomButton.ImageKey = resources.GetString("resource.ImageKey");
             this.optText.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode")));
             this.optText.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location")));
             this.optText.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin")));
-            this.optText.CustomButton.MaximumSize = ((System.Drawing.Size)(resources.GetObject("resource.MaximumSize")));
             this.optText.CustomButton.Name = "";
-            this.optText.CustomButton.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("resource.RightToLeft")));
             this.optText.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size")));
             this.optText.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.optText.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex")));
-            this.optText.CustomButton.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.TextAlign")));
-            this.optText.CustomButton.TextImageRelation = ((System.Windows.Forms.TextImageRelation)(resources.GetObject("resource.TextImageRelation")));
             this.optText.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.optText.CustomButton.UseSelectable = true;
             this.optText.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible")));
             this.optText.Lines = new string[0];
+            resources.ApplyResources(this.optText, "optText");
             this.optText.MaxLength = 9;
             this.optText.Name = "optText";
             this.optText.PasswordChar = '\0';
@@ -263,39 +246,22 @@
             // 
             // speed
             // 
-            resources.ApplyResources(this.speed, "speed");
             // 
             // 
             // 
-            this.speed.CustomButton.AccessibleDescription = resources.GetString("resource.AccessibleDescription1");
-            this.speed.CustomButton.AccessibleName = resources.GetString("resource.AccessibleName1");
-            this.speed.CustomButton.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("resource.Anchor1")));
-            this.speed.CustomButton.AutoSize = ((bool)(resources.GetObject("resource.AutoSize1")));
-            this.speed.CustomButton.AutoSizeMode = ((System.Windows.Forms.AutoSizeMode)(resources.GetObject("resource.AutoSizeMode1")));
-            this.speed.CustomButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("resource.BackgroundImage1")));
-            this.speed.CustomButton.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("resource.BackgroundImageLayout1")));
-            this.speed.CustomButton.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("resource.Dock1")));
-            this.speed.CustomButton.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("resource.FlatStyle1")));
-            this.speed.CustomButton.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font1")));
             this.speed.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            this.speed.CustomButton.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.ImageAlign1")));
-            this.speed.CustomButton.ImageIndex = ((int)(resources.GetObject("resource.ImageIndex1")));
-            this.speed.CustomButton.ImageKey = resources.GetString("resource.ImageKey1");
             this.speed.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode1")));
             this.speed.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location1")));
             this.speed.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin1")));
-            this.speed.CustomButton.MaximumSize = ((System.Drawing.Size)(resources.GetObject("resource.MaximumSize1")));
             this.speed.CustomButton.Name = "";
-            this.speed.CustomButton.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("resource.RightToLeft1")));
             this.speed.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size1")));
             this.speed.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.speed.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex1")));
-            this.speed.CustomButton.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.TextAlign1")));
-            this.speed.CustomButton.TextImageRelation = ((System.Windows.Forms.TextImageRelation)(resources.GetObject("resource.TextImageRelation1")));
             this.speed.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.speed.CustomButton.UseSelectable = true;
             this.speed.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible1")));
             this.speed.Lines = new string[0];
+            resources.ApplyResources(this.speed, "speed");
             this.speed.MaxLength = 9;
             this.speed.Name = "speed";
             this.speed.PasswordChar = '\0';
@@ -311,18 +277,19 @@
             // 
             // panelSettings
             // 
-            resources.ApplyResources(this.panelSettings, "panelSettings");
             this.panelSettings.BackColor = System.Drawing.SystemColors.Menu;
             this.panelSettings.Controls.Add(this.busOptions);
             this.panelSettings.Controls.Add(this.selectedLanguage);
             this.panelSettings.Controls.Add(this.allBusSettings);
             this.panelSettings.Controls.Add(this.changeRoute);
+            this.panelSettings.Controls.Add(this.busSize);
             this.panelSettings.Controls.Add(this.matrixLabel);
             this.panelSettings.Controls.Add(this.zoomLabel);
             this.panelSettings.Controls.Add(this.optimization);
             this.panelSettings.Controls.Add(this.panelMatrix);
             this.panelSettings.Controls.Add(this.panelOpt);
             this.panelSettings.Controls.Add(this.zoomBar);
+            resources.ApplyResources(this.panelSettings, "panelSettings");
             this.panelSettings.HorizontalScrollbarBarColor = true;
             this.panelSettings.HorizontalScrollbarHighlightOnWheel = false;
             this.panelSettings.HorizontalScrollbarSize = 8;
@@ -343,17 +310,16 @@
             // 
             // allBusSettings
             // 
-            resources.ApplyResources(this.allBusSettings, "allBusSettings");
             this.allBusSettings.BackColor = System.Drawing.Color.DimGray;
             this.allBusSettings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.allBusSettings.Controls.Add(this.backsideCheck);
             this.allBusSettings.Controls.Add(this.stopBuses);
             this.allBusSettings.Controls.Add(this.launchBuses);
             this.allBusSettings.Controls.Add(this.trackerCheck);
-            this.allBusSettings.Controls.Add(this.busSize);
             this.allBusSettings.HorizontalScrollbarBarColor = true;
             this.allBusSettings.HorizontalScrollbarHighlightOnWheel = false;
             this.allBusSettings.HorizontalScrollbarSize = 13;
+            resources.ApplyResources(this.allBusSettings, "allBusSettings");
             this.allBusSettings.Name = "allBusSettings";
             this.allBusSettings.Style = MetroFramework.MetroColorStyle.Blue;
             this.allBusSettings.UseStyleColors = true;
@@ -389,38 +355,21 @@
             // 
             // busSize
             // 
-            resources.ApplyResources(this.busSize, "busSize");
             // 
             // 
             // 
-            this.busSize.CustomButton.AccessibleDescription = resources.GetString("resource.AccessibleDescription2");
-            this.busSize.CustomButton.AccessibleName = resources.GetString("resource.AccessibleName2");
-            this.busSize.CustomButton.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("resource.Anchor2")));
-            this.busSize.CustomButton.AutoSize = ((bool)(resources.GetObject("resource.AutoSize2")));
-            this.busSize.CustomButton.AutoSizeMode = ((System.Windows.Forms.AutoSizeMode)(resources.GetObject("resource.AutoSizeMode2")));
-            this.busSize.CustomButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("resource.BackgroundImage2")));
-            this.busSize.CustomButton.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("resource.BackgroundImageLayout2")));
-            this.busSize.CustomButton.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("resource.Dock2")));
-            this.busSize.CustomButton.FlatStyle = ((System.Windows.Forms.FlatStyle)(resources.GetObject("resource.FlatStyle2")));
-            this.busSize.CustomButton.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font2")));
             this.busSize.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            this.busSize.CustomButton.ImageAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.ImageAlign2")));
-            this.busSize.CustomButton.ImageIndex = ((int)(resources.GetObject("resource.ImageIndex2")));
-            this.busSize.CustomButton.ImageKey = resources.GetString("resource.ImageKey2");
             this.busSize.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode2")));
             this.busSize.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location2")));
             this.busSize.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin2")));
-            this.busSize.CustomButton.MaximumSize = ((System.Drawing.Size)(resources.GetObject("resource.MaximumSize2")));
             this.busSize.CustomButton.Name = "";
-            this.busSize.CustomButton.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("resource.RightToLeft2")));
             this.busSize.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size2")));
             this.busSize.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.busSize.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex2")));
-            this.busSize.CustomButton.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("resource.TextAlign2")));
-            this.busSize.CustomButton.TextImageRelation = ((System.Windows.Forms.TextImageRelation)(resources.GetObject("resource.TextImageRelation2")));
             this.busSize.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.busSize.CustomButton.UseSelectable = true;
             this.busSize.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible2")));
+            resources.ApplyResources(this.busSize, "busSize");
             this.busSize.Lines = new string[0];
             this.busSize.MaxLength = 9;
             this.busSize.Name = "busSize";
@@ -436,8 +385,8 @@
             // 
             // changeRoute
             // 
-            resources.ApplyResources(this.changeRoute, "changeRoute");
             this.changeRoute.FormattingEnabled = true;
+            resources.ApplyResources(this.changeRoute, "changeRoute");
             this.changeRoute.Name = "changeRoute";
             this.changeRoute.UseSelectable = true;
             this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.ChangeRoute_SelectedIndexChanged);
@@ -459,29 +408,23 @@
             // 
             // panelMatrix
             // 
-            resources.ApplyResources(this.panelMatrix, "panelMatrix");
             this.panelMatrix.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panelMatrix.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelMatrix.Controls.Add(this.matrix);
             this.panelMatrix.HorizontalScrollbarBarColor = true;
             this.panelMatrix.HorizontalScrollbarHighlightOnWheel = false;
             this.panelMatrix.HorizontalScrollbarSize = 8;
+            resources.ApplyResources(this.panelMatrix, "panelMatrix");
             this.panelMatrix.Name = "panelMatrix";
             this.panelMatrix.VerticalScrollbarBarColor = true;
             this.panelMatrix.VerticalScrollbarHighlightOnWheel = false;
             this.panelMatrix.VerticalScrollbarSize = 8;
             // 
-            // matrix
-            // 
-            resources.ApplyResources(this.matrix, "matrix");
-            this.matrix.Name = "matrix";
-            this.matrix.UseSelectable = true;
-            // 
             // zoomBar
             // 
-            resources.ApplyResources(this.zoomBar, "zoomBar");
             this.zoomBar.BackColor = System.Drawing.Color.Transparent;
             this.zoomBar.LargeChange = 1;
+            resources.ApplyResources(this.zoomBar, "zoomBar");
             this.zoomBar.Maximum = 3;
             this.zoomBar.Minimum = 1;
             this.zoomBar.Name = "zoomBar";
@@ -500,8 +443,8 @@
             // 
             // changeTheme
             // 
-            resources.ApplyResources(this.changeTheme, "changeTheme");
             this.changeTheme.FormattingEnabled = true;
+            resources.ApplyResources(this.changeTheme, "changeTheme");
             this.changeTheme.Items.AddRange(new object[] {
             resources.GetString("changeTheme.Items"),
             resources.GetString("changeTheme.Items1"),
@@ -541,25 +484,24 @@
             // 
             // sheet
             // 
-            resources.ApplyResources(this.sheet, "sheet");
             this.sheet.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.sheet, "sheet");
             this.sheet.Name = "sheet";
             this.sheet.TabStop = false;
             this.sheet.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick_1);
             // 
             // toolStripSeparator1
             // 
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // toolStripSeparator2
             // 
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // toolStripMenu
             // 
-            resources.ApplyResources(this.toolStripMenu, "toolStripMenu");
             this.toolStripMenu.BackColor = System.Drawing.Color.White;
             this.toolStripMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStripMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -582,11 +524,11 @@
             this.deleteBus,
             this.deleteRoute,
             this.delAllBusesOnRoute});
+            resources.ApplyResources(this.toolStripMenu, "toolStripMenu");
             this.toolStripMenu.Name = "toolStripMenu";
             // 
             // saveButton
             // 
-            resources.ApplyResources(this.saveButton, "saveButton");
             this.saveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.saveButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createModelToolStripMenuItem,
@@ -596,188 +538,189 @@
             this.saveToolStripMenuItem,
             this.saveInToolStripMenuItem,
             this.runTrafficLightsToolStripMenuItem});
+            resources.ApplyResources(this.saveButton, "saveButton");
             this.saveButton.Name = "saveButton";
             // 
             // createModelToolStripMenuItem
             // 
-            resources.ApplyResources(this.createModelToolStripMenuItem, "createModelToolStripMenuItem");
             this.createModelToolStripMenuItem.Name = "createModelToolStripMenuItem";
+            resources.ApplyResources(this.createModelToolStripMenuItem, "createModelToolStripMenuItem");
             this.createModelToolStripMenuItem.Click += new System.EventHandler(this.NewModelToolStripMenuItem_Click);
             // 
             // openEpicFormToolStripMenuItem
             // 
-            resources.ApplyResources(this.openEpicFormToolStripMenuItem, "openEpicFormToolStripMenuItem");
             this.openEpicFormToolStripMenuItem.Name = "openEpicFormToolStripMenuItem";
+            resources.ApplyResources(this.openEpicFormToolStripMenuItem, "openEpicFormToolStripMenuItem");
             this.openEpicFormToolStripMenuItem.Click += new System.EventHandler(this.OpenEpicFormToolStripMenuItem_Click);
             // 
             // addRouteToolStripMenuItem
             // 
-            resources.ApplyResources(this.addRouteToolStripMenuItem, "addRouteToolStripMenuItem");
             this.addRouteToolStripMenuItem.Name = "addRouteToolStripMenuItem";
+            resources.ApplyResources(this.addRouteToolStripMenuItem, "addRouteToolStripMenuItem");
             this.addRouteToolStripMenuItem.Click += new System.EventHandler(this.AddRouteToolStripMenuItem_Click);
             // 
             // createGridToolStripMenuItem
             // 
-            resources.ApplyResources(this.createGridToolStripMenuItem, "createGridToolStripMenuItem");
             this.createGridToolStripMenuItem.Name = "createGridToolStripMenuItem";
+            resources.ApplyResources(this.createGridToolStripMenuItem, "createGridToolStripMenuItem");
             this.createGridToolStripMenuItem.Click += new System.EventHandler(this.CreateGridToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
-            resources.ApplyResources(this.saveToolStripMenuItem, "saveToolStripMenuItem");
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            resources.ApplyResources(this.saveToolStripMenuItem, "saveToolStripMenuItem");
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // saveInToolStripMenuItem
             // 
-            resources.ApplyResources(this.saveInToolStripMenuItem, "saveInToolStripMenuItem");
             this.saveInToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.jSONToolStripMenuItem,
             this.xMLToolStripMenuItem});
             this.saveInToolStripMenuItem.Name = "saveInToolStripMenuItem";
+            resources.ApplyResources(this.saveInToolStripMenuItem, "saveInToolStripMenuItem");
             // 
             // jSONToolStripMenuItem
             // 
-            resources.ApplyResources(this.jSONToolStripMenuItem, "jSONToolStripMenuItem");
             this.jSONToolStripMenuItem.Name = "jSONToolStripMenuItem";
+            resources.ApplyResources(this.jSONToolStripMenuItem, "jSONToolStripMenuItem");
             this.jSONToolStripMenuItem.Click += new System.EventHandler(this.JSONToolStripMenuItem_Click);
             // 
             // xMLToolStripMenuItem
             // 
-            resources.ApplyResources(this.xMLToolStripMenuItem, "xMLToolStripMenuItem");
             this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
+            resources.ApplyResources(this.xMLToolStripMenuItem, "xMLToolStripMenuItem");
             this.xMLToolStripMenuItem.Click += new System.EventHandler(this.XMLToolStripMenuItem_Click);
             // 
             // runTrafficLightsToolStripMenuItem
             // 
-            resources.ApplyResources(this.runTrafficLightsToolStripMenuItem, "runTrafficLightsToolStripMenuItem");
             this.runTrafficLightsToolStripMenuItem.Name = "runTrafficLightsToolStripMenuItem";
+            resources.ApplyResources(this.runTrafficLightsToolStripMenuItem, "runTrafficLightsToolStripMenuItem");
             this.runTrafficLightsToolStripMenuItem.Click += new System.EventHandler(this.RunTrafficLightsToolStripMenuItem_Click);
             // 
             // loadButton
             // 
-            resources.ApplyResources(this.loadButton, "loadButton");
             this.loadButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.loadButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadToolStripMenuItem,
             this.loadFromToolStripMenuItem});
+            resources.ApplyResources(this.loadButton, "loadButton");
             this.loadButton.Name = "loadButton";
             // 
             // loadToolStripMenuItem
             // 
-            resources.ApplyResources(this.loadToolStripMenuItem, "loadToolStripMenuItem");
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            resources.ApplyResources(this.loadToolStripMenuItem, "loadToolStripMenuItem");
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
             // 
             // loadFromToolStripMenuItem
             // 
-            resources.ApplyResources(this.loadFromToolStripMenuItem, "loadFromToolStripMenuItem");
             this.loadFromToolStripMenuItem.Name = "loadFromToolStripMenuItem";
+            resources.ApplyResources(this.loadFromToolStripMenuItem, "loadFromToolStripMenuItem");
             this.loadFromToolStripMenuItem.Click += new System.EventHandler(this.LoadFromToolStripMenuItem_Click);
             // 
             // reportTool
             // 
-            resources.ApplyResources(this.reportTool, "reportTool");
             this.reportTool.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.reportTool, "reportTool");
             this.reportTool.Name = "reportTool";
             this.reportTool.Click += new System.EventHandler(this.ReportTool_Click);
             // 
             // selectButton
             // 
-            resources.ApplyResources(this.selectButton, "selectButton");
             this.selectButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.selectButton.Image = global::SystAnalys_lr1.Properties.Resources.newcursor;
             this.selectButton.Name = "selectButton";
+            resources.ApplyResources(this.selectButton, "selectButton");
             this.selectButton.Click += new System.EventHandler(this.SelectButton_Click);
             // 
             // drawVertexButton
             // 
-            resources.ApplyResources(this.drawVertexButton, "drawVertexButton");
             this.drawVertexButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.drawVertexButton.Image = global::SystAnalys_lr1.Properties.Resources.circle1;
             this.drawVertexButton.Name = "drawVertexButton";
+            resources.ApplyResources(this.drawVertexButton, "drawVertexButton");
             this.drawVertexButton.Click += new System.EventHandler(this.DrawVertexButton_Click);
             // 
             // drawEdgeButton
             // 
-            resources.ApplyResources(this.drawEdgeButton, "drawEdgeButton");
             this.drawEdgeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.drawEdgeButton.Image = global::SystAnalys_lr1.Properties.Resources.new_line__;
             this.drawEdgeButton.Name = "drawEdgeButton";
+            resources.ApplyResources(this.drawEdgeButton, "drawEdgeButton");
             this.drawEdgeButton.Click += new System.EventHandler(this.DrawEdgeButton_Click);
             // 
             // selectRoute
             // 
-            resources.ApplyResources(this.selectRoute, "selectRoute");
             this.selectRoute.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.selectRoute.Image = global::SystAnalys_lr1.Properties.Resources.line_chart;
             this.selectRoute.Name = "selectRoute";
+            resources.ApplyResources(this.selectRoute, "selectRoute");
             this.selectRoute.Click += new System.EventHandler(this.SelectRoute_Click);
             // 
             // deleteButton
             // 
-            resources.ApplyResources(this.deleteButton, "deleteButton");
             this.deleteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.deleteButton.Image = global::SystAnalys_lr1.Properties.Resources.criss_cross;
             this.deleteButton.Name = "deleteButton";
+            resources.ApplyResources(this.deleteButton, "deleteButton");
             this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // deleteALLButton
             // 
-            resources.ApplyResources(this.deleteALLButton, "deleteALLButton");
             this.deleteALLButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.deleteALLButton.Image = global::SystAnalys_lr1.Properties.Resources.rubbish;
             this.deleteALLButton.Name = "deleteALLButton";
+            resources.ApplyResources(this.deleteALLButton, "deleteALLButton");
             this.deleteALLButton.Click += new System.EventHandler(this.DeleteALLButton_Click);
             // 
             // addBus
             // 
-            resources.ApplyResources(this.addBus, "addBus");
             this.addBus.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.addBus.Image = global::SystAnalys_lr1.Properties.Resources.newbus;
             this.addBus.Name = "addBus";
+            resources.ApplyResources(this.addBus, "addBus");
             this.addBus.Click += new System.EventHandler(this.AddBus_Click);
             // 
             // stopPointButton
             // 
-            resources.ApplyResources(this.stopPointButton, "stopPointButton");
             this.stopPointButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.stopPointButton.Image = global::SystAnalys_lr1.Properties.Resources.transportation;
             this.stopPointButton.Name = "stopPointButton";
+            resources.ApplyResources(this.stopPointButton, "stopPointButton");
             this.stopPointButton.Click += new System.EventHandler(this.GridButton_Click);
             // 
             // addTraficLight
             // 
-            resources.ApplyResources(this.addTraficLight, "addTraficLight");
             this.addTraficLight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.addTraficLight.Image = global::SystAnalys_lr1.Properties.Resources.traffic_light_;
             this.addTraficLight.Name = "addTraficLight";
+            resources.ApplyResources(this.addTraficLight, "addTraficLight");
             this.addTraficLight.Click += new System.EventHandler(this.AddTraficLight_Click);
             // 
             // clearButton
             // 
-            resources.ApplyResources(this.clearButton, "clearButton");
             this.clearButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.clearButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.clearButton, "clearButton");
             this.clearButton.Name = "clearButton";
             this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // deleteBus
             // 
-            resources.ApplyResources(this.deleteBus, "deleteBus");
             this.deleteBus.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.deleteBus, "deleteBus");
             this.deleteBus.Name = "deleteBus";
             // 
             // deleteRoute
             // 
-            resources.ApplyResources(this.deleteRoute, "deleteRoute");
             this.deleteRoute.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.deleteRoute, "deleteRoute");
             this.deleteRoute.Name = "deleteRoute";
             // 
             // delAllBusesOnRoute
             // 
-            resources.ApplyResources(this.delAllBusesOnRoute, "delAllBusesOnRoute");
             this.delAllBusesOnRoute.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.delAllBusesOnRoute, "delAllBusesOnRoute");
             this.delAllBusesOnRoute.Name = "delAllBusesOnRoute";
             // 
             // msmMain
@@ -798,11 +741,11 @@
             // 
             // changeLanguage
             // 
-            resources.ApplyResources(this.changeLanguage, "changeLanguage");
             this.changeLanguage.AutoCompleteCustomSource.AddRange(new string[] {
             resources.GetString("changeLanguage.AutoCompleteCustomSource"),
             resources.GetString("changeLanguage.AutoCompleteCustomSource1")});
             this.changeLanguage.FormattingEnabled = true;
+            resources.ApplyResources(this.changeLanguage, "changeLanguage");
             this.changeLanguage.Name = "changeLanguage";
             this.changeLanguage.UseSelectable = true;
             this.changeLanguage.SelectedIndexChanged += new System.EventHandler(this.MetroComboBox1_SelectedIndexChanged);
@@ -821,6 +764,12 @@
             // 
             this.timer.Interval = 20;
             this.timer.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // matrix
+            // 
+            resources.ApplyResources(this.matrix, "matrix");
+            this.matrix.Name = "matrix";
+            this.matrix.UseSelectable = true;
             // 
             // Main
             // 

@@ -107,8 +107,8 @@ namespace SystAnalys_lr1.Classes
                     bus.Epicenters = epList;
 
                     bus.TickCount_ = 0;
-                    if (bus.skipTrafficLights > 0)
-                        bus.skipTrafficLights -= 1;
+                    if (bus.Skips.skipTrafficLights > 0)
+                        bus.Skips.skipTrafficLights -= 1;
                     if (bus.Tracker == true)
                     {
                         while (bus.TickCount_ < (T / PhaseSizeSelect()))
@@ -138,20 +138,20 @@ namespace SystAnalys_lr1.Classes
                             }
                             if (Data.TraficLightsInGrids.Contains(Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt])) //ошибка с выходом за пределы тушто нужно "вот эту" разкоментить
                             {
-                                if (bus.skipTrafficLights == 0)
+                                if (bus.Skips.skipTrafficLights == 0)
                                 {
                                     foreach (var sp in Data.TraficLights)
                                     {
                                         if (sp.Status != Status.RED)
                                         {
-                                            bus.skipTrafficLights = sp.GreenTime;
+                                            bus.Skips.skipTrafficLights = sp.GreenTime;
                                             break;
                                         }
                                         if (sp.Status == Status.RED)
                                         {
                                             bus.TickCount_ = bus.TickCount_ + sp.bal;
                                             bus.AllTickCount = bus.AllTickCount + sp.bal;
-                                            bus.skipTrafficLights = sp.GreenTime;
+                                            bus.Skips.skipTrafficLights = sp.GreenTime;
                                             break;
 
                                         }
