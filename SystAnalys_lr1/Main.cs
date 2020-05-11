@@ -1154,8 +1154,8 @@ namespace SystAnalys_lr1
 
             foreach (var tl in Data.TraficLights)
             {
-                tl.Stop();
-                tl.TimerLight.Dispose();
+                tl.Stop();        
+                //tl.TimerLight.Dispose();
             }
 
             Data.Routes.Clear();

@@ -53,7 +53,7 @@ namespace SystAnalys_lr1.Classes
                 }
                 i++;
             }
-            CreatePollutionInRoutes();
+         
             int small = 10000;
             int old = small;
             int FoundTime = small + 1;
@@ -81,6 +81,7 @@ namespace SystAnalys_lr1.Classes
             bool EpicFounded = false;
             for (int j = PhaseSizeSelect(); j > 0; j--)
             {
+                CreatePollutionInRoutes();
                 ////
                 if (j == PhaseSizeSelect())
                 {

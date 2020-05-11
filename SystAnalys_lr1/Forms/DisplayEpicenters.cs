@@ -155,7 +155,7 @@ namespace SystAnalys_lr1
         public void EDrawEpics(System.Collections.Generic.List<Epicenter> Epics)
         {
             EG.ClearSheet2();
-            Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap()); //ошибка при закрытии формы
+           // Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap()); //ошибка при закрытии формы
             // Esheet.Image = EG.GetBitmap();
             if (Epics != null)
             {
