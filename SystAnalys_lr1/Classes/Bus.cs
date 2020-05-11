@@ -435,10 +435,10 @@ namespace SystAnalys_lr1.Classes
                         //{
                         //    CheckEpic(Sector, Square, EpicList);
                         //}
-                        //if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.Height == Square.y)))
-                        //{
-                        //    CheckEpic(Sector, Square, EpicList);
-                        //}
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y + GridPart.Height == Square.y)))
+                        {
+                            CheckEpic(Sector, Square, EpicList);
+                        }
                         if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y - GridPart.Height == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
