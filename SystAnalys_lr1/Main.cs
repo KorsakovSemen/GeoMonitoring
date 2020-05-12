@@ -1577,7 +1577,7 @@ namespace SystAnalys_lr1
                 {
                     if (!Directory.Exists(savepath))
                     {
-                        dialog.SelectedPath = System.Windows.Forms.Application.StartupPath;
+                        dialog.SelectedPath = Path.GetFullPath("../../Configs/");
                     }
                     else
                     {
@@ -1657,7 +1657,7 @@ namespace SystAnalys_lr1
                 {
                     if (!Directory.Exists(savepath))
                     {
-                        dialog.SelectedPath = System.Windows.Forms.Application.StartupPath;
+                        dialog.SelectedPath = Path.GetFullPath("../../Configs/");
                     }
                     else
                     {
