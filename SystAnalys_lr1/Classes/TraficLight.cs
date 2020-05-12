@@ -31,7 +31,7 @@ namespace SystAnalys_lr1
         public int GreenTime { get; }
         public int RedTime { get; }
         public int YellowTime { get; } = 2;
-        public int bal { get; set; } // остаток времени на светофоре
+        public int Bal { get; set; } // остаток времени на светофоре
 
         public TraficLight() { }
 
@@ -48,8 +48,8 @@ namespace SystAnalys_lr1
         {
             SwapLights();
             Tick += 1;
-            if (bal > 0)
-                bal -= 1;
+            if (Bal > 0)
+                Bal -= 1;
             if (Tick == GreenTime + RedTime + YellowTime + YellowTime)
             {
                 Tick = 0;
@@ -81,25 +81,25 @@ namespace SystAnalys_lr1
         {
             if (Tick == 0)
             {
-                bal = GreenTime;
+                Bal = GreenTime;
                 Main.G.DrawGreenVertex(X, Y);
                 Status = Status.GREEN;
             }
             else if (Tick == GreenTime)
             {
-                bal = YellowTime;
+                Bal = YellowTime;
                 Main.G.DrawYellowVertex(X, Y);
                 Status = Status.YELLOW;
             }
             else if (Tick == GreenTime + YellowTime)
             {
-                bal = RedTime;
+                Bal = RedTime;
                 Main.G.DrawSelectedVertex(X, Y);
                 Status = Status.RED;
             }
             else if (Tick == GreenTime + YellowTime + RedTime)
             {
-                bal = YellowTime;
+                Bal = YellowTime;
                 Main.G.DrawYellowVertex(X, Y);
                 Status = Status.YELLOW;
             }

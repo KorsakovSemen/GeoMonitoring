@@ -57,6 +57,8 @@ namespace SystAnalys_lr1.Classes
         public int PositionAt { get; set; }
         //для обратного движения по маршруту
         public bool TurnBack { get; set; }
+        //
+        public bool StopAtStationByGrid { get; set; } = false;
         [XmlIgnore, JsonIgnore]
         public Image BusPic { get; set; }
         //номер маршрута, по которому будет ездить автобус
@@ -116,43 +118,6 @@ namespace SystAnalys_lr1.Classes
             }
         }
 
-        public async Task AsMoveWithoutGraphics()
-        {
-            await Task.Run(() => MoveWithoutGraphics());
-        }
-
-        public void MoveWithoutGraphics()
-        {
-            if (Tracker == true)
-            {
-                if (TurnBack == false)
-                {
-                    if (PositionAt < Coordinates.IndexOf(Coordinates.Last()))
-                    {
-                        PositionAt++;
-                    }
-                    else
-                    {
-                        TurnBack = true;
-                        PositionAt--;
-                    }
-                }
-                else
-                {
-                    if (PositionAt > 0)
-                    {
-                        PositionAt--;
-                    }
-                    else
-                    {
-
-                        TurnBack = false;
-                        PositionAt++;
-                    }
-
-                }
-            }
-        }
 
         public void MoveWithoutGraphicsByGrids()
         {
@@ -168,6 +133,7 @@ namespace SystAnalys_lr1.Classes
                     {
                         TurnBack = true;
                         PositionAt--;
+                        StopAtStationByGrid = true;
                     }
                 }
                 else
@@ -180,7 +146,7 @@ namespace SystAnalys_lr1.Classes
                     {
                         TurnBack = false;
                         PositionAt++;
-
+                        StopAtStationByGrid = true;
                     }
                 }
             }
@@ -250,15 +216,15 @@ namespace SystAnalys_lr1.Classes
                 else
                 if ((Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status == Status.RED)
                 {
-                    if (sp.bal == 0)
+                    if (sp.Bal == 0)
                     {
-                        Skips.skipTrafficLights = (sp.bal + 2) * (BusStop.StopTime / 10 + 10) + 100;
+                        Skips.skipTrafficLights = (sp.Bal + 2) * (BusStop.StopTime / 10 + 10) + 100;
                         CheckStops.checkStop = 80;
                     }
                     else
                     {
-                        Skips.skipTrafficLights = (sp.bal + 2) * (BusStop.StopTime / 10 + 10) + 100;
-                        CheckStops.checkStop = ((sp.bal + 2) * (BusStop.StopTime / 10 + 10));
+                        Skips.skipTrafficLights = (sp.Bal + 2) * (BusStop.StopTime / 10 + 10) + 100;
+                        CheckStops.checkStop = ((sp.Bal + 2) * (BusStop.StopTime / 10 + 10));
                     }
                     CheckStops.checkStoppedBus = BusStop.StopTime / 2;
                     break;

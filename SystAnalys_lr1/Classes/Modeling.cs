@@ -137,7 +137,7 @@ namespace SystAnalys_lr1.Classes
                                     ExpandTimer = 0;
                                 }
                             }
-                            if (Data.TraficLightsInGrids.Contains(Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt])) //ошибка с выходом за пределы тушто нужно "вот эту" разкоментить
+                            if (Data.TraficLightsInGrids.Contains(Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt])) 
                             {
                                 if (bus.Skips.skipTrafficLights == 0)
                                 {
@@ -150,8 +150,8 @@ namespace SystAnalys_lr1.Classes
                                         }
                                         if (sp.Status == Status.RED)
                                         {
-                                            bus.TickCount_ = bus.TickCount_ + sp.bal;
-                                            bus.AllTickCount = bus.AllTickCount + sp.bal;
+                                            bus.TickCount_ += sp.Bal;
+                                            bus.AllTickCount += sp.Bal;
                                             bus.Skips.skipTrafficLights = sp.GreenTime;
                                             break;
 
@@ -159,15 +159,24 @@ namespace SystAnalys_lr1.Classes
                                     }
                                 }
                             }
-
+                          
                             if ((Data.StopPointsInGrids.ContainsKey(bus.GetRoute())) && (Data.StopPointsInGrids[bus.GetRoute()].Contains(Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt])))
                             {
                                 Random rnd = new Random();
                                 int timeboost = rnd.Next(0, 3);
-                                bus.TickCount_ = bus.TickCount_ + timeboost;
-                                bus.AllTickCount = bus.AllTickCount + timeboost;
+                                bus.TickCount_ += timeboost;
+                                bus.AllTickCount += timeboost;
                             }
 
+
+                            if (bus.StopAtStationByGrid == true)
+                            {
+                                Random rnd = new Random();
+                                int timeboost = rnd.Next(0, 3);
+                                bus.TickCount_ += timeboost;
+                                bus.AllTickCount += timeboost;
+                                bus.StopAtStationByGrid = false;
+                            }
                             PollutionInRoutes[bus.GetRoute()][Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt]].Status = bus.DetectEpicenterByGrid(); // ошибка
 
                             foreach (var Epic in bus.Epicenters)
