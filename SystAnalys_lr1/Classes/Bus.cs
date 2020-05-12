@@ -102,7 +102,7 @@ namespace SystAnalys_lr1.Classes
             this.Coordinates = Coordinates;
             Skips = new Skips(false, 1, 5, 1);
             CheckStops = new CheckStops(0, 0);
-            changeSpeed = rnd.Next(5, 10);
+            changeSpeed = rnd.Next(20, 50);
         }
 
         public void ClearAroundEpic()
@@ -192,7 +192,7 @@ namespace SystAnalys_lr1.Classes
                 changeSpeed -= 1;
             if (changeSpeed == 0)
             {
-                changeSpeed = rnd.Next(5, 10);
+                changeSpeed = rnd.Next(20, 50);
                 speed = rnd.Next(1, 3);
             }
             if (Skips.skipTrafficLights != 0)
@@ -205,6 +205,66 @@ namespace SystAnalys_lr1.Classes
                 CheckStops.checkStop -= 1;
             if (CheckStops.checkStoppedBus != 0)
                 CheckStops.checkStoppedBus -= 1;
+        }
+
+        public void TurnBackOn()
+        {
+            if (PositionAt - speed > 0)
+                PositionAt -= speed;
+            else
+                PositionAt--;
+        }
+
+        public void TurnBackOff()
+        {
+            if (PositionAt + speed < Coordinates.Count - 1)
+                PositionAt += speed;
+            else
+                PositionAt++;
+        }
+
+        public void CheckBus(Bus bus)
+        {
+            CheckStops.checkStop = bus.CheckStops.checkStop;
+            Skips.skipTrafficLights = BusStop.StopTime / 2;
+            Skips.skipStops = rnd.Next(BusStop.StopTime, BusStop.StopTime + 50);
+        }
+
+        public void CheckStop()
+        {
+            CheckStops.checkStop = rnd.Next(0, BusStop.StopTime);
+            Skips.skipStops = BusStop.StopTime + 50 - CheckStops.checkStop;
+            CheckStops.checkStoppedBus = CheckStops.checkStop + 100;
+        }
+
+        public void CheckTrafficLight()
+        {
+            foreach (var sp in Data.TraficLights)
+            {
+                if ((Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status != Status.RED)
+                {
+                    Skips.skipTrafficLights = BusStop.StopTime / 2;
+                    CheckStops.checkStoppedBus = BusStop.StopTime / 2;
+                    break;
+                }
+                else
+                if ((Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status == Status.RED)
+                {
+                    if (sp.bal == 0)
+                    {
+                        Skips.skipTrafficLights = (sp.bal + 2) * (BusStop.StopTime / 10 + 10) + 100;
+                        CheckStops.checkStop = 80;
+                    }
+                    else
+                    {
+                        Skips.skipTrafficLights = (sp.bal + 2) * (BusStop.StopTime / 10 + 10) + 100;
+                        CheckStops.checkStop = ((sp.bal + 2) * (BusStop.StopTime / 10 + 10));
+                    }
+                    CheckStops.checkStoppedBus = BusStop.StopTime / 2;
+                    break;
+
+                }
+            }
         }
 
         public void MoveWithGraphics(Graphics G)
@@ -222,14 +282,11 @@ namespace SystAnalys_lr1.Classes
                         {
                             if (Data.Buses.Count != 0)
                             {
-                                foreach (var sp in buses)
+                                foreach (var bus in buses)
                                 {
-                                    if (Math.Pow((sp.Coordinates[sp.PositionAt].X * (int)ZoomCoef - (Coordinates[PositionAt].X * (int)ZoomCoef)), 2) + Math.Pow((sp.Coordinates[sp.PositionAt].Y * (int)ZoomCoef - (Coordinates[PositionAt].Y * (int)ZoomCoef)), 2) <= sp.R * sp.R && sp.CheckStops.checkStop != 0 && sp.TurnBack == TurnBack)
+                                    if (Math.Pow((bus.Coordinates[bus.PositionAt].X * (int)ZoomCoef - (Coordinates[PositionAt].X * (int)ZoomCoef)), 2) + Math.Pow((bus.Coordinates[bus.PositionAt].Y * (int)ZoomCoef - (Coordinates[PositionAt].Y * (int)ZoomCoef)), 2) <= bus.R * bus.R && bus.CheckStops.checkStop != 0 && bus.TurnBack == TurnBack)
                                     {
-                                        Console.WriteLine("Turn false");
-                                        CheckStops.checkStop = sp.CheckStops.checkStop;
-                                        Skips.skipTrafficLights = BusStop.StopTime / 2;
-                                        Skips.skipStops = rnd.Next(BusStop.StopTime, BusStop.StopTime + 50);
+                                        CheckBus(bus);
                                         break;
                                     }
                                 }
@@ -243,9 +300,7 @@ namespace SystAnalys_lr1.Classes
                                 {
                                     if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
                                     {
-                                        CheckStops.checkStop = rnd.Next(0, BusStop.StopTime);
-                                        Skips.skipStops = BusStop.StopTime + 50 - CheckStops.checkStop;
-                                        CheckStops.checkStoppedBus = CheckStops.checkStop + 100;
+                                        CheckStop();
                                         break;
                                     }
                                 }
@@ -255,40 +310,12 @@ namespace SystAnalys_lr1.Classes
                         {
                             if (Skips.skipTrafficLights == 0)
                             {
-                                foreach (var sp in Data.TraficLights)
-                                {
-                                    if ((Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status != Status.RED)
-                                    {
-                                        Skips.skipTrafficLights = BusStop.StopTime / 2;
-                                        CheckStops.checkStoppedBus = BusStop.StopTime / 2;
-                                        break;
-                                    }
-                                    else
-                                    if ((Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status == Status.RED)
-                                    {
-                                        if (sp.bal == 0)
-                                        {
-                                            Skips.skipTrafficLights = (sp.bal + 2) * (BusStop.StopTime / 10 + 10) + 100;
-                                            CheckStops.checkStop = 80;
-                                        }
-                                        else
-                                        {
-                                            Skips.skipTrafficLights = (sp.bal + 2) * (BusStop.StopTime / 10 + 10) + 100;
-                                            CheckStops.checkStop = ((sp.bal + 2) * (BusStop.StopTime / 10 + 10));
-                                        }
-                                        CheckStops.checkStoppedBus = BusStop.StopTime / 2;
-                                        break;
-
-                                    }
-                                }
+                                CheckTrafficLight();
                             }
                         }
                         G.DrawImage(BusPic, Coordinates[PositionAt].X * (int)ZoomCoef - BusPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - BusPic.Height / 2);
                         StopDown();
-                        if(PositionAt + speed < Coordinates.Count - 1)
-                            PositionAt += speed;
-                        else
-                            PositionAt++;
+                        TurnBackOff();
 
                     }
                     else
@@ -299,10 +326,7 @@ namespace SystAnalys_lr1.Classes
                         if (Skips.skipEnd == 0)
                         {
                             TurnBack = true;
-                            if (PositionAt - speed > 0)
-                                PositionAt -= speed;
-                            else
-                                PositionAt--;
+                            TurnBackOn();
                             
                         }
                     }
@@ -313,26 +337,20 @@ namespace SystAnalys_lr1.Classes
                     {
                         if (PositionAt < Coordinates.Count)
                         {
-                            //if (Skips.skipStops == 0)
-                            //{
                             if (CheckStops.checkStoppedBus == 0)
                             {
                                 if (Data.Buses.Count != 0)
                                 {
-                                    foreach (var sp in buses)
+                                    foreach (var bus in buses)
                                     {
-                                        if (Math.Pow((sp.Coordinates[sp.PositionAt].X * (int)ZoomCoef - (Coordinates[PositionAt].X * (int)ZoomCoef)), 2) + Math.Pow((sp.Coordinates[sp.PositionAt].Y * (int)ZoomCoef - (Coordinates[PositionAt].Y * (int)ZoomCoef)), 2) <= sp.R * sp.R && sp.CheckStops.checkStop != 0 && sp.TurnBack == TurnBack)
+                                        if (Math.Pow((bus.Coordinates[bus.PositionAt].X * (int)ZoomCoef - (Coordinates[PositionAt].X * (int)ZoomCoef)), 2) + Math.Pow((bus.Coordinates[bus.PositionAt].Y * (int)ZoomCoef - (Coordinates[PositionAt].Y * (int)ZoomCoef)), 2) <= bus.R * bus.R && bus.CheckStops.checkStop != 0 && bus.TurnBack == TurnBack)
                                         {
-                                            Console.WriteLine("Turn true");
-                                            CheckStops.checkStop = sp.CheckStops.checkStop;
-                                            Skips.skipTrafficLights = BusStop.StopTime / 2;
-                                            Skips.skipStops = rnd.Next(BusStop.StopTime, BusStop.StopTime + 50);
+                                            CheckBus(bus);
                                             break;
                                         }
                                     }
                                 }
                             }
-                            // }
                             if (Data.StopPoints.Count != 0 && Data.StopPoints.ContainsKey(Route))
                             {
                                 if (Skips.skipStops == 0)
@@ -341,9 +359,7 @@ namespace SystAnalys_lr1.Classes
                                     {
                                         if (Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef))
                                         {
-                                            CheckStops.checkStop = rnd.Next(0, BusStop.StopTime);
-                                            Skips.skipStops = BusStop.StopTime + 50 - CheckStops.checkStop;
-                                            CheckStops.checkStoppedBus = CheckStops.checkStop + 100;
+                                            CheckStop();
                                             break;
                                         }
                                     }
@@ -353,40 +369,13 @@ namespace SystAnalys_lr1.Classes
                             {
                                 if (Skips.skipTrafficLights == 0)
                                 {
-                                    foreach (var sp in Data.TraficLights)
-                                    {
-                                        if ((Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status != Status.RED)
-                                        {
-                                            Skips.skipTrafficLights = BusStop.StopTime / 2;
-                                            CheckStops.checkStoppedBus = BusStop.StopTime / 2;
-                                            break;
-                                        }
-                                        else
-                                        if ((Math.Pow((double.Parse((sp.X * (int)ZoomCoef - Coordinates[PositionAt].X * (int)ZoomCoef).ToString())), 2) + Math.Pow((double.Parse(((sp.Y * (int)ZoomCoef - Coordinates[PositionAt].Y * (int)ZoomCoef)).ToString())), 2) <= Main.G.R * (int)ZoomCoef * Main.G.R * (int)ZoomCoef * (Main.G.R * (int)ZoomCoef)) && sp.Status == Status.RED)
-                                        {
-                                            if (sp.bal == 0)
-                                            {
-                                                Skips.skipTrafficLights = (sp.bal + 2) * (BusStop.StopTime / 10 + 10) + 100;
-                                                CheckStops.checkStop = 80;
-                                            }
-                                            else
-                                            {
-                                                Skips.skipTrafficLights = (sp.bal + 2) * (BusStop.StopTime / 10 + 10) + 100;
-                                                CheckStops.checkStop = ((sp.bal + 2) * (BusStop.StopTime / 10 + 10));
-                                            }
-                                            CheckStops.checkStoppedBus = BusStop.StopTime / 2;
-                                            break;
-                                        }
-                                    }
+                                    CheckTrafficLight();
                                 }
                             }
 
                             G.DrawImage(BusPic, Coordinates[PositionAt].X * (int)ZoomCoef - BusPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - BusPic.Height / 2);
                             StopDown();
-                            if (PositionAt - speed > 0)
-                                PositionAt -= speed;
-                            else
-                                PositionAt--;
+                            TurnBackOn();
                         }
                     }
                     else
@@ -397,10 +386,7 @@ namespace SystAnalys_lr1.Classes
                         if (Skips.skipEnd == 0)
                         {
                             TurnBack = false;
-                            if (PositionAt + speed < Coordinates.Count - 1)
-                                PositionAt += speed;
-                            else
-                                PositionAt++;
+                            TurnBackOff();
                         }
 
                     }
