@@ -732,6 +732,7 @@ namespace SystAnalys_lr1
                     deleteBus.Enabled = false;
                     stopPointButton.Enabled = true;
                     addTraficLight.Enabled = true;
+                    G.DrawALLGraph(Data.Routes[changeRoute.Text], Data.RoutesEdge[changeRoute.Text], 1);
                     CheckBusesOnRoute();
                 }
                 BringToFront();
