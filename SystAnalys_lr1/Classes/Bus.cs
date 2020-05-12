@@ -77,7 +77,9 @@ namespace SystAnalys_lr1.Classes
         public bool EpicFounded { get; set; }
         static public int? ZoomCoef { get; set; } = 1;
         public bool Tracker { get; set; }
-       
+
+        int speed;
+        int changeSpeed; 
 
         public object Clone()
         {
@@ -100,6 +102,7 @@ namespace SystAnalys_lr1.Classes
             this.Coordinates = Coordinates;
             Skips = new Skips(false, 1, 5, 1);
             CheckStops = new CheckStops(0, 0);
+            changeSpeed = rnd.Next(5, 10);
         }
 
         public void ClearAroundEpic()
@@ -150,6 +153,7 @@ namespace SystAnalys_lr1.Classes
                 }
             }
         }
+
         public void MoveWithoutGraphicsByGrids()
         {
             if (Tracker == true)
@@ -184,6 +188,13 @@ namespace SystAnalys_lr1.Classes
 
         private void StopDown()
         {
+            if (changeSpeed != 0)
+                changeSpeed -= 1;
+            if (changeSpeed == 0)
+            {
+                changeSpeed = rnd.Next(5, 10);
+                speed = rnd.Next(1, 3);
+            }
             if (Skips.skipTrafficLights != 0)
                 Skips.skipTrafficLights -= 1;
             if (Skips.skipStops != 0)
@@ -274,7 +285,11 @@ namespace SystAnalys_lr1.Classes
                         }
                         G.DrawImage(BusPic, Coordinates[PositionAt].X * (int)ZoomCoef - BusPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - BusPic.Height / 2);
                         StopDown();
-                        PositionAt++;
+                        if(PositionAt + speed < Coordinates.Count - 1)
+                            PositionAt += speed;
+                        else
+                            PositionAt++;
+
                     }
                     else
                     {
@@ -284,7 +299,11 @@ namespace SystAnalys_lr1.Classes
                         if (Skips.skipEnd == 0)
                         {
                             TurnBack = true;
-                            PositionAt--;
+                            if (PositionAt - speed > 0)
+                                PositionAt -= speed;
+                            else
+                                PositionAt--;
+                            
                         }
                     }
                 }
@@ -364,7 +383,10 @@ namespace SystAnalys_lr1.Classes
 
                             G.DrawImage(BusPic, Coordinates[PositionAt].X * (int)ZoomCoef - BusPic.Width / 2, Coordinates[PositionAt].Y * (int)ZoomCoef - BusPic.Height / 2);
                             StopDown();
-                            PositionAt--;
+                            if (PositionAt - speed > 0)
+                                PositionAt -= speed;
+                            else
+                                PositionAt--;
                         }
                     }
                     else
@@ -375,7 +397,10 @@ namespace SystAnalys_lr1.Classes
                         if (Skips.skipEnd == 0)
                         {
                             TurnBack = false;
-                            PositionAt++;
+                            if (PositionAt + speed < Coordinates.Count - 1)
+                                PositionAt += speed;
+                            else
+                                PositionAt++;
                         }
 
                     }

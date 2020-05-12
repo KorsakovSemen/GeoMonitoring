@@ -126,7 +126,6 @@ namespace SystAnalys_lr1
             InitializeElements();
             LoadSettings();
             AnimationSettings();
-
         }
 
        
@@ -2012,11 +2011,11 @@ namespace SystAnalys_lr1
             }
         }
 
-        private void MetroButton1_Click(object sender, EventArgs e)
-        {
-            timer.Interval = 1000;
-            timer.Start();
-        }
+        //private void MetroButton1_Click(object sender, EventArgs e)
+        //{
+        //    timer.Interval = 1000;
+        //    timer.Start();
+        //}
 
         private void ReportTool_Click(object sender, EventArgs e)
         {
