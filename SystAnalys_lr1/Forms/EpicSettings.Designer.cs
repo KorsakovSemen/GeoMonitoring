@@ -307,7 +307,9 @@
             // RadioFreq500
             // 
             resources.ApplyResources(this.RadioFreq500, "RadioFreq500");
+            this.RadioFreq500.Checked = true;
             this.RadioFreq500.Name = "RadioFreq500";
+            this.RadioFreq500.TabStop = true;
             this.RadioFreq500.UseSelectable = true;
             // 
             // RadioFreq100
@@ -532,7 +534,9 @@
             // RadioFreqSpred500
             // 
             resources.ApplyResources(this.RadioFreqSpred500, "RadioFreqSpred500");
+            this.RadioFreqSpred500.Checked = true;
             this.RadioFreqSpred500.Name = "RadioFreqSpred500";
+            this.RadioFreqSpred500.TabStop = true;
             this.RadioFreqSpred500.UseSelectable = true;
             // 
             // RadioFreqSpred100
