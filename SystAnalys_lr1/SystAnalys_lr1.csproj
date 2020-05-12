@@ -142,12 +142,6 @@
     <Compile Include="Forms\LoadingForm.Designer.cs">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainFunctions.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MainFunctions.Designer.cs">
-      <DependentUpon>MainFunctions.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Report.cs">
       <SubType>Form</SubType>
     </Compile>
