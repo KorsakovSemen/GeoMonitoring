@@ -158,7 +158,7 @@ namespace SystAnalys_lr1.Classes
                 changeSpeed -= 1;
             if (changeSpeed == 0)
             {
-                changeSpeed = rnd.Next(20, 50);
+                changeSpeed = rnd.Next(BusStop.StopTime / 10, 50);
                 speed = rnd.Next(1, 3);
             }
             if (Skips.skipTrafficLights != 0)

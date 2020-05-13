@@ -126,7 +126,6 @@ namespace SystAnalys_lr1
             InitializeElements();
             LoadSettings();
             AnimationSettings();
-            timer.Interval = 30;
         }
 
 

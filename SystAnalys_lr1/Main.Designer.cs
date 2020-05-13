@@ -57,6 +57,7 @@
             this.zoomLabel = new MetroFramework.Controls.MetroLabel();
             this.optimization = new MetroFramework.Controls.MetroLabel();
             this.panelMatrix = new MetroFramework.Controls.MetroPanel();
+            this.matrix = new SystAnalys_lr1.Classes.MatrixControl();
             this.zoomBar = new MetroFramework.Controls.MetroTrackBar();
             this.trafficLightLabel = new MetroFramework.Controls.MetroLabel();
             this.theme = new MetroFramework.Controls.MetroLabel();
@@ -75,7 +76,6 @@
             this.saveInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.runTrafficLightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,7 +100,6 @@
             this.language = new MetroFramework.Controls.MetroLabel();
             this.hint = new MetroFramework.Controls.MetroLabel();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.matrix = new SystAnalys_lr1.Classes.MatrixControl();
             this.panelOpt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.results)).BeginInit();
             this.panelSettings.SuspendLayout();
@@ -420,6 +419,12 @@
             this.panelMatrix.VerticalScrollbarHighlightOnWheel = false;
             this.panelMatrix.VerticalScrollbarSize = 8;
             // 
+            // matrix
+            // 
+            resources.ApplyResources(this.matrix, "matrix");
+            this.matrix.Name = "matrix";
+            this.matrix.UseSelectable = true;
+            // 
             // zoomBar
             // 
             this.zoomBar.BackColor = System.Drawing.Color.Transparent;
@@ -536,8 +541,7 @@
             this.addRouteToolStripMenuItem,
             this.createGridToolStripMenuItem,
             this.saveToolStripMenuItem,
-            this.saveInToolStripMenuItem,
-            this.runTrafficLightsToolStripMenuItem});
+            this.saveInToolStripMenuItem});
             resources.ApplyResources(this.saveButton, "saveButton");
             this.saveButton.Name = "saveButton";
             // 
@@ -590,12 +594,6 @@
             this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
             resources.ApplyResources(this.xMLToolStripMenuItem, "xMLToolStripMenuItem");
             this.xMLToolStripMenuItem.Click += new System.EventHandler(this.XMLToolStripMenuItem_Click);
-            // 
-            // runTrafficLightsToolStripMenuItem
-            // 
-            this.runTrafficLightsToolStripMenuItem.Name = "runTrafficLightsToolStripMenuItem";
-            resources.ApplyResources(this.runTrafficLightsToolStripMenuItem, "runTrafficLightsToolStripMenuItem");
-            this.runTrafficLightsToolStripMenuItem.Click += new System.EventHandler(this.RunTrafficLightsToolStripMenuItem_Click);
             // 
             // loadButton
             // 
@@ -765,12 +763,6 @@
             this.timer.Interval = 20;
             this.timer.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
-            // matrix
-            // 
-            resources.ApplyResources(this.matrix, "matrix");
-            this.matrix.Name = "matrix";
-            this.matrix.UseSelectable = true;
-            // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
@@ -847,7 +839,6 @@
         private System.Windows.Forms.ToolStripMenuItem createGridToolStripMenuItem;
         private MetroFramework.Controls.MetroPanel panelMatrix;
         private MetroFramework.Controls.MetroPanel panelOpt;
-        private System.Windows.Forms.ToolStripMenuItem runTrafficLightsToolStripMenuItem;
         public MetroFramework.Components.MetroStyleManager msmMain;
         private MetroFramework.Controls.MetroToggle themes;
         private MetroFramework.Controls.MetroComboBox changeTheme;

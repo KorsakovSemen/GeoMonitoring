@@ -1060,31 +1060,31 @@
     <value>162, 18</value>
   </metadata>
   <data name="createModelToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
+    <value>186, 22</value>
   </data>
   <data name="createModelToolStripMenuItem.Text" xml:space="preserve">
     <value>Создать модель</value>
   </data>
   <data name="openEpicFormToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
+    <value>186, 22</value>
   </data>
   <data name="openEpicFormToolStripMenuItem.Text" xml:space="preserve">
     <value>Открыть 2-ю форму</value>
   </data>
   <data name="addRouteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
+    <value>186, 22</value>
   </data>
   <data name="addRouteToolStripMenuItem.Text" xml:space="preserve">
     <value>Добавить маршрут</value>
   </data>
   <data name="createGridToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
+    <value>186, 22</value>
   </data>
   <data name="createGridToolStripMenuItem.Text" xml:space="preserve">
     <value>Настройка сетки</value>
   </data>
   <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
+    <value>186, 22</value>
   </data>
   <data name="saveToolStripMenuItem.Text" xml:space="preserve">
     <value>Сохранить</value>
@@ -1102,16 +1102,10 @@
     <value>XML</value>
   </data>
   <data name="saveInToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
+    <value>186, 22</value>
   </data>
   <data name="saveInToolStripMenuItem.Text" xml:space="preserve">
     <value>Сохранить в...</value>
-  </data>
-  <data name="runTrafficLightsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 22</value>
-  </data>
-  <data name="runTrafficLightsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Запустить светофоры</value>
   </data>
   <data name="saveButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -1570,12 +1564,6 @@
     <value>xMLToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;xMLToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;runTrafficLightsToolStripMenuItem.Name" xml:space="preserve">
-    <value>runTrafficLightsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;runTrafficLightsToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;loadButton.Name" xml:space="preserve">

@@ -8,7 +8,7 @@ namespace SystAnalys_lr1.Classes
 {
     public class BusStop : Vertex
     {
-        public static int StopTime { get; } = 200;
+        public static int StopTime { get; } = 300;
 
         public BusStop() { }
 
