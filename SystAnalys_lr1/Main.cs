@@ -1189,7 +1189,7 @@ namespace SystAnalys_lr1
                 loadingForm.Close();
 
                 matrix.MatrixCreate();
-                MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                //MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 //Ep.BringToFront();
                 BringToFront();
 
