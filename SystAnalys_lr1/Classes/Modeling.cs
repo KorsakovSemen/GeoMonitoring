@@ -63,13 +63,13 @@ namespace SystAnalys_lr1.Classes
             i = 1;
             int PhaseSizeSelect()
             {
-                if (Main.ExtendedSavePictures == false)
+                if (EpicSettings.ExtendedSavePictures == false)
                 {
                     return 1;
                 }
                 else
                 {
-                    return Main.EpicPhaseSavingParam;
+                    return EpicSettings.EpicPhaseSavingParam;
                 }
 
             }
@@ -85,7 +85,7 @@ namespace SystAnalys_lr1.Classes
                 ////
                 if (j == PhaseSizeSelect())
                 {
-                    if ((Main.SavePictures == true) && (Main.ExtendedSavePictures == true))
+                    if ((EpicSettings.SavePictures == true) && (EpicSettings.ExtendedSavePictures == true))
                     {
                         Directory.CreateDirectory(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + 0.ToString());
                         lock (Main.Ep.Esheet)
@@ -117,7 +117,7 @@ namespace SystAnalys_lr1.Classes
                             bus.MoveWithoutGraphicsByGrids();
                             if (EpicSettings.TurnMovingSet == true)
                             {
-                                if (MovingTimer >= ((Main.EpicFreqMovingParam / 20) * cqBus.Count))
+                                if (MovingTimer >= ((EpicSettings.EpicFreqMovingParam / 20) * cqBus.Count))
                                 {
                                     lock (epList)
                                     {
@@ -128,7 +128,7 @@ namespace SystAnalys_lr1.Classes
                             }
                             if (EpicSettings.TurnSpreadingSet == true)
                             {
-                                if (ExpandTimer >= ((Main.EpicFreqSpreadingParam / 20) * cqBus.Count))
+                                if (ExpandTimer >= ((EpicSettings.EpicFreqSpreadingParam / 20) * cqBus.Count))
                                 {
                                     lock (epList)
                                     {
@@ -212,7 +212,7 @@ namespace SystAnalys_lr1.Classes
                     }
                 }
 
-                if ((Main.SavePictures == true) && (Main.ExtendedSavePictures == true))
+                if ((EpicSettings.SavePictures == true) && (EpicSettings.ExtendedSavePictures == true))
                 {
                     Directory.CreateDirectory(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + i.ToString());
                     lock (Main.Ep.Esheet)
@@ -261,9 +261,9 @@ namespace SystAnalys_lr1.Classes
         //
         private static void MoveEpics(List<Epicenter> Epics)
         {
-            if (Main.MovingEpicParamet.Count > 0)
+            if (EpicSettings.MovingEpicParamet.Count > 0)
             {
-                Epics.First().EpicMoving(Main.MovingEpicParamet);
+                Epics.First().EpicMoving(EpicSettings.MovingEpicParamet);
             }
         }
         //

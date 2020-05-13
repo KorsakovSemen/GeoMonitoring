@@ -110,19 +110,19 @@ namespace SystAnalys_lr1.Classes
                     Data.Buses[rnd.Next(0, Data.Buses.Count)].Tracker = true;
                 List<int?> mas = new List<int?>();
                 ShuffleBuses();
-                if (Main.SavePictures == true)
+                if (EpicSettings.SavePictures == true)
                 {
                     Directory.CreateDirectory(pathOpt + "/Epics" + "/" + (cicl + 1).ToString());
                 }
                 for (int i = 0; i < OptiCount; i++)
                 {
-                    if (Main.SavePictures == true)
+                    if (EpicSettings.SavePictures == true)
                     {
                         Directory.CreateDirectory(pathOpt + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString());
                     }
                     Epicenter.CreateOneRandomEpicenter(Main.EpicSizeParam, null);
                     Modeling.StartModeling(pathOpt, cicl, i);
-                    if ((Main.SavePictures == true) && (!Main.ExtendedSavePictures == true))
+                    if ((EpicSettings.SavePictures == true) && (!EpicSettings.ExtendedSavePictures == true))
                     {
 
                         lock (Main.Ep.Esheet)

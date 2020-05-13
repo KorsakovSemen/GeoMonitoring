@@ -333,8 +333,8 @@ namespace SystAnalys_lr1
         private void DisplayEpicenters_FormClosed(object sender, FormClosedEventArgs e)
         {
             FormOpen = false;
-            Main.SavePictures = false;
-            Main.ExtendedSavePictures = false;
+            EpicSettings.SavePictures = false;
+            EpicSettings.ExtendedSavePictures = false;
         }
 
         private void MetroButton4_Click(object sender, EventArgs e)

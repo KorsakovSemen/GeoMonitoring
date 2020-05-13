@@ -60,16 +60,7 @@ namespace SystAnalys_lr1
         public static int FirstCrossRoadsRedLight { get; set; } = 0;
         public static int SecondCrossRoads { get; set; } = 0;
         //временно тут УБИРАЙ
-        public static string EpicSizeParamSave { get; set; } = "radioEpicMedium";
-        public static List<string> MovingEpicParamet { get; set; }
-        public static string EpicFreqMovingSave { get; set; } = null;
-        public static int EpicFreqMovingParam { get; set; } = 0;
-        public static string EpicFreqSpreadingSave { get; set; } = null;
-        public static int EpicFreqSpreadingParam { get; set; } = 0;
-        public static string EpicPhaseSavingSave { get; set; } = null;
-        public static int EpicPhaseSavingParam { get; set; } = 1;
-        public static bool SavePictures { get; set; } = false;
-        public static bool ExtendedSavePictures { get; set; } = false;
+        
 
         string savepath;
         public static Classes.Grid Grid { get; set; }
@@ -847,7 +838,7 @@ namespace SystAnalys_lr1
                         Ep.Refresh();
                     }
 
-                    if (SavePictures == true)
+                    if (EpicSettings.SavePictures == true)
                     {
                         Ep.Hide();
                         Directory.CreateDirectory(Optimization.pathOpt + "/Epics");
@@ -897,7 +888,7 @@ namespace SystAnalys_lr1
 
         public bool GetSavePictruesCheckBox()
         {
-            return SavePictures;
+            return EpicSettings.SavePictures;
         }
         //class loader
         private void LoadFromToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2231,7 +2222,7 @@ namespace SystAnalys_lr1
 
         private void InitializeElements()
         {
-            MovingEpicParamet = new List<string>();
+            EpicSettings.MovingEpicParamet = new List<string>();
            // timer.Interval = BusStop.StopTime / 10;
             r = new Report();
             loadingForm = new LoadingForm();

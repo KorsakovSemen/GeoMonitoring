@@ -1053,31 +1053,31 @@
   <data name="&gt;&gt;extendedSavePictures.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="SavePictures.AutoSize" type="System.Boolean, mscorlib">
+  <data name="SavingPictures.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="SavePictures.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="SavingPictures.Location" type="System.Drawing.Point, System.Drawing">
     <value>19, 31</value>
   </data>
-  <data name="SavePictures.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="SavingPictures.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 15</value>
   </data>
-  <data name="SavePictures.TabIndex" type="System.Int32, mscorlib">
+  <data name="SavingPictures.TabIndex" type="System.Int32, mscorlib">
     <value>98</value>
   </data>
-  <data name="SavePictures.Text" xml:space="preserve">
+  <data name="SavingPictures.Text" xml:space="preserve">
     <value>Сохранять картинки в 1 этап</value>
   </data>
-  <data name="&gt;&gt;SavePictures.Name" xml:space="preserve">
-    <value>SavePictures</value>
+  <data name="&gt;&gt;SavingPictures.Name" xml:space="preserve">
+    <value>SavingPictures</value>
   </data>
-  <data name="&gt;&gt;SavePictures.Type" xml:space="preserve">
+  <data name="&gt;&gt;SavingPictures.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroCheckBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <data name="&gt;&gt;SavePictures.Parent" xml:space="preserve">
+  <data name="&gt;&gt;SavingPictures.Parent" xml:space="preserve">
     <value>groupBox4</value>
   </data>
-  <data name="&gt;&gt;SavePictures.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;SavingPictures.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="metroLabel2.AutoSize" type="System.Boolean, mscorlib">

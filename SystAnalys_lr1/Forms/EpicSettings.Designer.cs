@@ -64,7 +64,7 @@
             this.radioPhase3 = new MetroFramework.Controls.MetroRadioButton();
             this.radioPhase2 = new MetroFramework.Controls.MetroRadioButton();
             this.extendedSavePictures = new MetroFramework.Controls.MetroCheckBox();
-            this.SavePictures = new MetroFramework.Controls.MetroCheckBox();
+            this.SavingPictures = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.TurnMoving = new MetroFramework.Controls.MetroCheckBox();
@@ -327,7 +327,7 @@
             // 
             this.groupBox4.Controls.Add(this.phasesSettingsBox);
             this.groupBox4.Controls.Add(this.extendedSavePictures);
-            this.groupBox4.Controls.Add(this.SavePictures);
+            this.groupBox4.Controls.Add(this.SavingPictures);
             this.groupBox4.Controls.Add(this.metroLabel2);
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
@@ -412,12 +412,12 @@
             this.extendedSavePictures.UseSelectable = true;
             this.extendedSavePictures.CheckedChanged += new System.EventHandler(this.extendedSavePictures_CheckedChanged);
             // 
-            // SavePictures
+            // SavingPictures
             // 
-            resources.ApplyResources(this.SavePictures, "SavePictures");
-            this.SavePictures.Name = "SavePictures";
-            this.SavePictures.UseSelectable = true;
-            this.SavePictures.CheckedChanged += new System.EventHandler(this.SavePictures_CheckedChanged);
+            resources.ApplyResources(this.SavingPictures, "SavingPictures");
+            this.SavingPictures.Name = "SavingPictures";
+            this.SavingPictures.UseSelectable = true;
+            this.SavingPictures.CheckedChanged += new System.EventHandler(this.SavePictures_CheckedChanged);
             // 
             // metroLabel2
             // 
@@ -612,7 +612,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private System.Windows.Forms.GroupBox groupBox5;
         private MetroFramework.Controls.MetroCheckBox extendedSavePictures;
-        private MetroFramework.Controls.MetroCheckBox SavePictures;
+        private MetroFramework.Controls.MetroCheckBox SavingPictures;
         private MetroFramework.Controls.MetroCheckBox TurnMoving;
         private MetroFramework.Controls.MetroTextBox metroTextBox1;
         private MetroFramework.Controls.MetroRadioButton RadioFreqCustom;
