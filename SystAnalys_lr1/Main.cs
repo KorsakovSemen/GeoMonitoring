@@ -912,6 +912,7 @@ namespace SystAnalys_lr1
                             ToolStripMenuButtonOn();
 
                             LoadRoutes(dialog.SelectedPath + @"\");
+                            MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                             savepath = dialog.SelectedPath;
 
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
@@ -1193,6 +1194,7 @@ namespace SystAnalys_lr1
                     MetroMessageBox.Show(this, $"{exc.StackTrace}", MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     loadingForm.close = true;
                     loadingForm.Close();
+                    throw new Exception();
                 }
 
             }
