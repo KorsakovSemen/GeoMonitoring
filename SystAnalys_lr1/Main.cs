@@ -2010,11 +2010,6 @@ namespace SystAnalys_lr1
             }
         }
 
-        //private void MetroButton1_Click(object sender, EventArgs e)
-        //{
-        //    timer.Interval = 1000;
-        //    timer.Start();
-        //}
 
         private void ReportTool_Click(object sender, EventArgs e)
         {
@@ -2237,7 +2232,7 @@ namespace SystAnalys_lr1
         private void InitializeElements()
         {
             MovingEpicParamet = new List<string>();
-            timer.Interval = BusStop.StopTime / 10;
+           // timer.Interval = BusStop.StopTime / 10;
             r = new Report();
             loadingForm = new LoadingForm();
             ReportCount = 0;
@@ -2253,8 +2248,8 @@ namespace SystAnalys_lr1
             scrollY = 0;
 
         }
-        
 
+    
         private void LoadSettings()
         {
             if (File.Exists("../../SaveConfig/save.txt"))

@@ -71,7 +71,7 @@ namespace SystAnalys_lr1
                     int ydiff = p2.Y - p1.Y, xdiff = p2.X - p1.X;
                     double slope = (double)(p2.Y - p1.Y) / (p2.X - p1.X);
                     double x, y;
-                    int quantity = (int)GetDistance(p1.X, p1.Y, p2.X, p2.Y);
+                    int quantity = (int)GetDistance(p1.X, p1.Y, p2.X, p2.Y)*2;
                     for (double j = 0; j < quantity; j++)
                     {
                         y = slope == 0 ? 0 : ydiff * (j / quantity);

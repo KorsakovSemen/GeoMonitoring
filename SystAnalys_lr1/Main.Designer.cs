@@ -760,7 +760,7 @@
             // 
             // timer
             // 
-            this.timer.Interval = 20;
+            this.timer.Interval = 40;
             this.timer.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // Main
