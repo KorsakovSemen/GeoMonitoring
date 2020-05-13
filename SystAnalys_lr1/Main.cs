@@ -929,7 +929,6 @@ namespace SystAnalys_lr1
                                 fileV.WriteLine(savepath.ToString());
                             }
 
-                            MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
 
                     }
@@ -1006,7 +1005,6 @@ namespace SystAnalys_lr1
                                         fileV.WriteLine(savepath.ToString());
                                     }
 
-                                    MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                                 }
                             }
                         }
@@ -1191,6 +1189,7 @@ namespace SystAnalys_lr1
                 loadingForm.Close();
 
                 matrix.MatrixCreate();
+                MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 //Ep.BringToFront();
                 BringToFront();
 
