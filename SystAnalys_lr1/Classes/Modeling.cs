@@ -143,12 +143,12 @@ namespace SystAnalys_lr1.Classes
                                 {
                                     foreach (var sp in Data.TraficLights)
                                     {
-                                        if (sp.Status != Status.RED)
+                                        if (sp.Status != LightStatus.RED)
                                         {
                                             bus.Skips.skipTrafficLights = sp.GreenTime;
                                             break;
                                         }
-                                        if (sp.Status == Status.RED)
+                                        if (sp.Status == LightStatus.RED)
                                         {
                                             bus.TickCount_ += sp.Bal;
                                             bus.AllTickCount += sp.Bal;

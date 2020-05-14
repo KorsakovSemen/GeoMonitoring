@@ -56,10 +56,9 @@ namespace SystAnalys_lr1
 
         public static string SelectedRoute { get; set; }
         public static int FirstCrossRoads { get; set; } = 0;
-        public static int FirstCrossRoadsGreenLight { get; set; } = 0;
-        public static int FirstCrossRoadsRedLight { get; set; } = 0;
         public static int SecondCrossRoads { get; set; } = 0;
-        //временно тут УБИРАЙ
+        public static int FirstCrossRoadsGreenLight { get; set; } = 0;
+        public static int FirstCrossRoadsRedLight { get; set; } = 0;      
         
 
         string savepath;
@@ -1181,8 +1180,6 @@ namespace SystAnalys_lr1
                 loadingForm.Close();
 
                 matrix.MatrixCreate();
-                //MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                //Ep.BringToFront();
                 BringToFront();
 
             }

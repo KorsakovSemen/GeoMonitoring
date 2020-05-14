@@ -445,7 +445,7 @@ namespace SystAnalys_lr1.Classes
                     traficLights.Add(new TraficLight(e.X / Main.zoom, e.Y / Main.zoom, gridParts.IndexOf(gridPart), Main.FirstCrossRoadsRedLight, Main.FirstCrossRoadsGreenLight));
                     Data.TraficLightsInGrids.Add(gridParts.IndexOf(gridPart));
                     traficLights.Last().Tick = Main.FirstCrossRoadsRedLight + 2;
-                    traficLights.Last().Status = Status.RED;
+                    traficLights.Last().Status = LightStatus.RED;
                     Main.G.DrawSelectedVertex(e.X / Main.zoom, e.Y / Main.zoom);
                     Main.SecondCrossRoads -= 1;
                     break;

@@ -13,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace SystAnalys_lr1
 {   
-    public enum Status
+    public enum LightStatus
     {
         [XmlEnum(Name = "1")]
         GREEN = 1,
@@ -26,7 +26,7 @@ namespace SystAnalys_lr1
     {
         [XmlIgnore]
         public Timer TimerLight { get; private set; }
-        public Status Status { get; set; }
+        public LightStatus Status { get; set; }
         public int Tick { get; set; } 
         public int GreenTime { get; }
         public int RedTime { get; }
@@ -83,25 +83,25 @@ namespace SystAnalys_lr1
             {
                 Bal = GreenTime;
                 Main.G.DrawGreenVertex(X, Y);
-                Status = Status.GREEN;
+                Status = LightStatus.GREEN;
             }
             else if (Tick == GreenTime)
             {
                 Bal = YellowTime;
                 Main.G.DrawYellowVertex(X, Y);
-                Status = Status.YELLOW;
+                Status = LightStatus.YELLOW;
             }
             else if (Tick == GreenTime + YellowTime)
             {
                 Bal = RedTime;
                 Main.G.DrawSelectedVertex(X, Y);
-                Status = Status.RED;
+                Status = LightStatus.RED;
             }
             else if (Tick == GreenTime + YellowTime + RedTime)
             {
                 Bal = YellowTime;
                 Main.G.DrawYellowVertex(X, Y);
-                Status = Status.YELLOW;
+                Status = LightStatus.YELLOW;
             }
         }
     }

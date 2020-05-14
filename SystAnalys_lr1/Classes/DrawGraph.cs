@@ -192,15 +192,15 @@ namespace SystAnalys_lr1.Classes
         {
             foreach (var tl in Data.TraficLights)
             {
-                if (tl.Status == Status.GREEN)
+                if (tl.Status == LightStatus.GREEN)
                 {
                     Main.G.DrawGreenVertex(tl.X, tl.Y);
                 }
-                else if (tl.Status == Status.YELLOW)
+                else if (tl.Status == LightStatus.YELLOW)
                 {
                     Main.G.DrawYellowVertex(tl.X, tl.Y);
                 }
-                else if (tl.Status == Status.RED)
+                else if (tl.Status == LightStatus.RED)
                 {
                     Main.G.DrawSelectedVertex(tl.X, tl.Y);
                 }
