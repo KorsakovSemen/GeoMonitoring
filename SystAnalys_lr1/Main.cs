@@ -43,7 +43,7 @@ namespace SystAnalys_lr1
         Graphics AnimationGraphics;
         Bitmap AnimationBitmap;
         Coordinates coordinates;
-        Report r;
+        Report report;
         CrossroadsSettings crossSettings;
         AddRoute addR;
         AddGrid addG;
@@ -787,6 +787,7 @@ namespace SystAnalys_lr1
         {
             if (optText.Text != "" && speed.Text != "" && Data.Buses.Count != 0 && int.Parse(optText.Text) > 0 && int.Parse(speed.Text) > 0 && Data.Buses != null)
             {
+                report.Hide();
                 coordinates.CreateAllCoordinates();
                 Optimization.withoutSensorsBuses = new List<int>();
                 Optimization.countWithoutSensors = Data.Buses.Where((bus) => bus.Tracker == true).Count();
@@ -872,13 +873,11 @@ namespace SystAnalys_lr1
                     ButtonOn();
                     if (ReportCount == 0)
                         oldChart = (int)Optimization.percentMean.Keys.Sum();
-                    Optimization.ResChart(oldChart, r, StyleManager);
+                    Optimization.ResChart(oldChart, report, StyleManager);
 
                     foreach (var tl in Data.TraficLights)
                         tl.TimerLight.Interval = 1000;
-
-                    MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
-                    await Task.Delay(100);
+                    report.Show();
                 }
                 else
                 {
@@ -2006,8 +2005,8 @@ namespace SystAnalys_lr1
 
         private void ReportTool_Click(object sender, EventArgs e)
         {
-            r.Show();
-            r.BringToFront();
+            report.Show();
+            report.BringToFront();
         }
 
         private void StopBuses_Click_1(object sender, EventArgs e)
@@ -2226,7 +2225,7 @@ namespace SystAnalys_lr1
         {
             EpicSettings.MovingEpicParamet = new List<string>();
            // timer.Interval = BusStop.StopTime / 10;
-            r = new Report();
+            report = new Report();
             loadingForm = new LoadingForm();
             ReportCount = 0;
             coordinates = new Coordinates();
@@ -2362,8 +2361,8 @@ namespace SystAnalys_lr1
             Optimization.countWithoutSensors = Data.Buses.Count;
             matrix.MatrixCreate();
             hint.Visible = false;
-            r.ch.Titles.Add(MainStrings.report);
-            r.ch.Series[ReportCount].LegendText = "1";
+            report.ch.Titles.Add(MainStrings.report);
+            report.ch.Series[ReportCount].LegendText = "1";
         }
 
         public void AnimationSettings()
