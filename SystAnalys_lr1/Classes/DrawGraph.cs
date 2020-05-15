@@ -61,7 +61,7 @@ namespace SystAnalys_lr1.Classes
         {
             /*Graphics.FromImage(bitmap).Clear(Color.Wheat); *//// ТУТ ЭКСЕПШН НА МОДЕЛИНГЕ   
             if (!Main.Ep.IsDisposed) {
-                bitmap = new Bitmap(DisplayEpicenters.EsheetPicture);
+                bitmap = new Bitmap(DisplayEpicenters.ZoomPicture);
             }
        
             gr = null;

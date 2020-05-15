@@ -20,7 +20,9 @@ namespace SystAnalys_lr1
         public int Wsheet { get; set; }
         public int Hsheet { get; set; }
         private static int Ezoom { get; set; } = 1;
+        public static Image ZoomPicture { get; set; }
         public static Image EsheetPicture { get; set; }
+
         public DrawGraph EG;
         private readonly Main MainForm;
         public DisplayEpicenters(Main Main)
@@ -29,44 +31,44 @@ namespace SystAnalys_lr1
             InitializeComponent();
         }
 
-        private readonly MetroTrackBar EZoomBar = new MetroTrackBar();
+        //private readonly MetroTrackBar EZoomBar = new MetroTrackBar();
         public PictureBox Esheet = new PictureBox();
         private readonly MetroLabel label = new MetroLabel();
-        private readonly MetroFramework.Controls.MetroPanel MapPanel = new MetroFramework.Controls.MetroPanel();
+        //private readonly MetroFramework.Controls.MetroPanel MapPanel = new MetroFramework.Controls.MetroPanel();
 
 
         private void DisplayEpicenters_Load(object sender, EventArgs e)
         {
             FormOpen = true;
-            this.MinimumSize = MainForm.MinimumSize;
-            this.MaximumSize = MainForm.MaximumSize;
+            //this.MinimumSize = MainForm.MinimumSize;
+            //this.MaximumSize = MainForm.MaximumSize;
             //MainForm.GetSavePictruesCheckBox().Enabled = true;
-            panel1.Size = MainForm.GetMainPanel().Size;
-            panel1.Left = MainForm.GetMainPanel().Left;
-            panel1.Top = MainForm.GetMainPanel().Top;
-            panel1.Dock = MainForm.GetMainPanel().Dock;
+            //panel1.Size = MainForm.GetMainPanel().Size;
+            //panel1.Left = MainForm.GetMainPanel().Left;
+            //panel1.Top = MainForm.GetMainPanel().Top;
+            //panel1.Dock = MainForm.GetMainPanel().Dock;
             ERefreshRouts();
             this.ERouts.SelectedIndexChanged += ERouts_SelectedIndexChanged;
             // Esheet.Dock = DockStyle.Right;
             ////
-            this.MapPanel.Dock = DockStyle.Fill;
-           // this.MapPanel.AutoSize = MainForm.mainPanel.AutoSize;
+            //this.MapPanel.Dock = DockStyle.Fill;
+            //this.MapPanel.AutoSize = MainForm.mainPanel.AutoSize;
 
             this.MapPanel.AutoScroll = MainForm.mainPanel.AutoScroll;
             //this.MapPanel.AutoScrollMargin = new Size(10, 10);
-            this.MapPanel.BorderStyle = MainForm.mainPanel.BorderStyle;
-            this.MapPanel.AutoSizeMode = MainForm.mainPanel.AutoSizeMode;
+           // this.MapPanel.BorderStyle = MainForm.mainPanel.BorderStyle;
+           // this.MapPanel.AutoSizeMode = MainForm.mainPanel.AutoSizeMode;
 
             //this.MapPanel.MaximumSize = MainForm.mainPanel.MaximumSize;
-            this.MapPanel.Location = MainForm.mainPanel.Location;
-            this.MapPanel.Size = MainForm.mainPanel.Size;
+            //this.MapPanel.Location = MainForm.mainPanel.Location;
+           // this.MapPanel.Size = MainForm.mainPanel.Size;
 
             //this.MapPanel.Dock = MainForm.mainPanel.Dock;
             ////
-            this.Width = MainForm.Width;
-            this.Height = MainForm.Height;
+            //this.Width = MainForm.Width;
+            //this.Height = MainForm.Height;
             ////
-            this.Controls.Add(MapPanel);
+           // this.Controls.Add(MapPanel);
             this.MapPanel.Controls.Add(Esheet);
 
 
@@ -75,6 +77,7 @@ namespace SystAnalys_lr1
             Esheet.Size = MainForm.GetSheet().Size;
             Esheet.Image = Main.GlobalMap;
             EsheetPicture = Main.GlobalMap;
+            ZoomPicture = Main.GlobalMap;
             Wsheet = Esheet.Width;
             Hsheet = Esheet.Height;
             Esheet.AutoSize = MainForm.GetSheet().AutoSize;
@@ -83,22 +86,22 @@ namespace SystAnalys_lr1
             EG = new DrawGraph();
             EG.SetBitmap2();
 
-            EZoomBar.StyleManager = MainForm.GetTrackBar().StyleManager;
-            EZoomBar.Size = MainForm.GetTrackBar().Size;
-            EZoomBar.LargeChange = MainForm.GetTrackBar().LargeChange;
-            EZoomBar.Value = MainForm.GetTrackBar().Value;
-            EZoomBar.Maximum = MainForm.GetTrackBar().Maximum;
-            EZoomBar.Minimum = MainForm.GetTrackBar().Minimum;
-            EZoomBar.Left = MainForm.GetTrackBar().Left;
-            EZoomBar.Top = MainForm.GetTrackBar().Top;
-            EZoomBar.Scroll += EZoomBar_Scroll;
+            //EZoomBar.StyleManager = MainForm.GetTrackBar().StyleManager;
+            //EZoomBar.Size = MainForm.GetTrackBar().Size;
+            //EZoomBar.LargeChange = MainForm.GetTrackBar().LargeChange;
+            //EZoomBar.Value = MainForm.GetTrackBar().Value;
+            //EZoomBar.Maximum = MainForm.GetTrackBar().Maximum;
+            //EZoomBar.Minimum = MainForm.GetTrackBar().Minimum;
+            //EZoomBar.Left = MainForm.GetTrackBar().Left;
+            //EZoomBar.Top = MainForm.GetTrackBar().Top;
+            //EZoomBar.Scroll += EZoomBar_Scroll;
 
 
             label.Text = "|";
-            label.Location = new Point(EZoomBar.Width / 2 + 23, panel1.Height - 65);
+            label.Location = new Point(EZoomBar.Width / 2+13, panel1.Height - 65);
 
             panel1.Controls.Add(ERouts);
-            panel1.Controls.Add(EZoomBar);
+            //panel1.Controls.Add(EZoomBar);
             panel1.Controls.Add(label);
 
 
@@ -130,9 +133,8 @@ namespace SystAnalys_lr1
         private void EZoomBar_Scroll(object sender, EventArgs e)
         {
 
-            Esheet.Image = Main.ResizeBitmap(new Bitmap(EsheetPicture), Wsheet * EZoomBar.Value, Hsheet * EZoomBar.Value);
-            EsheetPicture = Main.ResizeBitmap(new Bitmap(EsheetPicture), Wsheet * EZoomBar.Value, Hsheet * EZoomBar.Value);
-            EsheetPicture = Main.ResizeBitmap(new Bitmap(EsheetPicture), Wsheet * EZoomBar.Value, Hsheet * EZoomBar.Value);
+            Esheet.Image = Main.ResizeBitmap(new Bitmap(ZoomPicture), Wsheet * EZoomBar.Value, Hsheet * EZoomBar.Value);           
+            ZoomPicture = Main.ResizeBitmap(new Bitmap(EsheetPicture), Wsheet * EZoomBar.Value, Hsheet * EZoomBar.Value);
             MapPanel.AutoScrollPosition = new Point(MapPanel.AutoScrollPosition.X * EZoomBar.Value, MapPanel.AutoScrollPosition.Y * EZoomBar.Value);
             Ezoom = EZoomBar.Value;
 
@@ -342,5 +344,7 @@ namespace SystAnalys_lr1
         {
             Epicenter.CreateOneRandomEpicenter(Main.EpicSizeParam, null);
         }
+
+
     }
 }
