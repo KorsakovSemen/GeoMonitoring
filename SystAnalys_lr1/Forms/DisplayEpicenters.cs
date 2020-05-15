@@ -63,7 +63,7 @@ namespace SystAnalys_lr1
             //this.MapPanel.Location = MainForm.mainPanel.Location;
            // this.MapPanel.Size = MainForm.mainPanel.Size;
 
-            //this.MapPanel.Dock = MainForm.mainPanel.Dock;
+            this.MapPanel.Dock = MainForm.mainPanel.Dock;
             ////
             //this.Width = MainForm.Width;
             //this.Height = MainForm.Height;

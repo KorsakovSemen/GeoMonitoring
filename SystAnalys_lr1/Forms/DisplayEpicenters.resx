@@ -122,14 +122,14 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="EZoomBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 36</value>
+    <value>21, 44</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="EZoomBar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="EZoomBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 18</value>
+    <value>256, 22</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="EZoomBar.TabIndex" type="System.Int32, mscorlib">
@@ -154,10 +154,13 @@
     <value>True</value>
   </data>
   <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>483, 11</value>
+    <value>644, 14</value>
+  </data>
+  <data name="metroLabel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 19</value>
+    <value>167, 20</value>
   </data>
   <data name="metroLabel2.TabIndex" type="System.Int32, mscorlib">
     <value>98</value>
@@ -178,10 +181,13 @@
     <value>3</value>
   </data>
   <data name="button11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>483, 33</value>
+    <value>644, 41</value>
+  </data>
+  <data name="button11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="button11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 37</value>
+    <value>220, 46</value>
   </data>
   <data name="button11.TabIndex" type="System.Int32, mscorlib">
     <value>94</value>
@@ -201,11 +207,17 @@
   <data name="&gt;&gt;button11.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 597</value>
+    <value>27, 723</value>
+  </data>
+  <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1125, 85</value>
+    <value>1469, 105</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -226,10 +238,13 @@
     <value>True</value>
   </data>
   <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 74</value>
+    <value>48, 91</value>
+  </data>
+  <data name="metroLabel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 19</value>
+    <value>181, 20</value>
   </data>
   <data name="metroLabel1.TabIndex" type="System.Int32, mscorlib">
     <value>97</value>
@@ -253,13 +268,16 @@
     <value>5</value>
   </data>
   <data name="ERouts.ItemHeight" type="System.Int32, mscorlib">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="ERouts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 32</value>
+    <value>48, 39</value>
+  </data>
+  <data name="ERouts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="ERouts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 29</value>
+    <value>219, 30</value>
   </data>
   <data name="ERouts.TabIndex" type="System.Int32, mscorlib">
     <value>96</value>
@@ -280,10 +298,13 @@
     <value>4</value>
   </data>
   <data name="metroButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 96</value>
+    <value>48, 118</value>
+  </data>
+  <data name="metroButton1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="metroButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 37</value>
+    <value>220, 46</value>
   </data>
   <data name="metroButton1.TabIndex" type="System.Int32, mscorlib">
     <value>95</value>
@@ -310,10 +331,13 @@
     <value>True</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 10</value>
+    <value>48, 12</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 19</value>
+    <value>201, 20</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -337,10 +361,13 @@
     <value>2</value>
   </data>
   <data name="MapPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 60</value>
+    <value>8, 74</value>
+  </data>
+  <data name="MapPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="MapPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1125, 531</value>
+    <value>1500, 654</value>
   </data>
   <data name="MapPanel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -358,10 +385,13 @@
     <value>1</value>
   </data>
   <data name="metroPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 9</value>
+    <value>8, 11</value>
+  </data>
+  <data name="metroPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="metroPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 36</value>
+    <value>55, 44</value>
   </data>
   <data name="metroPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>104</value>
@@ -385,16 +415,22 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1142, 693</value>
+    <value>1523, 853</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1142, 693</value>
+    <value>1523, 853</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1142, 693</value>
+    <value>1523, 853</value>
+  </data>
+  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>27, 74, 27, 25</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Эпицентры</value>
