@@ -49,7 +49,7 @@ namespace SystAnalys_lr1
             this.ERouts.SelectedIndexChanged += ERouts_SelectedIndexChanged;
             // Esheet.Dock = DockStyle.Right;
             ////
-           // this.MapPanel.Dock = DockStyle.Fill;
+            this.MapPanel.Dock = DockStyle.Fill;
            // this.MapPanel.AutoSize = MainForm.mainPanel.AutoSize;
 
             this.MapPanel.AutoScroll = MainForm.mainPanel.AutoScroll;
@@ -71,7 +71,7 @@ namespace SystAnalys_lr1
 
 
             Esheet.Dock = MainForm.GetSheet().Dock;
-            Esheet.Location = new Point(1, 0);
+            Esheet.Location = new Point(0, 1);
             Esheet.Size = MainForm.GetSheet().Size;
             Esheet.Image = Main.GlobalMap;
             EsheetPicture = Main.GlobalMap;

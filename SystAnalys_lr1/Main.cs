@@ -861,7 +861,7 @@ namespace SystAnalys_lr1
                     Data.BusesPark = busesparkreturn;
 
                     msmMain.Style = style;
-                    MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    
                     if (!Ep.IsDisposed)
                     {
                         StyleManager.Clone(Ep);
@@ -876,6 +876,9 @@ namespace SystAnalys_lr1
 
                     foreach (var tl in Data.TraficLights)
                         tl.TimerLight.Interval = 1000;
+
+                    MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    await Task.Delay(100);
                 }
                 else
                 {
