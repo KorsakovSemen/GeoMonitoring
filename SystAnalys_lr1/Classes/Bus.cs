@@ -413,6 +413,7 @@ namespace SystAnalys_lr1.Classes
         }
         public int DetectEpicenterByGrid()
         {
+
             foreach (var EpicList in Epicenters)
             {
                 foreach (var Sector in EpicList.EpicenterGrid)
@@ -431,6 +432,7 @@ namespace SystAnalys_lr1.Classes
                         //{
                         //    CheckEpic(Sector, Square, EpicList);
                         //}
+                        //lock (Epi) { }
                         if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y + GridPart.Height == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);

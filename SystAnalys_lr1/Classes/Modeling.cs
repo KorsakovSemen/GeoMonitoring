@@ -31,15 +31,17 @@ namespace SystAnalys_lr1.Classes
         }
 
 
-        public static void StartModeling(string SavePath, int Cicle, int ModelNum)
+
+
+        public async static void StartModeling(string SavePath, int Cicle, int ModelNum)
         {
             List<Epicenter> epList = new List<Epicenter>();
             int i = 0;
             ConcurrentQueue<Bus> cqBus = new ConcurrentQueue<Bus>();
             Data.Buses.ForEach((b) => cqBus.Enqueue((Bus)b.Clone()));
-            foreach (var EpicList in Data.Epics)
-            {
 
+            Parallel.ForEach(Data.Epics, (EpicList) =>
+            {
                 epList.Add(new Epicenter(Data.TheGrid));
                 foreach (var Sector in EpicList.EpicenterGrid)
                 {
@@ -52,8 +54,8 @@ namespace SystAnalys_lr1.Classes
                     }
                 }
                 i++;
-            }
-         
+            });
+
             int small = 10000;
             int old = small;
             int FoundTime = small + 1;
@@ -71,18 +73,19 @@ namespace SystAnalys_lr1.Classes
                 {
                     return EpicSettings.EpicPhaseSavingParam;
                 }
-
             }
-            foreach (var bus in cqBus)
+
+            Parallel.ForEach(cqBus, (bus) =>
             {
                 bus.AllTickCount = 0;
+            });
 
-            }
             bool EpicFounded = false;
+            //Parallel.For(0, PhaseSizeSelect(), j =>
             for (int j = PhaseSizeSelect(); j > 0; j--)
             {
                 CreatePollutionInRoutes();
-                ////
+
                 if (j == PhaseSizeSelect())
                 {
                     if ((EpicSettings.SavePictures == true) && (EpicSettings.ExtendedSavePictures == true))
@@ -101,9 +104,8 @@ namespace SystAnalys_lr1.Classes
                         }
                     }
                 }
-                ////
-
-                foreach (var bus in cqBus)
+                //foreach (var bus in cqBus)
+                Parallel.ForEach(cqBus, (bus) =>
                 {
                     bus.Epicenters = epList;
 
@@ -114,103 +116,113 @@ namespace SystAnalys_lr1.Classes
                     {
                         while (bus.TickCount_ < (T / PhaseSizeSelect()))
                         {
-                            bus.MoveWithoutGraphicsByGrids();
-                            if (EpicSettings.TurnMovingSet == true)
-                            {
-                                if (MovingTimer >= ((EpicSettings.EpicFreqMovingParam / 20) * cqBus.Count))
+                            //lock (epList)
+                            //{
+                                bus.MoveWithoutGraphicsByGrids();
+
+                                if (EpicSettings.TurnMovingSet == true)
                                 {
-                                    lock (epList)
+                                    if (MovingTimer >= ((EpicSettings.EpicFreqMovingParam / 20) * cqBus.Count))
                                     {
-                                        MoveEpics(epList);
-                                    }
-                                    MovingTimer = 0;
-                                }
-                            }
-                            if (EpicSettings.TurnSpreadingSet == true)
-                            {
-                                if (ExpandTimer >= ((EpicSettings.EpicFreqSpreadingParam / 20) * cqBus.Count))
-                                {
-                                    lock (epList)
-                                    {
-                                        ExpandEpics(epList);
-                                    }
-                                    ExpandTimer = 0;
-                                }
-                            }
-                            if (Data.TraficLightsInGrids.Contains(Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt])) 
-                            {
-                                if (bus.Skips.skipTrafficLights == 0)
-                                {
-                                    foreach (var sp in Data.TraficLights)
-                                    {
-                                        if (sp.Status != LightStatus.RED)
+                                        lock (epList)
                                         {
-                                            bus.Skips.skipTrafficLights = sp.GreenTime;
-                                            break;
+                                            MoveEpics(epList);
                                         }
-                                        if (sp.Status == LightStatus.RED)
-                                        {
-                                            bus.TickCount_ += sp.Bal;
-                                            bus.AllTickCount += sp.Bal;
-                                            bus.Skips.skipTrafficLights = sp.GreenTime;
-                                            break;
-
-                                        }
+                                        MovingTimer = 0;
                                     }
                                 }
-                            }
-                          
-                            if ((Data.StopPointsInGrids.ContainsKey(bus.GetRoute())) && (Data.StopPointsInGrids[bus.GetRoute()].Contains(Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt])))
-                            {
-                                Random rnd = new Random();
-                                int timeboost = rnd.Next(0, 3);
-                                bus.TickCount_ += timeboost;
-                                bus.AllTickCount += timeboost;
-                            }
-
-
-                            if (bus.StopAtStationByGrid == true)
-                            {
-                                Random rnd = new Random();
-                                int timeboost = rnd.Next(0, 3);
-                                bus.TickCount_ += timeboost;
-                                bus.AllTickCount += timeboost;
-                                bus.StopAtStationByGrid = false;
-                            }
-                            PollutionInRoutes[bus.GetRoute()][Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt]].Status = bus.DetectEpicenterByGrid(); // ошибка
-
-                            foreach (var Epic in bus.Epicenters)
-                            {
-                                if (Epic.DetectCount >= Epic.EpicenterGrid[1].Count / 2)
+                                if (EpicSettings.TurnSpreadingSet == true)
                                 {
-                                    if (EpicFounded == false)
+                                    if (ExpandTimer >= ((EpicSettings.EpicFreqSpreadingParam / 20) * cqBus.Count))
                                     {
-                                        EpicFounded = true;
-                                        if (EpicFounded == true)
-                                        {                         
-                                            FoundTime = bus.AllTickCount;
-                                            if (small > FoundTime)
+                                        lock (epList)
+                                        {
+                                            ExpandEpics(epList);
+                                        }
+                                        ExpandTimer = 0;
+                                    }
+                                }
+
+                                if (Data.TraficLightsInGrids.Contains(Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt]))
+                                {
+                                    if (bus.Skips.skipTrafficLights == 0)
+                                    {
+                                        foreach (var sp in Data.TraficLights)
+                                        {
+                                            if (sp.Status != LightStatus.RED)
                                             {
-                                                small = FoundTime;
+                                                bus.Skips.skipTrafficLights = sp.GreenTime;
+                                                break;
+                                            }
+                                            if (sp.Status == LightStatus.RED)
+                                            {
+                                                bus.TickCount_ += sp.Bal;
+                                                bus.AllTickCount += sp.Bal;
+                                                bus.Skips.skipTrafficLights = sp.GreenTime;
+                                                break;
+
                                             }
                                         }
                                     }
-                                    break;
+                                }
+
+                                if ((Data.StopPointsInGrids.ContainsKey(bus.GetRoute())) && (Data.StopPointsInGrids[bus.GetRoute()].Contains(Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt])))
+                                {
+                                    Random rnd = new Random();
+                                    int timeboost = rnd.Next(0, 3);
+                                    bus.TickCount_ += timeboost;
+                                    bus.AllTickCount += timeboost;
+                                }
+
+
+                                if (bus.StopAtStationByGrid == true)
+                                {
+                                    Random rnd = new Random();
+                                    int timeboost = rnd.Next(0, 3);
+                                    bus.TickCount_ += timeboost;
+                                    bus.AllTickCount += timeboost;
+                                    bus.StopAtStationByGrid = false;
+                                }
+
+                                PollutionInRoutes[bus.GetRoute()][Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt]].Status = bus.DetectEpicenterByGrid(); // ошибка
+
+                                Parallel.ForEach(bus.Epicenters, (Epic, state) =>
+                                {
+                                    if (Epic.DetectCount >= Epic.EpicenterGrid[1].Count / 2)
+                                    {
+                                        if (EpicFounded == false)
+                                        {
+                                            EpicFounded = true;
+                                            if (EpicFounded == true)
+                                            {
+                                                FoundTime = bus.AllTickCount;
+                                                if (small > FoundTime)
+                                                {
+                                                    small = FoundTime;
+                                                }
+                                            }
+                                        }
+                                        state.Break();// break;
+                                    }
+                                });
+
+                                bus.TickCount_++;
+                                bus.AllTickCount++;
+
+                                if (EpicSettings.TurnSpreadingSet == true)
+                                {
+                                    ExpandTimer++;
+                                }
+
+                                if (EpicSettings.TurnMovingSet == true)
+                                {
+                                    MovingTimer++;
                                 }
                             }
-                            bus.TickCount_++;
-                            bus.AllTickCount++;
-                            if (EpicSettings.TurnSpreadingSet == true)
-                            {
-                                ExpandTimer++;
-                            }
-                            if (EpicSettings.TurnMovingSet == true)
-                            {
-                                MovingTimer++;
-                            }
-                        }
+
+                        //}
                     }
-                }
+                });
 
                 if ((EpicSettings.SavePictures == true) && (EpicSettings.ExtendedSavePictures == true))
                 {
@@ -241,7 +253,8 @@ namespace SystAnalys_lr1.Classes
                     i++;
                 }
 
-            }
+            }//);
+
             if (small == old)
                 ResultFromModeling.Add(null);
             else

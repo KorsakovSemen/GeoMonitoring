@@ -54,11 +54,11 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.HorizontalScrollbarBarColor = true;
             this.panel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.panel1.HorizontalScrollbarSize = 7;
+            this.panel1.HorizontalScrollbarSize = 6;
             this.panel1.Name = "panel1";
             this.panel1.VerticalScrollbarBarColor = true;
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
-            this.panel1.VerticalScrollbarSize = 8;
+            this.panel1.VerticalScrollbarSize = 6;
             // 
             // EZoomBar
             // 
@@ -111,12 +111,12 @@
             // 
             this.MapPanel.HorizontalScrollbarBarColor = true;
             this.MapPanel.HorizontalScrollbarHighlightOnWheel = false;
-            this.MapPanel.HorizontalScrollbarSize = 12;
+            this.MapPanel.HorizontalScrollbarSize = 10;
             resources.ApplyResources(this.MapPanel, "MapPanel");
             this.MapPanel.Name = "MapPanel";
             this.MapPanel.VerticalScrollbarBarColor = true;
             this.MapPanel.VerticalScrollbarHighlightOnWheel = false;
-            this.MapPanel.VerticalScrollbarSize = 13;
+            this.MapPanel.VerticalScrollbarSize = 10;
             // 
             // metroPanel1
             // 
@@ -126,12 +126,12 @@
             this.metroPanel1.Controls.Add(this.metroLabel1);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 12;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
             resources.ApplyResources(this.metroPanel1, "metroPanel1");
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 13;
+            this.metroPanel1.VerticalScrollbarSize = 10;
             // 
             // DisplayEpicenters
             // 
