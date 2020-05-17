@@ -75,6 +75,7 @@ namespace SystAnalys_lr1.Classes
         public int AllTickCount { get; set; }
         //за сколько времени автобус нашел эпицентр
         public static int FoundTime { get; set; }
+        bool stopOnBusStop = false;
 
         public bool EpicFounded { get; set; }
         static public int? ZoomCoef { get; set; } = 1;
@@ -201,6 +202,7 @@ namespace SystAnalys_lr1.Classes
             CheckStops.checkStop = rnd.Next(0, BusStop.StopTime);
             Skips.skipStops = BusStop.StopTime + 50 - CheckStops.checkStop;
             CheckStops.checkStoppedBus = CheckStops.checkStop + 100;
+            stopOnBusStop = true;
         }
 
         public void CheckTrafficLight()
@@ -250,7 +252,7 @@ namespace SystAnalys_lr1.Classes
                             {
                                 foreach (var bus in buses)
                                 {
-                                    if (Math.Pow((bus.Coordinates[bus.PositionAt].X * (int)ZoomCoef - (Coordinates[PositionAt].X * (int)ZoomCoef)), 2) + Math.Pow((bus.Coordinates[bus.PositionAt].Y * (int)ZoomCoef - (Coordinates[PositionAt].Y * (int)ZoomCoef)), 2) <= bus.R * bus.R && bus.CheckStops.checkStop != 0 && bus.TurnBack == TurnBack)
+                                    if (Math.Pow((bus.Coordinates[bus.PositionAt].X * (int)ZoomCoef - (Coordinates[PositionAt].X * (int)ZoomCoef)), 2) + Math.Pow((bus.Coordinates[bus.PositionAt].Y * (int)ZoomCoef - (Coordinates[PositionAt].Y * (int)ZoomCoef)), 2) <= bus.R * bus.R && bus.CheckStops.checkStop != 0 && bus.TurnBack == TurnBack && !bus.stopOnBusStop)
                                     {
                                         CheckBus(bus);
                                         break;
@@ -309,7 +311,7 @@ namespace SystAnalys_lr1.Classes
                                 {
                                     foreach (var bus in buses)
                                     {
-                                        if (Math.Pow((bus.Coordinates[bus.PositionAt].X * (int)ZoomCoef - (Coordinates[PositionAt].X * (int)ZoomCoef)), 2) + Math.Pow((bus.Coordinates[bus.PositionAt].Y * (int)ZoomCoef - (Coordinates[PositionAt].Y * (int)ZoomCoef)), 2) <= bus.R * bus.R && bus.CheckStops.checkStop != 0 && bus.TurnBack == TurnBack)
+                                        if (Math.Pow((bus.Coordinates[bus.PositionAt].X * (int)ZoomCoef - (Coordinates[PositionAt].X * (int)ZoomCoef)), 2) + Math.Pow((bus.Coordinates[bus.PositionAt].Y * (int)ZoomCoef - (Coordinates[PositionAt].Y * (int)ZoomCoef)), 2) <= bus.R * bus.R && bus.CheckStops.checkStop != 0 && bus.TurnBack == TurnBack && !bus.stopOnBusStop)
                                         {
                                             CheckBus(bus);
                                             break;
