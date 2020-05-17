@@ -366,8 +366,13 @@ namespace SystAnalys_lr1
             selectRoute.Enabled = true;
             stopPointButton.Enabled = true;
             ConstructorPressButton();
+            trafficLightLabel.Text = GlobalDel;
+            trafficLightLabel.Visible = true;
             if (DelType == DeleteType.None)
+            {
                 deleteButton.Enabled = true;
+                trafficLightLabel.Visible = false;
+            }
 
         }
 
@@ -1406,7 +1411,7 @@ namespace SystAnalys_lr1
                             c.DeleteVandE(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet);
                             break;
                         case DeleteType.TheBuses:
-                            DelBus();
+                            c.DeleteBus(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, changeRoute.Text, mainPanel.AutoScrollPosition.X, mainPanel.AutoScrollPosition.Y);
                             break;
                     }
                     if (Flag)
@@ -1415,10 +1420,6 @@ namespace SystAnalys_lr1
                     }
                 }
 
-                if (deleteBus.Enabled == false)
-                {
-                    c.DeleteBus(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, changeRoute.Text, mainPanel.AutoScrollPosition.X, mainPanel.AutoScrollPosition.Y);
-                }
                 coordinates.CreateOneRouteCoordinates(changeRoute.Text);
                 return;
             }
