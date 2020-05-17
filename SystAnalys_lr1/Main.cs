@@ -542,7 +542,6 @@ namespace SystAnalys_lr1
                 AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
                 AnimationBox.Image = AnimationBitmap;
 
-                Modeling.CreatePollutionInRoutes();
                 AddInComboBox();
                 Ep = new DisplayEpicenters(this);
                 StyleManager.Clone(Ep);
@@ -801,14 +800,16 @@ namespace SystAnalys_lr1
                 Optimization.countWithoutSensors = Data.Buses.Where((bus) => bus.Tracker == true).Count();
                 var busesparkreturn = Data.BusesPark;
                 bool check = false;
-                foreach (var bus in Data.Buses)
+
+                Parallel.ForEach(Data.Buses, (bus, state) =>
                 {
                     if (bus.Tracker == true)
                     {
                         check = true;
-                        break;
+                        state.Break();
                     }
-                }
+                });
+
                 if (check)
                 {
                     timer.Stop();
