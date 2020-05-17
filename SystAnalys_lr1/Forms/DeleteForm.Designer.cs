@@ -42,6 +42,7 @@
             // 
             // metroPanel1
             // 
+            resources.ApplyResources(this.metroPanel1, "metroPanel1");
             this.metroPanel1.Controls.Add(this.theBuses);
             this.metroPanel1.Controls.Add(this.All);
             this.metroPanel1.Controls.Add(this.metroLabel1);
@@ -51,7 +52,6 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            resources.ApplyResources(this.metroPanel1, "metroPanel1");
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;

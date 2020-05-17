@@ -117,228 +117,231 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;BusStops.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="metroButton1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;VandE.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="VandE.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;metroButton1.Name" xml:space="preserve">
+    <value>metroButton1</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="theBuses.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 175</value>
+  <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 11</value>
+  </data>
+  <data name="TrafficLights.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="VandE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 15</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>DeleteForm</value>
   </data>
   <data name="theBuses.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 24</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="&gt;&gt;metroLabel1.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
   <data name="theBuses.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="theBuses.Text" xml:space="preserve">
-    <value>Автобусы</value>
+  <data name="VandE.Text" xml:space="preserve">
+    <value>Вершины и ребра</value>
   </data>
-  <data name="&gt;&gt;theBuses.Name" xml:space="preserve">
-    <value>theBuses</value>
+  <data name="metroButton1.Text" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="BusStops.Text" xml:space="preserve">
+    <value>Остановки</value>
+  </data>
+  <data name="&gt;&gt;All.Name" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="All.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="metroPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 215</value>
+  </data>
+  <data name="&gt;&gt;metroPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;All.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;All.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;TrafficLights.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;All.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="metroPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="TrafficLights.Text" xml:space="preserve">
+    <value>Светофоры</value>
+  </data>
+  <data name="TrafficLights.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 15</value>
+  </data>
+  <data name="&gt;&gt;VandE.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="metroLabel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;TrafficLights.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="&gt;&gt;VandE.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="TrafficLights.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 114</value>
+  </data>
+  <data name="metroButton1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>234, 309</value>
   </data>
   <data name="&gt;&gt;theBuses.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;VandE.Name" xml:space="preserve">
+    <value>VandE</value>
+  </data>
+  <data name="All.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 63</value>
+  </data>
+  <data name="&gt;&gt;metroLabel1.Name" xml:space="preserve">
+    <value>metroLabel1</value>
+  </data>
+  <data name="theBuses.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 175</value>
+  </data>
+  <data name="BusStops.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;metroPanel1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="BusStops.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 15</value>
+  </data>
+  <data name="All.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 55</value>
+  </data>
+  <data name="&gt;&gt;metroPanel1.Name" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 19</value>
+  </data>
+  <data name="&gt;&gt;TrafficLights.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
   <data name="&gt;&gt;theBuses.Parent" xml:space="preserve">
     <value>metroPanel1</value>
   </data>
-  <data name="&gt;&gt;theBuses.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="All.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="All.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 55</value>
-  </data>
-  <data name="All.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 15</value>
-  </data>
-  <data name="All.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="All.Text" xml:space="preserve">
-    <value>Все</value>
-  </data>
-  <data name="&gt;&gt;All.Name" xml:space="preserve">
-    <value>All</value>
-  </data>
-  <data name="&gt;&gt;All.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;All.Parent" xml:space="preserve">
-    <value>metroPanel1</value>
-  </data>
-  <data name="&gt;&gt;All.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="metroLabel1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 11</value>
-  </data>
-  <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 19</value>
-  </data>
-  <data name="metroLabel1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="metroLabel1.Text" xml:space="preserve">
-    <value>Типы удалений</value>
-  </data>
-  <data name="&gt;&gt;metroLabel1.Name" xml:space="preserve">
-    <value>metroLabel1</value>
-  </data>
-  <data name="&gt;&gt;metroLabel1.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroLabel1.Parent" xml:space="preserve">
-    <value>metroPanel1</value>
-  </data>
-  <data name="&gt;&gt;metroLabel1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="BusStops.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="BusStops.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 147</value>
-  </data>
-  <data name="BusStops.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 15</value>
-  </data>
-  <data name="BusStops.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="BusStops.Text" xml:space="preserve">
-    <value>Остановки</value>
+  <data name="&gt;&gt;theBuses.Name" xml:space="preserve">
+    <value>theBuses</value>
   </data>
   <data name="&gt;&gt;BusStops.Name" xml:space="preserve">
     <value>BusStops</value>
   </data>
-  <data name="&gt;&gt;BusStops.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;BusStops.Parent" xml:space="preserve">
-    <value>metroPanel1</value>
-  </data>
-  <data name="&gt;&gt;BusStops.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="TrafficLights.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="TrafficLights.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 114</value>
-  </data>
-  <data name="TrafficLights.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 15</value>
-  </data>
-  <data name="TrafficLights.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="TrafficLights.Text" xml:space="preserve">
-    <value>Светофоры</value>
-  </data>
-  <data name="&gt;&gt;TrafficLights.Name" xml:space="preserve">
-    <value>TrafficLights</value>
-  </data>
-  <data name="&gt;&gt;TrafficLights.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;TrafficLights.Parent" xml:space="preserve">
-    <value>metroPanel1</value>
-  </data>
-  <data name="&gt;&gt;TrafficLights.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="VandE.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="VandE.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 83</value>
-  </data>
-  <data name="VandE.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 15</value>
-  </data>
-  <data name="VandE.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="VandE.Text" xml:space="preserve">
-    <value>Вершины и ребра</value>
-  </data>
-  <data name="&gt;&gt;VandE.Name" xml:space="preserve">
-    <value>VandE</value>
-  </data>
-  <data name="&gt;&gt;VandE.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroRadioButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;VandE.Parent" xml:space="preserve">
-    <value>metroPanel1</value>
-  </data>
-  <data name="&gt;&gt;VandE.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="metroPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 63</value>
-  </data>
-  <data name="metroPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>304, 215</value>
-  </data>
-  <data name="metroPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;metroPanel1.Name" xml:space="preserve">
-    <value>metroPanel1</value>
-  </data>
-  <data name="&gt;&gt;metroPanel1.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroPanel1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;metroPanel1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="metroButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>234, 309</value>
-  </data>
-  <data name="metroButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 23</value>
-  </data>
-  <data name="metroButton1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="metroButton1.Text" xml:space="preserve">
-    <value>Ok</value>
-  </data>
-  <data name="&gt;&gt;metroButton1.Name" xml:space="preserve">
-    <value>metroButton1</value>
-  </data>
-  <data name="&gt;&gt;metroButton1.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroButton1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
   <data name="&gt;&gt;metroButton1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>563, 355</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Типы удаления</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>DeleteForm</value>
+  <data name="All.Text" xml:space="preserve">
+    <value>Все</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>MetroFramework.Forms.MetroForm, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
+  <data name="VandE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 83</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Типы удаления</value>
+  </data>
+  <data name="metroButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 23</value>
+  </data>
+  <data name="&gt;&gt;metroLabel1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="metroLabel1.Text" xml:space="preserve">
+    <value>Типы удалений</value>
+  </data>
+  <data name="VandE.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;metroButton1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="BusStops.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 147</value>
+  </data>
+  <data name="TrafficLights.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;theBuses.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;TrafficLights.Name" xml:space="preserve">
+    <value>TrafficLights</value>
+  </data>
+  <data name="BusStops.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>563, 355</value>
+  </data>
+  <data name="&gt;&gt;metroLabel1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;metroPanel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;BusStops.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="All.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 15</value>
+  </data>
+  <data name="&gt;&gt;BusStops.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="&gt;&gt;metroButton1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="theBuses.Text" xml:space="preserve">
+    <value>Автобусы</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>en-US</value>
+  </metadata>
 </root>

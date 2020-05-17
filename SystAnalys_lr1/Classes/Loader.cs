@@ -331,29 +331,29 @@ namespace SystAnalys_lr1.Classes
                 Main.SaveF = "json";
             }
             XmlSerializer deserializerAllCoor = new XmlSerializer(typeof(SerializableDictionary<string, List<Point>>));
-            if (File.Exists(load + "Data.AllCoordinates.xml"))
+            if (File.Exists(load + "AllCoordinates.xml"))
             {
-                using (StreamReader reader = new StreamReader(load + "Data.AllCoordinates.xml"))
+                using (StreamReader reader = new StreamReader(load + "AllCoordinates.xml"))
                     Data.AllCoordinates = (SerializableDictionary<string, List<Point>>)deserializerAllCoor.Deserialize(reader);
             }
 
-            if (File.Exists(load + "Data.AllCoordinates.json"))
+            if (File.Exists(load + "AllCoordinates.json"))
             {
-                using (StreamReader reader = new StreamReader(load + "Data.AllCoordinates.json"))
+                using (StreamReader reader = new StreamReader(load + "AllCoordinates.json"))
                 {
                     Data.AllCoordinates = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Point>>>(reader.ReadToEnd());
                 }
             }
             XmlSerializer deserializerAllGridsInRoutes = new XmlSerializer(typeof(SerializableDictionary<string, List<int>>));
-            if (File.Exists(load + "Data.AllGridsInRoutes.xml"))
+            if (File.Exists(load + "AllGridsInRoutes.xml"))
             {
-                using (StreamReader reader = new StreamReader(load + "Data.AllGridsInRoutes.xml"))
+                using (StreamReader reader = new StreamReader(load + "AllGridsInRoutes.xml"))
                     Data.AllGridsInRoutes = (SerializableDictionary<string, List<int>>)deserializerAllGridsInRoutes.Deserialize(reader);
             }
 
-            if (File.Exists(load + "Data.AllGridsInRoutes.json"))
+            if (File.Exists(load + "AllGridsInRoutes.json"))
             {
-                using (StreamReader reader = new StreamReader(load + "Data.AllGridsInRoutes.json"))
+                using (StreamReader reader = new StreamReader(load + "AllGridsInRoutes.json"))
                 {
                     Data.AllGridsInRoutes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<int>>>(reader.ReadToEnd());
                 }

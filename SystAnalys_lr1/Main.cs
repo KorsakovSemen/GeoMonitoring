@@ -58,8 +58,8 @@ namespace SystAnalys_lr1
         public static int FirstCrossRoads { get; set; } = 0;
         public static int SecondCrossRoads { get; set; } = 0;
         public static int FirstCrossRoadsGreenLight { get; set; } = 0;
-        public static int FirstCrossRoadsRedLight { get; set; } = 0;      
-        
+        public static int FirstCrossRoadsRedLight { get; set; } = 0;
+
 
         string savepath;
         public static Classes.Grid Grid { get; set; }
@@ -162,7 +162,6 @@ namespace SystAnalys_lr1
             G.DrawALLGraph(Data.V, Data.E);
             sheet.Image = G.GetBitmap();
             Selected1 = -1;
-            GridCreator.DrawGrid(sheet);
         }
 
         private void AddBus_Click(object sender, EventArgs e)
@@ -180,7 +179,7 @@ namespace SystAnalys_lr1
             sheet.Image = G.GetBitmap();
             Selected1 = -1;
             selected = new List<int>();
-            GridCreator.DrawGrid(sheet);
+            // 
         }
 
         private void ButtonOn()
@@ -230,7 +229,7 @@ namespace SystAnalys_lr1
             stopPointButton.Enabled = true;
             selected = new List<int>();
             trafficLightLabel.Visible = false;
-            GridCreator.DrawGrid(sheet);
+            //   
             CheckBusesOnRoute();
         }
 
@@ -435,7 +434,7 @@ namespace SystAnalys_lr1
                         G.ClearSheet();
                         G.DrawALLGraph(Data.V, Data.E);
                         sheet.Image = G.GetBitmap();
-                        GridCreator.DrawGrid(sheet);
+                        //    
                         loadingForm.loading.Value = 60;
                     }
                     else
@@ -608,7 +607,8 @@ namespace SystAnalys_lr1
                                 Data.Buses.Remove(b);
                             }
                             loadingForm.loading.Value = 50;
-                            Data.AllCoordinates[changeRoute.Text].Clear();
+                            if (Data.AllCoordinates.ContainsKey(changeRoute.Text))
+                                Data.AllCoordinates[changeRoute.Text].Clear();
                             G.ClearSheet();
                             G.DrawALLGraph(Data.V, Data.E);
                             sheet.Image = G.GetBitmap();
@@ -626,6 +626,11 @@ namespace SystAnalys_lr1
                             loadingForm.loading.Value = 40;
                             Data.AllCoordinates.Clear();
                             loadingForm.loading.Value = 50;
+                            G.ClearSheet();
+                            G.DrawALLGraph(Data.V, Data.E);
+                            sheet.Image = G.GetBitmap();
+                            AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
+                            AnimationBox.Image = AnimationBitmap;
                         };
                         break;
                     case DeleteType.BusStops:
@@ -677,7 +682,7 @@ namespace SystAnalys_lr1
                 G.ClearSheet();
                 sheet.Image = G.GetBitmap();
                 G.DrawALLGraph(Data.V, Data.E);
-                GridCreator.DrawGrid(sheet);
+                //  
                 selectRoute.Enabled = true;
                 loadingForm.loading.Value = 80;
                 trafficLightLabel.Visible = false;
@@ -781,8 +786,6 @@ namespace SystAnalys_lr1
             return null;
         }
 
-
-
         private async void Optimize_ClickAsync(object sender, EventArgs e)
         {
             if (optText.Text != "" && speed.Text != "" && Data.Buses.Count != 0 && int.Parse(optText.Text) > 0 && int.Parse(speed.Text) > 0 && Data.Buses != null)
@@ -862,7 +865,7 @@ namespace SystAnalys_lr1
                     Data.BusesPark = busesparkreturn;
 
                     msmMain.Style = style;
-                    
+
                     if (!Ep.IsDisposed)
                     {
                         StyleManager.Clone(Ep);
@@ -1086,9 +1089,8 @@ namespace SystAnalys_lr1
             Selected1 = -1;
             Selected2 = -1;
             selected = new List<int>();
-            GridCreator.DrawGrid(sheet);
+            //    
         }
-        //class saver
 
         private void SaveRoutes(string saveFormat = "xml", string save = "../../Configs/")
         {
@@ -1227,7 +1229,7 @@ namespace SystAnalys_lr1
             G.ClearSheet();
             G.DrawALLGraph(Data.V, Data.E);
             sheet.Image = G.GetBitmap();
-            GridCreator.DrawGrid(sheet);
+            //    
             if (Ep != null)
                 Ep.Close();
             Ep = new DisplayEpicenters(this);
@@ -1380,10 +1382,6 @@ namespace SystAnalys_lr1
                     }
 
                 }
-                if (deleteBus.Enabled == false)
-                {
-                    c.DeleteBus(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, changeRoute.Text, mainPanel.AutoScrollPosition.X, mainPanel.AutoScrollPosition.Y);
-                }
 
                 //нажата кнопка "рисовать ребро"
                 if (drawEdgeButton.Enabled == false)
@@ -1416,6 +1414,11 @@ namespace SystAnalys_lr1
                         c.MapUpdateRoute(sheet, routeV, Data.RoutesEdge[changeRoute.Text]);
                     }
                 }
+
+                if (deleteBus.Enabled == false)
+                {
+                    c.DeleteBus(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, changeRoute.Text, mainPanel.AutoScrollPosition.X, mainPanel.AutoScrollPosition.Y);
+                }
                 coordinates.CreateOneRouteCoordinates(changeRoute.Text);
                 return;
             }
@@ -1431,7 +1434,7 @@ namespace SystAnalys_lr1
                 };
                 f.ShowDialog();
                 c.MapUpdate(sheet);
-                GridCreator.DrawGrid(sheet);
+                //    
                 if (!Ep.IsDisposed)
                 {
                     Ep.EDrawGrid();
@@ -1633,7 +1636,7 @@ namespace SystAnalys_lr1
                 }
                 sheet.Image = G.GetBitmap();
                 Selected1 = -1;
-                GridCreator.DrawGrid(sheet);
+                //    
 
             }
 
@@ -1720,7 +1723,7 @@ namespace SystAnalys_lr1
             stopPointButton.Enabled = true;
             sheet.Image = G.GetBitmap();
             Selected1 = -1;
-            GridCreator.DrawGrid(sheet);
+            //
         }
 
 
@@ -1925,7 +1928,7 @@ namespace SystAnalys_lr1
                 // AnimationBox.Update();
                 sheet.Image = G.GetBitmap();
                 // GridCreator.CreateGrid(sheet);
-                GridCreator.DrawGrid(sheet);
+                //    
 
 
             }
@@ -2066,7 +2069,7 @@ namespace SystAnalys_lr1
                 G.DrawALLGraph(Data.V, Data.E);
                 trafficLightLabel.Visible = false;
                 sheet.Image = G.GetBitmap();
-                GridCreator.DrawGrid(sheet);
+                //    
                 Console.WriteLine(MainStrings.network);
                 selected = new List<int>();
                 return;
@@ -2094,7 +2097,7 @@ namespace SystAnalys_lr1
                     G.DrawALLGraph(Data.V, Data.E);
                     G.DrawALLGraph(Data.Routes[(changeRoute.Text)], Data.RoutesEdge[(changeRoute.Text)], 1);
                     sheet.Image = G.GetBitmap();
-                    GridCreator.DrawGrid(sheet);
+                    //        
                     selected = new List<int>();
                     return;
                 };
@@ -2151,7 +2154,7 @@ namespace SystAnalys_lr1
                 GridCreator.CreateGrid(sheet);
 
                 sheet.Image = G.GetBitmap();
-                GridCreator.DrawGrid(sheet);
+                //    
                 if (!Ep.IsDisposed)
                 {
                     Ep.EDrawGrid();
@@ -2224,7 +2227,7 @@ namespace SystAnalys_lr1
         private void InitializeElements()
         {
             EpicSettings.MovingEpicParamet = new List<string>();
-           // timer.Interval = BusStop.StopTime / 10;
+            // timer.Interval = BusStop.StopTime / 10;
             report = new Report();
             loadingForm = new LoadingForm();
             ReportCount = 0;
@@ -2241,7 +2244,7 @@ namespace SystAnalys_lr1
 
         }
 
-    
+
         private void LoadSettings()
         {
             if (File.Exists("../../SaveConfig/save.txt"))
