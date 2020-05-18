@@ -22,7 +22,7 @@ namespace SystAnalys_lr1
         private static int Ezoom { get; set; } = 1;
         public static Image ZoomPicture { get; set; }
         public static Image EsheetPicture { get; set; }
-
+        private List<Epicenter> CopiedEpics { get; set; }
         public DrawGraph EG;
         private readonly Main MainForm;
         public DisplayEpicenters(Main Main)
@@ -63,13 +63,14 @@ namespace SystAnalys_lr1
 
 
             label.Text = "|";
-            label.Location = new Point(EZoomBar.Width / 2+11, panel1.Height - 65);
+            label.Location = new Point(EZoomBar.Width / 2 + 11, panel1.Height - 65);
 
             panel1.Controls.Add(ERouts);
             panel1.Controls.Add(label);
 
-            EDrawMAinEpics();
+            EDrawMainEpics();
             Esheet.MouseClick += Esheet_MouseClick;
+            CopiedEpics=Epicenter.CopyEpicenter(CopiedEpics);
         }
 
         private void Esheet_MouseClick(object sender, MouseEventArgs e)
@@ -81,7 +82,7 @@ namespace SystAnalys_lr1
 
                     ERefreshRouts();
                     Epicenter.CreateOneRandomEpicenter(Main.EpicSizeParam, Data.TheGrid.IndexOf(gridPart));
-
+                    CopiedEpics=Epicenter.CopyEpicenter(CopiedEpics);
                     EG.ClearSheet2();
 
                     EDrawPollutions();
@@ -94,7 +95,7 @@ namespace SystAnalys_lr1
         private void EZoomBar_Scroll(object sender, EventArgs e)
         {
 
-            Esheet.Image = Main.ResizeBitmap(new Bitmap(ZoomPicture), Wsheet * EZoomBar.Value, Hsheet * EZoomBar.Value);           
+            Esheet.Image = Main.ResizeBitmap(new Bitmap(ZoomPicture), Wsheet * EZoomBar.Value, Hsheet * EZoomBar.Value);
             ZoomPicture = Main.ResizeBitmap(new Bitmap(EsheetPicture), Wsheet * EZoomBar.Value, Hsheet * EZoomBar.Value);
             MapPanel.AutoScrollPosition = new Point(MapPanel.AutoScrollPosition.X * EZoomBar.Value, MapPanel.AutoScrollPosition.Y * EZoomBar.Value);
             Ezoom = EZoomBar.Value;
@@ -116,7 +117,7 @@ namespace SystAnalys_lr1
                 ERouts.SelectedIndex = 0;
         }
         delegate void DelBitmap(Bitmap b);
-        public void EDrawEpics(System.Collections.Generic.List<Epicenter> Epics)
+        public void EDrawEpics(List<Epicenter> Epics)
         {
             EG.ClearSheet2();
             if (Epics != null)
@@ -131,11 +132,11 @@ namespace SystAnalys_lr1
 
 
         }
-        public void EDrawMAinEpics()
+        public void EDrawMainEpics()
         {
             EG.ClearSheet2();
 
-            Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap()); 
+            Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap());
             if (Data.Epics != null)
             {
                 for (int i = 0; i < Data.Epics.Count; i++)
@@ -157,7 +158,6 @@ namespace SystAnalys_lr1
             Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap());
 
         }
-
         private void EDrawAllPollutionsInRoutes()
         {
             for (int i = 0; i < Modeling.PollutionInRoutes.Count; i++)
@@ -190,7 +190,6 @@ namespace SystAnalys_lr1
             }
             Esheet.Image = EG.GetBitmap();
         }
-
         private void ERouts_SelectedIndexChanged(object sender, EventArgs e)
         {
             EDrawPollutions();
@@ -198,7 +197,7 @@ namespace SystAnalys_lr1
         private void EDrawPollutions()
         {
             EG.ClearSheet2();
-            EDrawMAinEpics();
+            EDrawMainEpics();
             if (ERouts.Text == MainStrings.none)
             {
 
@@ -244,8 +243,6 @@ namespace SystAnalys_lr1
                 };
             }
         }
-
-
         public EpicSettings epSet;
         private void Button11_Click(object sender, EventArgs e)
         {
@@ -271,33 +268,60 @@ namespace SystAnalys_lr1
 
             EDrawGrid();
         }
-        private void MetroButton1_Click(object sender, EventArgs e)
-        {
-            RecReateFunction();
-
-        }
-        public Image EsheetPic()
-        {
-            return Esheet.Image;
-        }
-
-        private void MetroButton2_Click(object sender, EventArgs e)
-        {
-            EDrawMAinEpics();
-        }
-
         private void DisplayEpicenters_FormClosed(object sender, FormClosedEventArgs e)
         {
             FormOpen = false;
             EpicSettings.SavePictures = false;
             EpicSettings.ExtendedSavePictures = false;
         }
-
-        private void MetroButton4_Click(object sender, EventArgs e)
+        private void metroButton2_Click(object sender, EventArgs e)
         {
-            Epicenter.CreateOneRandomEpicenter(Main.EpicSizeParam, null);
+            //if (ModelingTimer.Enabled)
+            //{
+            //    ModelingTimer.Enabled = false;
+            //}
+            //else 
+            //{
+            //    ModelingTimer.Enabled = true;
+            //}
+
+            if (EpicSettings.TurnMovingSet == true || EpicSettings.TurnExpandingSet == true)
+            {
+                if (EpicSettings.TurnMovingSet == true && EpicSettings.MovingEpicParamet.Any())
+                {
+                    CopiedEpics.First().EpicMoving(EpicSettings.MovingEpicParamet);
+                }
+                if (EpicSettings.TurnExpandingSet == true)
+                {
+                    CopiedEpics.First().ExpandEpic();
+                }
+                EDrawEpics(CopiedEpics);
+            }
+            else
+            {
+                EDrawEpics(CopiedEpics);
+            }
         }
 
-
+        private void ModelingTimer_Tick(object sender, EventArgs e)
+        {
+            if (EpicSettings.TurnMovingSet == true || EpicSettings.TurnExpandingSet == true)
+            {
+                if (EpicSettings.TurnMovingSet == true && EpicSettings.MovingEpicParamet.Any())
+                {
+                    CopiedEpics.First().EpicMoving(EpicSettings.MovingEpicParamet);
+                }
+                if (EpicSettings.TurnExpandingSet == true)
+                {
+                    CopiedEpics.First().ExpandEpic();
+                }
+                EDrawEpics(CopiedEpics);
+            }
+            else
+            {
+                //EDrawEpics(CopiedEpics);
+            }
+            GC.Collect();
+        }
     }
 }

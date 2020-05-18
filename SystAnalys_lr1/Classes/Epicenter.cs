@@ -32,8 +32,29 @@ namespace SystAnalys_lr1.Classes
                 new Epicenter(Data.TheGrid)
             };
             Data.Epics.First().CreateRandomEpicenter(EpicSizeParam, StartPos);
-        }      
+        }
 
+        public static List<Epicenter> CopyEpicenter(List<Epicenter> CopiedEpics)
+        {
+            CopiedEpics = new List<Epicenter>();
+            int i = 0;
+            Parallel.ForEach(Data.Epics, (EpicList) =>
+            {
+                CopiedEpics.Add(new Epicenter(Data.TheGrid));
+                foreach (var Sector in EpicList.EpicenterGrid)
+                {
+                    CopiedEpics[i].EpicenterGrid.Add(Sector.Key, new List<GridPart>());
+                    CopiedEpics[i].StartPositon = EpicList.StartPositon;
+                    CopiedEpics[i].NewExpandCount = new List<int>();
+                    foreach (var Square in Sector.Value)
+                    {
+                        CopiedEpics[i].EpicenterGrid[Sector.Key].Add(new GridPart(Square.x, Square.y));
+                    }
+                }
+                i++;
+            });
+            return CopiedEpics;
+        }
         public object Clone()
         {
             return MemberwiseClone();

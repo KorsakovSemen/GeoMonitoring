@@ -30,8 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DisplayEpicenters));
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.ModelingTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.EZoomBar = new MetroFramework.Controls.MetroTrackBar();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.button11 = new MetroFramework.Controls.MetroButton();
@@ -45,9 +46,15 @@
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // ModelingTimer
+            // 
+            this.ModelingTimer.Interval = 1000;
+            this.ModelingTimer.Tick += new System.EventHandler(this.ModelingTimer_Tick);
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel1.Controls.Add(this.metroButton2);
             this.panel1.Controls.Add(this.EZoomBar);
             this.panel1.Controls.Add(this.metroLabel2);
             this.panel1.Controls.Add(this.button11);
@@ -59,6 +66,13 @@
             this.panel1.VerticalScrollbarBarColor = true;
             this.panel1.VerticalScrollbarHighlightOnWheel = false;
             this.panel1.VerticalScrollbarSize = 6;
+            // 
+            // metroButton2
+            // 
+            resources.ApplyResources(this.metroButton2, "metroButton2");
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.UseSelectable = true;
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
             // EZoomBar
             // 
@@ -100,7 +114,6 @@
             resources.ApplyResources(this.metroButton1, "metroButton1");
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.MetroButton1_Click);
             // 
             // label2
             // 
@@ -153,7 +166,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer ModelingTimer;
         private MetroFramework.Controls.MetroPanel panel1;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton button11;
@@ -164,5 +177,6 @@
         private MetroFramework.Controls.MetroTrackBar EZoomBar;
         private MetroFramework.Controls.MetroPanel MapPanel;
         private MetroFramework.Controls.MetroPanel metroPanel1;
+        private MetroFramework.Controls.MetroButton metroButton2;
     }
 }

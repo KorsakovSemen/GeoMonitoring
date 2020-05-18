@@ -46,8 +46,7 @@ namespace SystAnalys_lr1.Classes
                         epList[i].EpicenterGrid[Sector.Key].Add(new GridPart(Square.x, Square.y));
                     }
                 }
-                i++;
-                Console.WriteLine(i);
+                i++;              
             });
         }
 
@@ -118,7 +117,7 @@ namespace SystAnalys_lr1.Classes
             //
             int MaxEpicItnerValue;
             int MaxEpicItnerCycleValue;
-            if (EpicSettings.TurnSpreadingSet == false && EpicSettings.TurnMovingSet == false)
+            if (EpicSettings.TurnExpandingSet == false && EpicSettings.TurnMovingSet == false)
             {
                 MaxEpicItnerValue = 1;
                 MaxEpicItnerCycleValue = T / PhaseSizeSelect();
@@ -169,7 +168,7 @@ namespace SystAnalys_lr1.Classes
                 for (int k = 0; k < (T / PhaseSizeSelect() / MaxEpicItnerCycleValue); k++)
                 {
 
-                    if (EpicSettings.TurnSpreadingSet == true)
+                    if (EpicSettings.TurnExpandingSet == true)
                     {
                         ExpandTimer += MaxEpicItnerValue;
                     }
@@ -189,7 +188,7 @@ namespace SystAnalys_lr1.Classes
                             MovingTimer = 0;
                         }
                     }
-                    if (EpicSettings.TurnSpreadingSet == true)
+                    if (EpicSettings.TurnExpandingSet == true)
                     {
                         if (ExpandTimer >= ((EpicSettings.EpicFreqSpreadingParam / 20)))
                         {

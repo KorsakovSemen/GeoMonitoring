@@ -26,7 +26,7 @@ namespace SystAnalys_lr1.Forms
         public static bool ExtendedSavePictures { get; set; } = false;
         
         public static bool TurnMovingSet = false;
-        public static bool TurnSpreadingSet = false;
+        public static bool TurnExpandingSet = false;
         public EpicSettings()
         {
             InitializeComponent();
@@ -64,7 +64,7 @@ namespace SystAnalys_lr1.Forms
                 frequencyBox.Enabled = false;
             }
             
-            TurnSpreading.Checked = TurnSpreadingSet;
+            TurnSpreading.Checked = TurnExpandingSet;
             if (TurnSpreading.Checked == true)
             {
                 SpredFreq.Enabled = true;
@@ -544,13 +544,13 @@ namespace SystAnalys_lr1.Forms
         {
             if (TurnSpreading.Checked == true)
             {
-                TurnSpreadingSet = true;
+                TurnExpandingSet = true;
                 SpredFreq.Enabled = true;
 
             }
             else
             {
-                TurnSpreadingSet = false;
+                TurnExpandingSet = false;
                 SpredFreq.Enabled = false;
 
             }
