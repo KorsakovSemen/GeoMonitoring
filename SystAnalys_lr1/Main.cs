@@ -162,6 +162,7 @@ namespace SystAnalys_lr1
             G.DrawALLGraph(Data.V, Data.E);
             sheet.Image = G.GetBitmap();
             Selected1 = -1;
+            GridCreator.DrawGrid(sheet);
         }
 
         private void AddBus_Click(object sender, EventArgs e)
@@ -179,7 +180,7 @@ namespace SystAnalys_lr1
             sheet.Image = G.GetBitmap();
             Selected1 = -1;
             selected = new List<int>();
-            // 
+            GridCreator.DrawGrid(sheet);
         }
 
         private void ButtonOn()
@@ -229,7 +230,7 @@ namespace SystAnalys_lr1
             stopPointButton.Enabled = true;
             selected = new List<int>();
             trafficLightLabel.Visible = false;
-            //   
+            GridCreator.DrawGrid(sheet);
             CheckBusesOnRoute();
         }
 
@@ -248,7 +249,7 @@ namespace SystAnalys_lr1
             c.MapUpdateRoute(sheet, Data.Routes[changeRoute.Text], Data.RoutesEdge[changeRoute.Text]);
             ConstructorPressButton();
         }
-        //class zoom
+
         public static Image ResizeBitmap(Image sourceBMP, int width, int height)
         {
 
@@ -439,7 +440,7 @@ namespace SystAnalys_lr1
                         G.ClearSheet();
                         G.DrawALLGraph(Data.V, Data.E);
                         sheet.Image = G.GetBitmap();
-                        //    
+                        GridCreator.DrawGrid(sheet);
                         loadingForm.loading.Value = 60;
                     }
                     else
@@ -686,7 +687,7 @@ namespace SystAnalys_lr1
                 G.ClearSheet();
                 sheet.Image = G.GetBitmap();
                 G.DrawALLGraph(Data.V, Data.E);
-                //  
+                GridCreator.DrawGrid(sheet);
                 selectRoute.Enabled = true;
                 loadingForm.loading.Value = 80;
                 trafficLightLabel.Visible = false;
@@ -1095,7 +1096,7 @@ namespace SystAnalys_lr1
             Selected1 = -1;
             Selected2 = -1;
             selected = new List<int>();
-            //    
+            GridCreator.DrawGrid(sheet);
         }
 
         private void SaveRoutes(string saveFormat = "xml", string save = "../../Configs/")
@@ -1235,7 +1236,7 @@ namespace SystAnalys_lr1
             G.ClearSheet();
             G.DrawALLGraph(Data.V, Data.E);
             sheet.Image = G.GetBitmap();
-            //    
+            GridCreator.DrawGrid(sheet);
             if (Ep != null)
                 Ep.Close();
             Ep = new DisplayEpicenters(this);
@@ -1436,7 +1437,7 @@ namespace SystAnalys_lr1
                 };
                 f.ShowDialog();
                 c.MapUpdate(sheet);
-                //    
+                GridCreator.DrawGrid(sheet);
                 if (!Ep.IsDisposed)
                 {
                     Ep.EDrawGrid();
@@ -1638,7 +1639,7 @@ namespace SystAnalys_lr1
                 }
                 sheet.Image = G.GetBitmap();
                 Selected1 = -1;
-                //    
+                GridCreator.DrawGrid(sheet);
 
             }
 
@@ -1725,7 +1726,7 @@ namespace SystAnalys_lr1
             stopPointButton.Enabled = true;
             sheet.Image = G.GetBitmap();
             Selected1 = -1;
-            //
+            GridCreator.DrawGrid(sheet);
         }
 
 
@@ -1929,7 +1930,7 @@ namespace SystAnalys_lr1
                 }
                 // AnimationBox.Update();
                 sheet.Image = G.GetBitmap();
-                // GridCreator.CreateGrid(sheet);
+                GridCreator.CreateGrid(sheet);
                 //    
 
 
@@ -2071,7 +2072,7 @@ namespace SystAnalys_lr1
                 G.DrawALLGraph(Data.V, Data.E);
                 trafficLightLabel.Visible = false;
                 sheet.Image = G.GetBitmap();
-                //    
+                GridCreator.DrawGrid(sheet);
                 Console.WriteLine(MainStrings.network);
                 selected = new List<int>();
                 return;
@@ -2099,7 +2100,7 @@ namespace SystAnalys_lr1
                     G.DrawALLGraph(Data.V, Data.E);
                     G.DrawALLGraph(Data.Routes[(changeRoute.Text)], Data.RoutesEdge[(changeRoute.Text)], 1);
                     sheet.Image = G.GetBitmap();
-                    //        
+                    GridCreator.DrawGrid(sheet);
                     selected = new List<int>();
                     return;
                 };
@@ -2156,7 +2157,7 @@ namespace SystAnalys_lr1
                 GridCreator.CreateGrid(sheet);
 
                 sheet.Image = G.GetBitmap();
-                //    
+                GridCreator.DrawGrid(sheet);
                 if (!Ep.IsDisposed)
                 {
                     Ep.EDrawGrid();
