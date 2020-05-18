@@ -1309,12 +1309,17 @@ namespace SystAnalys_lr1
         {
             if (changeRoute.Text == MainStrings.network)
             {
+                if (e.Button == MouseButtons.Right && selectRoute.Enabled == false)
+                {
+                    c.MapUpdateNetwork(sheet, Data.V, Data.E);
+                    selected = new List<int>();
+                }
                 if (selectRoute.Enabled == false)
                 {
                     bool check = false;
                     check = c.CheckV(e, check);
                     c.SelectRoute(e, Data.V, Data.E, sheet, c, selected, check);
-                }
+                }                
                 if (addTraficLight.Enabled == false)
                 {
                     AddTrafficLight(e);
@@ -1362,7 +1367,9 @@ namespace SystAnalys_lr1
 
             if (changeRoute.SelectedIndex > 1)
             {
+                
                 List<Vertex> routeV = Data.Routes[changeRoute.Text];
+                
                 if (stopPointButton.Enabled == false)
                 {
                     c.AddStopPointsInRoutes(e, Data.AllstopPoints, sheet, Data.TheGrid, changeRoute.Text);
@@ -1372,6 +1379,13 @@ namespace SystAnalys_lr1
                 {
                     c.Select(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, 1);
                 }
+                //if (e.Button == MouseButtons.Right && selectRoute.Enabled == false)
+                //{
+                //    Main.Selected1 = -1;
+                //    Main.Selected2 = -1;
+                //    c.MapUpdateNetwork(sheet, routeV, Data.RoutesEdge[changeRoute.Text]);
+                //    return;
+                //}
                 if (selectRoute.Enabled == false)
                 {
                     c.SelectRouteInRoute(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, selected);
@@ -1389,7 +1403,6 @@ namespace SystAnalys_lr1
                     }
 
                 }
-
                 //нажата кнопка "рисовать ребро"
                 if (drawEdgeButton.Enabled == false)
                 {
@@ -2025,6 +2038,57 @@ namespace SystAnalys_lr1
             timer.Start();
         }
 
+        private void NetworkChoose()
+        {
+            SelectedRoute = null;
+            selectRoute.Enabled = true;
+            deleteBus.Enabled = true;
+            allBusSettings.Enabled = false;
+            drawEdgeButton.Enabled = true;
+            selectButton.Enabled = true;
+            drawVertexButton.Enabled = true;
+            deleteButton.Enabled = true;
+            deleteALLButton.Enabled = true;
+            deleteRoute.Enabled = true;
+            addBus.Enabled = false;
+            deleteBus.Enabled = false;
+            stopPointButton.Enabled = true;
+            addTraficLight.Enabled = true;
+            CheckBuses();
+            G.ClearSheet();
+            G.DrawALLGraph(Data.V, Data.E);
+            trafficLightLabel.Visible = false;
+            sheet.Image = G.GetBitmap();
+            GridCreator.DrawGrid(sheet);
+            Console.WriteLine(MainStrings.network);
+            selected = new List<int>();
+        }
+
+        private void RouteChoose()
+        {
+            SelectedRoute = (changeRoute.Text);
+            selectRoute.Enabled = true;
+            selectButton.Enabled = true;
+            deleteBus.Enabled = true;
+            allBusSettings.Enabled = false;
+            drawVertexButton.Enabled = false;
+            drawEdgeButton.Enabled = true;
+            deleteButton.Enabled = true;
+            deleteALLButton.Enabled = true;
+            deleteRoute.Enabled = true;
+            addBus.Enabled = true;
+            stopPointButton.Enabled = true;
+            trafficLightLabel.Visible = false;
+            addTraficLight.Enabled = false;
+            CheckBusesOnRoute();
+            G.ClearSheet();
+            G.DrawALLGraph(Data.V, Data.E);
+            G.DrawALLGraph(Data.Routes[(changeRoute.Text)], Data.RoutesEdge[(changeRoute.Text)], 1);
+            sheet.Image = G.GetBitmap();
+            GridCreator.DrawGrid(sheet);
+            selected = new List<int>();
+        }
+
         private void ChangeRoute_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (changeRoute.Text == MainStrings.none)
@@ -2053,55 +2117,14 @@ namespace SystAnalys_lr1
             };
             if (changeRoute.Text == MainStrings.network)
             {
-                SelectedRoute = null;
-                selectRoute.Enabled = true;
-                deleteBus.Enabled = true;
-                allBusSettings.Enabled = false;
-                drawEdgeButton.Enabled = true;
-                selectButton.Enabled = true;
-                drawVertexButton.Enabled = true;
-                deleteButton.Enabled = true;
-                deleteALLButton.Enabled = true;
-                deleteRoute.Enabled = true;
-                addBus.Enabled = false;
-                deleteBus.Enabled = false;
-                stopPointButton.Enabled = true;
-                addTraficLight.Enabled = true;
-                CheckBuses();
-                G.ClearSheet();
-                G.DrawALLGraph(Data.V, Data.E);
-                trafficLightLabel.Visible = false;
-                sheet.Image = G.GetBitmap();
-                GridCreator.DrawGrid(sheet);
-                Console.WriteLine(MainStrings.network);
-                selected = new List<int>();
+                NetworkChoose();
                 return;
             };
             for (int i = 0; i < Data.Routes.Count; i++)
             {
                 if (Data.Routes.ElementAt(i).Key == (changeRoute.Text))
                 {
-                    SelectedRoute = (changeRoute.Text);
-                    selectRoute.Enabled = true;
-                    selectButton.Enabled = true;
-                    deleteBus.Enabled = true;
-                    allBusSettings.Enabled = false;
-                    drawVertexButton.Enabled = false;
-                    drawEdgeButton.Enabled = true;
-                    deleteButton.Enabled = true;
-                    deleteALLButton.Enabled = true;
-                    deleteRoute.Enabled = true;
-                    addBus.Enabled = true;
-                    stopPointButton.Enabled = true;
-                    trafficLightLabel.Visible = false;
-                    addTraficLight.Enabled = false;
-                    CheckBusesOnRoute();
-                    G.ClearSheet();
-                    G.DrawALLGraph(Data.V, Data.E);
-                    G.DrawALLGraph(Data.Routes[(changeRoute.Text)], Data.RoutesEdge[(changeRoute.Text)], 1);
-                    sheet.Image = G.GetBitmap();
-                    GridCreator.DrawGrid(sheet);
-                    selected = new List<int>();
+                    RouteChoose();
                     return;
                 };
             }

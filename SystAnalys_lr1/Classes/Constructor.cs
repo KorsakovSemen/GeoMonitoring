@@ -271,6 +271,8 @@ namespace SystAnalys_lr1.Classes
 
                 }
             }
+
+          
         }
 
 
@@ -388,6 +390,7 @@ namespace SystAnalys_lr1.Classes
                     }
                 }
             }
+          
         }
 
         public void DeleteBus(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet, string route, int scrollX, int scrollY)
@@ -513,6 +516,7 @@ namespace SystAnalys_lr1.Classes
                     }
                 }
             }
+          
         }
 
         public void DeleteTF(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)

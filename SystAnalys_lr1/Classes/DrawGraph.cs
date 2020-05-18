@@ -22,7 +22,7 @@ namespace SystAnalys_lr1.Classes
             {
                 Width = 1
             };
-            darkGoldPen = new Pen(Color.MediumAquamarine)
+            darkGoldPen = new Pen(Color.Blue)//MediumAquamarine)
             {
                 Width = 1
             };

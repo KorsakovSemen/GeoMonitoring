@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <left>100</left>
+  <up>350</up>
+  <right>150</right>
+  <down>100</down>
+</Grid>

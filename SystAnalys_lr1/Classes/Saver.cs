@@ -111,7 +111,8 @@ namespace SystAnalys_lr1.Classes
             loadingForm.loading.Value = 70;
             File.Delete(save + "StopPoints.xml");
             using (FileStream fileV = new FileStream(save + "StopPoints.xml", FileMode.OpenOrCreate))
-            {               
+            {
+                stopV = new XmlSerializer(typeof(SerializableDictionary<string, List<BusStop>>));
                 stopV.Serialize(fileV, Data.StopPoints);
                 Console.WriteLine("Объект сериализован");
             }

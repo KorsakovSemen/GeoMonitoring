@@ -78,7 +78,7 @@ namespace SystAnalys_lr1.Classes
             {
                 using (StreamReader reader = new StreamReader(load + "StopPoints.xml"))
                 {
-                    XmlSerializer deserializerV = new XmlSerializer(typeof(SerializableDictionary<string, List<Vertex>>));
+                    XmlSerializer deserializerV = new XmlSerializer(typeof(SerializableDictionary<string, List<BusStop>>));
                     Data.StopPoints = (SerializableDictionary<string, List<BusStop>>)deserializerV.Deserialize(reader);
                     foreach (var sp in Data.StopPoints.Values)
                     {
@@ -103,7 +103,7 @@ namespace SystAnalys_lr1.Classes
             {
                 using (StreamReader reader = new StreamReader(load + "allStopPoints.xml"))
                 {
-                    XmlSerializer deserializerV = new XmlSerializer(typeof(List<Vertex>));
+                    XmlSerializer deserializerV = new XmlSerializer(typeof(List<BusStop>));
                     Data.AllstopPoints = (List<BusStop>)deserializerV.Deserialize(reader);
 
                 }
