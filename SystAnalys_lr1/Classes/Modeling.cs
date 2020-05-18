@@ -200,6 +200,7 @@ namespace SystAnalys_lr1.Classes
                             ExpandTimer = 0;
                         }
                     }
+                    //foreach(var bus in cqBus)
                     Parallel.ForEach(cqBus, (bus) =>
                     {
                         bus.Epicenters = epList;

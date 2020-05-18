@@ -53,11 +53,9 @@ namespace SystAnalys_lr1.Classes
 
         private readonly Random rnd = new Random();
 
-        //позиция автобуса
         public int PositionAt { get; set; }
-        //для обратного движения по маршруту
         public bool TurnBack { get; set; }
-        //
+        
         public bool StopAtStationByGrid { get; set; } = false;
         [XmlIgnore, JsonIgnore]
         public Image BusPic { get; set; }
@@ -434,7 +432,6 @@ namespace SystAnalys_lr1.Classes
                         //{
                         //    CheckEpic(Sector, Square, EpicList);
                         //}
-                        //lock (Epi) { }
                         if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y + GridPart.Height == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);

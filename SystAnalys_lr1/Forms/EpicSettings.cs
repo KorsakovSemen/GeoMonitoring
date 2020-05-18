@@ -13,7 +13,7 @@ namespace SystAnalys_lr1.Forms
 {
     public partial class EpicSettings : MetroForm
     {
-        //
+        
         public static string EpicSizeParamSave { get; set; } = "radioEpicMedium";
         public static List<string> MovingEpicParamet { get; set; }
         public static string EpicFreqMovingSave { get; set; } = null;
@@ -24,7 +24,7 @@ namespace SystAnalys_lr1.Forms
         public static int EpicPhaseSavingParam { get; set; } = 1;
         public static bool SavePictures { get; set; } = false;
         public static bool ExtendedSavePictures { get; set; } = false;
-        //
+        
         public static bool TurnMovingSet = false;
         public static bool TurnSpreadingSet = false;
         public EpicSettings()
@@ -51,7 +51,7 @@ namespace SystAnalys_lr1.Forms
                 phasesSettingsBox.Enabled = false;
             }
             TurnMoving.Checked = TurnMovingSet;
-            //
+            
             if (TurnMoving.Checked == true)
             {
              
@@ -63,19 +63,16 @@ namespace SystAnalys_lr1.Forms
                 directionBox.Enabled = false;
                 frequencyBox.Enabled = false;
             }
-            ///
+            
             TurnSpreading.Checked = TurnSpreadingSet;
             if (TurnSpreading.Checked == true)
             {
-              //  TurnSpreadingSet = true;
                 SpredFreq.Enabled = true;
             }
             else
             {
-               // TurnSpreadingSet = false;
                 SpredFreq.Enabled = false;
-            }
-            //
+            }            
 
             switch (EpicPhaseSavingSave)
             {
@@ -96,7 +93,7 @@ namespace SystAnalys_lr1.Forms
                     metroTextBox2.Text = Main.EpicSizeParam.ToString();
                 break;
             }
-            //
+            
             switch (EpicSizeParamSave)
             {
                 case "radioEpicSmall":
@@ -116,7 +113,7 @@ namespace SystAnalys_lr1.Forms
                     textBox1.Text = Main.EpicSizeParam.ToString();
                     break;
             }
-            //
+            
             switch (EpicFreqMovingSave)
             {
                 case "RadioFreq100":
@@ -138,14 +135,13 @@ namespace SystAnalys_lr1.Forms
                     RadioFreq10000.Checked = true;
                     break;
                 case "RadioFreqRandom":
-                  //  RadioFreqRandom.Checked = true;
                     break;
                 case "RadioFreqCustom":
                     RadioFreqCustom.Checked = true;
                     metroTextBox1.Text = EpicFreqMovingParam.ToString();
                     break;
             }
-            //
+            
 
             if (MovingEpicParamet.Any())
             {
@@ -171,7 +167,7 @@ namespace SystAnalys_lr1.Forms
                     }
                 }
             }
-            //
+            
             switch (EpicFreqSpreadingSave)
             {
                 case "RadioFreqSpred100":
@@ -193,14 +189,13 @@ namespace SystAnalys_lr1.Forms
                     RadioFreqSpred10000.Checked = true;
                     break;
                 case "RadioFreqSpredRandom":
-                    //  RadioFreqRandom.Checked = true;
                     break;
                 case "RadioFreqSpredCustom":
                     RadioFreqSpredCustom.Checked = true;
                     metroTextBox3.Text = EpicFreqMovingParam.ToString();
                     break;
             }
-            //
+            
 
         }
 
@@ -291,7 +286,7 @@ namespace SystAnalys_lr1.Forms
             }
             return EpicSizeParam;
         }
-        /// 
+        
         private int SetFreqMovingSize()
         {
             var rand = new Random();
@@ -330,7 +325,6 @@ namespace SystAnalys_lr1.Forms
                                 EpicFreqMovingSave = "RadioFreq10000";
                                 break;
                             case "RadioFreqRandom":
-                                //FreqSpreadParam = rand.Next(8, 100);
                                 EpicFreqMovingSave = "RadioFreqRandom";
                                 break;
                             case "RadioFreqCustom":
@@ -352,7 +346,6 @@ namespace SystAnalys_lr1.Forms
             return FreqSpreadParam;
         }
 
-        //
         private int SetFreqSpreadingSize()
         {
             var rand = new Random();
@@ -391,7 +384,6 @@ namespace SystAnalys_lr1.Forms
                                 EpicFreqSpreadingSave = "RadioFreqSpred10000";
                                 break;
                             case "RadioFreqSpredRandom":
-                                //FreqSpreadParam = rand.Next(8, 100);
                                 EpicFreqSpreadingSave = "RadioFreqSpredRandom";
                                 break;
                             case "RadioFreqSpredCustom":
@@ -412,7 +404,7 @@ namespace SystAnalys_lr1.Forms
             }
             return FreqSpreadParam;
         }
-        //
+        
         private int SetPhaseSavingSize()
         {
        
@@ -459,10 +451,7 @@ namespace SystAnalys_lr1.Forms
                 }
             }
             return PhasesSizeParam;
-        }
-
-
-        /// 
+        }       
 
 
         private List<string> SetExpandParam()

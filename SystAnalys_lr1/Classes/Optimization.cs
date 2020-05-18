@@ -27,7 +27,6 @@ namespace SystAnalys_lr1.Classes
         public static int OptiSpeed { get; set; }
         public static int OptiCount { get; set; }
 
-        //class opt
         public static void ResMatrix(MetroGrid results)
         {
             results.Rows.Clear();
@@ -44,7 +43,7 @@ namespace SystAnalys_lr1.Classes
                 i += 1;
             }
         }
-        //class opt
+
         public static void ResChart(int oldChart, Report r, MetroStyleManager StyleManager)
         {
             bool changeText = false;

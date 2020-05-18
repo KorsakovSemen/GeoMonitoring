@@ -27,22 +27,21 @@ namespace SystAnalys_lr1.Classes
                 Width = 1
             };
             _ = new Random();
-            color = Color.ForestGreen;//Color.FromArgb(random.Next(255), random.Next(255), random.Next(255));
+            color = Color.ForestGreen;
         }
 
         public void SetBitmap()
         {
-            //эксепшн при загрузке левой директоории
             bitmap = new Bitmap(Main.GlobalMap);
             gr = Graphics.FromImage(bitmap);
         }
-        // для второй формы быстрофикс
+
         public void SetBitmap2()
         {
             bitmap = new Bitmap(Main.GlobalMap);
             gr = Graphics.FromImage(bitmap);
         }
-        //
+        
         public Bitmap GetBitmap()
         {
             return bitmap;
@@ -56,16 +55,14 @@ namespace SystAnalys_lr1.Classes
             gr = Graphics.FromImage(bitmap);
 
         }
-        //для второй формы
+        
         public void ClearSheet2()
-        {
-            /*Graphics.FromImage(bitmap).Clear(Color.Wheat); *//// ТУТ ЭКСЕПШН НА МОДЕЛИНГЕ   
+        { 
             if (!Main.Ep.IsDisposed) {
                 bitmap = new Bitmap(DisplayEpicenters.ZoomPicture);
             }
        
             gr = null;
-            //  gr.Dispose();
             gr = Graphics.FromImage(bitmap);
 
         }
@@ -158,7 +155,6 @@ namespace SystAnalys_lr1.Classes
                 pen = darkGoldPen;
                 pen.Width = 2 * Main.zoom;
             };
-            //рисуем ребра
             for (int i = 0; i < E.Count; i++)
             {
                 if (E[i].V1 == E[i].V2)
@@ -167,7 +163,6 @@ namespace SystAnalys_lr1.Classes
                 }
                 else
                 {
-                    //проблема с отрисовкой
                     if (E[i].V1 < V.Count && E[i].V2 < V.Count)
                     {
                         gr.DrawLine(pen, V[E[i].V1].X * Main.zoom, V[E[i].V1].Y * Main.zoom, V[E[i].V2].X * Main.zoom, V[E[i].V2].Y * Main.zoom);
@@ -175,7 +170,6 @@ namespace SystAnalys_lr1.Classes
                 }
             }
             DrawStopPoints();
-            //рисуем вершины
             for (int i = 0; i < V.Count; i++)
             {
                 if (rand != 0)

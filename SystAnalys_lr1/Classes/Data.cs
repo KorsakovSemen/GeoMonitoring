@@ -9,7 +9,6 @@ namespace SystAnalys_lr1.Classes
 {
     public static class Data
     {
-        //все массивы
         //Лист всех эпицентров
         public static List<Epicenter> Epics { get; set; } = new List<Epicenter>();
         //Лист, в котором хранится сетка

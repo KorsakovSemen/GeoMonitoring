@@ -9,7 +9,6 @@ namespace SystAnalys_lr1.Forms
         public CrossroadsSettings()
         {
             InitializeComponent();
-            //Xbutton.Checked = true;
             textBox3.Validated += textBox3_Validated;
             textBox4.Validated += textBox4_Validated;
             errorProvider3.SetIconAlignment(textBox3, ErrorIconAlignment.MiddleRight);

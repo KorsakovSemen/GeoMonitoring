@@ -498,10 +498,6 @@ namespace SystAnalys_lr1.Classes
                                     ForRemove.Add(new Point(gridPart.x, gridPart.y));
                                 }
                                 break;
-                            //case "right-down":
-                            //    break;
-                            //case "right-up":
-                            //    break;
                             case "down":
                                 gridPart.y += GridPart.Height;
                                 if (!(gridPart.y <= TheGrid.Last().y))
@@ -527,10 +523,6 @@ namespace SystAnalys_lr1.Classes
                                     ForRemove.Add(new Point(gridPart.x, gridPart.y));
                                 }
                                 break;
-                            //case "left-down":
-                            //    break;
-                            //case "left-up":
-                            //    break;
                             default:
                                 break;
                         }
@@ -647,7 +639,6 @@ namespace SystAnalys_lr1.Classes
                     }             
                 }
             }
-            ////
             for (int i = 2; i < 4; i++)
             {
                 List<GridPart> fillEpicenter = new List<GridPart>();

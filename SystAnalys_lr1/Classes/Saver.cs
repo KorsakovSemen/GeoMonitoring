@@ -25,7 +25,6 @@ namespace SystAnalys_lr1.Classes
             json = JsonConvert.SerializeObject(Data.Buses);
             File.WriteAllText(save + "Buses.json", json);
             loadingForm.loading.Value = 50;
-            //AsyncCreateAllCoordinates();
             json = JsonConvert.SerializeObject(Data.AllCoordinates);
             File.WriteAllText(save + "AllCoordinates.json", json);
             loadingForm.loading.Value = 60;
@@ -83,7 +82,6 @@ namespace SystAnalys_lr1.Classes
             }
             loadingForm.loading.Value = 30;
 
-            //AsyncCreateAllCoordinates();
             File.Delete(save + "AllCoordinates.xml");
             XmlSerializer serializerAllCoor = new XmlSerializer(typeof(SerializableDictionary<string, List<Point>>));
             using (FileStream fileA = new FileStream(save + "AllCoordinates.xml", FileMode.OpenOrCreate))
