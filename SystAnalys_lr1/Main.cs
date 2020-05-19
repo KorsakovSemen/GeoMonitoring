@@ -2286,6 +2286,7 @@ namespace SystAnalys_lr1
             }
             if (e.Control && e.KeyCode == Keys.S)
             {
+                Application.OpenForms["Main"].Focus();
                 e.SuppressKeyPress = true;
                 try
                 {

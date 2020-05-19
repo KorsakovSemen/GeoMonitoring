@@ -63,6 +63,7 @@
             this.theme = new MetroFramework.Controls.MetroLabel();
             this.changeTheme = new MetroFramework.Controls.MetroComboBox();
             this.mainPanel = new MetroFramework.Controls.MetroPanel();
+            this.sheet = new System.Windows.Forms.PictureBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
@@ -78,15 +79,6 @@
             this.loadButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.msmMain = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.themes = new MetroFramework.Controls.MetroToggle();
-            this.config = new MetroFramework.Controls.MetroLabel();
-            this.changeLanguage = new MetroFramework.Controls.MetroComboBox();
-            this.language = new MetroFramework.Controls.MetroLabel();
-            this.hint = new MetroFramework.Controls.MetroLabel();
-            this.timer = new System.Windows.Forms.Timer(this.components);
-            this.saved = new MetroFramework.Controls.MetroLabel();
-            this.sheet = new System.Windows.Forms.PictureBox();
             this.reportTool = new System.Windows.Forms.ToolStripButton();
             this.selectButton = new System.Windows.Forms.ToolStripButton();
             this.drawVertexButton = new System.Windows.Forms.ToolStripButton();
@@ -101,15 +93,23 @@
             this.deleteBus = new System.Windows.Forms.ToolStripButton();
             this.deleteRoute = new System.Windows.Forms.ToolStripButton();
             this.delAllBusesOnRoute = new System.Windows.Forms.ToolStripButton();
+            this.msmMain = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.themes = new MetroFramework.Controls.MetroToggle();
+            this.config = new MetroFramework.Controls.MetroLabel();
+            this.changeLanguage = new MetroFramework.Controls.MetroComboBox();
+            this.language = new MetroFramework.Controls.MetroLabel();
+            this.hint = new MetroFramework.Controls.MetroLabel();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.saved = new MetroFramework.Controls.MetroLabel();
             this.panelOpt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.results)).BeginInit();
             this.panelSettings.SuspendLayout();
             this.allBusSettings.SuspendLayout();
             this.panelMatrix.SuspendLayout();
             this.mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.toolStripMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.SuspendLayout();
             // 
             // panelOpt
@@ -126,12 +126,12 @@
             this.panelOpt.Controls.Add(this.speed);
             this.panelOpt.HorizontalScrollbarBarColor = true;
             this.panelOpt.HorizontalScrollbarHighlightOnWheel = false;
-            this.panelOpt.HorizontalScrollbarSize = 8;
+            this.panelOpt.HorizontalScrollbarSize = 10;
             resources.ApplyResources(this.panelOpt, "panelOpt");
             this.panelOpt.Name = "panelOpt";
             this.panelOpt.VerticalScrollbarBarColor = true;
             this.panelOpt.VerticalScrollbarHighlightOnWheel = false;
-            this.panelOpt.VerticalScrollbarSize = 8;
+            this.panelOpt.VerticalScrollbarSize = 11;
             // 
             // pollutionOptions
             // 
@@ -292,11 +292,11 @@
             resources.ApplyResources(this.panelSettings, "panelSettings");
             this.panelSettings.HorizontalScrollbarBarColor = true;
             this.panelSettings.HorizontalScrollbarHighlightOnWheel = false;
-            this.panelSettings.HorizontalScrollbarSize = 8;
+            this.panelSettings.HorizontalScrollbarSize = 10;
             this.panelSettings.Name = "panelSettings";
             this.panelSettings.VerticalScrollbarBarColor = true;
             this.panelSettings.VerticalScrollbarHighlightOnWheel = false;
-            this.panelSettings.VerticalScrollbarSize = 8;
+            this.panelSettings.VerticalScrollbarSize = 11;
             // 
             // busOptions
             // 
@@ -318,14 +318,14 @@
             this.allBusSettings.Controls.Add(this.trackerCheck);
             this.allBusSettings.HorizontalScrollbarBarColor = true;
             this.allBusSettings.HorizontalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.HorizontalScrollbarSize = 13;
+            this.allBusSettings.HorizontalScrollbarSize = 17;
             resources.ApplyResources(this.allBusSettings, "allBusSettings");
             this.allBusSettings.Name = "allBusSettings";
             this.allBusSettings.Style = MetroFramework.MetroColorStyle.Blue;
             this.allBusSettings.UseStyleColors = true;
             this.allBusSettings.VerticalScrollbarBarColor = true;
             this.allBusSettings.VerticalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.VerticalScrollbarSize = 13;
+            this.allBusSettings.VerticalScrollbarSize = 17;
             // 
             // backsideCheck
             // 
@@ -413,12 +413,12 @@
             this.panelMatrix.Controls.Add(this.matrix);
             this.panelMatrix.HorizontalScrollbarBarColor = true;
             this.panelMatrix.HorizontalScrollbarHighlightOnWheel = false;
-            this.panelMatrix.HorizontalScrollbarSize = 8;
+            this.panelMatrix.HorizontalScrollbarSize = 10;
             resources.ApplyResources(this.panelMatrix, "panelMatrix");
             this.panelMatrix.Name = "panelMatrix";
             this.panelMatrix.VerticalScrollbarBarColor = true;
             this.panelMatrix.VerticalScrollbarHighlightOnWheel = false;
-            this.panelMatrix.VerticalScrollbarSize = 8;
+            this.panelMatrix.VerticalScrollbarSize = 11;
             // 
             // matrix
             // 
@@ -479,14 +479,22 @@
             this.mainPanel.HorizontalScrollbar = true;
             this.mainPanel.HorizontalScrollbarBarColor = false;
             this.mainPanel.HorizontalScrollbarHighlightOnWheel = false;
-            this.mainPanel.HorizontalScrollbarSize = 10;
+            this.mainPanel.HorizontalScrollbarSize = 13;
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.VerticalScrollbar = true;
             this.mainPanel.VerticalScrollbarBarColor = false;
             this.mainPanel.VerticalScrollbarHighlightOnWheel = false;
-            this.mainPanel.VerticalScrollbarSize = 10;
+            this.mainPanel.VerticalScrollbarSize = 13;
             this.mainPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.Panel6_Scroll);
             this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel6_Paint);
+            // 
+            // sheet
+            // 
+            this.sheet.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.sheet, "sheet");
+            this.sheet.Name = "sheet";
+            this.sheet.TabStop = false;
+            this.sheet.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick_1);
             // 
             // toolStripSeparator1
             // 
@@ -609,61 +617,6 @@
             resources.ApplyResources(this.loadFromToolStripMenuItem, "loadFromToolStripMenuItem");
             this.loadFromToolStripMenuItem.Click += new System.EventHandler(this.LoadFromToolStripMenuItem_Click);
             // 
-            // msmMain
-            // 
-            this.msmMain.Owner = this;
-            // 
-            // themes
-            // 
-            resources.ApplyResources(this.themes, "themes");
-            this.themes.Name = "themes";
-            this.themes.UseSelectable = true;
-            this.themes.CheckedChanged += new System.EventHandler(this.Themes_CheckedChanged);
-            // 
-            // config
-            // 
-            resources.ApplyResources(this.config, "config");
-            this.config.Name = "config";
-            // 
-            // changeLanguage
-            // 
-            this.changeLanguage.AutoCompleteCustomSource.AddRange(new string[] {
-            resources.GetString("changeLanguage.AutoCompleteCustomSource"),
-            resources.GetString("changeLanguage.AutoCompleteCustomSource1")});
-            this.changeLanguage.FormattingEnabled = true;
-            resources.ApplyResources(this.changeLanguage, "changeLanguage");
-            this.changeLanguage.Name = "changeLanguage";
-            this.changeLanguage.UseSelectable = true;
-            this.changeLanguage.SelectedIndexChanged += new System.EventHandler(this.MetroComboBox1_SelectedIndexChanged);
-            // 
-            // language
-            // 
-            resources.ApplyResources(this.language, "language");
-            this.language.Name = "language";
-            // 
-            // hint
-            // 
-            resources.ApplyResources(this.hint, "hint");
-            this.hint.Name = "hint";
-            // 
-            // timer
-            // 
-            this.timer.Interval = 40;
-            this.timer.Tick += new System.EventHandler(this.Timer1_Tick);
-            // 
-            // saved
-            // 
-            resources.ApplyResources(this.saved, "saved");
-            this.saved.Name = "saved";
-            // 
-            // sheet
-            // 
-            this.sheet.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.sheet, "sheet");
-            this.sheet.Name = "sheet";
-            this.sheet.TabStop = false;
-            this.sheet.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick_1);
-            // 
             // reportTool
             // 
             this.reportTool.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -769,6 +722,53 @@
             resources.ApplyResources(this.delAllBusesOnRoute, "delAllBusesOnRoute");
             this.delAllBusesOnRoute.Name = "delAllBusesOnRoute";
             // 
+            // msmMain
+            // 
+            this.msmMain.Owner = this;
+            // 
+            // themes
+            // 
+            resources.ApplyResources(this.themes, "themes");
+            this.themes.Name = "themes";
+            this.themes.UseSelectable = true;
+            this.themes.CheckedChanged += new System.EventHandler(this.Themes_CheckedChanged);
+            // 
+            // config
+            // 
+            resources.ApplyResources(this.config, "config");
+            this.config.Name = "config";
+            // 
+            // changeLanguage
+            // 
+            this.changeLanguage.AutoCompleteCustomSource.AddRange(new string[] {
+            resources.GetString("changeLanguage.AutoCompleteCustomSource"),
+            resources.GetString("changeLanguage.AutoCompleteCustomSource1")});
+            this.changeLanguage.FormattingEnabled = true;
+            resources.ApplyResources(this.changeLanguage, "changeLanguage");
+            this.changeLanguage.Name = "changeLanguage";
+            this.changeLanguage.UseSelectable = true;
+            this.changeLanguage.SelectedIndexChanged += new System.EventHandler(this.MetroComboBox1_SelectedIndexChanged);
+            // 
+            // language
+            // 
+            resources.ApplyResources(this.language, "language");
+            this.language.Name = "language";
+            // 
+            // hint
+            // 
+            resources.ApplyResources(this.hint, "hint");
+            this.hint.Name = "hint";
+            // 
+            // timer
+            // 
+            this.timer.Interval = 40;
+            this.timer.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // saved
+            // 
+            resources.ApplyResources(this.saved, "saved");
+            this.saved.Name = "saved";
+            // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
@@ -803,10 +803,10 @@
             this.panelMatrix.ResumeLayout(false);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
