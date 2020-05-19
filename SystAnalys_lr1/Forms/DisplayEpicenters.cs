@@ -134,6 +134,10 @@ namespace SystAnalys_lr1
         }
         public void EDrawMainEpics()
         {
+            if (SimulatingTimer.Enabled)
+            {
+                SimulatingTimer.Enabled = false;
+            }
             EG.ClearSheet2();
 
             Esheet.Invoke(new DelBitmap((b) => Esheet.Image = b), EG.GetBitmap());
@@ -146,7 +150,7 @@ namespace SystAnalys_lr1
 
             }
             EDrawGrid();
-
+            
 
         }
         public void EDrawGrid()
@@ -276,52 +280,39 @@ namespace SystAnalys_lr1
         }
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            //if (ModelingTimer.Enabled)
-            //{
-            //    ModelingTimer.Enabled = false;
-            //}
-            //else 
-            //{
-            //    ModelingTimer.Enabled = true;
-            //}
-
-            if (EpicSettings.TurnMovingSet == true || EpicSettings.TurnExpandingSet == true)
+            if (SimulatingTimer.Enabled)
             {
-                if (EpicSettings.TurnMovingSet == true && EpicSettings.MovingEpicParamet.Any())
-                {
-                    CopiedEpics.First().EpicMoving(EpicSettings.MovingEpicParamet);
-                }
-                if (EpicSettings.TurnExpandingSet == true)
-                {
-                    CopiedEpics.First().ExpandEpic();
-                }
-                EDrawEpics(CopiedEpics);
+                SimulatingTimer.Enabled = false;
             }
             else
             {
-                EDrawEpics(CopiedEpics);
+                SimulatingTimer.Enabled = true;
             }
         }
 
         private void ModelingTimer_Tick(object sender, EventArgs e)
         {
-            if (EpicSettings.TurnMovingSet == true || EpicSettings.TurnExpandingSet == true)
+
+            if (this.Visible)
             {
-                if (EpicSettings.TurnMovingSet == true && EpicSettings.MovingEpicParamet.Any())
+                if (EpicSettings.TurnMovingSet == true || EpicSettings.TurnExpandingSet == true)
                 {
-                    CopiedEpics.First().EpicMoving(EpicSettings.MovingEpicParamet);
+                    if (EpicSettings.TurnMovingSet == true && EpicSettings.MovingEpicParamet.Any())
+                    {
+                        CopiedEpics.First().EpicMoving(EpicSettings.MovingEpicParamet);
+                    }
+                    if (EpicSettings.TurnExpandingSet == true)
+                    {
+                        CopiedEpics.First().ExpandEpic();
+                    }
+                    EDrawEpics(CopiedEpics);
                 }
-                if (EpicSettings.TurnExpandingSet == true)
-                {
-                    CopiedEpics.First().ExpandEpic();
-                }
-                EDrawEpics(CopiedEpics);
+                GC.Collect();
             }
-            else
+            else 
             {
-                //EDrawEpics(CopiedEpics);
+                SimulatingTimer.Enabled = false;
             }
-            GC.Collect();
         }
     }
 }

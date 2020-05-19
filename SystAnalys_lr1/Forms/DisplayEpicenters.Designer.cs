@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DisplayEpicenters));
-            this.ModelingTimer = new System.Windows.Forms.Timer(this.components);
+            this.SimulatingTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new MetroFramework.Controls.MetroPanel();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.EZoomBar = new MetroFramework.Controls.MetroTrackBar();
@@ -42,19 +42,25 @@
             this.label2 = new MetroFramework.Controls.MetroLabel();
             this.MapPanel = new MetroFramework.Controls.MetroPanel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.metroButton3 = new MetroFramework.Controls.MetroButton();
+            this.metroButton4 = new MetroFramework.Controls.MetroButton();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.panel1.SuspendLayout();
             this.metroPanel1.SuspendLayout();
+            this.metroPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // ModelingTimer
+            // SimulatingTimer
             // 
-            this.ModelingTimer.Interval = 1000;
-            this.ModelingTimer.Tick += new System.EventHandler(this.ModelingTimer_Tick);
+            this.SimulatingTimer.Interval = 1000;
+            this.SimulatingTimer.Tick += new System.EventHandler(this.ModelingTimer_Tick);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.panel1.Controls.Add(this.metroButton2);
+            this.panel1.Controls.Add(this.metroPanel2);
             this.panel1.Controls.Add(this.EZoomBar);
             this.panel1.Controls.Add(this.metroLabel2);
             this.panel1.Controls.Add(this.button11);
@@ -146,6 +152,44 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
+            // metroLabel3
+            // 
+            resources.ApplyResources(this.metroLabel3, "metroLabel3");
+            this.metroLabel3.Name = "metroLabel3";
+            // 
+            // metroPanel2
+            // 
+            this.metroPanel2.Controls.Add(this.metroLabel4);
+            this.metroPanel2.Controls.Add(this.metroButton4);
+            this.metroPanel2.Controls.Add(this.metroButton3);
+            this.metroPanel2.Controls.Add(this.metroLabel3);
+            this.metroPanel2.Controls.Add(this.metroButton2);
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            resources.ApplyResources(this.metroPanel2, "metroPanel2");
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // metroButton3
+            // 
+            resources.ApplyResources(this.metroButton3, "metroButton3");
+            this.metroButton3.Name = "metroButton3";
+            this.metroButton3.UseSelectable = true;
+            // 
+            // metroButton4
+            // 
+            resources.ApplyResources(this.metroButton4, "metroButton4");
+            this.metroButton4.Name = "metroButton4";
+            this.metroButton4.UseSelectable = true;
+            // 
+            // metroLabel4
+            // 
+            resources.ApplyResources(this.metroLabel4, "metroLabel4");
+            this.metroLabel4.Name = "metroLabel4";
+            // 
             // DisplayEpicenters
             // 
             resources.ApplyResources(this, "$this");
@@ -161,12 +205,14 @@
             this.panel1.PerformLayout();
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
+            this.metroPanel2.ResumeLayout(false);
+            this.metroPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Timer ModelingTimer;
+        private System.Windows.Forms.Timer SimulatingTimer;
         private MetroFramework.Controls.MetroPanel panel1;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton button11;
@@ -178,5 +224,10 @@
         private MetroFramework.Controls.MetroPanel MapPanel;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroPanel metroPanel2;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroButton metroButton4;
+        private MetroFramework.Controls.MetroButton metroButton3;
     }
 }
