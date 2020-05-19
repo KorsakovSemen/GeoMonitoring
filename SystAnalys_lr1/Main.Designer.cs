@@ -57,12 +57,12 @@
             this.zoomLabel = new MetroFramework.Controls.MetroLabel();
             this.optimization = new MetroFramework.Controls.MetroLabel();
             this.panelMatrix = new MetroFramework.Controls.MetroPanel();
+            this.matrix = new SystAnalys_lr1.Classes.MatrixControl();
             this.zoomBar = new MetroFramework.Controls.MetroTrackBar();
             this.trafficLightLabel = new MetroFramework.Controls.MetroLabel();
             this.theme = new MetroFramework.Controls.MetroLabel();
             this.changeTheme = new MetroFramework.Controls.MetroComboBox();
             this.mainPanel = new MetroFramework.Controls.MetroPanel();
-            this.sheet = new System.Windows.Forms.PictureBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
@@ -78,6 +78,15 @@
             this.loadButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.msmMain = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.themes = new MetroFramework.Controls.MetroToggle();
+            this.config = new MetroFramework.Controls.MetroLabel();
+            this.changeLanguage = new MetroFramework.Controls.MetroComboBox();
+            this.language = new MetroFramework.Controls.MetroLabel();
+            this.hint = new MetroFramework.Controls.MetroLabel();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.saved = new MetroFramework.Controls.MetroLabel();
+            this.sheet = new System.Windows.Forms.PictureBox();
             this.reportTool = new System.Windows.Forms.ToolStripButton();
             this.selectButton = new System.Windows.Forms.ToolStripButton();
             this.drawVertexButton = new System.Windows.Forms.ToolStripButton();
@@ -92,24 +101,15 @@
             this.deleteBus = new System.Windows.Forms.ToolStripButton();
             this.deleteRoute = new System.Windows.Forms.ToolStripButton();
             this.delAllBusesOnRoute = new System.Windows.Forms.ToolStripButton();
-            this.msmMain = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.themes = new MetroFramework.Controls.MetroToggle();
-            this.config = new MetroFramework.Controls.MetroLabel();
-            this.changeLanguage = new MetroFramework.Controls.MetroComboBox();
-            this.language = new MetroFramework.Controls.MetroLabel();
-            this.hint = new MetroFramework.Controls.MetroLabel();
-            this.timer = new System.Windows.Forms.Timer(this.components);
-            this.saved = new MetroFramework.Controls.MetroLabel();
-            this.matrix = new SystAnalys_lr1.Classes.MatrixControl();
             this.panelOpt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.results)).BeginInit();
             this.panelSettings.SuspendLayout();
             this.allBusSettings.SuspendLayout();
             this.panelMatrix.SuspendLayout();
             this.mainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.toolStripMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sheet)).BeginInit();
             this.SuspendLayout();
             // 
             // panelOpt
@@ -420,6 +420,12 @@
             this.panelMatrix.VerticalScrollbarHighlightOnWheel = false;
             this.panelMatrix.VerticalScrollbarSize = 8;
             // 
+            // matrix
+            // 
+            resources.ApplyResources(this.matrix, "matrix");
+            this.matrix.Name = "matrix";
+            this.matrix.UseSelectable = true;
+            // 
             // zoomBar
             // 
             this.zoomBar.BackColor = System.Drawing.Color.Transparent;
@@ -481,14 +487,6 @@
             this.mainPanel.VerticalScrollbarSize = 10;
             this.mainPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.Panel6_Scroll);
             this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel6_Paint);
-            // 
-            // sheet
-            // 
-            this.sheet.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.sheet, "sheet");
-            this.sheet.Name = "sheet";
-            this.sheet.TabStop = false;
-            this.sheet.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick_1);
             // 
             // toolStripSeparator1
             // 
@@ -611,6 +609,61 @@
             resources.ApplyResources(this.loadFromToolStripMenuItem, "loadFromToolStripMenuItem");
             this.loadFromToolStripMenuItem.Click += new System.EventHandler(this.LoadFromToolStripMenuItem_Click);
             // 
+            // msmMain
+            // 
+            this.msmMain.Owner = this;
+            // 
+            // themes
+            // 
+            resources.ApplyResources(this.themes, "themes");
+            this.themes.Name = "themes";
+            this.themes.UseSelectable = true;
+            this.themes.CheckedChanged += new System.EventHandler(this.Themes_CheckedChanged);
+            // 
+            // config
+            // 
+            resources.ApplyResources(this.config, "config");
+            this.config.Name = "config";
+            // 
+            // changeLanguage
+            // 
+            this.changeLanguage.AutoCompleteCustomSource.AddRange(new string[] {
+            resources.GetString("changeLanguage.AutoCompleteCustomSource"),
+            resources.GetString("changeLanguage.AutoCompleteCustomSource1")});
+            this.changeLanguage.FormattingEnabled = true;
+            resources.ApplyResources(this.changeLanguage, "changeLanguage");
+            this.changeLanguage.Name = "changeLanguage";
+            this.changeLanguage.UseSelectable = true;
+            this.changeLanguage.SelectedIndexChanged += new System.EventHandler(this.MetroComboBox1_SelectedIndexChanged);
+            // 
+            // language
+            // 
+            resources.ApplyResources(this.language, "language");
+            this.language.Name = "language";
+            // 
+            // hint
+            // 
+            resources.ApplyResources(this.hint, "hint");
+            this.hint.Name = "hint";
+            // 
+            // timer
+            // 
+            this.timer.Interval = 40;
+            this.timer.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // saved
+            // 
+            resources.ApplyResources(this.saved, "saved");
+            this.saved.Name = "saved";
+            // 
+            // sheet
+            // 
+            this.sheet.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.sheet, "sheet");
+            this.sheet.Name = "sheet";
+            this.sheet.TabStop = false;
+            this.sheet.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Sheet_MouseClick_1);
+            // 
             // reportTool
             // 
             this.reportTool.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -629,7 +682,7 @@
             // drawVertexButton
             // 
             this.drawVertexButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.drawVertexButton.Image = global::SystAnalys_lr1.Properties.Resources.circle1;
+            this.drawVertexButton.Image = global::SystAnalys_lr1.Properties.Resources.CIRCLE_WT;
             this.drawVertexButton.Name = "drawVertexButton";
             resources.ApplyResources(this.drawVertexButton, "drawVertexButton");
             this.drawVertexButton.Click += new System.EventHandler(this.DrawVertexButton_Click);
@@ -661,7 +714,7 @@
             // deleteALLButton
             // 
             this.deleteALLButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.deleteALLButton.Image = global::SystAnalys_lr1.Properties.Resources.rubbish;
+            this.deleteALLButton.Image = global::SystAnalys_lr1.Properties.Resources.DELETE_ALL_ICON;
             this.deleteALLButton.Name = "deleteALLButton";
             resources.ApplyResources(this.deleteALLButton, "deleteALLButton");
             this.deleteALLButton.Click += new System.EventHandler(this.DeleteALLButton_Click);
@@ -716,59 +769,6 @@
             resources.ApplyResources(this.delAllBusesOnRoute, "delAllBusesOnRoute");
             this.delAllBusesOnRoute.Name = "delAllBusesOnRoute";
             // 
-            // msmMain
-            // 
-            this.msmMain.Owner = this;
-            // 
-            // themes
-            // 
-            resources.ApplyResources(this.themes, "themes");
-            this.themes.Name = "themes";
-            this.themes.UseSelectable = true;
-            this.themes.CheckedChanged += new System.EventHandler(this.Themes_CheckedChanged);
-            // 
-            // config
-            // 
-            resources.ApplyResources(this.config, "config");
-            this.config.Name = "config";
-            // 
-            // changeLanguage
-            // 
-            this.changeLanguage.AutoCompleteCustomSource.AddRange(new string[] {
-            resources.GetString("changeLanguage.AutoCompleteCustomSource"),
-            resources.GetString("changeLanguage.AutoCompleteCustomSource1")});
-            this.changeLanguage.FormattingEnabled = true;
-            resources.ApplyResources(this.changeLanguage, "changeLanguage");
-            this.changeLanguage.Name = "changeLanguage";
-            this.changeLanguage.UseSelectable = true;
-            this.changeLanguage.SelectedIndexChanged += new System.EventHandler(this.MetroComboBox1_SelectedIndexChanged);
-            // 
-            // language
-            // 
-            resources.ApplyResources(this.language, "language");
-            this.language.Name = "language";
-            // 
-            // hint
-            // 
-            resources.ApplyResources(this.hint, "hint");
-            this.hint.Name = "hint";
-            // 
-            // timer
-            // 
-            this.timer.Interval = 40;
-            this.timer.Tick += new System.EventHandler(this.Timer1_Tick);
-            // 
-            // saved
-            // 
-            resources.ApplyResources(this.saved, "saved");
-            this.saved.Name = "saved";
-            // 
-            // matrix
-            // 
-            resources.ApplyResources(this.matrix, "matrix");
-            this.matrix.Name = "matrix";
-            this.matrix.UseSelectable = true;
-            // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
@@ -803,10 +803,10 @@
             this.panelMatrix.ResumeLayout(false);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.msmMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sheet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

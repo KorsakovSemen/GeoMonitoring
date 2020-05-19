@@ -527,16 +527,12 @@ namespace SystAnalys_lr1
                 {
                     Ep.EG = new DrawGraph();
                     Ep.Close();
+          
                 }
                 config.Text = MainStrings.config;
                 DeleteAll();
                 G.bitmap = null;
-                if (G.bitmap != null)
-                {
-                    ZoomHelper();
-                    G.ClearSheet();
-                    G.ClearSheet2();
-                }
+
 
                 sheet.Image = Image.FromFile(fb.FileName);
                 saveImage = sheet.Image;
@@ -1180,6 +1176,8 @@ namespace SystAnalys_lr1
             Data.V.Clear();
             Data.E.Clear();
 
+            Data.Epics.Clear();
+            AnimationClear();
         }
 
         //class loader
@@ -1819,7 +1817,7 @@ namespace SystAnalys_lr1
                 toolStripMenu.BackColor = Color.FromArgb(17, 17, 17);
                 toolStripMenu.ForeColor = Color.FromArgb(153, 153, 153);
                 selectButton.Image = new Bitmap(("../../Resources/newcursor_bt.png"));
-                drawVertexButton.Image = new Bitmap(("../../Resources/circle_bt.png"));
+                drawVertexButton.Image = new Bitmap(("../../Resources/CIRCLE_BT_.png"));
                 drawEdgeButton.Image = new Bitmap(("../../Resources/line_new_bt.png"));
                 selectRoute.Image = new Bitmap(("../../Resources/line-chart_bt.png"));
                 addTraficLight.Image = new Bitmap("../../Resources/traffic-light.png");
@@ -1832,7 +1830,7 @@ namespace SystAnalys_lr1
                 toolStripMenu.BackColor = Color.FromArgb(255, 255, 255);
                 toolStripMenu.ForeColor = Color.FromArgb(0, 0, 0);
                 selectButton.Image = new Bitmap(("../../Resources/newcursor.png"));
-                drawVertexButton.Image = new Bitmap(("../../Resources/circle1.png"));
+                drawVertexButton.Image = new Bitmap(("../../Resources/CIRCLE_WT.png"));
                 drawEdgeButton.Image = new Bitmap(("../../Resources/new_line__.png"));
                 selectRoute.Image = new Bitmap(("../../Resources/line-chart.png"));
                 addTraficLight.Image = new Bitmap("../../Resources/traffic-light_.png");
@@ -2015,12 +2013,12 @@ namespace SystAnalys_lr1
             {
                 AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
                 AnimationBitmap.MakeTransparent();
-                AnimationGraphics.Dispose();
+
                 AnimationGraphics = Graphics.FromImage(AnimationBitmap);
                 foreach (var bus in Data.Buses)
                 {
                     bus.MoveWithGraphics(AnimationGraphics);
-                    AnimationBox.Image = AnimationBitmap; 
+                    AnimationBox.Image = AnimationBitmap;
                     if (Data.Buses.Count <= 20)
                     {
                         GC.Collect();
@@ -2044,7 +2042,8 @@ namespace SystAnalys_lr1
 
         private void LaunchBuses_Click_1(object sender, EventArgs e)
         {
-            timer.Start();
+            AnimationClear();
+            Console.WriteLine(Data.Buses.Count.ToString());
         }
 
         private void ChangeRoute_SelectedIndexChanged(object sender, EventArgs e)
@@ -2279,13 +2278,13 @@ namespace SystAnalys_lr1
 
         private void Main_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.F9)
+            if (e.KeyCode == Keys.F9)
             {
                 LoadTool();
                 Application.OpenForms["Main"].Focus();
                 e.SuppressKeyPress = true;
             }
-            if (e.Control && e.KeyCode == Keys.S)      
+            if (e.Control && e.KeyCode == Keys.S)
             {
                 e.SuppressKeyPress = true;
                 try
@@ -2479,7 +2478,22 @@ namespace SystAnalys_lr1
             AnimationBox.BackColor = Color.Transparent;
             AnimationBox.Size = sheet.Size;
             AnimationBox.MouseClick += Sheet_MouseClick_1;
-        }
 
+        }
+        public void AnimationClear()
+        {
+            if (AnimationGraphics != null)
+            {
+                AnimationGraphics.Dispose();
+            }
+
+            AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
+            AnimationGraphics = Graphics.FromImage(AnimationBitmap);
+            if (AnimationBox != null)
+            {
+                AnimationBox.Image = AnimationBitmap;
+            }
+          
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace SystAnalys_lr1.Properties {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -73,9 +73,9 @@ namespace SystAnalys_lr1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap circle1 {
+        internal static System.Drawing.Bitmap CIRCLE_WT {
             get {
-                object obj = ResourceManager.GetObject("circle1", resourceCulture);
+                object obj = ResourceManager.GetObject("CIRCLE_WT", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace SystAnalys_lr1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap incineration {
+        internal static System.Drawing.Bitmap DELETE_ALL_ICON {
             get {
-                object obj = ResourceManager.GetObject("incineration", resourceCulture);
+                object obj = ResourceManager.GetObject("DELETE_ALL_ICON", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,26 +106,6 @@ namespace SystAnalys_lr1.Properties {
         internal static System.Drawing.Bitmap line_chart {
             get {
                 object obj = ResourceManager.GetObject("line-chart", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap line_new {
-            get {
-                object obj = ResourceManager.GetObject("line_new", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap minus {
-            get {
-                object obj = ResourceManager.GetObject("minus", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,29 +143,9 @@ namespace SystAnalys_lr1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap oAexz {
-            get {
-                object obj = ResourceManager.GetObject("oAexz", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap ripbus {
             get {
                 object obj = ResourceManager.GetObject("ripbus", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap rubbish {
-            get {
-                object obj = ResourceManager.GetObject("rubbish", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,16 +176,6 @@ namespace SystAnalys_lr1.Properties {
         internal static System.Drawing.Bitmap transportation {
             get {
                 object obj = ResourceManager.GetObject("transportation", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap trash1 {
-            get {
-                object obj = ResourceManager.GetObject("trash1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
