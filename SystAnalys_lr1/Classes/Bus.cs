@@ -55,7 +55,7 @@ namespace SystAnalys_lr1.Classes
 
         public int PositionAt { get; set; }
         public bool TurnBack { get; set; }
-        
+
         public bool StopAtStationByGrid { get; set; } = false;
         [XmlIgnore, JsonIgnore]
         public Image BusPic { get; set; }
@@ -80,7 +80,7 @@ namespace SystAnalys_lr1.Classes
         public bool Tracker { get; set; }
 
         int speed;
-        int changeSpeed; 
+        int changeSpeed;
 
         public object Clone()
         {
@@ -244,6 +244,10 @@ namespace SystAnalys_lr1.Classes
                 {
                     if (PositionAt < Coordinates.Count - 1)
                     {
+                        foreach(var r in Data.Routes[Route])
+                        {
+                           
+                        }                       
                         if (CheckStops.checkStoppedBus == 0)
                         {
                             if (Data.Buses.Count != 0)
@@ -293,7 +297,7 @@ namespace SystAnalys_lr1.Classes
                         {
                             TurnBack = true;
                             TurnBackOn();
-                            
+
                         }
                     }
                 }
@@ -451,7 +455,7 @@ namespace SystAnalys_lr1.Classes
                         if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
-                        } 
+                        }
                         if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
                         {
                             return CheckEpic(Sector, Square, EpicList);

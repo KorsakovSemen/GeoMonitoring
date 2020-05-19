@@ -1914,8 +1914,6 @@ namespace SystAnalys_lr1
 
         private void MetroTrackBar1_ScrollAsync(object sender, ScrollEventArgs e)
         {
-            //try
-            //{
             if (sheet.Image != null && saveImage != null)
             {
                 ZoomHelper();
@@ -1948,20 +1946,12 @@ namespace SystAnalys_lr1
                         AnimationGraphics.DrawImage(bus.BusPic, bus.Coordinates[bus.PositionAt].X * zoomBar.Value - bus.BusPic.Width / 2, bus.Coordinates[bus.PositionAt].Y * zoomBar.Value - bus.BusPic.Height / 2);
                     }
                     AnimationBox.Image = AnimationBitmap;
-                    //AnimationBox.Update();
                 }
-                // AnimationBox.Update();
                 sheet.Image = G.GetBitmap();
-                // GridCreator.CreateGrid(sheet);
                 GridCreator.DrawGrid(sheet);
 
 
             }
-            //}
-            //catch//(OutOfMemoryException ex)
-            //{
-            //    Console.WriteLine("ex");
-            //}
         }
 
 
@@ -2014,19 +2004,14 @@ namespace SystAnalys_lr1
                 AnimationGraphics = Graphics.FromImage(AnimationBitmap);
                 foreach (var bus in Data.Buses)
                 {
-                    //try
-                    //{
                     bus.MoveWithGraphics(AnimationGraphics);
-                    AnimationBox.Image = AnimationBitmap; // поместил в трай
-                    //}
-                    //catch { }
+                    AnimationBox.Image = AnimationBitmap; 
                     if (Data.Buses.Count <= 20)
                     {
                         GC.Collect();
                     }
 
                 }
-
             }
         }
 
