@@ -363,6 +363,8 @@ namespace SystAnalys_lr1.Classes
                                 Main.Selected1 = i;
                                 Main.G.DrawSelectedVertex(Data.V[i].X, Data.V[i].Y);
                             }
+
+
                             break;
                         }
                         if (Main.Selected2 == -1)
