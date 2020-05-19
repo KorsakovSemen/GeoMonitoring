@@ -57,6 +57,7 @@
             this.zoomLabel = new MetroFramework.Controls.MetroLabel();
             this.optimization = new MetroFramework.Controls.MetroLabel();
             this.panelMatrix = new MetroFramework.Controls.MetroPanel();
+            this.matrix = new SystAnalys_lr1.Classes.MatrixControl();
             this.zoomBar = new MetroFramework.Controls.MetroTrackBar();
             this.trafficLightLabel = new MetroFramework.Controls.MetroLabel();
             this.theme = new MetroFramework.Controls.MetroLabel();
@@ -99,7 +100,6 @@
             this.language = new MetroFramework.Controls.MetroLabel();
             this.hint = new MetroFramework.Controls.MetroLabel();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.matrix = new SystAnalys_lr1.Classes.MatrixControl();
             this.panelOpt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.results)).BeginInit();
             this.panelSettings.SuspendLayout();
@@ -125,12 +125,12 @@
             this.panelOpt.Controls.Add(this.speed);
             this.panelOpt.HorizontalScrollbarBarColor = true;
             this.panelOpt.HorizontalScrollbarHighlightOnWheel = false;
-            this.panelOpt.HorizontalScrollbarSize = 10;
+            this.panelOpt.HorizontalScrollbarSize = 8;
             resources.ApplyResources(this.panelOpt, "panelOpt");
             this.panelOpt.Name = "panelOpt";
             this.panelOpt.VerticalScrollbarBarColor = true;
             this.panelOpt.VerticalScrollbarHighlightOnWheel = false;
-            this.panelOpt.VerticalScrollbarSize = 11;
+            this.panelOpt.VerticalScrollbarSize = 8;
             // 
             // pollutionOptions
             // 
@@ -291,11 +291,11 @@
             resources.ApplyResources(this.panelSettings, "panelSettings");
             this.panelSettings.HorizontalScrollbarBarColor = true;
             this.panelSettings.HorizontalScrollbarHighlightOnWheel = false;
-            this.panelSettings.HorizontalScrollbarSize = 10;
+            this.panelSettings.HorizontalScrollbarSize = 8;
             this.panelSettings.Name = "panelSettings";
             this.panelSettings.VerticalScrollbarBarColor = true;
             this.panelSettings.VerticalScrollbarHighlightOnWheel = false;
-            this.panelSettings.VerticalScrollbarSize = 11;
+            this.panelSettings.VerticalScrollbarSize = 8;
             // 
             // busOptions
             // 
@@ -317,14 +317,14 @@
             this.allBusSettings.Controls.Add(this.trackerCheck);
             this.allBusSettings.HorizontalScrollbarBarColor = true;
             this.allBusSettings.HorizontalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.HorizontalScrollbarSize = 17;
+            this.allBusSettings.HorizontalScrollbarSize = 13;
             resources.ApplyResources(this.allBusSettings, "allBusSettings");
             this.allBusSettings.Name = "allBusSettings";
             this.allBusSettings.Style = MetroFramework.MetroColorStyle.Blue;
             this.allBusSettings.UseStyleColors = true;
             this.allBusSettings.VerticalScrollbarBarColor = true;
             this.allBusSettings.VerticalScrollbarHighlightOnWheel = false;
-            this.allBusSettings.VerticalScrollbarSize = 17;
+            this.allBusSettings.VerticalScrollbarSize = 13;
             // 
             // backsideCheck
             // 
@@ -412,12 +412,18 @@
             this.panelMatrix.Controls.Add(this.matrix);
             this.panelMatrix.HorizontalScrollbarBarColor = true;
             this.panelMatrix.HorizontalScrollbarHighlightOnWheel = false;
-            this.panelMatrix.HorizontalScrollbarSize = 10;
+            this.panelMatrix.HorizontalScrollbarSize = 8;
             resources.ApplyResources(this.panelMatrix, "panelMatrix");
             this.panelMatrix.Name = "panelMatrix";
             this.panelMatrix.VerticalScrollbarBarColor = true;
             this.panelMatrix.VerticalScrollbarHighlightOnWheel = false;
-            this.panelMatrix.VerticalScrollbarSize = 11;
+            this.panelMatrix.VerticalScrollbarSize = 8;
+            // 
+            // matrix
+            // 
+            resources.ApplyResources(this.matrix, "matrix");
+            this.matrix.Name = "matrix";
+            this.matrix.UseSelectable = true;
             // 
             // zoomBar
             // 
@@ -472,12 +478,12 @@
             this.mainPanel.HorizontalScrollbar = true;
             this.mainPanel.HorizontalScrollbarBarColor = false;
             this.mainPanel.HorizontalScrollbarHighlightOnWheel = false;
-            this.mainPanel.HorizontalScrollbarSize = 13;
+            this.mainPanel.HorizontalScrollbarSize = 10;
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.VerticalScrollbar = true;
             this.mainPanel.VerticalScrollbarBarColor = false;
             this.mainPanel.VerticalScrollbarHighlightOnWheel = false;
-            this.mainPanel.VerticalScrollbarSize = 13;
+            this.mainPanel.VerticalScrollbarSize = 10;
             this.mainPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.Panel6_Scroll);
             this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel6_Paint);
             // 
@@ -756,12 +762,6 @@
             // 
             this.timer.Interval = 40;
             this.timer.Tick += new System.EventHandler(this.Timer1_Tick);
-            // 
-            // matrix
-            // 
-            resources.ApplyResources(this.matrix, "matrix");
-            this.matrix.Name = "matrix";
-            this.matrix.UseSelectable = true;
             // 
             // Main
             // 
