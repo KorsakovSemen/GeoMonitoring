@@ -333,6 +333,8 @@ namespace SystAnalys_lr1.Classes
 
                 }
             }
+            MapUpdate(sheet);
+
 
         }
 
@@ -391,6 +393,7 @@ namespace SystAnalys_lr1.Classes
                         }
                     }
                 }
+                MapUpdate(sheet);
             }
           
         }
