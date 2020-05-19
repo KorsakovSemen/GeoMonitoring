@@ -275,7 +275,7 @@ namespace SystAnalys_lr1
                        .ToUpperInvariant();
         }
 
-        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveTool(bool check = true)
         {
             try
             {
@@ -288,7 +288,10 @@ namespace SystAnalys_lr1
                             saveImage.Save(savepath + "/Map.png", System.Drawing.Imaging.ImageFormat.Png);
                         SaveRoutes(SaveF, savepath + @"\");
                         BringToFront();
-                        MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        if (check)
+                            MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        else
+                            SavedVisible();
                     }
                     else
                     {
@@ -309,7 +312,10 @@ namespace SystAnalys_lr1
                                     fileV.WriteLine(savepath.ToString());
                                 }
                                 BringToFront();
-                                MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                                if (check)
+                                    MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                                else
+                                    SavedVisible();
 
                             }
                         }
@@ -327,6 +333,11 @@ namespace SystAnalys_lr1
                     MetroMessageBox.Show(this, $"{exc.StackTrace}", MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+        }
+
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveTool();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -958,8 +969,7 @@ namespace SystAnalys_lr1
 
         }
 
-        //class loader
-        private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LoadTool()
         {
             if (savepath != null && savepath.Length > 2 && Directory.Exists(savepath))
             {
@@ -1047,6 +1057,11 @@ namespace SystAnalys_lr1
                 }
             }
             changeRoute.Text = MainStrings.network;
+        }
+
+        private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadTool();
         }
 
         private void DrawEdgeButton_Click(object sender, EventArgs e)
@@ -2237,6 +2252,7 @@ namespace SystAnalys_lr1
         private void InitializeElements()
         {
             EpicSettings.MovingEpicParamet = new List<string>();
+            KeyPreview = true;
             // timer.Interval = BusStop.StopTime / 10;
             report = new Report();
             loadingForm = new LoadingForm();
@@ -2254,6 +2270,75 @@ namespace SystAnalys_lr1
 
         }
 
+        private async void SavedVisible()
+        {
+            saved.Visible = true;
+            await Task.Delay(2500);
+            saved.Visible = false;
+        }
+
+        private void Main_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F9)
+            {
+                LoadTool();
+                Application.OpenForms["Main"].Focus();
+                e.SuppressKeyPress = true;
+            }
+            if (e.Control && e.KeyCode == Keys.S)      
+            {
+                e.SuppressKeyPress = true;
+                try
+                {
+                    if (sheet.Image != null)
+                    {
+                        string date = DateTime.Now.ToShortDateString() + ":-:" + DateTime.Now.ToLocalTime();
+                        if (savepath != null)
+                        {
+                            if (!File.Exists(savepath + "/Map.png"))
+                                saveImage.Save(savepath + "/Map.png", System.Drawing.Imaging.ImageFormat.Png);
+                            SaveRoutes(SaveF, savepath + @"\");
+                            BringToFront();
+                            SaveTool(false);
+                        }
+                        else
+                        {
+
+                            using (var dialog = new FolderBrowserDialog())
+                            {
+                                dialog.SelectedPath = System.Windows.Forms.Application.StartupPath;
+                                if (dialog.ShowDialog() == DialogResult.OK)
+                                {
+                                    string path = dialog.SelectedPath;
+                                    File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
+                                    savepath = path + @"\" + string.Format("{0}_{1}_{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute);
+                                    Directory.CreateDirectory(savepath);
+                                    saveImage.Save(savepath + "/Map.png", System.Drawing.Imaging.ImageFormat.Png);
+                                    SaveRoutes(SaveF, savepath + @"\");
+                                    using (StreamWriter fileV = new StreamWriter("../../SaveConfig/save.txt"))
+                                    {
+                                        fileV.WriteLine(savepath.ToString());
+                                    }
+                                    BringToFront();
+                                    SaveTool(false);
+                                }
+                            }
+                        }
+                        config.Text = MainStrings.config + savepath;
+                        stopPointButton.Enabled = true;
+                    }
+
+                }
+                catch (Exception exc)
+                {
+                    StackTrace stackTrace = new StackTrace(exc, true);
+                    if (stackTrace.FrameCount > 0)
+                    {
+                        MetroMessageBox.Show(this, $"{exc.StackTrace}", MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+        }
 
         private void LoadSettings()
         {

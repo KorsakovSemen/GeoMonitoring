@@ -310,13 +310,13 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 2</value>
+    <value>77, 2</value>
   </data>
   <data name="resource.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="resource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>11, 11</value>
+    <value>15, 15</value>
   </data>
   <data name="resource.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -355,13 +355,13 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location1" type="System.Drawing.Point, System.Drawing">
-    <value>58, 2</value>
+    <value>77, 2</value>
   </data>
   <data name="resource.Margin1" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="resource.Size1" type="System.Drawing.Size, System.Drawing">
-    <value>11, 11</value>
+    <value>15, 15</value>
   </data>
   <data name="resource.TabIndex1" type="System.Int32, mscorlib">
     <value>1</value>
@@ -628,13 +628,13 @@
     <value>NoControl</value>
   </data>
   <data name="resource.Location2" type="System.Drawing.Point, System.Drawing">
-    <value>76, 1</value>
+    <value>101, 1</value>
   </data>
   <data name="resource.Margin2" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
   </data>
   <data name="resource.Size2" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
+    <value>21, 21</value>
   </data>
   <data name="resource.TabIndex2" type="System.Int32, mscorlib">
     <value>1</value>
@@ -853,7 +853,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panelSettings.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="trafficLightLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -886,7 +886,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;trafficLightLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="theme.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -913,7 +913,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;theme.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="changeTheme.ItemHeight" type="System.Int32, mscorlib">
     <value>23</value>
@@ -982,7 +982,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;changeTheme.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="mainPanel.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1048,7 +1048,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;mainPanel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 27</value>
@@ -1318,7 +1318,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;toolStripMenu.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <metadata name="msmMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>36, 16</value>
@@ -1334,6 +1334,39 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1438, 754</value>
+  </data>
+  <data name="saved.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="saved.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="saved.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1305, 63</value>
+  </data>
+  <data name="saved.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 19</value>
+  </data>
+  <data name="saved.TabIndex" type="System.Int32, mscorlib">
+    <value>104</value>
+  </data>
+  <data name="saved.Text" xml:space="preserve">
+    <value>Saved</value>
+  </data>
+  <data name="saved.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;saved.Name" xml:space="preserve">
+    <value>saved</value>
+  </data>
+  <data name="&gt;&gt;saved.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;saved.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;saved.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="hint.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1360,7 +1393,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;hint.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="language.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1387,7 +1420,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;language.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="changeLanguage.AutoCompleteCustomSource" xml:space="preserve">
     <value>RU</value>
@@ -1417,7 +1450,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;changeLanguage.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="config.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1444,7 +1477,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;config.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="themes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1471,10 +1504,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;themes.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>

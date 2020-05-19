@@ -57,7 +57,6 @@
             this.zoomLabel = new MetroFramework.Controls.MetroLabel();
             this.optimization = new MetroFramework.Controls.MetroLabel();
             this.panelMatrix = new MetroFramework.Controls.MetroPanel();
-            this.matrix = new SystAnalys_lr1.Classes.MatrixControl();
             this.zoomBar = new MetroFramework.Controls.MetroTrackBar();
             this.trafficLightLabel = new MetroFramework.Controls.MetroLabel();
             this.theme = new MetroFramework.Controls.MetroLabel();
@@ -100,6 +99,8 @@
             this.language = new MetroFramework.Controls.MetroLabel();
             this.hint = new MetroFramework.Controls.MetroLabel();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.saved = new MetroFramework.Controls.MetroLabel();
+            this.matrix = new SystAnalys_lr1.Classes.MatrixControl();
             this.panelOpt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.results)).BeginInit();
             this.panelSettings.SuspendLayout();
@@ -418,12 +419,6 @@
             this.panelMatrix.VerticalScrollbarBarColor = true;
             this.panelMatrix.VerticalScrollbarHighlightOnWheel = false;
             this.panelMatrix.VerticalScrollbarSize = 8;
-            // 
-            // matrix
-            // 
-            resources.ApplyResources(this.matrix, "matrix");
-            this.matrix.Name = "matrix";
-            this.matrix.UseSelectable = true;
             // 
             // zoomBar
             // 
@@ -763,10 +758,22 @@
             this.timer.Interval = 40;
             this.timer.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
+            // saved
+            // 
+            resources.ApplyResources(this.saved, "saved");
+            this.saved.Name = "saved";
+            // 
+            // matrix
+            // 
+            resources.ApplyResources(this.matrix, "matrix");
+            this.matrix.Name = "matrix";
+            this.matrix.UseSelectable = true;
+            // 
             // Main
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.saved);
             this.Controls.Add(this.hint);
             this.Controls.Add(this.language);
             this.Controls.Add(this.changeLanguage);
@@ -785,6 +792,7 @@
             this.Style = MetroFramework.MetroColorStyle.Default;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             this.panelOpt.ResumeLayout(false);
             this.panelOpt.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.results)).EndInit();
@@ -876,6 +884,7 @@
         private MetroFramework.Controls.MetroCheckBox trackerCheck;
         private MetroFramework.Controls.MetroTextBox busSize;
         public MetroFramework.Controls.MetroComboBox changeRoute;
+        private MetroFramework.Controls.MetroLabel saved;
     }
 }
 
