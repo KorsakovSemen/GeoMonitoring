@@ -58,8 +58,8 @@ namespace SystAnalys_lr1
         public static int FirstCrossRoads { get; set; } = 0;
         public static int SecondCrossRoads { get; set; } = 0;
         public static int FirstCrossRoadsGreenLight { get; set; } = 0;
-        public static int FirstCrossRoadsRedLight { get; set; } = 0;      
-        
+        public static int FirstCrossRoadsRedLight { get; set; } = 0;
+
 
         string savepath;
         public static Classes.Grid Grid { get; set; }
@@ -862,7 +862,7 @@ namespace SystAnalys_lr1
                     Data.BusesPark = busesparkreturn;
 
                     msmMain.Style = style;
-                    
+
                     if (!Ep.IsDisposed)
                     {
                         StyleManager.Clone(Ep);
@@ -1300,7 +1300,6 @@ namespace SystAnalys_lr1
         {
             if (changeRoute.Text == MainStrings.network)
             {
-                
                 if (selectRoute.Enabled == false)
                 {
                     if (e.Button == MouseButtons.Right)
@@ -1339,7 +1338,7 @@ namespace SystAnalys_lr1
                         return;
                     }
                     c.DrawEdge(e, Data.V, Data.E, sheet);
-                                      
+
                 }
                 if (deleteButton.Enabled == false)
                 {
@@ -1387,6 +1386,7 @@ namespace SystAnalys_lr1
                         return;
                     }
                     c.SelectRouteInRoute(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, selected);
+
                 }
                 //нажата кнопка addBus
                 if (addBus.Enabled == false)
@@ -2237,7 +2237,7 @@ namespace SystAnalys_lr1
         private void InitializeElements()
         {
             EpicSettings.MovingEpicParamet = new List<string>();
-           // timer.Interval = BusStop.StopTime / 10;
+            // timer.Interval = BusStop.StopTime / 10;
             report = new Report();
             loadingForm = new LoadingForm();
             ReportCount = 0;
@@ -2254,7 +2254,7 @@ namespace SystAnalys_lr1
 
         }
 
-    
+
         private void LoadSettings()
         {
             if (File.Exists("../../SaveConfig/save.txt"))
