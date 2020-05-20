@@ -181,10 +181,10 @@ namespace SystAnalys_lr1.Classes
                     {
                         if (MovingTimer >= ((EpicSettings.EpicFreqMovingParam / 20)))
                         {
-                            //lock (epList)
-                            //{
+                            lock (epList)
+                            {
                                 MoveEpics(epList);
-                            //}
+                            }
                             MovingTimer = 0;
                         }
                     }
@@ -192,10 +192,10 @@ namespace SystAnalys_lr1.Classes
                     {
                         if (ExpandTimer >= ((EpicSettings.EpicFreqSpreadingParam / 20)))
                         {
-                            //lock (epList)
-                            //{
+                            lock (epList)
+                            {
                                 ExpandEpics(epList);
-                            //}
+                            }
                             ExpandTimer = 0;
                         }
                     }
@@ -209,7 +209,7 @@ namespace SystAnalys_lr1.Classes
                             bus.Skips.skipTrafficLights -= 1;
                         if (bus.Tracker == true)
                         {
-                            while (bus.TickCount_ < (T / PhaseSizeSelect() / MaxEpicItnerValue))
+                            while (bus.TickCount_ < (T / PhaseSizeSelect() / (T / PhaseSizeSelect() / MaxEpicItnerCycleValue)))
                             {
                                 bus.MoveWithoutGraphicsByGrids();
 
