@@ -12,6 +12,7 @@ namespace SystAnalys_lr1.Classes
         public int x { get; set; }
         public int y { get; set; }
 
+
         public int Status { get; set; }
 
         public bool Check { get; set; } = false;

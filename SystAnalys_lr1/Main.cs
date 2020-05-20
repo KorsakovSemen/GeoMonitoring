@@ -853,6 +853,9 @@ namespace SystAnalys_lr1
 
                     loadingForm.Show();
                     loadingForm.Refresh();
+
+                    Application.OpenForms["LoadingForm"].Focus();
+
                     await Task.Run(() =>
                     {
                         Optimization.Opt(matrix, loadingForm);
