@@ -22,7 +22,10 @@ namespace SystAnalys_lr1
         private static int Ezoom { get; set; } = 1;
         public static Image ZoomPicture { get; set; }
         public static Image EsheetPicture { get; set; }
-        private List<Epicenter> CopiedEpics { get; set; }
+        private static int ETimerTimeCounts { get; set; }
+        private static int ETimerMovingTimeCounts { get; set; }
+        private static int ETimerExpandingTimeCounts { get; set; }
+        private static List<Epicenter> CopiedEpics { get; set; }
         public DrawGraph EG;
         private readonly Main MainForm;
         public DisplayEpicenters(Main Main)
@@ -70,7 +73,7 @@ namespace SystAnalys_lr1
 
             EDrawMainEpics();
             Esheet.MouseClick += Esheet_MouseClick;
-            CopiedEpics=Epicenter.CopyEpicenter(CopiedEpics);
+           
         }
 
         private void Esheet_MouseClick(object sender, MouseEventArgs e)
@@ -86,6 +89,7 @@ namespace SystAnalys_lr1
                     EG.ClearSheet2();
 
                     EDrawPollutions();
+                    ETimerTimeCounts = 0;
                     break;
                 }
 
@@ -277,17 +281,23 @@ namespace SystAnalys_lr1
             FormOpen = false;
             EpicSettings.SavePictures = false;
             EpicSettings.ExtendedSavePictures = false;
+            Esheet.Image = Main.ResizeBitmap(new Bitmap(EsheetPicture), Wsheet , Hsheet );
+            Ezoom = 1;
         }
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            if (SimulatingTimer.Enabled)
+            if(CopiedEpics !=null)
             {
-                SimulatingTimer.Enabled = false;
+                if (SimulatingTimer.Enabled)
+                {
+                    SimulatingTimer.Enabled = false;
+                }
+                else
+                {
+                    SimulatingTimer.Enabled = true;
+                }
             }
-            else
-            {
-                SimulatingTimer.Enabled = true;
-            }
+           
         }
 
         private void ModelingTimer_Tick(object sender, EventArgs e)
@@ -299,20 +309,53 @@ namespace SystAnalys_lr1
                 {
                     if (EpicSettings.TurnMovingSet == true && EpicSettings.MovingEpicParamet.Any())
                     {
-                        CopiedEpics.First().EpicMoving(EpicSettings.MovingEpicParamet);
+                        if (ETimerMovingTimeCounts >= EpicSettings.EpicFreqMovingParam)
+                        {
+                            CopiedEpics.First().EpicMoving(EpicSettings.MovingEpicParamet);
+                            ETimerMovingTimeCounts = 0;
+                        }
+                        else 
+                        {
+                            ETimerMovingTimeCounts += 100;
+                        }
+
+           
                     }
                     if (EpicSettings.TurnExpandingSet == true)
                     {
-                        CopiedEpics.First().ExpandEpic();
+                        if (ETimerExpandingTimeCounts >= EpicSettings.EpicFreqSpreadingParam)
+                        {
+                            CopiedEpics.First().ExpandEpic();
+                            ETimerExpandingTimeCounts = 0;
+                        }
+                        else
+                        {
+                            ETimerExpandingTimeCounts += 100;
+                        }
                     }
                     EDrawEpics(CopiedEpics);
                 }
                 GC.Collect();
+                ETimerTimeCounts += 100;
+                metroLabel4.Text = "Времени прошло : " + (ETimerTimeCounts / 60).ToString() + " минут";
             }
             else 
             {
                 SimulatingTimer.Enabled = false;
             }
         }
+
+        private void ShowOriginalButton_Click(object sender, EventArgs e)
+        {
+            EDrawMainEpics();
+        }
+
+        private void metroButton4_Click(object sender, EventArgs e)
+        {
+            SimulatingTimer.Enabled = false;
+            EDrawEpics(CopiedEpics);
+        }
+
+  
     }
 }

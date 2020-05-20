@@ -1237,7 +1237,7 @@ namespace SystAnalys_lr1
             openEpicFormToolStripMenuItem.Enabled = true;
             GridCreator.CreateGrid(sheet);
             Modeling.CreatePollutionInRoutes();
-            Epicenter.CreateOneRandomEpicenter(EpicSizeParam, null);
+           // Epicenter.CreateOneRandomEpicenter(EpicSizeParam, null);
             ConstructorOnNetwork();
             AddInComboBox();
             G.ClearSheet();

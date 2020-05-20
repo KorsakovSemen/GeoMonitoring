@@ -121,12 +121,189 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="metroLabel4.AutoSize" type="System.Boolean, mscorlib">
+  <data name="metroLabel7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="metroLabel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>208, 27</value>
+  </data>
+  <data name="metroLabel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 19</value>
+  </data>
+  <data name="metroLabel7.TabIndex" type="System.Int32, mscorlib">
+    <value>111</value>
+  </data>
+  <data name="metroLabel7.Text" xml:space="preserve">
+    <value>После</value>
+  </data>
+  <data name="&gt;&gt;metroLabel7.Name" xml:space="preserve">
+    <value>metroLabel7</value>
+  </data>
+  <data name="&gt;&gt;metroLabel7.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel7.Parent" xml:space="preserve">
+    <value>metroPanel3</value>
+  </data>
+  <data name="&gt;&gt;metroLabel7.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="metroLabel8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 3</value>
+  </data>
+  <data name="metroLabel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 19</value>
+  </data>
+  <data name="metroLabel8.TabIndex" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="metroLabel8.Text" xml:space="preserve">
+    <value>Показать</value>
+  </data>
+  <data name="&gt;&gt;metroLabel8.Name" xml:space="preserve">
+    <value>metroLabel8</value>
+  </data>
+  <data name="&gt;&gt;metroLabel8.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel8.Parent" xml:space="preserve">
+    <value>metroPanel3</value>
+  </data>
+  <data name="&gt;&gt;metroLabel8.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="metroLabel6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 27</value>
+  </data>
+  <data name="metroLabel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 19</value>
+  </data>
+  <data name="metroLabel6.TabIndex" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="metroLabel6.Text" xml:space="preserve">
+    <value> До изменений</value>
+  </data>
+  <data name="&gt;&gt;metroLabel6.Name" xml:space="preserve">
+    <value>metroLabel6</value>
+  </data>
+  <data name="&gt;&gt;metroLabel6.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel6.Parent" xml:space="preserve">
+    <value>metroPanel3</value>
+  </data>
+  <data name="&gt;&gt;metroLabel6.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="ShowOriginalButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 49</value>
+  </data>
+  <data name="ShowOriginalButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 26</value>
+  </data>
+  <data name="ShowOriginalButton.TabIndex" type="System.Int32, mscorlib">
+    <value>106</value>
+  </data>
+  <data name="ShowOriginalButton.Text" xml:space="preserve">
+    <value>Оригинал</value>
+  </data>
+  <data name="&gt;&gt;ShowOriginalButton.Name" xml:space="preserve">
+    <value>ShowOriginalButton</value>
+  </data>
+  <data name="&gt;&gt;ShowOriginalButton.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;ShowOriginalButton.Parent" xml:space="preserve">
+    <value>metroPanel3</value>
+  </data>
+  <data name="&gt;&gt;ShowOriginalButton.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="metroButton4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 49</value>
+  </data>
+  <data name="metroButton4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 26</value>
+  </data>
+  <data name="metroButton4.TabIndex" type="System.Int32, mscorlib">
+    <value>107</value>
+  </data>
+  <data name="metroButton4.Text" xml:space="preserve">
+    <value>И</value>
+  </data>
+  <data name="&gt;&gt;metroButton4.Name" xml:space="preserve">
+    <value>metroButton4</value>
+  </data>
+  <data name="&gt;&gt;metroButton4.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroButton4.Parent" xml:space="preserve">
+    <value>metroPanel3</value>
+  </data>
+  <data name="&gt;&gt;metroButton4.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="metroPanel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>304, 0</value>
+  </data>
+  <data name="metroPanel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>286, 82</value>
+  </data>
+  <data name="metroPanel3.TabIndex" type="System.Int32, mscorlib">
+    <value>112</value>
+  </data>
+  <data name="&gt;&gt;metroPanel3.Name" xml:space="preserve">
+    <value>metroPanel3</value>
+  </data>
+  <data name="&gt;&gt;metroPanel3.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroPanel3.Parent" xml:space="preserve">
+    <value>metroPanel2</value>
+  </data>
+  <data name="&gt;&gt;metroPanel3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="metroLabel5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="metroLabel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 20</value>
+  </data>
+  <data name="metroLabel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 19</value>
+  </data>
+  <data name="metroLabel5.TabIndex" type="System.Int32, mscorlib">
+    <value>109</value>
+  </data>
+  <data name="metroLabel5.Text" xml:space="preserve">
+    <value>Запусить/Остановить</value>
+  </data>
+  <data name="&gt;&gt;metroLabel5.Name" xml:space="preserve">
+    <value>metroLabel5</value>
+  </data>
+  <data name="&gt;&gt;metroLabel5.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroLabel5.Parent" xml:space="preserve">
+    <value>metroPanel2</value>
+  </data>
+  <data name="&gt;&gt;metroLabel5.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="metroLabel4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="metroLabel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 32</value>
+    <value>3, 57</value>
   </data>
   <data name="metroLabel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 19</value>
@@ -147,55 +324,7 @@
     <value>metroPanel2</value>
   </data>
   <data name="&gt;&gt;metroLabel4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="metroButton4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>335, 26</value>
-  </data>
-  <data name="metroButton4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 37</value>
-  </data>
-  <data name="metroButton4.TabIndex" type="System.Int32, mscorlib">
-    <value>107</value>
-  </data>
-  <data name="metroButton4.Text" xml:space="preserve">
-    <value>metroButton4</value>
-  </data>
-  <data name="&gt;&gt;metroButton4.Name" xml:space="preserve">
-    <value>metroButton4</value>
-  </data>
-  <data name="&gt;&gt;metroButton4.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroButton4.Parent" xml:space="preserve">
-    <value>metroPanel2</value>
-  </data>
-  <data name="&gt;&gt;metroButton4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="metroButton3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>251, 26</value>
-  </data>
-  <data name="metroButton3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 37</value>
-  </data>
-  <data name="metroButton3.TabIndex" type="System.Int32, mscorlib">
-    <value>106</value>
-  </data>
-  <data name="metroButton3.Text" xml:space="preserve">
-    <value>metroButton3</value>
-  </data>
-  <data name="&gt;&gt;metroButton3.Name" xml:space="preserve">
-    <value>metroButton3</value>
-  </data>
-  <data name="&gt;&gt;metroButton3.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;metroButton3.Parent" xml:space="preserve">
-    <value>metroPanel2</value>
-  </data>
-  <data name="&gt;&gt;metroButton3.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="metroLabel3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -222,10 +351,10 @@
     <value>metroPanel2</value>
   </data>
   <data name="&gt;&gt;metroLabel3.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="metroButton2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>164, 26</value>
+    <value>198, 39</value>
   </data>
   <data name="metroButton2.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 37</value>
@@ -249,10 +378,10 @@
     <value>6</value>
   </data>
   <data name="metroPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>683, 3</value>
+    <value>512, 3</value>
   </data>
   <data name="metroPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>419, 82</value>
+    <value>590, 82</value>
   </data>
   <data name="metroPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>106</value>
@@ -267,7 +396,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;metroPanel2.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="EZoomBar.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 36</value>
@@ -301,7 +430,7 @@
     <value>True</value>
   </data>
   <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>501, 3</value>
+    <value>227, 6</value>
   </data>
   <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 19</value>
@@ -325,7 +454,7 @@
     <value>4</value>
   </data>
   <data name="button11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>511, 29</value>
+    <value>237, 32</value>
   </data>
   <data name="button11.Size" type="System.Drawing.Size, System.Drawing">
     <value>139, 37</value>
