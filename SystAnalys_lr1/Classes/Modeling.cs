@@ -120,23 +120,29 @@ namespace SystAnalys_lr1.Classes
             if (EpicSettings.TurnExpandingSet == false && EpicSettings.TurnMovingSet == false)
             {
                 MaxEpicItnerValue = 1;
-                MaxEpicItnerCycleValue = T / PhaseSizeSelect();
+                MaxEpicItnerCycleValue = T / PhaseSizeSelect() / MaxEpicItnerValue;
             }
             else 
             {
                 if (EpicSettings.EpicFreqMovingParam < EpicSettings.EpicFreqSpreadingParam)
                 {
                     MaxEpicItnerValue = EpicSettings.EpicFreqMovingParam / 20;
-                    MaxEpicItnerCycleValue = EpicSettings.EpicFreqMovingParam / 20;
+                    MaxEpicItnerCycleValue = T / PhaseSizeSelect() / MaxEpicItnerValue;
+                    if(MaxEpicItnerCycleValue==0)
+                    {
+                        MaxEpicItnerCycleValue = 1;
+                    }
                 }
                 else
                 {
                     MaxEpicItnerValue = EpicSettings.EpicFreqSpreadingParam / 20;
-                    MaxEpicItnerCycleValue = EpicSettings.EpicFreqSpreadingParam / 20;
+                    MaxEpicItnerCycleValue = T / PhaseSizeSelect() / MaxEpicItnerValue;
+                    if (MaxEpicItnerCycleValue == 0)
+                    {
+                        MaxEpicItnerCycleValue = 1;
+                    }
                 }
             }          
-            //
-
             //taskEp.Wait();
             bool EpicFounded = false;
             //Parallel.For(0, PhaseSizeSelect(), j =>
@@ -165,11 +171,14 @@ namespace SystAnalys_lr1.Classes
                     }
                 }
           
-                for (int k = 0; k < (T / PhaseSizeSelect() / MaxEpicItnerCycleValue); k++)
+                for (int k = 0; k < MaxEpicItnerCycleValue; k++)
                 {
+                    if (T / PhaseSizeSelect() / MaxEpicItnerValue != 0)
+                    { 
 
                     if (EpicSettings.TurnExpandingSet == true)
                     {
+                        
                         ExpandTimer += MaxEpicItnerValue;
                     }
 
@@ -199,6 +208,7 @@ namespace SystAnalys_lr1.Classes
                             ExpandTimer = 0;
                         }
                     }
+                    }
                     //foreach(var bus in cqBus)
                     Parallel.ForEach(cqBus, new ParallelOptions { MaxDegreeOfParallelism = 5 }, (bus) =>
                     {
@@ -209,7 +219,7 @@ namespace SystAnalys_lr1.Classes
                             bus.Skips.skipTrafficLights -= 1;
                         if (bus.Tracker == true)
                         {
-                            while (bus.TickCount_ < (T / PhaseSizeSelect() / (T / PhaseSizeSelect() / MaxEpicItnerCycleValue)))
+                            while (bus.TickCount_ < (T / PhaseSizeSelect() / (MaxEpicItnerCycleValue)))
                             {
                                 bus.MoveWithoutGraphicsByGrids();
 

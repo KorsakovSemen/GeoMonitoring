@@ -448,7 +448,7 @@ namespace SystAnalys_lr1.Classes
         {
             foreach (var EpicList in Epicenters)
             {
-               foreach (var Sector in EpicList.EpicenterGrid)
+                foreach (var Sector in EpicList.EpicenterGrid)
                 {
                     foreach (var Square in Sector.Value)
                     {
@@ -507,23 +507,26 @@ namespace SystAnalys_lr1.Classes
         }
         private int CheckEpic(KeyValuePair<int, List<GridPart>> Sector, GridPart Square, Epicenter EpicList)
         {
-            switch (Sector.Key)
+            lock (Epicenters)
             {
-                case 1:
-                    if (Square.Check == false)
-                    {
-                        Square.Check = true;
-                        EpicList.DetectCount++;
-                    }
-                    return 3;
-                case 2:
-                    return 2;
-                case 3:
-                    return 1;
+                switch (Sector.Key)
+                {
+                    case 1:
+                        if (Square.Check == false)
+                        {
+                            Square.Check = true;
+                            EpicList.DetectCount++;
+                        }
+                        return 3;
+                    case 2:
+                        return 2;
+                    case 3:
+                        return 1;
 
-                default:
-                    return 0;
+                    default:
+                        return 0;
 
+                }
             }
         }
 
