@@ -200,7 +200,7 @@ namespace SystAnalys_lr1.Classes
                         }
                     }
                     //foreach(var bus in cqBus)
-                    Parallel.ForEach(cqBus, (bus) =>
+                    Parallel.ForEach(cqBus, new ParallelOptions { MaxDegreeOfParallelism = 5 }, (bus) =>
                     {
                         bus.Epicenters = epList;
 
@@ -254,9 +254,9 @@ namespace SystAnalys_lr1.Classes
                                     bus.StopAtStationByGrid = false;
                                 }
 
-                                PollutionInRoutes[bus.GetRoute()][Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt]].Status = bus.DetectEpicenterByGrid(); // ошибка
-
-                                Parallel.ForEach(bus.Epicenters, (Epic, state) =>
+                                PollutionInRoutes[bus.GetRoute()][Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt]].Status = bus.DetectEpicenterByGrid();
+                                //foreach(var Epic in bus.Epicenters)//
+                                Parallel.ForEach(bus.Epicenters, new ParallelOptions { MaxDegreeOfParallelism = 2 }, (Epic, state) =>
                                     {
                                         if (Epic.DetectCount >= Epic.EpicenterGrid[1].Count / 2)
                                         {
@@ -272,7 +272,7 @@ namespace SystAnalys_lr1.Classes
                                                     }
                                                 }
                                             }
-                                            state.Break();// break;
+                                            state.Break();// break; 
                                         }
                                     });
                                 bus.TickCount_++;

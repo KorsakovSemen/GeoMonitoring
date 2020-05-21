@@ -155,18 +155,16 @@ namespace SystAnalys_lr1.Classes
         {
             if (changeSpeed != 0)
                 changeSpeed -= 1;
+
+            if (SlowDown > 3)
+            {
+                changeSpeed = rnd.Next(BusStop.StopTime / 10, 70);
+                speed = 1;
+            }
             if (changeSpeed == 0)
             {
-                if (SlowDown > 3)
-                {
-                    speed = 1;
-                }
-                else
-                {
-                    changeSpeed = rnd.Next(BusStop.StopTime / 10, 70);
-                    speed = rnd.Next(1, 3);
-                }
-
+                changeSpeed = rnd.Next(BusStop.StopTime / 10, 70);
+                speed = rnd.Next(1, 3);
             }
             if (Skips.skipTrafficLights != 0)
                 Skips.skipTrafficLights -= 1;
@@ -226,13 +224,13 @@ namespace SystAnalys_lr1.Classes
                 {
                     if (sp.Bal == 0)
                     {
-                        Skips.skipTrafficLights = (sp.Bal + 2) * (BusStop.StopTime / 10 + 10) + 100;
+                        Skips.skipTrafficLights = (sp.Bal + 2) * (BusStop.StopTime / 10 + 10) + (BusStop.StopTime / 10 * 4);
                         CheckStops.checkStop = 80;
                     }
                     else
                     {
-                        Skips.skipTrafficLights = (sp.Bal + 2) * (BusStop.StopTime / 10 + 10) + 100;
-                        CheckStops.checkStop = ((sp.Bal + 2) * (BusStop.StopTime / 10 + 10));
+                        Skips.skipTrafficLights = (sp.Bal + 2) * (BusStop.StopTime / 10 + 10) + (BusStop.StopTime / 10 * 4);
+                        CheckStops.checkStop = (sp.Bal + 2) * (BusStop.StopTime / 10 + 10);
                     }
                     CheckStops.checkStoppedBus = BusStop.StopTime / 2;
                     break;
@@ -267,41 +265,16 @@ namespace SystAnalys_lr1.Classes
                                 {
                                     if (bus.TurnBack == TurnBack && bus.PositionAt > PositionAt)
                                     {
-                                        if (SlowDown != 0)
-                                            SlowDown += 1;
+                                        SlowDown += 1;
+                                        break;
                                     }
                                     else
                                     {
-                                        SlowDown -= 1;
-                                        break;
+                                        if (SlowDown != 0)
+                                            SlowDown -= 1;
                                     }
                                 }
-                               
-                            }
-                        }
-                        if (Data.Buses.Count != 0)
-                        {
-                            foreach (var bus in buses)
-                            {
-                                if (Math.Pow((bus.Coordinates[bus.PositionAt].X * (int)ZoomCoef - (Coordinates[PositionAt].X * (int)ZoomCoef)), 2) + Math.Pow((bus.Coordinates[bus.PositionAt].Y * (int)ZoomCoef - (Coordinates[PositionAt].Y * (int)ZoomCoef)), 2) <= bus.R * bus.R && bus.CheckStops.checkStop != 0 && bus.TurnBack == TurnBack && !bus.stopOnBusStop)
-                                {
-                                    CheckBus(bus);
-                                    break;
-                                }
-                            }
-                        }
-                        if (CheckStops.checkStoppedBus == 0)
-                        {
-                            if (Data.Buses.Count != 0)
-                            {
-                                foreach (var bus in buses)
-                                {
-                                    if (Math.Pow((bus.Coordinates[bus.PositionAt].X * (int)ZoomCoef - (Coordinates[PositionAt].X * (int)ZoomCoef)), 2) + Math.Pow((bus.Coordinates[bus.PositionAt].Y * (int)ZoomCoef - (Coordinates[PositionAt].Y * (int)ZoomCoef)), 2) <= bus.R * bus.R && bus.CheckStops.checkStop != 0 && bus.TurnBack == TurnBack && !bus.stopOnBusStop)
-                                    {
-                                        CheckBus(bus);
-                                        break;
-                                    }
-                                }
+
                             }
                         }
                         if (Data.StopPoints.Count != 0 && Data.StopPoints.ContainsKey(Route))
@@ -364,13 +337,13 @@ namespace SystAnalys_lr1.Classes
                                         {
                                             if (bus.TurnBack == TurnBack && bus.PositionAt < PositionAt)
                                             {
-                                                if (SlowDown != 0)
-                                                    SlowDown += 1;
+                                                SlowDown += 1;
+                                                break;
                                             }
                                             else
                                             {
-                                                SlowDown -= 1;
-                                                break;
+                                                if (SlowDown != 0)
+                                                    SlowDown -= 1;
                                             }
                                         }
 
@@ -473,45 +446,55 @@ namespace SystAnalys_lr1.Classes
         }
         public int DetectEpicenterByGrid()
         {
-
             foreach (var EpicList in Epicenters)
             {
-                foreach (var Sector in EpicList.EpicenterGrid)
+               foreach (var Sector in EpicList.EpicenterGrid)
                 {
                     foreach (var Square in Sector.Value)
                     {
-                        //if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y + GridPart.Height == Square.y)))
+
+                        //if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y + GridPart.Height == Square.y)))
                         //{
                         //    CheckEpic(Sector, Square, EpicList);
                         //}
+
                         //if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.Height == Square.y)))
                         //{
                         //    CheckEpic(Sector, Square, EpicList);
                         //}
-                        //if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.Height == Square.y)))
+
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y - GridPart.Height == Square.y)))
+                        {
+                            CheckEpic(Sector, Square, EpicList);
+                        }
+
+                        //был (вроде норм влияет)
+                        //if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y - GridPart.Height == Square.y)))
                         //{
                         //    CheckEpic(Sector, Square, EpicList);
                         //}
+                        //был (плюс минус влияет)
+                        //if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
+                        //{
+                        //    CheckEpic(Sector, Square, EpicList);
+                        //}
+                        //был (плюс минус влияет)
+                        //if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
+                        //{
+                        //    CheckEpic(Sector, Square, EpicList);
+                        //}
+
+
                         if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y + GridPart.Height == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
-                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y - GridPart.Height == Square.y)))
-                        {
-                            CheckEpic(Sector, Square, EpicList);
-                        }
+
                         if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y + GridPart.Height == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
-                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
-                        {
-                            CheckEpic(Sector, Square, EpicList);
-                        }
-                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
-                        {
-                            CheckEpic(Sector, Square, EpicList);
-                        }
+
                         if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
                         {
                             return CheckEpic(Sector, Square, EpicList);
