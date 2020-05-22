@@ -953,7 +953,7 @@ namespace SystAnalys_lr1
                             ToolStripMenuButtonOn();
 
                             LoadRoutes(dialog.SelectedPath + @"\");
-                            MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                            LoadingVisible();
                             savepath = dialog.SelectedPath;
 
                             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);

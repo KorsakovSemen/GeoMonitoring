@@ -22,12 +22,12 @@ namespace SystAnalys_lr1.Classes
             {
                 Width = 1
             };
-            darkGoldPen = new Pen(Color.Blue)//MediumAquamarine)
+            darkGoldPen = new Pen(Color.IndianRed)//MediumAquamarine)
             {
                 Width = 1
             };
             _ = new Random();
-            color = Color.ForestGreen;
+            color = Color.MediumSpringGreen;
         }
 
         public void SetBitmap()
