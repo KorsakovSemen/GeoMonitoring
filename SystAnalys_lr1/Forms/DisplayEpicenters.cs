@@ -337,7 +337,18 @@ namespace SystAnalys_lr1
                 }
                 GC.Collect();
                 ETimerTimeCounts += 100;
-                metroLabel4.Text = "Времени прошло : " + (ETimerTimeCounts / 60).ToString() + " минут";
+                switch (System.Globalization.CultureInfo.CurrentCulture.ToString())
+                {
+                    case "en-US":
+                        TimePastLabel.Text = "Time has passed : " + (ETimerTimeCounts / 60).ToString() + " minutes";
+                        break;
+                    case "ru-RU":
+                        TimePastLabel.Text = "Времени прошло : " + (ETimerTimeCounts / 60).ToString() + " минут";
+                        break;
+                    default:
+                        break;
+                }
+             
             }
             else 
             {
@@ -356,6 +367,6 @@ namespace SystAnalys_lr1
             EDrawEpics(CopiedEpics);
         }
 
-  
+
     }
 }

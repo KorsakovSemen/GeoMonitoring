@@ -19,7 +19,7 @@ namespace SystAnalys_lr1.Strings {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class MainStrings {
@@ -66,6 +66,15 @@ namespace SystAnalys_lr1.Strings {
         internal static string acrossThePath {
             get {
                 return ResourceManager.GetString("acrossThePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на После.
+        /// </summary>
+        internal static string AfterButton {
+            get {
+                return ResourceManager.GetString("AfterButton", resourceCulture);
             }
         }
         
@@ -376,6 +385,15 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Параметры загрязнения.
+        /// </summary>
+        internal static string ParametresLabel {
+            get {
+                return ResourceManager.GetString("ParametresLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Процент неудач:.
         /// </summary>
         internal static string procentFailed {
@@ -448,11 +466,65 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Настроить.
+        /// </summary>
+        internal static string SettingsButton {
+            get {
+                return ResourceManager.GetString("SettingsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на До изменений .
+        /// </summary>
+        internal static string ShowOriginalButton {
+            get {
+                return ResourceManager.GetString("ShowOriginalButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Показать результат.
+        /// </summary>
+        internal static string ShowResultLabel {
+            get {
+                return ResourceManager.GetString("ShowResultLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Симуляция.
+        /// </summary>
+        internal static string SimulationLaabel {
+            get {
+                return ResourceManager.GetString("SimulationLaabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Запустить/Остановить.
+        /// </summary>
+        internal static string StartStopLabel {
+            get {
+                return ResourceManager.GetString("StartStopLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Автобусы.
         /// </summary>
         internal static string theBuses {
             get {
                 return ResourceManager.GetString("theBuses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Времени прошло : .
+        /// </summary>
+        internal static string TimePastLabel {
+            get {
+                return ResourceManager.GetString("TimePastLabel", resourceCulture);
             }
         }
         

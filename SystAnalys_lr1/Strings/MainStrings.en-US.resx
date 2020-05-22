@@ -255,4 +255,28 @@
   <data name="saving" xml:space="preserve">
     <value>Saving...</value>
   </data>
+  <data name="AfterButton" xml:space="preserve">
+    <value>After</value>
+  </data>
+  <data name="ParametresLabel" xml:space="preserve">
+    <value>Pollution parameters</value>
+  </data>
+  <data name="SettingsButton" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="ShowOriginalButton" xml:space="preserve">
+    <value>Before changes</value>
+  </data>
+  <data name="ShowResultLabel" xml:space="preserve">
+    <value>Show result</value>
+  </data>
+  <data name="SimulationLaabel" xml:space="preserve">
+    <value>Simulation</value>
+  </data>
+  <data name="StartStopLabel" xml:space="preserve">
+    <value>Start/Stop</value>
+  </data>
+  <data name="TimePastLabel" xml:space="preserve">
+    <value>Time has passed :</value>
+  </data>
 </root>

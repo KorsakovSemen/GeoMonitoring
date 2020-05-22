@@ -255,4 +255,28 @@
   <data name="saving" xml:space="preserve">
     <value>Сохранение...</value>
   </data>
+  <data name="AfterButton" xml:space="preserve">
+    <value>После</value>
+  </data>
+  <data name="ParametresLabel" xml:space="preserve">
+    <value>Параметры загрязнения</value>
+  </data>
+  <data name="SettingsButton" xml:space="preserve">
+    <value>Настроить</value>
+  </data>
+  <data name="ShowOriginalButton" xml:space="preserve">
+    <value>До изменений </value>
+  </data>
+  <data name="ShowResultLabel" xml:space="preserve">
+    <value>Показать результат</value>
+  </data>
+  <data name="SimulationLaabel" xml:space="preserve">
+    <value>Симуляция</value>
+  </data>
+  <data name="StartStopLabel" xml:space="preserve">
+    <value>Запустить/Остановить</value>
+  </data>
+  <data name="TimePastLabel" xml:space="preserve">
+    <value>Времени прошло : </value>
+  </data>
 </root>

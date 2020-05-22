@@ -118,14 +118,54 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 176</value>
+  <data name="ShowResultLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>38, 1</value>
   </data>
-  <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ShowResultLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 19</value>
+  </data>
+  <data name="ShowResultLabel.Text" xml:space="preserve">
+    <value>Show Result</value>
+  </data>
+  <data name="ShowOriginalButton.Text" xml:space="preserve">
+    <value>Before
+changes</value>
+  </data>
+  <data name="AfterButton.Text" xml:space="preserve">
+    <value>After</value>
+  </data>
+  <data name="StartStopLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>221, 17</value>
+  </data>
+  <data name="StartStopLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 19</value>
+  </data>
+  <data name="StartStopLabel.Text" xml:space="preserve">
+    <value>Start / stop</value>
+  </data>
+  <data name="TimePastLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-1, 57</value>
+  </data>
+  <data name="TimePastLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 19</value>
+  </data>
+  <data name="TimePastLabel.Text" xml:space="preserve">
+    <value>Time has passed:</value>
+  </data>
+  <data name="SimulationLaabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 19</value>
+  </data>
+  <data name="SimulationLaabel.Text" xml:space="preserve">
+    <value>Simulation</value>
+  </data>
+  <data name="ParametresLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 19</value>
   </data>
-  <data name="metroLabel2.Text" xml:space="preserve">
+  <data name="ParametresLabel.Text" xml:space="preserve">
     <value>Pollution parameters</value>
+  </data>
+  <data name="SettingsButton.Text" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>83, 99</value>
@@ -138,9 +178,6 @@
   </data>
   <data name="metroButton1.Text" xml:space="preserve">
     <value>Remodel</value>
-  </data>
-  <data name="button11.Text" xml:space="preserve">
-    <value>Set up epicenters</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>57, 35</value>
