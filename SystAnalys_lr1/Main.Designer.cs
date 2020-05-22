@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelOpt = new MetroFramework.Controls.MetroPanel();
             this.pollutionOptions = new MetroFramework.Controls.MetroButton();
             this.results = new MetroFramework.Controls.MetroGrid();
@@ -52,12 +52,10 @@
             this.launchBuses = new MetroFramework.Controls.MetroButton();
             this.trackerCheck = new MetroFramework.Controls.MetroCheckBox();
             this.changeRoute = new MetroFramework.Controls.MetroComboBox();
-            this.busSize = new MetroFramework.Controls.MetroTextBox();
             this.matrixLabel = new MetroFramework.Controls.MetroLabel();
             this.zoomLabel = new MetroFramework.Controls.MetroLabel();
             this.optimization = new MetroFramework.Controls.MetroLabel();
             this.panelMatrix = new MetroFramework.Controls.MetroPanel();
-            this.matrix = new SystAnalys_lr1.Classes.MatrixControl();
             this.zoomBar = new MetroFramework.Controls.MetroTrackBar();
             this.trafficLightLabel = new MetroFramework.Controls.MetroLabel();
             this.theme = new MetroFramework.Controls.MetroLabel();
@@ -99,6 +97,7 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.saved = new MetroFramework.Controls.MetroLabel();
             this.loadingSpinner = new MetroFramework.Controls.MetroProgressSpinner();
+            this.matrix = new SystAnalys_lr1.Classes.MatrixControl();
             this.panelOpt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.results)).BeginInit();
             this.panelSettings.SuspendLayout();
@@ -145,39 +144,39 @@
             this.results.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.results.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.results.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.results.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.results.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.results.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.results.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Avg});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.results.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.results.DefaultCellStyle = dataGridViewCellStyle2;
             this.results.EnableHeadersVisualStyles = false;
             resources.ApplyResources(this.results, "results");
             this.results.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.results.Name = "results";
             this.results.ReadOnly = true;
             this.results.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.results.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.results.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.results.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.results.RowTemplate.Height = 24;
             this.results.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -280,7 +279,6 @@
             this.panelSettings.Controls.Add(this.selectedLanguage);
             this.panelSettings.Controls.Add(this.allBusSettings);
             this.panelSettings.Controls.Add(this.changeRoute);
-            this.panelSettings.Controls.Add(this.busSize);
             this.panelSettings.Controls.Add(this.matrixLabel);
             this.panelSettings.Controls.Add(this.zoomLabel);
             this.panelSettings.Controls.Add(this.optimization);
@@ -359,36 +357,6 @@
             this.changeRoute.UseSelectable = true;
             this.changeRoute.SelectedIndexChanged += new System.EventHandler(this.ChangeRoute_SelectedIndexChanged);
             // 
-            // busSize
-            // 
-            // 
-            // 
-            // 
-            this.busSize.CustomButton.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            this.busSize.CustomButton.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("resource.ImeMode2")));
-            this.busSize.CustomButton.Location = ((System.Drawing.Point)(resources.GetObject("resource.Location2")));
-            this.busSize.CustomButton.Margin = ((System.Windows.Forms.Padding)(resources.GetObject("resource.Margin2")));
-            this.busSize.CustomButton.Name = "";
-            this.busSize.CustomButton.Size = ((System.Drawing.Size)(resources.GetObject("resource.Size2")));
-            this.busSize.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.busSize.CustomButton.TabIndex = ((int)(resources.GetObject("resource.TabIndex2")));
-            this.busSize.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.busSize.CustomButton.UseSelectable = true;
-            this.busSize.CustomButton.Visible = ((bool)(resources.GetObject("resource.Visible2")));
-            resources.ApplyResources(this.busSize, "busSize");
-            this.busSize.Lines = new string[0];
-            this.busSize.MaxLength = 9;
-            this.busSize.Name = "busSize";
-            this.busSize.PasswordChar = '\0';
-            this.busSize.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.busSize.SelectedText = "";
-            this.busSize.SelectionLength = 0;
-            this.busSize.SelectionStart = 0;
-            this.busSize.ShortcutsEnabled = true;
-            this.busSize.UseSelectable = true;
-            this.busSize.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.busSize.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
             // matrixLabel
             // 
             resources.ApplyResources(this.matrixLabel, "matrixLabel");
@@ -417,12 +385,6 @@
             this.panelMatrix.VerticalScrollbarBarColor = true;
             this.panelMatrix.VerticalScrollbarHighlightOnWheel = false;
             this.panelMatrix.VerticalScrollbarSize = 11;
-            // 
-            // matrix
-            // 
-            resources.ApplyResources(this.matrix, "matrix");
-            this.matrix.Name = "matrix";
-            this.matrix.UseSelectable = true;
             // 
             // zoomBar
             // 
@@ -750,7 +712,15 @@
             resources.ApplyResources(this.loadingSpinner, "loadingSpinner");
             this.loadingSpinner.Maximum = 100;
             this.loadingSpinner.Name = "loadingSpinner";
+            this.loadingSpinner.Speed = 3F;
             this.loadingSpinner.UseSelectable = true;
+            this.loadingSpinner.Value = 20;
+            // 
+            // matrix
+            // 
+            resources.ApplyResources(this.matrix, "matrix");
+            this.matrix.Name = "matrix";
+            this.matrix.UseSelectable = true;
             // 
             // Main
             // 
@@ -863,7 +833,6 @@
         private MetroFramework.Controls.MetroButton stopBuses;
         private MetroFramework.Controls.MetroButton launchBuses;
         private MetroFramework.Controls.MetroCheckBox trackerCheck;
-        private MetroFramework.Controls.MetroTextBox busSize;
         public MetroFramework.Controls.MetroComboBox changeRoute;
         private MetroFramework.Controls.MetroLabel saved;
         private MetroFramework.Controls.MetroProgressSpinner loadingSpinner;

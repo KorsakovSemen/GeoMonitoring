@@ -32,7 +32,6 @@ namespace SystAnalys_lr1.Classes
                     Data.V = JsonConvert.DeserializeObject<List<Vertex>>(File.ReadAllText(load + "Vertices.json"));
                 }
             }
-            loadingForm.loading.Value = 10;
 
             if (File.Exists(load + "Edges.xml"))
             {
@@ -71,9 +70,7 @@ namespace SystAnalys_lr1.Classes
                     Main.Grid.gridWidth = 80;
                 }
             }
-
-            loadingForm.loading.Value = 20;
-
+            
             if (File.Exists(load + "StopPoints.xml"))
             {
                 using (StreamReader reader = new StreamReader(load + "StopPoints.xml"))
@@ -140,10 +137,7 @@ namespace SystAnalys_lr1.Classes
                 {
                     Data.AllstopPoints = JsonConvert.DeserializeObject<List<BusStop>>(File.ReadAllText(load + "allStopPoints.json"));
                 }
-            }
-
-            loadingForm.loading.Value = 30;
-
+            }            
 
             if (File.Exists(load + "traficLights.xml"))
             {
@@ -180,7 +174,6 @@ namespace SystAnalys_lr1.Classes
                     sheet.Image = Main.G.GetBitmap();
                 }
             }
-            loadingForm.loading.Value = 40;
 
             if (Data.Buses != null)
             {
@@ -203,7 +196,6 @@ namespace SystAnalys_lr1.Classes
                     Data.Buses = (List<Bus>)deserializerAllBuses.Deserialize(reader);
                 }
             }
-            loadingForm.loading.Value = 60;
             foreach (var tl in Data.TraficLights)
             {
                 tl.Start();
@@ -314,7 +306,6 @@ namespace SystAnalys_lr1.Classes
                     Data.Routes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<Vertex>>>(reader.ReadToEnd());
                 }
             }
-            loadingForm.loading.Value = 80;
             if (File.Exists(load + "edgeRoutes.xml"))
             {
                 using (StreamReader reader = new StreamReader(load + "edgeRoutes.xml"))
@@ -358,7 +349,6 @@ namespace SystAnalys_lr1.Classes
                     Data.AllGridsInRoutes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<int>>>(reader.ReadToEnd());
                 }
             }
-            loadingForm.loading.Value = 90;
         }
     }
 }

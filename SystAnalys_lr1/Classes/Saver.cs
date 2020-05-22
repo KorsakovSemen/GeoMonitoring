@@ -15,40 +15,29 @@ namespace SystAnalys_lr1.Classes
     {
         public static void SaveJSON(string save, LoadingForm loadingForm, string saveFormat)
         {
-            loadingForm.loading.Value = 10;
             string json = JsonConvert.SerializeObject(Data.V);
             File.WriteAllText(save + "Vertices.json", json);
-            loadingForm.loading.Value = 20;
             json = JsonConvert.SerializeObject(Data.E);
             File.WriteAllText(save + "Edges.json", json);
-            loadingForm.loading.Value = 30;
             json = JsonConvert.SerializeObject(Data.Buses);
             File.WriteAllText(save + "Buses.json", json);
-            loadingForm.loading.Value = 50;
             json = JsonConvert.SerializeObject(Data.AllCoordinates);
             File.WriteAllText(save + "AllCoordinates.json", json);
-            loadingForm.loading.Value = 60;
             json = JsonConvert.SerializeObject(Data.AllGridsInRoutes);
             File.WriteAllText(save + "AllGridsInRoutes.json", json);
-            loadingForm.loading.Value = 70;
             json = JsonConvert.SerializeObject(Data.StopPoints);
             File.WriteAllText(save + "StopPoints.json", json);
             json = JsonConvert.SerializeObject(Data.AllstopPoints);
             File.WriteAllText(save + "allStopPoints.json", json);
-            loadingForm.loading.Value = 80;
             json = JsonConvert.SerializeObject(Data.Routes);
             File.WriteAllText(save + "vertexRoutes.json", json);
             json = JsonConvert.SerializeObject(Main.Grid);
             File.WriteAllText(save + "grid.json", json);
-            loadingForm.loading.Value = 90;
             json = JsonConvert.SerializeObject(Data.RoutesEdge);
             File.WriteAllText(save + "edgeRoutes.json", json);
             json = JsonConvert.SerializeObject(Data.TraficLights);
             File.WriteAllText(save + "traficLights.json", json);
             Main.SaveF = saveFormat;
-            loadingForm.loading.Value = 100;
-            loadingForm.close = true;
-            loadingForm.Close();
             return;
         }
 
@@ -64,7 +53,6 @@ namespace SystAnalys_lr1.Classes
                 Console.WriteLine("Объект сериализован");
                 fileV.Close();
             }
-            loadingForm.loading.Value = 10;
             File.Delete(save + "Edges.xml");
             using (FileStream fileE = new FileStream(save + "Edges.xml", FileMode.OpenOrCreate))
             {
@@ -72,7 +60,6 @@ namespace SystAnalys_lr1.Classes
                 Console.WriteLine("Объект сериализован");
                 fileE.Close();
             }
-            loadingForm.loading.Value = 20;
             File.Delete(save + "Buses.xml");
             XmlSerializer serializerAllBuses = new XmlSerializer(typeof(List<Bus>));
             using (FileStream fileB = new FileStream(save + "Buses.xml", FileMode.OpenOrCreate))
@@ -80,7 +67,6 @@ namespace SystAnalys_lr1.Classes
                 serializerAllBuses.Serialize(fileB, Data.Buses);
                 Console.WriteLine("Объект сериализован");
             }
-            loadingForm.loading.Value = 30;
 
             File.Delete(save + "AllCoordinates.xml");
             XmlSerializer serializerAllCoor = new XmlSerializer(typeof(SerializableDictionary<string, List<Point>>));
@@ -89,7 +75,6 @@ namespace SystAnalys_lr1.Classes
                 serializerAllCoor.Serialize(fileA, Data.AllCoordinates);
                 Console.WriteLine("Объект сериализован");
             }
-            loadingForm.loading.Value = 50;
             File.Delete(save + "AllGridsInRoutes.xml");
             XmlSerializer serializerAllGridsInRoutes = new XmlSerializer(typeof(SerializableDictionary<string, List<int>>));
             using (FileStream fileAG = new FileStream(save + "AllGridsInRoutes.xml", FileMode.OpenOrCreate))
@@ -97,7 +82,6 @@ namespace SystAnalys_lr1.Classes
                 serializerAllGridsInRoutes.Serialize(fileAG, Data.AllGridsInRoutes);
                 Console.WriteLine("Объект сериализован");
             }
-            loadingForm.loading.Value = 60;
             XmlSerializer Ver = new XmlSerializer(typeof(SerializableDictionary<string, List<Vertex>>));
             XmlSerializer Edge = new XmlSerializer(typeof(SerializableDictionary<string, List<Edge>>));
             XmlSerializer stopV = new XmlSerializer(typeof(SerializableDictionary<string, List<BusStop>>));
@@ -108,7 +92,6 @@ namespace SystAnalys_lr1.Classes
                 Ver.Serialize(fileV, Data.Routes);
                 Console.WriteLine("Объект сериализован");
             }
-            loadingForm.loading.Value = 70;
             File.Delete(save + "StopPoints.xml");
             using (FileStream fileV = new FileStream(save + "StopPoints.xml", FileMode.OpenOrCreate))
             {
@@ -123,7 +106,6 @@ namespace SystAnalys_lr1.Classes
                 stopV.Serialize(fileV, Data.AllstopPoints);
                 Console.WriteLine("Объект сериализован");
             }
-            loadingForm.loading.Value = 80;
 
             File.Delete(save + "edgeRoutes.xml");
             using (FileStream fileE = new FileStream(save + "edgeRoutes.xml", FileMode.OpenOrCreate))
@@ -156,10 +138,6 @@ namespace SystAnalys_lr1.Classes
             }
 
             Main.SaveF = saveFormat;
-            loadingForm.loading.Value = 90;
-            loadingForm.loading.Value = 100;
-            loadingForm.close = true;
-            loadingForm.Close();
             return;
         }
     }

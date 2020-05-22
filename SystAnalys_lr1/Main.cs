@@ -280,7 +280,7 @@ namespace SystAnalys_lr1
                        .ToUpperInvariant();
         }
 
-        private void SaveTool(bool check = true)
+        private void SaveTool()
         {
             try
             {
@@ -293,10 +293,7 @@ namespace SystAnalys_lr1
                             saveImage.Save(savepath + "/Map.png", System.Drawing.Imaging.ImageFormat.Png);
                         SaveRoutes(SaveF, savepath + @"\");
                         BringToFront();
-                        if (check)
-                            MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
-                        else
-                            SavedVisible();
+                        SavedVisible();
                     }
                     else
                     {
@@ -317,10 +314,7 @@ namespace SystAnalys_lr1
                                     fileV.WriteLine(savepath.ToString());
                                 }
                                 BringToFront();
-                                if (check)
-                                    MetroMessageBox.Show(this, "", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
-                                else
-                                    SavedVisible();
+                                SavedVisible();
 
                             }
                         }
@@ -342,6 +336,7 @@ namespace SystAnalys_lr1
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SavedVisible();
             SaveTool();
         }
 
@@ -389,7 +384,7 @@ namespace SystAnalys_lr1
                 trafficLightLabel.Visible = false;
             }
 
-            }
+        }
 
 
         private void DrawVertexButton_Click(object sender, EventArgs e)
@@ -535,7 +530,7 @@ namespace SystAnalys_lr1
                 {
                     Ep.EG = new DrawGraph();
                     Ep.Close();
-          
+
                 }
                 config.Text = MainStrings.config;
                 DeleteAll();
@@ -1116,11 +1111,6 @@ namespace SystAnalys_lr1
         {
             try
             {
-                loadingForm = new LoadingForm();
-                loadingForm.loading.Value = 0;
-                loadingForm.Show();
-                loadingForm.close = false;
-                loadingForm.loading.Maximum = 100;
                 if (saveFormat == "xml")
                 {
                     Saver.SaveXML(save, loadingForm, saveFormat);
@@ -1137,8 +1127,6 @@ namespace SystAnalys_lr1
                 if (stackTrace.FrameCount > 0)
                 {
                     MetroMessageBox.Show(this, $"{exc.StackTrace}", MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    loadingForm.close = true;
-                    loadingForm.Close();
                 }
 
             }
@@ -1191,7 +1179,6 @@ namespace SystAnalys_lr1
             AnimationClear();
         }
 
-        //class loader
         private void LoadRoutes(string load)
         {
             try
@@ -1200,10 +1187,6 @@ namespace SystAnalys_lr1
                 Loader.Load(load, loadingForm, sheet, timer);
 
                 LoadOptions(load);
-
-                loadingForm.loading.Value = 100;
-                loadingForm.close = true;
-                loadingForm.Close();
 
                 matrix.MatrixCreate();
                 BringToFront();
@@ -1215,8 +1198,6 @@ namespace SystAnalys_lr1
                 if (stackTrace.FrameCount > 0)
                 {
                     MetroMessageBox.Show(this, $"{exc.StackTrace}", MainStrings.error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    loadingForm.close = true;
-                    loadingForm.Close();
                     throw new Exception();
                 }
 
@@ -1233,19 +1214,13 @@ namespace SystAnalys_lr1
             wsheet = sheet.Width;
             hsheet = sheet.Height;
             ZoomHelper();
-            loadingForm = new LoadingForm
-            {
-                close = false
-            };
-            loadingForm.Show();
-            loadingForm.loading.Value = 0;
             GlobalMap = sheet.Image;
             G.SetBitmap();
             config.Text = MainStrings.config + load;
             openEpicFormToolStripMenuItem.Enabled = true;
             GridCreator.CreateGrid(sheet);
             Modeling.CreatePollutionInRoutes();
-           // Epicenter.CreateOneRandomEpicenter(EpicSizeParam, null);
+            // Epicenter.CreateOneRandomEpicenter(EpicSizeParam, null);
             ConstructorOnNetwork();
             AddInComboBox();
             G.ClearSheet();
@@ -1628,6 +1603,7 @@ namespace SystAnalys_lr1
                     // dialog.SelectedPath = Path.GetFullPath(savepath); //System.Windows.Forms.Application.StartupPath;
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
+                        SavedVisible();
                         string path = dialog.SelectedPath;
                         savepath = dialog.SelectedPath + @"\" + string.Format("{0}_{1}_{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute);
                         File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
@@ -1648,7 +1624,6 @@ namespace SystAnalys_lr1
                             SaveRoutes("json", savepath + @"\");
                             saveImage.Save(savepath + "/Map.png", System.Drawing.Imaging.ImageFormat.Png);
                         }
-                        MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     config.Text = MainStrings.config + savepath;
                 }
@@ -1692,7 +1667,6 @@ namespace SystAnalys_lr1
         }
         private void XMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             if (sheet.Image != null)
             {
                 using (var dialog = new FolderBrowserDialog())
@@ -1707,6 +1681,7 @@ namespace SystAnalys_lr1
                     }
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
+                        SavedVisible();
                         string path = dialog.SelectedPath;
                         savepath = dialog.SelectedPath + @"\" + string.Format("{0}_{1}_{2}_{3}_{4}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute);
                         File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
@@ -1727,7 +1702,6 @@ namespace SystAnalys_lr1
                             SaveRoutes("xml", savepath + @"\");
                             saveImage.Save(savepath + "/Map.png", System.Drawing.Imaging.ImageFormat.Png);
                         }
-                        MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     config.Text = MainStrings.config + savepath;
                 }
@@ -2286,14 +2260,24 @@ namespace SystAnalys_lr1
         private async void SavedVisible()
         {
             saved.Visible = true;
+            loadingSpinner.Visible = true;
             await Task.Delay(2500);
             saved.Visible = false;
+            loadingSpinner.Visible = false;
+        }
+
+        private async void LoadingVisible()
+        {
+            loadingSpinner.Visible = true;
+            await Task.Delay(2500);
+            loadingSpinner.Visible = false;
         }
 
         private void Main_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F9)
             {
+                LoadingVisible();
                 LoadTool();
                 Application.OpenForms["Main"].Focus();
                 e.SuppressKeyPress = true;
@@ -2313,7 +2297,7 @@ namespace SystAnalys_lr1
                                 saveImage.Save(savepath + "/Map.png", System.Drawing.Imaging.ImageFormat.Png);
                             SaveRoutes(SaveF, savepath + @"\");
                             BringToFront();
-                            SaveTool(false);
+                            SaveTool();
                         }
                         else
                         {
@@ -2334,7 +2318,7 @@ namespace SystAnalys_lr1
                                         fileV.WriteLine(savepath.ToString());
                                     }
                                     BringToFront();
-                                    SaveTool(false);
+                                    SaveTool();
                                 }
                             }
                         }
@@ -2508,7 +2492,7 @@ namespace SystAnalys_lr1
             {
                 AnimationBox.Image = AnimationBitmap;
             }
-          
+
         }
     }
 }
