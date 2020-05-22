@@ -32,7 +32,7 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.theBuses = new MetroFramework.Controls.MetroRadioButton();
             this.All = new MetroFramework.Controls.MetroRadioButton();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.deleteTypes = new MetroFramework.Controls.MetroLabel();
             this.BusStops = new MetroFramework.Controls.MetroRadioButton();
             this.TrafficLights = new MetroFramework.Controls.MetroRadioButton();
             this.VandE = new MetroFramework.Controls.MetroRadioButton();
@@ -45,7 +45,7 @@
             resources.ApplyResources(this.metroPanel1, "metroPanel1");
             this.metroPanel1.Controls.Add(this.theBuses);
             this.metroPanel1.Controls.Add(this.All);
-            this.metroPanel1.Controls.Add(this.metroLabel1);
+            this.metroPanel1.Controls.Add(this.deleteTypes);
             this.metroPanel1.Controls.Add(this.BusStops);
             this.metroPanel1.Controls.Add(this.TrafficLights);
             this.metroPanel1.Controls.Add(this.VandE);
@@ -71,10 +71,10 @@
             this.All.UseSelectable = true;
             this.All.CheckedChanged += new System.EventHandler(this.All_CheckedChanged);
             // 
-            // metroLabel1
+            // deleteTypes
             // 
-            resources.ApplyResources(this.metroLabel1, "metroLabel1");
-            this.metroLabel1.Name = "metroLabel1";
+            resources.ApplyResources(this.deleteTypes, "deleteTypes");
+            this.deleteTypes.Name = "deleteTypes";
             // 
             // BusStops
             // 
@@ -124,12 +124,12 @@
         #endregion
 
         private MetroFramework.Controls.MetroPanel metroPanel1;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroRadioButton BusStops;
         private MetroFramework.Controls.MetroRadioButton TrafficLights;
         private MetroFramework.Controls.MetroButton metroButton1;
         public MetroFramework.Controls.MetroRadioButton VandE;
         public MetroFramework.Controls.MetroRadioButton All;
         public MetroFramework.Controls.MetroRadioButton theBuses;
+        public MetroFramework.Controls.MetroLabel deleteTypes;
     }
 }

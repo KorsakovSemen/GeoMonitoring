@@ -580,14 +580,11 @@ namespace SystAnalys_lr1
             {
                 string message = MainStrings.clearGraph;
                 string caption = MainStrings.delete;
-                LoadingForm loadingForm = new LoadingForm();
-                loadingForm.loading.Value = 0;
-                loadingForm.loading.Maximum = 100;
                 yes = false;
                 DeleteForm df = new DeleteForm();
                 StyleManager.Clone(df);
-                df.VandE.Enabled = false;
-                df.All.Text = MainStrings.graphClear;
+                df.All.Text = MainStrings.clearAll.Trim(new Char[] { ':' });
+                df.deleteTypes.Text = MainStrings.clearAll;
                 df.ShowDialog();
 
                 DialogResult MBSave = DialogResult.No;
@@ -596,15 +593,18 @@ namespace SystAnalys_lr1
                 else
                     return;
                 switch (DelType)
-                {
+                {                    
                     case DeleteType.All:
                         if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
                         {
+                            LoadingVisible();
                             List<Bus> busTest = new List<Bus>();
-                            loadingForm.Show();
-                            Data.Routes[changeRoute.Text].Clear();
-                            Data.RoutesEdge[changeRoute.Text].Clear();
-                            loadingForm.loading.Value = 20;
+                            Data.Routes.Remove(changeRoute.Text);
+                            Data.RoutesEdge.Remove(changeRoute.Text);
+                            Data.AllCoordinates.Remove(changeRoute.Text);
+                            Data.StopPoints.Remove(changeRoute.Text);
+                            Data.StopPointsInGrids.Remove(changeRoute.Text);
+
                             foreach (var b in Data.Buses)
                             {
                                 if (b.Route == changeRoute.Text)
@@ -612,12 +612,50 @@ namespace SystAnalys_lr1
                                     busTest.Add(b);
                                 };
                             };
-                            loadingForm.loading.Value = 40;
+
                             foreach (var b in busTest)
                             {
                                 Data.Buses.Remove(b);
                             }
-                            loadingForm.loading.Value = 50;
+
+                            G.ClearSheet();
+                            G.DrawALLGraph(Data.V, Data.E);
+                            sheet.Image = G.GetBitmap();
+                            AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
+                            AnimationBox.Image = AnimationBitmap;
+                        }
+                        if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
+                        {
+                            LoadingVisible();
+                            Data.Buses.Clear();
+                            Data.Routes.Keys.ToList().ForEach(x => Data.Routes[x] = new List<Vertex>());
+                            Data.RoutesEdge.Keys.ToList().ForEach(x => Data.RoutesEdge[x] = new List<Edge>());
+                            Data.AllCoordinates.Clear();
+                            G.ClearSheet();
+                            G.DrawALLGraph(Data.V, Data.E);
+                            sheet.Image = G.GetBitmap();
+                            AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
+                            AnimationBox.Image = AnimationBitmap;
+                        };                        
+                        break;
+                    case DeleteType.VertexAndEdge:
+                        if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
+                        {
+                            LoadingVisible();
+                            List<Bus> busTest = new List<Bus>();
+                            Data.Routes[changeRoute.Text].Clear();
+                            Data.RoutesEdge[changeRoute.Text].Clear();
+                            foreach (var b in Data.Buses)
+                            {
+                                if (b.Route == changeRoute.Text)
+                                {
+                                    busTest.Add(b);
+                                };
+                            };
+                            foreach (var b in busTest)
+                            {
+                                Data.Buses.Remove(b);
+                            }
                             Data.AllCoordinates[changeRoute.Text].Clear();
                             G.ClearSheet();
                             G.DrawALLGraph(Data.V, Data.E);
@@ -628,68 +666,59 @@ namespace SystAnalys_lr1
                         }
                         if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
                         {
-                            loadingForm.Show();
-                            loadingForm.loading.Value = 20;
+                            LoadingVisible();
                             Data.Buses.Clear();
                             Data.Routes.Keys.ToList().ForEach(x => Data.Routes[x] = new List<Vertex>());
                             Data.RoutesEdge.Keys.ToList().ForEach(x => Data.RoutesEdge[x] = new List<Edge>());
-                            loadingForm.loading.Value = 40;
                             Data.AllCoordinates.Clear();
-                            loadingForm.loading.Value = 50;
+                            G.ClearSheet();
+                            G.DrawALLGraph(Data.V, Data.E);
+                            sheet.Image = G.GetBitmap();
+                            AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
+                            AnimationBox.Image = AnimationBitmap;
                         };
                         break;
                     case DeleteType.BusStops:
                         if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
                         {
-                            loadingForm.Show();
-                            loadingForm.loading.Value = 20;
+                            LoadingVisible();
                             Data.StopPoints[changeRoute.Text].Clear();
                             Data.StopPointsInGrids[changeRoute.Text].Clear();
-                            loadingForm.loading.Value = 40;
-                            loadingForm.loading.Value = 50;
                         }
                         if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
                         {
-                            loadingForm.Show();
-                            loadingForm.loading.Value = 20;
+                            LoadingVisible();
                             Data.AllstopPoints.Clear();
                             Data.StopPoints.Clear();
                             Data.StopPointsInGrids.Clear();
-                            loadingForm.loading.Value = 40;
-                            loadingForm.loading.Value = 50;
                         }
                         break;
                     case DeleteType.TrafficLight:
                         if (MBSave == DialogResult.Yes)
                         {
-                            loadingForm.Show();
-                            loadingForm.loading.Value = 20;
+                            LoadingVisible();
                             foreach (var tf in Data.TraficLights)
                                 tf.Stop();
                             Data.TraficLights.Clear();
                             Data.TraficLightsInGrids.Clear();
-                            loadingForm.loading.Value = 40;
-                            loadingForm.loading.Value = 50;
                         }
                         break;
                     case DeleteType.TheBuses:
                         if (MBSave == DialogResult.Yes)
                         {
-                            loadingForm.Show();
-                            loadingForm.loading.Value = 20;
+                            LoadingVisible();
                             DelAllBus();
-                            loadingForm.loading.Value = 40;
-                            loadingForm.loading.Value = 50;
                         }
                         break;
                 }
 
+                AddInComboBox();
                 G.ClearSheet();
                 sheet.Image = G.GetBitmap();
-                G.DrawALLGraph(Data.V, Data.E);
+                if(Data.V != null)
+                    G.DrawALLGraph(Data.V, Data.E);
                 GridCreator.DrawGrid(sheet);
                 selectRoute.Enabled = true;
-                loadingForm.loading.Value = 80;
                 trafficLightLabel.Visible = false;
                 selected = new List<int>();
                 stopPointButton.Enabled = true;
@@ -697,9 +726,6 @@ namespace SystAnalys_lr1
                 {
                     Ep.ERefreshRouts();
                 }
-                loadingForm.loading.Value = 100;
-                loadingForm.close = true;
-                loadingForm.Close();
                 if (changeRoute.Text == MainStrings.network)
                 {
                     selectRoute.Enabled = true;
@@ -732,7 +758,8 @@ namespace SystAnalys_lr1
                     deleteBus.Enabled = false;
                     stopPointButton.Enabled = true;
                     addTraficLight.Enabled = true;
-                    G.DrawALLGraph(Data.Routes[changeRoute.Text], Data.RoutesEdge[changeRoute.Text], 1);
+                    if(Data.Routes.ContainsKey(changeRoute.Text))
+                        G.DrawALLGraph(Data.Routes[changeRoute.Text], Data.RoutesEdge[changeRoute.Text], 1);
                     CheckBusesOnRoute();
                 }
                 BringToFront();
@@ -1052,7 +1079,6 @@ namespace SystAnalys_lr1
                                 fileV.WriteLine(savepath);
                             }
 
-                            MetroMessageBox.Show(this, MainStrings.done, "", MessageBoxButtons.OK, MessageBoxIcon.Question);
                         }
 
                     }
@@ -2259,6 +2285,7 @@ namespace SystAnalys_lr1
 
         private async void SavedVisible()
         {
+            //saved.Text = MainStrings.saving;
             saved.Visible = true;
             loadingSpinner.Visible = true;
             await Task.Delay(2500);
@@ -2268,8 +2295,11 @@ namespace SystAnalys_lr1
 
         private async void LoadingVisible()
         {
+            //saved.Text = MainStrings.loading;
+            //saved.Visible = true;
             loadingSpinner.Visible = true;
             await Task.Delay(2500);
+            //saved.Visible = false;
             loadingSpinner.Visible = false;
         }
 

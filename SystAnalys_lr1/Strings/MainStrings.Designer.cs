@@ -124,6 +124,15 @@ namespace SystAnalys_lr1.Strings {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Очистить все:.
+        /// </summary>
+        internal static string clearAll {
+            get {
+                return ResourceManager.GetString("clearAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вы действительно хотите очистить граф/маршрут/светофоры/остановки?.
         /// </summary>
         internal static string clearGraph {
@@ -408,6 +417,15 @@ namespace SystAnalys_lr1.Strings {
         internal static string report {
             get {
                 return ResourceManager.GetString("report", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сохранение....
+        /// </summary>
+        internal static string saving {
+            get {
+                return ResourceManager.GetString("saving", resourceCulture);
             }
         }
         

@@ -229,7 +229,7 @@
     <value>min</value>
   </data>
   <data name="sec" xml:space="preserve">
-    <value>сек</value>
+    <value>sec</value>
   </data>
   <data name="graphClear" xml:space="preserve">
     <value>Route/graph</value>
@@ -248,5 +248,11 @@
   </data>
   <data name="create" xml:space="preserve">
     <value>Create</value>
+  </data>
+  <data name="clearAll" xml:space="preserve">
+    <value>Clear all:</value>
+  </data>
+  <data name="saving" xml:space="preserve">
+    <value>Saving...</value>
   </data>
 </root>

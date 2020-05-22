@@ -249,4 +249,10 @@
   <data name="create" xml:space="preserve">
     <value>Создать</value>
   </data>
+  <data name="clearAll" xml:space="preserve">
+    <value>Очистить все:</value>
+  </data>
+  <data name="saving" xml:space="preserve">
+    <value>Сохранение...</value>
+  </data>
 </root>

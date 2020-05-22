@@ -140,10 +140,13 @@
   <data name="All.Text" xml:space="preserve">
     <value>All</value>
   </data>
-  <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="deleteTypes.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="deleteTypes.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 19</value>
   </data>
-  <data name="metroLabel1.Text" xml:space="preserve">
+  <data name="deleteTypes.Text" xml:space="preserve">
     <value>Deletion Types</value>
   </data>
   <data name="BusStops.Location" type="System.Drawing.Point, System.Drawing">
