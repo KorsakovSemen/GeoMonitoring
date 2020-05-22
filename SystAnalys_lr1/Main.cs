@@ -39,6 +39,11 @@ namespace SystAnalys_lr1
         delegate void DelBool(bool text);
         delegate void DelBmp(Bitmap bmp);
 
+        private ToolStripButton deleteBus;
+        private ToolStripButton deleteRoute;
+        private ToolStripButton delAllBusesOnRoute;
+
+
         PictureBox AnimationBox;
         Graphics AnimationGraphics;
         Bitmap AnimationBitmap;
@@ -249,7 +254,7 @@ namespace SystAnalys_lr1
             c.MapUpdateRoute(sheet, Data.Routes[changeRoute.Text], Data.RoutesEdge[changeRoute.Text]);
             ConstructorPressButton();
         }
-        //class zoom
+
         public static Image ResizeBitmap(Image sourceBMP, int width, int height)
         {
 
@@ -374,14 +379,17 @@ namespace SystAnalys_lr1
             }
             df.ShowDialog();
             trafficLightLabel.Text = GlobalDel;
-            trafficLightLabel.Visible = true;
             selectRoute.Enabled = true;
             stopPointButton.Enabled = true;
             ConstructorPressButton();
+            trafficLightLabel.Visible = true;
             if (DelType == DeleteType.None)
+            {
                 deleteButton.Enabled = true;
+                trafficLightLabel.Visible = false;
+            }
 
-        }
+            }
 
 
         private void DrawVertexButton_Click(object sender, EventArgs e)
@@ -1452,7 +1460,7 @@ namespace SystAnalys_lr1
                             c.DeleteVandE(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet);
                             break;
                         case DeleteType.TheBuses:
-                            DelBus();
+                            c.DeleteBus(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, changeRoute.Text, mainPanel.AutoScrollPosition.X, mainPanel.AutoScrollPosition.Y);
                             break;
                     }
                     if (Flag)
@@ -2256,6 +2264,9 @@ namespace SystAnalys_lr1
             EpicSettings.MovingEpicParamet = new List<string>();
             KeyPreview = true;
             // timer.Interval = BusStop.StopTime / 10;
+            deleteBus = new ToolStripButton();
+            deleteRoute = new ToolStripButton();
+            delAllBusesOnRoute = new ToolStripButton();
             report = new Report();
             loadingForm = new LoadingForm();
             ReportCount = 0;
