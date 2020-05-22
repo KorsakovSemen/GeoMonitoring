@@ -87,11 +87,16 @@ namespace SystAnalys_lr1.Classes
             Main.ReportCount += 1;
            
         }
+        
 
-        public static void Opt(MatrixControl matrixControl1, LoadingForm loadingForm)
-        {
+        public static void Opt(MatrixControl matrixControl, LoadingForm loadingForm)
+        {          
+
             pathOpt = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}_{5}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
             Directory.CreateDirectory(pathOpt);
+            Directory.CreateDirectory(pathOpt + "/Matrices");
+            FileStream fs;
+            StreamWriter streamWriter;
             percentMean = new SerializableDictionary<int, int?>();
 
             List<Bus> optimizeBuses = new List<Bus>();
@@ -106,7 +111,9 @@ namespace SystAnalys_lr1.Classes
             loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Maximum = s), ciclTotal * OptiCount);
             for (int cicl = 0; cicl < ciclTotal; cicl++)
             {
-                OffBuses(matrixControl1, cicl * 10);
+                fs = File.Create(pathOpt + "/Matrices/" + cicl + "_Matrix.txt");
+                streamWriter = new StreamWriter(fs);
+                OffBuses(matrixControl, cicl * 10);
                 if (cicl == ciclTotal - 1)
                     Data.Buses[rnd.Next(0, Data.Buses.Count)].Tracker = true;
                 List<int?> mas = new List<int?>();
@@ -181,7 +188,6 @@ namespace SystAnalys_lr1.Classes
                             percentMean.Add(withoutSensorsBuses.Last(), -1);
                     }
                 };
-
                 using (StreamWriter fileV = new StreamWriter(pathOpt + @"\" + withoutSensorsBuses.Last() + "_buses" + ".txt"))
                 {
                     fileV.WriteLine(MainStrings.sensorsDown + ": " + (cicl * 10).ToString());
@@ -212,6 +218,9 @@ namespace SystAnalys_lr1.Classes
                     Console.WriteLine("Объект сериализован");
                 }
                 Modeling.ResultFromModeling = new List<int?>();
+
+                matrixControl.MatrixCreate();
+                SaveMatrix(matrixControl, streamWriter);
             }
 
             var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();
@@ -236,6 +245,53 @@ namespace SystAnalys_lr1.Classes
             Data.Buses = optimizeBuses;
            // MessageBox.Show("", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
 
+        }
+
+        private static void SaveMatrix(MatrixControl matrixControl, StreamWriter streamWriter)
+        {
+
+            try
+            {
+                int parkSize = matrixControl.parkSize;
+                List<int> col_n = new List<int>();
+                streamWriter.Write("\t");
+                for (int i = 1; i < parkSize; i++)
+                {
+                    streamWriter.Write(i.ToString() + "\t");
+                    if (i + 1 == parkSize)
+                    {
+                        streamWriter.Write(parkSize.ToString() + "\t");
+                        streamWriter.Write("Total");
+                    }
+                }
+                streamWriter.Write(" \r\n");
+                foreach (DataGridViewColumn col in matrixControl.matrixGrid.Columns)
+                    if (col.Visible)
+                    {
+                        //sw.Write(col.HeaderText + "\t");
+                        col_n.Add(col.Index);
+                    }
+                //sw.WriteLine();
+                int x = matrixControl.matrixGrid.RowCount;
+                if (matrixControl.matrixGrid.AllowUserToAddRows) x--;
+
+                for (int i = 0; i < x; i++)
+                {
+
+                    streamWriter.Write(matrixControl.busesPark[i].Last().Route.ToString() + "\t");
+                    for (int y = 0; y < col_n.Count; y++)
+                    {
+                        streamWriter.Write(matrixControl.matrixGrid[col_n[y], i].Value + "\t");
+                    }
+                    streamWriter.Write(" \r\n");
+                }
+                streamWriter.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+
+            }
         }
 
         private static void OffBuses(MatrixControl matrixControl1, int proc = 0)

@@ -593,7 +593,7 @@ namespace SystAnalys_lr1
                 else
                     return;
                 switch (DelType)
-                {                    
+                {
                     case DeleteType.All:
                         if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
                         {
@@ -636,7 +636,7 @@ namespace SystAnalys_lr1
                             sheet.Image = G.GetBitmap();
                             AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
                             AnimationBox.Image = AnimationBitmap;
-                        };                        
+                        };
                         break;
                     case DeleteType.VertexAndEdge:
                         if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
@@ -715,7 +715,7 @@ namespace SystAnalys_lr1
                 AddInComboBox();
                 G.ClearSheet();
                 sheet.Image = G.GetBitmap();
-                if(Data.V != null)
+                if (Data.V != null)
                     G.DrawALLGraph(Data.V, Data.E);
                 GridCreator.DrawGrid(sheet);
                 selectRoute.Enabled = true;
@@ -758,7 +758,7 @@ namespace SystAnalys_lr1
                     deleteBus.Enabled = false;
                     stopPointButton.Enabled = true;
                     addTraficLight.Enabled = true;
-                    if(Data.Routes.ContainsKey(changeRoute.Text))
+                    if (Data.Routes.ContainsKey(changeRoute.Text))
                         G.DrawALLGraph(Data.Routes[changeRoute.Text], Data.RoutesEdge[changeRoute.Text], 1);
                     CheckBusesOnRoute();
                 }
@@ -2164,7 +2164,6 @@ namespace SystAnalys_lr1
             ConstructorOffNetwork();
             File.WriteAllText("../../SaveConfig/save.txt", string.Empty);
             BringToFront();
-            matrix.MatrixCreate();
             timer.Stop();
             timer.Dispose();
             AnimationBox.Image = null;
@@ -2485,7 +2484,7 @@ namespace SystAnalys_lr1
             mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             mainPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(Panel6_MouseWheel);
             Optimization.countWithoutSensors = Data.Buses.Count;
-            matrix.MatrixCreate();
+          //  matrix.MatrixCreate();
             hint.Visible = false;
             report.ch.Titles.Add(MainStrings.report);
             report.ch.Series[ReportCount].LegendText = "1";

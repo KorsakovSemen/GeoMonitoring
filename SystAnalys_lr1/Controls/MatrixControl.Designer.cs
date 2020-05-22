@@ -116,7 +116,7 @@
         #endregion
         private MetroFramework.Controls.MetroLabel result;
         private MetroFramework.Controls.MetroLabel count;
-        private MetroFramework.Controls.MetroGrid matrixGrid;
         private MetroFramework.Controls.MetroButton metroButton1;
+        public MetroFramework.Controls.MetroGrid matrixGrid;
     }
 }

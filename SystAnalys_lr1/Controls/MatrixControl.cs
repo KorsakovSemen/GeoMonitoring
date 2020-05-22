@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SystAnalys_lr1.Strings;
 using MetroFramework;
+using MetroFramework.Controls;
 
 namespace SystAnalys_lr1.Classes
 {
@@ -22,6 +23,9 @@ namespace SystAnalys_lr1.Classes
         public List<List<Bus>> busesPark;
         public SortedDictionary<string, List<Vertex>> routesSorted;
         public int parkSize;
+
+        private delegate int DelInt(int num);
+        private delegate string DelString(string num);
 
         public List<Bus> SplitBuses()
         {
@@ -89,13 +93,16 @@ namespace SystAnalys_lr1.Classes
             return buses;
         }
 
+        private delegate void Del(MetroGrid metroGrid);
 
         public void MatrixCreate()
         {
             if (parkSize + 1 < 655)
             {
-                matrixGrid.Rows.Clear();
-                matrixGrid.Refresh();
+                matrixGrid.Invoke((MethodInvoker)(() => matrixGrid.Rows.Clear()));
+                matrixGrid.Invoke((MethodInvoker)(() => matrixGrid.Refresh()));
+                //matrixGrid.Rows.Clear();
+
 
                 Data.Buses.Sort((a1, b1) => a1.Route.CompareTo(b1.Route));
 
@@ -117,12 +124,12 @@ namespace SystAnalys_lr1.Classes
                 {
                     parkSize = Math.Max(parkSize, x.Count);
                 }
-
+                //         changeRoute.Invoke(new DelBool((s) => changeRoute.Enabled = s), true);
                 int[,] myArr = new int[routesSorted.Count, parkSize];
                 if (routesSorted.Count == 0)
-                    matrixGrid.RowCount = 1;
+                    matrixGrid.Invoke(new DelInt((s) => matrixGrid.RowCount = s), 1);
                 else
-                    matrixGrid.RowCount = routesSorted.Count;
+                    matrixGrid.Invoke(new DelInt((s) => matrixGrid.RowCount = s), routesSorted.Count);
 
                 matrixGrid.ColumnCount = parkSize + 1;
 
@@ -177,8 +184,8 @@ namespace SystAnalys_lr1.Classes
                         res += total;
                     }
 
-                    result.Text = MainStrings.matrixFirst + res.ToString() + " " + MainStrings.matrixSecond + (Data.Buses.Count - res).ToString();
-                    count.Text = MainStrings.matrixThird + Data.Buses.Count.ToString();
+                    result.Invoke(new DelString((s) => result.Text = s), MainStrings.matrixFirst + res.ToString() + " " + MainStrings.matrixSecond + (Data.Buses.Count - res).ToString());
+                    count.Invoke(new DelString((s) => count.Text = s), MainStrings.matrixThird + Data.Buses.Count.ToString());
                 }
                 catch
                 {
