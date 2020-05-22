@@ -27,7 +27,7 @@ namespace SystAnalys_lr1.Classes
                 Width = 1
             };
             _ = new Random();
-            color = Color.MediumSpringGreen;
+            color = Color.DarkBlue;//DodgerBlue;
         }
 
         public void SetBitmap()
