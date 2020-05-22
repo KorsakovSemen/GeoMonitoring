@@ -213,7 +213,7 @@ namespace SystAnalys_lr1.Classes
                     num = new Bitmap(x.BusPic.Height, x.BusPic.Width);
                     using (Graphics gr = Graphics.FromImage(num))
                     {
-                        using (Font font = new Font("Arial", 10))
+                        using (Font font = new Font("Segoe UI", 10))
                         {
                             // Заливаем фон нужным цветом.
                             gr.FillRectangle(Brushes.Transparent, rect);
@@ -248,7 +248,7 @@ namespace SystAnalys_lr1.Classes
                     num = new Bitmap(x.BusPic.Height, x.BusPic.Width);
                     using (Graphics gr = Graphics.FromImage(num))
                     {
-                        using (Font font = new Font("Arial", 10))
+                        using (Font font = new Font("Segoe UI", 10))
                         {
                             // Заливаем фон нужным цветом.
                             gr.FillRectangle(Brushes.Transparent, rect);
