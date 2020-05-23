@@ -818,7 +818,8 @@ namespace SystAnalys_lr1
             return null;
         }
 
-
+        static public int? min; 
+        static public List<int> result; 
 
         private async void Optimize_ClickAsync(object sender, EventArgs e)
         {
@@ -891,7 +892,14 @@ namespace SystAnalys_lr1
                         Optimization.Opt(matrix, loadingForm);
                     });
 
-                    mean.Text = Average;
+                    if(Average == "Found")
+                    { 
+                        mean.Text = MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " " + " - " + MainStrings.countSensors + ": " + result[0];
+                    }
+                    else
+                    {
+                        mean.Text = MainStrings.average + " " + MainStrings.notFound;
+                    }
 
                     loadingForm.close = true;
                     loadingForm.Close();

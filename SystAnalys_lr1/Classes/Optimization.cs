@@ -85,12 +85,12 @@ namespace SystAnalys_lr1.Classes
             r.BringToFront();
 
             Main.ReportCount += 1;
-           
+
         }
-        
+
 
         public static void Opt(MatrixControl matrixControl, LoadingForm loadingForm)
-        {          
+        {
 
             pathOpt = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}_{5}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
             Directory.CreateDirectory(pathOpt);
@@ -219,19 +219,21 @@ namespace SystAnalys_lr1.Classes
                 }
                 Modeling.ResultFromModeling = new List<int?>();
 
-                matrixControl.MatrixCreate();
+                matrixControl.MatrixCreate(false);
                 SaveMatrix(matrixControl, streamWriter);
             }
 
             var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();
             var min = percentMean.Min(v => v.Value);
             var result = percentMean.Where(s => s.Value.Equals(min)).Select(s => s.Key).ToList();
+            Main.min = min;
+            Main.result = result;
             result.Sort();
             if (res.Count != 0 && min != 0 && min != null)
-                mean = MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " " + " - " + MainStrings.countSensors + ": " + result[0];
+                mean = "Found";//MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " " + " - " + MainStrings.countSensors + ": " + result[0];
             else
             {
-                mean = MainStrings.average + " " + MainStrings.notFound;
+                mean = null;//MainStrings.average + " " + MainStrings.notFound;
             }
 
             using (StreamWriter fileV = new StreamWriter(pathOpt + "/Average.txt"))
@@ -239,11 +241,9 @@ namespace SystAnalys_lr1.Classes
                 fileV.WriteLine(mean != MainStrings.average + " " + MainStrings.notFound ? MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + result[0] : MainStrings.notFound);
             }
 
-            
+
             Main.Average = mean;
-            //BarabanAfterOpti();
             Data.Buses = optimizeBuses;
-           // MessageBox.Show("", MainStrings.done, MessageBoxButtons.OK, MessageBoxIcon.Question);
 
         }
 
@@ -268,7 +268,7 @@ namespace SystAnalys_lr1.Classes
                 foreach (DataGridViewColumn col in matrixControl.matrixGrid.Columns)
                     if (col.Visible)
                     {
-                        //sw.Write(col.HeaderText + "\t");
+                        //sw.Write(col.HeaderText + "\t"); //CODE STYLE //SHLUZI //MB STACIONARNIYE DATCHIKI
                         col_n.Add(col.Index);
                     }
                 //sw.WriteLine();

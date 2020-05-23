@@ -17,7 +17,7 @@ namespace SystAnalys_lr1
         static void Main()
         {
         //    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");//присваиваем культуру (можно брать из настроек приложения)
-        //    Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+          //  Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main());

@@ -95,7 +95,7 @@ namespace SystAnalys_lr1.Classes
 
         private delegate void Del(MetroGrid metroGrid);
 
-        public void MatrixCreate()
+        public void MatrixCreate(bool check = true)
         {
             if (parkSize + 1 < 655)
             {
@@ -183,9 +183,11 @@ namespace SystAnalys_lr1.Classes
                         }
                         res += total;
                     }
-
-                    result.Invoke(new DelString((s) => result.Text = s), MainStrings.matrixFirst + res.ToString() + " " + MainStrings.matrixSecond + (Data.Buses.Count - res).ToString());
-                    count.Invoke(new DelString((s) => count.Text = s), MainStrings.matrixThird + Data.Buses.Count.ToString());
+                    if (check)
+                    {
+                        result.Invoke(new DelString((s) => result.Text = s), MainStrings.matrixFirst + res.ToString() + " " + MainStrings.matrixSecond + (Data.Buses.Count - res).ToString());
+                        count.Invoke(new DelString((s) => count.Text = s), MainStrings.matrixThird + Data.Buses.Count.ToString());
+                    }
                 }
                 catch
                 {
