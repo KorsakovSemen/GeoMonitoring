@@ -128,14 +128,18 @@
     <value>ShowOriginalButton</value>
   </data>
   <data name="&gt;&gt;TimePastLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="metroButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 96</value>
+  <data name="ShowOriginalButton.Text" xml:space="preserve">
+    <value>До 
+изменений </value>
   </data>
   <data name="&gt;&gt;MapPanel.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="metroPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 9</value>
   </data>
   <data name="&gt;&gt;StartStopLabel.Name" xml:space="preserve">
     <value>StartStopLabel</value>
@@ -143,11 +147,14 @@
   <data name="&gt;&gt;metroButton1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="&gt;&gt;metroPanel4.Name" xml:space="preserve">
+    <value>metroPanel4</value>
+  </data>
   <data name="StartStopLabel.Text" xml:space="preserve">
     <value>Запусить/Остановить</value>
   </data>
   <data name="ShowOriginalButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 48</value>
+    <value>75, 27</value>
   </data>
   <data name="&gt;&gt;metroLabel1.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
@@ -165,13 +172,13 @@
     <value>SimulatingTimer</value>
   </data>
   <data name="ParametresLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 6</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>70, 23</value>
   </data>
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;ERouts.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
   <data name="metroPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 36</value>
@@ -179,20 +186,23 @@
   <data name="metroLabel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="&gt;&gt;AfterButton.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="MapPanel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="SettingsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 37</value>
+  <data name="&gt;&gt;metroLabel2.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <data name="metroButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 37</value>
+  <data name="SettingsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 31</value>
+  </data>
+  <data name="&gt;&gt;SimulationLaabel.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
   <data name="&gt;&gt;StartStopLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="SimulatingTimerButton.Text" xml:space="preserve">
-    <value>...</value>
+    <value>2</value>
   </data>
   <data name="metroLabel1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -200,8 +210,8 @@
   <data name="EZoomBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 18</value>
   </data>
-  <data name="&gt;&gt;ERouts.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroComboBox, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <data name="&gt;&gt;EZoomBar.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroTrackBar, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
   <data name="&gt;&gt;AfterButton.Name" xml:space="preserve">
     <value>AfterButton</value>
@@ -210,10 +220,10 @@
     <value>Эпицентры</value>
   </data>
   <data name="&gt;&gt;TimePastLabel.Parent" xml:space="preserve">
-    <value>metroPanel2</value>
+    <value>metroPanel3</value>
   </data>
   <data name="&gt;&gt;SettingsButton.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>metroPanel4</value>
   </data>
   <data name="label2.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -224,6 +234,9 @@
   <data name="&gt;&gt;panel1.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
+  <data name="metroButton1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 96</value>
+  </data>
   <data name="&gt;&gt;MapPanel.Name" xml:space="preserve">
     <value>MapPanel</value>
   </data>
@@ -233,8 +246,8 @@
   <data name="metroButton1.Text" xml:space="preserve">
     <value>Реконструировать</value>
   </data>
-  <data name="&gt;&gt;metroPanel3.Name" xml:space="preserve">
-    <value>metroPanel3</value>
+  <data name="StartStopLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="ShowResultLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 19</value>
@@ -245,20 +258,26 @@
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
   <data name="ERouts.ItemHeight" type="System.Int32, mscorlib">
     <value>23</value>
   </data>
   <data name="metroPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>475, 82</value>
+    <value>280, 81</value>
   </data>
   <data name="&gt;&gt;metroPanel1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;metroPanel1.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <data name="&gt;&gt;ERouts.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
   </data>
   <data name="&gt;&gt;TimePastLabel.Name" xml:space="preserve">
     <value>TimePastLabel</value>
+  </data>
+  <data name="metroPanel4.TabIndex" type="System.Int32, mscorlib">
+    <value>107</value>
   </data>
   <data name="&gt;&gt;SimulationLaabel.Parent" xml:space="preserve">
     <value>metroPanel2</value>
@@ -269,26 +288,29 @@
   <data name="&gt;&gt;ShowResultLabel.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
+  <data name="&gt;&gt;metroPanel4.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
   <data name="&gt;&gt;ShowResultLabel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="ShowOriginalButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 28</value>
+    <value>190, 9</value>
   </data>
-  <data name="&gt;&gt;SimulationLaabel.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <data name="&gt;&gt;metroLabel2.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="metroPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>627, 3</value>
+    <value>538, 3</value>
   </data>
-  <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 74</value>
+  <data name="metroLabel2.Text" xml:space="preserve">
+    <value>Настройки</value>
   </data>
-  <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1142, 693</value>
+  <data name="SimulatingTimerButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 45</value>
   </data>
   <data name="&gt;&gt;metroButton1.Parent" xml:space="preserve">
     <value>metroPanel1</value>
@@ -303,19 +325,19 @@
     <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
   <data name="AfterButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 48</value>
+    <value>75, 27</value>
   </data>
   <data name="AfterButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>90, 28</value>
+    <value>190, 49</value>
   </data>
   <data name="&gt;&gt;metroPanel3.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="metroLabel1.Text" xml:space="preserve">
     <value>Восстановить загрязнение</value>
   </data>
   <data name="&gt;&gt;metroPanel3.Parent" xml:space="preserve">
-    <value>metroPanel2</value>
+    <value>panel1</value>
   </data>
   <data name="EZoomBar.TabIndex" type="System.Int32, mscorlib">
     <value>103</value>
@@ -326,8 +348,8 @@
   <data name="&gt;&gt;metroPanel1.Name" xml:space="preserve">
     <value>metroPanel1</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>DisplayEpicenters</value>
+  <data name="ShowResultLabel.Text" xml:space="preserve">
+    <value>Показать Результат</value>
   </data>
   <data name="metroPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>106</value>
@@ -338,14 +360,14 @@
   <data name="&gt;&gt;StartStopLabel.Parent" xml:space="preserve">
     <value>metroPanel2</value>
   </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1142, 693</value>
+  <data name="metroLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
   </data>
   <data name="&gt;&gt;MapPanel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="SimulatingTimerButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 37</value>
+    <value>137, 31</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -355,6 +377,9 @@
   </data>
   <data name="SimulationLaabel.TabIndex" type="System.Int32, mscorlib">
     <value>105</value>
+  </data>
+  <data name="&gt;&gt;metroPanel4.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
   <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -377,18 +402,17 @@
   <data name="&gt;&gt;SimulatingTimerButton.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
   <data name="metroLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>172, 19</value>
   </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>metroPanel1</value>
+  <data name="&gt;&gt;ShowOriginalButton.Parent" xml:space="preserve">
+    <value>metroPanel3</value>
   </data>
   <data name="&gt;&gt;ShowResultLabel.Parent" xml:space="preserve">
     <value>metroPanel3</value>
-  </data>
-  <data name="ShowOriginalButton.Text" xml:space="preserve">
-    <value>До 
-изменений </value>
   </data>
   <data name="TimePastLabel.Text" xml:space="preserve">
     <value>Времени прошло :</value>
@@ -396,20 +420,11 @@
   <data name="AfterButton.Text" xml:space="preserve">
     <value>После</value>
   </data>
-  <data name="&gt;&gt;EZoomBar.Type" xml:space="preserve">
-    <value>MetroFramework.Controls.MetroTrackBar, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;SettingsButton.Name" xml:space="preserve">
-    <value>SettingsButton</value>
-  </data>
   <data name="ERouts.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="&gt;&gt;ShowOriginalButton.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;AfterButton.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1102, 85</value>
@@ -422,6 +437,9 @@
   </data>
   <data name="TimePastLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;EZoomBar.Name" xml:space="preserve">
+    <value>EZoomBar</value>
   </data>
   <data name="metroPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>112</value>
@@ -443,28 +461,34 @@
     <value>6, 60</value>
   </data>
   <data name="TimePastLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 57</value>
+    <value>3, 58</value>
   </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="SimulatingTimerButton.Text" xml:space="preserve">
+    <value>...</value>
   </data>
   <data name="metroPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 82</value>
+    <value>280, 81</value>
   </data>
   <data name="&gt;&gt;EZoomBar.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="SettingsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>237, 32</value>
+    <value>79, 45</value>
   </data>
   <data name="&gt;&gt;metroLabel1.Parent" xml:space="preserve">
     <value>metroPanel1</value>
+  </data>
+  <data name="&gt;&gt;metroLabel2.Name" xml:space="preserve">
+    <value>metroLabel2</value>
   </data>
   <data name="SimulationLaabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 19</value>
   </data>
   <data name="ShowResultLabel.TabIndex" type="System.Int32, mscorlib">
     <value>110</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>DisplayEpicenters</value>
   </data>
   <data name="ParametresLabel.TabIndex" type="System.Int32, mscorlib">
     <value>98</value>
@@ -476,28 +500,34 @@
     <value>True</value>
   </data>
   <data name="&gt;&gt;SettingsButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;EZoomBar.Name" xml:space="preserve">
-    <value>EZoomBar</value>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="StartStopLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>157, 17</value>
+    <value>77, 23</value>
   </data>
   <data name="&gt;&gt;ParametresLabel.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroLabel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
   <data name="&gt;&gt;SimulationLaabel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;metroButton1.Name" xml:space="preserve">
-    <value>metroButton1</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>MetroFramework.Forms.MetroForm, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
+  <data name="&gt;&gt;metroPanel4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;AfterButton.Parent" xml:space="preserve">
+    <value>metroPanel3</value>
   </data>
   <data name="SimulationLaabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>MetroFramework.Forms.MetroForm, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  <data name="&gt;&gt;metroButton1.Name" xml:space="preserve">
+    <value>metroButton1</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Отрисовать путь загрязнений</value>
@@ -511,20 +541,32 @@
   <data name="&gt;&gt;metroPanel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;metroPanel1.Type" xml:space="preserve">
+    <value>MetroFramework.Controls.MetroPanel, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
+  </data>
   <data name="SettingsButton.Text" xml:space="preserve">
     <value>Настроить</value>
   </data>
   <data name="&gt;&gt;metroLabel1.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="metroLabel2.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
   <data name="metroButton1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1142, 693</value>
   </data>
   <data name="ERouts.Location" type="System.Drawing.Point, System.Drawing">
     <value>36, 32</value>
   </data>
   <data name="&gt;&gt;ShowOriginalButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
+  </data>
+  <data name="metroButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 37</value>
   </data>
   <data name="SimulationLaabel.Text" xml:space="preserve">
     <value>Симуляция</value>
@@ -539,10 +581,10 @@
     <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
   <data name="metroPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>302, -1</value>
+    <value>820, 3</value>
   </data>
   <data name="&gt;&gt;metroPanel2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="ParametresLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 19</value>
@@ -552,12 +594,6 @@
   </data>
   <data name="&gt;&gt;SettingsButton.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
-  </data>
-  <data name="&gt;&gt;ShowOriginalButton.Parent" xml:space="preserve">
-    <value>metroPanel3</value>
-  </data>
-  <data name="&gt;&gt;AfterButton.Parent" xml:space="preserve">
-    <value>metroPanel3</value>
   </data>
   <data name="&gt;&gt;ParametresLabel.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -577,14 +613,23 @@
   <data name="&gt;&gt;AfterButton.Type" xml:space="preserve">
     <value>MetroFramework.Controls.MetroButton, MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a</value>
   </data>
-  <data name="&gt;&gt;ERouts.Parent" xml:space="preserve">
-    <value>metroPanel1</value>
+  <data name="&gt;&gt;metroPanel3.Name" xml:space="preserve">
+    <value>metroPanel3</value>
+  </data>
+  <data name="&gt;&gt;metroLabel2.Parent" xml:space="preserve">
+    <value>metroPanel4</value>
+  </data>
+  <data name="metroLabel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
   <data name="&gt;&gt;ERouts.Name" xml:space="preserve">
     <value>ERouts</value>
   </data>
   <data name="ShowResultLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 2</value>
+    <value>-1, 1</value>
+  </data>
+  <data name="metroLabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 74</value>
   </data>
   <data name="SettingsButton.TabIndex" type="System.Int32, mscorlib">
     <value>94</value>
@@ -595,11 +640,14 @@
   <data name="StartStopLabel.TabIndex" type="System.Int32, mscorlib">
     <value>109</value>
   </data>
-  <data name="StartStopLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="MapPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1125, 531</value>
   </data>
-  <data name="metroPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 9</value>
+  <data name="&gt;&gt;SettingsButton.Name" xml:space="preserve">
+    <value>SettingsButton</value>
+  </data>
+  <data name="metroPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>280, 81</value>
   </data>
   <data name="ERouts.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 29</value>
@@ -607,20 +655,17 @@
   <data name="metroLabel1.TabIndex" type="System.Int32, mscorlib">
     <value>97</value>
   </data>
-  <data name="SimulatingTimerButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 39</value>
+  <data name="metroPanel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>256, 3</value>
+  </data>
+  <data name="&gt;&gt;SimulatingTimerButton.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="metroButton1.TabIndex" type="System.Int32, mscorlib">
     <value>95</value>
   </data>
-  <data name="&gt;&gt;SimulatingTimerButton.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="ShowResultLabel.Text" xml:space="preserve">
-    <value>Показать Результат</value>
-  </data>
   <data name="&gt;&gt;ParametresLabel.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>metroPanel4</value>
   </data>
   <data name="&gt;&gt;ERouts.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -628,14 +673,14 @@
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
-  <data name="MapPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1125, 531</value>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1142, 693</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>en-US</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
   <metadata name="SimulatingTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>11, 21</value>
