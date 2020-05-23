@@ -2059,8 +2059,8 @@ namespace SystAnalys_lr1
 
         private void LaunchBuses_Click_1(object sender, EventArgs e)
         {
-            AnimationClear();
-            Console.WriteLine(Data.Buses.Count.ToString());
+            timer.Start();
+            //Console.WriteLine(Data.Buses.Count.ToString());
         }
 
         private void ChangeRoute_SelectedIndexChanged(object sender, EventArgs e)
