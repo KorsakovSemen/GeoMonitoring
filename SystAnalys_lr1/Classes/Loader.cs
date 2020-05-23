@@ -278,9 +278,9 @@ namespace SystAnalys_lr1.Classes
 
                 x.BusPic = original;//res;// new Bitmap(res, new Size(1000, 1000));
 
-                x.Skips.skipTrafficLights = 5;
-                x.Skips.skipStops = 5;
-                x.Skips.skipEnd = 5;
+                x.Skips.SkipTrafficLights = 5;
+                x.Skips.SkipStops = 5;
+                x.Skips.SkipEnd = 5;
 
             }
             //

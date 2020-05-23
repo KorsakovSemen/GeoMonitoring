@@ -215,8 +215,8 @@ namespace SystAnalys_lr1.Classes
                         bus.Epicenters = epList;
 
                         bus.TickCount_ = 0;
-                        if (bus.Skips.skipTrafficLights > 0)
-                            bus.Skips.skipTrafficLights -= 1;
+                        if (bus.Skips.SkipTrafficLights > 0)
+                            bus.Skips.SkipTrafficLights -= 1;
                         if (bus.Tracker == true)
                         {
                             while (bus.TickCount_ < (T / PhaseSizeSelect() / (MaxEpicItnerCycleValue)))
@@ -225,20 +225,20 @@ namespace SystAnalys_lr1.Classes
 
                                 if (Data.TraficLightsInGrids.Contains(Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt]))
                                 {
-                                    if (bus.Skips.skipTrafficLights == 0)
+                                    if (bus.Skips.SkipTrafficLights == 0)
                                     {
                                         foreach (var sp in Data.TraficLights)
                                         {
                                             if (sp.Status != LightStatus.RED)
                                             {
-                                                bus.Skips.skipTrafficLights = sp.GreenTime;
+                                                bus.Skips.SkipTrafficLights = sp.GreenTime;
                                                 break;
                                             }
                                             if (sp.Status == LightStatus.RED)
                                             {
                                                 bus.TickCount_ += sp.Bal;
                                                 bus.AllTickCount += sp.Bal;
-                                                bus.Skips.skipTrafficLights = sp.GreenTime;
+                                                bus.Skips.SkipTrafficLights = sp.GreenTime;
                                                 break;
 
                                             }

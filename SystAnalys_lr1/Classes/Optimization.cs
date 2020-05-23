@@ -26,6 +26,8 @@ namespace SystAnalys_lr1.Classes
         static string mean;
         public static int OptiSpeed { get; set; }
         public static int OptiCount { get; set; }
+        public static int? min;
+        public static List<int> result;
 
         public static void ResMatrix(MetroGrid results)
         {
@@ -224,10 +226,8 @@ namespace SystAnalys_lr1.Classes
             }
 
             var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();
-            var min = percentMean.Min(v => v.Value);
-            var result = percentMean.Where(s => s.Value.Equals(min)).Select(s => s.Key).ToList();
-            Main.min = min;
-            Main.result = result;
+            min = percentMean.Min(v => v.Value);
+            result = percentMean.Where(s => s.Value.Equals(min)).Select(s => s.Key).ToList();
             result.Sort();
             if (res.Count != 0 && min != 0 && min != null)
                 mean = "Found";//MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " " + " - " + MainStrings.countSensors + ": " + result[0];

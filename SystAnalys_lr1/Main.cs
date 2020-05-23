@@ -818,8 +818,6 @@ namespace SystAnalys_lr1
             return null;
         }
 
-        static public int? min; 
-        static public List<int> result; 
 
         private async void Optimize_ClickAsync(object sender, EventArgs e)
         {
@@ -894,7 +892,7 @@ namespace SystAnalys_lr1
 
                     if(Average == "Found")
                     { 
-                        mean.Text = MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " " + " - " + MainStrings.countSensors + ": " + result[0];
+                        mean.Text = MainStrings.average + " " + (Optimization.min / 60 == 0 ? (Optimization.min + " " + MainStrings.sec).ToString() : (Optimization.min / 60 + " " + MainStrings.minute).ToString()) + " " + " - " + MainStrings.countSensors + ": " + Optimization.result[0];
                     }
                     else
                     {
