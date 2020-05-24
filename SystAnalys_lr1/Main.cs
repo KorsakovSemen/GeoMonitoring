@@ -1206,6 +1206,7 @@ namespace SystAnalys_lr1
                 //tl.TimerLight.Dispose();
             }
 
+            Data.Staions.Clear();
             Data.Routes.Clear();
             Data.RoutesEdge.Clear();
             changeRoute.Items.Clear();
