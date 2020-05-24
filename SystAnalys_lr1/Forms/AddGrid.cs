@@ -30,15 +30,15 @@ namespace SystAnalys_lr1.Forms
                  Main.Grid.left = int.Parse(up.Text);
             else
                 errorProvider1.SetError(up, "Заполните поле!");
-            if (left.Text != "" && 0 <= int.Parse(left.Text) && int.Parse(left.Text) < 400)
+            if (left.Text != "" && 0 <= int.Parse(left.Text) && int.Parse(left.Text) <= 800)
                 Main.Grid.up = int.Parse(left.Text);
             else
                 errorProvider1.SetError(left, "Заполните поле!");
-            if (down.Text != "" && 0 <= int.Parse(down.Text) && int.Parse(down.Text) < 400)
+            if (down.Text != "" && 0 <= int.Parse(down.Text) && int.Parse(down.Text) <= 400)
                 Main.Grid.right = int.Parse(down.Text);
             else
                 errorProvider1.SetError(down, "Заполните поле!"); 
-            if (right.Text != "" && 0 <= int.Parse(right.Text) && int.Parse(right.Text) < 400)
+            if (right.Text != "" && 0 <= int.Parse(right.Text) && int.Parse(right.Text) <= 800)
                 Main.Grid.down = int.Parse(right.Text);
             else
                 errorProvider1.SetError(right, "Заполните поле!");
@@ -50,7 +50,7 @@ namespace SystAnalys_lr1.Forms
                 Main.Grid.gridHeight = int.Parse(h.Text);
             else
                 Main.Grid.gridHeight = 40;
-            if(up.Text != "" && left.Text != "" && right.Text != "" && down.Text != "" && 0 <= int.Parse(up.Text) && int.Parse(up.Text) <= 400 && 0 <= int.Parse(left.Text) && int.Parse(left.Text) < 400 && 0 <= int.Parse(down.Text) && int.Parse(down.Text) < 400 && 0 <= int.Parse(right.Text) && int.Parse(right.Text) < 400)
+            if(up.Text != "" && left.Text != "" && right.Text != "" && down.Text != "" && 0 <= int.Parse(up.Text) && int.Parse(up.Text) <= 400 && 0 <= int.Parse(left.Text) && int.Parse(left.Text) <= 800 && 0 <= int.Parse(down.Text) && int.Parse(down.Text) <= 400 && 0 <= int.Parse(right.Text) && int.Parse(right.Text) <= 800)
                 Close();
         }
 

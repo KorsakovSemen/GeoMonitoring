@@ -477,36 +477,36 @@ namespace SystAnalys_lr1.Classes
                     foreach (var Square in Sector.Value)
                     {
 
-                        //if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y + GridPart.Height == Square.y)))
-                        //{
-                        //    CheckEpic(Sector, Square, EpicList);
-                        //}
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y + GridPart.Height == Square.y)))
+                        {
+                            CheckEpic(Sector, Square, EpicList);
+                        }
 
-                        //if (((Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].x == Square.x) && (Main.TheGrid[Main.AllGridsInRoutes[route][(int)PositionAt]].y - GridPart.Height == Square.y)))
-                        //{
-                        //    CheckEpic(Sector, Square, EpicList);
-                        //}
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y - GridPart.Height == Square.y)))
+                        {
+                            CheckEpic(Sector, Square, EpicList);
+                        }
 
                         if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y - GridPart.Height == Square.y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
 
-                        //был (вроде норм влияет)
-                        //if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y - GridPart.Height == Square.y)))
-                        //{
-                        //    CheckEpic(Sector, Square, EpicList);
-                        //}
-                        //был (плюс минус влияет)
-                        //if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
-                        //{
-                        //    CheckEpic(Sector, Square, EpicList);
-                        //}
-                        //был (плюс минус влияет)
-                        //if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
-                        //{
-                        //    CheckEpic(Sector, Square, EpicList);
-                        //}
+                        //был(вроде норм влияет)
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y - GridPart.Height == Square.y)))
+                        {
+                            CheckEpic(Sector, Square, EpicList);
+                        }
+                        //был(плюс минус влияет)
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
+                        {
+                            CheckEpic(Sector, Square, EpicList);
+                        }
+                        //был(плюс минус влияет)
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
+                        {
+                            CheckEpic(Sector, Square, EpicList);
+                        }
 
 
                         if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y + GridPart.Height == Square.y)))
