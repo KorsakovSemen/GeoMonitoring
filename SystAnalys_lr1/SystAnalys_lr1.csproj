@@ -148,6 +148,12 @@
     <Compile Include="Forms\Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SelectVertex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectVertex.Designer.cs">
+      <DependentUpon>SelectVertex.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +234,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectVertex.en-US.resx">
+      <DependentUpon>SelectVertex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectVertex.resx">
+      <DependentUpon>SelectVertex.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.en-US.resx">
       <DependentUpon>Main.cs</DependentUpon>

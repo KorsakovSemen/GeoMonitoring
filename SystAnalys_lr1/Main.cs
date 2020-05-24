@@ -24,14 +24,15 @@ namespace SystAnalys_lr1
 {
     public partial class Main : MetroForm
     {
-        public enum DeleteType
+        public enum ElementConstructorType
         {
             None,
             TrafficLight,
             BusStops,
             VertexAndEdge,
             All,
-            TheBuses
+            TheBuses,
+            Station
         }
 
         delegate void Del(string text);
@@ -57,7 +58,7 @@ namespace SystAnalys_lr1
         readonly Constructor c = new Constructor();
 
         public static string Average { get; set; }
-        public static DeleteType DelType { get; set; }
+        public static ElementConstructorType DelType { get; set; }
 
         public static string SelectedRoute { get; set; }
         public static int FirstCrossRoads { get; set; } = 0;
@@ -378,7 +379,7 @@ namespace SystAnalys_lr1
             stopPointButton.Enabled = true;
             ConstructorPressButton();
             trafficLightLabel.Visible = true;
-            if (DelType == DeleteType.None)
+            if (DelType == ElementConstructorType.None)
             {
                 deleteButton.Enabled = true;
                 trafficLightLabel.Visible = false;
@@ -389,6 +390,8 @@ namespace SystAnalys_lr1
 
         private void DrawVertexButton_Click(object sender, EventArgs e)
         {
+            SelectVertex selectVertex = new SelectVertex();
+            StyleManager.Clone(selectVertex);
             deleteBus.Enabled = false;
             addBus.Enabled = false;
             allBusSettings.Enabled = false;
@@ -403,6 +406,18 @@ namespace SystAnalys_lr1
             G.ClearSheet();
             G.DrawALLGraph(Data.V, Data.E);
             ConstructorPressButton();
+            selectVertex.ShowDialog();
+            trafficLightLabel.Text = GlobalDel;
+            selectRoute.Enabled = true;
+            stopPointButton.Enabled = true;
+            ConstructorPressButton();
+            trafficLightLabel.Visible = true;
+            if (DelType == ElementConstructorType.None)
+            {
+                drawVertexButton.Enabled = true;
+                trafficLightLabel.Visible = false;
+            }
+         
         }
 
         private void DeleteRoute_Click(object sender, EventArgs e)
@@ -594,7 +609,7 @@ namespace SystAnalys_lr1
                     return;
                 switch (DelType)
                 {
-                    case DeleteType.All:
+                    case ElementConstructorType.All:
                         if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
                         {
                             LoadingVisible();
@@ -638,7 +653,7 @@ namespace SystAnalys_lr1
                             AnimationBox.Image = AnimationBitmap;
                         };
                         break;
-                    case DeleteType.VertexAndEdge:
+                    case ElementConstructorType.VertexAndEdge:
                         if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
                         {
                             LoadingVisible();
@@ -678,7 +693,7 @@ namespace SystAnalys_lr1
                             AnimationBox.Image = AnimationBitmap;
                         };
                         break;
-                    case DeleteType.BusStops:
+                    case ElementConstructorType.BusStops:
                         if (MBSave == DialogResult.Yes && changeRoute.Text != MainStrings.network)
                         {
                             LoadingVisible();
@@ -693,7 +708,7 @@ namespace SystAnalys_lr1
                             Data.StopPointsInGrids.Clear();
                         }
                         break;
-                    case DeleteType.TrafficLight:
+                    case ElementConstructorType.TrafficLight:
                         if (MBSave == DialogResult.Yes)
                         {
                             LoadingVisible();
@@ -703,7 +718,7 @@ namespace SystAnalys_lr1
                             Data.TraficLightsInGrids.Clear();
                         }
                         break;
-                    case DeleteType.TheBuses:
+                    case ElementConstructorType.TheBuses:
                         if (MBSave == DialogResult.Yes)
                         {
                             LoadingVisible();
@@ -1346,18 +1361,31 @@ namespace SystAnalys_lr1
                 if (addTraficLight.Enabled == false)
                 {
                     AddTrafficLight(e);
+                    return;
                 }
                 if (stopPointButton.Enabled == false)
                 {
                     c.AddStopPoints(e, Data.AllstopPoints, sheet, Data.TheGrid);
+                    return;
                 }
                 if (selectButton.Enabled == false)
                 {
                     c.Select(e, Data.V, Data.E, sheet, 0);
+                    return;
                 }
                 if (drawVertexButton.Enabled == false)
                 {
-                    c.DrawVertex(e, Data.V, sheet);
+                    switch (DelType)
+                    {
+                        case ElementConstructorType.Station:
+                            G.DrawStation(e.X, e.Y, 2, new SolidBrush(Color.FromArgb(128, 178, 34, 34)));
+                            Data.Staions.Add(new Vertex(e.X, e.Y));
+                            break;
+                        case ElementConstructorType.VertexAndEdge:
+                            c.DrawVertex(e, Data.V, sheet);
+                            break;
+                    }
+                    return;
                 }
                 if (drawEdgeButton.Enabled == false)
                 {
@@ -1369,22 +1397,23 @@ namespace SystAnalys_lr1
                         return;
                     }
                     c.DrawEdge(e, Data.V, Data.E, sheet);
+                    return;
 
                 }
                 if (deleteButton.Enabled == false)
                 {
                     switch (DelType)
                     {
-                        case DeleteType.All:
+                        case ElementConstructorType.All:
                             c.AsDelete(e, Data.V, Data.E, sheet, Data.RoutesEdge);
                             break;
-                        case DeleteType.BusStops:
+                        case ElementConstructorType.BusStops:
                             c.DeleteBS(e, Data.V, Data.E, sheet, Data.RoutesEdge);
                             break;
-                        case DeleteType.TrafficLight:
+                        case ElementConstructorType.TrafficLight:
                             c.DeleteTF(e, Data.V, Data.E, sheet, Data.RoutesEdge);
                             break;
-                        case DeleteType.VertexAndEdge:
+                        case ElementConstructorType.VertexAndEdge:
                             c.DeleteVE(e, Data.V, Data.E, sheet, Data.RoutesEdge);
                             break;
                     }
@@ -1402,11 +1431,13 @@ namespace SystAnalys_lr1
                 if (stopPointButton.Enabled == false)
                 {
                     c.AddStopPointsInRoutes(e, Data.AllstopPoints, sheet, Data.TheGrid, changeRoute.Text);
+                    return;
                 }
                 //нажата кнопка "выбрать вершину", ищем степень вершины
                 if (selectButton.Enabled == false)
                 {
                     c.Select(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, 1);
+                    return;
                 }
                 if (selectRoute.Enabled == false)
                 {
@@ -1417,7 +1448,7 @@ namespace SystAnalys_lr1
                         return;
                     }
                     c.SelectRouteInRoute(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, selected);
-
+                    return;
                 }
                 //нажата кнопка addBus
                 if (addBus.Enabled == false)
@@ -1435,6 +1466,7 @@ namespace SystAnalys_lr1
                 if (deleteBus.Enabled == false)
                 {
                     c.DeleteBus(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, changeRoute.Text, mainPanel.AutoScrollPosition.X, mainPanel.AutoScrollPosition.Y);
+                    return;
                 }
 
                 //нажата кнопка "рисовать ребро"
@@ -1448,25 +1480,26 @@ namespace SystAnalys_lr1
                         return;
                     }
                     c.DrawEdgeInRoute(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, changeRoute.Text);
+                    return;
                 }
                 //нажата кнопка "удалить элемент"
                 if (deleteButton.Enabled == false)
                 {
                     switch (DelType)
                     {
-                        case DeleteType.All:
+                        case ElementConstructorType.All:
                             c.DeleteOnRoute(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, changeRoute.Text);
                             break;
-                        case DeleteType.BusStops:
+                        case ElementConstructorType.BusStops:
                             c.DeleteStopsOnRoute(e, routeV, sheet, changeRoute.Text);
                             break;
-                        case DeleteType.TrafficLight:
+                        case ElementConstructorType.TrafficLight:
                             c.DeleteTFOnRoute(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, Data.TraficLights);
                             break;
-                        case DeleteType.VertexAndEdge:
+                        case ElementConstructorType.VertexAndEdge:
                             c.DeleteVandE(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet);
                             break;
-                        case DeleteType.TheBuses:
+                        case ElementConstructorType.TheBuses:
                             c.DeleteBus(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, changeRoute.Text, mainPanel.AutoScrollPosition.X, mainPanel.AutoScrollPosition.Y);
                             break;
                     }

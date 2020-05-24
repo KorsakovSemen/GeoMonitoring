@@ -117,169 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="acrossThePath" xml:space="preserve">
-    <value>Across the path</value>
-  </data>
-  <data name="average" xml:space="preserve">
-    <value>Average:</value>
-  </data>
-  <data name="chooseWay" xml:space="preserve">
-    <value>Choose a different path to configure</value>
-  </data>
-  <data name="clearGraph" xml:space="preserve">
-    <value>Are you sure you want to clear the graph/route/traffic lights/stops?</value>
-  </data>
-  <data name="config" xml:space="preserve">
-    <value>Configuration:</value>
-  </data>
-  <data name="delete" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="deleteGraph" xml:space="preserve">
-    <value>Are you sure you want to remove the graph/route?</value>
-  </data>
-  <data name="done" xml:space="preserve">
+  <data name="metroButton1.Text" xml:space="preserve">
     <value>Done</value>
   </data>
-  <data name="error" xml:space="preserve">
-    <value>Error</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="station.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 15</value>
   </data>
-  <data name="loading" xml:space="preserve">
-    <value>Loading...</value>
+  <data name="station.Text" xml:space="preserve">
+    <value>Stations</value>
   </data>
-  <data name="matrixFirst" xml:space="preserve">
-    <value>With sensors:</value>
+  <data name="V.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 15</value>
   </data>
-  <data name="matrixSecond" xml:space="preserve">
-    <value>Without:</value>
+  <data name="V.Text" xml:space="preserve">
+    <value>Vertices</value>
   </data>
-  <data name="matrixThird" xml:space="preserve">
-    <value>Total:</value>
-  </data>
-  <data name="network" xml:space="preserve">
-    <value>Network</value>
-  </data>
-  <data name="none" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="noPic" xml:space="preserve">
-    <value>No image in folder</value>
-  </data>
-  <data name="procentFailed" xml:space="preserve">
-    <value>Failed rate:</value>
-  </data>
-  <data name="procentSuc" xml:space="preserve">
-    <value>Success rate:</value>
-  </data>
-  <data name="putTrafficLights1" xml:space="preserve">
-    <value>(1) It remains to put traffic lights</value>
-  </data>
-  <data name="putTrafficLights2" xml:space="preserve">
-    <value>(2) It remains to put traffic lights</value>
-  </data>
-  <data name="hint" xml:space="preserve">
-    <value>Reboot the program to change the language</value>
-  </data>
-  <data name="deleteBus" xml:space="preserve">
-    <value>Are you sure you want to delete all route / network buses?</value>
-  </data>
-  <data name="bus" xml:space="preserve">
-    <value>Must have more than 2 ribs</value>
-  </data>
-  <data name="errorPath" xml:space="preserve">
-    <value>Invalid file path</value>
-  </data>
-  <data name="countBuses" xml:space="preserve">
-    <value>Number of buses</value>
-  </data>
-  <data name="countSensors" xml:space="preserve">
-    <value>Number of sensors</value>
-  </data>
-  <data name="cycle" xml:space="preserve">
-    <value>Cycle</value>
-  </data>
-  <data name="distance" xml:space="preserve">
-    <value>At T equal</value>
-  </data>
-  <data name="found" xml:space="preserve">
-    <value>Found</value>
-  </data>
-  <data name="numIter" xml:space="preserve">
-    <value>Number of iterations</value>
-  </data>
-  <data name="sensorsDown" xml:space="preserve">
-    <value>Percentage reduction in sensors</value>
-  </data>
-  <data name="all" xml:space="preserve">
-    <value>All</value>
-  </data>
-  <data name="busStops" xml:space="preserve">
-    <value>Bus stops</value>
-  </data>
-  <data name="TrafficLights" xml:space="preserve">
-    <value>Traffic lights</value>
-  </data>
-  <data name="VandE" xml:space="preserve">
-    <value>Vertices and edges</value>
-  </data>
-  <data name="Matrix" xml:space="preserve">
-    <value>Error creating matrix</value>
-  </data>
-  <data name="minute" xml:space="preserve">
-    <value>min</value>
-  </data>
-  <data name="sec" xml:space="preserve">
-    <value>sec</value>
-  </data>
-  <data name="graphClear" xml:space="preserve">
-    <value>Route/graph</value>
-  </data>
-  <data name="notFound" xml:space="preserve">
-    <value>Not found</value>
-  </data>
-  <data name="chart" xml:space="preserve">
-    <value>Chart</value>
-  </data>
-  <data name="report" xml:space="preserve">
-    <value>Report</value>
-  </data>
-  <data name="theBuses" xml:space="preserve">
-    <value>The buses</value>
-  </data>
-  <data name="create" xml:space="preserve">
-    <value>Create</value>
-  </data>
-  <data name="clearAll" xml:space="preserve">
-    <value>Clear all:</value>
-  </data>
-  <data name="saving" xml:space="preserve">
-    <value>Saving...</value>
-  </data>
-  <data name="AfterButton" xml:space="preserve">
-    <value>After</value>
-  </data>
-  <data name="ParametresLabel" xml:space="preserve">
-    <value>Pollution parameters</value>
-  </data>
-  <data name="SettingsButton" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="ShowOriginalButton" xml:space="preserve">
-    <value>Before changes</value>
-  </data>
-  <data name="ShowResultLabel" xml:space="preserve">
-    <value>Show result</value>
-  </data>
-  <data name="SimulationLaabel" xml:space="preserve">
-    <value>Simulation</value>
-  </data>
-  <data name="StartStopLabel" xml:space="preserve">
-    <value>Start/Stop</value>
-  </data>
-  <data name="TimePastLabel" xml:space="preserve">
-    <value>Time has passed :</value>
-  </data>
-  <data name="station" xml:space="preserve">
-    <value>Station</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Vertex type</value>
   </data>
 </root>

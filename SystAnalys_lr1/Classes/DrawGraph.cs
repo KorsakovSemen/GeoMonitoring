@@ -64,6 +64,12 @@ namespace SystAnalys_lr1.Classes
 
         }
 
+        public void DrawStation(int x, int y, int r, Brush b)
+        {
+            gr.FillEllipse(Brushes.Red, (x - r), (y - r), 4 * r, 4 * r);
+            gr.FillEllipse(b, (x - 30 * r), (y - 30 * r), 60 * r, 60 * r);
+        }
+
         public void DrawVertex(int x, int y)
         {
             gr.FillEllipse(Brushes.GreenYellow, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
@@ -165,6 +171,10 @@ namespace SystAnalys_lr1.Classes
                         gr.DrawLine(pen, V[E[i].V1].X * Main.zoom, V[E[i].V1].Y * Main.zoom, V[E[i].V2].X * Main.zoom, V[E[i].V2].Y * Main.zoom);
                     }
                 }
+            }
+            foreach(var s in Data.Staions)
+            {
+                DrawStation(s.X, s.Y, 2, new SolidBrush(Color.FromArgb(128, 178, 34, 34)));
             }
             DrawStopPoints();
             for (int i = 0; i < V.Count; i++)

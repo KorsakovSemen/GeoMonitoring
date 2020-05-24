@@ -37,6 +37,8 @@ namespace SystAnalys_lr1.Classes
             File.WriteAllText(save + "edgeRoutes.json", json);
             json = JsonConvert.SerializeObject(Data.TraficLights);
             File.WriteAllText(save + "traficLights.json", json);
+            json = JsonConvert.SerializeObject(Data.Staions);
+            File.WriteAllText(save + "stations.json", json);
             Main.SaveF = saveFormat;
             return;
         }
@@ -132,6 +134,16 @@ namespace SystAnalys_lr1.Classes
             {
                 XmlSerializer tl = new XmlSerializer(typeof(Classes.Grid));
                 tl.Serialize(fileTL, Main.Grid);
+
+                Console.WriteLine("Объект сериализован");
+
+            }
+
+            File.Delete(save + "stations.xml");
+            using (FileStream fileTL = new FileStream(save + "stations.xml", FileMode.OpenOrCreate))
+            {
+                XmlSerializer tl = new XmlSerializer(typeof(List<Vertex>));
+                tl.Serialize(fileTL, Data.Staions);
 
                 Console.WriteLine("Объект сериализован");
 

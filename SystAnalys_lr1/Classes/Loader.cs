@@ -349,6 +349,21 @@ namespace SystAnalys_lr1.Classes
                     Data.AllGridsInRoutes = JsonConvert.DeserializeObject<SerializableDictionary<string, List<int>>>(reader.ReadToEnd());
                 }
             }
+
+            XmlSerializer stations = new XmlSerializer(typeof(List<Vertex>));
+            if (File.Exists(load + "stations.xml"))
+            {
+                using (StreamReader reader = new StreamReader(load + "stations.xml"))
+                    Data.Staions = (List<Vertex>)stations.Deserialize(reader);
+            }
+
+            if (File.Exists(load + "stations.json"))
+            {
+                using (StreamReader reader = new StreamReader(load + "stations.json"))
+                {
+                    Data.Staions = JsonConvert.DeserializeObject<List<Vertex>>(reader.ReadToEnd());
+                }
+            }
         }
     }
 }
