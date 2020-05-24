@@ -21,30 +21,24 @@ namespace SystAnalys_lr1.Forms
             left.Validated += left_Validated;
             right.Validated += right_Validated;
             errorProvider1.SetIconAlignment(up, ErrorIconAlignment.MiddleRight);
-            errorProvider2.SetIconAlignment(down, ErrorIconAlignment.MiddleRight);
-            errorProvider3.SetIconAlignment(left, ErrorIconAlignment.MiddleRight);
-            errorProvider4.SetIconAlignment(right, ErrorIconAlignment.MiddleRight);
             errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-            errorProvider2.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-            errorProvider3.BlinkStyle = ErrorBlinkStyle.NeverBlink;
-            errorProvider4.BlinkStyle = ErrorBlinkStyle.NeverBlink;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (up.Text != "")
+            if (up.Text != "" && 0 <= int.Parse(up.Text) && int.Parse(up.Text) <= 400)
                  Main.Grid.left = int.Parse(up.Text);
             else
                 errorProvider1.SetError(up, "Заполните поле!");
-            if (left.Text != "")
+            if (left.Text != "" && 0 <= int.Parse(left.Text) && int.Parse(left.Text) < 400)
                 Main.Grid.up = int.Parse(left.Text);
             else
                 errorProvider1.SetError(left, "Заполните поле!");
-            if (down.Text != "")
+            if (down.Text != "" && 0 <= int.Parse(down.Text) && int.Parse(down.Text) < 400)
                 Main.Grid.right = int.Parse(down.Text);
             else
-                errorProvider1.SetError(down, "Заполните поле!");
-            if (right.Text != "")
+                errorProvider1.SetError(down, "Заполните поле!"); 
+            if (right.Text != "" && 0 <= int.Parse(right.Text) && int.Parse(right.Text) < 400)
                 Main.Grid.down = int.Parse(right.Text);
             else
                 errorProvider1.SetError(right, "Заполните поле!");
@@ -56,10 +50,7 @@ namespace SystAnalys_lr1.Forms
                 Main.Grid.gridHeight = int.Parse(h.Text);
             else
                 Main.Grid.gridHeight = 40;
-            //GridPart.height = int.Parse(textBox1.Text) / 40;
-            //GridPart.width = int.Parse(textBox2.Text) / 80;
-            //  Data.buses.Add(new Bus(Data.routes[int.Parse(this.textBox1.Text)], new PictureBox(), 0, false, new List<Vertex>(),int.Parse(this.textBox1.Text), true));
-            if(up.Text != "" && left.Text != "" && right.Text != "" && down.Text != "")
+            if(up.Text != "" && left.Text != "" && right.Text != "" && down.Text != "" && 0 <= int.Parse(up.Text) && int.Parse(up.Text) <= 400 && 0 <= int.Parse(left.Text) && int.Parse(left.Text) < 400 && 0 <= int.Parse(down.Text) && int.Parse(down.Text) < 400 && 0 <= int.Parse(right.Text) && int.Parse(right.Text) < 400)
                 Close();
         }
 

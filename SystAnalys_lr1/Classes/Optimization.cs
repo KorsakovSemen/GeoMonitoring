@@ -345,8 +345,16 @@ namespace SystAnalys_lr1.Classes
                     {
                         if (b.Route == bp.First().Route)
                         {
-                            int r = rnd.Next(0, Data.AllGridsInRoutes[bp.First().Route].Count - 1);
-                            b.PositionAt = r;
+                            if(Data.AllGridsInRoutes[bp.First().Route].Count - 1 >= 0)
+                            {
+                                int r = rnd.Next(0, Data.AllGridsInRoutes[bp.First().Route].Count - 1);
+                                b.PositionAt = r;
+                            }
+                            else
+                            {
+                                b.PositionAt = rnd.Next(Data.AllGridsInRoutes[bp.First().Route].Count);
+                            }
+                           
                         }
 
                     };
