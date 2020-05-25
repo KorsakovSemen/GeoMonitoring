@@ -549,7 +549,7 @@ namespace SystAnalys_lr1
                 }
                 config.Text = MainStrings.config;
                 DeleteAll();
-                G.bitmap = null;
+                G.Bitmap = null;
 
 
                 sheet.Image = Image.FromFile(fb.FileName);
@@ -825,7 +825,7 @@ namespace SystAnalys_lr1
 
         public int? GetKeyByValue(int? value)
         {
-            foreach (var recordOfDictionary in Optimization.percentMean)
+            foreach (var recordOfDictionary in Optimization.PercentMean)
             {
                 if (recordOfDictionary.Value.Equals(value))
                     return recordOfDictionary.Key;
@@ -840,8 +840,8 @@ namespace SystAnalys_lr1
             {
                 report.Hide();
                 coordinates.CreateAllCoordinates();
-                Optimization.withoutSensorsBuses = new List<int>();
-                Optimization.countWithoutSensors = Data.Buses.Where((bus) => bus.Tracker == true).Count();
+                Optimization.WithoutSensorsBuses = new List<int>();
+                Optimization.CountWithoutSensors = Data.Buses.Where((bus) => bus.Tracker == true).Count();
                 var busesparkreturn = Data.BusesPark;
                 bool check = false;
                 foreach (var bus in Data.Buses)
@@ -892,7 +892,7 @@ namespace SystAnalys_lr1
                     if (EpicSettings.SavePictures == true)
                     {
                         Ep.Hide();
-                        Directory.CreateDirectory(Optimization.pathOpt + "/Epics");
+                        Directory.CreateDirectory(Optimization.PathOpt + "/Epics");
                     }
 
                     loadingForm.Show();
@@ -907,7 +907,7 @@ namespace SystAnalys_lr1
 
                     if(Average == "Found")
                     { 
-                        mean.Text = MainStrings.average + " " + (Optimization.min / 60 == 0 ? (Optimization.min + " " + MainStrings.sec).ToString() : (Optimization.min / 60 + " " + MainStrings.minute).ToString()) + " " + " - " + MainStrings.countSensors + ": " + Optimization.result[0];
+                        mean.Text = MainStrings.average + " " + (Optimization.Min / 60 == 0 ? (Optimization.Min + " " + MainStrings.sec).ToString() : (Optimization.Min / 60 + " " + MainStrings.minute).ToString()) + " " + " - " + MainStrings.countSensors + ": " + Optimization.Result[0];
                     }
                     else
                     {
@@ -933,7 +933,7 @@ namespace SystAnalys_lr1
                     timer.Start();
                     ButtonOn();
                     if (ReportCount == 0)
-                        oldChart = (int)Optimization.percentMean.Keys.Sum();
+                        oldChart = (int)Optimization.PercentMean.Keys.Sum();
                     Optimization.ResChart(oldChart, report, StyleManager);
 
                     foreach (var tl in Data.TraficLights)
@@ -1460,7 +1460,7 @@ namespace SystAnalys_lr1
                     }
                     catch
                     {
-                        MetroMessageBox.Show(this, MainStrings.error);
+                        MetroMessageBox.Show(this, MainStrings.bus);
                     }
 
                 }
@@ -1516,7 +1516,7 @@ namespace SystAnalys_lr1
 
         private void Button9_Click(object sender, EventArgs e)
         {
-            if (G.bitmap != null)
+            if (G.Bitmap != null)
             {
                 AddGrid f = new AddGrid
                 {
@@ -2214,7 +2214,7 @@ namespace SystAnalys_lr1
         }
         private void CreateGridToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (G.bitmap != null)
+            if (G.Bitmap != null)
             {
                 addG = new AddGrid();
                 StyleManager.Clone(addG);
@@ -2241,7 +2241,7 @@ namespace SystAnalys_lr1
 
         private void Button11_Click(object sender, EventArgs e)
         {
-            if (G.bitmap != null)
+            if (G.Bitmap != null)
             {
                 EpicSettings f = new EpicSettings
                 {
@@ -2523,7 +2523,7 @@ namespace SystAnalys_lr1
             mainPanel.MaximumSize = new System.Drawing.Size(sheet.Width, sheet.Height);
             mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             mainPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(Panel6_MouseWheel);
-            Optimization.countWithoutSensors = Data.Buses.Count;
+            Optimization.CountWithoutSensors = Data.Buses.Count;
           //  matrix.MatrixCreate();
             hint.Visible = false;
             report.ch.Titles.Add(MainStrings.report);

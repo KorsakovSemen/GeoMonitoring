@@ -27,29 +27,29 @@ namespace SystAnalys_lr1.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             if (up.Text != "" && 0 <= int.Parse(up.Text) && int.Parse(up.Text) <= 400)
-                 Main.Grid.left = int.Parse(up.Text);
+                 Main.Grid.Left = int.Parse(up.Text);
             else
                 errorProvider1.SetError(up, "Заполните поле!");
             if (left.Text != "" && 0 <= int.Parse(left.Text) && int.Parse(left.Text) <= 800)
-                Main.Grid.up = int.Parse(left.Text);
+                Main.Grid.Up = int.Parse(left.Text);
             else
                 errorProvider1.SetError(left, "Заполните поле!");
             if (down.Text != "" && 0 <= int.Parse(down.Text) && int.Parse(down.Text) <= 400)
-                Main.Grid.right = int.Parse(down.Text);
+                Main.Grid.Right = int.Parse(down.Text);
             else
                 errorProvider1.SetError(down, "Заполните поле!"); 
             if (right.Text != "" && 0 <= int.Parse(right.Text) && int.Parse(right.Text) <= 800)
-                Main.Grid.down = int.Parse(right.Text);
+                Main.Grid.Down = int.Parse(right.Text);
             else
                 errorProvider1.SetError(right, "Заполните поле!");
             if (w.Text != "")
-                Main.Grid.gridWidth = int.Parse(w.Text);
+                Main.Grid.GridWidth = int.Parse(w.Text);
             else
-                Main.Grid.gridWidth = 80;
+                Main.Grid.GridWidth = 80;
             if (h.Text != "")
-                Main.Grid.gridHeight = int.Parse(h.Text);
+                Main.Grid.GridHeight = int.Parse(h.Text);
             else
-                Main.Grid.gridHeight = 40;
+                Main.Grid.GridHeight = 40;
             if(up.Text != "" && left.Text != "" && right.Text != "" && down.Text != "" && 0 <= int.Parse(up.Text) && int.Parse(up.Text) <= 400 && 0 <= int.Parse(left.Text) && int.Parse(left.Text) <= 800 && 0 <= int.Parse(down.Text) && int.Parse(down.Text) <= 400 && 0 <= int.Parse(right.Text) && int.Parse(right.Text) <= 800)
                 Close();
         }

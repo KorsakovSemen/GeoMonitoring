@@ -37,13 +37,16 @@ namespace SystAnalys_lr1
             else
             {
                 errorProvider1.SetError(textBox1, string.Empty);
-                this.Close();
+                Close();
             }
             //if (string.IsNullOrWhiteSpace((sender as TextBox).Text))
             //    errorProvider1.SetError(textBox1, "Заполните поле!");
 
         }
 
-     
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

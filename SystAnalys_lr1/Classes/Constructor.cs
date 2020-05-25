@@ -1,4 +1,5 @@
-﻿using SystAnalys_lr1.Strings;
+﻿using MetroFramework;
+using SystAnalys_lr1.Strings;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -80,96 +81,111 @@ namespace SystAnalys_lr1.Classes
 
         public void AddBus(MouseEventArgs e, bool trackerCheck, bool backsideCheck, string route)
         {
-            if (Data.AllCoordinates[route].Count != 0)
+            if (Data.AllCoordinates.ContainsKey(route))
             {
-                int pos = 0;
-
-                if (e.Button == MouseButtons.Left)
+                if (Data.AllCoordinates[route].Count != 0)
                 {
-                    double min = Math.Pow((Data.AllCoordinates[route].Last().X - e.X / Main.zoom), 2) + Math.Pow((Data.AllCoordinates[route].Last().Y - e.Y / Main.zoom), 2);
-                    for (int i = 0; i < Data.AllCoordinates[route].Count; i++)
+                    int pos = 0;
+
+                    if (e.Button == MouseButtons.Left)
                     {
-                        if (Math.Pow((Data.AllCoordinates[route][i].X - e.X / Main.zoom), 2) + Math.Pow((Data.AllCoordinates[route][i].Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R * 500)
+                        double min = Math.Pow((Data.AllCoordinates[route].Last().X - e.X / Main.zoom), 2) + Math.Pow((Data.AllCoordinates[route].Last().Y - e.Y / Main.zoom), 2);
+                        for (int i = 0; i < Data.AllCoordinates[route].Count; i++)
                         {
-                            if ((Math.Pow((Data.AllCoordinates[route][i].X - e.X / Main.zoom), 2) + Math.Pow((Data.AllCoordinates[route][i].Y - e.Y / Main.zoom), 2) < min))
+                            if (Math.Pow((Data.AllCoordinates[route][i].X - e.X / Main.zoom), 2) + Math.Pow((Data.AllCoordinates[route][i].Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R * 500)
                             {
-                                min = Math.Pow((Data.AllCoordinates[route][i].X - e.X / Main.zoom), 2) + Math.Pow((Data.AllCoordinates[route][i].Y - e.Y / Main.zoom), 2);
-                                pos = i;
+                                if ((Math.Pow((Data.AllCoordinates[route][i].X - e.X / Main.zoom), 2) + Math.Pow((Data.AllCoordinates[route][i].Y - e.Y / Main.zoom), 2) < min))
+                                {
+                                    min = Math.Pow((Data.AllCoordinates[route][i].X - e.X / Main.zoom), 2) + Math.Pow((Data.AllCoordinates[route][i].Y - e.Y / Main.zoom), 2);
+                                    pos = i;
+                                }
                             }
                         }
                     }
-                }
 
-                if (trackerCheck)
-                {
-                    Rectangle rect = new Rectangle(0, 0, 200, 100);
-                    Bitmap busPic = new Bitmap(Bus.BusImg);
-                    busPic = new Bitmap(busPic, new Size(15, 15));
-                    Bitmap num = new Bitmap(busPic.Height, busPic.Width);
-                    using (Graphics gr = Graphics.FromImage(num))
+                    if (trackerCheck)
                     {
-                        using (Font font = new Font("Segoe UI", 10))
+                        Rectangle rect = new Rectangle(0, 0, 200, 100);
+                        Bitmap busPic = new Bitmap(Bus.BusImg);
+                        busPic = new Bitmap(busPic, new Size(15, 15));
+                        Bitmap num = new Bitmap(busPic.Height, busPic.Width);
+                        using (Graphics gr = Graphics.FromImage(num))
                         {
-                            // Заливаем фон нужным цветом.
-                            gr.FillRectangle(Brushes.Transparent, rect);
+                            using (Font font = new Font("Segoe UI", 10))
+                            {
+                                // Заливаем фон нужным цветом.
+                                gr.FillRectangle(Brushes.Transparent, rect);
 
-                            // Выводим текст.
-                            gr.DrawString(
-                                route,
-                                font,
-                                Brushes.Black, // цвет текста
-                                rect, // текст будет вписан в указанный прямоугольник
-                                StringFormat.GenericTypographic
-                                );
+                                // Выводим текст.
+                                gr.DrawString(
+                                    route,
+                                    font,
+                                    Brushes.Black, // цвет текста
+                                    rect, // текст будет вписан в указанный прямоугольник
+                                    StringFormat.GenericTypographic
+                                    );
+                            }
                         }
-                    }
 
-                    Bitmap original = new Bitmap(Math.Max(busPic.Width, num.Width), Math.Max(busPic.Height, num.Height) * 2); //load the image file
-                    using (Graphics graphics = Graphics.FromImage(original))
-                    {
-
-                        graphics.DrawImage(busPic, 0, 0);
-                        graphics.DrawImage(num, 0, 15);
-                        graphics.Dispose();
-
-                    }
-                    Data.Buses.Add(new Bus(original, pos, backsideCheck, route, Data.AllCoordinates[route], true));
-                }
-                else
-                {
-                    Rectangle rect = new Rectangle(0, 0, 200, 100);
-                    Bitmap busPic = new Bitmap(Bus.OffBusImg);
-                    busPic = new Bitmap(busPic, new Size(15, 15));
-                    Bitmap num = new Bitmap(busPic.Height, busPic.Width);
-                    using (Graphics gr = Graphics.FromImage(num))
-                    {
-                        using (Font font = new Font("Segoe UI", 10))
+                        Bitmap original = new Bitmap(Math.Max(busPic.Width, num.Width), Math.Max(busPic.Height, num.Height) * 2); //load the image file
+                        using (Graphics graphics = Graphics.FromImage(original))
                         {
-                            // Заливаем фон нужным цветом.
-                            gr.FillRectangle(Brushes.Transparent, rect);
 
-                            // Выводим текст.
-                            gr.DrawString(
-                                route,
-                                font,
-                                Brushes.Black, // цвет текста
-                                rect, // текст будет вписан в указанный прямоугольник
-                                StringFormat.GenericTypographic
-                                );
+                            graphics.DrawImage(busPic, 0, 0);
+                            graphics.DrawImage(num, 0, 15);
+                            graphics.Dispose();
+
                         }
+                        Data.Buses.Add(new Bus(original, pos, backsideCheck, route, Data.AllCoordinates[route], true));
                     }
-
-                    Bitmap original = new Bitmap(Math.Max(busPic.Width, num.Width), Math.Max(busPic.Height, num.Height) * 2); //load the image file
-                    using (Graphics graphics = Graphics.FromImage(original))
+                    else
                     {
+                        Rectangle rect = new Rectangle(0, 0, 200, 100);
+                        Bitmap busPic = new Bitmap(Bus.OffBusImg);
+                        busPic = new Bitmap(busPic, new Size(15, 15));
+                        Bitmap num = new Bitmap(busPic.Height, busPic.Width);
+                        using (Graphics gr = Graphics.FromImage(num))
+                        {
+                            using (Font font = new Font("Segoe UI", 10))
+                            {
+                                // Заливаем фон нужным цветом.
+                                gr.FillRectangle(Brushes.Transparent, rect);
 
-                        graphics.DrawImage(busPic, 0, 0);
-                        graphics.DrawImage(num, 0, 15);
-                        graphics.Dispose();
+                                // Выводим текст.
+                                gr.DrawString(
+                                    route,
+                                    font,
+                                    Brushes.Black, // цвет текста
+                                    rect, // текст будет вписан в указанный прямоугольник
+                                    StringFormat.GenericTypographic
+                                    );
+                            }
+                        }
 
-                    }
-                    Data.Buses.Add(new Bus(original, pos, backsideCheck, route, Data.AllCoordinates[route], false));
-                };
+                        Bitmap original = new Bitmap(Math.Max(busPic.Width, num.Width), Math.Max(busPic.Height, num.Height) * 2); //load the image file
+                        using (Graphics graphics = Graphics.FromImage(original))
+                        {
+
+                            graphics.DrawImage(busPic, 0, 0);
+                            graphics.DrawImage(num, 0, 15);
+                            graphics.Dispose();
+
+                        }
+                        Data.Buses.Add(new Bus(original, pos, backsideCheck, route, Data.AllCoordinates[route], false));
+                    };
+                }
+            }
+            else
+            {
+                try
+                {
+                    Coordinates c = new Coordinates();
+                    c.CreateOneRouteCoordinates(route);
+                }
+                catch
+                {
+                    throw new Exception();
+                }
             }
         }
 
@@ -181,7 +197,7 @@ namespace SystAnalys_lr1.Classes
                 {
                     foreach (var gridPart in gridParts)
                     {
-                        if (((e.X > gridPart.x * Main.zoom) && (e.Y > gridPart.y * Main.zoom)) && ((e.X < gridPart.x * Main.zoom + GridPart.Width * Main.zoom) && (e.Y < gridPart.y * Main.zoom + GridPart.Height * Main.zoom)))
+                        if (((e.X > gridPart.X * Main.zoom) && (e.Y > gridPart.Y * Main.zoom)) && ((e.X < gridPart.X * Main.zoom + GridPart.Width * Main.zoom) && (e.Y < gridPart.Y * Main.zoom + GridPart.Height * Main.zoom)))
                         {
 
                             if (!Data.StopPoints[route].Contains(new Vertex(sp.X, sp.Y)))
@@ -189,7 +205,7 @@ namespace SystAnalys_lr1.Classes
                                 if (Data.StopPoints.ContainsKey(route))
                                 {
                                     Data.StopPoints[route].Add(new BusStop(sp.X, sp.Y));
-                                    Data.StopPoints[route].Last().gridNum = gridParts.IndexOf(gridPart);
+                                    Data.StopPoints[route].Last().GridNum = gridParts.IndexOf(gridPart);
                                     if (Data.StopPointsInGrids.ContainsKey(route))
                                         Data.StopPointsInGrids[route].Add(gridParts.IndexOf(gridPart)); //дроп ошибки
                                     else
@@ -208,7 +224,7 @@ namespace SystAnalys_lr1.Classes
                                         if (Data.StopPoints.ContainsKey(route) && Data.StopPointsInGrids.ContainsKey(route))
                                         {
                                             Data.StopPoints[route].Add(new BusStop(sp.X, sp.Y));
-                                            Data.StopPoints[route].Last().gridNum = gridParts.IndexOf(gridPart);
+                                            Data.StopPoints[route].Last().GridNum = gridParts.IndexOf(gridPart);
                                             Data.StopPointsInGrids[route].Add(gridParts.IndexOf(gridPart)); //дроп ошибки
                                         }
                                     }
@@ -230,7 +246,7 @@ namespace SystAnalys_lr1.Classes
         {
             foreach (var gridPart in gridParts)
             {
-                if (((e.X > gridPart.x * Main.zoom) && (e.Y > gridPart.y * Main.zoom)) && ((e.X < gridPart.x * Main.zoom + GridPart.Width * Main.zoom) && (e.Y < gridPart.y * Main.zoom + GridPart.Height * Main.zoom)))
+                if (((e.X > gridPart.X * Main.zoom) && (e.Y > gridPart.Y * Main.zoom)) && ((e.X < gridPart.X * Main.zoom + GridPart.Width * Main.zoom) && (e.Y < gridPart.Y * Main.zoom + GridPart.Height * Main.zoom)))
                 {
                     allstopPoints.Add(new BusStop(e.X / Main.zoom, e.Y / Main.zoom));
                     Main.G.DrawStopVertex(e.X / Main.zoom, e.Y / Main.zoom);
@@ -430,7 +446,7 @@ namespace SystAnalys_lr1.Classes
         {
             foreach (var gridPart in gridParts)
             {
-                if (((e.X > gridPart.x * Main.zoom) && (e.Y > gridPart.y * Main.zoom)) && ((e.X < gridPart.x * Main.zoom + GridPart.Width * Main.zoom) && (e.Y < gridPart.y * Main.zoom + GridPart.Height * Main.zoom)))
+                if (((e.X > gridPart.X * Main.zoom) && (e.Y > gridPart.Y * Main.zoom)) && ((e.X < gridPart.X * Main.zoom + GridPart.Width * Main.zoom) && (e.Y < gridPart.Y * Main.zoom + GridPart.Height * Main.zoom)))
                 {
                     traficLights.Add(new TraficLight(e.X / Main.zoom, e.Y / Main.zoom, gridParts.IndexOf(gridPart), Main.FirstCrossRoadsGreenLight, Main.FirstCrossRoadsRedLight));
                     Data.TraficLightsInGrids.Add(gridParts.IndexOf(gridPart));
@@ -447,7 +463,7 @@ namespace SystAnalys_lr1.Classes
         {
             foreach (var gridPart in gridParts)
             {
-                if (((e.X > gridPart.x * Main.zoom) && (e.Y > gridPart.y * Main.zoom)) && ((e.X < gridPart.x * Main.zoom + GridPart.Width * Main.zoom) && (e.Y < gridPart.y * Main.zoom + GridPart.Height * Main.zoom)))
+                if (((e.X > gridPart.X * Main.zoom) && (e.Y > gridPart.Y * Main.zoom)) && ((e.X < gridPart.X * Main.zoom + GridPart.Width * Main.zoom) && (e.Y < gridPart.Y * Main.zoom + GridPart.Height * Main.zoom)))
                 {
                     traficLights.Add(new TraficLight(e.X / Main.zoom, e.Y / Main.zoom, gridParts.IndexOf(gridPart), Main.FirstCrossRoadsRedLight, Main.FirstCrossRoadsGreenLight));
                     Data.TraficLightsInGrids.Add(gridParts.IndexOf(gridPart));
@@ -531,7 +547,7 @@ namespace SystAnalys_lr1.Classes
                 if (Math.Pow((tl.X - e.X / Main.zoom), 2) + Math.Pow((tl.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                 {
                     tl.Stop();
-                    Data.TraficLightsInGrids.Remove(tl.gridNum);
+                    Data.TraficLightsInGrids.Remove(tl.GridNum);
                     Data.TraficLights.Remove(tl);
                     Main.Flag = true;
                     break;
@@ -693,7 +709,7 @@ namespace SystAnalys_lr1.Classes
             {
                 if (Math.Pow((stopRoute.X - e.X / Main.zoom), 2) + Math.Pow((stopRoute.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                 {
-                    Data.StopPointsInGrids[route].Remove(stopRoute.gridNum);
+                    Data.StopPointsInGrids[route].Remove(stopRoute.GridNum);
                     Data.StopPoints[route].Remove(stopRoute);
                     flag = true;
                     break;
@@ -805,7 +821,7 @@ namespace SystAnalys_lr1.Classes
             {
                 if (Math.Pow((stopRoute.X - e.X / Main.zoom), 2) + Math.Pow((stopRoute.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                 {
-                    Data.StopPointsInGrids[route].Remove(stopRoute.gridNum);
+                    Data.StopPointsInGrids[route].Remove(stopRoute.GridNum);
                     Data.StopPoints[route].Remove(stopRoute);
                     flag = true;
                     break;
@@ -900,7 +916,7 @@ namespace SystAnalys_lr1.Classes
                 {
                     if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                     {
-                        Data.StopPointsInGrids[stop.Key].Remove(sp.gridNum);
+                        Data.StopPointsInGrids[stop.Key].Remove(sp.GridNum);
                         stop.Value.Remove(sp);
                         Main.Flag = true;
                         break;
@@ -920,7 +936,7 @@ namespace SystAnalys_lr1.Classes
                 if (Math.Pow((tl.X - e.X / Main.zoom), 2) + Math.Pow((tl.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                 {
                     tl.Stop();
-                    Data.TraficLightsInGrids.Remove(tl.gridNum);
+                    Data.TraficLightsInGrids.Remove(tl.GridNum);
                     Data.TraficLights.Remove(tl);
                     Main.Flag = true;
                     break;
@@ -947,7 +963,7 @@ namespace SystAnalys_lr1.Classes
                 {
                     if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                     {
-                        Data.StopPointsInGrids[stop.Key].Remove(sp.gridNum);
+                        Data.StopPointsInGrids[stop.Key].Remove(sp.GridNum);
                         stop.Value.Remove(sp);
                         Main.Flag = true;
                         break;

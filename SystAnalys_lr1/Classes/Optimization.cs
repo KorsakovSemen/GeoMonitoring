@@ -16,18 +16,30 @@ namespace SystAnalys_lr1.Classes
 {
     static class Optimization
     {
-        static public string pathOpt { get; set; }
-        static public SerializableDictionary<int, int?> percentMean { get; set; }
-        static int small { get; set; } = 10000;
-        static public int countWithoutSensors { get; set; }
-        static public List<int> withoutSensorsBuses { get; set; } = new List<int>();
+        private static int? min;
+        private static List<int> result;
+        private static string mean;
+        private static string s_pathOpt;
+        private static SerializableDictionary<int, int?> s_percentMean;
+        private static int s_small = 10000;
+        private static int s_countWithoutSensors;
+        private static List<int> s_withoutSensorsBuses = new List<int>();
+        private static int s_optiSpeed;
+        private static int s_optiCount;
+
+        public static string PathOpt { get => s_pathOpt; set => s_pathOpt = value; }
+        public static SerializableDictionary<int, int?> PercentMean { get => s_percentMean; set => s_percentMean = value; }
+        private static int Small { get => s_small; set => s_small = value; }
+        public static int CountWithoutSensors { get => s_countWithoutSensors; set => s_countWithoutSensors = value; }
+        public static List<int> WithoutSensorsBuses { get => s_withoutSensorsBuses; set => s_withoutSensorsBuses = value; }
         delegate void DelInt(int text);
         static Random rnd = new Random();
-        static string mean;
-        public static int OptiSpeed { get; set; }
-        public static int OptiCount { get; set; }
-        public static int? min;
-        public static List<int> result;
+        public static int OptiSpeed { get => s_optiSpeed; set => s_optiSpeed = value; }
+        public static int OptiCount { get => s_optiCount; set => s_optiCount = value; }
+        public static string Mean { get => mean; set => mean = value; }
+        public static int? Min { get => min; set => min = value; }
+        public static List<int> Result { get => result; set => result = value; }
+
 
         public static void ResMatrix(MetroGrid results)
         {
@@ -35,7 +47,7 @@ namespace SystAnalys_lr1.Classes
             results.Refresh();
             results.RowCount = 5;
             int i = 0;
-            foreach (var pm in percentMean)
+            foreach (var pm in PercentMean)
             {
                 results.Rows[i].HeaderCell.Value = pm.Key.ToString();
                 if (pm.Value != 0)
@@ -49,7 +61,7 @@ namespace SystAnalys_lr1.Classes
         public static void ResChart(int oldChart, Report r, MetroStyleManager StyleManager)
         {
             bool changeText = false;
-            if (oldChart != percentMean.Keys.Sum())
+            if (oldChart != PercentMean.Keys.Sum())
             {
                 r.ch.Legends.Clear();
                 Main.ReportCount = 0;
@@ -57,7 +69,7 @@ namespace SystAnalys_lr1.Classes
                 {
                     series.Points.Clear();
                 }
-                oldChart = percentMean.Keys.Sum();
+                oldChart = PercentMean.Keys.Sum();
                 changeText = true;
             }
             int iCh = 0;
@@ -65,7 +77,7 @@ namespace SystAnalys_lr1.Classes
             if (Main.ReportCount != 0)
                 r.ch.Series.Add(Main.ReportCount.ToString());
             r.ch.Series[Main.ReportCount].LegendText = Main.ReportCount.ToString();
-            foreach (var pm in percentMean)
+            foreach (var pm in PercentMean)
             {
                 if (pm.Value == null)
                 {
@@ -81,7 +93,7 @@ namespace SystAnalys_lr1.Classes
                     r.ch.ChartAreas[0].AxisX.CustomLabels[iCh].Text = pm.Key.ToString();
                 iCh++;
             }
-            r.ch.SaveImage(pathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            r.ch.SaveImage(PathOpt + "/" + MainStrings.chart + ".jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
             r.TopMost = true;
             r.Show();
             r.BringToFront();
@@ -94,18 +106,18 @@ namespace SystAnalys_lr1.Classes
         public static void Opt(MatrixControl matrixControl, LoadingForm loadingForm)
         {
 
-            pathOpt = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}_{5}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
-            Directory.CreateDirectory(pathOpt);
-            Directory.CreateDirectory(pathOpt + "/Matrices");
+            PathOpt = "../../Results/" + string.Format("{0}_{1}_{2}_{3}_{4}_{5}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+            Directory.CreateDirectory(PathOpt);
+            Directory.CreateDirectory(PathOpt + "/Matrices");
             FileStream fs;
             StreamWriter streamWriter;
-            percentMean = new SerializableDictionary<int, int?>();
+            PercentMean = new SerializableDictionary<int, int?>();
 
             List<Bus> optimizeBuses = new List<Bus>();
             Data.Buses.ForEach((b) => optimizeBuses.Add(
                 (Bus)b.Clone()
             ));
-            int old = small;
+            int old = Small;
 
 
             int ciclTotal = 5;
@@ -113,7 +125,7 @@ namespace SystAnalys_lr1.Classes
             loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Maximum = s), ciclTotal * OptiCount);
             for (int cicl = 0; cicl < ciclTotal; cicl++)
             {
-                fs = File.Create(pathOpt + "/Matrices/" + cicl + "_Matrix.txt");
+                fs = File.Create(PathOpt + "/Matrices/" + cicl + "_Matrix.txt");
                 streamWriter = new StreamWriter(fs);
                 OffBuses(matrixControl, cicl * 10);
                 if (cicl == ciclTotal - 1)
@@ -122,16 +134,16 @@ namespace SystAnalys_lr1.Classes
                 ShuffleBuses();
                 if (EpicSettings.SavePictures == true)
                 {
-                    Directory.CreateDirectory(pathOpt + "/Epics" + "/" + (cicl + 1).ToString());
+                    Directory.CreateDirectory(PathOpt + "/Epics" + "/" + (cicl + 1).ToString());
                 }
                 for (int i = 0; i < OptiCount; i++)
                 {
                     if (EpicSettings.SavePictures == true)
                     {
-                        Directory.CreateDirectory(pathOpt + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString());
+                        Directory.CreateDirectory(PathOpt + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString());
                     }
                     Epicenter.CreateOneRandomEpicenter(Main.EpicSizeParam, null);
-                    Modeling.StartModeling(pathOpt, cicl, i);
+                    Modeling.StartModeling(PathOpt, cicl, i);
                     if ((EpicSettings.SavePictures == true) && (!EpicSettings.ExtendedSavePictures == true))
                     {
 
@@ -143,7 +155,7 @@ namespace SystAnalys_lr1.Classes
                         {
                             using (System.Drawing.Image img = (Image)Main.Ep.Esheet.Image.Clone())
                             {
-                                img.Save(pathOpt + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString() + "/" + i.ToString() + "_nat" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                                img.Save(PathOpt + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString() + "/" + i.ToString() + "_nat" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                             }
                         }
 
@@ -155,14 +167,14 @@ namespace SystAnalys_lr1.Classes
                         {
                             using (System.Drawing.Image img = (Image)Main.Ep.Esheet.Image.Clone())
                             {
-                                img.Save(pathOpt + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString() + "/" + i.ToString() + "_re" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                                img.Save(PathOpt + "/Epics" + "/" + (cicl + 1).ToString() + "/" + (i + 1).ToString() + "/" + i.ToString() + "_re" + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                             }
                         }
 
                     }
 
                     loadingForm.loading.Invoke(new DelInt((s) => loadingForm.loading.Value = s), loadingForm.loading.Value + 1);
-                    small = 10000;
+                    Small = 10000;
                 }
 
                 int total = Modeling.ResultFromModeling.Sum(x => Convert.ToInt32(x));
@@ -177,23 +189,23 @@ namespace SystAnalys_lr1.Classes
 
                 if (total < 0 || count < Modeling.ResultFromModeling.Count / 2)
                 {
-                    if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
-                        percentMean.Add(withoutSensorsBuses.Last(), null);
+                    if (!PercentMean.ContainsKey(WithoutSensorsBuses.Last()))
+                        PercentMean.Add(WithoutSensorsBuses.Last(), null);
                 }
                 else
                 {
-                    if (!percentMean.ContainsKey(withoutSensorsBuses.Last()))
+                    if (!PercentMean.ContainsKey(WithoutSensorsBuses.Last()))
                     {
                         if (count != 0)
-                            percentMean.Add(withoutSensorsBuses.Last(), total / count);
+                            PercentMean.Add(WithoutSensorsBuses.Last(), total / count);
                         else
-                            percentMean.Add(withoutSensorsBuses.Last(), -1);
+                            PercentMean.Add(WithoutSensorsBuses.Last(), -1);
                     }
                 };
-                using (StreamWriter fileV = new StreamWriter(pathOpt + @"\" + withoutSensorsBuses.Last() + "_buses" + ".txt"))
+                using (StreamWriter fileV = new StreamWriter(PathOpt + @"\" + WithoutSensorsBuses.Last() + "_buses" + ".txt"))
                 {
                     fileV.WriteLine(MainStrings.sensorsDown + ": " + (cicl * 10).ToString());
-                    fileV.WriteLine(MainStrings.countBuses + ": " + (withoutSensorsBuses.Last()).ToString());
+                    fileV.WriteLine(MainStrings.countBuses + ": " + (WithoutSensorsBuses.Last()).ToString());
                     fileV.WriteLine(MainStrings.numIter + ": " + OptiCount);
                     fileV.WriteLine(MainStrings.distance + ": " + OptiSpeed.ToString() + " " + MainStrings.sec + " (" + (OptiSpeed / 60 == 0 ? ">1" + MainStrings.minute : OptiSpeed / 60 + " " + MainStrings.minute) + ")");
                     fileV.WriteLine(MainStrings.found + ": " + (from num in Modeling.ResultFromModeling where (num != null) select num).Count());
@@ -225,24 +237,24 @@ namespace SystAnalys_lr1.Classes
                 SaveMatrix(matrixControl, streamWriter);
             }
 
-            var res = percentMean.Where(s => s.Value.Equals(percentMean.Min(v => v.Value))).Select(s => s.Key).ToList();
-            min = percentMean.Min(v => v.Value);
-            result = percentMean.Where(s => s.Value.Equals(min)).Select(s => s.Key).ToList();
-            result.Sort();
-            if (res.Count != 0 && min != 0 && min != null)
-                mean = "Found";//MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " " + " - " + MainStrings.countSensors + ": " + result[0];
+            var res = PercentMean.Where(s => s.Value.Equals(PercentMean.Min(v => v.Value))).Select(s => s.Key).ToList();
+            Min = PercentMean.Min(v => v.Value);
+            Result = PercentMean.Where(s => s.Value.Equals(Min)).Select(s => s.Key).ToList();
+            Result.Sort();
+            if (res.Count != 0 && Min != 0 && Min != null)
+                Mean = "Found";
             else
             {
-                mean = null;//MainStrings.average + " " + MainStrings.notFound;
+                Mean = null;
             }
 
-            using (StreamWriter fileV = new StreamWriter(pathOpt + "/Average.txt"))
+            using (StreamWriter fileV = new StreamWriter(PathOpt + "/Average.txt"))
             {
-                fileV.WriteLine(mean != MainStrings.average + " " + MainStrings.notFound ? MainStrings.average + " " + (min / 60 == 0 ? (min + " " + MainStrings.sec).ToString() : (min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + result[0] : MainStrings.notFound);
+                fileV.WriteLine(Mean != MainStrings.average + " " + MainStrings.notFound ? MainStrings.average + " " + (Min / 60 == 0 ? (Min + " " + MainStrings.sec).ToString() : (Min / 60 + " " + MainStrings.minute).ToString()) + " - " + MainStrings.countSensors + ": " + Result[0] : MainStrings.notFound);
             }
 
 
-            Main.Average = mean;
+            Main.Average = Mean;
             Data.Buses = optimizeBuses;
 
         }
@@ -268,10 +280,8 @@ namespace SystAnalys_lr1.Classes
                 foreach (DataGridViewColumn col in matrixControl.matrixGrid.Columns)
                     if (col.Visible)
                     {
-                        //sw.Write(col.HeaderText + "\t"); //CODE STYLE //SHLUZI //MB STACIONARNIYE DATCHIKI
                         col_n.Add(col.Index);
                     }
-                //sw.WriteLine();
                 int x = matrixControl.matrixGrid.RowCount;
                 if (matrixControl.matrixGrid.AllowUserToAddRows) x--;
 
@@ -324,14 +334,14 @@ namespace SystAnalys_lr1.Classes
                     tot += 1;
                 }
             };
-            countWithoutSensors -= countSensors;
-            if (withoutSensorsBuses.Count == 4)
+            CountWithoutSensors -= countSensors;
+            if (WithoutSensorsBuses.Count == 4)
             {
-                countWithoutSensors = 1;
+                CountWithoutSensors = 1;
             }
-            if (withoutSensorsBuses.Count != 5)
+            if (WithoutSensorsBuses.Count != 5)
             {
-                withoutSensorsBuses.Add(countWithoutSensors);
+                WithoutSensorsBuses.Add(CountWithoutSensors);
             }
         }
         private static void ShuffleBuses()
@@ -345,7 +355,7 @@ namespace SystAnalys_lr1.Classes
                     {
                         if (b.Route == bp.First().Route)
                         {
-                            if(Data.AllGridsInRoutes[bp.First().Route].Count - 1 >= 0)
+                            if (Data.AllGridsInRoutes[bp.First().Route].Count - 1 >= 0)
                             {
                                 int r = rnd.Next(0, Data.AllGridsInRoutes[bp.First().Route].Count - 1);
                                 b.PositionAt = r;
@@ -354,7 +364,7 @@ namespace SystAnalys_lr1.Classes
                             {
                                 b.PositionAt = rnd.Next(Data.AllGridsInRoutes[bp.First().Route].Count);
                             }
-                           
+
                         }
 
                     };

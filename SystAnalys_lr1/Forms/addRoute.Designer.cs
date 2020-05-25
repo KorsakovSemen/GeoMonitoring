@@ -104,6 +104,7 @@
             this.errorProvider1.SetIconPadding(this.button1, ((int)(resources.GetObject("button1.IconPadding"))));
             this.button1.Name = "button1";
             this.button1.UseSelectable = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // errorProvider1
             // 

@@ -443,7 +443,7 @@ namespace SystAnalys_lr1.Classes
                 {
                     foreach (var Square in Sector.Value)
                         if ((PositionAt < Coordinates.Count))
-                            if (((Coordinates[PositionAt].X * ZoomCoef) >= Square.x * ZoomCoef) && ((Coordinates[PositionAt].X * ZoomCoef) <= Square.x * ZoomCoef + GridPart.Width * ZoomCoef) && ((Coordinates[PositionAt].Y * ZoomCoef) >= Square.y * ZoomCoef) && ((Coordinates[PositionAt].Y * ZoomCoef) <= (Square.y * ZoomCoef + GridPart.Height * ZoomCoef)))
+                            if (((Coordinates[PositionAt].X * ZoomCoef) >= Square.X * ZoomCoef) && ((Coordinates[PositionAt].X * ZoomCoef) <= Square.X * ZoomCoef + GridPart.Width * ZoomCoef) && ((Coordinates[PositionAt].Y * ZoomCoef) >= Square.Y * ZoomCoef) && ((Coordinates[PositionAt].Y * ZoomCoef) <= (Square.Y * ZoomCoef + GridPart.Height * ZoomCoef)))
                             {
                                 switch (Sector.Key)
                                 {
@@ -477,49 +477,49 @@ namespace SystAnalys_lr1.Classes
                     foreach (var Square in Sector.Value)
                     {
 
-                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y + GridPart.Height == Square.y)))
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].X == Square.X) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].Y + GridPart.Height == Square.Y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
 
-                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y - GridPart.Height == Square.y)))
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].X == Square.X) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].Y - GridPart.Height == Square.Y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
 
-                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y - GridPart.Height == Square.y)))
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].X - GridPart.Width == Square.X) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].Y - GridPart.Height == Square.Y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
 
                         //был(вроде норм влияет)
-                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y - GridPart.Height == Square.y)))
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].X + GridPart.Width == Square.X) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].Y - GridPart.Height == Square.Y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
                         //был(плюс минус влияет)
-                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].X + GridPart.Width == Square.X) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].Y == Square.Y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
                         //был(плюс минус влияет)
-                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].X - GridPart.Width == Square.X) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].Y == Square.Y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
 
 
-                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x + GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y + GridPart.Height == Square.y)))
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].X + GridPart.Width == Square.X) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].Y + GridPart.Height == Square.Y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
 
-                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x - GridPart.Width == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y + GridPart.Height == Square.y)))
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].X - GridPart.Width == Square.X) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].Y + GridPart.Height == Square.Y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
 
-                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].x == Square.x) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].y == Square.y)))
+                        if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].X == Square.X) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].Y == Square.Y)))
                         {
                             return CheckEpic(Sector, Square, EpicList);
                         }
@@ -567,7 +567,7 @@ namespace SystAnalys_lr1.Classes
             {
                 if ((PositionAt < Coordinates.Count))
 
-                    if (((Coordinates[PositionAt].X) > Data.TheGrid[i].x) && ((Coordinates[PositionAt].X) < Data.TheGrid[i].x + GridPart.Width) && ((Coordinates[PositionAt].Y) > Data.TheGrid[i].y) && ((Coordinates[PositionAt].Y) < (Data.TheGrid[i].y + GridPart.Height)))
+                    if (((Coordinates[PositionAt].X) > Data.TheGrid[i].X) && ((Coordinates[PositionAt].X) < Data.TheGrid[i].X + GridPart.Width) && ((Coordinates[PositionAt].Y) > Data.TheGrid[i].Y) && ((Coordinates[PositionAt].Y) < (Data.TheGrid[i].Y + GridPart.Height)))
                     {
                         Locate = i;
                     }

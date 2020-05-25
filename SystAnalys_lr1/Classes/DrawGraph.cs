@@ -9,12 +9,16 @@ namespace SystAnalys_lr1.Classes
 {
     public class DrawGraph
     {
-        public Bitmap bitmap { get; set; }
-        readonly private Pen blackPen;
-        readonly private Pen darkGoldPen;
-        public Graphics gr { get; set; }
-        readonly private Color color;
-        public int R { get; set; } = 3; //радиус окружности вершины
+        public Bitmap Bitmap { get => _bitmap; set => _bitmap = value; }
+        public Graphics Gr { get => _gr; set => _gr = value; }
+        public int R { get => _r; set => _r = value; }
+
+        private readonly Pen blackPen;
+        private readonly Pen darkGoldPen;
+        private readonly Color color;
+        private Bitmap _bitmap;
+        private Graphics _gr;
+        private int _r = 3;
 
         public DrawGraph()
         {
@@ -29,90 +33,91 @@ namespace SystAnalys_lr1.Classes
 
         public void SetBitmap()
         {
-            bitmap = new Bitmap(Main.GlobalMap);
-            gr = Graphics.FromImage(bitmap);
+            Bitmap = new Bitmap(Main.GlobalMap);
+            Gr = Graphics.FromImage(Bitmap);
         }
 
         public void SetBitmap2()
         {
-            bitmap = new Bitmap(Main.GlobalMap);
-            gr = Graphics.FromImage(bitmap);
+            Bitmap = new Bitmap(Main.GlobalMap);
+            Gr = Graphics.FromImage(Bitmap);
         }
-        
+
         public Bitmap GetBitmap()
         {
-            return bitmap;
+            return Bitmap;
         }
 
         public void ClearSheet()
         {
-            Graphics.FromImage(bitmap).Clear(Color.White);
-            bitmap = new Bitmap(Main.GlobalMap);
-            gr.Dispose();
-            gr = Graphics.FromImage(bitmap);
+            Graphics.FromImage(Bitmap).Clear(Color.White);
+            Bitmap = new Bitmap(Main.GlobalMap);
+            Gr.Dispose();
+            Gr = Graphics.FromImage(Bitmap);
 
         }
-        
+
         public void ClearSheet2()
-        { 
-            if (!Main.Ep.IsDisposed) {
-                bitmap = new Bitmap(DisplayEpicenters.ZoomPicture);
+        {
+            if (!Main.Ep.IsDisposed)
+            {
+                Bitmap = new Bitmap(DisplayEpicenters.ZoomPicture);
             }
-       
-            gr = null;
-            gr = Graphics.FromImage(bitmap);
+
+            Gr = null;
+            Gr = Graphics.FromImage(Bitmap);
 
         }
 
         public void DrawStation(int x, int y, int r, Brush b)
         {
-            gr.FillEllipse(Brushes.Red, (x - r), (y - r), 4 * r, 4 * r);
-            gr.FillEllipse(b, (x - 30 * r), (y - 30 * r), 60 * r, 60 * r);
+            Gr.FillEllipse(Brushes.Red, (x - r), (y - r), 4 * r, 4 * r);
+            Gr.FillEllipse(b, (x - 30 * r), (y - 30 * r), 60 * r, 60 * r);
         }
 
         public void DrawVertex(int x, int y)
         {
-            gr.FillEllipse(Brushes.GreenYellow, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
-            gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            Gr.FillEllipse(Brushes.GreenYellow, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            Gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
 
         public void DrawSelectedVertex(int x, int y)
         {
-            gr.FillEllipse(Brushes.Red, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
-            gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            Gr.FillEllipse(Brushes.Red, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            Gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
 
         public void DrawSelectedStopVertex(int x, int y)
         {
-            gr.FillEllipse(Brushes.HotPink, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
-            gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            Gr.FillEllipse(Brushes.HotPink, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            Gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
 
         public void DrawRouteVertex(int x, int y)
         {
-            gr.FillEllipse(Brushes.AliceBlue, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
-            gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            Gr.FillEllipse(Brushes.AliceBlue, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            Gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
         public void DrawYellowVertex(int x, int y)
         {
-            gr.FillEllipse(Brushes.Yellow, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
-            gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            Gr.FillEllipse(Brushes.Yellow, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            Gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
         public void DrawGreenVertex(int x, int y)
         {
-            gr.FillEllipse(Brushes.ForestGreen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
-            gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            Gr.FillEllipse(Brushes.ForestGreen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            Gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
         public void DrawStopVertex(int x, int y)
         {
-            gr.FillEllipse(Brushes.Orange, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
-            gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            Gr.FillEllipse(Brushes.Orange, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            Gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
 
         public void DrawStopRouteVertex(int x, int y)
         {
-            gr.FillEllipse(Brushes.SkyBlue, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
-            gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            Gr.FillEllipse(Brushes.SkyBlue, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
+            Gr.DrawEllipse(blackPen, (x - R) * Main.zoom, (y - R) * Main.zoom, R * 2 * Main.zoom, R * 2 * Main.zoom);
         }
 
         public void DrawEdge(Vertex V1, Vertex V2, Edge E, int rand = 0)
@@ -133,11 +138,11 @@ namespace SystAnalys_lr1.Classes
 
             if (E.V1 == E.V2)
             {
-                gr.DrawArc(pen, (V1.X - 2 * R) * Main.zoom, (V1.Y - 2 * R) * Main.zoom, 2 * R * Main.zoom, 2 * R * Main.zoom, 90, 270);
+                Gr.DrawArc(pen, (V1.X - 2 * R) * Main.zoom, (V1.Y - 2 * R) * Main.zoom, 2 * R * Main.zoom, 2 * R * Main.zoom, 90, 270);
             }
             else
             {
-                gr.DrawLine(darkGoldPen, V1.X * Main.zoom, V1.Y * Main.zoom, V2.X * Main.zoom, V2.Y * Main.zoom);
+                Gr.DrawLine(darkGoldPen, V1.X * Main.zoom, V1.Y * Main.zoom, V2.X * Main.zoom, V2.Y * Main.zoom);
                 DrawVertex(V1.X * Main.zoom, V1.Y * Main.zoom);
                 DrawVertex(V2.X * Main.zoom, V2.Y * Main.zoom);
             }
@@ -162,17 +167,17 @@ namespace SystAnalys_lr1.Classes
             {
                 if (E[i].V1 == E[i].V2)
                 {
-                    gr.DrawArc(pen, (V[E[i].V1].X - 2 * R) * Main.zoom, (V[E[i].V1].Y - 2 * R) * Main.zoom, 2 * R * Main.zoom, 2 * R * Main.zoom, 90, 270);
+                    Gr.DrawArc(pen, (V[E[i].V1].X - 2 * R) * Main.zoom, (V[E[i].V1].Y - 2 * R) * Main.zoom, 2 * R * Main.zoom, 2 * R * Main.zoom, 90, 270);
                 }
                 else
                 {
                     if (E[i].V1 < V.Count && E[i].V2 < V.Count)
                     {
-                        gr.DrawLine(pen, V[E[i].V1].X * Main.zoom, V[E[i].V1].Y * Main.zoom, V[E[i].V2].X * Main.zoom, V[E[i].V2].Y * Main.zoom);
+                        Gr.DrawLine(pen, V[E[i].V1].X * Main.zoom, V[E[i].V1].Y * Main.zoom, V[E[i].V2].X * Main.zoom, V[E[i].V2].Y * Main.zoom);
                     }
                 }
             }
-            foreach(var s in Data.Staions)
+            foreach (var s in Data.Staions)
             {
                 DrawStation(s.X, s.Y, 2, new SolidBrush(Color.FromArgb(128, 178, 34, 34)));
             }

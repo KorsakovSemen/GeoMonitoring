@@ -100,7 +100,7 @@ namespace SystAnalys_lr1
             int LastLocate = 0;
             foreach (var gridpart in Data.TheGrid)
             {
-                if ((points.Last().X > gridpart.x) && ((points.Last().X) < gridpart.x + GridPart.Width) && ((points.Last().Y) > gridpart.y) && ((points.Last().Y) < (gridpart.y + GridPart.Height)))
+                if ((points.Last().X > gridpart.X) && ((points.Last().X) < gridpart.X + GridPart.Width) && ((points.Last().Y) > gridpart.Y) && ((points.Last().Y) < (gridpart.Y + GridPart.Height)))
                 {
 
                     Locate = Data.TheGrid.IndexOf(gridpart);

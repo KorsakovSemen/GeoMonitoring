@@ -80,7 +80,7 @@ namespace SystAnalys_lr1
         {
             foreach (var gridPart in Data.TheGrid)
             {
-                if (((e.X > gridPart.x * Ezoom) && (e.Y > gridPart.y * Ezoom)) && ((e.X < gridPart.x * Ezoom + GridPart.Width * Ezoom) && (e.Y < gridPart.y * Ezoom + GridPart.Height * Ezoom)))
+                if (((e.X > gridPart.X * Ezoom) && (e.Y > gridPart.Y * Ezoom)) && ((e.X < gridPart.X * Ezoom + GridPart.Width * Ezoom) && (e.Y < gridPart.Y * Ezoom + GridPart.Height * Ezoom)))
                 {
 
                     ERefreshRouts();
@@ -175,20 +175,20 @@ namespace SystAnalys_lr1
                     switch (Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].Status)
                     {
                         case 0:
-                            EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 0, 128, 0)), new Rectangle(Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].x * Ezoom, Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
+                            EG.Gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 0, 128, 0)), new Rectangle(Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].X * Ezoom, Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].Y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
                             break;
 
                         case 1:
-                            EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 255, 0)), new Rectangle(Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].x * Ezoom, Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
+                            EG.Gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 255, 0)), new Rectangle(Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].X * Ezoom, Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].Y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
                             break;
 
 
                         case 2:
-                            EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 128, 0)), new Rectangle(Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].x * Ezoom, Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
+                            EG.Gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 128, 0)), new Rectangle(Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].X * Ezoom, Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].Y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
 
                             break;
                         case 3:
-                            EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 0, 0)), new Rectangle(Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].x * Ezoom, Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
+                            EG.Gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 0, 0)), new Rectangle(Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].X * Ezoom, Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].Y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
                             break;
                         default:
 
@@ -227,20 +227,20 @@ namespace SystAnalys_lr1
                         switch (Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].Status)
                         {
                             case 0:
-                                EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 0, 128, 0)), new Rectangle(Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].x * Ezoom, Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
+                                EG.Gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 0, 128, 0)), new Rectangle(Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].X * Ezoom, Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].Y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
                                 break;
 
                             case 1:
-                                EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 255, 0)), new Rectangle(Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].x * Ezoom, Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
+                                EG.Gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 255, 0)), new Rectangle(Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].X * Ezoom, Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].Y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
                                 break;
 
 
                             case 2:
-                                EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 128, 0)), new Rectangle(Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].x * Ezoom, Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
+                                EG.Gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 128, 0)), new Rectangle(Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].X * Ezoom, Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].Y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
 
                                 break;
                             case 3:
-                                EG.gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 0, 0)), new Rectangle(Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].x * Ezoom, Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
+                                EG.Gr.FillRectangle(new SolidBrush(Color.FromArgb(170, 255, 0, 0)), new Rectangle(Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].X * Ezoom, Modeling.PollutionInRoutes[Modeling.PollutionInRoutes.ElementAt(i).Key][j].Y * Ezoom, GridPart.Width * Ezoom, GridPart.Height * Ezoom));
                                 break;
                             default:
 

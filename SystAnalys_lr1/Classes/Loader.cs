@@ -56,8 +56,8 @@ namespace SystAnalys_lr1.Classes
                 {
                     XmlSerializer deserializerV = new XmlSerializer(typeof(Classes.Grid));
                     Main.Grid = (Classes.Grid)deserializerV.Deserialize(reader);
-                    Main.Grid.gridHeight = 40;
-                    Main.Grid.gridWidth = 80;
+                    Main.Grid.GridHeight = 40;
+                    Main.Grid.GridWidth = 80;
                 }
             }
 
@@ -66,8 +66,8 @@ namespace SystAnalys_lr1.Classes
                 using (StreamReader reader = new StreamReader(load + "grid.json"))
                 {
                     Main.Grid = JsonConvert.DeserializeObject<Classes.Grid>(reader.ReadToEnd());
-                    Main.Grid.gridHeight = 40;
-                    Main.Grid.gridWidth = 80;
+                    Main.Grid.GridHeight = 40;
+                    Main.Grid.GridWidth = 80;
                 }
             }
             
@@ -89,7 +89,7 @@ namespace SystAnalys_lr1.Classes
                         Data.StopPointsInGrids.Add(StopList.Key, new List<int>());
                         foreach (var vertex in StopList.Value)
                         {
-                            Data.StopPointsInGrids[StopList.Key].Add(vertex.gridNum);
+                            Data.StopPointsInGrids[StopList.Key].Add(vertex.GridNum);
                         }
 
                     }
@@ -123,7 +123,7 @@ namespace SystAnalys_lr1.Classes
                         Data.StopPointsInGrids.Add(StopList.Key, new List<int>());
                         foreach (var vertex in StopList.Value)
                         {
-                            Data.StopPointsInGrids[StopList.Key].Add(vertex.gridNum);
+                            Data.StopPointsInGrids[StopList.Key].Add(vertex.GridNum);
                         }
 
                     }
@@ -147,7 +147,7 @@ namespace SystAnalys_lr1.Classes
                 Data.TraficLightsInGrids = new List<int>();
                 foreach (var item in Data.TraficLights)
                 {
-                    Data.TraficLightsInGrids.Add(item.gridNum);
+                    Data.TraficLightsInGrids.Add(item.GridNum);
                 }
                 foreach (var tll in Data.TraficLights)
                 {
@@ -164,7 +164,7 @@ namespace SystAnalys_lr1.Classes
                     Data.TraficLightsInGrids = new List<int>();
                     foreach (var item in Data.TraficLights)
                     {
-                        Data.TraficLightsInGrids.Add(item.gridNum);
+                        Data.TraficLightsInGrids.Add(item.GridNum);
                     }
                     foreach (var tll in Data.TraficLights)
                     {
@@ -215,7 +215,8 @@ namespace SystAnalys_lr1.Classes
                     {
                         using (Font font = new Font("Segoe UI", 10))
                         {
-                            // Заливаем фон нужным цветом.
+                            var textBounds = gr.VisibleClipBounds;
+                            textBounds.Inflate(-1, -1);
                             gr.FillRectangle(Brushes.Transparent, rect);
 
                             // Выводим текст.
@@ -223,8 +224,9 @@ namespace SystAnalys_lr1.Classes
                                 x.Route.ToString(),
                                 font,
                                 Brushes.Black, // цвет текста
-                                rect, // текст будет вписан в указанный прямоугольник
+                                textBounds, // текст будет вписан в указанный прямоугольник
                                 StringFormat.GenericTypographic
+                                
                                 );
                         }
                     }

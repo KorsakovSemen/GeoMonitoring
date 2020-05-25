@@ -24,14 +24,20 @@ namespace SystAnalys_lr1
     }
     public class TraficLight : Vertex
     {
+        private Timer _timerLight;
+        private LightStatus _status;
+        private int _tick;
+        private int _bal;
+        private readonly int _yellowTime = 2;
+
         [XmlIgnore]
-        public Timer TimerLight { get; private set; }
-        public LightStatus Status { get; set; }
-        public int Tick { get; set; } 
+        public Timer TimerLight { get => _timerLight; private set => _timerLight = value; }
+        public LightStatus Status { get => _status; set => _status = value; }
+        public int Tick { get => _tick; set => _tick = value; }
         public int GreenTime { get; }
         public int RedTime { get; }
-        public int YellowTime { get; } = 2;
-        public int Bal { get; set; } // остаток времени на светофоре
+        public int YellowTime => _yellowTime;
+        public int Bal { get => _bal; set => _bal = value; } // остаток времени на светофоре
 
         public TraficLight() { }
 
@@ -39,7 +45,7 @@ namespace SystAnalys_lr1
         {
             X = x;
             Y = y;
-            this.gridNum = gridNum;
+            this.GridNum = gridNum;
             this.GreenTime = greenTime;
             this.RedTime = redTime;
         }

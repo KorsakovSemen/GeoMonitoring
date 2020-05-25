@@ -9,12 +9,14 @@ namespace SystAnalys_lr1.Classes
 {
     public class Epicenter : ICloneable
     {
-        public SerializableDictionary<int, List<GridPart>> EpicenterGrid { get; set; }
-        public Point StartPositon;
+        public SerializableDictionary<int, List<GridPart>> EpicenterGrid { get => _epicenterGrid; set => _epicenterGrid = value; }
+        private Point startPositon;
+        private SerializableDictionary<int, List<GridPart>> _epicenterGrid;
+        private int _detectCount;
+        private List<GridPart> _theGrid;
 
-        public int DetectCount { get; set; }
-
-        public List<GridPart> TheGrid { get; set; }
+        public int DetectCount { get => _detectCount; set => _detectCount = value; }
+        public List<GridPart> TheGrid { get => _theGrid; set => _theGrid = value; }
 
         public Epicenter(List<GridPart> TheGrid)
         {
@@ -48,7 +50,7 @@ namespace SystAnalys_lr1.Classes
                     CopiedEpics[i].NewExpandCount = new List<int>();
                     foreach (var Square in Sector.Value)
                     {
-                        CopiedEpics[i].EpicenterGrid[Sector.Key].Add(new GridPart(Square.x, Square.y));
+                        CopiedEpics[i].EpicenterGrid[Sector.Key].Add(new GridPart(Square.X, Square.Y));
                     }
                 }
                 i++;
@@ -78,7 +80,7 @@ namespace SystAnalys_lr1.Classes
                             case 2:
                                 foreach (var part in EpicenterGrid[2])
                                 {
-                                    if ((part.x == PollutedSqure.x) && (part.y == PollutedSqure.y))
+                                    if ((part.X == PollutedSqure.X) && (part.Y == PollutedSqure.Y))
                                     {
                                         net = true;
                                         break;
@@ -86,13 +88,13 @@ namespace SystAnalys_lr1.Classes
                                 }
                                 if (net == false)
                                 {
-                                    OrangeBuffer.Add(new GridPart(PollutedSqure.x, PollutedSqure.y));
+                                    OrangeBuffer.Add(new GridPart(PollutedSqure.X, PollutedSqure.Y));
                                 }
                                 break;
                             case 3:
                                 foreach (var part in EpicenterGrid[1])
                                 {
-                                    if ((part.x == PollutedSqure.x) && (part.y == PollutedSqure.y))
+                                    if ((part.X == PollutedSqure.X) && (part.Y == PollutedSqure.Y))
                                     {
                                         net = true;
                                         break;
@@ -100,7 +102,7 @@ namespace SystAnalys_lr1.Classes
                                 }
                                 if (net == false)
                                 {
-                                    EpicenterGrid[1].Add(new GridPart(PollutedSqure.x, PollutedSqure.y));
+                                    EpicenterGrid[1].Add(new GridPart(PollutedSqure.X, PollutedSqure.Y));
                                 }
                                 break;
                             default:
@@ -114,282 +116,282 @@ namespace SystAnalys_lr1.Classes
             {
                 for (int i = 1; i <= 5; i++)
                 {
-                    GridPart ScanGrid = new GridPart(RedGrid.x, RedGrid.y - GridPart.Height * i);
+                    GridPart ScanGrid = new GridPart(RedGrid.X, RedGrid.Y - GridPart.Height * i);
                     for (int j = 0; j < 4; j++)
                     {
-                        while (ScanGrid.x < RedGrid.x + GridPart.Width * i)
+                        while (ScanGrid.X < RedGrid.X + GridPart.Width * i)
                         {
-                            ScanGrid.x += GridPart.Width;
+                            ScanGrid.X += GridPart.Width;
                             foreach (var SearchGrid in EpicenterGrid[1])
                             {
-                                if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
+                                if ((ScanGrid.X == SearchGrid.X) && (ScanGrid.Y == SearchGrid.Y))
                                 {
 
                                     List<string> Parameters = new List<string>();
-                                    GridPart bufpart = new GridPart(ScanGrid.x, ScanGrid.y);
-                                    while (((bufpart.x == RedGrid.x) && (bufpart.y == RedGrid.y)) == false)
+                                    GridPart bufpart = new GridPart(ScanGrid.X, ScanGrid.Y);
+                                    while (((bufpart.X == RedGrid.X) && (bufpart.Y == RedGrid.Y)) == false)
                                     {
 
-                                        if (bufpart.x == RedGrid.x)
+                                        if (bufpart.X == RedGrid.X)
                                         {
-                                            bufpart.y += GridPart.Height;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.Y += GridPart.Height;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
                                         else
-                                        if (bufpart.y == RedGrid.y)
+                                        if (bufpart.Y == RedGrid.Y)
                                         {
-                                            bufpart.x -= GridPart.Width;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.X -= GridPart.Width;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
                                         else
                                         {
-                                            bufpart.y += GridPart.Height;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                            bufpart.x -= GridPart.Width;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.Y += GridPart.Height;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
+                                            bufpart.X -= GridPart.Width;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
                                     }
                                 }
                             }
                         }
-                        while (ScanGrid.y < RedGrid.y)
+                        while (ScanGrid.Y < RedGrid.Y)
                         {
-                            ScanGrid.y += GridPart.Height;
+                            ScanGrid.Y += GridPart.Height;
                             foreach (var SearchGrid in EpicenterGrid[1])
                             {
-                                if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
+                                if ((ScanGrid.X == SearchGrid.X) && (ScanGrid.Y == SearchGrid.Y))
                                 {
-                                    GridPart bufpart = new GridPart(ScanGrid.x, ScanGrid.y);
-                                    while (((bufpart.x == RedGrid.x) && (bufpart.y == RedGrid.y)) == false)
+                                    GridPart bufpart = new GridPart(ScanGrid.X, ScanGrid.Y);
+                                    while (((bufpart.X == RedGrid.X) && (bufpart.Y == RedGrid.Y)) == false)
                                     {
 
-                                        if (bufpart.x == RedGrid.x)
+                                        if (bufpart.X == RedGrid.X)
                                         {
-                                            bufpart.y += GridPart.Height;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.Y += GridPart.Height;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
                                         else
-                                        if (bufpart.y == RedGrid.y)
+                                        if (bufpart.Y == RedGrid.Y)
                                         {
-                                            bufpart.x -= GridPart.Width;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.X -= GridPart.Width;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
                                         else
                                         {
-                                            bufpart.x -= GridPart.Width;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                            bufpart.y += GridPart.Height;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.X -= GridPart.Width;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
+                                            bufpart.Y += GridPart.Height;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
 
                                     }
                                 }
                             }
                         }
-                        while (ScanGrid.y < RedGrid.y + GridPart.Height * i)
+                        while (ScanGrid.Y < RedGrid.Y + GridPart.Height * i)
                         {
-                            ScanGrid.y += GridPart.Height;
+                            ScanGrid.Y += GridPart.Height;
                             foreach (var SearchGrid in EpicenterGrid[1])
                             {
-                                if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
-                                {
-                                    List<string> Parameters = new List<string>();
-                                    GridPart bufpart = new GridPart(ScanGrid.x, ScanGrid.y);
-                                    while (((bufpart.x == RedGrid.x) && (bufpart.y == RedGrid.y)) == false)
-                                    {
-
-                                        if (bufpart.x == RedGrid.x)
-                                        {
-                                            bufpart.y -= GridPart.Height;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                        }
-                                        else
-                                        if (bufpart.y == RedGrid.y)
-                                        {
-                                            bufpart.x -= GridPart.Width;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                        }
-                                        else
-                                        {
-                                            bufpart.y -= GridPart.Height;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                            bufpart.x -= GridPart.Width;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                        }
-
-                                    }
-                                }
-                            }
-                        }
-                        while (ScanGrid.x > RedGrid.x)
-                        {
-                            ScanGrid.x -= GridPart.Width;
-                            foreach (var SearchGrid in EpicenterGrid[1])
-                            {
-                                if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
-                                {
-                                    GridPart bufpart = new GridPart(ScanGrid.x, ScanGrid.y);
-                                    while (((bufpart.x == RedGrid.x) && (bufpart.y == RedGrid.y)) == false)
-                                    {
-
-                                        if (bufpart.x == RedGrid.x)
-                                        {
-                                            bufpart.y -= GridPart.Height;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                        }
-                                        else
-                                        if (bufpart.y == RedGrid.y)
-                                        {
-                                            bufpart.x -= GridPart.Width;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                        }
-                                        else
-                                        {
-                                            bufpart.y -= GridPart.Height;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                            bufpart.x -= GridPart.Width;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                        }
-
-                                    }
-                                }
-                            }
-                        }
-                        while (ScanGrid.x > RedGrid.x - GridPart.Width * i)
-                        {
-                            ScanGrid.x -= GridPart.Width;
-                            foreach (var SearchGrid in EpicenterGrid[1])
-                            {
-                                if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
+                                if ((ScanGrid.X == SearchGrid.X) && (ScanGrid.Y == SearchGrid.Y))
                                 {
                                     List<string> Parameters = new List<string>();
-                                    GridPart bufpart = new GridPart(ScanGrid.x, ScanGrid.y);
-                                    while (((bufpart.x == RedGrid.x) && (bufpart.y == RedGrid.y)) == false)
+                                    GridPart bufpart = new GridPart(ScanGrid.X, ScanGrid.Y);
+                                    while (((bufpart.X == RedGrid.X) && (bufpart.Y == RedGrid.Y)) == false)
                                     {
 
-                                        if (bufpart.x == RedGrid.x)
+                                        if (bufpart.X == RedGrid.X)
                                         {
-                                            bufpart.y -= GridPart.Height;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.Y -= GridPart.Height;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
                                         else
-                                        if (bufpart.y == RedGrid.y)
+                                        if (bufpart.Y == RedGrid.Y)
                                         {
-                                            bufpart.x += GridPart.Width;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.X -= GridPart.Width;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
                                         else
                                         {
-                                            bufpart.y -= GridPart.Height;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                            bufpart.x += GridPart.Width;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.Y -= GridPart.Height;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
+                                            bufpart.X -= GridPart.Width;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
 
                                     }
                                 }
                             }
                         }
-                        while (ScanGrid.y > RedGrid.y)
+                        while (ScanGrid.X > RedGrid.X)
                         {
-                            ScanGrid.y -= GridPart.Height;
+                            ScanGrid.X -= GridPart.Width;
                             foreach (var SearchGrid in EpicenterGrid[1])
                             {
-                                if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
+                                if ((ScanGrid.X == SearchGrid.X) && (ScanGrid.Y == SearchGrid.Y))
+                                {
+                                    GridPart bufpart = new GridPart(ScanGrid.X, ScanGrid.Y);
+                                    while (((bufpart.X == RedGrid.X) && (bufpart.Y == RedGrid.Y)) == false)
+                                    {
+
+                                        if (bufpart.X == RedGrid.X)
+                                        {
+                                            bufpart.Y -= GridPart.Height;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
+                                        }
+                                        else
+                                        if (bufpart.Y == RedGrid.Y)
+                                        {
+                                            bufpart.X -= GridPart.Width;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
+                                        }
+                                        else
+                                        {
+                                            bufpart.Y -= GridPart.Height;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
+                                            bufpart.X -= GridPart.Width;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                        while (ScanGrid.X > RedGrid.X - GridPart.Width * i)
+                        {
+                            ScanGrid.X -= GridPart.Width;
+                            foreach (var SearchGrid in EpicenterGrid[1])
+                            {
+                                if ((ScanGrid.X == SearchGrid.X) && (ScanGrid.Y == SearchGrid.Y))
                                 {
                                     List<string> Parameters = new List<string>();
-                                    GridPart bufpart = new GridPart(ScanGrid.x, ScanGrid.y);
-                                    while (((bufpart.x == RedGrid.x) && (bufpart.y == RedGrid.y)) == false)
+                                    GridPart bufpart = new GridPart(ScanGrid.X, ScanGrid.Y);
+                                    while (((bufpart.X == RedGrid.X) && (bufpart.Y == RedGrid.Y)) == false)
                                     {
 
-                                        if (bufpart.x == RedGrid.x)
+                                        if (bufpart.X == RedGrid.X)
                                         {
-                                            bufpart.y -= GridPart.Height;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.Y -= GridPart.Height;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
                                         else
-                                        if (bufpart.y == RedGrid.y)
+                                        if (bufpart.Y == RedGrid.Y)
                                         {
-                                            bufpart.x += GridPart.Width;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.X += GridPart.Width;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
                                         else
                                         {
-                                            bufpart.y -= GridPart.Height;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                            bufpart.x += GridPart.Width;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.Y -= GridPart.Height;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
+                                            bufpart.X += GridPart.Width;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
 
                                     }
                                 }
                             }
                         }
-                        while (ScanGrid.y > RedGrid.y - GridPart.Width * i)
+                        while (ScanGrid.Y > RedGrid.Y)
                         {
-                            ScanGrid.y -= GridPart.Height;
+                            ScanGrid.Y -= GridPart.Height;
                             foreach (var SearchGrid in EpicenterGrid[1])
                             {
-                                if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
+                                if ((ScanGrid.X == SearchGrid.X) && (ScanGrid.Y == SearchGrid.Y))
+                                {
+                                    List<string> Parameters = new List<string>();
+                                    GridPart bufpart = new GridPart(ScanGrid.X, ScanGrid.Y);
+                                    while (((bufpart.X == RedGrid.X) && (bufpart.Y == RedGrid.Y)) == false)
+                                    {
+
+                                        if (bufpart.X == RedGrid.X)
+                                        {
+                                            bufpart.Y -= GridPart.Height;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
+                                        }
+                                        else
+                                        if (bufpart.Y == RedGrid.Y)
+                                        {
+                                            bufpart.X += GridPart.Width;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
+                                        }
+                                        else
+                                        {
+                                            bufpart.Y -= GridPart.Height;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
+                                            bufpart.X += GridPart.Width;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                        while (ScanGrid.Y > RedGrid.Y - GridPart.Width * i)
+                        {
+                            ScanGrid.Y -= GridPart.Height;
+                            foreach (var SearchGrid in EpicenterGrid[1])
+                            {
+                                if ((ScanGrid.X == SearchGrid.X) && (ScanGrid.Y == SearchGrid.Y))
                                 {
 
-                                    GridPart bufpart = new GridPart(ScanGrid.x, ScanGrid.y);
-                                    while (((bufpart.x == RedGrid.x) && (bufpart.y == RedGrid.y)) == false)
+                                    GridPart bufpart = new GridPart(ScanGrid.X, ScanGrid.Y);
+                                    while (((bufpart.X == RedGrid.X) && (bufpart.Y == RedGrid.Y)) == false)
                                     {
 
-                                        if (bufpart.x == RedGrid.x)
+                                        if (bufpart.X == RedGrid.X)
                                         {
-                                            bufpart.y += GridPart.Height;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.Y += GridPart.Height;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
                                         else
-                                        if (bufpart.y == RedGrid.y)
+                                        if (bufpart.Y == RedGrid.Y)
                                         {
-                                            bufpart.x += GridPart.Width;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.X += GridPart.Width;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
                                         else
                                         {
-                                            bufpart.y += GridPart.Height;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                            bufpart.x += GridPart.Width;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.Y += GridPart.Height;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
+                                            bufpart.X += GridPart.Width;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
 
                                     }
                                 }
                             }
                         }
-                        while (ScanGrid.x < RedGrid.x)
+                        while (ScanGrid.X < RedGrid.X)
                         {
-                            ScanGrid.x += GridPart.Width;
+                            ScanGrid.X += GridPart.Width;
                             foreach (var SearchGrid in EpicenterGrid[1])
                             {
-                                if ((ScanGrid.x == SearchGrid.x) && (ScanGrid.y == SearchGrid.y))
+                                if ((ScanGrid.X == SearchGrid.X) && (ScanGrid.Y == SearchGrid.Y))
                                 {
                                     List<string> Parameters = new List<string>();
                                     Parameters = EpicenterGenerator(ScanGrid, Parameters);
-                                    GridPart bufpart = new GridPart(ScanGrid.x, ScanGrid.y);
-                                    while (((bufpart.x == RedGrid.x) && (bufpart.y == RedGrid.y)) == false)
+                                    GridPart bufpart = new GridPart(ScanGrid.X, ScanGrid.Y);
+                                    while (((bufpart.X == RedGrid.X) && (bufpart.Y == RedGrid.Y)) == false)
                                     {
 
-                                        if (bufpart.x == RedGrid.x)
+                                        if (bufpart.X == RedGrid.X)
                                         {
-                                            bufpart.y += GridPart.Height;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.Y += GridPart.Height;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
                                         else
-                                        if (bufpart.y == RedGrid.y)
+                                        if (bufpart.Y == RedGrid.Y)
                                         {
-                                            bufpart.x += GridPart.Width;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.X += GridPart.Width;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
                                         else
                                         {
-                                            bufpart.y += GridPart.Height;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
-                                            bufpart.x += GridPart.Width;
-                                            BufferList.Add(new GridPart(bufpart.x, bufpart.y));
+                                            bufpart.Y += GridPart.Height;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
+                                            bufpart.X += GridPart.Width;
+                                            BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
 
                                     }
@@ -406,7 +408,7 @@ namespace SystAnalys_lr1.Classes
                 bool net = false;
                 foreach (var EpGrid in EpicenterGrid[1])
                 {
-                    if ((BufGrid.x == EpGrid.x) && (BufGrid.y == EpGrid.y))
+                    if ((BufGrid.X == EpGrid.X) && (BufGrid.Y == EpGrid.Y))
                     {
                         net = true;
                         break;
@@ -415,7 +417,7 @@ namespace SystAnalys_lr1.Classes
                 }
                 if (net == false)
                 {
-                    EpicenterGrid[1].Add(new GridPart(BufGrid.x, BufGrid.y));
+                    EpicenterGrid[1].Add(new GridPart(BufGrid.X, BufGrid.Y));
                 }
             }
             for (int i = 2; i < 4; i++)
@@ -424,7 +426,7 @@ namespace SystAnalys_lr1.Classes
                 List<GridPart> fillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i - 1])
                 {
-                    fillEpicenter.Add(new GridPart(item.x, item.y));
+                    fillEpicenter.Add(new GridPart(item.X, item.Y));
                 }
                 foreach (var itwms in fillEpicenter)
                 {
@@ -439,7 +441,7 @@ namespace SystAnalys_lr1.Classes
                 fillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i])
                 {
-                    fillEpicenter.Add(new GridPart(item.x, item.y));
+                    fillEpicenter.Add(new GridPart(item.X, item.Y));
                 }
                 foreach (var itwms in fillEpicenter)
                 {
@@ -458,7 +460,7 @@ namespace SystAnalys_lr1.Classes
                         bool net = false;
                         foreach (var EpGrid in EpicenterGrid[i])
                         {
-                            if ((BufGrid.x == EpGrid.x) && (BufGrid.y == EpGrid.y))
+                            if ((BufGrid.X == EpGrid.X) && (BufGrid.Y == EpGrid.Y))
                             {
                                 net = true;
                                 break;
@@ -470,7 +472,7 @@ namespace SystAnalys_lr1.Classes
                             int? Red = null;
                             foreach (var EpGrid in EpicenterGrid[1])
                             {
-                                if ((BufGrid.x == EpGrid.x) && (BufGrid.y == EpGrid.y))
+                                if ((BufGrid.X == EpGrid.X) && (BufGrid.Y == EpGrid.Y))
                                 {
                                     Red = EpicenterGrid[1].IndexOf(EpGrid);
                                     break;
@@ -480,11 +482,11 @@ namespace SystAnalys_lr1.Classes
                             if (Red != null)
                             {
                                 EpicenterGrid[1].RemoveAt((int)Red);
-                                EpicenterGrid[i].Add(new GridPart(BufGrid.x, BufGrid.y));
+                                EpicenterGrid[i].Add(new GridPart(BufGrid.X, BufGrid.Y));
                             }
                             else
                             {
-                                EpicenterGrid[i].Add(new GridPart(BufGrid.x, BufGrid.y));
+                                EpicenterGrid[i].Add(new GridPart(BufGrid.X, BufGrid.Y));
                             }
 
                         }
@@ -493,7 +495,7 @@ namespace SystAnalys_lr1.Classes
 
             }
         }
-        
+
         public void EpicMoving(List<string> Parameters)
         {
             for (int i = 2; i < EpicenterGrid.Count + 1; i++)
@@ -512,36 +514,36 @@ namespace SystAnalys_lr1.Classes
                         {
 
                             case "right":
-                                gridPart.x += GridPart.Width;
-                                if (!(gridPart.x <= TheGrid.Last().x))
+                                gridPart.X += GridPart.Width;
+                                if (!(gridPart.X <= TheGrid.Last().X))
                                 {
                                     gridPart.IsMovedAway = true;
-                                    ForRemove.Add(new Point(gridPart.x, gridPart.y));
+                                    ForRemove.Add(new Point(gridPart.X, gridPart.Y));
                                 }
                                 break;
                             case "down":
-                                gridPart.y += GridPart.Height;
-                                if (!(gridPart.y <= TheGrid.Last().y))
+                                gridPart.Y += GridPart.Height;
+                                if (!(gridPart.Y <= TheGrid.Last().Y))
                                 {
                                     gridPart.IsMovedAway = true;
-                                    ForRemove.Add(new Point(gridPart.x, gridPart.y));
+                                    ForRemove.Add(new Point(gridPart.X, gridPart.Y));
                                 }
                                 break;
                             case "up":
-                                gridPart.y -= GridPart.Height;
-                                if (!(gridPart.y >= TheGrid.First().y))
+                                gridPart.Y -= GridPart.Height;
+                                if (!(gridPart.Y >= TheGrid.First().Y))
                                 {
                                     gridPart.IsMovedAway = true;
-                                    ForRemove.Add(new Point(gridPart.x, gridPart.y));
+                                    ForRemove.Add(new Point(gridPart.X, gridPart.Y));
                                 }
 
                                 break;
                             case "left":
-                                gridPart.x -= GridPart.Width;
-                                if (!((gridPart.x >= TheGrid.First().x)))
+                                gridPart.X -= GridPart.Width;
+                                if (!((gridPart.X >= TheGrid.First().X)))
                                 {
                                     gridPart.IsMovedAway = true;
-                                    ForRemove.Add(new Point(gridPart.x, gridPart.y));
+                                    ForRemove.Add(new Point(gridPart.X, gridPart.Y));
                                 }
                                 break;
                             default:
@@ -556,7 +558,7 @@ namespace SystAnalys_lr1.Classes
                 int IndexOfOutMovedGrid = 0;
                 foreach (var gridPart in EpicenterGrid[1])
                 {
-                    if ((gridPart.x == OutMovedGrid.X) && (gridPart.y == OutMovedGrid.Y))
+                    if ((gridPart.X == OutMovedGrid.X) && (gridPart.Y == OutMovedGrid.Y))
                     {
                         IndexOfOutMovedGrid = EpicenterGrid[1].IndexOf(gridPart);
                         if (NewExpandCount.Any())
@@ -581,7 +583,7 @@ namespace SystAnalys_lr1.Classes
                 List<GridPart> fillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i - 1])
                 {
-                    fillEpicenter.Add(new GridPart(item.x, item.y));
+                    fillEpicenter.Add(new GridPart(item.X, item.Y));
                 }
                 foreach (var itwms in fillEpicenter)
                 {
@@ -596,7 +598,7 @@ namespace SystAnalys_lr1.Classes
                 fillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i])
                 {
-                    fillEpicenter.Add(new GridPart(item.x, item.y));
+                    fillEpicenter.Add(new GridPart(item.X, item.Y));
                 }
                 foreach (var itwms in fillEpicenter)
                 {
@@ -610,10 +612,12 @@ namespace SystAnalys_lr1.Classes
                 }
 
             }
-            
+
         }
-        
+
         public List<int> NewExpandCount { get; set; } = new List<int>();
+        public Point StartPositon { get => startPositon; set => startPositon = value; }
+
         public void ExpandEpic()
         {
             for (int i = 2; i < EpicenterGrid.Count + 1; i++)
@@ -657,7 +661,7 @@ namespace SystAnalys_lr1.Classes
                             Creater(item, StarterEpicPart, 1);
                         }
 
-                    }             
+                    }
                 }
             }
             for (int i = 2; i < 4; i++)
@@ -665,7 +669,7 @@ namespace SystAnalys_lr1.Classes
                 List<GridPart> fillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i - 1])
                 {
-                    fillEpicenter.Add(new GridPart(item.x, item.y));
+                    fillEpicenter.Add(new GridPart(item.X, item.Y));
                 }
                 foreach (var itwms in fillEpicenter)
                 {
@@ -680,7 +684,7 @@ namespace SystAnalys_lr1.Classes
                 fillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i])
                 {
-                    fillEpicenter.Add(new GridPart(item.x, item.y));
+                    fillEpicenter.Add(new GridPart(item.X, item.Y));
                 }
                 foreach (var itwms in fillEpicenter)
                 {
@@ -705,13 +709,13 @@ namespace SystAnalys_lr1.Classes
             };
             if (StartPos == null)
             {
-                EpicenterGrid[1].Add(new GridPart(TheGrid[rand.Next(TheGrid.IndexOf(TheGrid.First()), TheGrid.IndexOf(TheGrid.Last()))].x, TheGrid[rand.Next(TheGrid.IndexOf(TheGrid.First()), TheGrid.IndexOf(TheGrid.Last()))].y));
-                StartPositon = new Point(EpicenterGrid[1].First().x, EpicenterGrid[1].First().y);
+                EpicenterGrid[1].Add(new GridPart(TheGrid[rand.Next(TheGrid.IndexOf(TheGrid.First()), TheGrid.IndexOf(TheGrid.Last()))].X, TheGrid[rand.Next(TheGrid.IndexOf(TheGrid.First()), TheGrid.IndexOf(TheGrid.Last()))].Y));
+                StartPositon = new Point(EpicenterGrid[1].First().X, EpicenterGrid[1].First().Y);
             }
             else
             {
-                EpicenterGrid[1].Add(new GridPart(TheGrid[(int)StartPos].x, TheGrid[(int)StartPos].y));
-                StartPositon = new Point(EpicenterGrid[1].First().x, EpicenterGrid[1].First().y);
+                EpicenterGrid[1].Add(new GridPart(TheGrid[(int)StartPos].X, TheGrid[(int)StartPos].Y));
+                StartPositon = new Point(EpicenterGrid[1].First().X, EpicenterGrid[1].First().Y);
             }
             while (EpicenterGrid[1].Count < SizeParam)
             {
@@ -736,7 +740,7 @@ namespace SystAnalys_lr1.Classes
                 List<GridPart> FillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i - 1])
                 {
-                    FillEpicenter.Add(new GridPart(item.x, item.y));
+                    FillEpicenter.Add(new GridPart(item.X, item.Y));
                 }
                 foreach (var itwms in FillEpicenter)
                 {
@@ -751,7 +755,7 @@ namespace SystAnalys_lr1.Classes
                 FillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i])
                 {
-                    FillEpicenter.Add(new GridPart(item.x, item.y));
+                    FillEpicenter.Add(new GridPart(item.X, item.Y));
                 }
                 foreach (var itwms in FillEpicenter)
                 {
@@ -770,13 +774,13 @@ namespace SystAnalys_lr1.Classes
         public List<string> EpicenterGenerator(GridPart EpicPart, List<string> Parameter)
         {
             bool net;
-            if (EpicPart.x < TheGrid.Last().x)
+            if (EpicPart.X < TheGrid.Last().X)
             {
                 net = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
-                        if ((part.x == EpicPart.x + GridPart.Width) && (part.y == EpicPart.y))
+                        if ((part.X == EpicPart.X + GridPart.Width) && (part.Y == EpicPart.Y))
                         {
                             net = true;
                             break;
@@ -788,13 +792,13 @@ namespace SystAnalys_lr1.Classes
                 }
 
             }
-            if ((EpicPart.x < TheGrid.Last().x) && (EpicPart.y < TheGrid.Last().y))
+            if ((EpicPart.X < TheGrid.Last().X) && (EpicPart.Y < TheGrid.Last().Y))
             {
                 net = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
-                        if ((part.x == EpicPart.x + GridPart.Width) && (part.y == EpicPart.y + GridPart.Height))
+                        if ((part.X == EpicPart.X + GridPart.Width) && (part.Y == EpicPart.Y + GridPart.Height))
                         {
                             net = true;
                             break;
@@ -806,13 +810,13 @@ namespace SystAnalys_lr1.Classes
                 }
 
             }
-            if ((EpicPart.x < TheGrid.Last().x) && (EpicPart.y > TheGrid.First().y))
+            if ((EpicPart.X < TheGrid.Last().X) && (EpicPart.Y > TheGrid.First().Y))
             {
                 net = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
-                        if ((part.x == EpicPart.x + GridPart.Width) && (part.y == EpicPart.y - GridPart.Height))
+                        if ((part.X == EpicPart.X + GridPart.Width) && (part.Y == EpicPart.Y - GridPart.Height))
                         {
                             net = true;
                             break;
@@ -824,13 +828,13 @@ namespace SystAnalys_lr1.Classes
                 }
 
             }
-            if (EpicPart.y < TheGrid.Last().y)
+            if (EpicPart.Y < TheGrid.Last().Y)
             {
                 net = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
-                        if ((part.x == EpicPart.x) && (part.y == EpicPart.y + GridPart.Height))
+                        if ((part.X == EpicPart.X) && (part.Y == EpicPart.Y + GridPart.Height))
                         {
                             net = true;
                             break;
@@ -842,13 +846,13 @@ namespace SystAnalys_lr1.Classes
                 }
             }
 
-            if (EpicPart.y > TheGrid.First().y)
+            if (EpicPart.Y > TheGrid.First().Y)
             {
                 net = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
-                        if ((part.x == EpicPart.x) && (part.y == EpicPart.y - GridPart.Height))
+                        if ((part.X == EpicPart.X) && (part.Y == EpicPart.Y - GridPart.Height))
                         {
                             net = true;
                             break;
@@ -859,13 +863,13 @@ namespace SystAnalys_lr1.Classes
                     Parameter.Add("up");
                 }
             }
-            if (EpicPart.x > TheGrid.First().x)
+            if (EpicPart.X > TheGrid.First().X)
             {
                 net = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
-                        if ((part.x == EpicPart.x - GridPart.Width) && (part.y == EpicPart.y))
+                        if ((part.X == EpicPart.X - GridPart.Width) && (part.Y == EpicPart.Y))
                         {
                             net = true;
                             break;
@@ -876,13 +880,13 @@ namespace SystAnalys_lr1.Classes
                     Parameter.Add("left");
                 }
             }
-            if ((EpicPart.x > TheGrid.First().x) && (EpicPart.y > TheGrid.First().y))
+            if ((EpicPart.X > TheGrid.First().X) && (EpicPart.Y > TheGrid.First().Y))
             {
                 net = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
-                        if ((part.x == EpicPart.x - GridPart.Width) && (part.y == EpicPart.y - GridPart.Height))
+                        if ((part.X == EpicPart.X - GridPart.Width) && (part.Y == EpicPart.Y - GridPart.Height))
                         {
                             net = true;
                             break;
@@ -894,13 +898,13 @@ namespace SystAnalys_lr1.Classes
                 }
 
             }
-            if ((EpicPart.x > TheGrid.First().x) && (EpicPart.y < TheGrid.Last().y))
+            if ((EpicPart.X > TheGrid.First().X) && (EpicPart.Y < TheGrid.Last().Y))
             {
                 net = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
-                        if ((part.x == EpicPart.x - GridPart.Width) && (part.y == EpicPart.y + GridPart.Height))
+                        if ((part.X == EpicPart.X - GridPart.Width) && (part.Y == EpicPart.Y + GridPart.Height))
                         {
                             net = true;
                             break;
@@ -919,28 +923,28 @@ namespace SystAnalys_lr1.Classes
             switch (Param)
             {
                 case "right":
-                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x + GridPart.Width, StarterEpicPart.y));
+                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.X + GridPart.Width, StarterEpicPart.Y));
                     break;
                 case "right-down":
-                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x + GridPart.Width, StarterEpicPart.y + GridPart.Height));
+                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.X + GridPart.Width, StarterEpicPart.Y + GridPart.Height));
                     break;
                 case "right-up":
-                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x + GridPart.Width, StarterEpicPart.y - GridPart.Height));
+                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.X + GridPart.Width, StarterEpicPart.Y - GridPart.Height));
                     break;
                 case "down":
-                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x, StarterEpicPart.y + GridPart.Height));
+                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.X, StarterEpicPart.Y + GridPart.Height));
                     break;
                 case "up":
-                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x, StarterEpicPart.y - GridPart.Height));
+                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.X, StarterEpicPart.Y - GridPart.Height));
                     break;
                 case "left":
-                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x - GridPart.Width, StarterEpicPart.y));
+                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.X - GridPart.Width, StarterEpicPart.Y));
                     break;
                 case "left-down":
-                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x - GridPart.Width, StarterEpicPart.y + GridPart.Height));
+                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.X - GridPart.Width, StarterEpicPart.Y + GridPart.Height));
                     break;
                 case "left-up":
-                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.x - GridPart.Width, StarterEpicPart.y - GridPart.Height));
+                    EpicenterGrid[level].Add(new GridPart(StarterEpicPart.X - GridPart.Width, StarterEpicPart.Y - GridPart.Height));
                     break;
                 default:
                     break;
@@ -954,11 +958,11 @@ namespace SystAnalys_lr1.Classes
                 for (int j = 0; j < EpicenterGrid[i].Count; j++)
                 {
                     if (i == 1)
-                        g.gr.FillRectangle(new SolidBrush(Color.FromArgb(80, 255, 0, 0)), new Rectangle(EpicenterGrid[i][j].x * zoom, EpicenterGrid[i][j].y * zoom, GridPart.Width * zoom, GridPart.Height * zoom));
+                        g.Gr.FillRectangle(new SolidBrush(Color.FromArgb(80, 255, 0, 0)), new Rectangle(EpicenterGrid[i][j].X * zoom, EpicenterGrid[i][j].Y * zoom, GridPart.Width * zoom, GridPart.Height * zoom));
                     if (i == 2)
-                        g.gr.FillRectangle(new SolidBrush(Color.FromArgb(80, 255, 128, 0)), new Rectangle(EpicenterGrid[i][j].x * zoom, EpicenterGrid[i][j].y * zoom, GridPart.Width * zoom, GridPart.Height * zoom));
+                        g.Gr.FillRectangle(new SolidBrush(Color.FromArgb(80, 255, 128, 0)), new Rectangle(EpicenterGrid[i][j].X * zoom, EpicenterGrid[i][j].Y * zoom, GridPart.Width * zoom, GridPart.Height * zoom));
                     if (i == 3)
-                        g.gr.FillRectangle(new SolidBrush(Color.FromArgb(80, 255, 255, 0)), new Rectangle(EpicenterGrid[i][j].x * zoom, EpicenterGrid[i][j].y * zoom, GridPart.Width * zoom, GridPart.Height * zoom));
+                        g.Gr.FillRectangle(new SolidBrush(Color.FromArgb(80, 255, 255, 0)), new Rectangle(EpicenterGrid[i][j].X * zoom, EpicenterGrid[i][j].Y * zoom, GridPart.Width * zoom, GridPart.Height * zoom));
                 }
             }
         }

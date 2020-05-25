@@ -8,9 +8,13 @@ namespace SystAnalys_lr1.Classes
 {
     public class Vertex //: ICloneable
     {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int gridNum { get; set; }
+        private int _gridNum;
+        private int _y;
+        private int _x;
+
+        public int X { get => _x; set => _x = value; }
+        public int Y { get => _y; set => _y = value; }
+        public int GridNum { get => _gridNum; set => _gridNum = value; }
 
         public Vertex()
         { }
@@ -39,7 +43,7 @@ namespace SystAnalys_lr1.Classes
             var hashCode = -1577951254;
             hashCode = hashCode * -1521134295 + X.GetHashCode();
             hashCode = hashCode * -1521134295 + Y.GetHashCode();
-            hashCode = hashCode * -1521134295 + gridNum.GetHashCode();
+            hashCode = hashCode * -1521134295 + GridNum.GetHashCode();
             return hashCode;
         }
     }

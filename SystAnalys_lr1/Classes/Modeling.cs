@@ -13,16 +13,18 @@ namespace SystAnalys_lr1.Classes
 {
     static class Modeling
     {
-        static public Dictionary<string, List<GridPart>> PollutionInRoutes { get; set; }
-        static public int T { get; set; }
-        static public List<int?> ResultFromModeling { get; set; } = new List<int?>();
-        static List<Epicenter> epList;
 
-        //public static async Task<> GetEpicentersAsync()
-        //{
-        //    var result = await MyWebService.FetchDataAsync();
-        //    return new Data(result);
-        //}
+        private static Dictionary<string, List<GridPart>> s_pollutionInRoutes;
+        private static List<Epicenter> epList;
+        private static int s_t;
+        private static List<int?> s_resultFromModeling = new List<int?>();
+
+        public static Dictionary<string, List<GridPart>> PollutionInRoutes { get => s_pollutionInRoutes; set => s_pollutionInRoutes = value; }
+        public static int T { get => s_t; set => s_t = value; }
+        public static List<int?> ResultFromModeling { get => s_resultFromModeling; set => s_resultFromModeling = value; }
+        public static List<Epicenter> EpList { get => epList; set => epList = value; }
+
+
         public static async void GetEpicentersAsync(List<Epicenter> epList, int i)
         {
             foreach (var EpicList in Data.Epics)
@@ -43,10 +45,10 @@ namespace SystAnalys_lr1.Classes
                     epList[i].NewExpandCount = new List<int>();
                     foreach (var Square in Sector.Value)
                     {
-                        epList[i].EpicenterGrid[Sector.Key].Add(new GridPart(Square.x, Square.y));
+                        epList[i].EpicenterGrid[Sector.Key].Add(new GridPart(Square.X, Square.Y));
                     }
                 }
-                i++;              
+                i++;
             });
         }
 
@@ -60,40 +62,21 @@ namespace SystAnalys_lr1.Classes
                 PollutionInRoutes.Add(Data.AllCoordinates.ElementAt(i).Key, new List<GridPart>());
                 foreach (var Grid in Data.TheGrid)
                 {
-                    PollutionInRoutes[PollutionInRoutes.ElementAt(i).Key].Add(new GridPart(Grid.x, Grid.y));
+                    PollutionInRoutes[PollutionInRoutes.ElementAt(i).Key].Add(new GridPart(Grid.X, Grid.Y));
                 }
             }
 
         }
 
 
-        public static async void StartModeling(string SavePath, int Cicle, int ModelNum)
+        public static void StartModeling(string SavePath, int Cicle, int ModelNum)
         {
-            epList = new List<Epicenter>();
+            EpList = new List<Epicenter>();
             int i = 0;
-            //Task<List<Epicenter>> taskEp = GetEpicentersAsync(epList, i);
 
             ConcurrentQueue<Bus> cqBus = new ConcurrentQueue<Bus>();
             Data.Buses.ForEach((b) => cqBus.Enqueue((Bus)b.Clone()));
-            GetEpicentersAsync(epList, i);
-
-            //Parallel.ForEach(Data.Epics, (EpicList) =>
-            //{
-            //    epList.Add(new Epicenter(Data.TheGrid));
-            //    foreach (var Sector in EpicList.EpicenterGrid)
-            //    {
-            //        epList[i].EpicenterGrid.Add(Sector.Key, new List<GridPart>());
-            //        epList[i].StartPositon = EpicList.StartPositon;
-            //        epList[i].NewExpandCount = new List<int>();
-            //        foreach (var Square in Sector.Value)
-            //        {
-            //            epList[i].EpicenterGrid[Sector.Key].Add(new GridPart(Square.x, Square.y));
-            //        }
-            //    }
-            //    i++;
-            //    Console.WriteLine(i);
-
-            //});
+            GetEpicentersAsync(EpList, i);
 
             int small = 10000;
             int old = small;
@@ -122,13 +105,13 @@ namespace SystAnalys_lr1.Classes
                 MaxEpicItnerValue = 1;
                 MaxEpicItnerCycleValue = T / PhaseSizeSelect() / MaxEpicItnerValue;
             }
-            else 
+            else
             {
                 if (EpicSettings.EpicFreqMovingParam < EpicSettings.EpicFreqSpreadingParam)
                 {
                     MaxEpicItnerValue = EpicSettings.EpicFreqMovingParam / 20;
                     MaxEpicItnerCycleValue = T / PhaseSizeSelect() / MaxEpicItnerValue;
-                    if(MaxEpicItnerCycleValue==0)
+                    if (MaxEpicItnerCycleValue == 0)
                     {
                         MaxEpicItnerCycleValue = 1;
                     }
@@ -142,14 +125,10 @@ namespace SystAnalys_lr1.Classes
                         MaxEpicItnerCycleValue = 1;
                     }
                 }
-            }          
-            //taskEp.Wait();
+            }
             bool EpicFounded = false;
-            //Parallel.For(0, PhaseSizeSelect(), j =>
             for (int j = PhaseSizeSelect(); j > 0; j--)
             {
-                //   epList = await taskEp;
-
                 CreatePollutionInRoutes();
 
                 if (j == PhaseSizeSelect())
@@ -159,7 +138,7 @@ namespace SystAnalys_lr1.Classes
                         Directory.CreateDirectory(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + 0.ToString());
                         lock (Main.Ep.Esheet)
                         {
-                            Main.Ep.EDrawEpics(epList);
+                            Main.Ep.EDrawEpics(EpList);
                         }
                         lock (Main.Ep.Esheet)
                         {
@@ -170,49 +149,48 @@ namespace SystAnalys_lr1.Classes
                         }
                     }
                 }
-          
+
                 for (int k = 0; k < MaxEpicItnerCycleValue; k++)
                 {
                     if (T / PhaseSizeSelect() / MaxEpicItnerValue != 0)
-                    { 
+                    {
 
-                    if (EpicSettings.TurnExpandingSet == true)
-                    {
-                        
-                        ExpandTimer += MaxEpicItnerValue;
-                    }
-
-                    if (EpicSettings.TurnMovingSet == true)
-                    {
-                        MovingTimer += MaxEpicItnerValue;
-                    }
-                    if (EpicSettings.TurnMovingSet == true)
-                    {
-                        if (MovingTimer >= ((EpicSettings.EpicFreqMovingParam / 20)))
+                        if (EpicSettings.TurnExpandingSet == true)
                         {
-                            lock (epList)
+
+                            ExpandTimer += MaxEpicItnerValue;
+                        }
+
+                        if (EpicSettings.TurnMovingSet == true)
+                        {
+                            MovingTimer += MaxEpicItnerValue;
+                        }
+                        if (EpicSettings.TurnMovingSet == true)
+                        {
+                            if (MovingTimer >= ((EpicSettings.EpicFreqMovingParam / 20)))
                             {
-                                MoveEpics(epList);
+                                lock (EpList)
+                                {
+                                    MoveEpics(EpList);
+                                }
+                                MovingTimer = 0;
                             }
-                            MovingTimer = 0;
+                        }
+                        if (EpicSettings.TurnExpandingSet == true)
+                        {
+                            if (ExpandTimer >= ((EpicSettings.EpicFreqSpreadingParam / 20)))
+                            {
+                                lock (EpList)
+                                {
+                                    ExpandEpics(EpList);
+                                }
+                                ExpandTimer = 0;
+                            }
                         }
                     }
-                    if (EpicSettings.TurnExpandingSet == true)
-                    {
-                        if (ExpandTimer >= ((EpicSettings.EpicFreqSpreadingParam / 20)))
-                        {
-                            lock (epList)
-                            {
-                                ExpandEpics(epList);
-                            }
-                            ExpandTimer = 0;
-                        }
-                    }
-                    }
-                    //foreach(var bus in cqBus)
                     Parallel.ForEach(cqBus, new ParallelOptions { MaxDegreeOfParallelism = 5 }, (bus) =>
                     {
-                        bus.Epicenters = epList;
+                        bus.Epicenters = EpList;
 
                         bus.TickCount_ = 0;
                         if (bus.Skips.SkipTrafficLights > 0)
@@ -265,7 +243,6 @@ namespace SystAnalys_lr1.Classes
                                 }
 
                                 PollutionInRoutes[bus.GetRoute()][Data.AllGridsInRoutes[bus.GetRoute()][(int)bus.PositionAt]].Status = bus.DetectEpicenterByGrid();
-                                //foreach(var Epic in bus.Epicenters)//
                                 Parallel.ForEach(bus.Epicenters, new ParallelOptions { MaxDegreeOfParallelism = 2 }, (Epic, state) =>
                                     {
                                         if (Epic.DetectCount >= Epic.EpicenterGrid[1].Count / 2)
@@ -282,11 +259,11 @@ namespace SystAnalys_lr1.Classes
                                                     }
                                                 }
                                             }
-                                            state.Break();// break; 
+                                            state.Break();
                                         }
                                     });
                                 bus.TickCount_++;
-                                bus.AllTickCount++;                         
+                                bus.AllTickCount++;
                             }
                         }
 
@@ -297,7 +274,7 @@ namespace SystAnalys_lr1.Classes
                     Directory.CreateDirectory(SavePath + "/Epics" + "/" + (Cicle + 1).ToString() + "/" + (ModelNum + 1).ToString() + "/" + i.ToString());
                     lock (Main.Ep.Esheet)
                     {
-                        Main.Ep.EDrawEpics(epList);
+                        Main.Ep.EDrawEpics(EpList);
                     }
                     lock (Main.Ep.Esheet)
                     {
@@ -321,7 +298,7 @@ namespace SystAnalys_lr1.Classes
                     i++;
                 }
 
-            }//);
+            }
 
             if (small == old)
                 ResultFromModeling.Add(null);
@@ -347,12 +324,12 @@ namespace SystAnalys_lr1.Classes
                 Epics.First().EpicMoving(EpicSettings.MovingEpicParamet);
             }
         }
-        //
+
         private static void ExpandEpics(List<Epicenter> Epics)
         {
             Epics.First().ExpandEpic();
         }
-        //
+
     }
 
 }

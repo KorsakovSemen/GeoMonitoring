@@ -8,8 +8,11 @@ namespace SystAnalys_lr1.Classes
 {
     public class Edge
     {
-        public int V1 { get; set; }
-        public int V2 { get; set; }
+        private int _v1;
+        private int _v2;
+
+        public int V1 { get => _v1; set => _v1 = value; }
+        public int V2 { get => _v2; set => _v2 = value; }
 
         public Edge()
         { }

@@ -8,7 +8,9 @@ namespace SystAnalys_lr1.Classes
 {
     public class BusStop : Vertex
     {
-        public static int StopTime { get; } = 400;
+        private static readonly int s_stopTime = 400;
+
+        public static int StopTime => s_stopTime;
 
         public BusStop() { }
 

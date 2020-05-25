@@ -13,20 +13,20 @@ namespace SystAnalys_lr1.Classes
         public static List<Epicenter> Epics { get; set; } = new List<Epicenter>();
         public static List<Vertex> Staions { get; set; } = new List<Vertex>();
         //Лист, в котором хранится сетка
-        static public List<GridPart> TheGrid { get; set; } = new List<GridPart>();
+        public static List<GridPart> TheGrid { get; set; } = new List<GridPart>();
         //Лист, в котором хранятся автобусы
-        static public List<Bus> Buses { get; set; } = new List<Bus>();
+        public static List<Bus> Buses { get; set; } = new List<Bus>();
         public static List<List<Bus>> BusesPark { get; set; } = new List<List<Bus>>();
         //все вершины
-        static public List<Vertex> V { get; set; } = new List<Vertex>();
+        public static List<Vertex> V { get; set; } = new List<Vertex>();
         //ребра маршрутов
-        static public SerializableDictionary<string, List<Edge>> RoutesEdge { get; set; } = new SerializableDictionary<string, List<Edge>>();
+        public static SerializableDictionary<string, List<Edge>> RoutesEdge { get; set; } = new SerializableDictionary<string, List<Edge>>();
         //все ребра
         public static List<Edge> E { get; set; } = new List<Edge>();
         //массив всех маршрутов
-        static public SerializableDictionary<string, List<Vertex>> Routes { get; set; } = new SerializableDictionary<string, List<Vertex>>();
+        public static SerializableDictionary<string, List<Vertex>> Routes { get; set; } = new SerializableDictionary<string, List<Vertex>>();
         // лист номеров квадратов, в которм есть светофор
-        static public List<int> TraficLightsInGrids { get; set; } = new List<int>();
+        public static List<int> TraficLightsInGrids { get; set; } = new List<int>();
         //Светофоры
         public static List<TraficLight> TraficLights { get; set; } = new List<TraficLight>();
         // словарь номеров квадратов, в которм есть остановка для каждого маршрута
@@ -37,8 +37,6 @@ namespace SystAnalys_lr1.Classes
         //все координаты движения автобусов
         public static SerializableDictionary<string, List<Point>> AllCoordinates { get; set; } = new SerializableDictionary<string, List<Point>>();
         //все квадраты сетки, которые есть в каждом из маршрутов 
-        public static SerializableDictionary<string, List<int>> AllGridsInRoutes { get; set; } = new SerializableDictionary<string, List<int>>();
-
-        
+        public static SerializableDictionary<string, List<int>> AllGridsInRoutes { get; set; } = new SerializableDictionary<string, List<int>>();        
     }
 }
