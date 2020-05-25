@@ -213,34 +213,30 @@ namespace SystAnalys_lr1.Classes
                     num = new Bitmap(x.BusPic.Height, x.BusPic.Width);
                     using (Graphics gr = Graphics.FromImage(num))
                     {
-                        using (Font font = new Font("Segoe UI", 10))
+                        using (Font font = new Font("Segoe UI", 8))
                         {
                             var textBounds = gr.VisibleClipBounds;
                             textBounds.Inflate(-1, -1);
                             gr.FillRectangle(Brushes.Transparent, rect);
 
-                            // Выводим текст.
                             gr.DrawString(
                                 x.Route.ToString(),
                                 font,
-                                Brushes.Black, // цвет текста
-                                textBounds, // текст будет вписан в указанный прямоугольник
+                                Brushes.Black, 
+                                rect, 
                                 StringFormat.GenericTypographic
                                 
                                 );
                         }
                     }
 
-                    original = new Bitmap(Math.Max(x.BusPic.Width, num.Width), Math.Max(x.BusPic.Height, num.Height) * 2); //load the image file
+                    original = new Bitmap(Math.Max(x.BusPic.Width, num.Width), Math.Max(x.BusPic.Height, num.Height) * 2); 
                     using (Graphics graphics = Graphics.FromImage(original))
                     {
-
                         graphics.DrawImage(x.BusPic, 0, 0);
                         graphics.DrawImage(num, 0, 15);
                         graphics.Dispose();
-
                     }
-                    //  bitmap = new Bitmap(original, new Size(15, 15));
                 }
                 else
                 {
@@ -250,23 +246,21 @@ namespace SystAnalys_lr1.Classes
                     num = new Bitmap(x.BusPic.Height, x.BusPic.Width);
                     using (Graphics gr = Graphics.FromImage(num))
                     {
-                        using (Font font = new Font("Segoe UI", 10))
+                        using (Font font = new Font("Segoe UI", 8))
                         {
-                            // Заливаем фон нужным цветом.
                             gr.FillRectangle(Brushes.Transparent, rect);
 
-                            // Выводим текст.
                             gr.DrawString(
                                 x.Route.ToString(),
                                 font,
-                                Brushes.Black, // цвет текста
-                                rect, // текст будет вписан в указанный прямоугольник
+                                Brushes.Black, 
+                                rect, 
                                 StringFormat.GenericTypographic
                                 );
                         }
                     }
 
-                    original = new Bitmap(Math.Max(x.BusPic.Width, num.Width), Math.Max(x.BusPic.Height, num.Height) * 2); //load the image file
+                    original = new Bitmap(Math.Max(x.BusPic.Width, num.Width), Math.Max(x.BusPic.Height, num.Height) * 2);
                     using (Graphics graphics = Graphics.FromImage(original))
                     {
 
@@ -278,16 +272,16 @@ namespace SystAnalys_lr1.Classes
                 }
 
 
-                x.BusPic = original;//res;// new Bitmap(res, new Size(1000, 1000));
+                x.BusPic = original;
 
                 x.Skips.SkipTrafficLights = 5;
                 x.Skips.SkipStops = 5;
                 x.Skips.SkipEnd = 5;
 
             }
-            //
+           
             timer.Start();
-            //
+            
             XmlSerializer ver = new XmlSerializer(typeof(List<Vertex>));
             XmlSerializer ed = new XmlSerializer(typeof(List<Edge>));
 

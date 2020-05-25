@@ -115,30 +115,30 @@ namespace SystAnalys_lr1.Forms
         private void left_Validated(object sender, EventArgs e)
         {
             if (left.Text == "")
-                errorProvider3.SetError(left, "Заполните поле!");
+                errorProvider1.SetError(left, "Заполните поле!");
             else
             {
-                errorProvider3.SetError(left, string.Empty);
+                errorProvider1.SetError(left, string.Empty);
             }
         }
 
         private void right_Validated(object sender, EventArgs e)
         {
             if (right.Text == "")
-                errorProvider4.SetError(right, "Заполните поле!");
+                errorProvider1.SetError(right, "Заполните поле!");
             else
             {
-                errorProvider4.SetError(right, string.Empty);
+                errorProvider1.SetError(right, string.Empty);
             }
         }
 
         private void down_Validated(object sender, EventArgs e)
         {
             if (down.Text == "")
-                errorProvider2.SetError(down, "Заполните поле!");
+                errorProvider1.SetError(down, "Заполните поле!");
             else
             {
-                errorProvider2.SetError(down, string.Empty);
+                errorProvider1.SetError(down, string.Empty);
             }
         }
     }

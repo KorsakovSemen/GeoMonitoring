@@ -79,101 +79,102 @@ namespace SystAnalys_lr1.Classes
 
         }
 
+        public void CreateBus(MouseEventArgs e, bool trackerCheck, bool backsideCheck, string route)
+        {
+            if (Data.AllCoordinates[route].Count != 0)
+            {
+                int pos = 0;
+
+                if (e.Button == MouseButtons.Left)
+                {
+                    double min = Math.Pow((Data.AllCoordinates[route].Last().X - e.X / Main.zoom), 2) + Math.Pow((Data.AllCoordinates[route].Last().Y - e.Y / Main.zoom), 2);
+                    for (int i = 0; i < Data.AllCoordinates[route].Count; i++)
+                    {
+                        if (Math.Pow((Data.AllCoordinates[route][i].X - e.X / Main.zoom), 2) + Math.Pow((Data.AllCoordinates[route][i].Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R * 500)
+                        {
+                            if ((Math.Pow((Data.AllCoordinates[route][i].X - e.X / Main.zoom), 2) + Math.Pow((Data.AllCoordinates[route][i].Y - e.Y / Main.zoom), 2) < min))
+                            {
+                                min = Math.Pow((Data.AllCoordinates[route][i].X - e.X / Main.zoom), 2) + Math.Pow((Data.AllCoordinates[route][i].Y - e.Y / Main.zoom), 2);
+                                pos = i;
+                            }
+                        }
+                    }
+                }
+
+                if (trackerCheck)
+                {
+                    Rectangle rect = new Rectangle(0, 0, 200, 100);
+                    Bitmap busPic = new Bitmap(Bus.BusImg);
+                    busPic = new Bitmap(busPic, new Size(15, 15));
+                    Bitmap num = new Bitmap(busPic.Height, busPic.Width);
+                    using (Graphics gr = Graphics.FromImage(num))
+                    {
+                        using (Font font = new Font("Segoe UI", 8))
+                        {
+                            gr.FillRectangle(Brushes.Transparent, rect);
+
+                            gr.DrawString(
+                                route,
+                                font,
+                                Brushes.Black,
+                                rect,
+                                StringFormat.GenericTypographic
+                                );
+                        }
+                    }
+
+                    Bitmap original = new Bitmap(Math.Max(busPic.Width, num.Width), Math.Max(busPic.Height, num.Height) * 2);
+                    using (Graphics graphics = Graphics.FromImage(original))
+                    {
+
+                        graphics.DrawImage(busPic, 0, 0);
+                        graphics.DrawImage(num, 0, 15);
+                        graphics.Dispose();
+
+                    }
+                    Data.Buses.Add(new Bus(original, pos, backsideCheck, route, Data.AllCoordinates[route], true));
+                }
+                else
+                {
+                    Rectangle rect = new Rectangle(0, 0, 200, 100);
+                    Bitmap busPic = new Bitmap(Bus.OffBusImg);
+                    busPic = new Bitmap(busPic, new Size(15, 15));
+                    Bitmap num = new Bitmap(busPic.Height, busPic.Width);
+                    using (Graphics gr = Graphics.FromImage(num))
+                    {
+                        using (Font font = new Font("Segoe UI", 8))
+                        {
+                            gr.FillRectangle(Brushes.Transparent, rect);
+
+                            gr.DrawString(
+                                route,
+                                font,
+                                Brushes.Black,
+                                rect,
+                                StringFormat.GenericTypographic
+                                );
+                        }
+                    }
+
+                    Bitmap original = new Bitmap(Math.Max(busPic.Width, num.Width), Math.Max(busPic.Height, num.Height) * 2);
+                    using (Graphics graphics = Graphics.FromImage(original))
+                    {
+
+                        graphics.DrawImage(busPic, 0, 0);
+                        graphics.DrawImage(num, 0, 15);
+                        graphics.Dispose();
+
+                    }
+                    Data.Buses.Add(new Bus(original, pos, backsideCheck, route, Data.AllCoordinates[route], false));
+                };
+            }
+        }
+
         public void AddBus(MouseEventArgs e, bool trackerCheck, bool backsideCheck, string route)
         {
             if (Data.AllCoordinates.ContainsKey(route))
             {
-                if (Data.AllCoordinates[route].Count != 0)
-                {
-                    int pos = 0;
-
-                    if (e.Button == MouseButtons.Left)
-                    {
-                        double min = Math.Pow((Data.AllCoordinates[route].Last().X - e.X / Main.zoom), 2) + Math.Pow((Data.AllCoordinates[route].Last().Y - e.Y / Main.zoom), 2);
-                        for (int i = 0; i < Data.AllCoordinates[route].Count; i++)
-                        {
-                            if (Math.Pow((Data.AllCoordinates[route][i].X - e.X / Main.zoom), 2) + Math.Pow((Data.AllCoordinates[route][i].Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R * 500)
-                            {
-                                if ((Math.Pow((Data.AllCoordinates[route][i].X - e.X / Main.zoom), 2) + Math.Pow((Data.AllCoordinates[route][i].Y - e.Y / Main.zoom), 2) < min))
-                                {
-                                    min = Math.Pow((Data.AllCoordinates[route][i].X - e.X / Main.zoom), 2) + Math.Pow((Data.AllCoordinates[route][i].Y - e.Y / Main.zoom), 2);
-                                    pos = i;
-                                }
-                            }
-                        }
-                    }
-
-                    if (trackerCheck)
-                    {
-                        Rectangle rect = new Rectangle(0, 0, 200, 100);
-                        Bitmap busPic = new Bitmap(Bus.BusImg);
-                        busPic = new Bitmap(busPic, new Size(15, 15));
-                        Bitmap num = new Bitmap(busPic.Height, busPic.Width);
-                        using (Graphics gr = Graphics.FromImage(num))
-                        {
-                            using (Font font = new Font("Segoe UI", 10))
-                            {
-                                // Заливаем фон нужным цветом.
-                                gr.FillRectangle(Brushes.Transparent, rect);
-
-                                // Выводим текст.
-                                gr.DrawString(
-                                    route,
-                                    font,
-                                    Brushes.Black, // цвет текста
-                                    rect, // текст будет вписан в указанный прямоугольник
-                                    StringFormat.GenericTypographic
-                                    );
-                            }
-                        }
-
-                        Bitmap original = new Bitmap(Math.Max(busPic.Width, num.Width), Math.Max(busPic.Height, num.Height) * 2); //load the image file
-                        using (Graphics graphics = Graphics.FromImage(original))
-                        {
-
-                            graphics.DrawImage(busPic, 0, 0);
-                            graphics.DrawImage(num, 0, 15);
-                            graphics.Dispose();
-
-                        }
-                        Data.Buses.Add(new Bus(original, pos, backsideCheck, route, Data.AllCoordinates[route], true));
-                    }
-                    else
-                    {
-                        Rectangle rect = new Rectangle(0, 0, 200, 100);
-                        Bitmap busPic = new Bitmap(Bus.OffBusImg);
-                        busPic = new Bitmap(busPic, new Size(15, 15));
-                        Bitmap num = new Bitmap(busPic.Height, busPic.Width);
-                        using (Graphics gr = Graphics.FromImage(num))
-                        {
-                            using (Font font = new Font("Segoe UI", 10))
-                            {
-                                // Заливаем фон нужным цветом.
-                                gr.FillRectangle(Brushes.Transparent, rect);
-
-                                // Выводим текст.
-                                gr.DrawString(
-                                    route,
-                                    font,
-                                    Brushes.Black, // цвет текста
-                                    rect, // текст будет вписан в указанный прямоугольник
-                                    StringFormat.GenericTypographic
-                                    );
-                            }
-                        }
-
-                        Bitmap original = new Bitmap(Math.Max(busPic.Width, num.Width), Math.Max(busPic.Height, num.Height) * 2); //load the image file
-                        using (Graphics graphics = Graphics.FromImage(original))
-                        {
-
-                            graphics.DrawImage(busPic, 0, 0);
-                            graphics.DrawImage(num, 0, 15);
-                            graphics.Dispose();
-
-                        }
-                        Data.Buses.Add(new Bus(original, pos, backsideCheck, route, Data.AllCoordinates[route], false));
-                    };
-                }
+                CreateBus(e, trackerCheck, backsideCheck, route);
             }
             else
             {
@@ -181,6 +182,7 @@ namespace SystAnalys_lr1.Classes
                 {
                     Coordinates c = new Coordinates();
                     c.CreateOneRouteCoordinates(route);
+                    CreateBus(e, trackerCheck, backsideCheck, route);
                 }
                 catch
                 {

@@ -21,13 +21,6 @@ namespace SystAnalys_lr1
         }
 
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //if ((!char.IsNumber(e.KeyChar)) && (!char.IsControl(e.KeyChar)))
-            //{
-            //    e.Handled = true;
-            //}
-        }
 
         private void textBox1_Validated(object sender, EventArgs e)
         {
@@ -39,14 +32,7 @@ namespace SystAnalys_lr1
                 errorProvider1.SetError(textBox1, string.Empty);
                 Close();
             }
-            //if (string.IsNullOrWhiteSpace((sender as TextBox).Text))
-            //    errorProvider1.SetError(textBox1, "Заполните поле!");
-
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

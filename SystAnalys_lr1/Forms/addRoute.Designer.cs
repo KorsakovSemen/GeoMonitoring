@@ -85,7 +85,6 @@
             this.textBox1.UseSelectable = true;
             this.textBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             this.textBox1.Validated += new System.EventHandler(this.textBox1_Validated);
             // 
             // label1
@@ -104,7 +103,6 @@
             this.errorProvider1.SetIconPadding(this.button1, ((int)(resources.GetObject("button1.IconPadding"))));
             this.button1.Name = "button1";
             this.button1.UseSelectable = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // errorProvider1
             // 
