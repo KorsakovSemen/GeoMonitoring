@@ -28,7 +28,7 @@ namespace SystAnalys_lr1.Classes
             };
             darkGoldPen = new Pen(Color.IndianRed);
             _ = new Random();
-            color = Color.DarkBlue;//DodgerBlue;
+            color = Color.DarkBlue;
         }
 
         public void SetBitmap()
@@ -157,11 +157,16 @@ namespace SystAnalys_lr1.Classes
                 {
                     Width = 2 * Main.zoom
                 };
+                
             }
             else
             {
                 pen = darkGoldPen;
                 pen.Width = 2 * Main.zoom;
+                foreach (var s in Data.Staions)
+                {
+                    DrawStation(s.X * Main.zoom, s.Y * Main.zoom, 2 * Main.zoom, new SolidBrush(Color.FromArgb(128, 178, 34, 34)));
+                }
             };
             for (int i = 0; i < E.Count; i++)
             {
@@ -177,10 +182,7 @@ namespace SystAnalys_lr1.Classes
                     }
                 }
             }
-            foreach (var s in Data.Staions)
-            {
-                DrawStation(s.X, s.Y, 2, new SolidBrush(Color.FromArgb(128, 178, 34, 34)));
-            }
+          
             DrawStopPoints();
             for (int i = 0; i < V.Count; i++)
             {

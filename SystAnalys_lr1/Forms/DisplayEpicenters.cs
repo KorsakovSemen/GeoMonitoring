@@ -14,20 +14,38 @@ namespace SystAnalys_lr1
 {
     public partial class DisplayEpicenters : MetroForm
     {
-        public static bool FormOpen;
+        private static string s_path;
+        private int _wsheet;
+        private int _hsheet;
+        private static int s_ezoom = 1;
+        private static Image s_zoomPicture;
+        private static Image s_esheetPicture;
+        private static int s_eTimerTimeCounts;
+        private static int s_eTimerMovingTimeCounts;
+        private static int s_eTimerExpandingTimeCounts;
+        private static List<Epicenter> s_copiedEpics;
+        private static bool formOpen;
         private Epicenter restoredEpic;
-        public static string Path { get; set; }
-        public int Wsheet { get; set; }
-        public int Hsheet { get; set; }
-        private static int Ezoom { get; set; } = 1;
-        public static Image ZoomPicture { get; set; }
-        public static Image EsheetPicture { get; set; }
-        private static int ETimerTimeCounts { get; set; }
-        private static int ETimerMovingTimeCounts { get; set; }
-        private static int ETimerExpandingTimeCounts { get; set; }
-        private static List<Epicenter> CopiedEpics { get; set; }
-        public DrawGraph EG;
+        private DrawGraph eG;
         private readonly Main MainForm;
+
+        public EpicSettings epSet;
+        public static string Path { get => s_path; set => s_path = value; }
+        public int Wsheet { get => _wsheet; set => _wsheet = value; }
+        public int Hsheet { get => _hsheet; set => _hsheet = value; }
+        private static int Ezoom { get => s_ezoom; set => s_ezoom = value; }
+        public static Image ZoomPicture { get => s_zoomPicture; set => s_zoomPicture = value; }
+        public static Image EsheetPicture { get => s_esheetPicture; set => s_esheetPicture = value; }
+        private static int ETimerTimeCounts { get => s_eTimerTimeCounts; set => s_eTimerTimeCounts = value; }
+        private static int ETimerMovingTimeCounts { get => s_eTimerMovingTimeCounts; set => s_eTimerMovingTimeCounts = value; }
+        private static int ETimerExpandingTimeCounts { get => s_eTimerExpandingTimeCounts; set => s_eTimerExpandingTimeCounts = value; }
+        private static List<Epicenter> CopiedEpics { get => s_copiedEpics; set => s_copiedEpics = value; }
+        public static bool FormOpen { get => formOpen; set => formOpen = value; }
+        public Epicenter RestoredEpic { get => restoredEpic; set => restoredEpic = value; }
+        public DrawGraph EG { get => eG; set => eG = value; }
+
+
+
         public DisplayEpicenters(Main Main)
         {
             this.MainForm = Main;
@@ -73,7 +91,7 @@ namespace SystAnalys_lr1
 
             EDrawMainEpics();
             Esheet.MouseClick += Esheet_MouseClick;
-           
+
         }
 
         private void Esheet_MouseClick(object sender, MouseEventArgs e)
@@ -85,7 +103,7 @@ namespace SystAnalys_lr1
 
                     ERefreshRouts();
                     Epicenter.CreateOneRandomEpicenter(Main.EpicSizeParam, Data.TheGrid.IndexOf(gridPart));
-                    CopiedEpics=Epicenter.CopyEpicenter(CopiedEpics);
+                    CopiedEpics = Epicenter.CopyEpicenter(CopiedEpics);
                     EG.ClearSheet2();
 
                     EDrawPollutions();
@@ -154,7 +172,7 @@ namespace SystAnalys_lr1
 
             }
             EDrawGrid();
-            
+
 
         }
         public void EDrawGrid()
@@ -251,7 +269,7 @@ namespace SystAnalys_lr1
                 };
             }
         }
-        public EpicSettings epSet;
+
         private void Button11_Click(object sender, EventArgs e)
         {
 
@@ -262,9 +280,9 @@ namespace SystAnalys_lr1
         }
         public void RecReateFunction()
         {
-            restoredEpic = new Epicenter(Data.TheGrid);
+            RestoredEpic = new Epicenter(Data.TheGrid);
 
-            restoredEpic.Recreate(Modeling.PollutionInRoutes);
+            RestoredEpic.Recreate(Modeling.PollutionInRoutes);
 
 
             EG.ClearSheet2();
@@ -272,7 +290,7 @@ namespace SystAnalys_lr1
             {
                 Data.TheGrid[i].FillGreen(EG, Ezoom);
             }
-            restoredEpic.DrawEpicenter(EG, Ezoom);
+            RestoredEpic.DrawEpicenter(EG, Ezoom);
 
             EDrawGrid();
         }
@@ -281,12 +299,12 @@ namespace SystAnalys_lr1
             FormOpen = false;
             EpicSettings.SavePictures = false;
             EpicSettings.ExtendedSavePictures = false;
-            Esheet.Image = Main.ResizeBitmap(new Bitmap(EsheetPicture), Wsheet , Hsheet );
+            Esheet.Image = Main.ResizeBitmap(new Bitmap(EsheetPicture), Wsheet, Hsheet);
             Ezoom = 1;
         }
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            if(CopiedEpics !=null)
+            if (CopiedEpics != null)
             {
                 if (SimulatingTimer.Enabled)
                 {
@@ -297,7 +315,7 @@ namespace SystAnalys_lr1
                     SimulatingTimer.Enabled = true;
                 }
             }
-           
+
         }
 
         private void ModelingTimer_Tick(object sender, EventArgs e)
@@ -314,12 +332,12 @@ namespace SystAnalys_lr1
                             CopiedEpics.First().EpicMoving(EpicSettings.MovingEpicParamet);
                             ETimerMovingTimeCounts = 0;
                         }
-                        else 
+                        else
                         {
                             ETimerMovingTimeCounts += 100;
                         }
 
-           
+
                     }
                     if (EpicSettings.TurnExpandingSet == true)
                     {
@@ -348,9 +366,9 @@ namespace SystAnalys_lr1
                     default:
                         break;
                 }
-             
+
             }
-            else 
+            else
             {
                 SimulatingTimer.Enabled = false;
             }

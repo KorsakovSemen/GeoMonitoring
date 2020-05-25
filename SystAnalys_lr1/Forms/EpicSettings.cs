@@ -13,20 +13,31 @@ namespace SystAnalys_lr1.Forms
 {
     public partial class EpicSettings : MetroForm
     {
-        
-        public static string EpicSizeParamSave { get; set; } = "radioEpicMedium";
-        public static List<string> MovingEpicParamet { get; set; }
-        public static string EpicFreqMovingSave { get; set; } = null;
-        public static int EpicFreqMovingParam { get; set; } = 0;
-        public static string EpicFreqSpreadingSave { get; set; } = null;
-        public static int EpicFreqSpreadingParam { get; set; } = 0;
-        public static string EpicPhaseSavingSave { get; set; } = null;
-        public static int EpicPhaseSavingParam { get; set; } = 1;
-        public static bool SavePictures { get; set; } = false;
-        public static bool ExtendedSavePictures { get; set; } = false;
-        
+
+        public static string EpicSizeParamSave { get => s_epicSizeParamSave; set => s_epicSizeParamSave = value; }
+        public static List<string> MovingEpicParamet { get => s_movingEpicParamet; set => s_movingEpicParamet = value; }
+        public static string EpicFreqMovingSave { get => s_epicFreqMovingSave; set => s_epicFreqMovingSave = value; }
+        public static int EpicFreqMovingParam { get => s_epicFreqMovingParam; set => s_epicFreqMovingParam = value; }
+        public static string EpicFreqSpreadingSave { get => s_epicFreqSpreadingSave; set => s_epicFreqSpreadingSave = value; }
+        public static int EpicFreqSpreadingParam { get => s_epicFreqSpreadingParam; set => s_epicFreqSpreadingParam = value; }
+        public static string EpicPhaseSavingSave { get => s_epicPhaseSavingSave; set => s_epicPhaseSavingSave = value; }
+        public static int EpicPhaseSavingParam { get => s_epicPhaseSavingParam; set => s_epicPhaseSavingParam = value; }
+        public static bool SavePictures { get => s_savePictures; set => s_savePictures = value; }
+        public static bool ExtendedSavePictures { get => s_extendedSavePictures; set => s_extendedSavePictures = value; }
         public static bool TurnMovingSet = false;
         public static bool TurnExpandingSet = false;
+
+        private static string s_epicSizeParamSave = "radioEpicMedium";
+        private static List<string> s_movingEpicParamet;
+        private static string s_epicFreqMovingSave = null;
+        private static int s_epicFreqMovingParam = 0;
+        private static string s_epicFreqSpreadingSave = null;
+        private static int s_epicFreqSpreadingParam = 0;
+        private static string s_epicPhaseSavingSave = null;
+        private static int s_epicPhaseSavingParam = 1;
+        private static bool s_savePictures = false;
+        private static bool s_extendedSavePictures = false;
+
         public EpicSettings()
         {
             InitializeComponent();
@@ -51,19 +62,19 @@ namespace SystAnalys_lr1.Forms
                 phasesSettingsBox.Enabled = false;
             }
             TurnMoving.Checked = TurnMovingSet;
-            
+
             if (TurnMoving.Checked == true)
             {
-             
+
                 directionBox.Enabled = true;
                 frequencyBox.Enabled = true;
             }
             else
-            {            
+            {
                 directionBox.Enabled = false;
                 frequencyBox.Enabled = false;
             }
-            
+
             TurnSpreading.Checked = TurnExpandingSet;
             if (TurnSpreading.Checked == true)
             {
@@ -72,28 +83,28 @@ namespace SystAnalys_lr1.Forms
             else
             {
                 SpredFreq.Enabled = false;
-            }            
+            }
 
             switch (EpicPhaseSavingSave)
             {
                 case "radioPhase2":
                     radioPhase2.Checked = true;
-                break;
+                    break;
                 case "radioPhase3":
                     radioPhase3.Checked = true;
-                break;
+                    break;
                 case "radioPhase5":
                     radioPhase5.Checked = true;
-                break;
+                    break;
                 case "radioPhase10":
                     radioPhase10.Checked = true;
-                break;
+                    break;
                 case "radioPhaseCustom":
                     radioPhaseCustom.Checked = true;
                     metroTextBox2.Text = Main.EpicSizeParam.ToString();
-                break;
+                    break;
             }
-            
+
             switch (EpicSizeParamSave)
             {
                 case "radioEpicSmall":
@@ -113,7 +124,7 @@ namespace SystAnalys_lr1.Forms
                     textBox1.Text = Main.EpicSizeParam.ToString();
                     break;
             }
-            
+
             switch (EpicFreqMovingSave)
             {
                 case "RadioFreq100":
@@ -141,7 +152,7 @@ namespace SystAnalys_lr1.Forms
                     metroTextBox1.Text = EpicFreqMovingParam.ToString();
                     break;
             }
-            
+
 
             if (MovingEpicParamet.Any())
             {
@@ -167,7 +178,7 @@ namespace SystAnalys_lr1.Forms
                     }
                 }
             }
-            
+
             switch (EpicFreqSpreadingSave)
             {
                 case "RadioFreqSpred100":
@@ -195,7 +206,7 @@ namespace SystAnalys_lr1.Forms
                     metroTextBox3.Text = EpicFreqMovingParam.ToString();
                     break;
             }
-            
+
 
         }
 
@@ -286,7 +297,7 @@ namespace SystAnalys_lr1.Forms
             }
             return EpicSizeParam;
         }
-        
+
         private int SetFreqMovingSize()
         {
             var rand = new Random();
@@ -404,10 +415,10 @@ namespace SystAnalys_lr1.Forms
             }
             return FreqSpreadParam;
         }
-        
+
         private int SetPhaseSavingSize()
         {
-       
+
             int PhasesSizeParam = 0;
             foreach (Control control in this.phasesSettingsBox.Controls)
             {
@@ -433,7 +444,7 @@ namespace SystAnalys_lr1.Forms
                             case "radioPhase10":
                                 PhasesSizeParam = 10;
                                 EpicPhaseSavingSave = "radioPhase10";
-                                break;                      
+                                break;
                             case "radioPhaseCustom":
                                 EpicPhaseSavingSave = "radioPhaseCustom";
                                 if (int.TryParse(metroTextBox2.Text, out int T))
@@ -451,7 +462,7 @@ namespace SystAnalys_lr1.Forms
                 }
             }
             return PhasesSizeParam;
-        }       
+        }
 
 
         private List<string> SetExpandParam()
@@ -518,8 +529,8 @@ namespace SystAnalys_lr1.Forms
         private void extendedSavePictures_CheckedChanged(object sender, EventArgs e)
         {
             if (extendedSavePictures.Checked == true)
-            {         
-                    phasesSettingsBox.Enabled = true;
+            {
+                phasesSettingsBox.Enabled = true;
             }
             else
             {
