@@ -1943,6 +1943,8 @@ namespace SystAnalys_lr1
             {
                 hint.Visible = true;
                 hint.Text = MainStrings.hint;
+                Application.Restart();
+
             }
         }
 
