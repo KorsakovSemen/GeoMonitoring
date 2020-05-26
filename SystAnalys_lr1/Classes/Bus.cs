@@ -68,12 +68,10 @@ namespace SystAnalys_lr1.Classes
         public Image BusPic { get => _busPic; set => _busPic = value; }
         public string Route { get => _route; set => _route = value; }
 
-        //текущий квадрат, в котором находится автобус
         private int? Locate = null;
-        //все координаты для движения автобуса
         public List<Point> Coordinates { get => _coordinates; set => _coordinates = value; }
-        //для того, чтобы 1 раз прибавлять к OneGridFilling
-        public int R { get => _r; set => _r = value; }         //сколько автобусу нужно проехать в тиках
+        public int R { get => _r; set => _r = value; }        
+        //сколько автобусу нужно проехать в тиках
         public int TickCount_ { get => _tickCount_; set => _tickCount_ = value; }
         //все время, которое проехал автобус
         public int AllTickCount { get => _allTickCount; set => _allTickCount = value; }
@@ -492,17 +490,16 @@ namespace SystAnalys_lr1.Classes
                             CheckEpic(Sector, Square, EpicList);
                         }
 
-                        //был(вроде норм влияет)
                         if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].X + GridPart.Width == Square.X) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].Y - GridPart.Height == Square.Y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
-                        //был(плюс минус влияет)
+
                         if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].X + GridPart.Width == Square.X) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].Y == Square.Y)))
                         {
                             CheckEpic(Sector, Square, EpicList);
                         }
-                        //был(плюс минус влияет)
+
                         if (((Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].X - GridPart.Width == Square.X) && (Data.TheGrid[Data.AllGridsInRoutes[Route][(int)PositionAt]].Y == Square.Y)))
                         {
                             CheckEpic(Sector, Square, EpicList);

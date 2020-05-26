@@ -100,8 +100,7 @@ namespace SystAnalys_lr1.Classes
             if (parkSize + 1 < 655)
             {
                 matrixGrid.Invoke((MethodInvoker)(() => matrixGrid.Rows.Clear()));
-                matrixGrid.Invoke((MethodInvoker)(() => matrixGrid.Refresh()));
-                //matrixGrid.Rows.Clear();
+                matrixGrid.Invoke((MethodInvoker)(() => matrixGrid.Refresh()));              
 
 
                 Data.Buses.Sort((a1, b1) => a1.Route.CompareTo(b1.Route));
@@ -124,7 +123,6 @@ namespace SystAnalys_lr1.Classes
                 {
                     parkSize = Math.Max(parkSize, x.Count);
                 }
-                //         changeRoute.Invoke(new DelBool((s) => changeRoute.Enabled = s), true);
                 int[,] myArr = new int[routesSorted.Count, parkSize];
                 if (routesSorted.Count == 0)
                     matrixGrid.Invoke(new DelInt((s) => matrixGrid.RowCount = s), 1);

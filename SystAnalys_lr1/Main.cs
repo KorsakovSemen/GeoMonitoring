@@ -110,11 +110,8 @@ namespace SystAnalys_lr1
 
         public Main()
         {
-            // Если в настройках есть язык, устанавлияем его для текущего потока, в котором выполняется приложение.
             if (!string.IsNullOrEmpty(Properties.Settings.Default.Language))
             {
-                // ВАЖНО: Устанавливать язык нужно до создания элементов формы!
-                // Это можно сделать глобально, в рамках приложения в классе Program (см. файл Program.cs).
                 System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
                 System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
             }
@@ -152,7 +149,6 @@ namespace SystAnalys_lr1
             Ep.ERefreshRouts();
         }
 
-        //в textBox1 можно вводить только цифры
         private void TextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((!char.IsNumber(e.KeyChar)) && (!char.IsControl(e.KeyChar)))
@@ -528,7 +524,7 @@ namespace SystAnalys_lr1
                 }
             }
         }
-        //saver/loader
+
         private void NewModelToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -952,7 +948,7 @@ namespace SystAnalys_lr1
         {
             return EpicSettings.SavePictures;
         }
-        //class loader
+
         private void LoadFromToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var dialog = new FolderBrowserDialog())
@@ -1152,7 +1148,6 @@ namespace SystAnalys_lr1
             selected = new List<int>();
             GridCreator.DrawGrid(sheet);
         }
-        //class saver
 
         private void SaveRoutes(string saveFormat = "xml", string save = "../../Configs/")
         {
@@ -1203,7 +1198,6 @@ namespace SystAnalys_lr1
             foreach (var tl in Data.TraficLights)
             {
                 tl.Stop();
-                //tl.TimerLight.Dispose();
             }
 
             Data.Staions.Clear();
@@ -1268,7 +1262,6 @@ namespace SystAnalys_lr1
             openEpicFormToolStripMenuItem.Enabled = true;
             GridCreator.CreateGrid(sheet);
             Modeling.CreatePollutionInRoutes();
-            // Epicenter.CreateOneRandomEpicenter(EpicSizeParam, null);
             ConstructorOnNetwork();
             AddInComboBox();
             G.ClearSheet();
@@ -1434,7 +1427,6 @@ namespace SystAnalys_lr1
                     c.AddStopPointsInRoutes(e, Data.AllstopPoints, sheet, Data.TheGrid, changeRoute.Text);
                     return;
                 }
-                //нажата кнопка "выбрать вершину", ищем степень вершины
                 if (selectButton.Enabled == false)
                 {
                     c.Select(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, 1);
@@ -1451,7 +1443,6 @@ namespace SystAnalys_lr1
                     c.SelectRouteInRoute(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, selected);
                     return;
                 }
-                //нажата кнопка addBus
                 if (addBus.Enabled == false)
                 {
                     try
@@ -1469,8 +1460,6 @@ namespace SystAnalys_lr1
                     c.DeleteBus(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, changeRoute.Text, mainPanel.AutoScrollPosition.X, mainPanel.AutoScrollPosition.Y);
                     return;
                 }
-
-                //нажата кнопка "рисовать ребро"
                 if (drawEdgeButton.Enabled == false)
                 {
                     if (e.Button == MouseButtons.Right)
@@ -1483,7 +1472,6 @@ namespace SystAnalys_lr1
                     c.DrawEdgeInRoute(e, routeV, Data.RoutesEdge[changeRoute.Text], sheet, changeRoute.Text);
                     return;
                 }
-                //нажата кнопка "удалить элемент"
                 if (deleteButton.Enabled == false)
                 {
                     switch (DelType)
@@ -1666,7 +1654,6 @@ namespace SystAnalys_lr1
                     {
                         dialog.SelectedPath = Path.GetFullPath(savepath);
                     }
-                    // dialog.SelectedPath = Path.GetFullPath(savepath); //System.Windows.Forms.Application.StartupPath;
                     if (dialog.ShowDialog() == DialogResult.OK)
                     {
                         SavedVisible();
@@ -1935,18 +1922,14 @@ namespace SystAnalys_lr1
 
         private void Main_Load(object sender, EventArgs e)
         {
-            // Заносим список поддерживаемых языков.
             changeLanguage.DataSource = new System.Globalization.CultureInfo[]{
                  System.Globalization.CultureInfo.GetCultureInfo("ru-RU"),
                  System.Globalization.CultureInfo.GetCultureInfo("en-US")
             };
 
-            // Каждый элемент списка comboBox1 будет являться экземпляром класса CultureInfo.
+            changeLanguage.DisplayMember = "NativeName"; 
+            changeLanguage.ValueMember = "Name";
 
-            changeLanguage.DisplayMember = "NativeName"; // <= System.Globalization.CultureInfo.GetCultureInfo("ru-RU").NativeName
-            changeLanguage.ValueMember = "Name"; // <= System.Globalization.CultureInfo.GetCultureInfo("ru-RU").Name
-
-            // Если в настройках есть язык, выбираем его в списке.
             if (!string.IsNullOrEmpty(Properties.Settings.Default.Language))
             {
                 changeLanguage.SelectedValue = Properties.Settings.Default.Language;
@@ -2094,7 +2077,6 @@ namespace SystAnalys_lr1
         private void LaunchBuses_Click_1(object sender, EventArgs e)
         {
             timer.Start();
-            //Console.WriteLine(Data.Buses.Count.ToString());
         }
 
         private void ChangeRoute_SelectedIndexChanged(object sender, EventArgs e)
@@ -2302,7 +2284,6 @@ namespace SystAnalys_lr1
         {
             EpicSettings.MovingEpicParamet = new List<string>();
             KeyPreview = true;
-            // timer.Interval = BusStop.StopTime / 10;
             deleteBus = new ToolStripButton();
             deleteRoute = new ToolStripButton();
             delAllBusesOnRoute = new ToolStripButton();
@@ -2324,7 +2305,6 @@ namespace SystAnalys_lr1
 
         private async void SavedVisible()
         {
-            //saved.Text = MainStrings.saving;
             saved.Visible = true;
             loadingSpinner.Visible = true;
             await Task.Delay(2500);
@@ -2334,11 +2314,8 @@ namespace SystAnalys_lr1
 
         private async void LoadingVisible()
         {
-            //saved.Text = MainStrings.loading;
-            //saved.Visible = true;
             loadingSpinner.Visible = true;
             await Task.Delay(2500);
-            //saved.Visible = false;
             loadingSpinner.Visible = false;
         }
 
@@ -2414,7 +2391,6 @@ namespace SystAnalys_lr1
                 using (FileStream fstream = File.OpenRead("../../SaveConfig/save.txt"))
                 {
                     byte[] array = new byte[fstream.Length];
-                    // асинхронное чтение файла
                     fstream.Read(array, 0, array.Length);
                     savepath = System.Text.Encoding.Default.GetString(array);
                     try
@@ -2459,7 +2435,6 @@ namespace SystAnalys_lr1
                 using (FileStream fstream = File.OpenRead("../../SaveConfig/theme.txt"))
                 {
                     byte[] array = new byte[fstream.Length];
-                    // асинхронное чтение файла
                     fstream.Read(array, 0, array.Length);
                     if (System.Text.Encoding.Default.GetString(array) == "Dark\r\n")
                     {
@@ -2499,7 +2474,6 @@ namespace SystAnalys_lr1
                 using (FileStream fstream = File.OpenRead("../../SaveConfig/style.txt"))
                 {
                     byte[] array = new byte[fstream.Length];
-                    // асинхронное чтение файла
                     fstream.Read(array, 0, array.Length);
                     text = System.Text.Encoding.Default.GetString(array).Replace(Environment.NewLine, "");
                     msmMain.Style = (MetroFramework.MetroColorStyle)Convert.ToInt32(text);
@@ -2507,7 +2481,6 @@ namespace SystAnalys_lr1
 
                 }
                 changeTheme.SelectedIndex = Convert.ToInt32(text);
-                //       changeTheme.Text = text;
             }
             else
             {
@@ -2524,7 +2497,6 @@ namespace SystAnalys_lr1
             mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             mainPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(Panel6_MouseWheel);
             Optimization.CountWithoutSensors = Data.Buses.Count;
-          //  matrix.MatrixCreate();
             hint.Visible = false;
             report.ch.Titles.Add(MainStrings.report);
             report.ch.Series[ReportCount].LegendText = "1";

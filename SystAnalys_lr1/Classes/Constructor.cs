@@ -209,7 +209,7 @@ namespace SystAnalys_lr1.Classes
                                     Data.StopPoints[route].Add(new BusStop(sp.X, sp.Y));
                                     Data.StopPoints[route].Last().GridNum = gridParts.IndexOf(gridPart);
                                     if (Data.StopPointsInGrids.ContainsKey(route))
-                                        Data.StopPointsInGrids[route].Add(gridParts.IndexOf(gridPart)); //дроп ошибки
+                                        Data.StopPointsInGrids[route].Add(gridParts.IndexOf(gridPart));
                                     else
                                     {
                                         Data.StopPointsInGrids.Add(route, new List<int>());
@@ -227,7 +227,7 @@ namespace SystAnalys_lr1.Classes
                                         {
                                             Data.StopPoints[route].Add(new BusStop(sp.X, sp.Y));
                                             Data.StopPoints[route].Last().GridNum = gridParts.IndexOf(gridPart);
-                                            Data.StopPointsInGrids[route].Add(gridParts.IndexOf(gridPart)); //дроп ошибки
+                                            Data.StopPointsInGrids[route].Add(gridParts.IndexOf(gridPart)); 
                                         }
                                     }
                                 }
@@ -587,7 +587,6 @@ namespace SystAnalys_lr1.Classes
                     }
                 }
             }
-            //ищем, возможно было нажато ребро
             if (!Main.Flag)
             {
                 try
@@ -598,7 +597,7 @@ namespace SystAnalys_lr1.Classes
                         {
                             for (int i = 0; i < routesEdgeE[routeV.Key].Count; i++)
                             {
-                                if (routesEdgeE[routeV.Key][i].V1 == routesEdgeE[routeV.Key][i].V2) //если это петля
+                                if (routesEdgeE[routeV.Key][i].V1 == routesEdgeE[routeV.Key][i].V2) 
                                 {
                                     if ((Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) <= ((Main.G.R + 2) * (Main.G.R + 2))) &&
                                         (Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) >= ((Main.G.R - 2) * (Main.G.R - 2))))
@@ -608,7 +607,7 @@ namespace SystAnalys_lr1.Classes
                                         break;
                                     }
                                 }
-                                else //не петля
+                                else 
                                 {
                                     if (((e.X / Main.zoom - routeV.Value[routesEdgeE[routeV.Key][i].V1].X) * (routeV.Value[routesEdgeE[routeV.Key][i].V2].Y - routeV.Value[routesEdgeE[routeV.Key][i].V1].Y) / (routeV.Value[routesEdgeE[routeV.Key][i].V2].X - routeV.Value[routesEdgeE[routeV.Key][i].V1].X) + routeV.Value[routesEdgeE[routeV.Key][i].V1].Y) <= (e.Y / Main.zoom + 4) &&
                                         ((e.X / Main.zoom - routeV.Value[routesEdgeE[routeV.Key][i].V1].X) * (routeV.Value[routesEdgeE[routeV.Key][i].V2].Y - routeV.Value[routesEdgeE[routeV.Key][i].V1].Y) / (routeV.Value[routesEdgeE[routeV.Key][i].V2].X - routeV.Value[routesEdgeE[routeV.Key][i].V1].X) + routeV.Value[routesEdgeE[routeV.Key][i].V1].Y) >= (e.Y / Main.zoom - 4))
@@ -660,12 +659,11 @@ namespace SystAnalys_lr1.Classes
 
             }
 
-            //ищем, возможно было нажато ребро
             if (!Main.Flag)
             {
                 for (int i = 0; i < E.Count; i++)
                 {
-                    if (E[i].V1 == E[i].V2) //если это петля
+                    if (E[i].V1 == E[i].V2) 
                     {
                         if ((Math.Pow((V[E[i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((V[E[i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) <= ((Main.G.R + 2) * (Main.G.R + 2))) &&
                             (Math.Pow((V[E[i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((V[E[i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) >= ((Main.G.R - 2) * (Main.G.R - 2))))
@@ -675,7 +673,7 @@ namespace SystAnalys_lr1.Classes
                             break;
                         }
                     }
-                    else //не петля
+                    else
                     {
                         try
                         {
@@ -703,9 +701,7 @@ namespace SystAnalys_lr1.Classes
 
         public void DeleteStopsOnRoute(MouseEventArgs e, List<Vertex> routeV, PictureBox sheet, string route)
         {
-            bool flag = false; //удалили ли что-нибудь по ЭТОМУ клику
-                               //ищем, возможно была нажата вершина
-
+            bool flag = false; 
 
             foreach (var stopRoute in Data.StopPoints[route])
             {
@@ -750,12 +746,11 @@ namespace SystAnalys_lr1.Classes
                     break;
                 }
             }
-            //ищем, возможно было нажато ребро
             if (!flag)
             {
                 for (int i = 0; i < routesEdge.Count; i++)
                 {
-                    if (routesEdge[i].V1 == routesEdge[i].V2) //если это петля
+                    if (routesEdge[i].V1 == routesEdge[i].V2) 
                     {
                         if ((Math.Pow((routeV[routesEdge[i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((routeV[routesEdge[i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) <= ((Main.G.R + 2) * (Main.G.R + 2))) &&
                             (Math.Pow((routeV[routesEdge[i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((routeV[routesEdge[i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) >= ((Main.G.R - 2) * (Main.G.R - 2))))
@@ -765,7 +760,7 @@ namespace SystAnalys_lr1.Classes
                             break;
                         }
                     }
-                    else //не петля
+                    else
                     {
                         try
                         {
@@ -796,7 +791,7 @@ namespace SystAnalys_lr1.Classes
         }
         public void DeleteTFOnRoute(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet, List<TraficLight> traficLights)
         {
-            bool flag = false; //удалили ли что-нибудь по ЭТОМУ клику
+            bool flag = false; 
 
             for (var i = 0; i < traficLights.Count; i++)
             {
@@ -851,13 +846,12 @@ namespace SystAnalys_lr1.Classes
                     flag = true;
                     break;
                 }
-            }
-            //ищем, возможно было нажато ребро
+            }           
             if (!flag)
             {
                 for (int i = 0; i < routesEdge.Count; i++)
                 {
-                    if (routesEdge[i].V1 == routesEdge[i].V2) //если это петля
+                    if (routesEdge[i].V1 == routesEdge[i].V2)
                     {
                         if ((Math.Pow((routeV[routesEdge[i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((routeV[routesEdge[i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) <= ((Main.G.R + 2) * (Main.G.R + 2))) &&
                             (Math.Pow((routeV[routesEdge[i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((routeV[routesEdge[i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) >= ((Main.G.R - 2) * (Main.G.R - 2))))
@@ -867,7 +861,7 @@ namespace SystAnalys_lr1.Classes
                             break;
                         }
                     }
-                    else //не петля
+                    else 
                     {
                         try
                         {
@@ -891,7 +885,6 @@ namespace SystAnalys_lr1.Classes
 
                 }
             }
-            //если что-то было удалено, то обновляем граф на экране
             if (flag)
             {
                 MapUpdateRoute(sheet, routeV, routesEdge);
@@ -929,8 +922,6 @@ namespace SystAnalys_lr1.Classes
         }
         public void Delete(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
-            //удалили ли что-нибудь по ЭТОМУ клику
-            //ищем, возможно была нажата вершина
             Main.Flag = false;
 
             foreach (var tl in Data.TraficLights)
@@ -982,8 +973,6 @@ namespace SystAnalys_lr1.Classes
                     {
                         if (Math.Pow((routeV.Value[i].X - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[i].Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
                         {
-                            //foreach(var routesEdge in routesEdgeE.Values)
-                            //{
                             for (int j = 0; j < routesEdgeE[routeV.Key].Count; j++)
                             {
                                 if ((routesEdgeE[routeV.Key][j].V1 == i) || (routesEdgeE[routeV.Key][j].V2 == i))
@@ -999,14 +988,12 @@ namespace SystAnalys_lr1.Classes
                             }
                             routeV.Value.RemoveAt(i);
                             Main.Flag = true;
-                            break;
-                            //}                       
+                            break;                    
                         }
 
                     }
                 }
             }
-            //ищем, возможно было нажато ребро
             if (!Main.Flag)
             {
                 try
@@ -1017,7 +1004,7 @@ namespace SystAnalys_lr1.Classes
                         {
                             for (int i = 0; i < routesEdgeE[routeV.Key].Count; i++)
                             {
-                                if (routesEdgeE[routeV.Key][i].V1 == routesEdgeE[routeV.Key][i].V2) //если это петля
+                                if (routesEdgeE[routeV.Key][i].V1 == routesEdgeE[routeV.Key][i].V2) 
                                 {
                                     if ((Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) <= ((Main.G.R + 2) * (Main.G.R + 2))) &&
                                         (Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((routeV.Value[routesEdgeE[routeV.Key][i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) >= ((Main.G.R - 2) * (Main.G.R - 2))))
@@ -1027,7 +1014,7 @@ namespace SystAnalys_lr1.Classes
                                         break;
                                     }
                                 }
-                                else //не петля
+                                else 
                                 {
                                     if (((e.X / Main.zoom - routeV.Value[routesEdgeE[routeV.Key][i].V1].X) * (routeV.Value[routesEdgeE[routeV.Key][i].V2].Y - routeV.Value[routesEdgeE[routeV.Key][i].V1].Y) / (routeV.Value[routesEdgeE[routeV.Key][i].V2].X - routeV.Value[routesEdgeE[routeV.Key][i].V1].X) + routeV.Value[routesEdgeE[routeV.Key][i].V1].Y) <= (e.Y / Main.zoom + 4) &&
                                         ((e.X / Main.zoom - routeV.Value[routesEdgeE[routeV.Key][i].V1].X) * (routeV.Value[routesEdgeE[routeV.Key][i].V2].Y - routeV.Value[routesEdgeE[routeV.Key][i].V1].Y) / (routeV.Value[routesEdgeE[routeV.Key][i].V2].X - routeV.Value[routesEdgeE[routeV.Key][i].V1].X) + routeV.Value[routesEdgeE[routeV.Key][i].V1].Y) >= (e.Y / Main.zoom - 4))
@@ -1078,13 +1065,11 @@ namespace SystAnalys_lr1.Classes
                 }
 
             }
-
-            //ищем, возможно было нажато ребро
             if (!Main.Flag)
             {
                 for (int i = 0; i < E.Count; i++)
                 {
-                    if (E[i].V1 == E[i].V2) //если это петля
+                    if (E[i].V1 == E[i].V2) 
                     {
                         if ((Math.Pow((V[E[i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((V[E[i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) <= ((Main.G.R + 2) * (Main.G.R + 2))) &&
                             (Math.Pow((V[E[i].V1].X - Main.G.R - e.X / Main.zoom), 2) + Math.Pow((V[E[i].V1].Y - Main.G.R - e.Y / Main.zoom), 2) >= ((Main.G.R - 2) * (Main.G.R - 2))))
@@ -1094,7 +1079,7 @@ namespace SystAnalys_lr1.Classes
                             break;
                         }
                     }
-                    else //не петля
+                    else 
                     {
                         try
                         {
@@ -1121,8 +1106,7 @@ namespace SystAnalys_lr1.Classes
 
         public void DeleteRoute(MouseEventArgs e, List<Vertex> routeV, List<Edge> routesEdge, PictureBox sheet)
         {
-            bool flag = false; //удалили ли что-нибудь по ЭТОМУ клику
-                               //ищем, возможно была нажата вершина
+            bool flag = false;
             for (int i = 0; i < routeV.Count; i++)
             {
                 if (Math.Pow((routeV[i].X - e.X / Main.zoom), 2) + Math.Pow((routeV[i].Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
@@ -1145,12 +1129,11 @@ namespace SystAnalys_lr1.Classes
                     break;
                 }
             }
-            //ищем, возможно было нажато ребро
             if (!flag)
             {
                 for (int i = 0; i < routesEdge.Count; i++)
                 {
-                    if (routesEdge[i].V1 == routesEdge[i].V2) //если это петля
+                    if (routesEdge[i].V1 == routesEdge[i].V2)
                     {
                         if ((Math.Pow((routeV[routesEdge[i].V1].X - Main.G.R - e.X), 2) + Math.Pow((routeV[routesEdge[i].V1].Y - Main.G.R - e.Y), 2) <= ((Main.G.R + 2) * (Main.G.R + 2))) &&
                             (Math.Pow((routeV[routesEdge[i].V1].X - Main.G.R - e.X), 2) + Math.Pow((routeV[routesEdge[i].V1].Y - Main.G.R - e.Y), 2) >= ((Main.G.R - 2) * (Main.G.R - 2))))
@@ -1160,7 +1143,7 @@ namespace SystAnalys_lr1.Classes
                             break;
                         }
                     }
-                    else //не петля
+                    else
                     {
                         try
                         {
@@ -1183,7 +1166,6 @@ namespace SystAnalys_lr1.Classes
                     }
                 }
             }
-            //если что-то было удалено, то обновляем граф на экране
             if (flag)
             {
                 MapUpdateRoute(sheet, routeV, routesEdge);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SystAnalys_lr1.Classes
 {
-    public class Vertex //: ICloneable
+    public class Vertex
     {
         private int _gridNum;
         private int _y;

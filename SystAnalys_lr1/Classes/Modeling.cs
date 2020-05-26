@@ -97,7 +97,7 @@ namespace SystAnalys_lr1.Classes
                 }
             }
 
-            //
+            
             int MaxEpicItnerValue;
             int MaxEpicItnerCycleValue;
             if (EpicSettings.TurnExpandingSet == false && EpicSettings.TurnMovingSet == false)
@@ -307,7 +307,7 @@ namespace SystAnalys_lr1.Classes
                 if (small == 0)
                 {
                     small += 1;
-                    ResultFromModeling.Add(small * 20); // small в мин или секах
+                    ResultFromModeling.Add(small * 20); 
                 }
                 else
                 {
