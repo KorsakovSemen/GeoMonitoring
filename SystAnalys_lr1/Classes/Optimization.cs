@@ -215,7 +215,7 @@ namespace SystAnalys_lr1.Classes
                     }
                     else
                     {
-                        fileV.WriteLine(MainStrings.average + " " + (total / count / 60 == 0 ? (total / count + " " + MainStrings.sec).ToString() : (total / count / 60 + " " + MainStrings.minute + " " + total / count % 60 + " " + MainStrings.sec).ToString())
+                        fileV.WriteLine(MainStrings.average + " " + (total / count / 60 < 60 ? (total / count + " " + MainStrings.sec).ToString() : (total / count / 60 + " " + MainStrings.minute + " " + total / count % 60 + " " + MainStrings.sec).ToString())
                                       + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / OptiCount) + "\n" + MainStrings.procentFailed + " " + (((Modeling.ResultFromModeling.Count - count) * 100.00 / OptiCount)).ToString());
                     }
                     fileV.WriteLine(MainStrings.cycle + " " + cicl.ToString());
