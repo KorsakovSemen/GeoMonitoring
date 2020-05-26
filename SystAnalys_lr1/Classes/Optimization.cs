@@ -207,7 +207,7 @@ namespace SystAnalys_lr1.Classes
                     fileV.WriteLine(MainStrings.sensorsDown + ": " + (cicl * 10).ToString());
                     fileV.WriteLine(MainStrings.countBuses + ": " + (WithoutSensorsBuses.Last()).ToString());
                     fileV.WriteLine(MainStrings.numIter + ": " + OptiCount);
-                    fileV.WriteLine(MainStrings.distance + ": " + OptiSpeed.ToString() + " " + MainStrings.sec + " (" + (OptiSpeed / 60 == 0 ? ">1" + MainStrings.minute : OptiSpeed / 60 + " " + MainStrings.minute) + ")");
+                    fileV.WriteLine(MainStrings.distance + ": " + OptiSpeed.ToString() + " " + MainStrings.sec + " (" + (OptiSpeed <= 60 ? ">1" + MainStrings.minute : OptiSpeed / 60 + " " + MainStrings.minute) + ")");
                     fileV.WriteLine(MainStrings.found + ": " + (from num in Modeling.ResultFromModeling where (num != null) select num).Count());
                     if (count == 0)
                     {
@@ -216,13 +216,14 @@ namespace SystAnalys_lr1.Classes
                     else
                     {
                         fileV.WriteLine(MainStrings.average + " " + (total / count / 60 == 0 ? (total / count + " " + MainStrings.sec).ToString() : (total / count / 60 + " " + MainStrings.minute + " " + total / count % 60 + " " + MainStrings.sec).ToString())
-                            + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / OptiCount) + "\n" + MainStrings.procentFailed + " " + (((Modeling.ResultFromModeling.Count - count) * 100.00 / OptiCount)).ToString());
+                                      + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / OptiCount) + "\n" + MainStrings.procentFailed + " " + (((Modeling.ResultFromModeling.Count - count) * 100.00 / OptiCount)).ToString());
                     }
                     fileV.WriteLine(MainStrings.cycle + " " + cicl.ToString());
                     for (int i = 0; i < Modeling.ResultFromModeling.Count; i++)
                         if (Modeling.ResultFromModeling[i] != null)
                         {
-                            fileV.WriteLine(i.ToString() + " : " + (Modeling.ResultFromModeling[i] / 60 == 0 ? (Modeling.ResultFromModeling[i] + " " + MainStrings.sec).ToString() : (Modeling.ResultFromModeling[i] / 60 + " " + MainStrings.minute + " " + Modeling.ResultFromModeling[i] % 60 + " " + MainStrings.sec).ToString()));
+                            var ts = TimeSpan.FromSeconds((double)Modeling.ResultFromModeling[i]);
+                            fileV.WriteLine(i.ToString() + ": {0} д. {1} ч. {2} м. {3} с. {4} мс.", ts.Days, ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
                         }
                         else
                         {
