@@ -589,6 +589,7 @@ namespace SystAnalys_lr1
         {
             try
             {
+                int index = changeRoute.SelectedIndex;
                 string message = MainStrings.clearGraph;
                 string caption = MainStrings.delete;
                 yes = false;
@@ -634,6 +635,7 @@ namespace SystAnalys_lr1
                             sheet.Image = G.GetBitmap();
                             AnimationBitmap = new Bitmap(sheet.Width, sheet.Height);
                             AnimationBox.Image = AnimationBitmap;
+
                         }
                         if (MBSave == DialogResult.Yes && changeRoute.Text == MainStrings.network)
                         {
@@ -737,6 +739,7 @@ namespace SystAnalys_lr1
                 {
                     Ep.ERefreshRouts();
                 }
+                changeRoute.SelectedIndex = index;
                 if (changeRoute.Text == MainStrings.network)
                 {
                     selectRoute.Enabled = true;
@@ -761,12 +764,12 @@ namespace SystAnalys_lr1
                     allBusSettings.Enabled = false;
                     drawEdgeButton.Enabled = true;
                     selectButton.Enabled = true;
-                    drawVertexButton.Enabled = true;
+                    drawVertexButton.Enabled = false;
                     deleteButton.Enabled = true;
                     deleteALLButton.Enabled = true;
                     deleteRoute.Enabled = true;
-                    addBus.Enabled = false;
-                    deleteBus.Enabled = false;
+                    addBus.Enabled = true;
+                    deleteBus.Enabled = true;
                     stopPointButton.Enabled = true;
                     addTraficLight.Enabled = true;
                     if (Data.Routes.ContainsKey(changeRoute.Text))
@@ -774,6 +777,7 @@ namespace SystAnalys_lr1
                     CheckBusesOnRoute();
                 }
                 BringToFront();
+
             }
 
             catch (Exception exc)
