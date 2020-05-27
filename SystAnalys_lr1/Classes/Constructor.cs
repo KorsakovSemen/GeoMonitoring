@@ -70,6 +70,7 @@ namespace SystAnalys_lr1.Classes
                 Main.G.ClearSheet();
                 Main.G.DrawALLGraph(V, E);
                 sheet.Invoke(new Del((s) => sheet.Image = s), Main.G.GetBitmap());
+                GridCreator.DrawGrid(sheet);
             }
         }
 

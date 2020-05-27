@@ -413,7 +413,7 @@ namespace SystAnalys_lr1
                 drawVertexButton.Enabled = true;
                 trafficLightLabel.Visible = false;
             }
-         
+
         }
 
         private void DeleteRoute_Click(object sender, EventArgs e)
@@ -901,8 +901,8 @@ namespace SystAnalys_lr1
                         Optimization.Opt(matrix, loadingForm);
                     });
 
-                    if(Average == "Found")
-                    { 
+                    if (Average == "Found")
+                    {
                         mean.Text = MainStrings.average + " " + (Optimization.Min / 60 == 0 ? (Optimization.Min + " " + MainStrings.sec).ToString() : (Optimization.Min / 60 + " " + MainStrings.minute).ToString()) + " " + " - " + MainStrings.countSensors + ": " + Optimization.Result[0];
                     }
                     else
@@ -1411,10 +1411,7 @@ namespace SystAnalys_lr1
                             c.DeleteVE(e, Data.V, Data.E, sheet, Data.RoutesEdge);
                             break;
                     }
-                    if (Flag)
-                    {
-                        c.MapUpdateNetwork(sheet, Data.V, Data.E);
-                    }
+                    c.MapUpdateNetwork(sheet, Data.V, Data.E);
                 }
                 return;
             }
@@ -1927,7 +1924,7 @@ namespace SystAnalys_lr1
                  System.Globalization.CultureInfo.GetCultureInfo("en-US")
             };
 
-            changeLanguage.DisplayMember = "NativeName"; 
+            changeLanguage.DisplayMember = "NativeName";
             changeLanguage.ValueMember = "Name";
 
             if (!string.IsNullOrEmpty(Properties.Settings.Default.Language))
