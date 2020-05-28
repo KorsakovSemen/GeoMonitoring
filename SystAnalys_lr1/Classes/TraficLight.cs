@@ -41,6 +41,14 @@ namespace SystAnalys_lr1
 
         public TraficLight() { }
 
+        public TraficLight(int x, int y, int greenTime, int redTime)
+        {
+            X = x;
+            Y = y;
+            this.GreenTime = greenTime;
+            this.RedTime = redTime;
+        }
+
         public TraficLight(int x, int y, int gridNum, int greenTime, int redTime)
         {
             X = x;

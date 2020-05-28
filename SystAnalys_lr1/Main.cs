@@ -177,6 +177,7 @@ namespace SystAnalys_lr1
             drawEdgeButton.Enabled = true;
             deleteButton.Enabled = true;
             allBusSettings.Enabled = true;
+            stopPointButton.Enabled = true;
             trafficLightLabel.Visible = false;
             selectRoute.Enabled = true;
             addTraficLight.Enabled = false;
@@ -841,6 +842,7 @@ namespace SystAnalys_lr1
         {
             if (optText.Text != "" && speed.Text != "" && Data.Buses.Count != 0 && int.Parse(optText.Text) > 0 && int.Parse(speed.Text) > 0 && Data.Buses != null)
             {
+                c.AddGridPart(Data.TraficLights, Data.TheGrid);
                 report.Hide();
                 coordinates.CreateAllCoordinates();
                 Optimization.WithoutSensorsBuses = new List<int>();
@@ -942,10 +944,7 @@ namespace SystAnalys_lr1
                     foreach (var tl in Data.TraficLights)
                         tl.TimerLight.Interval = 1000;
                     report.Show();
-                }
-                else
-                {
-
+                    ConstructorOnNetwork();
                 }
 
             }
@@ -1399,7 +1398,6 @@ namespace SystAnalys_lr1
                     }
                     c.DrawEdge(e, Data.V, Data.E, sheet);
                     return;
-
                 }
                 if (deleteButton.Enabled == false)
                 {
@@ -1717,13 +1715,13 @@ namespace SystAnalys_lr1
                     stopPointButton.Enabled = true;
                     addTraficLight.Enabled = false;
                     selectRoute.Enabled = true;
+
                 }
                 sheet.Image = G.GetBitmap();
                 Selected1 = -1;
                 GridCreator.DrawGrid(sheet);
 
             }
-
         }
         private void XMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
