@@ -883,7 +883,6 @@ namespace SystAnalys_lr1.Classes
                             Console.WriteLine("Ребро не удаляется");
                         }
                     }
-
                 }
             }
             if (flag)
@@ -894,7 +893,6 @@ namespace SystAnalys_lr1.Classes
 
         public void DeleteBS(MouseEventArgs e, List<Vertex> V, List<Edge> E, PictureBox sheet, SerializableDictionary<string, List<Edge>> routesEdgeE)
         {
-
             foreach (var sp in Data.AllstopPoints)
             {
                 if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)

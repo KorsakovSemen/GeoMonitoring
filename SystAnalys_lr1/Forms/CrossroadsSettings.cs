@@ -17,7 +17,11 @@ namespace SystAnalys_lr1.Forms
 
         private void set_Click(object sender, EventArgs e)
         {
-            
+            if ((textBox3.Text == "" || textBox4.Text == "") && (Xbutton.Checked == false || Tbutton.Checked == false))
+            {
+                Main.TFCheck = true;
+                Close();
+            }
             if (textBox3.Text != "")
                 Main.FirstCrossRoadsGreenLight = int.Parse(textBox3.Text);
             else
@@ -27,7 +31,9 @@ namespace SystAnalys_lr1.Forms
             else
                 errorProvider4.SetError(textBox4, "Заполните поле!");
             if (textBox3.Text != "" && textBox4.Text != "" && (Xbutton.Checked == true || Tbutton.Checked == true))
+            {
                 Close();
+            }
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -93,6 +99,11 @@ namespace SystAnalys_lr1.Forms
         {
             Main.FirstCrossRoads = 2;
             Main.SecondCrossRoads = 2;
+        }
+
+        private void CrossroadsSettings_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
     }
 }

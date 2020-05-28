@@ -97,6 +97,7 @@ namespace SystAnalys_lr1
         List<int> selected = new List<int>();
         static public int RefreshLights { get; set; } = 0;
         public static bool Flag { get; set; } = false;
+        public static bool TFCheck { get => tFCheck; set => tFCheck = value; }
 
         public Panel GetMainPanel()
         {
@@ -644,6 +645,8 @@ namespace SystAnalys_lr1
                             Data.Routes.Keys.ToList().ForEach(x => Data.Routes[x] = new List<Vertex>());
                             Data.RoutesEdge.Keys.ToList().ForEach(x => Data.RoutesEdge[x] = new List<Edge>());
                             Data.AllCoordinates.Clear();
+                            Data.V.Clear();
+                            Data.E.Clear();
                             G.ClearSheet();
                             G.DrawALLGraph(Data.V, Data.E);
                             sheet.Image = G.GetBitmap();
@@ -1600,7 +1603,8 @@ namespace SystAnalys_lr1
                         b.Add(bus);
                     }
                 }
-                Parallel.ForEach(b, (bus) =>
+                //Parallel.ForEach(b, (bus) =>
+                foreach(var bus in b)
                 {
                     foreach (var B in Data.Buses)
                     {
@@ -1610,7 +1614,7 @@ namespace SystAnalys_lr1
                             break;
                         }
                     }
-                });
+                }//);
                 b.Clear();
                 delAllBusesOnRoute.Enabled = true;
 
@@ -1685,6 +1689,8 @@ namespace SystAnalys_lr1
             BringToFront();
 
         }
+
+        private static bool tFCheck = false;
 
         private void AddTraficLight_Click(object sender, EventArgs e)
         {

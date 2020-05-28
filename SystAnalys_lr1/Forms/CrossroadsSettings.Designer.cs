@@ -180,6 +180,7 @@
             this.MinimizeBox = false;
             this.Name = "CrossroadsSettings";
             this.Resizable = false;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CrossroadsSettings_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider4)).EndInit();
             this.metroPanel1.ResumeLayout(false);
@@ -191,15 +192,15 @@
 
         #endregion
         private MetroFramework.Controls.MetroButton set;
-        private MetroFramework.Controls.MetroTextBox textBox3;
-        private MetroFramework.Controls.MetroTextBox textBox4;
         private MetroFramework.Controls.MetroLabel label3;
         private MetroFramework.Controls.MetroLabel label4;
         private System.Windows.Forms.ErrorProvider errorProvider3;
         private System.Windows.Forms.ErrorProvider errorProvider4;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroRadioButton Xbutton;
-        private MetroFramework.Controls.MetroRadioButton Tbutton;
+        public MetroFramework.Controls.MetroTextBox textBox3;
+        public MetroFramework.Controls.MetroTextBox textBox4;
+        public MetroFramework.Controls.MetroRadioButton Xbutton;
+        public MetroFramework.Controls.MetroRadioButton Tbutton;
     }
 }
