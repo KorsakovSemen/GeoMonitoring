@@ -842,6 +842,7 @@ namespace SystAnalys_lr1
         {
             if (optText.Text != "" && speed.Text != "" && Data.Buses.Count != 0 && int.Parse(optText.Text) > 0 && int.Parse(speed.Text) > 0 && Data.Buses != null)
             {
+                c.AddStopPointInRoutes(sheet, Data.TheGrid);
                 c.AddGridPart(Data.TraficLights, Data.TheGrid);
                 report.Hide();
                 coordinates.CreateAllCoordinates();
@@ -1426,7 +1427,7 @@ namespace SystAnalys_lr1
                 List<Vertex> routeV = Data.Routes[changeRoute.Text];
                 if (stopPointButton.Enabled == false)
                 {
-                    c.AddStopPointsInRoutes(e, Data.AllstopPoints, sheet, Data.TheGrid, changeRoute.Text);
+                    c.AddStopPointsInRoute(e, Data.AllstopPoints, sheet, Data.TheGrid, changeRoute.Text);
                     return;
                 }
                 if (selectButton.Enabled == false)
@@ -2296,6 +2297,7 @@ namespace SystAnalys_lr1
             delAllBusesOnRoute = new ToolStripButton();
             report = new Report();
             loadingForm = new LoadingForm();
+            
             ReportCount = 0;
             coordinates = new Coordinates();
             Grid = new Classes.Grid(0, 0, 0, 0, 80, 40);
@@ -2507,6 +2509,11 @@ namespace SystAnalys_lr1
             hint.Visible = false;
             report.ch.Titles.Add(MainStrings.report);
             report.ch.Series[ReportCount].LegendText = "1";
+            foreach(var sp in Data.Routes)
+            {
+                if (!Data.StopPointsInGrids.ContainsKey(sp.Key))
+                    Data.StopPointsInGrids.Add(sp.Key, new List<int>());
+            }
         }
 
         public void AnimationSettings()
