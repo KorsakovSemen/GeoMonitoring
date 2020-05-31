@@ -204,6 +204,15 @@ namespace SystAnalys_lr1.Classes
                     {
                         if (((sp.X > gridPart.X * Main.zoom) && (sp.Y > gridPart.Y * Main.zoom)) && ((sp.X < gridPart.X * Main.zoom + GridPart.Width * Main.zoom) && (sp.Y < gridPart.Y * Main.zoom + GridPart.Height * Main.zoom)))
                         {
+                            if (!Data.StopPointsInGrids.ContainsKey(stopPoints.Key))
+                            {
+                                Data.StopPoints[stopPoints.Key].Last().GridNum = gridParts.IndexOf(gridPart);
+                                Data.StopPointsInGrids.Add(stopPoints.Key, new List<int>());
+                                Data.StopPointsInGrids[stopPoints.Key].Add(gridParts.IndexOf(gridPart));
+
+                                break;
+                            }
+
                             if (!Data.StopPointsInGrids[stopPoints.Key].Contains(gridParts.IndexOf(gridPart)) )
                             {
                                 Data.StopPoints[stopPoints.Key].Last().GridNum = gridParts.IndexOf(gridPart);
@@ -212,7 +221,6 @@ namespace SystAnalys_lr1.Classes
                             else
                             {
                                 Data.StopPoints[stopPoints.Key].Last().GridNum = gridParts.IndexOf(gridPart);
-
                             }
 
                             break;
@@ -220,7 +228,6 @@ namespace SystAnalys_lr1.Classes
 
                         }
                     }
-                    //  }
                 }
             
             }
@@ -234,10 +241,6 @@ namespace SystAnalys_lr1.Classes
         {
             if (Math.Pow((sp.X - e.X / Main.zoom), 2) + Math.Pow((sp.Y - e.Y / Main.zoom), 2) <= Main.G.R * Main.G.R)
             {
-                //foreach (var gridPart in gridParts)
-                //{
-                //    if (((e.X > gridPart.X * Main.zoom) && (e.Y > gridPart.Y * Main.zoom)) && ((e.X < gridPart.X * Main.zoom + GridPart.Width * Main.zoom) && (e.Y < gridPart.Y * Main.zoom + GridPart.Height * Main.zoom)))
-                //    {
                 if (Data.StopPoints.ContainsKey(route))
                 {
                     if (!Data.StopPoints[route].Contains(new Vertex(sp.X, sp.Y)))
@@ -245,27 +248,15 @@ namespace SystAnalys_lr1.Classes
                         if (Data.StopPoints.ContainsKey(route))
                         {
                             Data.StopPoints[route].Add(new BusStop(sp.X, sp.Y));
-                            //   Data.StopPoints[route].Last().GridNum = gridParts.IndexOf(gridPart);
-                            //if (Data.StopPointsInGrids.ContainsKey(route))
-                            //    Data.StopPointsInGrids[route].Add(gridParts.IndexOf(gridPart));
-                            //else
-                            //{
-                            //    Data.StopPointsInGrids.Add(route, new List<int>());
-                            //    Data.StopPointsInGrids[route].Add(gridParts.IndexOf(gridPart));
-                            //}
-
                         }
                         else
                         {
                             Data.StopPoints.Add(route, new List<BusStop>());
-                            //  Data.StopPointsInGrids.Add(route, new List<int>());
                             if (!Data.StopPoints[route].Contains(new Vertex(sp.X, sp.Y)))
                             {
                                 if (Data.StopPoints.ContainsKey(route) && Data.StopPointsInGrids.ContainsKey(route))
                                 {
                                     Data.StopPoints[route].Add(new BusStop(sp.X, sp.Y));
-                                    //        Data.StopPoints[route].Last().GridNum = gridParts.IndexOf(gridPart);
-                                    //        Data.StopPointsInGrids[route].Add(gridParts.IndexOf(gridPart));
                                 }
                             }
                         }
@@ -284,27 +275,15 @@ namespace SystAnalys_lr1.Classes
                         if (Data.StopPoints.ContainsKey(route))
                         {
                             Data.StopPoints[route].Add(new BusStop(sp.X, sp.Y));
-                            //        Data.StopPoints[route].Last().GridNum = gridParts.IndexOf(gridPart);
-                            //if (Data.StopPointsInGrids.ContainsKey(route))
-                            //    Data.StopPointsInGrids[route].Add(gridParts.IndexOf(gridPart));
-                            //else
-                            //{
-                            //    Data.StopPointsInGrids.Add(route, new List<int>());
-                            //    Data.StopPointsInGrids[route].Add(gridParts.IndexOf(gridPart));
-                            //}
-
                         }
                         else
                         {
                             Data.StopPoints.Add(route, new List<BusStop>());
-                            //        Data.StopPointsInGrids.Add(route, new List<int>());
                             if (!Data.StopPoints[route].Contains(new Vertex(sp.X, sp.Y)))
                             {
                                 if (Data.StopPoints.ContainsKey(route) && Data.StopPointsInGrids.ContainsKey(route))
                                 {
                                     Data.StopPoints[route].Add(new BusStop(sp.X, sp.Y));
-                                    //              Data.StopPoints[route].Last().GridNum = gridParts.IndexOf(gridPart);
-                                    //              Data.StopPointsInGrids[route].Add(gridParts.IndexOf(gridPart));
                                 }
                             }
                         }
@@ -316,9 +295,6 @@ namespace SystAnalys_lr1.Classes
                     break;
                 }
             }
-            //  }
-
-            //}
         }
     }
 
