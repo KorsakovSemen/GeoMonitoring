@@ -9,24 +9,17 @@ namespace SystAnalys_lr1.Classes
 {
     public class Epicenter : ICloneable
     {
-        public SerializableDictionary<int, List<GridPart>> EpicenterGrid { get => _epicenterGrid; set => _epicenterGrid = value; }
+        public SerializableDictionary<int, List<GridPart>> EpicenterGrid { get; set; }
         private Point startPositon;
-        private SerializableDictionary<int, List<GridPart>> _epicenterGrid;
-        private int _detectCount;
-        private List<GridPart> _theGrid;
-
-        public int DetectCount { get => _detectCount; set => _detectCount = value; }
-        public List<GridPart> TheGrid { get => _theGrid; set => _theGrid = value; }
-
+        public int DetectCount { get; set; }
+        public List<GridPart> TheGrid { get; set; }
         public Epicenter(List<GridPart> TheGrid)
         {
             this.TheGrid = TheGrid;
             EpicenterGrid = new SerializableDictionary<int, List<GridPart>>();
         }
-
         public Epicenter()
         { }
-
         public static void CreateOneRandomEpicenter(int EpicSizeParam, int? StartPos)
         {
             Data.Epics = new List<Epicenter>
@@ -35,7 +28,6 @@ namespace SystAnalys_lr1.Classes
             };
             Data.Epics.First().CreateRandomEpicenter(EpicSizeParam, StartPos);
         }
-
         public static List<Epicenter> CopyEpicenter(List<Epicenter> CopiedEpics)
         {
             CopiedEpics = new List<Epicenter>();
@@ -61,7 +53,6 @@ namespace SystAnalys_lr1.Classes
         {
             return MemberwiseClone();
         }
-
         public void Recreate(Dictionary<string, List<GridPart>> PollutionInRoutes)
         {
             EpicenterGrid.Add(1, new List<GridPart>());
@@ -126,12 +117,10 @@ namespace SystAnalys_lr1.Classes
                             {
                                 if ((ScanGrid.X == SearchGrid.X) && (ScanGrid.Y == SearchGrid.Y))
                                 {
-
                                     List<string> Parameters = new List<string>();
                                     GridPart bufpart = new GridPart(ScanGrid.X, ScanGrid.Y);
                                     while (((bufpart.X == RedGrid.X) && (bufpart.Y == RedGrid.Y)) == false)
                                     {
-
                                         if (bufpart.X == RedGrid.X)
                                         {
                                             bufpart.Y += GridPart.Height;
@@ -164,7 +153,6 @@ namespace SystAnalys_lr1.Classes
                                     GridPart bufpart = new GridPart(ScanGrid.X, ScanGrid.Y);
                                     while (((bufpart.X == RedGrid.X) && (bufpart.Y == RedGrid.Y)) == false)
                                     {
-
                                         if (bufpart.X == RedGrid.X)
                                         {
                                             bufpart.Y += GridPart.Height;
@@ -183,7 +171,6 @@ namespace SystAnalys_lr1.Classes
                                             bufpart.Y += GridPart.Height;
                                             BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
-
                                     }
                                 }
                             }
@@ -218,7 +205,6 @@ namespace SystAnalys_lr1.Classes
                                             bufpart.X -= GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
-
                                     }
                                 }
                             }
@@ -233,7 +219,6 @@ namespace SystAnalys_lr1.Classes
                                     GridPart bufpart = new GridPart(ScanGrid.X, ScanGrid.Y);
                                     while (((bufpart.X == RedGrid.X) && (bufpart.Y == RedGrid.Y)) == false)
                                     {
-
                                         if (bufpart.X == RedGrid.X)
                                         {
                                             bufpart.Y -= GridPart.Height;
@@ -252,7 +237,6 @@ namespace SystAnalys_lr1.Classes
                                             bufpart.X -= GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
-
                                     }
                                 }
                             }
@@ -287,7 +271,6 @@ namespace SystAnalys_lr1.Classes
                                             bufpart.X += GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
-
                                     }
                                 }
                             }
@@ -303,7 +286,6 @@ namespace SystAnalys_lr1.Classes
                                     GridPart bufpart = new GridPart(ScanGrid.X, ScanGrid.Y);
                                     while (((bufpart.X == RedGrid.X) && (bufpart.Y == RedGrid.Y)) == false)
                                     {
-
                                         if (bufpart.X == RedGrid.X)
                                         {
                                             bufpart.Y -= GridPart.Height;
@@ -322,7 +304,6 @@ namespace SystAnalys_lr1.Classes
                                             bufpart.X += GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
-
                                     }
                                 }
                             }
@@ -334,11 +315,9 @@ namespace SystAnalys_lr1.Classes
                             {
                                 if ((ScanGrid.X == SearchGrid.X) && (ScanGrid.Y == SearchGrid.Y))
                                 {
-
                                     GridPart bufpart = new GridPart(ScanGrid.X, ScanGrid.Y);
                                     while (((bufpart.X == RedGrid.X) && (bufpart.Y == RedGrid.Y)) == false)
                                     {
-
                                         if (bufpart.X == RedGrid.X)
                                         {
                                             bufpart.Y += GridPart.Height;
@@ -357,7 +336,6 @@ namespace SystAnalys_lr1.Classes
                                             bufpart.X += GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
-
                                     }
                                 }
                             }
@@ -393,15 +371,12 @@ namespace SystAnalys_lr1.Classes
                                             bufpart.X += GridPart.Width;
                                             BufferList.Add(new GridPart(bufpart.X, bufpart.Y));
                                         }
-
                                     }
                                 }
                             }
                         }
                     }
-
                 }
-
             }
             foreach (var BufGrid in BufferList)
             {
@@ -413,7 +388,6 @@ namespace SystAnalys_lr1.Classes
                         net = true;
                         break;
                     }
-
                 }
                 if (net == false)
                 {
@@ -422,7 +396,6 @@ namespace SystAnalys_lr1.Classes
             }
             for (int i = 2; i < 4; i++)
             {
-
                 List<GridPart> fillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i - 1])
                 {
@@ -465,7 +438,6 @@ namespace SystAnalys_lr1.Classes
                                 net = true;
                                 break;
                             }
-
                         }
                         if (net == false)
                         {
@@ -477,7 +449,6 @@ namespace SystAnalys_lr1.Classes
                                     Red = EpicenterGrid[1].IndexOf(EpGrid);
                                     break;
                                 }
-
                             }
                             if (Red != null)
                             {
@@ -488,21 +459,17 @@ namespace SystAnalys_lr1.Classes
                             {
                                 EpicenterGrid[i].Add(new GridPart(BufGrid.X, BufGrid.Y));
                             }
-
                         }
                     }
                 }
-
             }
         }
-
         public void EpicMoving(List<string> Parameters)
         {
             for (int i = 2; i < EpicenterGrid.Count + 1; i++)
             {
                 EpicenterGrid[i].Clear();
             }
-
             List<Point> ForRemove = new List<Point>();
             foreach (var gridPart in EpicenterGrid[1])
             {
@@ -512,7 +479,6 @@ namespace SystAnalys_lr1.Classes
                     if (gridPart.IsMovedAway == false)
                         switch (item)
                         {
-
                             case "right":
                                 gridPart.X += GridPart.Width;
                                 if (!(gridPart.X <= TheGrid.Last().X))
@@ -536,7 +502,6 @@ namespace SystAnalys_lr1.Classes
                                     gridPart.IsMovedAway = true;
                                     ForRemove.Add(new Point(gridPart.X, gridPart.Y));
                                 }
-
                                 break;
                             case "left":
                                 gridPart.X -= GridPart.Width;
@@ -550,9 +515,7 @@ namespace SystAnalys_lr1.Classes
                                 break;
                         }
                 }
-
             }
-
             foreach (var OutMovedGrid in ForRemove)
             {
                 int IndexOfOutMovedGrid = 0;
@@ -565,21 +528,14 @@ namespace SystAnalys_lr1.Classes
                         {
                             NewExpandCount.Remove(NewExpandCount.Last());
                         }
-
                         break;
                     }
-
                 }
                 EpicenterGrid[1].RemoveAt(IndexOfOutMovedGrid);
             }
-
-
-
             List<string> Parameter;
-            //
             for (int i = 2; i < 4; i++)
             {
-
                 List<GridPart> fillEpicenter = new List<GridPart>();
                 foreach (var item in EpicenterGrid[i - 1])
                 {
@@ -610,11 +566,8 @@ namespace SystAnalys_lr1.Classes
                             Creater(items, itwms, i);
                         }
                 }
-
             }
-
         }
-
         public List<int> NewExpandCount { get; set; } = new List<int>();
         public Point StartPositon { get => startPositon; set => startPositon = value; }
 
@@ -660,7 +613,6 @@ namespace SystAnalys_lr1.Classes
                         {
                             Creater(item, StarterEpicPart, 1);
                         }
-
                     }
                 }
             }
@@ -696,9 +648,7 @@ namespace SystAnalys_lr1.Classes
                             Creater(items, itwms, i);
                         }
                 }
-
             }
-            ///
         }
         public void CreateRandomEpicenter(int SizeParam, int? StartPos)
         {
@@ -720,9 +670,7 @@ namespace SystAnalys_lr1.Classes
             while (EpicenterGrid[1].Count < SizeParam)
             {
                 List<string> Parameter = new List<string>();
-
                 GridPart StarterEpicPart = EpicenterGrid[1][rand.Next(EpicenterGrid[1].IndexOf(EpicenterGrid[1].First()), EpicenterGrid[1].IndexOf(EpicenterGrid[1].Last()))];
-
                 Parameter = EpicenterGenerator(StarterEpicPart, Parameter);
                 if (Parameter.Count > 0)
                     foreach (var item in Parameter)
@@ -731,7 +679,6 @@ namespace SystAnalys_lr1.Classes
                         {
                             Creater(item, StarterEpicPart, 1);
                         }
-
                     }
             }
             for (int i = 2; i < 4; i++)
@@ -767,26 +714,24 @@ namespace SystAnalys_lr1.Classes
                             Creater(items, itwms, i);
                         }
                 }
-
             }
-
         }
         public List<string> EpicenterGenerator(GridPart EpicPart, List<string> Parameter)
         {
-            bool net;
+            bool EmptyCellCheck;
             if (EpicPart.X < TheGrid.Last().X)
             {
-                net = false;
+                EmptyCellCheck = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
                         if ((part.X == EpicPart.X + GridPart.Width) && (part.Y == EpicPart.Y))
                         {
-                            net = true;
+                            EmptyCellCheck = true;
                             break;
                         }
                     }
-                if (net == false)
+                if (EmptyCellCheck == false)
                 {
                     Parameter.Add("right");
                 }
@@ -794,17 +739,17 @@ namespace SystAnalys_lr1.Classes
             }
             if ((EpicPart.X < TheGrid.Last().X) && (EpicPart.Y < TheGrid.Last().Y))
             {
-                net = false;
+                EmptyCellCheck = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
                         if ((part.X == EpicPart.X + GridPart.Width) && (part.Y == EpicPart.Y + GridPart.Height))
                         {
-                            net = true;
+                            EmptyCellCheck = true;
                             break;
                         }
                     }
-                if (net == false)
+                if (EmptyCellCheck == false)
                 {
                     Parameter.Add("right-down");
                 }
@@ -812,109 +757,105 @@ namespace SystAnalys_lr1.Classes
             }
             if ((EpicPart.X < TheGrid.Last().X) && (EpicPart.Y > TheGrid.First().Y))
             {
-                net = false;
+                EmptyCellCheck = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
                         if ((part.X == EpicPart.X + GridPart.Width) && (part.Y == EpicPart.Y - GridPart.Height))
                         {
-                            net = true;
+                            EmptyCellCheck = true;
                             break;
                         }
                     }
-                if (net == false)
+                if (EmptyCellCheck == false)
                 {
                     Parameter.Add("right-up");
                 }
-
             }
             if (EpicPart.Y < TheGrid.Last().Y)
             {
-                net = false;
+                EmptyCellCheck = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
                         if ((part.X == EpicPart.X) && (part.Y == EpicPart.Y + GridPart.Height))
                         {
-                            net = true;
+                            EmptyCellCheck = true;
                             break;
                         }
                     }
-                if (net == false)
+                if (EmptyCellCheck == false)
                 {
                     Parameter.Add("down");
                 }
             }
-
             if (EpicPart.Y > TheGrid.First().Y)
             {
-                net = false;
+                EmptyCellCheck = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
                         if ((part.X == EpicPart.X) && (part.Y == EpicPart.Y - GridPart.Height))
                         {
-                            net = true;
+                            EmptyCellCheck = true;
                             break;
                         }
                     }
-                if (net == false)
+                if (EmptyCellCheck == false)
                 {
                     Parameter.Add("up");
                 }
             }
             if (EpicPart.X > TheGrid.First().X)
             {
-                net = false;
+                EmptyCellCheck = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
                         if ((part.X == EpicPart.X - GridPart.Width) && (part.Y == EpicPart.Y))
                         {
-                            net = true;
+                            EmptyCellCheck = true;
                             break;
                         }
                     }
-                if (net == false)
+                if (EmptyCellCheck == false)
                 {
                     Parameter.Add("left");
                 }
             }
             if ((EpicPart.X > TheGrid.First().X) && (EpicPart.Y > TheGrid.First().Y))
             {
-                net = false;
+                EmptyCellCheck = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
                         if ((part.X == EpicPart.X - GridPart.Width) && (part.Y == EpicPart.Y - GridPart.Height))
                         {
-                            net = true;
+                            EmptyCellCheck = true;
                             break;
                         }
                     }
-                if (net == false)
+                if (EmptyCellCheck == false)
                 {
                     Parameter.Add("left-up");
                 }
-
             }
             if ((EpicPart.X > TheGrid.First().X) && (EpicPart.Y < TheGrid.Last().Y))
             {
-                net = false;
+                EmptyCellCheck = false;
                 for (int d = 1; d < EpicenterGrid.Count + 1; d++)
                     foreach (var part in EpicenterGrid[d])
                     {
                         if ((part.X == EpicPart.X - GridPart.Width) && (part.Y == EpicPart.Y + GridPart.Height))
                         {
-                            net = true;
+                            EmptyCellCheck = true;
                             break;
                         }
                     }
-                if (net == false)
+                if (EmptyCellCheck == false)
                 {
                     Parameter.Add("left-down");
                 }
-
             }
             return Parameter;
         }
@@ -950,7 +891,6 @@ namespace SystAnalys_lr1.Classes
                     break;
             }
         }
-
         public void DrawEpicenter(DrawGraph g, int zoom)
         {
             for (int i = 1; i < EpicenterGrid.Count + 1; i++)
