@@ -75,13 +75,13 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.metroPanel4);
             this.panel1.Controls.Add(this.metroPanel3);
             this.panel1.Controls.Add(this.metroPanel2);
             this.panel1.Controls.Add(this.EZoomBar);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.HorizontalScrollbarBarColor = true;
             this.panel1.HorizontalScrollbarHighlightOnWheel = false;
             this.panel1.HorizontalScrollbarSize = 6;
@@ -92,7 +92,6 @@
             // 
             // metroPanel4
             // 
-            resources.ApplyResources(this.metroPanel4, "metroPanel4");
             this.metroPanel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.metroPanel4.Controls.Add(this.SettingsButton);
             this.metroPanel4.Controls.Add(this.metroLabel2);
@@ -100,6 +99,7 @@
             this.metroPanel4.HorizontalScrollbarBarColor = true;
             this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel4.HorizontalScrollbarSize = 10;
+            resources.ApplyResources(this.metroPanel4, "metroPanel4");
             this.metroPanel4.Name = "metroPanel4";
             this.metroPanel4.VerticalScrollbarBarColor = true;
             this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
@@ -124,7 +124,6 @@
             // 
             // metroPanel3
             // 
-            resources.ApplyResources(this.metroPanel3, "metroPanel3");
             this.metroPanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.metroPanel3.Controls.Add(this.ShowResultLabel);
             this.metroPanel3.Controls.Add(this.TimePastLabel);
@@ -133,6 +132,7 @@
             this.metroPanel3.HorizontalScrollbarBarColor = true;
             this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel3.HorizontalScrollbarSize = 10;
+            resources.ApplyResources(this.metroPanel3, "metroPanel3");
             this.metroPanel3.Name = "metroPanel3";
             this.metroPanel3.VerticalScrollbarBarColor = true;
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
@@ -164,7 +164,6 @@
             // 
             // metroPanel2
             // 
-            resources.ApplyResources(this.metroPanel2, "metroPanel2");
             this.metroPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.metroPanel2.Controls.Add(this.StartStopLabel);
             this.metroPanel2.Controls.Add(this.SimulationLaabel);
@@ -172,6 +171,7 @@
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel2.HorizontalScrollbarSize = 10;
+            resources.ApplyResources(this.metroPanel2, "metroPanel2");
             this.metroPanel2.Name = "metroPanel2";
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
@@ -196,9 +196,9 @@
             // 
             // EZoomBar
             // 
-            resources.ApplyResources(this.EZoomBar, "EZoomBar");
             this.EZoomBar.BackColor = System.Drawing.Color.Transparent;
             this.EZoomBar.LargeChange = 1;
+            resources.ApplyResources(this.EZoomBar, "EZoomBar");
             this.EZoomBar.Maximum = 3;
             this.EZoomBar.Minimum = 1;
             this.EZoomBar.Name = "EZoomBar";
@@ -212,8 +212,8 @@
             // 
             // ERouts
             // 
-            resources.ApplyResources(this.ERouts, "ERouts");
             this.ERouts.FormattingEnabled = true;
+            resources.ApplyResources(this.ERouts, "ERouts");
             this.ERouts.Name = "ERouts";
             this.ERouts.UseSelectable = true;
             // 
@@ -230,10 +230,10 @@
             // 
             // MapPanel
             // 
-            resources.ApplyResources(this.MapPanel, "MapPanel");
             this.MapPanel.HorizontalScrollbarBarColor = true;
             this.MapPanel.HorizontalScrollbarHighlightOnWheel = false;
             this.MapPanel.HorizontalScrollbarSize = 10;
+            resources.ApplyResources(this.MapPanel, "MapPanel");
             this.MapPanel.Name = "MapPanel";
             this.MapPanel.VerticalScrollbarBarColor = true;
             this.MapPanel.VerticalScrollbarHighlightOnWheel = false;
@@ -241,7 +241,6 @@
             // 
             // metroPanel1
             // 
-            resources.ApplyResources(this.metroPanel1, "metroPanel1");
             this.metroPanel1.Controls.Add(this.label2);
             this.metroPanel1.Controls.Add(this.metroButton1);
             this.metroPanel1.Controls.Add(this.ERouts);
@@ -249,6 +248,7 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
+            resources.ApplyResources(this.metroPanel1, "metroPanel1");
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
@@ -256,7 +256,6 @@
             // 
             // metroPanel5
             // 
-            resources.ApplyResources(this.metroPanel5, "metroPanel5");
             this.metroPanel5.Controls.Add(this.metroLabel6);
             this.metroPanel5.Controls.Add(this.metroLabel5);
             this.metroPanel5.Controls.Add(this.metroLabel4);
@@ -267,6 +266,7 @@
             this.metroPanel5.HorizontalScrollbarBarColor = true;
             this.metroPanel5.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel5.HorizontalScrollbarSize = 10;
+            resources.ApplyResources(this.metroPanel5, "metroPanel5");
             this.metroPanel5.Name = "metroPanel5";
             this.metroPanel5.VerticalScrollbarBarColor = true;
             this.metroPanel5.VerticalScrollbarHighlightOnWheel = false;
@@ -294,20 +294,20 @@
             // 
             // panel4
             // 
-            resources.ApplyResources(this.panel4, "panel4");
             this.panel4.BackColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
             // 
             // panel3
             // 
-            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
             // 
             // panel2
             // 
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.BackColor = System.Drawing.Color.Yellow;
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
             // DisplayEpicenters
