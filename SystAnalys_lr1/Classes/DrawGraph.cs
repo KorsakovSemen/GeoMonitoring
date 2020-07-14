@@ -1,4 +1,6 @@
-﻿using System;
+﻿//This is a personal academic project. Dear PVS-Studio, please check it.
+//PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -32,12 +34,6 @@ namespace SystAnalys_lr1.Classes
         }
 
         public void SetBitmap()
-        {
-            Bitmap = new Bitmap(Main.GlobalMap);
-            Gr = Graphics.FromImage(Bitmap);
-        }
-
-        public void SetBitmap2()
         {
             Bitmap = new Bitmap(Main.GlobalMap);
             Gr = Graphics.FromImage(Bitmap);

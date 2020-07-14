@@ -1,4 +1,6 @@
-﻿using MetroFramework;
+﻿//This is a personal academic project. Dear PVS-Studio, please check it.
+//PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+using MetroFramework;
 using MetroFramework.Components;
 using MetroFramework.Controls;
 using SystAnalys_lr1.Forms;
@@ -216,7 +218,7 @@ namespace SystAnalys_lr1.Classes
                     else
                     {
                         fileV.WriteLine(MainStrings.average + " " + (total / count / 60 < 60 ? (total / count + " " + MainStrings.sec).ToString() : (total / count / 60 + " " + MainStrings.minute + " " + total / count % 60 + " " + MainStrings.sec).ToString())
-                                      + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / OptiCount) + "\n" + MainStrings.procentFailed + " " + (((Modeling.ResultFromModeling.Count - count) * 100.00 / OptiCount)).ToString());
+                                      + "\n" + MainStrings.procentSuc + " " + (count * 100.00 / OptiCount) + "\n" + MainStrings.procentFailed + " " + ((Modeling.ResultFromModeling.Count - count) * 100.00 / OptiCount).ToString());
                     }
                     fileV.WriteLine(MainStrings.cycle + " " + cicl.ToString());
                     for (int i = 0; i < Modeling.ResultFromModeling.Count; i++)

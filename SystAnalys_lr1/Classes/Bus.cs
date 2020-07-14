@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿//This is a personal academic project. Dear PVS-Studio, please check it.
+//PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -276,7 +278,6 @@ namespace SystAnalys_lr1.Classes
                     {
                         if (Data.Buses.Count != 0)
                         {
-
                             foreach (var bus in buses)
                             {
                                 if ((PositionAt < Coordinates.Count) && (bus.PositionAt < bus.Coordinates.Count))

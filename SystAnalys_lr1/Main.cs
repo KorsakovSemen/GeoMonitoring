@@ -1,4 +1,6 @@
-﻿using MetroFramework;
+﻿//This is a personal academic project. Dear PVS-Studio, please check it.
+//PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+using MetroFramework;
 using MetroFramework.Controls;
 using MetroFramework.Forms;
 using Newtonsoft.Json;
@@ -840,7 +842,7 @@ namespace SystAnalys_lr1
 
         private async void Optimize_ClickAsync(object sender, EventArgs e)
         {
-            if (optText.Text != "" && speed.Text != "" && Data.Buses.Count != 0 && int.Parse(optText.Text) > 0 && int.Parse(speed.Text) > 0 && Data.Buses != null)
+            if (Data.Buses != null && optText.Text != "" && speed.Text != "" && Data.Buses.Count != 0 && int.Parse(optText.Text) > 0 && int.Parse(speed.Text) > 0)
             {
                 c.AddStopPointInRoutes(sheet, Data.TheGrid);
                 c.AddGridPart(Data.TraficLights, Data.TheGrid);

@@ -1,4 +1,6 @@
-﻿using SystAnalys_lr1.Forms;
+﻿//This is a personal academic project. Dear PVS-Studio, please check it.
+//PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+using SystAnalys_lr1.Forms;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -22,7 +24,7 @@ namespace SystAnalys_lr1.Classes
         public static Dictionary<string, List<GridPart>> PollutionInRoutes { get => s_pollutionInRoutes; set => s_pollutionInRoutes = value; }
         public static int T { get => s_t; set => s_t = value; }
         public static List<int?> ResultFromModeling { get => s_resultFromModeling; set => s_resultFromModeling = value; }
-        public static List<Epicenter> EpList { get => epList; set => epList = value; }
+        public static List<Epicenter> EpList { get => epList; set => epList = value; } 
 
 
         public static async void GetEpicentersAsync(List<Epicenter> epList, int i)
@@ -212,7 +214,7 @@ namespace SystAnalys_lr1.Classes
                                                 bus.Skips.SkipTrafficLights = sp.GreenTime;
                                                 break;
                                             }
-                                            if (sp.Status == LightStatus.RED)
+                                            if (sp.Status == LightStatus.GREEN || sp.Status == LightStatus.YELLOW)
                                             {
                                                 bus.TickCount_ += sp.Bal;
                                                 bus.AllTickCount += sp.Bal;
